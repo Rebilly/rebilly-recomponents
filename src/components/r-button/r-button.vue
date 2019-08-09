@@ -99,7 +99,7 @@
 
         &--type-default {
             background: none;
-            color: $text;
+            color: var(--text-color);
             box-shadow: none;
 
             &:hover {
@@ -107,7 +107,7 @@
             }
 
             &:focus {
-                box-shadow: 0 0 0 1px $blue inset, 0 0 0 1px $blue;
+                box-shadow: 0 0 0 1px var(--primary-color) inset, 0 0 0 1px var(--primary-color);
             }
 
             &:active {
@@ -130,7 +130,7 @@
         }
 
         &--type-primary {
-            background: linear-gradient(to bottom, $blue 0%, adjust-hue($blue, 30) 100%);
+            background: linear-gradient(to bottom, var(--primary-color) 0%, adjust-hue($blue, 30) 100%);
             color: #FFFFFF;
             box-shadow: 0 1px 2px 0 rgba($gray, 0.8);
 
