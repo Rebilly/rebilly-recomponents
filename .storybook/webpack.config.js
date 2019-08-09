@@ -18,7 +18,21 @@ module.exports = function({ config }) {
      */
     config.module.rules.push({
         test: /\.scss$/,
-        use: ['style-loader', 'css-loader', 'sass-loader'],
+        use: [
+            'style-loader',
+            'css-loader',
+            'sass-loader',
+            {
+                loader: 'sass-resources-loader',
+                options: {
+                    resources: [
+                        require.resolve('../src/styles/variables.scss'),
+                        require.resolve('../src/styles/media.scss'),
+                        require.resolve('../src/styles/theme.scss'),
+                    ],
+                },
+            }
+        ],
     });
 
     return config;
