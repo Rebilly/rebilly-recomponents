@@ -13,64 +13,64 @@
 </template>
 
 <script>
-    export default {
-        name: 'RButton',
-        props: {
-            size: {
-                type: String,
-                default: 'regular',
-                validator: (val) => ['small', 'regular', 'large'].includes(val),
-            },
-            type: {
-                type: String,
-                default: 'default',
-                validator: (val) => ['default', 'primary', 'warning', 'danger'].includes(val),
-            },
-            disabled: {
-                type: Boolean,
-                default: false,
-            }
-        },
-        computed: {
-            classes() {
-                return {
-                    [`r-button--size-${this.size}`]: !!this.size,
-                    [`r-button--type-${this.type}`]: !!this.type,
-                }
-            },
-            title() {
-                if (this.disabled) {
-                    return this.$t('disabled')
-                } else if (this.loading) {
-                    return this.$t('loading')
-                }
-                return '';
-            }
-        },
-        i18n: {
-            messages: {
-                en: {
-                    loading: 'Waiting for response',
-                    disabled: 'Action is disabled',
-                },
-                ja: {
-                    loading: '応答待ち',
-                    disabled: 'アクションは無効です',
-                }
-            }
-        },
-        methods: {
-            click ($event) {
-                this.$emit('click', $event);
-            },
-            focus ($event) {
-                this.$emit('focus', $event);
-            },
-            blur ($event) {
-                this.$emit('blur', $event);
-            },
-        }
-    };
+export default {
+  name: 'RButton',
+  props: {
+    size: {
+      type: String,
+      default: 'regular',
+      validator: val => ['small', 'regular', 'large'].includes(val),
+    },
+    type: {
+      type: String,
+      default: 'default',
+      validator: val => ['default', 'primary', 'warning', 'danger'].includes(val),
+    },
+    disabled: {
+      type: Boolean,
+      default: false,
+    },
+  },
+  computed: {
+    classes() {
+      return {
+        [`r-button--size-${this.size}`]: !!this.size,
+        [`r-button--type-${this.type}`]: !!this.type,
+      };
+    },
+    title() {
+      if (this.disabled) {
+        return this.$t('disabled');
+      } if (this.loading) {
+        return this.$t('loading');
+      }
+      return '';
+    },
+  },
+  i18n: {
+    messages: {
+      en: {
+        loading: 'Waiting for response',
+        disabled: 'Action is disabled',
+      },
+      ja: {
+        loading: '応答待ち',
+        disabled: 'アクションは無効です',
+      },
+    },
+  },
+  methods: {
+    click($event) {
+      this.$emit('click', $event);
+    },
+    focus($event) {
+      this.$emit('focus', $event);
+    },
+    blur($event) {
+      this.$emit('blur', $event);
+    },
+  },
+};
 </script>
 
 <style lang="scss">

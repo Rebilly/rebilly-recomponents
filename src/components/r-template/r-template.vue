@@ -9,30 +9,30 @@
 </template>
 
 <script>
-    export default {
-        name: 'RTemplate',
-        props: {
-            show: {
-                type: Boolean,
-                default: true
-            },
-            text: {
-                type: String,
-                default: '',
-            }
-        },
-        i18n: {
-            messages: {
-                en: { message: 'Here is translated message' },
-                ja: { message: 'ここに翻訳されたメッセージがあります'}
-            }
-        },
-        methods: {
-            close () {
-                this.$emit('close');
-            }
-        }
-    };
+export default {
+  name: 'RTemplate',
+  props: {
+    show: {
+      type: Boolean,
+      default: true,
+    },
+    text: {
+      type: String,
+      default: '',
+    },
+  },
+  i18n: {
+    messages: {
+      en: { message: 'Here is translated message' },
+      ja: { message: 'ここに翻訳されたメッセージがあります' },
+    },
+  },
+  methods: {
+    close() {
+      this.$emit('close');
+    },
+  },
+};
 </script>
 
 <style lang="scss">

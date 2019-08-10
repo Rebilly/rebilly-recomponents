@@ -1,21 +1,12 @@
-import {
-    mount,
-    Wrapper,
-    MountOptions,
-  } from '@vue/test-utils'
-import RTemplate from './RTemplate'
+import { shallowMount } from '@vue/test-utils';
+import RTemplate from './r-template.vue';
 
-describe('VCard.vue', () => {
-    let mountFunction: options => Wrapper
-    beforeEach(() => {
-      mountFunction = (options) => {
-        return mount(RTemplate, options)
-      }
-    })
-
-    it('should render component and match snapshot', () => {
-      const wrapper = mountFunction()
-
-      expect(wrapper.html()).toMatchSnapshot()
-    })
-})
+describe('r-template.vue', () => {
+  it('renders props.msg when passed', () => {
+    const msg = 'new message';
+    const wrapper = shallowMount(RTemplate, {
+      propsData: { msg },
+    });
+    expect(wrapper.text()).toMatch(msg);
+  });
+});
