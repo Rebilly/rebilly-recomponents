@@ -1,6 +1,7 @@
 # Regular git ignore
 .DS_Store
 node_modules
+package-lock.json
 
 # Storybook output
 .out

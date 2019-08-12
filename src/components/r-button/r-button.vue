@@ -81,9 +81,17 @@ export default {
         text-transform: capitalize;
         text-align: center;
         vertical-align: baseline;
+        user-select: none;
+        appearance: none;
+        font-family: var(--primary-font-stack);
+        font-weight: $regular;
+        font-size: 1.4rem;
+        line-height: 2rem;
         border-radius: $border-radius;
+        border: none;
         cursor: pointer;
         outline: none;
+        transition: box-shadow .15s ease;
 
         &--size-small {
             padding: 0.4rem 1.6rem;
@@ -98,12 +106,12 @@ export default {
         }
 
         &--type-default {
-            background: none;
+            background: linear-gradient(180deg,#fff 0,var(--background-color));
             color: var(--text-color);
-            box-shadow: none;
+            box-shadow: 0 0 0 1px $light-gray inset, 0 1px 2px 0 rgba($gray, 0.3);
 
             &:hover {
-                background: $background;
+                background: var(--background-color);
             }
 
             &:focus {
@@ -111,7 +119,7 @@ export default {
             }
 
             &:active {
-                background: $background;
+                background: var(--background-color);
                 box-shadow: 0 0 0 1px $light-gray inset, 0 1px 3px 1px $light-gray inset;
             }
 
@@ -120,7 +128,7 @@ export default {
                 cursor: auto;
 
                 &:hover {
-                    background: linear-gradient(to bottom, #FFFFFF 0%, $background 100%);
+                    background: linear-gradient(to bottom, #FFFFFF 0%, var(--background-color) 100%);
                 }
 
                 &:active {
@@ -130,26 +138,36 @@ export default {
         }
 
         &--type-primary {
-            background: linear-gradient(to bottom, var(--primary-color) 0%, adjust-hue($blue, 30) 100%);
+            background: linear-gradient(to bottom, var(--primary-color) 0%, var(--primary-color-light) 100%);
             color: #FFFFFF;
             box-shadow: 0 1px 2px 0 rgba($gray, 0.8);
 
             &:hover {
-                background: adjust-hue($blue, 30);
+                background: var(--primary-color-light);
             }
 
             &:focus {
-                box-shadow: 0 0 0 1px darken($blue, 20) inset, 0 0 0 1px darken($blue, 20);
+                box-shadow: 0 0 0 1px var(--primary-color-dark) inset, 0 0 0 1px var(--primary-color-dark);
             }
 
             &:active {
                 background: #3000D7;
                 box-shadow: 0 1px 3px 1px darken($blue, 10) inset;
             }
+
+            &[disabled] {
+                opacity: 0.5;
+                cursor: auto;
+
+                &:hover,
+                &:active {
+                    background: linear-gradient(to bottom, var(--primary-color) 0%, var(--primary-color-light) 100%);
+                }
+            }
         }
 
         &--type-warning {
-            background: linear-gradient(to bottom, saturate($yellow, 50) 0%, $yellow 100%);
+            background: linear-gradient(to bottom, saturate($yellow, 50) 0%, var(--warning-color) 100%);
             color: #FFFFFF;
             box-shadow: 0 1px 2px 0 rgba($gray, 0.8);
 
@@ -164,6 +182,16 @@ export default {
             &:active {
                 background: darken($yellow, 10);
                 box-shadow: 0 1px 3px 1px darken($yellow, 20) inset;
+            }
+
+            &[disabled] {
+                opacity: 0.5;
+                cursor: auto;
+
+                &:hover,
+                &:active {
+                    background: linear-gradient(to bottom, saturate($yellow, 50) 0%, var(--warning-color) 100%);
+                }
             }
         }
 
@@ -183,6 +211,16 @@ export default {
             &:active {
                 background: darken($red, 10);
                 box-shadow: 0 1px 3px 1px darken($red, 20) inset;
+            }
+
+            &[disabled] {
+                opacity: 0.5;
+                cursor: auto;
+
+                &:hover,
+                &:active {
+                    background: linear-gradient(to bottom, saturate($red, 50) 0%, $red 100%);
+                }
             }
         }
     }

@@ -1,6 +1,21 @@
+html {
+    font-size: 62.5%;
+    text-size-adjust: 100%;
+    text-rendering: optimizeLegibility;
+    -moz-osx-font-smoothing: grayscale;
+    -webkit-font-smoothing: antialiased;
+}
+
 :root {
+    --background-color: #F6F8F9;
     --primary-color: #0044D4;
+    --primary-color-dark: #00236e;
+    --primary-color-light: #2600d4;
+    --warning-color: #F1C400;
     --text-color: #0D2B3E;
+
+    --primary-font-stack: 'Roboto', sans-serif;
+    --secondary-font-stack: 'Montserrat', sans-serif;
 }
 
 // Temporal variables
@@ -8,5 +23,4 @@ $blue: #0044D4;
 $gray: #A1B2C1;
 $red: #E53935;
 $yellow: #F1C400;
-$background: #F6F8F9;
 $light-gray: #C4CED8;
