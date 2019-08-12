@@ -1,10 +1,11 @@
 import Vue from 'vue';
 import NoSSR from 'vue-no-ssr';
 import VueI18n from 'vue-i18n';
-import { configure, addDecorator } from '@storybook/vue';
+import { configure, addDecorator, addParameters } from '@storybook/vue';
 import { withA11y } from '@storybook/addon-a11y';
 import { withKnobs } from '@storybook/addon-knobs';
 import { withContexts } from '@storybook/addon-contexts/vue';
+import { withCssResources } from '@storybook/addon-cssresources';
 
 Vue.use(VueI18n)
 Vue.component('no-ssr', NoSSR);
@@ -44,5 +45,21 @@ function loadStories() {
 addDecorator(withA11y)
 addDecorator(withKnobs);
 addDecorator(withContexts(topLevelContexts));
+addDecorator(withCssResources)
+addParameters({
+  cssresources: [{
+      id: `boostrap`,
+      code: `
+        <style>
+            :root {
+                --primary-color: #D44400;
+                --primary-color-dark: #6e2300;
+                --primary-color-light: #d40026;
+            }
+        </style>`,
+      picked: false,
+    },
+  ],
+});
 
 configure(loadStories, module);
