@@ -1,7 +1,7 @@
 {
   "name": "rebilly-recomponents",
-  "version": "1.0.0",
-  "description": "",
+  "version": "0.1.0",
+  "description": "UI components shared in Rebilly projects",
   "main": "index.js",
   "scripts": {
     "test": "vue-cli-service test:unit",
