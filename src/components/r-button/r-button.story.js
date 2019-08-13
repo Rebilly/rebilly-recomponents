@@ -1,14 +1,14 @@
 import { storiesOf } from '@storybook/vue';
 import { action } from '@storybook/addon-actions';
 import { text, select, boolean } from '@storybook/addon-knobs';
-import component from './r-button.vue';
+import RButton from './r-button.vue';
 import markdown from './r-button.md';
 
 storiesOf('Components', module)
   .add('Button', () => ({
-    components: { component },
+    components: { RButton },
     template: `
-            <component
+            <r-button
                 :size="size"
                 :type="type"
                 :disabled="disabled"
@@ -17,7 +17,7 @@ storiesOf('Components', module)
                 @blur="blur"
             >
                 {{text}}
-            </component>
+            </r-button>
         `,
     methods: {
       click: action('click'),
