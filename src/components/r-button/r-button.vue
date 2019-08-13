@@ -1,12 +1,10 @@
 <template>
     <button
-        class="r-button"
+        v-on="$listeners"
+        class="r-component r-button"
         :class="classes"
         :disabled="disabled"
         :title="title"
-        @click="click"
-        @focus="focus"
-        @blur="blur"
     >
         <slot>Apply</slot>
     </button>
