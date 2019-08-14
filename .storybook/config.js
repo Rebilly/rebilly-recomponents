@@ -36,6 +36,8 @@ const topLevelContexts = [
     },
 ];
 
+import '../public/main.css';
+
 const req = require.context('../src/components/', true, /\.story\.js$/);
 
 function loadStories() {

@@ -6,7 +6,7 @@
   "scripts": {
     "test": "vue-cli-service test:unit",
     "lint": "vue-cli-service lint",
-    "storybook": "start-storybook -p 9001",
+    "storybook": "start-storybook -p 9001  -s public",
     "build-storybook": "build-storybook -c .storybook -o .out"
   },
   "author": "",

@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="128" height="128" viewBox="0 0 128 128" fill="none" xmlns="http://www.w3.org/2000/svg">
+    <path d="M104.288 52.6207C104.645 50.9154 104.833 49.1466 104.833 47.3333C104.833 33.3421 93.6404 22 79.8333 22C69.9159 22 61.3472 27.8518 57.3064 36.3339C54.5255 34.226 51.0733 32.9778 47.3333 32.9778C38.4947 32.9778 31.2631 39.9495 30.7017 48.7623C20.9735 52.23 14 61.6231 14 72.6667C14 86.6579 25.1929 98 39 98H89C102.807 98 114 86.6579 114 72.6667C114 64.5103 110.196 57.2543 104.288 52.6207Z" stroke="#C4CED8" stroke-width="2"/>
+    <circle cx="69" cy="86" r="20" fill="url(#paint0_linear)"/>
+    <line x1="69" y1="94.5791" x2="69" y2="79" stroke="#F9FAFB" stroke-width="2" stroke-linecap="round"/>
+    <line x1="1" y1="-1" x2="8.20889" y2="-1" transform="matrix(-0.75861 0.651545 -0.575844 -0.817559 68.986 77)" stroke="#F9FAFB" stroke-width="2" stroke-linecap="round"/>
+    <line x1="1" y1="-1" x2="8.20889" y2="-1" transform="matrix(0.75861 0.651545 0.575844 -0.817559 69.0141 77)" stroke="#F9FAFB" stroke-width="2" stroke-linecap="round"/>
+    <defs>
+        <linearGradient id="paint0_linear" x1="69" y1="66" x2="69" y2="106" gradientUnits="userSpaceOnUse">
+            <stop stop-color="#00CCC4"/>
+            <stop offset="1" stop-color="#05C0B8"/>
+        </linearGradient>
+    </defs>
+</svg>
