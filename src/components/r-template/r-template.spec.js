@@ -6,6 +6,9 @@ describe('r-template.vue', () => {
     const msg = 'new message';
     const wrapper = shallowMount(RTemplate, {
       propsData: { msg },
+      mocks: {
+        $t: () => 'new message',
+      },
     });
     expect(wrapper.text()).toMatch(msg);
   });
