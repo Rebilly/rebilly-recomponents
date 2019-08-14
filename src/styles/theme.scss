@@ -14,6 +14,13 @@ html {
     --warning-color: #F1C400;
     --text-color: #0D2B3E;
 
+    --light-red-color: #FFD4D3;
+    --light-gray-color: #C4CED8;
+    --light-blue-color: #DCE7FE;
+    --light-green-color: #C4F7CA;
+    --light-yellow-color: #FFF0AD;
+    --faint-gray-color: #E1E7EA;
+
     --primary-font-stack: 'Roboto', sans-serif;
     --secondary-font-stack: 'Montserrat', sans-serif;
 }
@@ -22,7 +29,7 @@ html {
     
 }
 
-// Temporal variables
+// Temporal variables, should be removed
 $blue: #0044D4;
 $gray: #A1B2C1;
 $red: #E53935;
