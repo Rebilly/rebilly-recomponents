@@ -16,6 +16,17 @@ storiesOf('Components', module)
                 :multiline="multiline"
                 :submitOnEnter="submitOnEnter"
                 :leftIcon="leftIcon"
+                :rightIcon="rightIcon"
+                :leftLabel="leftLabel"
+                :rightLabel="rightLabel"
+                :password="password"
+                :numeric="numeric"
+                :rows="rows"
+                :autoFocus="autoFocus"
+                :autoHighlight="autoHighlight"
+                :maxLength="maxLength"
+                :autoResize="autoResize"
+                :autoComplete="autoComplete"
                 />
         `,
     methods: {
@@ -47,6 +58,39 @@ storiesOf('Components', module)
         },
         leftIcon: {
             default: select('leftIcon', ['', 'search','customers','lock','burger'], ''),
+        },
+        rightIcon: {
+            default: select('rightIcon', ['', 'search','customers','lock','burger'], ''),
+        },
+        leftLabel: {
+            default: select('leftLabel', ['', 'left label'], ''),
+        },
+        rightLabel: {
+            default: select('rightLabel', ['', 'right label'], ''),
+        },
+        password: {
+            default: boolean('password', false),
+        },
+        numeric: {
+            default: boolean('numeric', false),
+        },
+        rows: {
+            default: text('rows', '5'),
+        },
+        autoFocus: {
+            default: boolean('autoFocus', false),
+        },
+        autoHighlight: {
+            default: boolean('autoHighlight', false),
+        },
+        maxLength: { // TODO: bug? it could be saying: '(-4 characters left.)' if multiline is false
+            default: select('maxLength', ['', '15', '50'], ''),
+        },
+        autoResize: {
+            default: boolean('autoResize', false),
+        },
+        autoComplete: {
+            default: text('autoComplete', ''),
         },
     },
   }), {
