@@ -8,9 +8,10 @@ storiesOf('Components', module)
   .add('Input', () => ({
     components: { RInput },
     template: `
-            <r-input :label="label" 
+            <r-input 
+                v-model="model" 
+                :label="label" 
                 :disabled="disabled"
-                v-model="model"
                 :placeholder="placeholder"
                 :helpText="helpText"
                 :multiline="multiline"
