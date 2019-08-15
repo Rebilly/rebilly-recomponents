@@ -1,6 +1,6 @@
 <template>
     <svg class="icon icon-20" @click="bubbleClick">
-        <r-icon-sprites v-if="!isIconSpritesLoaded"/>
+        <r-icon-sprites/>
         <use :xlink:href="iconName" xmlns:xlink="http://www.w3.org/1999/xlink"></use>
     </svg>
 </template>
