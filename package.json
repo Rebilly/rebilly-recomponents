@@ -4,6 +4,7 @@
   "description": "UI components shared in Rebilly projects",
   "main": "index.js",
   "scripts": {
+    "build:wc": "vue-cli-service build --target wc-async --name rebilly-recomponents 'src/components/**/*.vue'",
     "test": "vue-cli-service test:unit",
     "lint": "vue-cli-service lint",
     "storybook": "start-storybook -p 9001  -s public",

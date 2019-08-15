@@ -6,6 +6,9 @@ package-lock.json
 # Storybook output
 .out
 
+# Build output
+dist
+
 # Editor directories and files
 .idea
 .vscode

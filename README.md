@@ -9,7 +9,17 @@ yarn add rebilly-recomponents
 
 ## Usage
 
-TBD
+Recomponents can be used as web components:
+
+```html
+<script src="https://unpkg.com/vue-i18n"></script>
+<script src="https://unpkg.com/vue"></script>
+<script>
+    Vue.use(VueI18n)
+</script>
+<script src="./r-template.js"></script>
+<r-template></r-template>
+```
 
 ## Browser Support
 
