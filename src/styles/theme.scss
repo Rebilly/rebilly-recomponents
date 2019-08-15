@@ -1,37 +1,47 @@
 html {
-    font-size: 62.5%;
-    text-size-adjust: 100%;
-    text-rendering: optimizeLegibility;
-    -moz-osx-font-smoothing: grayscale;
-    -webkit-font-smoothing: antialiased;
+  font-size: 62.5%;
+  text-size-adjust: 100%;
+  text-rendering: optimizeLegibility;
+  -moz-osx-font-smoothing: grayscale;
+  -webkit-font-smoothing: antialiased;
 }
 
 :root {
-    --background-color: #F6F8F9;
-    --primary-color: #0044D4;
-    --primary-color-dark: #00236e;
-    --primary-color-light: #2600d4;
-    --warning-color: #F1C400;
-    --text-color: #0D2B3E;
+  --background-color: #F6F8F9;
+  --primary-color: #0044D4;
 
-    --light-red-color: #FFD4D3;
-    --light-gray-color: #C4CED8;
-    --light-blue-color: #DCE7FE;
-    --light-green-color: #C4F7CA;
-    --light-yellow-color: #FFF0AD;
-    --faint-gray-color: #E1E7EA;
+  --warning-color: #F1C400;
+  --red-color: #E53935;
+  --gray-color: #A1B2C1;
+  --text-color: #0D2B3E;
 
-    --primary-font-stack: 'Roboto', sans-serif;
-    --secondary-font-stack: 'Montserrat', sans-serif;
+  --saturated-red-color: #ff201b;
+  --saturated-warning-color: #f1c400;
+
+  --primary-color-dark: #00236e;
+  --primary-color-medium: #0034a1;
+  --primary-color-light: #2600d4;
+  --warning-color-dark: #8b7100;
+  --warning-color-medium: #be9b00;
+  --warning-color-light: #d8af00;
+
+  --red-color-dark: #9f1815;
+  --red-color-medium: #cd1e1a;
+  --red-color-light: #e2231e;
+
+  --light-red-color: #FFD4D3;
+  --light-gray-color: #C4CED8;
+  --light-blue-color: #DCE7FE;
+  --light-green-color: #C4F7CA;
+  --light-yellow-color: #FFF0AD;
+  --faint-gray-color: #E1E7EA;
+
+  --primary-font-stack: 'Roboto', sans-serif;
+  --secondary-font-stack: 'Montserrat', sans-serif;
+
+  --font-weight-regular: 400;
+  --border-radius: 4px;
 }
 
 .r-component {
-    
 }
-
-// Temporal variables, should be removed
-$blue: #0044D4;
-$gray: #A1B2C1;
-$red: #E53935;
-$yellow: #F1C400;
-$light-gray: #C4CED8;

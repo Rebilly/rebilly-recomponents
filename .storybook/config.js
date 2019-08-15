@@ -1,14 +1,16 @@
 import Vue from 'vue';
 import NoSSR from 'vue-no-ssr';
 import VueI18n from 'vue-i18n';
-import { configure, addDecorator, addParameters } from '@storybook/vue';
+import VueRouter from 'vue-router';
+import { addDecorator, addParameters, configure } from '@storybook/vue';
 import { withA11y } from '@storybook/addon-a11y';
 import { withKnobs } from '@storybook/addon-knobs';
 import { withContexts } from '@storybook/addon-contexts/vue';
 import { withCssResources } from '@storybook/addon-cssresources';
 
-Vue.use(VueI18n)
+Vue.use(VueI18n);
 Vue.component('no-ssr', NoSSR);
+Vue.use(VueRouter);
 
 const i18n = new VueI18n({
     locale: 'ja',
