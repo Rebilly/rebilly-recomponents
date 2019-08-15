@@ -3,15 +3,8 @@ import {action, decorate} from '@storybook/addon-actions';
 import { select, boolean } from '@storybook/addon-knobs';
 import RIcon from './r-icon.vue';
 import markdown from './r-icon.md';
-import iconSprites from './icon-sprites.md';
 
-const template = () => {
-    return {
-        template: iconSprites,
-    };
-};
-
-storiesOf('Components', module).addDecorator(template)
+storiesOf('Components', module)
   .add('Icon', () => ({
     components: { RIcon },
     template: `

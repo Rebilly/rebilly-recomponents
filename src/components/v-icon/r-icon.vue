@@ -1,12 +1,16 @@
 <template>
     <svg class="icon icon-20" @click="bubbleClick">
+        <r-icon-sprites v-if="!isIconSpritesLoaded"/>
         <use :xlink:href="iconName" xmlns:xlink="http://www.w3.org/1999/xlink"></use>
     </svg>
 </template>
 
 <script>
+    import rIconSprites from './r-icon-sprites';
+
     export default {
         name: 'r-icon',
+        components: {rIconSprites},
         props: {
             icon: {
                 type: String,
@@ -18,6 +22,9 @@
             },
         },
         computed: {
+            isIconSpritesLoaded() {
+                return document.getElementsByClassName('svg-sprites').length > 0;
+            },
             iconName() {
                 return `#icon-${this.icon}`;
             },
