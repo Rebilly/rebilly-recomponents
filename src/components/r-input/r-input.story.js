@@ -27,12 +27,21 @@ storiesOf('Components', module)
                 :maxLength="maxLength"
                 :autoResize="autoResize"
                 :autoComplete="autoComplete"
+                @focus="focus"
+                @click="click"
+                @input="input"
+                @key-submit="keySubmit"
+                @key-press="keyPress"
+                @key-down="keyDown"
                 />
         `,
     methods: {
-      click: action('click'),
       focus: action('focus'),
-      blur: action('blur'),
+      click: action('click'),
+      input: action('input'),
+      keySubmit: action('keySubmit'),
+      keyPress: action('keyPress'),
+      keyDown: action('keyDown'),
     },
     props: {
         label: {
@@ -40,9 +49,6 @@ storiesOf('Components', module)
         },
         disabled: {
             default: boolean('disabled', false),
-        },
-        model: {
-            default: text('model', 'value here'),
         },
         placeholder: {
             default: text('placeholder', 'Please input value here'),
@@ -93,6 +99,9 @@ storiesOf('Components', module)
             default: text('autoComplete', ''),
         },
     },
+    data: () => ({
+      model: 'value here',
+    }),
   }), {
     notes: { markdown },
   });
