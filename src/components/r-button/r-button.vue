@@ -58,15 +58,6 @@ export default {
     },
   },
   methods: {
-    click($event) {
-      this.$emit('click', $event);
-    },
-    focus($event) {
-      this.$emit('focus', $event);
-    },
-    blur($event) {
-      this.$emit('blur', $event);
-    },
   },
 };
 </script>
