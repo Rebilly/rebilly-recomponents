@@ -1,0 +1,135 @@
+<template>
+    <div class="field" :class="styles">
+        <label class="field-label field-label-toggle" :class="labelStyles" :for="name">
+            <template v-if="label">
+                {{label}}
+            </template>
+            <slot v-else name="label"/>
+        </label>
+        <input type="radio" class="field-radio"
+               :id="name"
+               :name="group"
+               :value="value"
+               :checked="isChecked"
+               :disabled="disabled" @change="update"/>
+
+        <span class="field-radio-style">
+            <r-icon icon="radio-checkmark"></r-icon>
+        </span>
+        <span class="field-caption field-caption-toggle" v-if="caption">{{caption}}</span>
+    </div>
+</template>
+
+<script>
+    import shortid from 'shortid';
+    import rIcon from '../r-icon/r-icon';
+
+    export default {
+        name: 'r-radio',
+        components: {rIcon},
+        props: {
+            label: {
+                type: String,
+            },
+            group: {
+                type: String,
+                default: shortid.generate(),
+            },
+            name: {
+                type: String,
+                default: () => shortid.generate(),
+            },
+            caption: {
+                type: String,
+                default: null,
+            },
+            type: {
+                type: String,
+                default: null,
+            },
+            model: {
+                type: [String, Number, Boolean, Array],
+                default: null,
+            },
+            value: {
+                type: [String, Number, Boolean, Array],
+                required: true,
+            },
+            disabled: {
+                type: Boolean,
+                default: false,
+            },
+            validate: {
+                type: Object,
+                default: null,
+            },
+        },
+        computed: {
+            styles() {
+                return {
+                    'is-error': this.isInvalid,
+                    [`is-${this.type}`]: !!this.type,
+                };
+            },
+            labelStyles() {
+                return {
+                    'is-disabled': this.disabled,
+                    'is-checked': this.isChecked,
+                };
+            },
+            isInvalid() {
+                if (this.validate) {
+                    return this.validate.$invalid && this.validate.$dirty;
+                }
+                return false;
+            },
+            isChecked() {
+                if (this.value === null) {
+                    return false;
+                }
+                return this.model === this.value;
+            },
+        },
+        methods: {
+            update() {
+                console.log(this.value)
+                this.$emit('update', this.value);
+            },
+        },
+    };
+</script>
+
+<docs>
+    Group list
+    ```jsx static
+    <template>
+        <div>
+            <v-radio
+                v-for="let option in optionsList"
+                class="stack-m"
+                :key="`option-${option.value}`"
+                :label="option.label"
+                :value="option.value"
+                @update="update"
+                :model="value"
+                group="groupName"/>
+        </div>
+    </template>
+
+    <script>
+        export default {
+            data() {
+                return {
+                    value: '',
+                    optionsList: new Array(5).fill(0).map((n, i) => ({value: `value-${i}`, label: `label-${i}`})),
+                };
+            },
+            methods: {
+                update(value) {
+                    this.value = value;
+                },
+            },
+        };
+    </script>
+    ```
+</docs>
