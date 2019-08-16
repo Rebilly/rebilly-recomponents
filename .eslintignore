@@ -1,0 +1,7 @@
+/config/
+/dist/
+/tests/old-tests/*
+/src/style/
+vue.config.js
+/make-jsdoc.js
+/styleguide.config.js
