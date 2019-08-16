@@ -1,0 +1,154 @@
+<template>
+    <div class="r-component r-loader" :class="classes" v-if="show">
+        <div class="mr-re"></div>
+        <div class="mr-bil"></div>
+        <div class="mr-ly"></div>
+    </div>
+</template>
+
+<script>
+export default {
+    name: 'r-loader',
+
+    props: {
+        show: {
+            type: Boolean,
+            default: false,
+        },
+        loading: {
+            type: Boolean,
+            default: true,
+        }
+    },
+
+    computed: {
+        classes() {
+            return {
+                ['r-loader--loading']: !!this.loading,
+            }
+        }
+    }
+}
+</script>
+
+<style lang="scss">
+    .r-loader {
+        display: block;
+        position: relative;
+        width: 36px;
+        height: 36px;
+        background: var(--gray-color);
+        border-radius: $border-radius;
+
+        > * {
+            transition: height .3s ease;
+            display: block;
+            position: absolute;
+            transform-origin: top;
+            transform: rotate(180deg);
+            width: 4px;
+            background: var(--background-color);
+        }
+
+        .mr-re {
+            top: 28px;
+            left: 9px;
+            height: 14px;
+            animation: mr-re-reset 1s normal;
+        }
+
+        .mr-bil {
+            top: 28px;
+            left: 16px;
+            height: 17px;
+            animation: mr-bil-reset 1s normal;
+        }
+
+        .mr-ly {
+            top: 28px;
+            left: 23px;
+            height: 20px;
+            animation: mr-ly-reset 1s normal;
+        }
+
+        &--loading {
+            .mr-re {
+                height: 0px;
+                animation: mr-re-animation 1s infinite;
+            }
+
+            .mr-bil {
+                height: 0px;
+                animation: mr-bil-animation 1s .2s infinite;
+            }
+
+            .mr-ly {
+                height: 0px;
+                animation: mr-ly-animation 1s .4s infinite;
+            }
+        }
+    }
+
+    @keyframes mr-re-animation {
+        0% {
+            height: 0;
+        }
+        50% {
+            height: 14px;
+        }
+        100% {
+            height: 0;
+        }
+    }
+
+    @keyframes mr-re-reset {
+        0% {
+            height: 0;
+        }
+        100% {
+            height: 14px;
+        }
+    }
+
+    @keyframes mr-bil-animation {
+        0% {
+            height: 0;
+        }
+        50% {
+            height: 17px;
+        }
+        100% {
+            height: 0;
+        }
+    }
+
+    @keyframes mr-bil-reset {
+        0% {
+            height: 0;
+        }
+        100% {
+            height: 17px;
+        }
+    }
+
+    @keyframes mr-ly-animation {
+        0% {
+            height: 0;
+        }
+        50% {
+            height: 20px;
+        }
+        100% {
+            height: 0;
+        }
+    }
+
+    @keyframes mr-ly-reset {
+        0% {
+            height: 0;
+        }
+        100% {
+            height: 20px;
+        }
+    }
+</style>
