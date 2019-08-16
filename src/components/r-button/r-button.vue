@@ -95,8 +95,7 @@ export default {
       },
     },
   },
-  methods: {
-  },
+  methods: {},
 };
 </script>
 
@@ -111,10 +110,10 @@ export default {
     user-select: none;
     appearance: none;
     font-family: var(--primary-font-stack);
-    font-weight: var(--font-weight-regular);
+    font-weight: $regular;
     font-size: 1.4rem;
     line-height: 2rem;
-    border-radius: var(--border-radius);
+    border-radius: $border-radius;
     border: none;
     cursor: pointer;
     outline: none;
@@ -216,7 +215,8 @@ export default {
     }
 
     &--type-warning {
-      background: linear-gradient(to bottom, var(--saturated-warning-color) 0%, var(--warning-color) 100%);
+      background: linear-gradient(to bottom, var(--saturated-warning-color) 0%,
+        var(--warning-color) 100%);
       color: #FFFFFF;
       box-shadow: 0 1px 2px 0 rgba(var(--gray-color), 0.8);
 
@@ -233,7 +233,6 @@ export default {
         background: var(--warning-color-medium);
         box-shadow: 0 1px 3px 1px var(--warning-color-dark) inset;
       }
-      }
 
       &[disabled] {
         opacity: 0.5;
@@ -247,10 +246,10 @@ export default {
         }
       }
     }
-    }
 
     &--type-danger {
-      background: linear-gradient(to bottom, var(--saturated-red-color) 0%, var(--saturated-red-color) 100%);
+      background: linear-gradient(to bottom, var(--saturated-red-color) 0%,
+        var(--saturated-red-color) 100%);
       color: #FFFFFF;
       box-shadow: 0 1px 2px 0 rgba(var(--gray-color), 0.8);
 
@@ -285,4 +284,5 @@ export default {
       width: 100%;
     }
   }
+
 </style>

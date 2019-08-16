@@ -46,6 +46,7 @@ storiesOf('Components/Button', module)
     template: `<r-button
                 :size="size"
                 :type="type"
+                :fluid="fluid"
                 :disabled="disabled"
                 @click="click"
                 @focus="focus"
@@ -100,6 +101,7 @@ storiesOf('Components/Button', module)
                     :type="type"
                     :disabled="disabled"
                     :href="link"
+                    :fluid="fluid"
                     @click="click"
                     @focus="focus"
                     @blur="blur"
@@ -152,6 +154,7 @@ storiesOf('Components/Button', module)
                     :size="size"
                     :type="type"
                     :disabled="disabled"
+                    :fluid="fluid"
                     :push="{path: push}"
                     @click="click"
                     @focus="focus"
