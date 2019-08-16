@@ -22,7 +22,7 @@
 
 <script>
     import shortid from 'shortid';
-    import rIcon from '../r-icon/r-icon';
+    import rIcon from '../r-icon/r-icon.vue';
 
     export default {
         name: 'r-radio',
@@ -92,44 +92,8 @@
         },
         methods: {
             update() {
-                console.log(this.value)
                 this.$emit('update', this.value);
             },
         },
     };
 </script>
-
-<docs>
-    Group list
-    ```jsx static
-    <template>
-        <div>
-            <v-radio
-                v-for="let option in optionsList"
-                class="stack-m"
-                :key="`option-${option.value}`"
-                :label="option.label"
-                :value="option.value"
-                @update="update"
-                :model="value"
-                group="groupName"/>
-        </div>
-    </template>
-
-    <script>
-        export default {
-            data() {
-                return {
-                    value: '',
-                    optionsList: new Array(5).fill(0).map((n, i) => ({value: `value-${i}`, label: `label-${i}`})),
-                };
-            },
-            methods: {
-                update(value) {
-                    this.value = value;
-                },
-            },
-        };
-    </script>
-    ```
-</docs>

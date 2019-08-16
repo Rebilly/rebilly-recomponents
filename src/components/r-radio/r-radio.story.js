@@ -1,6 +1,6 @@
 import {storiesOf} from '@storybook/vue';
 import {action} from '@storybook/addon-actions';
-import {text, select, boolean} from '@storybook/addon-knobs';
+import {text, boolean} from '@storybook/addon-knobs';
 import RRadio from './r-radio.vue';
 import markdown from './r-radio.md';
 

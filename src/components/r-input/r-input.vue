@@ -71,13 +71,16 @@
             <slot name="right-button"/>
             <div class="field-addon no-flex" v-if="rightLabel">{{rightLabel}}</div>
         </div>
-        <span class="field-caption" v-if="helpText || maxLength">{{helpText}} <span v-if="maxLength">{{charactersLeft}}</span></span>
+        <span class="field-caption" v-if="helpText || maxLength">
+            {{helpText}}
+            <span v-if="maxLength">{{charactersLeft}}</span>
+        </span>
     </div>
 </template>
 
 <script>
     import shortid from 'shortid';
-    import rIcon from '../r-icon/r-icon';
+    import rIcon from '../r-icon/r-icon.vue';
 
     export default {
         name: 'v-input',
