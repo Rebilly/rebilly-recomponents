@@ -1,17 +1,33 @@
 {
-  "name": "rebilly-recomponents",
+  "name": "kekcomponents",
   "version": "0.1.0",
-  "description": "UI components shared in Rebilly projects",
-  "main": "index.js",
+  "description": "Officail Rebilly front-end components library",
+  "main": ".dist/rebilly-recomponents.common.js",
+  "author": "Rebilly SRL",
+  "license": "MIT",
   "scripts": {
-    "build:wc": "vue-cli-service build --target wc --name rebilly-recomponents 'src/components/**/*.vue'",
     "test": "vue-cli-service test:unit",
     "lint": "vue-cli-service lint",
+    "build": "vue-cli-service build --target lib --name rebilly-recomponents 'src/components/index.js'",
     "storybook": "start-storybook -p 9001  -s public",
     "build-storybook": "build-storybook -c .storybook -o .out"
   },
-  "author": "",
-  "license": "ISC",
+  "files": [
+    "package.json",
+    ".dist/*"
+  ],
+  "repository": {
+    "type": "git",
+    "url": "git@github.com:Rebilly/rebilly-recomponents.git"
+  },
+  "keywords": [
+    "Rebilly",
+    "Vue"
+  ],
+  "engines": {
+    "node": ">= 10",
+    "yarn": ">= 1.12.0"
+  },
   "dependencies": {
     "@storybook/addon-a11y": "^5.1.10",
     "@storybook/addon-actions": "^5.1.10",
