@@ -6,9 +6,12 @@
 
 {Please write here}
 
-### Check lists (check `x` in `[ ]` of list items)
+### Check lists
 
-- [ ] Test passed
+- [ ] Readme file updated with actual description and example
+- [ ] Added all ARIA attributes required for component
+- [ ] Added tests for both browser and SSR render and for all components properties
+- [ ] Added story with all knobs and actions
 
 ### Additional Comments (if any)
 
