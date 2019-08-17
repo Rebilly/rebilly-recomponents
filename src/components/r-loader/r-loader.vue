@@ -1,8 +1,10 @@
 <template>
     <div class="r-component r-loader" :class="classes" v-if="show">
-        <div class="mr-re"></div>
-        <div class="mr-bil"></div>
-        <div class="mr-ly"></div>
+        <div class="wrapper">
+            <div class="mr-re"></div>
+            <div class="mr-bil"></div>
+            <div class="mr-ly"></div>
+        </div>
     </div>
 </template>
 
@@ -18,6 +20,10 @@ export default {
         loading: {
             type: Boolean,
             default: true,
+        },
+        fullscreen: {
+            type: Boolean,
+            default: false,
         }
     },
 
@@ -25,6 +31,7 @@ export default {
         classes() {
             return {
                 ['r-loader--loading']: !!this.loading,
+                ['r-loader--fullscreen']: !!this.fullscreen,
             }
         }
     }
@@ -33,42 +40,56 @@ export default {
 
 <style lang="scss">
     .r-loader {
-        display: block;
-        position: relative;
-        width: 36px;
-        height: 36px;
-        background: var(--gray-color);
-        border-radius: $border-radius;
+        position: absolute;
+        z-index: $z-max;
+        margin: auto;
+        width: 100%;
+        height: 100%;
+        transition: opacity 0.3s ease-out;
 
-        > * {
-            transition: height .3s ease;
+        .wrapper {
             display: block;
             position: absolute;
-            transform-origin: top;
-            transform: rotate(180deg);
-            width: 4px;
-            background: var(--background-color);
+            width: 36px;
+            height: 36px;
+            background: var(--gray-color);
+            border-radius: $border-radius;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            margin: auto;
+
+            > * {
+                transition: height .3s ease;
+                display: block;
+                position: absolute;
+                transform-origin: top;
+                transform: rotate(180deg);
+                width: 4px;
+                background: var(--background-color);
+            }
         }
 
         .mr-re {
             top: 28px;
             left: 9px;
             height: 14px;
-            animation: mr-re-reset 1s normal;
+            animation: mr-re-reset .5s normal;
         }
 
         .mr-bil {
             top: 28px;
             left: 16px;
             height: 17px;
-            animation: mr-bil-reset 1s normal;
+            animation: mr-bil-reset .5s normal;
         }
 
         .mr-ly {
             top: 28px;
             left: 23px;
             height: 20px;
-            animation: mr-ly-reset 1s normal;
+            animation: mr-ly-reset .5s normal;
         }
 
         &--loading {
@@ -86,6 +107,11 @@ export default {
                 height: 0px;
                 animation: mr-ly-animation 1s .4s infinite;
             }
+        }
+
+        &--fullscreen {
+            position: fixed;
+            background: var(--background-color);
         }
     }
 
