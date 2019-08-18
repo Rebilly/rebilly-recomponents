@@ -9,33 +9,33 @@
 </template>
 
 <script>
-export default {
-    name: 'r-loader',
+    export default {
+        name: 'r-loader',
 
-    props: {
-        show: {
-            type: Boolean,
-            default: false,
+        props: {
+            show: {
+                type: Boolean,
+                default: false,
+            },
+            loading: {
+                type: Boolean,
+                default: true,
+            },
+            fullscreen: {
+                type: Boolean,
+                default: false,
+            },
         },
-        loading: {
-            type: Boolean,
-            default: true,
-        },
-        fullscreen: {
-            type: Boolean,
-            default: false,
-        }
-    },
 
-    computed: {
-        classes() {
-            return {
-                ['r-loader--loading']: !!this.loading,
-                ['r-loader--fullscreen']: !!this.fullscreen,
-            }
-        }
-    }
-}
+        computed: {
+            classes() {
+                return {
+                    'r-loader--loading': !!this.loading,
+                    'r-loader--fullscreen': !!this.fullscreen,
+                };
+            },
+        },
+    };
 </script>
 
 <style lang="scss">

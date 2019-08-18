@@ -6,7 +6,7 @@
 </template>
 
 <script>
-    import rIconSprites from './r-icon-sprites';
+    import rIconSprites from './r-icon-sprites.vue';
 
     export default {
         name: 'r-icon',
