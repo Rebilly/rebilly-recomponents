@@ -1,0 +1,30 @@
+language: node_js
+cache:
+  yarn: true
+  directories:
+    - ~/.npm
+    - node_modules
+branches:
+  only:
+    - "master"
+notifications:
+  email: true
+node_js:
+  - '12'
+install: npm install
+jobs:
+  include:
+    - stage: compile
+      name: 'Build storybook and mobules bundle'
+      script:
+        - npm run build-storybook
+        - npm run build
+    - stage: test
+      name: 'Eslint checks and unit tests'
+      script:
+        - npm run lint
+        - npm run test
+    - stage: deploy
+      name: 'Perform auto release'
+      if: branch = master
+      script: npm run semantic-release
