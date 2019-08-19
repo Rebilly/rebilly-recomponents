@@ -1,5 +1,5 @@
 {
-  "name": "kekcomponents",
+  "name": "rebilly-recomponents",
   "version": "0.0.0-development",
   "description": "Officail Rebilly front-end components library",
   "main": ".dist/rebilly-recomponents.common.js",
