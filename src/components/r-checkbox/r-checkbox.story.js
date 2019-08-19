@@ -21,15 +21,14 @@ storiesOf('Components', module)
             input: action('input'),
         },
         components: {RCheckbox},
-        template: `<div>
-                   <r-checkbox
+        template: `<r-checkbox
                         :caption='caption'
                         :value='value'
                         :label="label"
                         :disabled="disabled"
                         :fuzzy="fuzzy"
                         v-model="checkboxModel"
-                        @input="input"/></div>`,
+                        @input="input"/>`,
     }), {
         notes: {markdown},
     });
