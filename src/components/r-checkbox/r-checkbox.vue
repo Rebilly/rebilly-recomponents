@@ -2,7 +2,7 @@
     <div>
         <div class="field" :class="{'is-error': isInvalid}">
             <label class="field-label field-label-toggle" :class="{'is-disabled': disabled}" :for="name">
-                <slot name="label">{{label}}</slot>
+                <slot name="label">{{ label || $t('label') }}</slot>
             </label>
             <input type="checkbox"
                    class="field-checkbox"
@@ -23,12 +23,12 @@
     import RIcon from '../r-icon/r-icon.vue';
 
     export default {
-        name: 'RCheckbox',
+        name: 'r-checkbox',
         components: {RIcon},
         props: {
             label: {
                 type: String,
-                default: 'Label',
+                default: '',
             },
             name: {
                 type: String,
@@ -87,7 +87,12 @@
         },
         i18n: {
             messages: {
-                en: {},
+                en: {
+                    label: 'Label',
+                },
+                ja: {
+                    label: 'ラベル',
+                },
             },
         },
         methods: {
