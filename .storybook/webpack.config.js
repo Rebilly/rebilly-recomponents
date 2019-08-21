@@ -21,18 +21,17 @@ module.exports = function({ config }) {
         use: [
             'style-loader',
             'css-loader',
-            'sass-loader',
             {
-                loader: 'sass-resources-loader',
+                loader: 'sass-loader',
                 options: {
-                    resources: [
-                        require.resolve('../src/styles/variables.scss'),
-                        require.resolve('../src/styles/mixins.scss'),
-                        require.resolve('../src/styles/media.scss'),
-                        require.resolve('../src/styles/theme.scss'),
-                    ],
-                },
-            }
+                    data: `
+                        @import "src/styles/variables.scss";
+                        @import "src/styles/mixins.scss";
+                        @import "src/styles/media.scss";
+                        @import "src/styles/theme.scss";
+                    `,
+                }
+            },
         ],
     });
 
