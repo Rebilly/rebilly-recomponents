@@ -41,7 +41,7 @@ const topLevelContexts = [
 import '../public/main.css';
 import '../public/story.css';
 
-const req = require.context('../src/components/', true, /\.story\.js$/);
+const req = require.context('../src/', true, /\.story\.js$/);
 
 function loadStories() {
   req.keys().forEach(req);
