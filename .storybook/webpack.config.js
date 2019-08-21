@@ -27,6 +27,7 @@ module.exports = function({ config }) {
                 options: {
                     resources: [
                         require.resolve('../src/styles/variables.scss'),
+                        require.resolve('../src/styles/mixins.scss'),
                         require.resolve('../src/styles/media.scss'),
                         require.resolve('../src/styles/theme.scss'),
                     ],
