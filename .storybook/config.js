@@ -40,6 +40,7 @@ const topLevelContexts = [
 
 import '../public/main.css';
 import '../public/story.css';
+import '../src/styles/theme.scss';
 
 const req = require.context('../src/', true, /\.story\.js$/);
 
@@ -54,15 +55,18 @@ addDecorator(withCssResources)
 addParameters({
   cssresources: [{
       id: `boostrap`,
+      picked: true,
       code: `
         <style>
             :root {
-                --primary-color: #D44400;
-                --primary-color-dark: #6e2300;
-                --primary-color-light: #d40026;
+                --primary-font-stack: -apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,"Helvetica Neue",Arial,"Noto Sans",sans-serif,"Apple Color Emoji","Segoe UI Emoji","Segoe UI Symbol","Noto Color Emoji"
+
+                --primary-color: #007bff;
+                --primary-color-dark: #007bff;
+                --primary-color-light: #007bff;
+                --primary-color-medium: #007bff;
             }
         </style>`,
-      picked: false,
     },
   ],
 });

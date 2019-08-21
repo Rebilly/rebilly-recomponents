@@ -9,6 +9,9 @@ html {
 :root {
   --background-color: #F6F8F9;
   --primary-color: #0044D4;
+  --primary-color-dark: #00236e;
+  --primary-color-light: #2600d4;
+  --primary-color-medium: #0034a1;
 
   --warning-color: #F1C400;
   --red-color: #E53935;
@@ -18,9 +21,6 @@ html {
   --saturated-red-color: #ff201b;
   --saturated-warning-color: #f1c400;
 
-  --primary-color-dark: #00236e;
-  --primary-color-medium: #0034a1;
-  --primary-color-light: #2600d4;
   --warning-color-dark: #8b7100;
   --warning-color-medium: #be9b00;
   --warning-color-light: #d8af00;
@@ -46,6 +46,3 @@ html {
 
 .r-component {
 }
-
-$faint-gray: #E1E7EA;
-$light-background: #F9FAFB;

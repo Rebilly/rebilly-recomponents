@@ -28,7 +28,6 @@ module.exports = function({ config }) {
                         @import "src/styles/variables.scss";
                         @import "src/styles/mixins.scss";
                         @import "src/styles/media.scss";
-                        @import "src/styles/theme.scss";
                     `,
                 }
             },
