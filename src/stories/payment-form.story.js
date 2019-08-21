@@ -18,6 +18,7 @@ storiesOf('Demo', module)
             },
         },
         methods: {
+            cancel: action('cancel'),
             submit: action('submit'),
         },
         template: `
@@ -56,8 +57,11 @@ storiesOf('Demo', module)
                     <r-checkbox label="Authorize company to charge your payment card, and agree to be bound by the terms of use and privacy policy"/>
                 </template>
                 <template v-slot:actions>
+                    <r-button type="default" @click="cancel">Cancle</r-button>
                     <r-button type="primary" @click="submit">Submit</r-button>
                 </template>
             </r-tile>
         `,
-    }));
+    }), {
+        notes: 'Example of payment form with input and buttons components',
+    });

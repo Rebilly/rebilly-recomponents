@@ -1,7 +1,7 @@
 <template>
     <figure class="r-component r-img">
         <template v-if="lazy">
-            <img ref="img" :alt="src"/>
+            <img ref="img" :alt="alt"/>
         </template>
         <template v-else>
             <img :src="src" :alt="alt"/>

@@ -35,11 +35,11 @@
         color: var(--text-color);
         border-radius: $line-height;
         border: none;
-        // @include rem(padding, $space-xxs $space-s);
+        @include rem(padding, $space-xxs $space-s);
         font-family: var(--primary-font-stack);
         font-weight: $regular;
-        // @include rem(font-size, $paragraph);
-        // @include rem(line-height, $line-height);
+        @include rem(font-size, $paragraph);
+        @include rem(line-height, $line-height);
         outline: none;
         white-space: nowrap;
         box-shadow: 0 0 0 2px #FFFFFF;
