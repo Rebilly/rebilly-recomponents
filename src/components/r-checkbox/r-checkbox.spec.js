@@ -5,7 +5,7 @@ import RCheckbox from './r-checkbox.vue';
 const $t = () => 'custom label';
 
 describe('r-checkbox.vue', () => {
-    it('renders props.msg when passed', () => {
+    it('renders props.label when passed', () => {
         const wrapper = shallowMount(RCheckbox, {
             propsData: {label: 'custom label'},
             mocks: {$t},
