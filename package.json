@@ -8,7 +8,9 @@
   "scripts": {
     "test": "vue-cli-service test:unit",
     "lint": "vue-cli-service lint",
-    "build": "vue-cli-service build --target lib --name rebilly-recomponents 'src/components/index.js'",
+    "build": "npm run build:wc & npm run build:lib",
+    "build:wc": "vue-cli-service build --target wc-async --name rebilly-recomponents 'src/components/**/*.vue'",
+    "build:lib": "vue-cli-service build --target lib --name rebilly-recomponents 'src/components/index.js'",
     "storybook": "start-storybook -p 9001  -s public",
     "build-storybook": "build-storybook -c .storybook -o .out",
     "semantic-release": "semantic-release"
