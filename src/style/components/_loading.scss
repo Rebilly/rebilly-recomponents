@@ -1,0 +1,93 @@
+// -----------------------------------------------------------------------------
+// This file contains all styles related to the loading component.
+// -----------------------------------------------------------------------------
+
+.loading {
+    display: block;
+    position: relative;
+    width: 36px;
+    height: 36px;
+    background: $gray;
+    border-radius: $border-radius;
+}
+
+.loading > * {
+    @include transition(height .3s ease);
+    display: block;
+    position: absolute;
+    @include browser-prefix(transform-origin, top);
+    @include browser-prefix(transform, rotate(180deg));
+    width: 4px;
+    background: $background;
+}
+
+.loading .mr-re {
+    top: 28px;
+    left: 9px;
+    height: 14px;
+}
+
+.loading .mr-bil {
+    top: 28px;
+    left: 16px;
+    height: 17px;
+}
+
+.loading .mr-ly {
+    top: 28px;
+    left: 23px;
+    height: 20px;
+}
+
+.loading.is-loading .mr-re {
+    height: 0px;
+    @include animation('mr-re-animation 1s infinite');
+}
+
+.loading.is-loading .mr-bil {
+    height: 0px;
+    @include animation('mr-bil-animation 1s .2s infinite');
+}
+
+.loading.is-loading .mr-ly {
+    height: 0px;
+    @include animation('mr-ly-animation 1s .4s infinite');
+}
+
+
+//Keyframes
+@include keyframes(mr-re-animation) {
+  0% {
+      height: 0;
+  }
+  50% {
+      height: 14px;
+  }
+  100% {
+      height: 0;
+  }
+}
+
+@include keyframes(mr-bil-animation) {
+  0% {
+      height: 0;
+  }
+  50% {
+      height: 17px;
+  }
+  100% {
+      height: 0;
+  }
+}
+
+@include keyframes(mr-ly-animation) {
+  0% {
+      height: 0;
+  }
+  50% {
+      height: 20px;
+  }
+  100% {
+      height: 0;
+  }
+}

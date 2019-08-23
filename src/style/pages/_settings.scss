@@ -1,0 +1,43 @@
+// -----------------------------------------------------------------------------
+// This file contains styles that are specific to the settings page.
+// -----------------------------------------------------------------------------
+
+.settings-item {
+    @include rem(padding, $inset-m);
+    border-radius: $border-radius;
+    cursor: pointer;
+    background: #FFFFFF;
+    display: block;
+    @include transition(background .15s ease);
+
+    & .avatar-icon {
+        @include transition(background .15s ease);
+    }
+
+    &:active, &:focus {
+        outline: none;
+        box-shadow: none;
+    }
+}
+
+.settings-item:hover {
+    background: $background;
+    text-decoration: none;
+
+    & .avatar-icon {
+        background: #FFFFFF;
+    }
+}
+
+.settings-item .avatar.avatar-description {
+    @include align-items(flex-start);
+}
+
+.settings-item .avatar-info > * {
+    @include rem(line-height, $line-height);
+}
+
+.settings-item .avatar-info p:first-child {
+    color: $blue;
+    font-weight: $medium;
+}

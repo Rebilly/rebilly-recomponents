@@ -1,0 +1,91 @@
+// -----------------------------------------------------------------------------
+// This file contains all styles related to the toaster component.
+// -----------------------------------------------------------------------------
+
+.toast-holder {
+    position: fixed;
+    top: 52px + $space-default - $space-m;
+    right: $space-l;
+    z-index: 1000;
+}
+
+.toast {
+    position: relative;
+    @include rem(margin-top, $space-m);
+    @include rem(padding, $space-m);
+    max-width: 300px;
+    min-width: 100px;
+    box-sizing: border-box;
+    border-radius: $border-radius;
+    border: none;
+    font-family: $primary-font-stack;
+    font-weight: $regular;
+    box-shadow: 0 20px 40px -8px rgba($dark-background, 0.18), 0 3px 6px 0 rgba($dark-background, 0.07);
+    @include opacity(0);
+    @include transition(all 0.4s);
+    color: $text;
+    @include animation('toaster-animation 0.4s ease-out');
+}
+
+.toast.has-close {
+    @include rem(padding, $space-m $space-l $space-m $space-m);
+}
+
+@include keyframes(toaster-animation) {
+  0% {
+      right: -300px;
+  }
+  70% {
+      right: 10px;
+  }
+  100% {
+      right: 0;
+  }
+}
+
+.toast-title {
+    display: inline-block;
+    font-size: $h2;
+    margin: 0;
+}
+
+.toast-close {
+    position: absolute;
+    top: $space-m;
+    right: $space-m;
+    & > .icon {
+        fill: $text;
+    }
+}
+
+.toast-message {
+    display: block;
+}
+
+.toast.has-close .toast-message {
+    @include rem(padding-right, $space-m);
+}
+
+.toast.is-visible {
+    @include opacity(1);
+}
+
+.toast.is-positive {
+    background: $light-green;
+    box-shadow: 0 0 0 1px rgba($green, 0.09), 0 20px 40px -8px rgba($dark-background, 0.18), 0 3px 6px 0 rgba($dark-background, 0.07);
+}
+
+.toast.is-negative {
+    background: $light-red;
+    box-shadow: 0 0 0 1px rgba($red, 0.09), 0 20px 40px -8px rgba($dark-background, 0.18), 0 3px 6px 0 rgba($dark-background, 0.07);
+}
+
+.toast.is-info {
+    background: $light-blue;
+    box-shadow: 0 0 0 1px rgba($blue, 0.09), 0 20px 40px -8px rgba($dark-background, 0.18), 0 3px 6px 0 rgba($dark-background, 0.07);
+}
+
+.toast.is-warning {
+    background: $light-yellow;
+    box-shadow: 0 0 0 1px rgba($yellow, 0.09), 0 20px 04px -8px rgba($dark-background, 0.18), 0 3px 6px 0 rgba($dark-background, 0.07);
+}

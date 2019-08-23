@@ -1,0 +1,164 @@
+// -----------------------------------------------------------------------------
+// This file contains all styles related to the table component.
+// -----------------------------------------------------------------------------
+
+.table-control {
+    width: 10px;
+    max-width: 100%;
+    min-width: 100%;
+    overflow-x: auto;
+    -webkit-overflow-scrolling: touch;
+}
+
+.table {
+    width: 100%;
+    border-collapse: separate;
+    border-spacing: 0;
+    margin: 0;
+}
+
+.table th {
+    font-weight: $medium;
+    text-align: left;
+    text-transform: capitalize;
+}
+
+.table td,
+.table th {
+    @include rem(padding, $space-s $space-s);
+    border-bottom: 1px solid $faint-gray;
+}
+
+.table > tbody > tr:last-child > td {
+    border-bottom: none;
+}
+
+/**
+* States
+*/
+
+//Negative
+.table tr.is-negative td,
+.table tr td.is-negative {
+    color: $red;
+}
+
+//Positive
+.table tr.is-positive td,
+.table tr td.is-positive {
+    color: $green;
+}
+
+//Numeric
+.table td.is-numeric,
+.table td .is-numeric {
+    font-family: $code-font-stack;
+    text-align: right;
+}
+
+//Button
+.table td .is-button {
+    text-align: right;
+}
+
+/**
+* Types
+*/
+
+//Hover
+.table.table-hoverable tr:hover > td {
+    background: $background;
+}
+
+//Compact
+.table.table-compact td {
+    @include rem(padding, $space-xs $space-s);
+}
+
+//Collapsing
+.table.table-collapsed {
+    width: auto;
+}
+
+//Sortable
+.table th:hover.is-sortable {
+    color: $blue;
+    cursor: pointer;
+}
+
+.table th.is-sortable .icon {
+    @include rem(margin-left, $space-s);
+}
+
+//Definition
+.table.table-definition th {
+    border-bottom: none;
+    padding-left: 0;
+    padding-right: 0;
+    background: $background;
+}
+
+.table.table-definition th:first-child {
+    width: 20px;
+}
+
+.table.table-definition tr td {
+    @include rem(padding, $space-xs 0);
+}
+
+.table.table-definition tr:first-child td {
+    padding-top: 0;
+}
+
+.table.table-definition tr:last-child td {
+    padding-bottom: 0;
+}
+
+.table.table-definition tr td {
+    border-bottom: none;
+}
+
+.table.table-definition.table-compact tr > td,
+.table.table-definition.table-compact tr:first-child td,
+.table.table-definition.table-compact tr:last-child td {
+    @include rem(padding, 0);
+}
+
+.table.table-definition tr td:first-child,
+.table.table-definition.table-compact tr td:first-child  {
+    color: $muted;
+    @include rem(padding-right, $space-m);
+}
+
+//External
+.table td .is-external .icon {
+    @include transition(all .1s ease);
+    @include rem(margin-left, $space-s);
+    @include opacity(0);
+    cursor: pointer;
+}
+
+.table tr:hover td .is-external .icon {
+    visibility: visible;
+    @include opacity(1);
+}
+
+.table tr td:hover .is-external .icon {
+    fill: $blue;
+}
+
+/**
+* Alignment
+*/
+.table.table-v-alignment-top > tr > td,
+.table.table-v-alignment-top > tbody > tr > td,
+.table.table-v-alignment-top > tr > th,
+.table.table-v-alignment-top > thead> tr > th {
+    vertical-align: top;
+}
+.table.table-v-alignment-bottom > tr > td,
+.table.table-v-alignment-bottom > tbody > tr > td,
+.table.table-v-alignment-bottom > tr > th,
+.table.table-v-alignment-bottom > thead > tr > th {
+    vertical-align: bottom;
+}

@@ -1,0 +1,119 @@
+// -----------------------------------------------------------------------------
+// This file contains all styles related to the dropdown component.
+// -----------------------------------------------------------------------------
+
+.dropdown {
+    box-sizing: border-box;
+    display: inline-block;
+    position: absolute;
+    border-radius: $border-radius;
+    z-index: $z-90;
+    box-shadow: 0 0 0 1px rgba($muted, 0.09), 0 7px 14px 0 rgba($muted, 0.15), 0 3px 6px 0 rgba($muted, 0.07);
+    background: #FFFFFF;
+    visibility: hidden;
+    min-width: 280px;
+    @include opacity(0);
+    @include transition(visibility 0s ease 0.1s, opacity 0.1s ease);
+}
+
+.dropdown.is-visible {
+    visibility: visible;
+    @include opacity(1);
+    @include transition-delay(0s);
+}
+
+.dropdown.dropdown-fluid {
+    width: 100%;
+}
+
+.dropdown-content {
+    @include rem(padding, $space-s 0);
+    border-bottom: 1px solid $faint-gray;
+}
+
+.dropdown-content {
+    & p, & ul, & ol, & pre, & table, & blockquote, & h1, & h2, & h3, & h4, & h5, & h6 {
+        margin: 0;
+    }
+}
+
+.dropdown-content:first-child {
+    border-radius: $border-radius $border-radius 0 0;
+}
+
+.dropdown-content:last-child {
+    border-bottom: 0;
+    border-radius: 0 0 $border-radius $border-radius;
+}
+
+.dropdown-content .dropdown-title {
+    margin: 0;
+    @include rem(padding, $space-s $space-default);
+}
+
+.dropdown-content .dropdown-item {
+    white-space: nowrap;
+    display: block;
+    cursor: pointer;
+    line-height: $line-height;
+    color: $text;
+    box-sizing: border-box;
+    @include rem(padding, $space-s $space-default);
+
+    &:hover,
+    &focus,
+    &:active,
+    &:hover,
+    &.is-active {
+        text-decoration: none;
+        background: $blue;
+        color: #FFFFFF;
+    }
+
+    &:hover svg,
+    &:focus svg,
+    &:active svg,
+    &.is-active svg {
+        fill: #FFFFFF;
+    }
+
+    &:hover .avatar .avatar-info-muted-text,
+    &:focus .avatar .avatar-info-muted-text,
+    &:active .avatar .avatar-info-muted-text {
+        color: rgba(255,255,255,0.6);
+    }
+
+    &:hover .text-muted,
+    &:focus .text-muted,
+    &:active .text-muted {
+        color: rgba(255,255,255,0.6)!important;
+    }
+}
+
+.dropdown-content.is-scrollable {
+    max-height: 196px;
+    overflow-y: scroll;
+}
+
+/**
+* Types
+*/
+
+//Padding
+.dropdown-content.dropdown-content-padded {
+    @include rem(padding, $space-m);
+}
+
+//Help
+.dropdown-content.dropdown-content-help {
+    @include rem(padding, $space-s $space-m);
+    text-align: center;
+    background: $light-background;
+}
+
+//Fixed
+.dropdown-content.dropdown-content-select-fixed {
+    min-height: 300px;
+    position: relative;
+    overflow: hidden;
+}

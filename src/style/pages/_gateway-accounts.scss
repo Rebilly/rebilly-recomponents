@@ -1,0 +1,26 @@
+// -----------------------------------------------------------------------------
+// This file contains styles that are specific to the gateway acccounts page.
+// -----------------------------------------------------------------------------
+
+.gateway-item {
+    @include rem(padding, $inset-s);
+    border-radius: $border-radius;
+    cursor: pointer;
+    background: #FFFFFF;
+    @include transition(background .15s ease);
+}
+
+.gateway-item:hover {
+    background: $background;
+}
+
+.avatar-selected-gateway .image-avatar,
+.avatar-selected-gateway .avatar-image{
+    width: 64px;
+    height: 64px;
+}
+
+.toggle-warning {
+    @extend .text-red;
+    font-size: 1.25rem;
+}

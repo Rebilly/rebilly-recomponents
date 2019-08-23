@@ -1,0 +1,246 @@
+// -----------------------------------------------------------------------------
+// This file contains all styles related to the timeline component.
+// -----------------------------------------------------------------------------
+
+// Timeline vars
+$dotSize: 6px;
+$lineWidth: 2px;
+
+.timeline-title h2 {
+    @include rem(padding, $space-default $space-default 0 $space-default);
+    margin: 0;
+}
+
+.timeline-no-messages {
+    @include rem(padding, $inset-default);
+}
+
+.timeline-group {
+    @include rem(padding, $space-default);
+    position: relative;
+}
+
+.timeline-group h3 {
+    margin: 0;
+}
+
+.timeline-group .icon {
+    background: $background;
+}
+
+.timeline-group {
+    border-top: 1px dashed $light-gray;
+    margin-top: $space-l;
+    @include rem(padding-top, $space-l);
+}
+
+.timeline-group:first-child {
+    border-top: none;
+    margin-top: 0;
+    padding-top: $space-default;
+}
+
+.timeline-group::before {
+    content: '';
+    position: absolute;
+    display: block;
+    width: $lineWidth;
+    height: $space-xl + ($space-default * 2) + 1;
+    background: rgba($light-gray, 0.5);
+    left: $space-default + $dotSize + $lineWidth + 1;
+    top: -$space-l - 1;
+}
+
+.timeline-group:first-child::before {
+    top: $space-default;
+    height: $space-default * 2;
+}
+
+%white-rounded-background {
+    background-color: #FFFFFF;
+    border-radius: $border-radius;
+}
+
+.timeline-message {
+    position: relative;
+
+    & .detailed-message {
+        @include rem(padding, $space-m $space-default);
+
+        &.is-active {
+            @extend %white-rounded-background;
+            box-shadow: 0 0 0 1px rgba($muted, 0.03), 0 1px 2px 0 rgba($muted, 0.24), 0 4px 4px 0 rgba($muted, 0.05);
+        }
+    }
+}
+
+.timeline-message::after {
+    content: '';
+    position: absolute;
+    display: block;
+    width: $dotSize;
+    height: $dotSize;
+    border-radius: 50%;
+    top: $space-m + ($space-default / 2) - ($dotSize / 2);
+    left: $space-default + $dotSize + 1;
+    background: $background;
+    box-shadow: 0 0 0 2px $light-gray;
+}
+.timeline-comment-message::before,
+.timeline-message::before {
+    content: '';
+    position: absolute;
+    display: block;
+    width: $lineWidth;
+    height: 100%;
+    background: rgba($light-gray, 0.5);
+    left: $space-default + $dotSize + $lineWidth + 1;
+    top: 0;
+}
+.timeline-comment-message-chunks {
+    > span {display: inline}
+    > a {display: inline-block}
+}
+.timeline-message:first-child::before,
+.timeline-message.has-details:first-child::before {
+    height: 50%;
+}
+
+.timeline-message:last-child::before {
+    height: $space-m + $space-s;
+}
+
+.timeline-message-summary {
+    @include rem(padding-left, $space-s + $space-default);
+}
+
+.timeline-message-summary > div {
+    word-break: break-word;
+}
+
+.timeline-message-summary > div:first-child {
+    @include rem(padding-right, $space-l);
+}
+
+.timeline-message.has-details .timeline-message-summary {
+    cursor: pointer;
+}
+
+.timeline-message.has-details {
+    @include transition(all .2s ease);
+}
+
+.timeline-message.has-details:hover {
+    @extend %white-rounded-background;
+}
+
+.timeline-details-content {
+    @include rem(padding, $space-default $space-default 0 $space-default + $space-s);
+    margin: 0;
+}
+
+/**
+* Timeline comment bubble
+*/
+.timeline-comment-input {
+    @include rem(padding, $space-default $space-default 0 12px);
+    & .field-input {
+        background-color: #FFFFFF;
+        @include rem(padding, $space-xs $space-xs $space-xs $space-m);
+        &.is-focus {
+            box-shadow: 0 0 0 1px $blue inset, 0 0 0 0 rgba($gray, 0.5) inset, 0 0 0 1px $blue;
+        }
+        & .content-editable {
+            height: 100%;
+            @include rem(padding-top, $space-xs);
+        }
+        & .list{
+            padding: 0.4rem;
+        }
+        & .dropdown.dropdown-relaxed{
+            margin-top: 4px
+        }
+    }
+}
+
+.timeline-comment-message .avatar-initials {
+    box-shadow: 0 0 0 2px $background;
+}
+
+.timeline-comment-message {
+    position: relative;
+    @include rem(padding, $space-default $space-default $space-default 12px);
+}
+
+.timeline-comment-message + .timeline-comment-message {
+    @include rem(padding-top, 0);
+}
+
+.timeline-comment-message-bubble{
+    position: relative;
+    background-color: #FFFFFF;
+    @include rem(margin-left, $space-default);
+    @include rem(padding, $space-m);
+    border-radius: 0 $border-radius $border-radius $border-radius;
+}
+
+.timeline-comment-message-bubble::after,
+.timeline-comment-message-bubble::before {
+    content: "";
+    position: absolute;
+    width: 0;
+    height: 0;
+}
+
+.timeline-comment-message-bubble::after {
+	top: 0;
+    left: -16px;
+	border: 16px solid transparent;
+	border-right-color: #FFFFFF;
+	border-left: 0;
+	border-top: 0;
+}
+
+.timeline-comment-message-bubble::before {
+	top: -1px;
+    left: -19px;
+	border: 19px solid transparent;
+	border-right-color: rgba($faint-gray, 0.50);
+	border-left: 0;
+	border-top: 0;
+}
+
+/**
+* Suggestion Picker
+*/
+.timeline .timeline-suggestion-picker {
+    top: 4px;
+}
+
+/**
+* Email
+*/
+.timeline-email {
+    @include rem(margin-top, $space-m);
+    border: 1px solid $faint-gray;
+    padding: $inset-default;
+    border-radius: $border-radius;
+}
+
+/* Highlights */
+.highlight {
+    @include rem(padding, 0 $space-xs);
+    font-weight: $medium;
+    background: $light-blue;
+    border-radius: $border-radius;
+
+    &.highlight-success {
+        background: $light-green;
+    }
+    &.highlight-danger {
+        background: $light-red;
+    }
+    &.highlight-warning {
+        background: $light-yellow;
+    }
+}

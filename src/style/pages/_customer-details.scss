@@ -1,0 +1,50 @@
+// -----------------------------------------------------------------------------
+// This file contains styles that are specific to the customer-details page.
+// -----------------------------------------------------------------------------
+
+.select-source-option {
+    text-align: center;
+
+    > .icon {
+        width: 100%; height: auto
+    }
+}
+
+.select-source-divisor {
+    text-align: center;
+    position: relative;
+
+    &::before {
+        content: '';
+        height: 45%;
+        display: block;
+    };
+
+    &::after {
+        content: '';
+        width: 1px;
+        height: 100%;
+        display: block;
+        position: absolute;
+        background-color: #E1E7EA;
+        top: 0;
+        left: 50%;
+        z-index: -1;
+    };
+
+    > span {
+        background-color: white;
+        border: 4px solid #ffffff;
+        border-radius: 50%;
+        box-shadow: 0 1px 20px 0 #ffffff;
+    }
+
+    @include media-query-breakpoint('phone', $type: max) {
+        &::after {
+            height: 1px;
+            width: 100%;
+            top: 50%;
+            left: 0;
+        }
+    }
+}

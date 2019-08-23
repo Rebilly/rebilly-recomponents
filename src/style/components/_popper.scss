@@ -1,0 +1,12 @@
+// -----------------------------------------------------------------------------
+// This file contains all styles related to the popper component.
+// -----------------------------------------------------------------------------
+
+.popper {
+    display: inline-block;
+    position: relative;
+}
+
+.popper.popper-fluid {
+    width: 100%;
+}

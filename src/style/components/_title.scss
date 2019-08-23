@@ -1,0 +1,83 @@
+// -----------------------------------------------------------------------------
+// This file contains all styles related to the titles of the site/application.
+// -----------------------------------------------------------------------------
+
+.title {
+    max-width: 100%;
+    @include rem(padding, $space-m 0);
+    @include rem(margin, $space-default 0);
+    background: $background;
+
+    @include media-query-breakpoint('small-desktop', $type: max) {
+        @include rem(margin, $space-s 0);
+    }
+
+    @include media-query-breakpoint('tablet', $type: max) {
+        @include rem(margin, 0);
+    }
+}
+
+.title.is-sticky {
+    position: fixed;
+    max-width: inherit;
+    z-index: $z-80;
+    overflow: hidden;
+    width: inherit;
+    left: 0;
+    margin-top: 0;
+    @include rem(padding-left, $space-l + 68);
+    @include rem(padding-right, $space-l);
+
+    @include media-query-breakpoint('large-desktop') {
+        left: inherit;
+        padding-left: 0;
+        @include rem(padding-right, $space-xl);
+    }
+    @include media-query-breakpoint('desktop', $type: max) {
+        @include rem(padding-left, $space-default + 68);
+        @include rem(padding-right, $space-default);
+    }
+    @include media-query-breakpoint('tablet', $type: max) {
+        @include rem(padding-left, $space-default);
+        @include rem(padding-right, $space-default);
+    }
+}
+
+.title-control {
+    @include display-flex;
+    @include flex-wrap(wrap);
+    @include align-items(center);
+    @include media-query-breakpoint('tablet', $type: max) {
+        display: block;
+    }
+}
+
+.title-control .title-heading {
+    @include flex(1 1 auto);
+    max-width: 100%;
+    @include media-query-breakpoint('tablet', $type: max) {
+        @include rem(margin, $stack-m);
+    }
+}
+
+.title-control .title-heading h1 {
+    margin: 0;
+}
+
+.title-control .title-actions,
+.title-control .title-actions > div {
+    @include media-query-breakpoint('tablet', $type: max) {
+        @include display-flex;
+    }
+}
+
+.title-control .title-actions *.btn,
+.title-control .title-actions > div:first-child {
+    @include media-query-breakpoint('tablet', $type: max) {
+        @include flex(1 0);
+    }
+}
+
+.title-control .title-actions .popper:first-child {
+    width: 100%;
+}

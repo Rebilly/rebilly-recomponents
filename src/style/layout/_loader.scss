@@ -1,0 +1,54 @@
+// -----------------------------------------------------------------------------
+// This file contains all styles related to the loader overlay.
+// -----------------------------------------------------------------------------
+
+.loader {
+    position: absolute;
+    z-index: $z-max;
+    background: $background;
+    @include opacity(0);
+    display: none;
+    top: 56px;
+    bottom: 0;
+    left: 68px;
+    right: 0;
+    @include transition(opacity 0.3s ease-out);
+    @include media-query-breakpoint('tablet', $type: max) {
+        left: 0;
+    }
+}
+
+.loader.is-loading {
+    display: block;
+    position: absolute;
+    @include opacity(1);
+}
+
+.loader .loading.is-loading  {
+    @include center(true, true);
+}
+
+.loader.loader-grid {
+    top: 0;
+    left: 0;
+    @include opacity(0.8);
+    background-color: #FFFFFF;
+    z-index: $z-mid;
+}
+
+.loader.loader-tile {
+    top: 0;
+    left: 0;
+    @include opacity(0.8);
+    background-color: #FFFFFF;
+    z-index: $z-80;
+    border-radius: $border-radius;
+}
+
+.loader.loader-tile.is-secondary {
+    background: $light-background;
+}
+
+.loader.loader-full-screen {
+    position: fixed;
+}

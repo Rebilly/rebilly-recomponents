@@ -1,0 +1,56 @@
+// -----------------------------------------------------------------------------
+// This file contains styles that are specific to the transaction detail page.
+// -----------------------------------------------------------------------------
+
+// TimeLine
+.transaction-summary-timeline {
+    display: flex;
+    justify-content:space-between;
+    position: relative;
+
+    &::before{
+        content: '';
+        height: 2px;
+        top: 14px;
+        right: 28px;
+        left: 26px;
+        position: absolute;
+        background: $faint-gray;
+    }
+
+    > .transaction-summary-timeline-event{
+        position: relative;
+
+        &::before {
+            content: '';
+            display: block;
+            @include rem(margin, $space-s auto);
+            width: 14px;
+            height: 14px;
+            border-radius: 50%;
+            @include linear-gradient(#FFFFFF, $background);
+            box-shadow: 0 0 0 1px $light-gray inset, 0 1px 2px 0 rgba($gray, 0.3);
+        }
+
+        &.is-active{
+            color: $blue;
+            font-weight: $medium;
+        }
+
+        &.is-active::before{
+            @include linear-gradient($blue, adjust-hue($blue, 30));
+            box-shadow: 0 1px 2px 0 rgba($gray, 0.8);
+        }
+    }
+
+}
+
+
+.transaction-summary-actions{
+    .transaction-summary-actions-action-list{
+        > *:last-child {
+            margin: 0 !important;
+        }
+    }
+}
+

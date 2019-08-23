@@ -1,0 +1,289 @@
+// -----------------------------------------------------------------------------
+// This file contains all styles related to the navigation of the site/application.
+// -----------------------------------------------------------------------------
+
+nav {
+    position: fixed;
+    background: $brand;
+    @include rem(padding, 10px $space-m);
+    z-index: $z-top;
+    top: 0;
+    bottom: 0;
+}
+
+nav .logo {
+    display: block;
+    position: relative;
+    width: 36px;
+    height: 36px;
+    background: #FFFFFF;
+    border-radius: $border-radius;
+}
+
+nav .logo > * {
+    display: block;
+    position: absolute;
+    width: 4px;
+    background: $brand;
+}
+
+nav .logo .mr-re {
+    top: 14px;
+    left: 9px;
+    height: 14px;
+}
+
+nav .logo .mr-bil {
+    top: 11px;
+    left: 16px;
+    height: 17px;
+}
+
+nav .logo .mr-ly {
+    top: 8px;
+    left: 23px;
+    height: 20px;
+}
+
+//Divider
+.nav-divider {
+    width: 100%;
+    display: block;
+    border-bottom: 1px solid darken($brand, 5);
+    @include rem(margin, $space-s 0);
+}
+
+//Buttons
+nav .btn {
+    display: block;
+    z-index: 1000;
+    color: #FFFFFF;
+}
+
+nav .btn {
+    box-shadow: none;
+    background: transparent;
+    opacity: 0.5;
+
+    & .icon {
+        fill: #FFFFFF;
+    }
+
+    &:hover,
+    &:active {
+        opacity: 1;
+        background: darken($brand, 5);
+    }
+
+    &:focus {
+        box-shadow: none;
+    }
+
+    &.is-active {
+        opacity: 1;
+    }
+
+    &.new-notification {
+        opacity: 1;
+        & .icon {
+            fill: #FFFFFF;
+        }
+    }
+}
+
+//Tooltips
+nav .btn.has-tooltip-left::before,
+nav .btn.has-tooltip-right::before {
+    top: 12px;
+}
+
+nav .btn.has-tooltip:after, nav .btn[data-tooltip]::after {
+    @include rem(padding, $space-s $space-m);
+    white-space: nowrap;
+    width: auto;
+}
+
+//Navigation secondary actions
+.nav-secondary-actions {
+    position: absolute;
+    bottom: 16px;
+}
+
+.nav-secondary-actions .has-badge::after {
+    box-shadow: 0 0 0 2px $brand;
+    z-index: $z-top;
+}
+
+.nav-secondary-actions .avatar {
+    cursor: pointer;
+}
+
+nav .popover .popover-menu-item .field-switch-handle {
+    background: darken($dark-background, 15);
+}
+
+nav .popover .popover-menu-item input.field-switch[type=checkbox]:checked + .field-switch-handle {
+    background: $yellow;
+}
+
+nav .popover .popover-menu-item input.field-switch[type=checkbox]:checked + .field-switch-handle::before {
+    background: darken($dark-background, 15);
+}
+
+/**
+* Loading Menu
+*/
+.item-loading {
+    display: block;
+    width: 36px;
+    height: 36px;
+    border-radius: $border-radius;
+}
+
+header .loading-background {
+    background: linear-gradient(270deg, $faint-gray, $background, $faint-gray);
+    background-size: 600% 600%;
+
+    @include animation('itemLoading 1.5s ease infinite');
+    @include keyframes(itemLoading) {
+        0%{background-position:100% 50%}
+        50%{background-position:0% 50%}
+    }
+}
+
+header .item-loading.search-bar {
+    width: 100%;
+    background-size: 400% 400%;
+}
+
+header .item-loading.stream {
+    width: 142.45px;
+    background-size: 400% 400%;
+}
+
+nav .item-loading {
+    background: linear-gradient(270deg, darken($brand, 7), $brand, darken($brand, 7));
+    background-size: 600% 600%;
+
+    @include animation('itemLoading 1.5s ease infinite');
+    @include keyframes(itemLoading) {
+        0%{background-position:100% 50%}
+        50%{background-position:0% 50%}
+    }
+}
+
+//Mobile navigation
+body.nav-mobile-is-active {
+    overflow: hidden;
+    @include media-query-breakpoint('tablet', $type: min) {
+        overflow: auto;
+    }
+}
+
+nav.nav-mobile {
+    padding: 0;
+    z-index: 100;
+    min-width: 300px;
+    top: 56px;
+    bottom: 0;
+    box-shadow: none;
+    overflow-y: auto;
+    @include transition(transform 0.3s ease-out);
+    @include browser-prefix(transform, translate3d(-100%, 0, 0));
+    @include media-query-breakpoint('tablet', $type: max) {
+        display: block;
+    }
+
+    &.is-active {
+        @include browser-prefix(transform, translate3d(0, 0, 0));
+        box-shadow: 0 1px 2px 0 rgba($text, 1), 4px 0 4px 0 rgba($text, 0.2);
+        @include media-query-breakpoint('tablet', $type: min) {
+            @include browser-prefix(transform, translate3d(-100%, 0, 0));
+        }
+    }
+}
+
+nav.nav-mobile .nav-secondary-actions {
+    width: 100%;
+}
+
+nav.nav-mobile .btn {
+    width: 100%;
+    @include rem(font-size, 16px);
+    text-align: left;
+
+    &:hover,
+    &:focus,
+    &:active {
+        opacity: 1;
+        background: none;
+        box-shadow: none;
+
+    }
+}
+
+nav.nav-mobile .avatar {
+    cursor: pointer;
+    @include rem(padding, $space-m);
+}
+
+nav.nav-mobile .avatar .avatar-info {
+    color: #FFFFFF;
+}
+
+nav.nav-mobile .avatar .avatar-info .avatar-info-muted-text {
+    color: rgba(255,255,255,0.6);
+}
+
+//Navigation mobile badges
+nav.nav-mobile .has-badge::after {
+    box-shadow: 0 0 0 2px $brand;
+    top: $space-s;
+    @include rem(margin-top, -3px);
+    left: $space-l;
+}
+
+//Navigation mobile sandbox toggle
+nav.nav-mobile .nav-mobile-sandbox {
+    cursor: pointer;
+    @include rem(padding, $space-s $space-m);
+    color: rgba(255,255,255,0.6);
+    @include rem(font-size, 16px);
+
+    &:hover {
+        color: #FFFFFF;
+    }
+}
+
+nav.nav-mobile .nav-mobile-sandbox .field-switch-handle {
+    background: darken($brand, 15);
+}
+
+nav.nav-mobile .nav-mobile-sandbox input.field-switch[type=checkbox]:checked + .field-switch-handle {
+    background: $light-background;
+}
+
+nav.nav-mobile .nav-mobile-sandbox input.field-switch[type=checkbox]:checked + .field-switch-handle::before {
+    background: $brand;
+}
+
+//Navigation overlay
+.nav-mobile-overlay {
+    position: relative;
+    z-index: $z-90;
+    background: $dark-background;
+    opacity: 0;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    @include transition(opacity 0.3s ease-out);
+
+    &.is-active {
+        position: absolute;
+        opacity: 0.8;
+        @include media-query-breakpoint('tablet', $type: min) {
+            display: none;
+        }
+    }
+}

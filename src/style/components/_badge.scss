@@ -1,0 +1,132 @@
+// -----------------------------------------------------------------------------
+// This file contains all styles related to the badge component.
+// -----------------------------------------------------------------------------
+
+.badge {
+    display: inline-block;
+    height: auto;
+    box-sizing: border-box;
+    text-transform: none;
+    text-align: center;
+    vertical-align: baseline;
+    color: $text;
+    border-radius: $line-height;
+    border: none;
+    @include rem(padding, $space-xxs $space-s);
+    font-family: $primary-font-stack;
+    font-weight: $regular;
+    @include rem(font-size, $paragraph);
+    @include rem(line-height, $line-height);
+    outline: none;
+    background: $faint-gray;
+    white-space: nowrap;
+    box-shadow: 0 0 0 2px #FFFFFF;
+}
+
+/**
+* Types
+*/
+.badge.badge-positive {
+    background: $light-green;
+}
+
+.badge.badge-negative {
+    background: $light-red;
+}
+
+.badge.badge-warning {
+    background: $light-yellow;
+}
+
+.badge.badge-info {
+    background: $light-blue;
+}
+
+//Status Badge
+.has-badge {
+    position: relative;
+}
+
+.has-badge::after {
+    content: '';
+    position: absolute;
+    display: block;
+    height: 6px;
+    width: 6px;
+    top: 0;
+    right: 0;
+    border-radius: 50%;
+    box-shadow: 0 0 0 2px #ffffff;
+}
+
+.has-badge.is-positive::after {
+    background: $accent;
+}
+
+.has-badge.is-negative::after {
+    background: $red;
+}
+
+.has-badge.is-warning::after {
+    background: $yellow;
+}
+
+.has-badge.is-info::after {
+    background: $blue;
+}
+
+//Tag Badge
+.badge.badge-tag {
+    @include rem(padding, $space-xs $space-s);
+    color: $muted;
+    border-radius: $border-radius;
+}
+
+.badge.badge-tag.has-delete .btn.btn-link .icon {
+    fill: $muted;
+    @include rem(margin-left, $space-s);
+}
+
+.badge.badge-tag-outline {
+    @include rem(padding, $space-xs $space-s);
+    color: $muted;
+    background: transparent;
+    border: 1px solid $muted;
+    border-radius: $border-radius;
+}
+
+.badge.badge-tag-outline.has-delete .btn.btn-link .icon {
+    fill: $muted;
+    @include rem(margin-left, $space-s);
+}
+
+//Tag Badge Input
+.badge.badge-tag-input {
+    @include rem(padding, $space-xxs $space-s $space-xxs $space-s);
+    @include rem(margin, 0 $space-xs $space-s 0);
+    color: $muted;
+    line-height: $line-height-s;
+    border-radius: $border-radius;
+}
+
+.badge.badge-tag-input.has-delete .icon {
+    fill: $muted;
+    cursor: pointer;
+    width: 16px;
+    height: 16px;
+    @include rem(margin-left, $space-s);
+}
+
+// Badge Counter
+.badge.badge-notification {
+    position: absolute;
+    font-weight: bold;
+    box-shadow: 0 0 0 2px $accent;
+    background: $accent;
+    top: -5px;
+    right: -5px;
+    font-size: 10px;
+    line-height: 10px;
+    padding: 1px 3px;
+    color: #FFFFFF;
+}

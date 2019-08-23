@@ -1,0 +1,95 @@
+// -----------------------------------------------------------------------------
+// This file contains all styles related to the tab component.
+// -----------------------------------------------------------------------------
+
+.tab {
+    flex-grow: 1;
+    padding-left: 0;
+    list-style: none;
+    position: relative;
+    overflow-x: auto;
+    overflow-y: hidden;
+    @include display-flex;
+    @include flex-wrap(nowrap);
+}
+
+.tab-divided {
+    border-bottom: 1px solid $faint-gray;
+}
+
+.tab-item {
+    @include display-flex;
+    @include flex(0 0 auto);
+}
+
+.tab.tab-fluid .tab-item {
+    @include flex(1 0 auto);
+}
+
+.tab-item .tab-link {
+    line-height: 1;
+    position: relative;
+    color: $muted;
+    border-bottom: 3px solid transparent;
+    @include rem(padding, $space-m 0);
+    @include rem(margin, 0 $space-s);
+    cursor: pointer;
+    @include transition(all .1s ease);
+    text-decoration: none;
+
+    &:hover {
+        text-decoration: none;
+        color: $text;
+        border-bottom: 3px solid $gray;
+    }
+
+    &.is-active {
+        color: $blue;
+        border-bottom: 3px solid $blue;
+    }
+
+    &.has-error {
+        color: $red;
+    }
+
+    &.is-active.has-error {
+        border-bottom: 3px solid $red;
+    }
+}
+
+.tab-item:first-child .tab-link {
+    @include rem(margin-left, $space-m);
+}
+
+.tab-content {
+    @include rem(padding, $inset-default);
+}
+
+.tile-content .tab-content {
+    @include rem(padding, $space-m 0);
+}
+
+.tab-content.tab-content-fitted {
+    padding: 0;
+}
+
+.tab-content-item {
+    border: 0;
+    clip: rect(0 0 0 0);
+    height: 1px;
+    @include rem(margin, -1px);
+    overflow: hidden;
+    padding: 0;
+    position: absolute;
+    width: 1px;
+}
+
+.tab-content-item.is-active {
+    clip: auto;
+    height: auto;
+    margin: auto;
+    overflow: visible;
+    padding: initial;
+    position: relative;
+    width: auto;
+}

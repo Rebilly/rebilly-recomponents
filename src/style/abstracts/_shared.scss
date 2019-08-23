@@ -1,0 +1,18 @@
+/**
+ * Variables defined in this file and mapped into :export can be
+ * imported into JS and accessed as an object
+ *
+ * Usage:
+ * import Styles from '@/style/abstracts/_shared.scss';
+ *
+ * Note:
+ * This file CANNOT reference mixins, variables, or functions from other .scss files,
+ * but variables defined here ARE available in other .scss files.
+ */
+
+// Default width for cells with truncated content
+$default-column-width: 150px;
+
+:export {
+    defaultColumnWidth: $default-column-width;
+}

@@ -1,0 +1,112 @@
+// -----------------------------------------------------------------------------
+// This file contains all styles related to the modal component.
+// -----------------------------------------------------------------------------
+
+.modal-overlay {
+    background-color: rgba($dark-background, 0.4);
+    box-sizing: border-box;
+    flex-direction: column;
+    -webkit-flex-direction: column;
+    -webkit-box-orient: vertical;
+    -webkit-box-direction: normal;
+    position: fixed;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    z-index: $z-max;
+    overflow-y: auto;
+    @include rem(padding, $space-l + 56 0 $space-l 0);
+    @include display-flex;
+    @include align-items(center);
+    @include justify-content(center);
+}
+
+.modal-overlay.is-scrollable {
+    @include justify-content(flex-start);
+}
+
+.modal-control {
+    z-index: $z-modal + 1;
+    box-sizing: border-box;
+    background: #FFFFFF;
+    box-shadow: 0 0 0 1px rgba($muted, 0.09), 0 25px 45px -8px rgba($dark-background, 0.30), 0 3px 6px 0 rgba($dark-background, 0.07);
+    border-radius: $border-radius;
+    width: 400px;
+    @include browser-prefix(transform, scale(1));
+
+    @include media-query-breakpoint('tablet', $type: max) {
+        width: 90%!important;
+    }
+}
+
+.modal-header, .modal-content {
+    border-bottom: 1px solid $faint-gray;
+}
+
+.modal-content p,
+.modal-content-secondary p {
+    margin-bottom: 0;
+}
+
+//Secondary
+.modal-content.modal-content-secondary {
+    background: $light-background;
+}
+
+.modal-content.is-scrollable {
+    max-height: 400px;
+    overflow-y: scroll;
+}
+
+.modal-header, .modal-content, .modal-actions {
+    @include rem(padding, $space-default);
+}
+
+.modal-header h2 {
+    margin: 0;
+    text-transform: capitalize;
+}
+
+.modal-header .btn > .icon {
+    fill: $muted;
+}
+
+.modal-loader.loader.is-loading{
+    @include opacity(.6);
+}
+
+/**
+* Transitions
+*/
+.modal-enter-active, .modal-leave-active {
+    transition: all .2s;
+}
+
+.modal-enter, .modal-leave-to {
+    @include opacity(1);
+}
+
+.modal-enter-active .modal-control, .modal-leave-active .modal-control {
+    transition: all .2s;
+}
+
+.modal-enter .modal-control, .modal-leave-to .modal-control {
+    @include browser-prefix(transform, scale(.9));
+    @include opacity(0);
+}
+
+/**
+* Sizes
+*/
+.modal-control.modal-control-l {
+    width: 600px;
+}
+
+.modal-control.modal-control-xl {
+    width: 800px;
+}
+
+.modal-control.modal-control-fluid {
+    width: 70%;
+}

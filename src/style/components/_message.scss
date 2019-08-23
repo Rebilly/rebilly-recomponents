@@ -1,0 +1,70 @@
+// -----------------------------------------------------------------------------
+// This file contains all styles related to the message component.
+// -----------------------------------------------------------------------------
+
+.message {
+    box-sizing: border-box;
+    position: relative;
+    height: auto;
+    box-shadow: 0 0 0 1px rgba($muted, 0.09), 0 7px 14px 0 rgba($muted, 0.15), 0 3px 6px 0 rgba($muted, 0.07);
+    border-radius: $border-radius;
+    background: $faint-gray;
+    border-left: 4px solid $muted;
+}
+
+.message .message-title h2 {
+    margin: 0;
+}
+
+.message .message-title {
+    @include rem(padding, $space-default $space-default 0 $space-default);
+}
+
+.message .message-content > * {
+    margin: 0;
+}
+
+.message .message-content {
+    @include rem(padding, $inset-default);
+}
+
+.message .message-content strong {
+    line-height: $line-height;
+}
+
+.message.has-delete > .btn.btn-link {
+    position: absolute;
+    top: $space-default;
+    right: $space-default;
+}
+
+.message.has-delete .btn.btn-link .icon {
+    fill: $muted;
+}
+
+/**
+* Types
+*/
+.message.message-positive {
+    background: $light-green;
+    border-left-color: $green;
+    box-shadow: 0 0 0 1px rgba($green, 0.09), 0 7px 14px 0 rgba($muted, 0.15), 0 3px 6px 0 rgba($muted, 0.07);
+}
+
+.message.message-negative {
+    background: $light-red;
+    border-left-color: $red;
+    box-shadow: 0 0 0 1px rgba($red, 0.09), 0 7px 14px 0 rgba($muted, 0.15), 0 3px 6px 0 rgba($muted, 0.07);
+}
+
+.message.message-warning {
+    background: $light-yellow;
+    border-left-color: $yellow;
+    box-shadow: 0 0 0 1px rgba($yellow, 0.09), 0 7px 14px 0 rgba($muted, 0.15), 0 3px 6px 0 rgba($muted, 0.07);
+}
+
+.message.message-info {
+    background: $light-blue;
+    border-left-color: $blue;
+    box-shadow: 0 0 0 1px rgba($blue, 0.09), 0 7px 14px 0 rgba($muted, 0.15), 0 3px 6px 0 rgba($muted, 0.07);
+}

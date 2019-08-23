@@ -1,0 +1,60 @@
+// -----------------------------------------------------------------------------
+// This file contains all styles related to the image component.
+// -----------------------------------------------------------------------------
+
+.image {
+    display: block;
+    position: relative;
+    width: $space-default;
+    height: $space-default;
+    overflow: hidden;
+    margin: 0;
+}
+
+.image img {
+    display: block;
+    height: auto;
+    width: 100%;
+}
+
+.image-32 {
+    width: 32px;
+    height: 32px;
+}
+
+.image-64 {
+    width: 64px;
+    height: 64px;
+}
+
+.image-128 {
+    width: 128px;
+    height: 128px
+}
+
+.image-256 {
+    width: 256px;
+    height: 256px;
+}
+
+.image-avatar {
+    border-radius: $border-radius;
+    width: 36px;
+    height: 36px;
+}
+
+.image.image-center {
+    margin: 0 auto;
+}
+
+.image.image-logo {
+    @include rem(margin, 0 auto $space-m);
+    @include rem(max-width, 200px);
+    @include rem(width, 200px);
+    @include rem(padding, $inset-default);
+    height: auto;
+    border: none;
+    background: #FFFFFF;
+    box-shadow: 0 0 0 1px rgba($muted, 0.03), 0 1px 2px 0 rgba($muted, 0.24), 0 4px 4px 0 rgba($muted, 0.05);
+    border-radius: $border-radius;
+}

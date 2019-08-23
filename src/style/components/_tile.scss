@@ -1,0 +1,103 @@
+// -----------------------------------------------------------------------------
+// This file contains all styles related to the tile component.
+// -----------------------------------------------------------------------------
+
+.tile {
+    box-sizing: border-box;
+    background: #FFFFFF;
+    box-shadow: 0 0 0 1px rgba($muted, 0.03), 0 1px 2px 0 rgba($muted, 0.24), 0 4px 4px 0 rgba($muted, 0.05);
+    border-radius: $border-radius;
+}
+
+.tile-title {
+    @include rem(padding, $space-default $space-default 0 $space-default);
+    @include display-flex;
+}
+
+.tile-title > .tile-title-secondary{
+    @extend .no-flex;
+    text-align: right;
+    > h2 {padding: 0}
+}
+
+.tile-subtitle {
+    @include rem(padding-bottom, $space-default);
+    @include display-flex;
+}
+
+.tile-title:first-child {
+    border-top: none;
+    border-radius: $border-radius $border-radius 0 0;
+}
+
+.tile-title > *,
+.tile-subtitle > * {
+    margin: 0;
+    @include flex(1 0 50%);
+    min-width: 0;
+}
+
+.tile-title h2,
+.tile-title h3 {
+    @include rem(padding-right, $space-default);
+    margin: 0;
+}
+
+.tile-title-link,
+.tile-subtitle-link {
+    color: $blue;
+    cursor: pointer;
+}
+
+.tile-content {
+    @include rem(padding, $space-default);
+}
+
+.tile-content.tile-content-fitted {
+    padding: 0;
+}
+
+.tile-content {
+    & p, & ul, & ol, & pre, & table, & blockquote, & h1, & h2, & h3, & h4, & h5, & h6 {
+        margin: 0;
+    }
+}
+
+.tile-content {
+    border-bottom: 1px solid $faint-gray;
+}
+
+.tile-content:last-child {
+    border: none;
+    border-radius: 0 0 $border-radius $border-radius;
+}
+
+.tile-content.tile-content-secondary {
+    background: $light-background;
+}
+
+/**
+* Types
+*/
+
+//Secondary
+.tile.tile-secondary {
+    background: $light-background;
+    box-shadow: 0 0 0 1px $faint-gray inset;
+}
+
+//Description
+.tile.tile-description {
+    background: transparent;
+    box-shadow: none;
+}
+
+.tile-content.tile-content-secondary {
+    background: $light-background;
+}
+
+.tile.tile-description .tile-title,
+.tile.tile-description .tile-content {
+    padding-left: 0;
+    padding-bottom: 0;
+}

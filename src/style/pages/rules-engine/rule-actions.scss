@@ -1,0 +1,59 @@
+// -----------------------------------------------------------------------------
+// This file contains styles that are specific to the rules actions.
+// -----------------------------------------------------------------------------
+
+// Webhooks
+.rule-action-webhooks-form .http-verbs {
+    max-width: 170px;
+    width: 170px;
+}
+
+.rule-action-webhooks-form .add-header,
+.rule-action-webhooks-form .add-query {
+    @include rem(margin-top, $space-m);
+}
+
+// Schedule Payment & Schedule Payment Retry
+.rule-action-schedule-payment-inline-inputs {
+    max-width: 64px;
+}
+
+// Send Email
+.editor {
+    background-color: #FFFFFF;
+    border-radius: $border-radius;
+    box-shadow: 0 0 0 1px $light-gray inset, 0 1px 2px 0 rgba($gray, 0.5) inset, 0 0 0 0 $blue;
+}
+
+.field.is-error > .editor {
+    box-shadow: 0 0 0 1px $red inset;
+}
+
+.field.is-error > .editor.is-active,
+.editor.is-active {
+    box-shadow: 0 0 0 1px $blue inset, 0 0 0 0 rgba($gray, 0.5) inset, 0 0 0 1px $blue;
+}
+
+.editor-menu {
+    border-bottom: 1px solid $faint-gray;
+}
+
+.editor-textarea-wrapper {
+    @include rem(padding, 0 1px 1px 1px);
+}
+
+.editor-textarea {
+    background-color: transparent;
+    @include rem(padding, $space-s $space-m);
+    resize: none;
+    width: 100%;
+    height: auto;
+    border: 0;
+    box-shadow: none;
+    border-radius: 0 0 $border-radius $border-radius;
+    text-transform: initial;
+    letter-spacing: initial;
+    font-family: $primary-font-stack;
+    font-weight: $regular;
+    display: block;
+}

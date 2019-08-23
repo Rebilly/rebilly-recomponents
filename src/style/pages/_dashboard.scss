@@ -1,0 +1,95 @@
+// -----------------------------------------------------------------------------
+// This file contains styles that are specific to the dashboard page.
+// -----------------------------------------------------------------------------
+
+// Stats
+.tile-dashboard-stat .tile-content {
+    position: relative;
+    min-height: 110px;
+}
+
+.tile-dashboard-stat .tile-content .chart {
+    position: absolute;
+    bottom: $space-s;
+    left: 0;
+    width: 100%;
+}
+
+.dashboard-stats {
+    position: relative;
+    z-index: $z-10;
+}
+
+.tile-dashboard-stat .dashboard-stats .stat-value {
+    cursor: text;
+    text-shadow: 0 0 20px #FFFFFF;
+}
+
+.tile-dashboard-hide {
+    display: none;
+}
+
+.tile-dashboard-stat:hover .tile-dashboard-hide {
+    display: block;
+}
+
+// Add segment responsiveness
+.grid-item.grid-item-segment-selection {
+    @include media-query-breakpoint('tablet', $type: max) {
+        & .popper {
+            width: 100%;
+        }
+
+        & .popper .btn {
+            display: block;
+            width: 100%;
+        }
+    }
+}
+
+.grid-item.grid-item-segment-actions {
+    @include media-query-breakpoint('tablet', $type: max) {
+        @include rem(margin-top, $space-m);
+    }
+}
+
+.tile-content.tile-content-criteria,
+.tile-content.tile-content-segment {
+    @include media-query-breakpoint('tablet', $type: max) {
+        & .popper,
+        & .chip,
+        & .grid-item.no-flex .btn {
+            width: 100%;
+        }
+
+        & .popper .btn {
+            display: block;
+            width: 100%;
+            @include rem(margin-top, $space-s);
+        }
+    }
+}
+
+// Segments and Criteria chip spacing
+.tile-content.tile-content-criteria,
+.tile-content.tile-content-segment {
+    @include rem(padding-bottom, $space-m);
+
+    & .chip {
+        @include rem(margin-right, $space-xs);
+        @include rem(margin-bottom, $space-xs);
+    }
+
+    & .grid-content .chip {
+        @include rem(margin-right, $space-xs);
+        @include rem(margin-bottom, $space-xs);
+    }
+
+    & .grid-content .popper {
+        @include rem(margin-bottom, $space-xs);
+    }
+
+    & .grid-item.grid-item-compact:empty {
+        display: none;
+    }
+}

@@ -1,0 +1,222 @@
+// -----------------------------------------------------------------------------
+// This file contains all styles related to the vue-multiselect plugin.
+// -----------------------------------------------------------------------------
+
+//Body
+.multiselect {
+    min-height: 36px;
+}
+
+.multiselect--active {
+    z-index: $z-50;
+}
+
+.multiselect--active:not(.multiselect--above) .multiselect__current,
+.multiselect--active:not(.multiselect--above) .multiselect__input,
+.multiselect--active:not(.multiselect--above) .multiselect__tags {
+    border-bottom-left-radius: $border-radius;
+    border-bottom-right-radius: $border-radius;
+}
+
+.multiselect--active.multiselect--above .multiselect__current,
+.multiselect--active.multiselect--above .multiselect__input,
+.multiselect--active.multiselect--above .multiselect__tags {
+    border-top-left-radius: $border-radius;
+    border-top-right-radius: $border-radius;
+}
+
+.multiselect__placeholder {
+    @include rem(padding-left, 5px);
+    padding-top: 0;
+    margin-bottom: 0;
+}
+
+.multiselect__tags {
+    min-height: 36px;
+    border: none;
+    border-radius: $border-radius;
+    @include rem(padding, 8px 40px 0 11px);
+    @include linear-gradient(#FFFFFF, $background);
+    box-shadow: 0 0 0 1px $light-gray inset, 0 1px 2px 0 rgba($gray, 0.3);
+}
+
+.multiselect--active .multiselect__tags {
+    box-shadow: 0 0 0 1px $blue inset, 0 0 0 1px rgba($blue, 1);
+}
+
+.is-error .multiselect__tags {
+    box-shadow: 0 0 0 1px $red inset;
+    background: rgba($light-red, 0.6);
+}
+
+//Group Input
+.field-group > *:not(:first-child):not(:last-child) .multiselect__tags {
+    border-radius: 0;
+}
+
+.field-group > *:first-child .multiselect__tags {
+    border-radius: $border-radius 0 0 $border-radius;
+}
+
+.field-group > *:last-child .multiselect__tags {
+    border-radius: 0 $border-radius $border-radius 0;
+}
+
+//Label
+.typo__label {
+    display: block;
+    font-family: $primary-font-stack;
+    color: $text;
+    @include rem(margin-bottom, $space-xs);
+}
+
+.is-error .typo__label {
+    color: $red;
+}
+
+//Arrow Icon
+.multiselect__select {
+    height: 36px;
+    background: url('/static/icons/caret-down.svg') center no-repeat;
+    top: 0;
+}
+
+.multiselect__select::before {
+    display: none;
+}
+
+.multiselect--active .multiselect__select {
+    transform: none;
+}
+
+//Input
+.multiselect__input,
+.multiselect__single {
+    background: transparent;
+}
+
+//Spinner
+.multiselect__spinner {
+    top: 1;
+    height: 34px;
+    width: 40px;
+    border-radius: $border-radius;
+    @include linear-gradient(#FFFFFF, $background);
+}
+
+.multiselect__spinner:after,
+.multiselect__spinner:before {
+    border-color:  $blue transparent transparent;
+}
+
+//Dropdown
+.multiselect__content-wrapper {
+    @include rem(padding, $space-s 0 $space-s 0);
+    top: 40px;
+    border-radius: $border-radius;
+    border: none;
+    box-shadow: 0 0 0 1px rgba($muted, 0.09), 0 7px 14px 0 rgba($muted, 0.15), 0 3px 6px 0 rgba($muted, 0.07);
+}
+
+.multiselect--above .multiselect__content-wrapper {
+    top: inherit;
+    border-radius: $border-radius;
+    margin-bottom: 4px;
+}
+
+.multiselect__single,
+.multiselect__input {
+    line-height: $line-height;
+    @include rem(font-size, $paragraph);
+}
+
+.multiselect__option {
+    line-height: $line-height;
+    @include rem(padding, $space-s $space-m);
+    min-height: 36px;
+    @include rem(font-size, $paragraph);
+}
+
+.multiselect__option--selected {
+    color: $text;
+    font-weight: $bold;
+    background: $background;
+}
+
+.multiselect__option--highlight,
+.multiselect__option--highlight::after {
+    background: $blue;
+}
+
+.multiselect__option--selected.multiselect__option--highlight,
+.multiselect__option--selected.multiselect__option--highlight::after {
+    background: $background;
+    color: $text;
+    cursor: pointer;
+}
+
+.multiselect--allow-empty .multiselect__option.multiselect__option--highlight.multiselect__option--selected span::after {
+    content: '';
+    position: absolute;
+    top: 0px;
+    right: $space-m;
+    bottom: 0;
+    width: 36px;
+    cursor: pointer;
+    height: 36px;
+    box-shadow: -16px 0 16px -8px $background;
+    background: url('/static/icons/close-s.svg') center no-repeat $background;
+}
+
+.multiselect__option::after {
+    line-height: $line-height;
+    top: $space-s;
+}
+
+.multiselect--disabled .multiselect__current,
+.multiselect--disabled .multiselect__select,
+.multiselect__option--disabled {
+    background: transparent;
+    color: $muted;
+}
+
+//Tags
+.multiselect__tag {
+    border-radius: 2px;
+    background: $faint-gray;
+    color: $muted;
+    line-height: $line-height-s;
+    @include rem(margin, 0 $space-xs $space-xxs 0);
+    @include rem(padding, $space-xxs $space-s $space-xxs $space-s);
+}
+
+.multiselect__tag-icon {
+    margin-left: $space-xs;
+    position: relative;
+    line-height: $line-height-s;
+    display: block;
+    float: right;
+    text-align: center;
+    width: $space-m;
+    border-radius: none;
+}
+
+.multiselect__tag-icon:hover {
+    background: none;
+    color: $muted;
+}
+
+.multiselect__tag-icon::after,
+.multiselect__tag-icon:hover::after {
+    color: $muted;
+}
+
+//Tags Custom (Go to badge.scss .badge.badge-tag-input)
+
+// Fixed dropdown
+.multiselect--fixed .multiselect__content-wrapper {
+    position: relative;
+    top: $space-xs;
+    max-height: 230px!important;
+    display: block;
+}

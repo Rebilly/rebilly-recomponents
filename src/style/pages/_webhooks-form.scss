@@ -1,0 +1,12 @@
+// -----------------------------------------------------------------------------
+// This file contains styles that are specific to the webhooks-form page.
+// -----------------------------------------------------------------------------
+
+.webhooks-form .http-verbs {
+    max-width: 170px;
+    width: 170px;
+}
+
+.webhooks-form .add-header {
+    @include rem(margin-top, $space-m);
+}

@@ -1,0 +1,11 @@
+.field-editable {
+  &:focus-within {
+    box-shadow: 0 0 0 1px $blue inset, 0 0 0 0 rgba($gray, 0.5) inset, 0 0 0 1px $blue;
+  }
+
+  .field-editable-input {
+    // force caret to be visable.
+    // https://stackoverflow.com/questions/25897883/edit-cursor-not-displayed-on-chrome-in-contenteditable
+    outline: 1px solid transparent;
+  }
+}

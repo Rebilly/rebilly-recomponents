@@ -1,0 +1,27 @@
+// -----------------------------------------------------------------------------
+// This file contains all styles related to the contact manager component.
+// -----------------------------------------------------------------------------
+
+.contact-manager {
+    @include rem(margin, -$space-default);
+}
+
+.contact-manager .popover .popover-control.is-scrollable {
+    max-height: 350px;
+}
+
+.contact-manager  .popover .popover-control .popover-content address {
+    width: 200px;
+    @include rem(padding-right, $space-m);
+}
+
+.contact-modal .modal-control .contact-phone-types,
+.contact-modal .modal-control .contact-phone-email-types,
+.contact-phone-types,
+.contact-phone-email-types {
+    width: 120px;
+}
+
+.contact-modal .modal-control .contact-add-phone-email {
+    @include rem(margin-top, $space-xs);
+}

@@ -1,0 +1,14 @@
+// -----------------------------------------------------------------------------
+// This file contains all styles related to the camera device component.
+// -----------------------------------------------------------------------------
+
+.camera-device-is-loading {
+    padding: 64px;
+    > .loading {
+        margin: 0 auto;
+    }
+}
+
+.camera-device-previewer{
+    width: 100%;
+}

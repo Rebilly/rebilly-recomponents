@@ -1,0 +1,49 @@
+// -----------------------------------------------------------------------------
+// This file contains all styles related to the tab filter component.
+// -----------------------------------------------------------------------------
+
+.table-actions {
+    display: flex;
+    flex-wrap: nowrap;
+    justify-content: flex-end;
+    min-height: 49px;
+    border-bottom: 1px solid $faint-gray;
+}
+
+.table-action-group {
+    align-self: center;
+    display: flex;
+}
+
+.tile-content.tile-content-filter {
+    @include rem(padding-bottom, $space-m);
+
+    & .chip {
+        @include rem(margin-right, $space-xs);
+        @include rem(margin-bottom, $space-xs);
+    }
+
+    & .grid-content .chip {
+        @include rem(margin-right, $space-xs);
+        @include rem(margin-bottom, $space-xs);
+    }
+
+    & .grid-item.grid-item-compact:empty {
+        display: none;
+    }
+}
+
+.tile-content.tile-content-filter  {
+    @include media-query-breakpoint('tablet', $type: max) {
+        & .popper,
+        & .chip,
+        & .grid-item.no-flex .btn {
+            width: 100%;
+        }
+
+        & .popper .btn {
+            display: block;
+            width: 100%;
+        }
+    }
+}

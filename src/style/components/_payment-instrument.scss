@@ -1,0 +1,48 @@
+// -----------------------------------------------------------------------------
+// This file contains all styles related to the payment instrument component.
+// -----------------------------------------------------------------------------
+
+.payment-instrument-card-pan {
+    display: block;
+    text-align: center;
+    font-family: $code-font-stack;
+    @include rem(font-size, 20px);
+    @include rem(margin, $space-l 0 $space-m 0);
+    text-shadow: 0 1px 2px rgba($text, 0.4);
+}
+
+.payment-instrument-label {
+    display: block;
+    color: $muted;
+    line-height: $line-height-s;
+}
+
+.payment-instrument-card-exp-date {
+    font-family: $code-font-stack;
+    display: block;
+}
+
+.payment-instrument-card-customer,
+.payment-instrument-bank-customer {
+    text-transform: uppercase;
+    font-family: $code-font-stack;
+}
+
+.payment-instrument-card-no-country {
+    display: inline-block;
+    width: 32px;
+    height: 20px;
+    background: $light-gray;
+    border-radius: $border-radius / 2;
+}
+
+.payment-instrument-bank-routing {
+    font-family: $code-font-stack;
+    display: block;
+    @include rem(font-size, 20px);
+    text-shadow: 0 1px 2px rgba($text, 0.4);
+}
+
+.tile-instrument-expiry-input {
+    width: 95px;
+}

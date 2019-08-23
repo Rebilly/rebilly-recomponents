@@ -1,0 +1,25 @@
+// -----------------------------------------------------------------------------
+// This file contains all styles related to the sandbox of the site/application.
+// -----------------------------------------------------------------------------
+
+.sandbox-message {
+    @include rem(padding, $space-m $space-default);
+    background: $light-yellow;
+    text-align: center;
+    box-shadow: 0 0 0 1px rgba(#FFFFFF, 1);
+    position: fixed;
+    width: 100%;
+    z-index: $z-80;
+}
+
+.sandbox-message + div {
+    @include rem(padding-top, 52px);
+}
+
+.sandbox-message.is-impersonating {
+    background: $light-red;
+}
+
+.sandbox-message span + span {
+    margin-left: 2em;
+}

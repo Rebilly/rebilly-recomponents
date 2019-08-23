@@ -1,0 +1,238 @@
+// -----------------------------------------------------------------------------
+// This file contains all styles related to the popover component.
+// -----------------------------------------------------------------------------
+
+.popover {
+    box-sizing: border-box;
+    display: inline-block;
+    min-width: 280px;
+    position: absolute;
+    background: #FFFFFF;
+    box-shadow: 0 0 0 1px rgba($muted, 0.09), 0 7px 14px 0 rgba($muted, 0.15), 0 3px 6px 0 rgba($muted, 0.07);
+    border-radius: $border-radius;
+    z-index: $z-90;
+    visibility: hidden;
+    @include opacity(0);
+    @include transition(visibility 0s ease 0.1s, opacity 0.1s ease);
+}
+
+.popover.popover-centered {
+    left: 50%;
+    @include browser-prefix(transform, translate3d(-50%, 0, 0));
+}
+
+.popover.is-visible {
+    @include opacity(1);
+    visibility: visible;
+    @include transition-delay(0s);
+}
+
+.popover-arrow {
+    overflow: hidden;
+    position: absolute;
+    width: 20px;
+    height: 20px;
+    left: 50%;
+    @include rem(margin-left, -10px);
+    background: transparent;
+    top: -20px;
+    z-index: $z-80;
+}
+
+.popover-arrow.is-left {
+    @include browser-prefix(transform, rotate(-90deg));
+    @include rem(margin-top, -10px);
+    top: 50%;
+    left: -10px;
+}
+
+.popover-arrow.is-left-bottom {
+    @include browser-prefix(transform, rotate(-90deg));
+    @include rem(margin-top, -36px);
+    top: 100%;
+    left: -10px;
+}
+
+.popover-arrow.is-right {
+    @include browser-prefix(transform, rotate(90deg));
+    @include rem(margin-top, -10px);
+    top: 50%;
+    left: 100%;
+    margin-left: 0;
+}
+
+.popover-arrow.is-bottom {
+    @include browser-prefix(transform, rotate(180deg));
+    @include rem(margin-top, -10px);
+    margin-top: 0;
+    top: 100%;
+    left: 50%;
+}
+
+.popover-arrow::after {
+    content: "";
+    position: absolute;
+    width: 12px;
+    height: 12px;
+    left: 50%;
+    @include rem(margin-left, -6px);
+    background: #FFFFFF;
+    box-shadow: 0 0 0 1px rgba($muted, 0.09), 0 1px 2px 0 rgba($muted, 0.24), 4px 0 4px 0 rgba($muted, 0.05);
+    top: 14px;
+    @include browser-prefix(transform, rotate(45deg));
+}
+
+.popover-title {
+    @include rem(padding, $space-m);
+    @include display-flex;
+    border-bottom: 1px solid $faint-gray;
+}
+
+.popover-subtitle {
+    @include display-flex;
+    @include rem(padding-bottom, $space-m);
+}
+
+.popover-title > *,
+.popover-subtitle > * {
+    margin: 0;
+    @include flex(1 0 50%);
+    min-width: 0;
+}
+
+.popover-title h2,
+.popover-title h3 {
+    @include rem(padding-right, $space-default);
+}
+
+.popover-control {
+    max-height: 600px;
+}
+
+.popover-control.is-scrollable,
+.popover-content.is-scrollable {
+    overflow-y: scroll;
+}
+
+.popover-content {
+    @include rem(padding, $inset-m);
+}
+
+.popover-content {
+    & p, & ul, & ol, & pre, & table, & blockquote, & h1, & h2, & h3, & h4, & h5, & h6 {
+        margin: 0;
+    }
+}
+
+.popover-content {
+    border-bottom: 1px solid $faint-gray;
+}
+
+.popover-content:last-child {
+    border: none;
+    border-radius: 0 0 $border-radius $border-radius
+}
+
+/**
+* Types
+*/
+
+//Secondary
+.popover-content.popover-content-secondary {
+    background: $light-background;
+}
+
+//Menu
+.popover-content.popover-menu {
+    @include rem(padding, $space-s 0);
+}
+
+.popover-action-menu-item,
+.popover-menu-item {
+    @include rem(padding, $space-s $space-m);
+    display: block;
+    line-height: $line-height;
+    color: $text;
+    cursor: pointer;
+
+    &:hover,
+    &:focus,
+    &:active {
+        background: $blue;
+        text-decoration: none;
+        color: #FFFFFF;
+    }
+
+    &.popover-menu-item-negative:hover,
+    &.popover-menu-item-negative:focus,
+    &.popover-menu-item-negative:active {
+        background: $red;
+        color: #FFFFFF;
+    }
+
+    &:hover .icon {
+        fill: #FFFFFF;
+    }
+
+    &:hover .avatar-info-muted-text,
+    &:focus .avatar-info-muted-text,
+    &:active .avatar-info-muted-text {
+        color: rgba(255,255,255,0.6);
+    }
+}
+
+//Dark
+.popover.popover-dark {
+    background: $dark-background;
+    box-shadow: 0 3px 6px 0 rgba($muted, 0.2), 0 7px 14px 0 rgba($muted, 0.35);
+}
+
+.popover.popover-dark .popover-title,
+.popover.popover-dark .popover-content {
+    border-bottom: 1px solid darken($dark-background, 5);
+}
+
+.popover.popover-dark .popover-content:last-child {
+    border: none;
+}
+
+.popover.popover-dark .popover-arrow::after {
+    background: $dark-background;
+    box-shadow: 0 1px 2px 0 rgba($muted, 0.24), 4px 0 4px 0 rgba($muted, 0.05);
+}
+
+.popover.popover-dark * {
+    color: #FFFFFF;
+}
+
+.popover.popover-dark *.text-muted {
+    color: $light-gray !important;
+}
+
+.popover.popover-dark .popover-content.popover-content-secondary {
+    background: darken($dark-background, 5);
+}
+
+.popover.popover-dark .popover-menu-item {
+    @include rem(padding, $space-s $space-m);
+    cursor: pointer;
+
+    & .icon {
+        fill: #FFFFFF;
+    }
+
+    & .avatar-info .avatar-info-muted-text {
+        color: $light-gray;
+    }
+
+    &:hover,
+    &:focus,
+    &:active {
+        background: darken($dark-background, 4);
+        color: #FFFFFF;
+    }
+
+    &:hover .avatar-info .avatar-info-muted-text {
+        color: $light-gray;
+    }
+}

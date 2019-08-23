@@ -1,0 +1,13 @@
+// -----------------------------------------------------------------------------
+// This file contains styles that are specific to the notification page.
+// -----------------------------------------------------------------------------
+
+.preview-notification-modal-body-text{
+    white-space: pre-wrap;
+}
+.preview-notification-modal-body-html{
+    width: 100%;
+    display: block;
+    box-shadow: 0 0 0 1px $faint-gray;
+    border-radius: $border-radius;
+}

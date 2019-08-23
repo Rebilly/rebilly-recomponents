@@ -1,0 +1,108 @@
+// -----------------------------------------------------------------------------
+// This file contains styles that are specific to the login page.
+// -----------------------------------------------------------------------------
+
+.login-header {
+    width: 100%;
+    @include rem(min-height, 20px);
+    @include rem(padding, $inset-m);
+    background: $brand;
+}
+
+.login-header .logo {
+    width: 80px;
+    height: 32px;
+    fill: #FFFFFF;
+    display: block;
+}
+
+.login {
+    width: 340px;
+    margin: 90px auto 0 auto;
+}
+
+.logo-icon {
+    display: block;
+    position: relative;
+    width: 36px;
+    height: 36px;
+    margin: $space-xl auto $space-l auto;
+    background: $brand;
+    border-radius: $border-radius;
+    @include browser-prefix(transform, scale(1.5));
+    @include animation('logo-icon-animation .4s forwards ease-out');
+}
+
+.logo-icon > * {
+    @include transition(height .3s ease);
+    display: block;
+    position: absolute;
+    @include browser-prefix(transform-origin, top);
+    @include browser-prefix(transform, rotate(180deg));
+    width: 4px;
+    background: $background;
+}
+
+.logo-icon .mr-re {
+    top: 28px;
+    left: 9px;
+    @include animation('mr-re-login-animation 1s .2s forwards');
+
+}
+
+.logo-icon .mr-bil {
+    top: 28px;
+    left: 16px;
+    @include animation('mr-bil-login-animation 1s .4s forwards');
+
+}
+
+.logo-icon .mr-ly {
+    top: 28px;
+    left: 23px;
+    @include animation('mr-ly-login-animation 1s .6s forwards');
+
+}
+
+//Keyframes
+@include keyframes(logo-icon-animation) {
+  0% {
+      opacity: 0;
+      @include browser-prefix(transform, scale(1));
+  }
+  50% {
+      opacity: 1;
+      @include browser-prefix(transform, scale(1.6));
+  }
+  100% {
+      opacity: 1;
+      @include browser-prefix(transform, scale(1.5));
+  }
+}
+
+@include keyframes(mr-re-login-animation) {
+  0% {
+      height: 0;
+  }
+  50%, 100% {
+      height: 14px;
+  }
+}
+
+@include keyframes(mr-bil-login-animation) {
+  0% {
+      height: 0;
+  }
+  50%, 100% {
+      height: 17px;
+  }
+}
+
+@include keyframes(mr-ly-login-animation) {
+  0% {
+      height: 0;
+  }
+  50%, 100% {
+      height: 20px;
+  }
+}

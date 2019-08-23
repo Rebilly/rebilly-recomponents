@@ -1,0 +1,22 @@
+// -----------------------------------------------------------------------------
+// This file contains styles that are specific to the custom-fields page.
+// -----------------------------------------------------------------------------
+
+.blacklists .tab {
+    background: #FFFFFF;
+    border-radius: $border-radius $border-radius 0 0;
+}
+
+.blacklists .tab-content {
+    padding: 0;
+}
+
+.blacklists .tab-content .card {
+    box-shadow: none;
+    border-radius: 0  0 $border-radius $border-radius;
+}
+
+.blacklists .grid .grid-item > div {
+    border-radius: $border-radius;
+    box-shadow: 0 0 0 1px rgba($muted, 0.03), 0 1px 2px 0 rgba($muted, 0.24), 0 4px 4px 0 rgba($muted, 0.05);
+}

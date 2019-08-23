@@ -1,0 +1,67 @@
+/**
+* Resizeable styles and variables
+**/
+
+$drag-handle-height: 80px;
+$drag-handle-width: 20px;
+
+.table.resizeable {
+    table-layout: auto;
+    height: $drag-handle-height;
+    
+    // unlocks width of table from width of container
+    &.resized {
+        width: inherit;
+        table-layout: fixed;
+    }
+    
+    th {
+        // allows resize-handle to be absolutely positioned
+        position: relative;
+
+        // allows empty tbody to vertically stretch
+        height: 1px;
+    }
+
+    // adds text truncation to resized table cells
+    td, td * {
+	    overflow-x: hidden;
+        text-overflow: ellipsis;
+    }
+
+    // allows table height to be applied even when empty
+    tbody:empty::after {
+        content: '';
+    }
+}
+
+// column divider for table
+.resizeable .resize-handle {
+    height: $drag-handle-height;
+    position: absolute;
+    top: 0px;
+    right: 0px;
+    border-right: 1px solid;
+    border-left: none;
+    border-image: linear-gradient(to bottom, $faint-gray, rgba(0, 0, 0, 0)) 1 100%;
+    cursor: col-resize;
+    user-select: none;
+
+    // invisible element to make resize handle wider
+    &::after {
+        opacity: 0;
+        position: absolute;
+        left: - ($drag-handle-width / 2);
+        top: 0;
+        height: $drag-handle-height - 10px;
+        width: $drag-handle-width;
+        content: '';
+        background-color:$faint-gray;
+        z-index: 1;
+    }
+}
+
+// trim last resize handle so it doesn't overhang the table
+.resizeable th:last-of-type .resize-handle::after {
+    width: $drag-handle-width / 2;
+}

@@ -1,0 +1,15 @@
+// -----------------------------------------------------------------------------
+// This file contains all styles related to the main layout of the site/application.
+// -----------------------------------------------------------------------------
+
+.main {
+    position: relative;
+    box-sizing: border-box;
+    @include rem(padding-left, 68px);
+    @include rem(padding-top, 56px);
+    @include rem(padding-bottom, 56px);
+    @include media-query-breakpoint('tablet', $type: max) {
+        @include rem(padding-top, 56px + $space-s);
+        padding-left: 0;
+    }
+}

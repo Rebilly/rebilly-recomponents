@@ -1,0 +1,12 @@
+// -----------------------------------------------------------------------------
+// This file contains styles that are specific to the guide notifications page.
+// -----------------------------------------------------------------------------
+
+.guide-notification-table-expandable{
+    border-bottom: none !important;
+    padding: 0 !important;
+    cursor: pointer;
+    > table > tr:first-child{
+        background: $background;
+    }
+}

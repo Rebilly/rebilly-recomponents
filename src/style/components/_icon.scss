@@ -1,0 +1,80 @@
+// -----------------------------------------------------------------------------
+// This file contains all styles related to the icon component.
+// -----------------------------------------------------------------------------
+
+.icon {
+    background-size: contain;
+    background-position: center;
+    background-repeat: no-repeat;
+    position: relative;
+    fill: $gray;
+    color: transparent;
+    display: inline-block;
+    vertical-align: middle;
+    @include rem(margin, -4px 0 -2px 0);
+    @include transition(all .15s ease);
+}
+
+.icon-20 {
+    width: 20px;
+    height: 20px;
+    vertical-align: top;
+    margin: 0;
+}
+
+/**
+* Colors
+*/
+@include all-colours(icon, fill);
+
+/**
+* Animations
+*/
+.icon.is-spinning {
+    @include animation('spinning 0.7s linear infinite');
+}
+
+.icon.is-ringing {
+    transform-origin: 50% 4px;
+    @include animation('ringing 4s linear infinite');
+}
+
+@include keyframes(spinning) {
+  0% {
+      @include browser-prefix(transform, rotate(0deg));
+  }
+  100% {
+      @include browser-prefix(transform, rotate(360deg));
+  }
+}
+
+@include keyframes(ringing) {
+    0% { @include browser-prefix(transform, rotateZ(0deg)); }
+    1% { @include browser-prefix(transform, rotateZ(30deg)); }
+    3% { @include browser-prefix(transform, rotateZ(-28deg)); }
+    5% { @include browser-prefix(transform, rotateZ(34deg)); }
+    7% {@include browser-prefix(transform, rotateZ(-32deg)); }
+    9% { @include browser-prefix(transform, rotateZ(30deg)); }
+    11% { @include browser-prefix(transform, rotateZ(-28deg)); }
+    13% { @include browser-prefix(transform, rotateZ(26deg)); }
+    15% { @include browser-prefix(transform, rotateZ(-24deg)); }
+    17% { @include browser-prefix(transform, rotateZ(22deg)); }
+    19% { @include browser-prefix(transform, rotateZ(-20deg)); }
+    21% { @include browser-prefix(transform, rotateZ(18deg)); }
+    23% { @include browser-prefix(transform, rotateZ(-16deg)); }
+    25% { @include browser-prefix(transform, rotateZ(14deg)); }
+    27% { @include browser-prefix(transform, rotateZ(-12deg)); }
+    29% { @include browser-prefix(transform, rotateZ(10deg)); }
+    31% { @include browser-prefix(transform, rotateZ(-8deg)); }
+    33% { @include browser-prefix(transform, rotateZ(6deg)); }
+    35% { @include browser-prefix(transform, rotateZ(-4deg)); }
+    37% { @include browser-prefix(transform, rotateZ(2deg)); }
+    39% { @include browser-prefix(transform, rotateZ(-1deg)); }
+    41% { @include browser-prefix(transform, rotateZ(1deg)); }
+    43% { @include browser-prefix(transform, rotateZ(0deg)); }
+    100% { @include browser-prefix(transform, rotateZ(0deg)); }
+}
+
+.icon.is-rotating-right {
+    @include browser-prefix(transform, rotate(90deg));
+}

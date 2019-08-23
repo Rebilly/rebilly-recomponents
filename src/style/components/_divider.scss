@@ -1,0 +1,47 @@
+// -----------------------------------------------------------------------------
+// This file contains all styles related to the divider component.
+// -----------------------------------------------------------------------------
+
+.divider {
+    @include rem(margin, $space-default 0);
+    line-height: $line-height;
+    height: 0;
+    border-top: 1px solid $faint-gray;
+    @include browser-prefix(user-select, none);
+    -webkit-tap-highlight-color: transparent;
+}
+
+.divider.divider-hidden {
+    border-top: 1px solid transparent;
+}
+
+.tile .divider,
+.dropdown .divider,
+.popover .divider,
+.list .divider,
+.message .divider {
+    @include rem(margin, $space-m 0);
+}
+
+.divider.has-or {
+    position: relative;
+    text-transform: uppercase;
+    height: auto;
+    color: $muted;
+    @include display-flex;
+    @include align-items(center);
+    border-top: none;
+}
+
+.divider.has-or::before,
+.divider.has-or::after {
+    content: '';
+    @include flex(1 0);
+    line-height: 1;
+    height: 0;
+    border-top: 1px solid $faint-gray;
+}
+
+.divider.divider-tile-content {
+    @include rem(margin, $space-default (-$space-default));
+}

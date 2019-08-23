@@ -1,0 +1,274 @@
+// -----------------------------------------------------------------------------
+// This file contains all styles related to the icon component.
+// -----------------------------------------------------------------------------
+
+.field,
+.field-control {
+    position: relative;
+}
+
+.field-label {
+    display: block;
+    font-family: $primary-font-stack;
+    color: $text;
+    @include rem(margin-bottom, $space-xs);
+}
+
+.field-input, .field-editable {
+    min-width: 70px;
+    width: 100%;
+    height: auto;
+    vertical-align: baseline;
+    @include rem(padding, $space-s $space-m);
+    @include browser-prefix(appearance, none);
+    border-radius: $border-radius;
+    display: block;
+    box-sizing: border-box;
+    margin: 0;
+    border-style: inset;
+    border: none;
+    box-shadow: 0 0 0 1px $light-gray inset, 0 1px 2px 0 rgba($gray, 0.5) inset, 0 0 0 0 $blue;
+    text-transform: initial;
+    letter-spacing: initial;
+    font-family: $primary-font-stack;
+    font-weight: $regular;
+    @include rem(font-size, $paragraph);
+    @include rem(line-height, $line-height);
+    @include transition(box-shadow .05s ease);
+
+    &:focus {
+        box-shadow: 0 0 0 1px $blue inset, 0 0 0 0 rgba($gray, 0.5) inset, 0 0 0 1px $blue;
+    }
+}
+
+.field.is-error .field-label,
+.field.is-error label {
+    color: $red;
+}
+
+.field.is-error .field-input,
+.field.is-error input{
+    color: $red;
+    box-shadow: 0 0 0 1px $red inset;
+    background: rgba($light-red, 0.6);
+
+    &:focus {
+        box-shadow: 0 0 0 1px $blue inset, 0 0 0 1px rgba($blue, 1);
+    }
+}
+
+.field-caption {
+    display: block;
+    color: $muted;
+    @include rem(margin-top, $space-xs);
+}
+
+/**
+* Input Icons
+*/
+.field-control.has-icon-right .icon:last-child,
+.field-control.has-image-right .image-card {
+    position: absolute;
+    top: $space-s;
+    right: $space-s;
+}
+
+.field-control.has-icon-right .field-input {
+    @include rem(padding, $space-s $space-l $space-s $space-m);
+}
+
+.field-control.has-icon-left .icon:first-child {
+    position: absolute;
+    top: $space-s;
+    left: $space-s;
+}
+
+.field-control.has-icon-left .field-input {
+    @include rem(padding, $space-s $space-m $space-s $space-l);
+}
+
+.field.is-error .field-control.has-icon-right .icon,
+.field.is-error .field-control.has-icon-left .icon {
+    fill: $red;
+}
+
+/**
+* Textarea
+*/
+textarea.field-input {
+    resize: none;
+}
+
+@-moz-document url-prefix() {
+    textarea.field-input {
+        min-height: 36px;
+    }
+}
+
+/**
+* Select
+*/
+select.field-input {
+    min-height: 36px;
+    @include linear-gradient(#FFFFFF, $background);
+    box-shadow: 0 0 0 1px $light-gray inset, 0 1px 2px 0 rgba($gray, 0.3);
+    @include rem(padding, $space-s $space-l $space-s $space-m);
+}
+
+/**
+* Input Addon
+*/
+.field-addon {
+    @extend .field-input;
+    width: auto;
+    min-width: auto;
+    box-shadow: 0 0 0 1px $light-gray inset;
+    background: $light-background;
+    text-align: center;
+}
+
+.field-addon.field-addon-clear {
+    background: transparent;
+    box-shadow: none;
+}
+
+.field-addon.field-addon-clear:first-child {
+    padding-left: 0;
+}
+
+// Removing Firefox dotted line
+select:-moz-focusring {
+    color: transparent;
+    text-shadow: 0 0 0 #000;
+}
+
+/**
+* Input Size Variations
+*/
+.field.field-auto-width {
+    display: inline-block;
+    @include media-query-breakpoint('tablet', $type: max) {
+        display: block;
+    }
+}
+
+/**
+* Input Group
+*/
+.field-group {
+    @include display-flex;
+}
+
+.field-group > * {
+    @include flex(1 0);
+    @include rem(margin-left, -1px);
+}
+
+.field-group > *:not(:first-child):not(:last-child),
+.field-group > *:not(:first-child):not(:last-child) .field-input {
+    border-radius: 0;
+    z-index: $z-10;
+}
+
+.field-group > *:first-child,
+.field-group > *:first-child .field-input {
+    border-radius: $border-radius 0 0 $border-radius;
+}
+
+.field-group > *:last-child,
+.field-group > *:last-child .field-input {
+    border-radius: 0 $border-radius $border-radius 0;
+}
+
+.field-group > *:only-child,
+.field-group > *:only-child .field-input,
+.field-group > *:first-child:last-child,
+.field-group > *:first-child:last-child .field-input  {
+    border-radius: $border-radius;
+}
+
+/**
+* Input Inline
+*/
+.field-input.field-input-inline {
+    @include rem(padding, 0 $space-s);
+    display: inline-block;
+    background: rgba($light-blue, 0.6);
+    box-shadow: none;
+    border-radius: 0;
+    box-sizing: border-box;
+    line-height: $line-height - 1;
+    border-bottom: 1px solid $blue;
+    min-width: auto;
+}
+
+.field.is-error .field-input.field-input-inline {
+    border-bottom: 1px solid $red;
+    box-shadow: none;
+}
+
+/**
+* Input Disabled
+*/
+.field-input[disabled] {
+    background: $light-background;
+    box-shadow: 0 0 0 1px $light-gray inset;
+}
+
+/**
+* Placeholders
+*/
+::-webkit-input-placeholder { /* Chrome/Opera/Safari */
+    color: $gray;
+}
+::-moz-placeholder { /* Firefox 19+ */
+    @include opacity(1);
+    color: $gray;
+}
+:-ms-input-placeholder { /* IE 10+ */
+    color: $gray;
+}
+:-moz-placeholder { /* Firefox 18- */
+    color: $gray;
+}
+/* Placeholder support for content editable field */
+.field-editable-wrapper {
+    position: relative;
+}
+.field-editable-wrapper[placeholder]:empty:before {
+    content: attr(placeholder);
+    position: absolute;
+    width: 60%;
+    color: $gray;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    display: block;
+
+    @include media-query-breakpoint('desktop', $type: max) {
+        width: 100%;
+    }
+}
+.field-editable-wrapper[placeholder]:empty:focus:before {
+    content: '';
+    display: none;
+}
+
+/**
+Editable field special classes
+ */
+.field-editable-wrapper {
+    display: block;
+    position: relative;
+    min-height: 20px;
+}
+
+.field-editable.has-icon {
+    position: relative;
+    padding-left: 40px;
+}
+
+.field-editable-wrapper .keyword {
+    color: $blue;
+    box-shadow: inset 0 -1px 0 $light-blue;
+}

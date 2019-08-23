@@ -1,0 +1,15 @@
+.color-swatch {
+    position: absolute;
+    width: 24px;
+    height: 24px;
+    right: 6px;
+    bottom: 6px;
+    border-radius: $border-radius;
+    box-shadow: 1px 1px 1px #eeeeee;
+    content: "";
+    z-index: 1;
+
+    &:hover {
+        box-shadow: 1px 1px 1px #eeeeee, inset 0 0 0 1px $gray;
+    }
+}

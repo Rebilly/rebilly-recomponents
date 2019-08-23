@@ -1,0 +1,80 @@
+// -----------------------------------------------------------------------------
+// This file contains all styles related to the avatar component.
+// -----------------------------------------------------------------------------
+
+.avatar {
+    max-width: 100%;
+    display: inline-block;
+    position: relative;
+}
+
+.avatar.avatar-description {
+    @include display-flex;
+    @include align-items(center);
+}
+
+.avatar-image {
+    width: 36px;
+    height: 36px;
+    margin-right: 0;
+    text-align: center;
+    @include flex(0 0 auto);
+}
+
+.avatar.avatar-description > .avatar-image {
+    margin-right: 0;
+    @include rem(margin-right, $space-s);
+}
+
+.avatar-info > * {
+    margin: 0;
+    @include rem(line-height, 18px);
+}
+
+.avatar-info .avatar-info-muted-text {
+    color: $muted;
+}
+
+.avatar-icon,
+.avatar-initials {
+    border-radius: $border-radius;
+    @include rem(padding, $space-s);
+    background: $background;
+}
+
+.avatar-initials {
+    position: relative;
+    padding: 0;
+    width: 36px;
+    height: 36px;
+    text-align: center;
+}
+
+@include all-colours(avatar-initials, background);
+
+.avatar-initials span {
+    @include center(true, true);
+    color: #FFFFFF;
+    font-weight: $medium;
+    font-family: $secondary-font-stack;
+    text-transform: uppercase;
+}
+
+// Sizes
+.avatar-l {
+    & .avatar-image,
+    & .avatar-image .image,
+    & .avatar-initials {
+        width: 64px;
+        height: 64px;
+    }
+    & .avatar-info > * {
+        line-height: $line-height;
+    }
+    & .avatar-initials span {
+        @include rem(font-size, 20px);
+    }
+    &.avatar-description > .avatar-image {
+        @include rem(margin-right, $space-m);
+    }
+}

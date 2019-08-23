@@ -1,0 +1,327 @@
+// -----------------------------------------------------------------------------
+// This file contains all application-wide Sass mixins.
+// -----------------------------------------------------------------------------
+
+/// Event wrapper
+/// @author Harry Roberts
+/// @param {Bool} $self [false] - Whether or not to include current selector
+/// @link https://twitter.com/csswizardry/status/478938530342006784 Original tweet from Harry Roberts
+@mixin on-event($self: false) {
+  @if $self {
+    &,
+    &:hover,
+    &:active,
+    &:focus {
+      @content;
+    }
+  } @else {
+    &:hover,
+    &:active,
+    &:focus {
+      @content;
+    }
+  }
+}
+
+// Conversion px to rem
+// @author Greg Rickaby
+@mixin rem($property, $values) {
+	$px : ();
+	$rem: ();
+
+	$root: $baseFontSize;
+
+	@each $value in $values {
+		@if $value == 0 or $value == auto {
+			$px : append($px , $value);
+			$rem: append($rem, $value);
+		}
+
+		@else if type-of($value) == number {
+			$unit: unit($value);
+			$val: parseInt($value);
+
+			@if $unit == "px" {
+				$px : append($px,  $value);
+				$rem: append($rem, ($val / $root + rem));
+			}
+
+			@if $unit == "rem" {
+				$px : append($px,  ($val * $root + px));
+				$rem: append($rem, $value);
+			}
+		}
+
+		@else {
+			$px : append($px,  $value);
+			$rem: append($rem, $value);
+		}
+	}
+
+	@if $px == $rem {
+		#{$property}: $px;
+	} @else {
+		#{$property}: $px;
+		#{$property}: $rem;
+	}
+}
+
+// Browser Prefix
+// @author Cesar Level
+// @param $property $args... - Use on CSS properties that requieres vendor prefixes http://shouldiprefix.com/
+@mixin browser-prefix($property, $args...) {
+    -webkit-#{$property}: $args;
+    -moz-#{$property}: $args;
+    -ms-#{$property}: $args;
+    #{$property}: $args;
+}
+
+// Flex
+@mixin display-flex($important: false) {
+    @if $important == true {
+        display: -webkit-box!important;
+        display: -ms-flexbox!important;
+        display: -webkit-flex!important;
+        display: flex!important;
+    } @else {
+        display: -webkit-box;
+        display: -ms-flexbox;
+        display: -webkit-flex;
+        display: flex;
+    }
+}
+
+@mixin display-inline-flex($important: false) {
+    @if $important == true {
+        display: -webkit-inline-box!important;
+        display: -ms-inline-flexbox!important;
+        display: -webkit-inline-flex!important;
+        display: inline-flex!important;
+    } @else {
+        display: -webkit-inline-box;
+        display: -ms-inline-flexbox;
+        display: -webkit-inline-flex;
+        display: inline-flex;
+    }
+}
+
+@mixin flex-wrap($arg, $important: false) {
+    @if $important == true {
+        -webkit-flex-wrap: $arg!important;
+        -ms-flex-wrap: $arg!important;
+        flex-wrap: $arg!important;
+    } @else {
+        -webkit-flex-wrap: $arg;
+        -ms-flex-wrap: $arg;
+        flex-wrap: $arg;
+    }
+}
+
+@mixin flex-flow($arg, $important: false) {
+  @if $important == true {
+    -webkit-flex-flow: $arg!important;
+    -ms-flex-flow: $arg!important;
+    flex-flow: $arg!important;
+  } @else {
+    -webkit-flex-flow: $arg;
+    -ms-flex-flow: $arg;
+    flex-flow: $arg;
+  }
+}
+
+@mixin justify-content($arg, $important: false) {
+    @if $important == true {
+        -webkit-box-pack: $arg!important;
+        -webkit-justify-content: $arg!important;
+        -ms-flex-pack: $arg!important;
+        justify-content: $arg!important;
+    } @else {
+        -webkit-box-pack: $arg;
+        -webkit-justify-content: $arg;
+        -ms-flex-pack: $arg;
+        justify-content: $arg;
+    }
+}
+
+@mixin align-items($arg, $important: false) {
+    @if $important == true {
+        -webkit-align-items: $arg!important;
+        -ms-align-items: $arg!important;
+        align-items: $arg!important;
+    } @else {
+        -webkit-align-items: $arg;
+        -ms-align-items: $arg;
+        align-items: $arg;
+    }
+}
+
+@mixin flex($args...) {
+    -webkit-box-flex: $args;
+    -webkit-flex: $args;
+    -ms-flex: $args;
+    flex: $args;
+}
+
+// Linear gradients
+// @param $top, $bottom
+@mixin linear-gradient($top, $bottom){
+    background: $top; /* Old browsers */
+    background: -moz-linear-gradient(top,  $top 0%, $bottom 100%); /* FF3.6+ */
+    background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,$top), color-stop(100%,$bottom)); /* Chrome,Safari4+ */
+    background: -webkit-linear-gradient(top,  $top 0%,$bottom 100%); /* Chrome10+,Safari5.1+ */
+    background: -o-linear-gradient(top,  $top 0%,$bottom 100%); /* Opera 11.10+ */
+    background: -ms-linear-gradient(top,  $top 0%,$bottom 100%); /* IE10+ */
+    background: linear-gradient(to bottom,  $top 0%,$bottom 100%); /* W3C */
+    filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#ffffff', endColorstr='#000000',GradientType=0 ); /* IE6-9 */
+}
+
+// All Colours
+// @author Cesar Level
+// @param $class $property $args...
+// Class should always be followed by '-' e.g. icon-
+@mixin all-colours($class, $property){
+    @each $value in $colours {
+        .#{$class}-#{nth($value, 1)} {
+            #{$property}: #{nth($value, 2)};
+        }
+    }
+}
+
+// Spatial Helpers
+// @author Cesar Level
+// @param $property
+@mixin spatial-helpers($property, $structure: $spaces){
+  @each $value in $structure {
+    .#{$property}-#{nth($value, 1)} {
+      @include rem($property, nth($value, 2)!important);
+    }
+  }
+}
+
+// Center
+// From CSS Tricks https://css-tricks.com/snippets/sass/centering-mixin/
+@mixin center($horizontal: true, $vertical: true) {
+  position: absolute;
+  background-clip: padding-box;
+  @if ($horizontal and $vertical) {
+    top: 50%;
+    left: 50%;
+    -webkit-transform: translate(-50%, -50%);
+    -moz-transform: translate(-50%, -50%);
+    -ms-transform: translate(-50%, -50%);
+    -o-transform: translate(-50%, -50%);
+    transform: translate(-50%, -50%);
+  } @else if ($horizontal) {
+    left: 50%;
+    -webkit-transform: translate(-50%, 0);
+    -moz-transform: translate(-50%, 0);
+    -ms-transform: translate(-50%, 0);
+    -o-transform: translate(-50%, 0);
+    transform: translate(-50%, 0);
+  } @else if ($vertical) {
+    top: 50%;
+    -webkit-transform: translate(0, -50%);
+    -moz-transform: translate(0, -50%);
+    -ms-transform: translate(0, -50%);
+    -o-transform: translate(0, -50%);
+    transform: translate(0, -50%);
+  }
+}
+
+// Transitions
+// @include transition(color .3s ease);
+@mixin transition($args...) {
+  -webkit-transition: $args;
+  -moz-transition: $args;
+  -ms-transition: $args;
+  -o-transition: $args;
+  transition: $args;
+}
+
+// Transition Delay
+// @include transition-delay(.3s);
+@mixin transition-delay($args...) {
+  -webkit-transition-delay: $args;
+  -moz-transition-delay: $args;
+  -ms-transition-delay: $args;
+  -o-transition-delay: $args;
+  transition-delay: $args;
+}
+
+// Animations
+// @include keyframes(slide-down) {
+//   0% { opacity: 1; }
+//   90% { opacity: 0; }
+// }
+//
+// .element {
+//   width: 100px;
+//   height: 100px;
+//   background: black;
+//   @include animation('slide-down 5s 3');
+// }
+@mixin keyframes($animation-name) {
+    @-webkit-keyframes #{$animation-name} {
+        @content;
+    }
+    @-moz-keyframes #{$animation-name} {
+        @content;
+    }
+    @-ms-keyframes #{$animation-name} {
+        @content;
+    }
+    @-o-keyframes #{$animation-name} {
+        @content;
+    }
+    @keyframes #{$animation-name} {
+        @content;
+    }
+}
+
+@mixin animation($str) {
+  -webkit-animation: #{$str};
+  -moz-animation: #{$str};
+  -ms-animation: #{$str};
+  -o-animation: #{$str};
+  animation: #{$str};
+}
+
+// Opacity
+// @include opacity(0);
+@mixin opacity($value){
+  $IEValue: $value*100;
+  opacity: $value;
+  -ms-filter: "progid:DXImageTransform.Microsoft.Alpha(Opacity="+$IEValue+")";
+  filter: alpha(opacity=$IEValue);
+}
+
+//Breakpoints
+//Inside a class
+// @include media-query-breakpoint('desktop') {
+//     padding-top: 4rem;
+//     font-size: 2.4rem;
+// }
+@mixin media-query-breakpoint($width, $type: min) {
+    @if map_has_key($breakpoints, $width) {
+        $width: map_get($breakpoints, $width);
+        @if $type == max {
+            $width: $width - 1px;
+        }
+        @media screen and (#{$type}-width: $width) {
+            @content;
+        }
+    }
+}
+
+// Truncate a string, need to ad a max-width to the parent element
+// @include truncate(0);
+@mixin truncate($truncation-boundary) {
+    max-width: $truncation-boundary;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    * {
+        text-overflow: ellipsis;
+        overflow: hidden;
+    }
+}

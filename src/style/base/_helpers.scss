@@ -1,0 +1,682 @@
+// -----------------------------------------------------------------------------
+// This file contains CSS helper classes.
+// -----------------------------------------------------------------------------
+
+/**
+* Clear inner floats
+*/
+.clearfix::after {
+  clear: both;
+  content: '';
+  display: table;
+}
+
+/**
+* floats
+*/
+.float-left {
+  float: left !important;
+}
+
+.float-right {
+  float: right !important;
+}
+
+.float-none {
+  float: none !important;
+}
+
+/**
+* Hide text while making it readable for screen readers
+* 1. Needed in WebKit-based browsers because of an implementation bug;
+*    See: https://code.google.com/p/chromium/issues/detail?id=457146
+*/
+.hide-text {
+  overflow: hidden;
+  padding: 0; /* 1 */
+  text-indent: 101%;
+  white-space: nowrap;
+}
+
+/**
+* Hide element while making it readable for screen readers
+* Shamelessly borrowed from HTML5Boilerplate:
+* https://github.com/h5bp/html5-boilerplate/blob/master/src/css/main.css#L119-L133
+*/
+.visually-hidden {
+  border: 0;
+  clip: rect(0 0 0 0);
+  height: 1px;
+  margin: -1px;
+  overflow: hidden;
+  padding: 0;
+  position: absolute;
+  width: 1px;
+}
+
+/**
+* Text variations
+*/
+.italic {
+  font-style: italic !important;
+}
+
+.lowercase {
+  text-transform: lowercase !important;
+}
+
+.titlecase {
+  text-transform: capitalize !important;
+}
+
+.uppercase {
+  text-transform: uppercase !important;
+}
+
+.overline {
+  text-decoration: overline !important;
+}
+
+.line-through {
+  text-decoration: line-through !important;
+}
+
+.underline {
+  text-decoration: underline !important;
+}
+
+.no-decoration {
+  text-decoration: none !important;
+}
+
+/**
+* Text wrapping / space
+*/
+.break-all {
+  word-break: break-all !important;
+}
+
+.keep-all {
+  word-break: keep-all !important;
+}
+
+.break-word {
+  word-wrap: break-word !important;
+}
+
+.no-wrap {
+  white-space: nowrap !important;
+}
+
+.pre {
+  white-space: pre !important;
+}
+
+.pre-wrap {
+  white-space: pre-wrap !important;
+}
+
+.pre-line {
+  white-space: pre-line !important;
+}
+
+/**
+* Text aligment
+*/
+.text-right {
+  text-align: right !important;
+}
+
+.text-left {
+  text-align: left !important;
+}
+
+.text-center {
+  text-align: center !important;
+}
+
+.text-justify {
+  text-align: justify !important;
+}
+
+/**
+* Text color
+*/
+
+@include all-colours(text, color);
+
+.text-muted {
+  color: $muted !important;
+}
+
+.text-color {
+  color: $text !important;
+}
+
+.text-normal-weight {
+  font-weight: $regular !important;
+}
+
+/**
+* Text truncated
+*/
+
+.text-truncate {
+    @include truncate($default-column-width !important)
+}
+
+/**
+* Text blur
+*/
+.text-blur {
+  color: transparent !important;
+  text-shadow: 0 0 10px rgba($text, 0.8), 0 0 5px rgba(255, 255, 255, 0.3) !important;
+
+  .has-tooltip {
+    opacity: 0;
+  }
+
+  &:hover {
+    color: $text !important;
+    text-shadow: none !important;
+
+    .has-tooltip {
+      opacity: 1;
+    }
+  }
+}
+
+/**
+* Text helper
+*/
+.text-help {
+  cursor: pointer;
+  text-decoration-line: underline;
+  text-decoration-style: dashed;
+}
+
+/**
+* Text Selection
+*/
+.text-unselectable {
+  -webkit-touch-callout: none;
+  -webkit-user-select: none;
+  -khtml-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+}
+
+/**
+* Spatial Helpers
+*/
+.inset-default {
+  @include rem(padding, $inset-default !important)
+}
+
+;
+.inset-xxs {
+  @include rem(padding, $inset-xxs !important)
+}
+
+;
+.inset-xs {
+  @include rem(padding, $inset-xs !important)
+}
+
+;
+.inset-s {
+  @include rem(padding, $inset-s !important)
+}
+
+;
+.inset-m {
+  @include rem(padding, $inset-m !important)
+}
+
+;
+.inset-l {
+  @include rem(padding, $inset-l !important)
+}
+
+;
+.inset-xl {
+  @include rem(padding, $inset-xl !important)
+}
+
+;
+.no-bottom-inset {
+  @include rem(padding-bottom, 0 !important)
+}
+
+;
+.stack-xxs {
+  @include rem(margin, $stack-xxs !important)
+}
+
+;
+.stack-xs {
+  @include rem(margin, $stack-xs !important)
+}
+
+;
+.stack-s {
+  @include rem(margin, $stack-s !important)
+}
+
+;
+.stack-m {
+  @include rem(margin, $stack-m !important)
+}
+
+;
+.stack-l {
+  @include rem(margin, $stack-l !important)
+}
+
+;
+.stack-xl {
+  @include rem(margin, $stack-xl !important)
+}
+
+;
+.no-stack {
+  margin-bottom: 0 !important
+}
+
+;
+.inline-xxs {
+  @include rem(margin, 0 $space-xxs 0 0 !important)
+}
+
+;
+.inline-xs {
+  @include rem(margin, 0 $space-xs 0 0 !important)
+}
+
+;
+.inline-s {
+  @include rem(margin, 0 $space-s 0 0 !important)
+}
+
+;
+.inline-m {
+  @include rem(margin, 0 $space-m 0 0 !important)
+}
+
+;
+.inline-l {
+  @include rem(margin, 0 $space-l 0 0 !important)
+}
+
+;
+.inline-xl {
+  @include rem(margin, 0 $space-xl 0 0 !important)
+}
+
+;
+
+@include spatial-helpers(margin-top);
+@include spatial-helpers(margin-bottom);
+@include spatial-helpers(margin-left);
+@include spatial-helpers(margin-right);
+
+@include spatial-helpers(padding-top);
+@include spatial-helpers(padding-bottom);
+@include spatial-helpers(padding-left);
+@include spatial-helpers(padding-right);
+
+.no-margin-top {
+  margin-top: 0 !important
+}
+
+;
+.no-margin-bottom {
+  margin-bottom: 0 !important
+}
+
+;
+.no-margin-left {
+  margin-left: 0 !important
+}
+
+;
+.no-margin-right {
+  margin-right: 0 !important
+}
+
+;
+.no-margin {
+  margin: 0 !important
+}
+
+;
+.no-padding-top {
+  padding-top: 0 !important
+}
+
+;
+.no-padding-bottom {
+  padding-bottom: 0 !important
+}
+
+;
+.no-padding-left {
+  padding-left: 0 !important
+}
+
+;
+.no-padding-right {
+  padding-right: 0 !important
+}
+
+;
+.no-padding {
+  padding: 0 !important
+}
+
+;
+
+.has-l-height {
+  max-height: $space-xl * 4 !important;
+  height: $space-xl * 4 !important;
+}
+
+/**
+* Flex Helpers
+*/
+.display-flex {
+  @include display-flex($important: true);
+}
+
+.display-inline-flex {
+  @include display-inline-flex($important: true);
+}
+
+.no-flex {
+  width: auto;
+  @include flex(0 0 auto !important);
+}
+
+.wrap-items {
+  @include flex-wrap(wrap, $important: true);
+}
+
+.align-items-center {
+  @include align-items(center, $important: true);
+}
+
+.align-items-start {
+  @include align-items(flex-start, $important: true);
+}
+
+.align-items-end {
+  @include align-items(flex-end, $important: true);
+}
+
+.justify-content-end {
+  @include justify-content(flex-end, $important: true);
+}
+
+.justify-content-center {
+  @include justify-content(center, $important: true);
+}
+
+.justify-content-space-between {
+  @include justify-content(space-between, $important: true);
+}
+
+.flex-flow-column {
+  @include flex-flow(column, $important: true);
+}
+
+/**
+* Position Helpers
+*/
+.position-relative {
+  position: relative !important;
+}
+.position-absolute {
+  position: absolute !important;
+}
+
+/**
+* Display Types
+*/
+.display-inline-block {
+  display: inline-block !important;
+}
+
+.display-inline {
+  display: inline !important;
+}
+
+/**
+* Scroll
+*/
+
+.no-scroll {
+  overflow: hidden !important;
+}
+
+.no-scroll-y {
+  overflow-y: hidden !important;
+}
+
+.no-scroll-x {
+  overflow-x: hidden !important;
+}
+
+.scroll-y {
+  overflow-y: scroll !important;
+}
+
+.scroll-x {
+  overflow-x: scroll !important;
+}
+
+/**
+* Cursor Type
+*/
+.cursor-pointer {
+  cursor: pointer !important;
+}
+
+.cursor-default {
+  cursor: default !important;
+}
+
+/**
+* Cursor Type
+*/
+
+.cursor-move {
+  cursor: move !important;
+}
+
+/**
+* Media queries
+*/
+.hide-on-phone {
+  @include media-query-breakpoint('phone', $type: max) {
+    display: none !important;
+  }
+}
+
+.hide-on-tablet {
+  @include media-query-breakpoint('tablet', $type: max) {
+    display: none !important;
+  }
+}
+
+.hide-on-small-desktop {
+  @include media-query-breakpoint('small-desktop', $type: max) {
+    display: none !important;
+  }
+}
+
+.hide-on-desktop {
+  @include media-query-breakpoint('desktop', $type: max) {
+    display: none !important;
+  }
+}
+
+.hide-on-large-desktop {
+  @include media-query-breakpoint('large-desktop', $type: max) {
+    display: none !important;
+  }
+}
+
+.show-on-phone {
+  @include media-query-breakpoint('phone', $type: max) {
+    display: block !important;
+  }
+}
+
+.show-on-tablet {
+  @include media-query-breakpoint('large-desktop', $type: min) {
+    display: none !important;
+  }
+  @include media-query-breakpoint('large-desktop', $type: max) {
+    display: none !important;
+  }
+  @include media-query-breakpoint('tablet', $type: max) {
+    display: block !important;
+  }
+}
+
+.show-on-small-desktop {
+  @include media-query-breakpoint('large-desktop', $type: min) {
+    display: none !important;
+  }
+  @include media-query-breakpoint('large-desktop', $type: max) {
+    display: none !important;
+  }
+  @include media-query-breakpoint('small-desktop', $type: max) {
+    display: block !important;
+  }
+}
+
+.show-on-desktop {
+  @include media-query-breakpoint('large-desktop', $type: min) {
+    display: none !important;
+  }
+  @include media-query-breakpoint('large-desktop', $type: max) {
+    display: none !important;
+  }
+  @include media-query-breakpoint('desktop', $type: max) {
+    display: block !important;
+  }
+}
+
+.show-on-large-desktop {
+  @include media-query-breakpoint('large-desktop', $type: max) {
+    display: block !important;
+  }
+}
+
+.equal-widths-elements-mobile {
+  @include media-query-breakpoint('tablet', $type: max) {
+    @include display-flex;
+    @include flex-wrap(nowrap);
+    @include justify-content(flex-start);
+  }
+
+  & > * {
+    @include flex(1 0);
+  }
+}
+
+/**
+* Border-radius
+*/
+
+.border-radius {
+  border-radius: $border-radius !important;
+}
+
+.border-radius-s {
+  border-radius: $border-radius / 2 !important;
+}
+
+/**
+* Object Aligment
+* These classes force text alignment for desired element (and for its inner
+* elements) by assigning text-align CSS property.
+*/
+.align-left {
+  text-align: left !important;
+}
+
+.align-right {
+  text-align: right !important;
+}
+
+.align-center {
+  text-align: center !important;
+}
+
+.align-justify {
+  text-align: justify !important;
+}
+
+/**
+* Z-Index
+*/
+.z-top {
+  z-index: $z-top !important;
+}
+
+.z-max {
+  z-index: $z-max !important;
+}
+
+.z-mid {
+  z-index: $z-mid !important;
+}
+
+.z-low {
+  z-index: $z-low !important;
+}
+
+.z-90 {
+  z-index: $z-90 !important;
+}
+
+.z-80 {
+  z-index: $z-80 !important;
+}
+
+.z-70 {
+  z-index: $z-70 !important;
+}
+
+.z-60 {
+  z-index: $z-60 !important;
+}
+
+.z-50 {
+  z-index: $z-50 !important;
+}
+
+.z-40 {
+  z-index: $z-40 !important;
+}
+
+.z-30 {
+  z-index: $z-30 !important;
+}
+
+.z-20 {
+  z-index: $z-20 !important;
+}
+
+.z-10 {
+  z-index: $z-10 !important;
+}
+
+/**
+ * Width
+ */
+@include spatial-helpers(width);
+@include spatial-helpers(width, $ratios);

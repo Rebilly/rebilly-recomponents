@@ -1,0 +1,197 @@
+// -----------------------------------------------------------------------------
+// This file contains CSS Typography classes.
+// -----------------------------------------------------------------------------
+
+html, .root {
+    -webkit-text-size-adjust: 100%;
+    -ms-text-size-adjust: 100%;
+    text-size-adjust: 100%;
+    text-rendering: optimizeLegibility;
+    -moz-osx-font-smoothing: grayscale;
+    -webkit-font-smoothing: antialiased;
+    font-size: 62.5%;
+    @include rem(line-height, $line-height);
+}
+
+body, .article {
+    font-family: $primary-font-stack;
+    @include rem(font-size, $paragraph);
+    @include rem(line-height, $line-height);
+    font-weight: $regular;
+}
+
+h1,
+.h1 {
+    font-weight: $medium;
+    font-family: $secondary-font-stack;
+}
+
+h2,
+.h2,
+h3,
+.h3,
+h4,
+.h4,
+h5,
+.h5 {
+    font-weight: $regular;
+    font-family: $primary-font-stack;
+}
+
+h2,
+.h2,
+h3,
+.h3,
+h4,
+.h4,
+h5,
+.h5 {
+    font-weight: $medium;
+    @include rem(line-height, $line-height);
+}
+
+h1,
+.h1 {
+    @include rem(font-size, $h1);
+    @include rem(line-height, $h1-lh);
+    margin-top: 20px;
+    margin-bottom: 40px;
+    @include rem(letter-spacing, -0.6px);
+}
+
+h2,
+.h2 {
+    @include rem(font-size, $h2);
+    @include rem(letter-spacing, 0.15px);
+    font-weight: $medium;
+    margin-top: 20px;
+    margin-bottom: 20px;
+}
+
+h3,
+.h3 {
+    @include rem(font-size, $h3);
+    @include rem(letter-spacing, 0.4px);
+    text-transform: uppercase;
+    font-weight: $medium;
+    margin-top: 20px;
+    margin-bottom: 0px;
+}
+
+h4,
+.h4,
+h5,
+.h5 {
+    @include rem(font-size, $h4);
+    margin-top: 20px;
+    margin-bottom: 0px;
+}
+
+p, ul, ol, pre, table, blockquote {
+    margin-top: 0px;
+    margin-bottom: 20px;
+}
+
+ul ul, ol ol, ul ol, ol ul {
+    margin-top: 0px;
+    margin-bottom: 0px;
+}
+
+/* Let's make sure all's aligned */
+hr {
+    border: 1px solid;
+    margin: -1px 0;
+}
+
+a, b, i, strong, em, small, code {
+    line-height: 0;
+}
+
+a {
+    line-height: $line-height;
+}
+
+strong {
+    font-weight: $medium;
+}
+
+sub, sup {
+    @include rem(line-height, 0);
+    position: relative;
+    vertical-align: baseline;
+}
+
+sup {
+    top: -0.5em;
+}
+
+sub {
+    bottom: -0.25em;
+}
+
+address {
+    font-style: normal;
+    p {
+        margin: 0;
+    }
+     button {
+         text-transform: inherit!important;
+     }
+}
+
+/* Marketing */
+p.marketing {
+    @include rem(font-size, $marketing-paragraph);
+    @include rem(line-height, $marketing-line-height);
+}
+
+/* Keyboard keys */
+kbd {
+    font-family: $primary-font-stack;
+    border: 0;
+    box-shadow: 0 0 0 1px $light-gray, 0 0.18em 0 0 #ffffff, 0 0.18em 0 1px $light-gray;
+    color: $text;
+    height: auto;
+    @include rem(margin, 0 $space-xs);
+    @include rem(font-size, 12px);
+    font-weight: $medium;
+    @include rem(line-height, 14px);
+    @include rem(min-width, 22px);
+    @include rem(padding, 3px 7px);
+    background: #FFFFFF;
+    border-radius: $border-radius - 2;
+    box-sizing: border-box;
+    cursor: default;
+    text-align: center;
+    text-transform: capitalize;
+    @include browser-prefix(user-select, none);
+}
+
+/* Code */
+code {
+    font-family: $code-font-stack;
+    white-space: nowrap;
+    color: $accent;
+    font-weight: $medium;
+}
+
+pre {
+    display: block;
+    border-radius: $border-radius;
+    box-shadow: 0 0 0 1px $faint-gray;
+    @include rem(padding, $inset-m);
+    background: $light-background;
+    font-family: $code-font-stack;
+    overflow: auto;
+    white-space: pre-wrap;
+    white-space: -moz-pre-wrap;
+    white-space: -pre-wrap;
+    white-space: -o-pre-wrap;
+    word-wrap: break-word;
+}
+
+pre code,
+code.text {
+    color: $text;
+}
+

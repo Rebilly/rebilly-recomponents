@@ -1,0 +1,62 @@
+// -----------------------------------------------------------------------------
+// This file contains all styles related to the tooltip components.
+// -----------------------------------------------------------------------------
+
+/* Base styles for the element that has a tooltip */
+
+.tooltip {
+    @include rem(padding, $inset-s);
+    background-color: $dark-background;
+    color: #FFF;
+    position: absolute;
+    top: 0;
+    left: 0;
+    border-radius: $border-radius;
+    white-space: nowrap;
+    font-size: $paragraph;
+    line-height: $line-height;
+    z-index: 1000;
+    box-shadow: 0 3px 6px 0 rgba($muted, 0.2), 0 7px 14px 0 rgba($muted, 0.35);
+    @include transition(opacity 0.15s ease-in-out);
+    opacity: 0;
+}
+
+.tooltip-arrow {
+    top: 100%;
+    left: 50%;
+    border: solid transparent;
+    content: " ";
+    width: 8px;
+    height: 8px;
+    position: absolute;
+    pointer-events: none;
+    background: $dark-background;
+    @include browser-prefix(transform, rotate(45deg));
+    margin-left: -4px;
+    margin-top: -4px;
+}
+
+.tooltip.tooltip-out-right .tooltip-arrow {
+    left: 80%;
+}
+
+.tooltip.tooltip-out-left .tooltip-arrow {
+    left: 20%;
+}
+
+.tooltip.tooltip-out-top .tooltip-arrow,
+.tooltip.tooltip-bottom .tooltip-arrow {
+    top: 0;
+}
+
+.tooltip.tooltip-left .tooltip-arrow {
+    left: 100%;
+    margin-left: -4px;
+    top: 50%;
+}
+
+.tooltip.tooltip-right .tooltip-arrow {
+    left: 0;
+    margin-left: -4px;
+    top: 50%;
+}

@@ -1,0 +1,194 @@
+// -----------------------------------------------------------------------------
+// This file contains all styles related to the grid system.
+// -----------------------------------------------------------------------------
+
+.container {
+    box-sizing: border-box;
+    margin-left: auto;
+    margin-right: auto;
+    @include rem(padding-left, $space-l);
+    @include rem(padding-right, $space-l);
+    width: 100%;
+    @include media-query-breakpoint('large-desktop') {
+        max-width: $max-width;
+    }
+    @include media-query-breakpoint('desktop', $type: max) {
+        @include rem(padding-left, $space-default);
+        @include rem(padding-right, $space-default);
+    }
+}
+
+.container-fluid {
+    box-sizing: border-box;
+    margin-left: auto;
+    margin-right: auto;
+    @include rem(padding-left, $space-l);
+    @include rem(padding-right, $space-l);
+    width: 100%;
+    @include media-query-breakpoint('desktop', $type: max) {
+        @include rem(padding-left, $space-default);
+        @include rem(padding-right, $space-default);
+    }
+}
+
+.grid {
+    @include display-flex;
+    @include flex-wrap(wrap);
+    @include justify-content(flex-start);
+    @include rem(margin, -$space-default / 2);
+    @include media-query-breakpoint('small-desktop', $type: max) {
+        display: block;
+    }
+}
+
+.grid.grid-unstackable {
+    @include flex-wrap(nowrap);
+    @include media-query-breakpoint('desktop', $type: max) {
+        @include display-flex;
+    }
+}
+
+.grid + .grid {
+    @include rem(margin-top, $space-default / 2);
+}
+
+.grid > .grid-item {
+    @include flex(1 0);
+    @include rem(padding, $space-default / 2);
+    @include media-query-breakpoint('phone', $type: max) {
+        width: 100%;
+    }
+}
+
+.grid > .grid-item.grid-item-compact {
+    width: 0;
+    @include media-query-breakpoint('tablet', $type: max) {
+        width: 100%;
+    }
+}
+
+//Grid Content
+.grid-content {
+    @include display-flex;
+    @include flex-wrap(wrap);
+    @include justify-content(flex-start);
+    @include rem(margin, -$space-s);
+    @include media-query-breakpoint('desktop', $type: max) {
+        @include display-flex;
+    }
+    @include media-query-breakpoint('tablet', $type: max) {
+        display: block;
+    }
+}
+
+.grid-content.grid-unstackable {
+    @include flex-wrap(nowrap);
+    @include media-query-breakpoint('desktop', $type: max) {
+        @include display-flex;
+    }
+}
+
+.grid-content + .grid-content {
+    @include rem(margin-top, $space-s);
+}
+
+.grid-content > .grid-item {
+    @include flex(1 0);
+    padding: $space-s;
+    @include media-query-breakpoint('tablet', $type: max) {
+        width: 100%;
+    }
+}
+
+.grid-content.grid-unstackable > .grid-item {
+    @include media-query-breakpoint('tablet', $type: max) {
+        width: auto;
+        @include flex(1 0);
+    }
+}
+
+//Grid Fitted
+.grid-fitted {
+    @extend .grid-content;
+    margin: 0;
+}
+
+.grid-fitted.grid-unstackable {
+    @include flex-wrap(nowrap);
+    @include media-query-breakpoint('desktop', $type: max) {
+        @include display-flex;
+    }
+}
+
+.grid-fitted + .grid-content {
+    margin-top: 0;
+}
+
+.grid-fitted > .grid-item {
+    @include flex(1 0);
+    padding: 0;
+    @include media-query-breakpoint('phone', $type: max) {
+        width: auto;
+    }
+}
+
+.grid-fitted.grid-unstackable > .grid-item {
+    @include media-query-breakpoint('tablet', $type: max) {
+        width: auto;
+        @include flex(1 0);
+    }
+}
+
+//Grid Item Sizes
+.grid-item.grid-item-primary {
+    @include flex(2 1 48rem);
+}
+
+.grid-item.grid-item-secondary  {
+    @include flex(1 0 24rem);
+}
+
+.grid-item.grid-item-full {
+    @include flex(0 0 100%);
+}
+
+.grid-item.grid-item-half {
+    @include flex(0 0 50%);
+}
+
+.grid-item.grid-item-third {
+    @include flex(0 0 33.33%);
+}
+
+.grid-item.grid-item-quarter {
+    @include flex(0 0 25%);
+}
+
+//Offsets
+.grid-item.grid-item-offset-half {
+    margin-left: 50%;
+}
+
+.grid-item.grid-item-offset-third {
+    margin-left: 33.33%;
+}
+
+.grid-item.grid-item-offset-quarter {
+    margin-left: 25%;
+}
+
+.grid-item.grid-item-offset-half,
+.grid-item.grid-item-offset-third,
+.grid-item.grid-item-offset-quarter {
+    @include media-query-breakpoint('tablet', $type: max) {
+        margin: 0;
+    }
+}
+
+//Breaks
+.grid-item-break-half {
+    margin-right: 50%;
+    @include media-query-breakpoint('tablet', $type: max) {
+        margin-right: 0;
+    }
+}

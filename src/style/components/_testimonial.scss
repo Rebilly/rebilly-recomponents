@@ -1,0 +1,66 @@
+// -----------------------------------------------------------------------------
+// This file contains all styles related to the testimonials component.
+// -----------------------------------------------------------------------------
+
+.testimonials {
+
+}
+
+.testimonial-quote {
+    @include rem(font-size, $h2);
+    @include rem(line-height, $marketing-line-height);
+    font-weight: $medium;
+    font-weight: $regular;
+    font-family: $primary-font-stack;
+}
+
+.testimonial-quote.testimonial-quote-bubble {
+    position: relative;
+    @include rem(padding, $inset-m);
+    background: #FFFFFF;
+    box-shadow: 0 0 0 1px rgba($muted, 0.03), 0 1px 2px 0 rgba($muted, 0.24), 0 4px 4px 0 rgba($muted, 0.05);
+    border-radius: $border-radius;
+}
+
+.testimonial-quote.testimonial-quote-bubble::after {
+    content: '';
+    position: absolute;
+    bottom: -$space-default;
+    left: $space-default;
+    width: 0;
+    height: 0;
+    border-style: solid;
+    border-width: $space-default $space-default 0 0;
+    border-color: #FFFFFF transparent transparent transparent;
+}
+
+.testimonial-quote.testimonial-quote-bubble::before {
+    content: '';
+    position: absolute;
+    bottom: -($space-default + 2);
+    left: $space-default - 1;
+    width: 0;
+    height: 0;
+    border-style: solid;
+    border-width: ($space-default + 2) ($space-default + 2) 0 0;
+    border-color: rgba($light-gray, 0.5) transparent transparent transparent;
+}
+
+.testimonial-author {
+    @include display-flex;
+    @include align-items(center);
+}
+
+.testimonial-author-image {
+    width: 52px;
+    height: 52px;
+    border-radius: $border-radius;
+    margin-right: 0;
+    text-align: center;
+    @include flex(0 0 auto);
+    @include rem(margin-right, $space-m);
+}
+
+.testimonial-author-info {
+
+}

@@ -1,0 +1,121 @@
+// -----------------------------------------------------------------------------
+// This file contains all styles related to the stat component.
+// -----------------------------------------------------------------------------
+
+.stat {
+    display: inline-block;
+    text-align: center;
+}
+
+.stat .stat-title {
+    color: $muted;
+    @include rem(margin, $stack-xs);
+}
+
+.stat .stat-value {
+    font-family: $primary-font-stack;
+    font-weight: $medium;
+    font-size: $h2;
+    margin: 0;
+}
+
+.stat .stat-title.stat-title-link,
+.stat .stat-value.stat-value-link {
+    color: $blue;
+    cursor: pointer;
+}
+
+.stat .stat-value .icon {
+    vertical-align: baseline;
+    @include rem(margin-right, $space-xs);
+}
+
+.stat .stat-value.is-positive {
+    color: $green;
+}
+
+.stat .stat-value.is-positive .icon {
+    fill: $green;
+}
+
+.stat .stat-value.is-negative {
+    color: $red;
+}
+
+.stat .stat-value.is-negative .icon {
+    fill: $red;
+}
+
+.stat.stat-l .stat-title {
+    margin: 0;
+}
+
+.stat.stat-l .stat-value {
+    @include rem(letter-spacing, -0.4px);
+    font-size: $h1;
+    line-height: $h1-lh;
+}
+
+/**
+* Groups
+*/
+.stat-group .stat {
+    @include rem(margin, 0 $space-l);
+    @include media-query-breakpoint('tablet', $type: max) {
+        display: block;
+        @include rem(margin, $space-l 0);
+    }
+}
+
+.stat-group.stat-group-fluid {
+    @include display-flex;
+    @include flex-wrap(wrap);
+    @include media-query-breakpoint('tablet', $type: max) {
+        display: block;
+    }
+}
+
+.stat-group.stat-group-fluid > .stat {
+    margin: 0;
+    @include flex(1 0);
+    @include media-query-breakpoint('desktop', $type: max) {
+        @include flex(1 0 50%);
+        @include rem(margin, $space-m 0);
+    }
+    @include media-query-breakpoint('tablet', $type: max) {
+        width: 100%;
+        @include rem(margin, $space-l 0);
+    }
+}
+
+.stat-group.stat-group-fluid > .stat:nth-child(-n+2) {
+    @include media-query-breakpoint('desktop', $type: max) {
+        @include flex(1 0 50%);
+        margin-top: 0;
+    }
+}
+
+.stat-group.stat-group-fluid > .stat:nth-last-child(-n+2) {
+    @include media-query-breakpoint('desktop', $type: max) {
+        @include flex(1 0 50%);
+        margin-bottom: 0;
+    }
+}
+
+.stat-group .stat:first-child,
+.stat-group.stat-group-fluid > .stat:first-child {
+    margin-left: 0;
+    @include media-query-breakpoint('tablet', $type: max) {
+        display: block;
+        margin-top: 0;
+    }
+}
+
+.stat-group .stat:last-child,
+.stat-group.stat-group-fluid > .stat:last-child {
+    margin-right: 0;
+    @include media-query-breakpoint('tablet', $type: max) {
+        display: block;
+        margin-bottom: 0;
+    }
+}

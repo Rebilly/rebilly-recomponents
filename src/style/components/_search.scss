@@ -1,0 +1,28 @@
+.search-results {
+  .search-item {
+    .table {
+      tr {
+        td:first-child {
+          width: 125px;
+        }
+      }
+    }
+  }
+
+  & .search-item:not(.dropdown-item) {
+    @include rem(padding, $space-xs 0 $space-xs $space-m);
+  }
+  & .search-item:hover, .search-item-highlighted {
+    text-decoration: none;
+    background-color: $background;
+    color: $text;
+  }
+
+  & .search-results-title {
+    background: #FFFFFF;
+    @include rem(padding-top, $space-m);
+    @include rem(padding-left, 0);
+    @include rem(margin-left, $space-m);
+    @include rem(margin-right, $space-m);
+  }
+}

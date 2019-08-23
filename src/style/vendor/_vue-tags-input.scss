@@ -1,0 +1,64 @@
+// -----------------------------------------------------------------------------
+// This file contains all styles related to the vue-tags-input plugin.
+// -----------------------------------------------------------------------------
+
+.tag-input-field.is-focused > .field-input {
+    box-shadow: 0 0 0 1px $blue inset, 0 0 0 1px rgba($blue, 1);
+}
+
+.field-input.tags-input {
+    @include rem(padding, ($space-s - 2) $space-m ($space-s - 6));
+    &:hover {
+        focus: 5px solid red;
+    }
+}
+
+.tags-input span {
+    @include rem(margin-right, $space-xs!important);
+    @include rem(margin-bottom, $space-xs!important);
+    @include rem(line-height, $line-height);
+    max-height: 24px;
+    vertical-align: top;
+    border-radius: $border-radius;
+}
+
+.field-input.tags-input {
+    min-height: 36px;
+    align-items: flex-start;
+}
+
+.tags-input input {
+    height: 24px;
+    padding: 0;
+    width:190px;
+}
+
+.tags-input-remove {
+    width: 20px;
+    height: 20px;
+}
+
+.tags-input-remove:before {
+    display: none;
+}
+
+.tags-input-remove:after {
+    width: 20px;
+    height: 20px;
+    top: 0;
+    margin-top: 0;
+    transform: none;
+    background: url('/static/icons/close-s-gray.svg') center no-repeat;
+}
+
+.tag-input-field .typeahead {
+    position: absolute;
+    display: block;
+    margin-top: 4px;
+    box-shadow: 0 0 0 1px rgba($muted, 0.09), 0 7px 14px 0 rgba($muted, 0.15), 0 3px 6px 0 rgba($muted, 0.07);
+    border-radius: $border-radius;
+    width: 100%;
+    background: #FFFFFF;
+    box-sizing: border-box;
+    padding: $space-s $space-m;
+}

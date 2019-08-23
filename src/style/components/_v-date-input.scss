@@ -1,0 +1,17 @@
+// -----------------------------------------------------------------------------
+// This file contains all styles related to the vDateInput component.
+// -----------------------------------------------------------------------------
+
+.date-input {
+    min-width: 130px;
+}
+
+.date-time-input {
+    width: 70px;
+}
+
+.date-time-divider {
+    @include rem(padding, $space-s $space-xs);
+    font-family: $secondary-font-stack;
+    font-weight: $bold;
+}

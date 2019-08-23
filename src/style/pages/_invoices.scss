@@ -1,0 +1,21 @@
+// -----------------------------------------------------------------------------
+// This file contains styles that are specific to the invoices page.
+// -----------------------------------------------------------------------------
+
+.invoice-body {
+    @include rem(padding, $space-s $space-m);
+    background: $light-background;
+    box-shadow: 0 0 0 1px $light-gray inset;
+    overflow: hidden;
+    border-radius: $border-radius;
+}
+
+.invoice-notes-autopay {
+    height: 100%;
+}
+
+.invoice-notes p {
+    min-height: 76px;
+}
+
+.invoice-autopay {}

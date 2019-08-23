@@ -1,0 +1,34 @@
+// -----------------------------------------------------------------------------
+// This file contains all styles related to the blank state component.
+// -----------------------------------------------------------------------------
+
+.blank {
+    box-sizing: border-box;
+    overflow: hidden;
+    text-align: center;
+    @include rem(padding, $inset-xl);
+    @include media-query-breakpoint('tablet', $type: max) {
+        @include rem(padding, $inset-l);
+    }
+}
+
+.blank .blank-image .image {
+    @include rem(margin, 0 auto);
+}
+
+.blank .blank-title {
+    @include rem(margin, $space-default auto $space-s auto);
+    max-width: 400px;
+    @include media-query-breakpoint('phone', $type: max) {
+        max-width: none;
+    }
+}
+
+.blank .blank-description {
+    @include rem(margin, 0 auto $space-l auto);
+    max-width: 450px;
+    color: $muted;
+    @include media-query-breakpoint('phone', $type: max) {
+        max-width: none;
+    }
+}
