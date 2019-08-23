@@ -38,9 +38,8 @@ const topLevelContexts = [
     },
 ];
 
-import '../public/main.css';
 import '../public/story.css';
-import '../src/styles/theme.scss';
+import '../src/style/themes/_default.scss';
 
 const req = require.context('../src/', true, /\.story\.js$/);
 
@@ -55,7 +54,7 @@ addDecorator(withCssResources)
 addParameters({
   cssresources: [{
       id: `boostrap`,
-      picked: true,
+      picked: false,
       code: `
         <style>
             :root {

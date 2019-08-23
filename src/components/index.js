@@ -8,8 +8,6 @@ import RLoader from './r-loader/r-loader.vue';
 import RRadio from './r-radio/r-radio.vue';
 import RTile from './r-tile/r-tile.vue';
 
-import '../styles/theme.scss';
-
 export default {
     RBadge,
     RButton,

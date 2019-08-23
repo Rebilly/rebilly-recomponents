@@ -264,44 +264,4 @@
 </script>
 
 <style lang="scss" scoped>
-    .popper {
-        display: inline-block;
-        position: relative;
-    }
-
-    .popper.popper-fluid {
-        width: 100%;
-    }
-
-    .fade-enter-active, .fade-leave-active,
-    .top-enter-active, .top-leave-active,
-    .bottom-enter-active, .bottom-leave-active,
-    .left-enter-active, .left-leave-active,
-    .right-enter-active, .right-leave-active {
-        transition: all .2s ease-in-out;
-    }
-
-    .fade-enter, .fade-leave-to {
-        opacity: 0;
-    }
-
-    .left-enter, .left-leave-to {
-        opacity: 0;
-        transform: translateX(-12px);
-    }
-
-    .right-enter, .right-leave-to {
-        opacity: 0;
-        transform: translateX(12px);
-    }
-
-    .bottom-enter, .bottom-leave-to {
-        opacity: 0;
-        transform: translateY(12px);
-    }
-
-    .top-enter, .top-leave-to {
-        opacity: 0;
-        transform: translateY(-12px);
-    }
 </style>
