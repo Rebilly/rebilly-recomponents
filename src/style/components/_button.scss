@@ -11,14 +11,18 @@
     vertical-align: baseline;
     @include browser-prefix(user-select, none);
     @include browser-prefix(appearance, none);
-    @include linear-gradient(#FFFFFF, $background);
+    @include linear-gradient(#FFFFFF, var(--background-color));
+
     box-shadow: 0 0 0 1px $light-gray inset, 0 1px 2px 0 rgba($gray, 0.3);
-    color: $text;
+    // TODO: CSS variables are not working well here
+    // box-shadow: 0 0 0 1px var(--light-gray-color) inset, 0 1px 2px 0 rgba(var(--gray-color), 0.3);
+
+    color: var(--text-color);
     cursor: pointer;
     border-radius: $border-radius;
     border: none;
     @include rem(padding, $space-s $space-m);
-    font-family: $primary-font-stack;
+    font-family: var(--primary-font-stack);
     font-weight: $regular;
     @include rem(font-size, $paragraph);
     @include rem(line-height, $line-height);
@@ -26,17 +30,17 @@
     outline: none;
 
     &:hover {
-        background: $background;
+        background: var(--background-color);
         text-decoration: none;
     }
 
     &:focus {
-        box-shadow: 0 0 0 1px $blue inset, 0 0 0 1px $blue;
+        box-shadow: 0 0 0 1px var(--primary-color) inset, 0 0 0 1px var(--primary-color);
     }
 
     &:active {
-        background: $background;
-        box-shadow: 0 0 0 1px $light-gray inset, 0 1px 3px 1px $light-gray inset;
+        background: var(--background-color);
+        box-shadow: 0 0 0 1px var(--light-gray-color) inset, 0 1px 3px 1px var(--light-gray-color) inset;
     }
 }
 
@@ -44,40 +48,48 @@
 * Types
 */
 .r-btn-primary {
-    @include linear-gradient($blue, adjust-hue($blue, 30));
+    //@include linear-gradient($blue, adjust-hue($blue, 30));
+    background: linear-gradient(to bottom, var(--primary-color) 0%, var(--primary-color-light) 100%);
     color: #FFFFFF;
-    box-shadow: 0 1px 2px 0 rgba($gray, 0.8);
+    box-shadow: 0 1px 2px 0 rgba(var(--gray-color), 0.8);
 
     &:hover {
-        background: adjust-hue($blue, 30);
+        //background: adjust-hue($blue, 30);
+        background: var(--primary-color-light);
     }
 
     &:focus {
-        box-shadow: 0 0 0 1px darken($blue, 20) inset, 0 0 0 1px darken($blue, 20);
+        //box-shadow: 0 0 0 1px darken($blue, 20) inset, 0 0 0 1px darken($blue, 20);
+        box-shadow: 0 0 0 1px var(--primary-color-dark) inset, 0 0 0 1px var(--primary-color-dark);
     }
 
     &:active {
         background: #3000D7;
-        box-shadow: 0 1px 3px 1px darken($blue, 10) inset;
+        box-shadow: 0 1px 3px 1px var(--primary-color-medium) inset;
     }
 }
 
 .r-btn-danger {
-    @include linear-gradient(saturate($red, 50), $red);
+    //@include linear-gradient(saturate(var(--saturated-red-color), 50), $red);
+    background: linear-gradient(to bottom, var(--saturated-red-color) 0%, var(--saturated-red-color) 100%);
     color: #FFFFFF;
-    box-shadow: 0 1px 2px 0 rgba($gray, 0.8);
+    box-shadow: 0 1px 2px 0 rgba(var(--gray-color), 0.8);
 
     &:hover {
-        background: darken($red, 5);
+        //background: darken($red, 5);
+        background: var(--red-color-light);
     }
 
     &:focus {
-        box-shadow: 0 0 0 1px darken($red, 20) inset, 0 0 0 1px darken($red, 20);
+        //box-shadow: 0 0 0 1px darken($red, 20) inset, 0 0 0 1px darken($red, 20);
+        box-shadow: 0 0 0 1px var(--red-color-dark) inset, 0 0 0 1px var(--red-color-dark);
     }
 
     &:active {
-        background: darken($red, 10);
-        box-shadow: 0 1px 3px 1px darken($red, 20) inset;
+        //background: darken($red, 10);
+        background: var(--red-color-medium);
+        //box-shadow: 0 1px 3px 1px darken($red, 20) inset;
+        box-shadow: 0 1px 3px 1px var(--red-color-dark) inset;
     }
 }
 
@@ -135,35 +147,39 @@
     cursor: auto;
 
     &:hover {
-        @include linear-gradient(#FFFFFF, $background);
+        @include linear-gradient(#FFFFFF, var(--background-color));
     }
 
     &:active {
-        box-shadow: 0 0 0 1px $light-gray inset, 0 1px 2px 0 rgba($gray, 0.3);
+        box-shadow: 0 0 0 1px var(--light-gray-color) inset, 0 1px 2px 0 rgba(var(--gray-color), 0.3);
     }
 }
 
 //Primary
 .r-btn.r-btn-primary[disabled] {
     &:hover {
-        @include linear-gradient($blue, adjust-hue($blue, 30));
+        //@include linear-gradient($blue, adjust-hue($blue, 30));
+        background: linear-gradient(to bottom, var(--primary-color) 0%, var(--primary-color-light) 100%);
     }
 
     &:active {
-        @include linear-gradient($blue, adjust-hue($blue, 30));
-        box-shadow: 0 1px 2px 0 rgba($gray, 0.8);
+        //@include linear-gradient($blue, adjust-hue($blue, 30));
+        background: linear-gradient(to bottom, var(--primary-color) 0%, var(--primary-color-light) 100%);
+        //box-shadow: 0 1px 2px 0 rgba($gray, 0.8);
     }
 }
 
 //Danger
 .r-btn.r-btn-danger[disabled] {
     &:hover {
-        @include linear-gradient(saturate($red, 50), $red);
+        //@include linear-gradient(saturate($red, 50), $red);
+        background: linear-gradient(to bottom, var(--saturated-red-color) 0%, var(--red-color) 100%);
     }
 
     &:active {
-        @include linear-gradient(saturate($red, 50), $red);
-        box-shadow: 0 1px 2px 0 rgba($gray, 0.8);
+        //@include linear-gradient(saturate($red, 50), $red);
+        background: linear-gradient(to bottom, var(--saturated-red-color) 0%, var(--red-color) 100%);
+        box-shadow: 0 1px 2px 0 rgba(var(--gray-color), 0.8);
     }
 }
 
