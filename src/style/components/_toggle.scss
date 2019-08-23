@@ -3,7 +3,7 @@
 // (Checkbox, Radio and more...)
 // -----------------------------------------------------------------------------
 
-.field-label-toggle {
+.r-field-label-toggle {
     display: inline-block;
     position: relative;
     @include rem(padding-left, 20px + $space-s);
@@ -11,11 +11,11 @@
     cursor: pointer;
 }
 
-.field-label-toggle.is-disabled {
+.r-field-label-toggle.is-disabled {
     color: $muted;
 }
 
-.field-caption-toggle {
+.r-field-caption-toggle {
     @include rem(padding-left, 20px + $space-s);
     @include rem(margin-top, $space-xxs);
 }
@@ -23,7 +23,7 @@
 /**
 * Checkbox
 */
-input.field-checkbox[type=checkbox] {
+input.r-field-checkbox[type=checkbox] {
     @include opacity(0);
     position: absolute;
     left: 0;
@@ -34,22 +34,22 @@ input.field-checkbox[type=checkbox] {
     z-index: 10;
     cursor: pointer;
 
-    &:checked ~ .field-checkbox-style,
-    &:focus ~ .field-checkbox-style {
+    &:checked ~ .r-field-checkbox-style,
+    &:focus ~ .r-field-checkbox-style {
         box-shadow: 0 0 0 1px $blue inset, 0 0 0 0 rgba($gray, 0.5) inset, 0 0 0 1px $blue;
     }
 
-    &:checked ~ .field-checkbox-style .icon {
+    &:checked ~ .r-field-checkbox-style .r-icon {
         fill: $blue;
         @include opacity(1);
     }
 
-    &[disabled] ~ .field-checkbox-style {
+    &[disabled] ~ .r-field-checkbox-style {
         background: $background;
     }
 }
 
-.field-checkbox-style {
+.r-field-checkbox-style {
     cursor: pointer;
     box-sizing: border-box;
     width: 16px;
@@ -62,7 +62,7 @@ input.field-checkbox[type=checkbox] {
     @include transition(box-shadow .1s ease);
 }
 
-.field-checkbox-style .icon {
+.r-field-checkbox-style .r-icon {
     position: absolute;
     top: -$space-xxs;
     right: -$space-xxs;
@@ -72,7 +72,7 @@ input.field-checkbox[type=checkbox] {
 /**
 * Radio
 */
-input.field-radio[type=radio] {
+input.r-field-radio[type=radio] {
     @include opacity(0);
     position: absolute;
     left: 0;
@@ -83,22 +83,22 @@ input.field-radio[type=radio] {
     z-index: 10;
     cursor: pointer;
 
-    &:checked ~ .field-radio-style,
-    &:focus ~ .field-radio-style {
+    &:checked ~ .r-field-radio-style,
+    &:focus ~ .r-field-radio-style {
         box-shadow: 0 0 0 1px $blue inset, 0 0 0 0 rgba($gray, 0.5) inset, 0 0 0 1px $blue;
     }
 
-    &:checked ~ .field-radio-style .icon {
+    &:checked ~ .r-field-radio-style .r-icon {
         fill: $blue;
         @include opacity(1);
     }
 
-    &[disabled] ~ .field-radio-style {
+    &[disabled] ~ .r-field-radio-style {
         background: $background;
     }
 }
 
-.field-radio-style {
+.r-field-radio-style {
     cursor: pointer;
     box-sizing: border-box;
     width: 16px;
@@ -111,7 +111,7 @@ input.field-radio[type=radio] {
     @include transition(box-shadow .1s ease);
 }
 
-.field-radio-style .icon {
+.r-field-radio-style .r-icon {
     position: absolute;
     top: -$space-xxs;
     right: -$space-xxs;
@@ -121,8 +121,8 @@ input.field-radio[type=radio] {
 /**
 * Radio Button
 */
-.field.is-button {
-    & .field-label-toggle {
+.r-field.is-button {
+    & .r-field-label-toggle {
         display: inline-block;
         height: auto;
         box-sizing: border-box;
@@ -162,33 +162,33 @@ input.field-radio[type=radio] {
         }
     }
 
-    & .field-radio-style {
+    & .r-field-radio-style {
         display: none;
     }
 }
 
-.field.is-button-group {
-    @extend .field, .is-button;
+.r-field.is-button-group {
+    @extend .r-field, .is-button;
     margin-right: -1px;
-    & .field-label-toggle {
+    & .r-field-label-toggle {
         width: 100%;
     }
 }
 
-.btn-group .field.is-button-group:not(:first-child):not(:last-child) {
-     & .field-label-toggle  {
+.btn-group .r-field.is-button-group:not(:first-child):not(:last-child) {
+     & .r-field-label-toggle  {
          border-radius: 0;
      }
 }
 
-.btn-group .field.is-button-group:first-child {
-    & .field-label-toggle  {
+.btn-group .r-field.is-button-group:first-child {
+    & .r-field-label-toggle  {
         border-radius: $border-radius 0 0 $border-radius;
     }
 }
 
-.btn-group .field.is-button-group:last-child {
-    & .field-label-toggle  {
+.btn-group .r-field.is-button-group:last-child {
+    & .r-field-label-toggle  {
         border-radius: 0 $border-radius $border-radius 0;
     }
 }
@@ -196,7 +196,7 @@ input.field-radio[type=radio] {
 /**
 * Switch
 */
-.field-switch-body {
+.r-field-switch-body {
     @include display-flex;
     height: 20px;
     width: 36px;
@@ -206,7 +206,7 @@ input.field-radio[type=radio] {
     cursor: pointer;
 }
 
-input.field-switch[type=checkbox] {
+input.r-field-switch[type=checkbox] {
     @include opacity(0);
     position: absolute;
     left: 0;
@@ -215,28 +215,28 @@ input.field-switch[type=checkbox] {
     width: 20px;
     box-sizing: border-box;
 
-    &:checked + .field-switch-handle {
+    &:checked + .r-field-switch-handle {
         background-color: $blue;
     }
 
-    &:focus + .field-switch-handle {
+    &:focus + .r-field-switch-handle {
         box-shadow: 0 0 0 2px $blue;
     }
 
-    &:checked:focus + .field-switch-handle {
+    &:checked:focus + .r-field-switch-handle {
         box-shadow: 0 0 0 2px rgba($blue, 0.5);
     }
 
-    &:checked + .field-switch-handle::before {
+    &:checked + .r-field-switch-handle::before {
         @include browser-prefix(transform, translateX(16px));
     }
 
-    &[disabled] + .field-switch-handle {
+    &[disabled] + .r-field-switch-handle {
         background: $light-gray;
     }
 }
 
-.field-switch-handle {
+.r-field-switch-handle {
     position: absolute;
     border-radius: 20px;
     cursor: pointer;
@@ -248,7 +248,7 @@ input.field-switch[type=checkbox] {
     @include browser-prefix(transition, .4s);
 }
 
-.field-switch-handle::before {
+.r-field-switch-handle::before {
   position: absolute;
   content: "";
   height: 16px;

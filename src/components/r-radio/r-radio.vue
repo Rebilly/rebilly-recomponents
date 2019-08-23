@@ -1,26 +1,27 @@
 <template>
-    <div class="field" :class="styles">
-        <label class="field-label field-label-toggle" :class="labelStyles" :for="name">
+    <div class="r-field" :class="styles">
+        <label class="r-field-label r-field-label-toggle" :class="labelStyles" :for="name">
             <template v-if="label">
                 {{label}}
             </template>
             <slot v-else name="label"/>
         </label>
-        <input type="radio" class="field-radio"
+        <input type="radio" class="r-field-radio"
                :id="name"
                :name="group"
                :value="value"
                :checked="isChecked"
                :disabled="disabled" @change="update"/>
 
-        <span class="field-radio-style">
+        <span class="r-field-radio-style">
             <r-icon icon="radio-checkmark"></r-icon>
         </span>
-        <span class="field-caption field-caption-toggle" v-if="caption">{{caption}}</span>
+        <span class="r-field-caption r-field-caption-toggle" v-if="caption">{{caption}}</span>
     </div>
 </template>
 
 <script>
+    import '../../style/r-radio.css';
     import shortid from 'shortid';
     import rIcon from '../r-icon/r-icon.vue';
 
