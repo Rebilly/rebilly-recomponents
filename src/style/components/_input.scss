@@ -2,19 +2,19 @@
 // This file contains all styles related to the icon component.
 // -----------------------------------------------------------------------------
 
-.field,
-.field-control {
+.r-field,
+.r-field-control {
     position: relative;
 }
 
-.field-label {
+.r-field-label {
     display: block;
     font-family: $primary-font-stack;
     color: $text;
     @include rem(margin-bottom, $space-xs);
 }
 
-.field-input, .field-editable {
+.r-field-input, .r-field-editable {
     min-width: 70px;
     width: 100%;
     height: auto;
@@ -41,13 +41,13 @@
     }
 }
 
-.field.is-error .field-label,
-.field.is-error label {
+.r-field.is-error .r-field-label,
+.r-field.is-error label {
     color: $red;
 }
 
-.field.is-error .field-input,
-.field.is-error input{
+.r-field.is-error .r-field-input,
+.r-field.is-error input{
     color: $red;
     box-shadow: 0 0 0 1px $red inset;
     background: rgba($light-red, 0.6);
@@ -57,7 +57,7 @@
     }
 }
 
-.field-caption {
+.r-field-caption {
     display: block;
     color: $muted;
     @include rem(margin-top, $space-xs);
@@ -66,41 +66,41 @@
 /**
 * Input Icons
 */
-.field-control.has-icon-right .icon:last-child,
-.field-control.has-image-right .image-card {
+.r-field-control.has-icon-right .r-icon:last-child,
+.r-field-control.has-image-right .image-card {
     position: absolute;
     top: $space-s;
     right: $space-s;
 }
 
-.field-control.has-icon-right .field-input {
+.r-field-control.has-icon-right .r-field-input {
     @include rem(padding, $space-s $space-l $space-s $space-m);
 }
 
-.field-control.has-icon-left .icon:first-child {
+.r-field-control.has-icon-left .r-icon:first-child {
     position: absolute;
     top: $space-s;
     left: $space-s;
 }
 
-.field-control.has-icon-left .field-input {
+.r-field-control.has-icon-left .r-field-input {
     @include rem(padding, $space-s $space-m $space-s $space-l);
 }
 
-.field.is-error .field-control.has-icon-right .icon,
-.field.is-error .field-control.has-icon-left .icon {
+.r-field.is-error .r-field-control.has-icon-right .r-icon,
+.r-field.is-error .r-field-control.has-icon-left .r-icon {
     fill: $red;
 }
 
 /**
 * Textarea
 */
-textarea.field-input {
+textarea.r-field-input {
     resize: none;
 }
 
 @-moz-document url-prefix() {
-    textarea.field-input {
+    textarea.r-field-input {
         min-height: 36px;
     }
 }
@@ -108,7 +108,7 @@ textarea.field-input {
 /**
 * Select
 */
-select.field-input {
+select.r-field-input {
     min-height: 36px;
     @include linear-gradient(#FFFFFF, $background);
     box-shadow: 0 0 0 1px $light-gray inset, 0 1px 2px 0 rgba($gray, 0.3);
@@ -118,8 +118,8 @@ select.field-input {
 /**
 * Input Addon
 */
-.field-addon {
-    @extend .field-input;
+.r-field-addon {
+    @extend .r-field-input;
     width: auto;
     min-width: auto;
     box-shadow: 0 0 0 1px $light-gray inset;
@@ -127,12 +127,12 @@ select.field-input {
     text-align: center;
 }
 
-.field-addon.field-addon-clear {
+.r-field-addon.r-field-addon-clear {
     background: transparent;
     box-shadow: none;
 }
 
-.field-addon.field-addon-clear:first-child {
+.r-field-addon.r-field-addon-clear:first-child {
     padding-left: 0;
 }
 
@@ -145,7 +145,7 @@ select:-moz-focusring {
 /**
 * Input Size Variations
 */
-.field.field-auto-width {
+.r-field.r-field-auto-width {
     display: inline-block;
     @include media-query-breakpoint('tablet', $type: max) {
         display: block;
@@ -155,42 +155,42 @@ select:-moz-focusring {
 /**
 * Input Group
 */
-.field-group {
+.r-field-group {
     @include display-flex;
 }
 
-.field-group > * {
+.r-field-group > * {
     @include flex(1 0);
     @include rem(margin-left, -1px);
 }
 
-.field-group > *:not(:first-child):not(:last-child),
-.field-group > *:not(:first-child):not(:last-child) .field-input {
+.r-field-group > *:not(:first-child):not(:last-child),
+.r-field-group > *:not(:first-child):not(:last-child) .r-field-input {
     border-radius: 0;
     z-index: $z-10;
 }
 
-.field-group > *:first-child,
-.field-group > *:first-child .field-input {
+.r-field-group > *:first-child,
+.r-field-group > *:first-child .r-field-input {
     border-radius: $border-radius 0 0 $border-radius;
 }
 
-.field-group > *:last-child,
-.field-group > *:last-child .field-input {
+.r-field-group > *:last-child,
+.r-field-group > *:last-child .r-field-input {
     border-radius: 0 $border-radius $border-radius 0;
 }
 
-.field-group > *:only-child,
-.field-group > *:only-child .field-input,
-.field-group > *:first-child:last-child,
-.field-group > *:first-child:last-child .field-input  {
+.r-field-group > *:only-child,
+.r-field-group > *:only-child .r-field-input,
+.r-field-group > *:first-child:last-child,
+.r-field-group > *:first-child:last-child .r-field-input  {
     border-radius: $border-radius;
 }
 
 /**
 * Input Inline
 */
-.field-input.field-input-inline {
+.r-field-input.r-field-input-inline {
     @include rem(padding, 0 $space-s);
     display: inline-block;
     background: rgba($light-blue, 0.6);
@@ -202,7 +202,7 @@ select:-moz-focusring {
     min-width: auto;
 }
 
-.field.is-error .field-input.field-input-inline {
+.r-field.is-error .r-field-input.r-field-input-inline {
     border-bottom: 1px solid $red;
     box-shadow: none;
 }
@@ -210,7 +210,7 @@ select:-moz-focusring {
 /**
 * Input Disabled
 */
-.field-input[disabled] {
+.r-field-input[disabled] {
     background: $light-background;
     box-shadow: 0 0 0 1px $light-gray inset;
 }
@@ -232,10 +232,10 @@ select:-moz-focusring {
     color: $gray;
 }
 /* Placeholder support for content editable field */
-.field-editable-wrapper {
+.r-field-editable-wrapper {
     position: relative;
 }
-.field-editable-wrapper[placeholder]:empty:before {
+.r-field-editable-wrapper[placeholder]:empty:before {
     content: attr(placeholder);
     position: absolute;
     width: 60%;
@@ -249,7 +249,7 @@ select:-moz-focusring {
         width: 100%;
     }
 }
-.field-editable-wrapper[placeholder]:empty:focus:before {
+.r-field-editable-wrapper[placeholder]:empty:focus:before {
     content: '';
     display: none;
 }
@@ -257,18 +257,18 @@ select:-moz-focusring {
 /**
 Editable field special classes
  */
-.field-editable-wrapper {
+.r-field-editable-wrapper {
     display: block;
     position: relative;
     min-height: 20px;
 }
 
-.field-editable.has-icon {
+.r-field-editable.has-icon {
     position: relative;
     padding-left: 40px;
 }
 
-.field-editable-wrapper .keyword {
+.r-field-editable-wrapper .keyword {
     color: $blue;
     box-shadow: inset 0 -1px 0 $light-blue;
 }

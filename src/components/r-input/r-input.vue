@@ -1,10 +1,10 @@
 <template>
-    <div class="field" :class="{'is-error': isInvalid}">
-        <label v-if="label" class="field-label">{{label}}</label>
+    <div class="r-field" :class="{'is-error': isInvalid}">
+        <label v-if="label" class="r-field-label">{{label}}</label>
         <template v-if="!isGroupedInput">
             <input
                 v-if="!multiline"
-                class="field-input"
+                class="r-field-input"
                 v-model="model"
                 @input="update"
                 :placeholder="placeholder"
@@ -20,7 +20,7 @@
             <textarea
                 ref="textarea"
                 v-else-if="multiline && submitOnEnter"
-                class="field-input"
+                class="r-field-input"
                 v-model="model"
                 @input="update"
                 @keydown.enter.exact.prevent="keySubmit"
@@ -35,7 +35,7 @@
             <textarea
                 ref="textarea"
                 v-else="multiline && !submitOnEnter"
-                class="field-input"
+                class="r-field-input"
                 v-model="model"
                 @input="update"
                 @keydown.enter="keySubmit"
@@ -48,12 +48,12 @@
                 :name="name">
             </textarea>
         </template>
-        <div class="field-group" v-if="isGroupedInput">
-            <div class="field-addon no-flex" v-if="leftLabel">{{leftLabel}}</div>
-            <div class="field-control" :class="fieldStyles">
+        <div class="r-field-group" v-if="isGroupedInput">
+            <div class="r-field-addon no-flex" v-if="leftLabel">{{leftLabel}}</div>
+            <div class="r-field-control" :class="fieldStyles">
                 <r-icon :icon="leftIcon" v-if="leftIcon"></r-icon>
                 <input
-                    class="field-input"
+                    class="r-field-input"
                     v-model="model"
                     @input="update"
                     :placeholder="placeholder"
@@ -69,9 +69,9 @@
                 <r-icon :icon="rightIcon" v-if="rightIcon"></r-icon>
             </div>
             <slot name="right-button"/>
-            <div class="field-addon no-flex" v-if="rightLabel">{{rightLabel}}</div>
+            <div class="r-field-addon no-flex" v-if="rightLabel">{{rightLabel}}</div>
         </div>
-        <span class="field-caption" v-if="helpText || maxLength">
+        <span class="r-field-caption" v-if="helpText || maxLength">
             {{helpText}}
             <span v-if="maxLength">{{charactersLeft}}</span>
         </span>
@@ -79,6 +79,7 @@
 </template>
 
 <script>
+    import '../../style/r-input.css';
     import shortid from 'shortid';
     import rIcon from '../r-icon/r-icon.vue';
 
