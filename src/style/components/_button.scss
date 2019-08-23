@@ -2,7 +2,7 @@
 // This file contains all styles related to the button component.
 // -----------------------------------------------------------------------------
 
-.btn {
+.r-btn {
     display: inline-block;
     height: auto;
     box-sizing: border-box;
@@ -43,7 +43,7 @@
 /**
 * Types
 */
-.btn-primary {
+.r-btn-primary {
     @include linear-gradient($blue, adjust-hue($blue, 30));
     color: #FFFFFF;
     box-shadow: 0 1px 2px 0 rgba($gray, 0.8);
@@ -62,7 +62,7 @@
     }
 }
 
-.btn-danger {
+.r-btn-danger {
     @include linear-gradient(saturate($red, 50), $red);
     color: #FFFFFF;
     box-shadow: 0 1px 2px 0 rgba($gray, 0.8);
@@ -81,7 +81,7 @@
     }
 }
 
-.btn-link {
+.r-btn-link {
     color: $blue;
     vertical-align: baseline;
     padding: 0;
@@ -103,19 +103,19 @@
     }
 }
 
-.btn-basic {
+.r-btn-basic {
     background: none;
     box-shadow: none;
     color: $muted;
 }
 
-.btn-basic-outline {
+.r-btn-basic-outline {
     background: none;
     box-shadow: 0 0 0 1px $light-gray inset;
     color: $muted;
 }
 
-.btn-basic-outline.is-error {
+.r-btn-basic-outline.is-error {
     background: $light-red;
     color: $red;
     box-shadow: 0 0 0 1px $red inset;
@@ -130,7 +130,7 @@
 */
 
 //Default
-.btn[disabled] {
+.r-btn[disabled] {
     @include opacity(0.5);
     cursor: auto;
 
@@ -144,7 +144,7 @@
 }
 
 //Primary
-.btn.btn-primary[disabled] {
+.r-btn.r-btn-primary[disabled] {
     &:hover {
         @include linear-gradient($blue, adjust-hue($blue, 30));
     }
@@ -156,7 +156,7 @@
 }
 
 //Danger
-.btn.btn-danger[disabled] {
+.r-btn.r-btn-danger[disabled] {
     &:hover {
         @include linear-gradient(saturate($red, 50), $red);
     }
@@ -170,11 +170,11 @@
 /**
 * Sizes
 */
-.btn-s {
+.r-btn-s {
     @include rem(padding, $space-xs $space-m);
 }
 
-.btn-l {
+.r-btn-l {
     @include rem(padding, $space-m $space-l);
 }
 
@@ -183,37 +183,37 @@
 */
 
 //Fluid
-.btn-fluid {
+.r-btn-fluid {
     width: 100%;
 }
 
 //Dropdown
-.btn.btn-dropdown {
+.r-btn.r-btn-dropdown {
     position: relative;
     text-align: left;
 }
 
-.btn.btn-dropdown .icon {
+.r-btn.r-btn-dropdown .icon {
     @include transition(transform .15s ease);
     @include rem(margin-left, $space-s);
 }
 
-.btn.btn-dropdown .icon.is-up {
+.r-btn.r-btn-dropdown .icon.is-up {
     transform: none;
 }
 
-.btn.btn-dropdown.btn-fluid {
+.r-btn.r-btn-dropdown.r-btn-fluid {
     @include rem(padding-right, $space-l);
 }
 
-.btn.btn-dropdown.btn-fluid .icon {
+.r-btn.r-btn-dropdown.r-btn-fluid .icon {
     position: absolute;
     top: $space-s;
     right: $space-s;
 }
 
 //Dropdown Link
-.btn.btn-dropdown-link {
+.r-btn.r-btn-dropdown-link {
     color: $blue;
     background: none;
     border: none;
@@ -230,7 +230,7 @@
     }
 }
 
-.is-error .btn.btn-dropdown-link {
+.is-error .r-btn.r-btn-dropdown-link {
     border-bottom-color: $red;
     color: $red;
 }
@@ -238,39 +238,39 @@
 /**
 * Groups
 */
-.btn-group {
+.r-btn-group {
     @include display-flex;
     @include media-query-breakpoint('tablet', $type: max) {
-        & > .btn {
+        & > .r-btn {
             @include flex(1 0);
         }
     }
 }
 
-.btn-group .btn {
+.r-btn-group .r-btn {
     @include rem(margin-left, -1px);
 }
 
-.btn-group .btn:not(:first-child):not(:last-child),
-.btn-group .popper:not(:first-child):not(:last-child) .btn {
+.r-btn-group .r-btn:not(:first-child):not(:last-child),
+.r-btn-group .popper:not(:first-child):not(:last-child) .r-btn {
     border-radius: 0;
 }
 
-.btn-group .btn:first-child,
-.btn-group .popper:first-child .btn{
+.r-btn-group .r-btn:first-child,
+.r-btn-group .popper:first-child .r-btn{
     border-radius: $border-radius 0 0 $border-radius;
 }
 
-.btn-group .btn:last-child,
-.btn-group .popper:last-child .btn{
+.r-btn-group .r-btn:last-child,
+.r-btn-group .popper:last-child .r-btn{
     border-radius: 0 $border-radius $border-radius 0;
 }
 
-.btn-group.btn-group-fluid > .btn {
+.r-btn-group.r-btn-group-fluid > .r-btn {
     @include flex(1 0);
 }
 
-.btn-group .btn.is-active {
+.r-btn-group .r-btn.is-active {
     @include linear-gradient($blue, adjust-hue($blue, 30));
     color: #FFFFFF;
     box-shadow: 0 1px 2px 0 rgba($gray, 0.8);
@@ -279,37 +279,37 @@
 /**
 * Icons
 */
-.btn.has-icon {
+.r-btn.has-icon {
     @include rem(padding, $space-s);
 }
 
-.btn.has-icon.btn-l {
+.r-btn.has-icon.r-btn-l {
     @include rem(padding, $space-m $space-l);
 }
 
-.btn.has-icon.btn-s {
+.r-btn.has-icon.r-btn-s {
     @include rem(padding, $space-xs);
 }
 
-.btn.has-icon-left .icon {
+.r-btn.has-icon-left .icon {
     @include rem(margin-right, $space-s);
 }
 
-.btn.has-icon-right .icon {
+.r-btn.has-icon-right .icon {
     @include rem(margin-left, $space-s);
 }
 
-.btn.has-icon.btn-fitted {
+.r-btn.has-icon.r-btn-fitted {
     padding: 0;
 }
 
 //Colors
-.btn-primary .icon,
-.btn-danger .icon,
-.btn-group .btn.is-active .icon {
+.r-btn-primary .icon,
+.r-btn-danger .icon,
+.r-btn-group .r-btn.is-active .icon {
     fill: #FFFFFF;
 }
 
-.btn-link .icon:not(.icon-) {
+.r-btn-link .icon:not(.icon-) {
     fill: $blue;
 }

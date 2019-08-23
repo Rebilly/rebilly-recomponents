@@ -1,7 +1,7 @@
 <template>
   <router-link
     v-if="!!push"
-    class="r-component r-button"
+    class="r-component r-btn"
     :to="push"
     v-on="$listeners"
     :class="classes"
@@ -11,7 +11,7 @@
   </router-link>
   <a
     v-else-if="$attrs.href"
-    class="r-component r-button"
+    class="r-component r-btn"
     v-on="$listeners"
     :class="classes"
     :disabled="disabled"
@@ -22,7 +22,7 @@
   <button
     v-else
     v-on="$listeners"
-    class="r-component r-button"
+    class="r-component r-btn"
     :class="classes"
     :disabled="disabled"
     :title="title"
@@ -32,7 +32,9 @@
   </button>
 </template>
 
-<script>import RIcon from '../r-icon/r-icon.vue';
+<script>
+    import '../../style/r-button.css';
+    import RIcon from '../r-icon/r-icon.vue';
 
     export default {
         name: 'RButton',
@@ -45,8 +47,8 @@
             },
             type: {
                 type: String,
-                default: 'default',
-                validator: val => ['default', 'primary', 'warning', 'danger'].includes(val),
+                default: '',
+                validator: val => ['', 'primary', 'danger', 'transparent', 'link'].includes(val),
             },
             disabled: {
                 type: Boolean,
@@ -68,9 +70,9 @@
         computed: {
             classes() {
                 return {
-                    [`r-button--size-${this.size}`]: !!this.size,
-                    [`r-button--type-${this.type}`]: !!this.type,
-                    'r-button--fluid': !!this.fluid,
+                    [`r-btn-${this.size}`]: !!this.size,
+                    [`r-btn-${this.type}`]: !!this.type,
+                    'r-btn-fluid': !!this.fluid,
                 };
             },
             title() {
@@ -99,7 +101,3 @@
     };
 </script>
 
-<style lang="scss">
-
-
-</style>

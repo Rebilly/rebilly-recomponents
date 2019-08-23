@@ -11,18 +11,19 @@ storiesOf('Components/Button', module)
         props: {
             size: {
                 default: select('Size', {
-                    Small: 'small',
-                    Regular: 'regular',
-                    Large: 'large',
-                }, 'regular'),
+                    Small: 's',
+                    Medium: '',
+                    Large: 'l',
+                }, ''),
             },
             type: {
                 default: select('Type', {
-                    Default: 'default',
-                    Primary: 'primary',
-                    Warning: 'warning',
-                    Danger: 'danger',
-                }, 'primary'),
+                    default: '',
+                    primary: 'primary',
+                    danger: 'danger',
+                    transparent: 'transparent',
+                    link: 'link',
+                }, ''),
             },
             text: {
                 default: text('Text', 'Click me'),
