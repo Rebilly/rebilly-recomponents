@@ -5,24 +5,23 @@
 </template>
 
 <script>
+    import '../../style/r-badge.css';
+
     export default {
         name: 'RBadge',
         props: {
             type: {
                 type: String,
-                default: 'default',
-                validator: val => ['default', 'positive', 'negative', 'warning', 'info'].includes(val),
+                default: '',
+                validator: val => ['', 'positive', 'negative', 'warning', 'info'].includes(val),
             },
         },
         computed: {
             classes() {
                 return {
-                    [`r-badge--type-${this.type}`]: !!this.type,
+                    [`r-badge-${this.type}`]: !!this.type,
                 };
             },
         },
     };
 </script>
-
-<style lang="scss">
-</style>

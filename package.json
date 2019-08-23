@@ -6,6 +6,7 @@
   "author": "Rebilly SRL",
   "license": "MIT",
   "scripts": {
+     "compile-sass": "node-sass src/style/r-badge.scss src/style/r-badge.css",
     "test": "vue-cli-service test:unit",
     "lint": "vue-cli-service lint",
     "build": "npm run build:wc & npm run build:lib",

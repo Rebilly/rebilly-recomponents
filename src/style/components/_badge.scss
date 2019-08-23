@@ -2,14 +2,14 @@
 // This file contains all styles related to the badge component.
 // -----------------------------------------------------------------------------
 
-.badge {
+.r-badge {
     display: inline-block;
     height: auto;
     box-sizing: border-box;
     text-transform: none;
     text-align: center;
     vertical-align: baseline;
-    color: $text;
+    color: var(--text-color);
     border-radius: $line-height;
     border: none;
     @include rem(padding, $space-xxs $space-s);
@@ -18,7 +18,7 @@
     @include rem(font-size, $paragraph);
     @include rem(line-height, $line-height);
     outline: none;
-    background: $faint-gray;
+    background: var(--faint-gray-color);
     white-space: nowrap;
     box-shadow: 0 0 0 2px #FFFFFF;
 }
@@ -26,20 +26,20 @@
 /**
 * Types
 */
-.badge.badge-positive {
-    background: $light-green;
+.r-badge.r-badge-positive {
+    background: var(--light-green-color);
 }
 
-.badge.badge-negative {
-    background: $light-red;
+.r-badge.r-badge-negative {
+    background: var(--light-red-color);
 }
 
-.badge.badge-warning {
-    background: $light-yellow;
+.r-badge.r-badge-warning {
+    background: var(--light-yellow-color);
 }
 
-.badge.badge-info {
-    background: $light-blue;
+.r-badge.r-badge-info {
+    background: var(--light-blue-color);
 }
 
 //Status Badge
@@ -76,18 +76,18 @@
 }
 
 //Tag Badge
-.badge.badge-tag {
+.r-badge.r-badge-tag {
     @include rem(padding, $space-xs $space-s);
     color: $muted;
     border-radius: $border-radius;
 }
 
-.badge.badge-tag.has-delete .btn.btn-link .icon {
+.r-badge.r-badge-tag.has-delete .btn.btn-link .icon {
     fill: $muted;
     @include rem(margin-left, $space-s);
 }
 
-.badge.badge-tag-outline {
+.r-badge.r-badge-tag-outline {
     @include rem(padding, $space-xs $space-s);
     color: $muted;
     background: transparent;
@@ -95,13 +95,13 @@
     border-radius: $border-radius;
 }
 
-.badge.badge-tag-outline.has-delete .btn.btn-link .icon {
+.r-badge.r-badge-tag-outline.has-delete .btn.btn-link .icon {
     fill: $muted;
     @include rem(margin-left, $space-s);
 }
 
 //Tag Badge Input
-.badge.badge-tag-input {
+.r-badge.r-badge-tag-input {
     @include rem(padding, $space-xxs $space-s $space-xxs $space-s);
     @include rem(margin, 0 $space-xs $space-s 0);
     color: $muted;
@@ -109,7 +109,7 @@
     border-radius: $border-radius;
 }
 
-.badge.badge-tag-input.has-delete .icon {
+.r-badge.r-badge-tag-input.has-delete .icon {
     fill: $muted;
     cursor: pointer;
     width: 16px;
@@ -118,7 +118,7 @@
 }
 
 // Badge Counter
-.badge.badge-notification {
+.r-badge.r-badge-notification {
     position: absolute;
     font-weight: bold;
     box-shadow: 0 0 0 2px $accent;

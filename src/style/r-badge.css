@@ -1,0 +1,121 @@
+/*
+re-ui ver 0.1
+Author: Cesar Level
+Rebilly 2017
+*/
+.r-badge {
+  display: inline-block;
+  height: auto;
+  box-sizing: border-box;
+  text-transform: none;
+  text-align: center;
+  vertical-align: baseline;
+  color: var(--text-color);
+  border-radius: 20px;
+  border: none;
+  padding: 2px 8px;
+  padding: 0.2rem 0.8rem;
+  font-family: "Roboto", sans-serif;
+  font-weight: 400;
+  font-size: 14px;
+  font-size: 1.4rem;
+  line-height: 20px;
+  line-height: 2rem;
+  outline: none;
+  background: var(--faint-gray-color);
+  white-space: nowrap;
+  box-shadow: 0 0 0 2px #FFFFFF; }
+
+/**
+* Types
+*/
+.r-badge.r-badge-positive {
+  background: var(--light-green-color); }
+
+.r-badge.r-badge-negative {
+  background: var(--light-red-color); }
+
+.r-badge.r-badge-warning {
+  background: var(--light-yellow-color); }
+
+.r-badge.r-badge-info {
+  background: var(--light-blue-color); }
+
+.has-badge {
+  position: relative; }
+
+.has-badge::after {
+  content: '';
+  position: absolute;
+  display: block;
+  height: 6px;
+  width: 6px;
+  top: 0;
+  right: 0;
+  border-radius: 50%;
+  box-shadow: 0 0 0 2px #ffffff; }
+
+.has-badge.is-positive::after {
+  background: #00CCC4; }
+
+.has-badge.is-negative::after {
+  background: #E53935; }
+
+.has-badge.is-warning::after {
+  background: #F1C400; }
+
+.has-badge.is-info::after {
+  background: #0044D4; }
+
+.r-badge.r-badge-tag {
+  padding: 4px 8px;
+  padding: 0.4rem 0.8rem;
+  color: #6B7384;
+  border-radius: 4px; }
+
+.r-badge.r-badge-tag.has-delete .btn.btn-link .icon {
+  fill: #6B7384;
+  margin-left: 8px;
+  margin-left: 0.8rem; }
+
+.r-badge.r-badge-tag-outline {
+  padding: 4px 8px;
+  padding: 0.4rem 0.8rem;
+  color: #6B7384;
+  background: transparent;
+  border: 1px solid #6B7384;
+  border-radius: 4px; }
+
+.r-badge.r-badge-tag-outline.has-delete .btn.btn-link .icon {
+  fill: #6B7384;
+  margin-left: 8px;
+  margin-left: 0.8rem; }
+
+.r-badge.r-badge-tag-input {
+  padding: 2px 8px 2px 8px;
+  padding: 0.2rem 0.8rem 0.2rem 0.8rem;
+  margin: 0 4px 8px 0;
+  margin: 0 0.4rem 0.8rem 0;
+  color: #6B7384;
+  line-height: 16px;
+  border-radius: 4px; }
+
+.r-badge.r-badge-tag-input.has-delete .icon {
+  fill: #6B7384;
+  cursor: pointer;
+  width: 16px;
+  height: 16px;
+  margin-left: 8px;
+  margin-left: 0.8rem; }
+
+.r-badge.r-badge-notification {
+  position: absolute;
+  font-weight: bold;
+  box-shadow: 0 0 0 2px #00CCC4;
+  background: #00CCC4;
+  top: -5px;
+  right: -5px;
+  font-size: 10px;
+  line-height: 10px;
+  padding: 1px 3px;
+  color: #FFFFFF; }

@@ -15,7 +15,13 @@ storiesOf('Components', module)
     `,
         props: {
             type: {
-                default: select('Type', ['default', 'positive', 'negative', 'warning', 'info']),
+                default: select('type', {
+                    default: '',
+                    positive: 'positive',
+                    negative: 'negative',
+                    warning: 'warning',
+                    info: 'info',
+                }, ''),
             },
             text: {
                 default: text('Text', 'Click me'),
