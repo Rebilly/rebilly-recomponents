@@ -132,7 +132,7 @@
     color: $red;
     box-shadow: 0 0 0 1px $red inset;
 
-    & .icon {
+    & .r-icon {
         fill: $red;
     }
 }
@@ -209,12 +209,12 @@
     text-align: left;
 }
 
-.r-btn.r-btn-dropdown .icon {
+.r-btn.r-btn-dropdown .r-icon {
     @include transition(transform .15s ease);
     @include rem(margin-left, $space-s);
 }
 
-.r-btn.r-btn-dropdown .icon.is-up {
+.r-btn.r-btn-dropdown .r-icon.is-up {
     transform: none;
 }
 
@@ -222,7 +222,7 @@
     @include rem(padding-right, $space-l);
 }
 
-.r-btn.r-btn-dropdown.r-btn-fluid .icon {
+.r-btn.r-btn-dropdown.r-btn-fluid .r-icon {
     position: absolute;
     top: $space-s;
     right: $space-s;
@@ -307,11 +307,11 @@
     @include rem(padding, $space-xs);
 }
 
-.r-btn.has-icon-left .icon {
+.r-btn.has-icon-left .r-icon {
     @include rem(margin-right, $space-s);
 }
 
-.r-btn.has-icon-right .icon {
+.r-btn.has-icon-right .r-icon {
     @include rem(margin-left, $space-s);
 }
 
@@ -320,12 +320,12 @@
 }
 
 //Colors
-.r-btn-primary .icon,
-.r-btn-danger .icon,
-.r-btn-group .r-btn.is-active .icon {
+.r-btn-primary .r-icon,
+.r-btn-danger .r-icon,
+.r-btn-group .r-btn.is-active .r-icon {
     fill: #FFFFFF;
 }
 
-.r-btn-link .icon:not(.icon-) {
+.r-btn-link .r-icon:not(.r-icon-) {
     fill: $blue;
 }

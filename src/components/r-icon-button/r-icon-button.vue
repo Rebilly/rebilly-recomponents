@@ -1,7 +1,7 @@
 <template>
     <button
         v-on="$listeners"
-        class="btn"
+        class="r-btn"
         :class="styles"
         :disabled="disabled"
         v-tooltip="{text: tooltip}">
@@ -12,6 +12,8 @@
 </template>
 
 <script>
+    import '../../style/r-button.css';
+
     export default {
         name: 'r-icon-button',
         props: {
@@ -48,7 +50,7 @@
             styles() {
                 const style = {};
                 if (this.type) {
-                    style[`btn-${this.type}`] = true;
+                    style[`r-btn-${this.type}`] = true;
                 }
                 if (this.size) {
                     let key;
@@ -58,14 +60,14 @@
                         key = 'l';
                     }
                     if (key) {
-                        style[`btn-${key}`] = true;
+                        style[`r-btn-${key}`] = true;
                     }
                 }
                 if (this.fluid) {
-                    style['btn-fluid'] = true;
+                    style['r-btn-fluid'] = true;
                 }
                 if (this.fitted) {
-                    style['btn-fitted'] = true;
+                    style['r-btn-fitted'] = true;
                 }
                 // check if the slot is present to add the class
                 // it requires

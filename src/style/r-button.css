@@ -131,7 +131,7 @@ Rebilly 2017
   color: #E53935;
   box-shadow: 0 0 0 1px #E53935 inset; }
 
-.r-btn-basic-outline.is-error .icon {
+.r-btn-basic-outline.is-error .r-icon {
   fill: #E53935; }
 
 /**
@@ -198,7 +198,7 @@ Rebilly 2017
   position: relative;
   text-align: left; }
 
-.r-btn.r-btn-dropdown .icon {
+.r-btn.r-btn-dropdown .r-icon {
   -webkit-transition: transform 0.15s ease;
   -moz-transition: transform 0.15s ease;
   -ms-transition: transform 0.15s ease;
@@ -207,14 +207,14 @@ Rebilly 2017
   margin-left: 8px;
   margin-left: 0.8rem; }
 
-.r-btn.r-btn-dropdown .icon.is-up {
+.r-btn.r-btn-dropdown .r-icon.is-up {
   transform: none; }
 
 .r-btn.r-btn-dropdown.r-btn-fluid {
   padding-right: 32px;
   padding-right: 3.2rem; }
 
-.r-btn.r-btn-dropdown.r-btn-fluid .icon {
+.r-btn.r-btn-dropdown.r-btn-fluid .r-icon {
   position: absolute;
   top: 8px;
   right: 8px; }
@@ -310,21 +310,80 @@ Rebilly 2017
   padding: 4px;
   padding: 0.4rem; }
 
-.r-btn.has-icon-left .icon {
+.r-btn.has-icon-left .r-icon {
   margin-right: 8px;
   margin-right: 0.8rem; }
 
-.r-btn.has-icon-right .icon {
+.r-btn.has-icon-right .r-icon {
   margin-left: 8px;
   margin-left: 0.8rem; }
 
 .r-btn.has-icon.r-btn-fitted {
   padding: 0; }
 
-.r-btn-primary .icon,
-.r-btn-danger .icon,
-.r-btn-group .r-btn.is-active .icon {
+.r-btn-primary .r-icon,
+.r-btn-danger .r-icon,
+.r-btn-group .r-btn.is-active .r-icon {
   fill: #FFFFFF; }
 
-.r-btn-link .icon:not(.icon-) {
+.r-btn-link .r-icon:not(.r-icon-) {
   fill: #0044D4; }
+
+/* Base styles for the element that has a tooltip */
+.tooltip {
+  padding: 8px 8px 8px 8px;
+  padding: 0.8rem 0.8rem 0.8rem 0.8rem;
+  background-color: #505A6F;
+  color: #FFF;
+  position: absolute;
+  top: 0;
+  left: 0;
+  border-radius: 4px;
+  white-space: nowrap;
+  font-size: 14px;
+  line-height: 20px;
+  z-index: 1000;
+  box-shadow: 0 3px 6px 0 rgba(107, 115, 132, 0.2), 0 7px 14px 0 rgba(107, 115, 132, 0.35);
+  -webkit-transition: opacity 0.15s ease-in-out;
+  -moz-transition: opacity 0.15s ease-in-out;
+  -ms-transition: opacity 0.15s ease-in-out;
+  -o-transition: opacity 0.15s ease-in-out;
+  transition: opacity 0.15s ease-in-out;
+  opacity: 0; }
+
+.tooltip-arrow {
+  top: 100%;
+  left: 50%;
+  border: solid transparent;
+  content: " ";
+  width: 8px;
+  height: 8px;
+  position: absolute;
+  pointer-events: none;
+  background: #505A6F;
+  -webkit-transform: rotate(45deg);
+  -moz-transform: rotate(45deg);
+  -ms-transform: rotate(45deg);
+  transform: rotate(45deg);
+  margin-left: -4px;
+  margin-top: -4px; }
+
+.tooltip.tooltip-out-right .tooltip-arrow {
+  left: 80%; }
+
+.tooltip.tooltip-out-left .tooltip-arrow {
+  left: 20%; }
+
+.tooltip.tooltip-out-top .tooltip-arrow,
+.tooltip.tooltip-bottom .tooltip-arrow {
+  top: 0; }
+
+.tooltip.tooltip-left .tooltip-arrow {
+  left: 100%;
+  margin-left: -4px;
+  top: 50%; }
+
+.tooltip.tooltip-right .tooltip-arrow {
+  left: 0;
+  margin-left: -4px;
+  top: 50%; }
