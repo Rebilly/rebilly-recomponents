@@ -38,7 +38,7 @@ const topLevelContexts = [
     },
 ];
 
-import '../public/story.css';
+import '../src/style/story.css';
 import '../src/style/themes/_default.scss';
 
 const req = require.context('../src/', true, /\.story\.js$/);
