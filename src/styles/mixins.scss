@@ -50,3 +50,21 @@
 	-o-transition: $args;
 	transition: $args;
 }
+
+//Breakpoints
+//Inside a class
+// @include media-query-breakpoint('desktop') {
+//     padding-top: 4rem;
+//     font-size: 2.4rem;
+// }
+@mixin media-query-breakpoint($width, $type: min) {
+	@if map_has_key($breakpoints, $width) {
+		$width: map_get($breakpoints, $width);
+		@if $type == max {
+			$width: $width - 1px;
+		}
+		@media screen and (#{$type}-width: $width) {
+			@content;
+		}
+	}
+}

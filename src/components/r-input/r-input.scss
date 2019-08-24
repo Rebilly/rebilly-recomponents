@@ -1,0 +1,274 @@
+// -----------------------------------------------------------------------------
+// This file contains all styles related to the icon component.
+// -----------------------------------------------------------------------------
+
+.r-field,
+.r-field-control {
+    position: relative;
+}
+
+.r-field-label {
+    display: block;
+    font-family: var(--primary-font-stack);
+    color: var(--text-color);
+    @include rem(margin-bottom, $space-xs);
+}
+
+.r-field-input, .r-field-editable {
+    min-width: 70px;
+    width: 100%;
+    height: auto;
+    vertical-align: baseline;
+    @include rem(padding, $space-s $space-m);
+    appearance: none;
+    border-radius: $border-radius;
+    display: block;
+    box-sizing: border-box;
+    margin: 0;
+    border-style: inset;
+    border: none;
+    box-shadow: 0 0 0 1px var(--light-gray-color) inset, 0 1px 2px 0 rgba(var(--light-gray-color), 0.5) inset, 0 0 0 0 var(--primary-color);
+    text-transform: initial;
+    letter-spacing: initial;
+    font-family: var(--primary-font-stack);
+    font-weight: $regular;
+    @include rem(font-size, $paragraph);
+    @include rem(line-height, $line-height);
+    @include transition(box-shadow .05s ease);
+
+    &:focus {
+        box-shadow: 0 0 0 1px var(--primary-color) inset, 0 0 0 0 rgba(var(--gray-color), 0.5) inset, 0 0 0 1px var(--primary-color);
+    }
+}
+
+.r-field.is-error .r-field-label,
+.r-field.is-error label {
+    color: var(--red-color);
+}
+
+.r-field.is-error .r-field-input,
+.r-field.is-error input{
+    color: var(--red-color);
+    box-shadow: 0 0 0 1px var(--red-color) inset;
+    background: rgba(var(--light-red-color), 0.6);
+
+    &:focus {
+        box-shadow: 0 0 0 1px var(--primary-color) inset, 0 0 0 1px rgba(var(--primary-color), 1);
+    }
+}
+
+.r-field-caption {
+    display: block;
+    color: $muted;
+    @include rem(margin-top, $space-xs);
+}
+
+/**
+* Input Icons
+*/
+.r-field-control.has-icon-right .r-icon:last-child,
+.r-field-control.has-image-right .image-card {
+    position: absolute;
+    top: $space-s;
+    right: $space-s;
+}
+
+.r-field-control.has-icon-right .r-field-input {
+    @include rem(padding, $space-s $space-l $space-s $space-m);
+}
+
+.r-field-control.has-icon-left .r-icon:first-child {
+    position: absolute;
+    top: $space-s;
+    left: $space-s;
+}
+
+.r-field-control.has-icon-left .r-field-input {
+    @include rem(padding, $space-s $space-m $space-s $space-l);
+}
+
+.r-field.is-error .r-field-control.has-icon-right .r-icon,
+.r-field.is-error .r-field-control.has-icon-left .r-icon {
+    fill: var(--red-color);
+}
+
+/**
+* Textarea
+*/
+textarea.r-field-input {
+    resize: none;
+}
+
+@-moz-document url-prefix() {
+    textarea.r-field-input {
+        min-height: 36px;
+    }
+}
+
+/**
+* Select
+*/
+select.r-field-input {
+    min-height: 36px;
+    background: linear-gradient(to bottom, #FFFFFF 0%, #F6F8F9 100%);
+    box-shadow: 0 0 0 1px #C4CED8 inset, 0 1px 2px 0 rgba(161, 178, 193, 0.3);
+    @include rem(padding, $space-s $space-l $space-s $space-m);
+}
+
+/**
+* Input Addon
+*/
+.r-field-addon {
+    @extend .r-field-input;
+    width: auto;
+    min-width: auto;
+    box-shadow: 0 0 0 1px var(--light-gray-color) inset;
+    background: $light-background;
+    text-align: center;
+}
+
+.r-field-addon.r-field-addon-clear {
+    background: transparent;
+    box-shadow: none;
+}
+
+.r-field-addon.r-field-addon-clear:first-child {
+    padding-left: 0;
+}
+
+// Removing Firefox dotted line
+select:-moz-focusring {
+    color: transparent;
+    text-shadow: 0 0 0 #000;
+}
+
+/**
+* Input Size Variations
+*/
+.r-field.r-field-auto-width {
+    display: inline-block;
+    @include media-query-breakpoint('tablet', $type: max) {
+        display: block;
+    }
+}
+
+/**
+* Input Group
+*/
+.r-field-group {
+    display: flex;
+}
+
+.r-field-group > * {
+    flex: 1 0;
+    @include rem(margin-left, -1px);
+}
+
+.r-field-group > *:not(:first-child):not(:last-child),
+.r-field-group > *:not(:first-child):not(:last-child) .r-field-input {
+    border-radius: 0;
+    z-index: $z-10;
+}
+
+.r-field-group > *:first-child,
+.r-field-group > *:first-child .r-field-input {
+    border-radius: $border-radius 0 0 $border-radius;
+}
+
+.r-field-group > *:last-child,
+.r-field-group > *:last-child .r-field-input {
+    border-radius: 0 $border-radius $border-radius 0;
+}
+
+.r-field-group > *:only-child,
+.r-field-group > *:only-child .r-field-input,
+.r-field-group > *:first-child:last-child,
+.r-field-group > *:first-child:last-child .r-field-input  {
+    border-radius: $border-radius;
+}
+
+/**
+* Input Inline
+*/
+.r-field-input.r-field-input-inline {
+    @include rem(padding, 0 $space-s);
+    display: inline-block;
+    background: rgba(var(--light-blue-color) , 0.6);
+    box-shadow: none;
+    border-radius: 0;
+    box-sizing: border-box;
+    line-height: $line-height - 1;
+    border-bottom: 1px solid var(--primary-color);
+    min-width: auto;
+}
+
+.r-field.is-error .r-field-input.r-field-input-inline {
+    border-bottom: 1px solid var(--red-color);
+    box-shadow: none;
+}
+
+/**
+* Input Disabled
+*/
+.r-field-input[disabled] {
+    background: $light-background;
+    box-shadow: 0 0 0 1px var(--light-gray-color) inset;
+}
+
+/**
+* Placeholders
+*/
+::-webkit-input-placeholder { /* Chrome/Opera/Safari */
+    color: var(--gray-color);
+}
+::-moz-placeholder { /* Firefox 19+ */
+    opacity: 1;
+    color: var(--gray-color);
+}
+:-ms-input-placeholder { /* IE 10+ */
+    color: var(--gray-color);
+}
+:-moz-placeholder { /* Firefox 18- */
+    color: var(--gray-color);
+}
+/* Placeholder support for content editable field */
+.r-field-editable-wrapper {
+    position: relative;
+}
+.r-field-editable-wrapper[placeholder]:empty:before {
+    content: attr(placeholder);
+    position: absolute;
+    width: 60%;
+    color: var(--gray-color);
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    display: block;
+
+    @include media-query-breakpoint('desktop', $type: max) {
+        width: 100%;
+    }
+}
+.r-field-editable-wrapper[placeholder]:empty:focus:before {
+    content: '';
+    display: none;
+}
+
+/**
+Editable field special classes
+ */
+.r-field-editable-wrapper {
+    display: block;
+    position: relative;
+    min-height: 20px;
+}
+
+.r-field-editable.has-icon {
+    position: relative;
+    padding-left: 40px;
+}
+
+.r-field-editable-wrapper .keyword {
+    color: var(--primary-color);
+    box-shadow: inset 0 -1px 0 var(--light-blue-color);
+}

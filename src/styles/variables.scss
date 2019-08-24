@@ -65,3 +65,14 @@ $z-10: 10;
 // Temp
 $faint-gray: #E1E7EA;
 $light-background: #F9FAFB;
+
+/// Breakpoints map
+/// @prop {String} keys - Keys are identifiers mapped to a given length
+/// @prop {Map} values - Values are actual breakpoints expressed in pixels
+$breakpoints: (
+        'phone': 576px,
+        'tablet': 768px,
+        'small-desktop': 994px,
+        'desktop': 1100px,
+        'large-desktop': 1200px,
+) !default;
