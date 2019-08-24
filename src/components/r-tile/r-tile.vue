@@ -17,7 +17,7 @@
 
 <script>
     export default {
-        name: 'r-tile',
+        name: 'RTile',
     };
 </script>
 

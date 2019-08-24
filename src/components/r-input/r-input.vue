@@ -83,7 +83,7 @@
     import rIcon from '../r-icon/r-icon.vue';
 
     export default {
-        name: 'v-input',
+        name: 'RInput',
         components: {rIcon},
         props: {
             label: {

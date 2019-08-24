@@ -23,7 +23,7 @@
     import RIcon from '../r-icon/r-icon.vue';
 
     export default {
-        name: 'r-checkbox',
+        name: 'RCheckbox',
         components: {RIcon},
         props: {
             label: {

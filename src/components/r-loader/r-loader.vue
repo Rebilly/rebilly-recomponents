@@ -10,7 +10,7 @@
 
 <script>
     export default {
-        name: 'r-loader',
+        name: 'RLoader',
 
         props: {
             show: {

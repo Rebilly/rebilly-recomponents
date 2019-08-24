@@ -15,7 +15,7 @@
     import '../../directives/r-tooltip';
 
     export default {
-        name: 'r-icon-button',
+        name: 'RIconButton',
         props: {
             type: {
                 type: String,

@@ -9,7 +9,7 @@
     import rIconSprites from './r-icon-sprites.vue';
 
     export default {
-        name: 'r-icon',
+        name: 'RIcon',
         components: {rIconSprites},
         props: {
             icon: {

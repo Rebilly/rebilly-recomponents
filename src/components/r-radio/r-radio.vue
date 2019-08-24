@@ -25,7 +25,7 @@
     import rIcon from '../r-icon/r-icon.vue';
 
     export default {
-        name: 'r-radio',
+        name: 'RRadio',
         components: {rIcon},
         props: {
             label: {

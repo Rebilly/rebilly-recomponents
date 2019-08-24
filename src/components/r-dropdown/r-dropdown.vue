@@ -29,7 +29,7 @@
     };
 
     export default {
-        name: 'r-dropdown',
+        name: 'RDropdown',
         props: {
             state: {
                 type: Boolean,

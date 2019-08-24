@@ -13,7 +13,7 @@
     const EVENTS = ['scroll', 'wheel', 'mousewheel', 'resize', 'animationend', 'transitionend', 'touchmove'];
 
     export default {
-        name: 'r-img',
+        name: 'RImg',
 
         props: {
             src: {
