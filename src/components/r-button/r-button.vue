@@ -149,8 +149,8 @@
     &--type-default {
       background: linear-gradient(180deg, #fff 0, var(--background-color));
       color: var(--text-color);
-      box-shadow: 0 0 0 1px var(--light-gray-color) inset,
-      0 1px 2px 0 rgba(var(--gray-color), 0.3);
+      /*box-shadow: 0 0 0 1px var(--light-gray-color) inset, 0 1px 2px 0 rgba(var(--gray-color), 0.3);*/
+      box-shadow: 0 0 0 1px #C4CED8 inset, 0 1px 2px 0 rgba(161, 178, 193, 0.3);
 
       &:hover {
         background: var(--background-color);
