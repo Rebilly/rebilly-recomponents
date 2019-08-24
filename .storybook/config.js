@@ -38,7 +38,7 @@ const topLevelContexts = [
     },
 ];
 
-import '../public/main.css';
+// import '../public/main.css';
 import '../public/story.css';
 import '../src/styles/theme.scss';
 

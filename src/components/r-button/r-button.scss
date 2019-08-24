@@ -182,3 +182,42 @@
         width: 100%;
     }
 }
+
+/**
+* Icons
+*/
+.r-button.has-icon {
+    @include rem(padding, $space-s);
+}
+
+.r-button.has-icon.r-button-l {
+    @include rem(padding, $space-m $space-l);
+}
+
+.r-button.has-icon.r-button-s {
+    @include rem(padding, $space-xs);
+}
+
+.r-button.has-icon-left .r-icon {
+    @include rem(margin-right, $space-s);
+}
+
+.r-button.has-icon-right .r-icon {
+    @include rem(margin-left, $space-s);
+}
+
+.r-button.has-icon.r-button-fitted {
+    padding: 0;
+}
+
+//Colors
+.r-button--type-primary .r-icon,
+.r-button--type-warning .r-icon,
+.r-button--type-danger .r-icon,
+.r-button-group .r-button.is-active .r-icon {
+    fill: #FFFFFF;
+}
+
+.r-button-link .r-icon:not(.r-icon-) {
+    fill: var(--primary-color);
+}
