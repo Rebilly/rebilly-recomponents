@@ -106,5 +106,3 @@ const directive = {
 };
 
 Vue.directive('tooltip', directive);
-
-export default directive;

@@ -12,6 +12,8 @@
 </template>
 
 <script>
+    import '../../directives/r-tooltip';
+
     export default {
         name: 'r-icon-button',
         props: {

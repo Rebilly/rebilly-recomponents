@@ -3,7 +3,6 @@ import {action} from '@storybook/addon-actions';
 import {boolean, select, text} from '@storybook/addon-knobs';
 import RIconButton from './r-icon-button.vue';
 import RIcon from '../r-icon/r-icon.vue';
-import VToolTip from '../../directives/v-tooltip';
 import markdown from './r-icon-button.md';
 
 storiesOf('Components/Button', module)
@@ -46,9 +45,6 @@ storiesOf('Components/Button', module)
             blur: action('blur'),
         },
         components: {RIconButton, RIcon},
-        directives: {
-            'v-tooltip': VToolTip,
-        },
         template: `
             <r-icon-button
                 :type="type"
