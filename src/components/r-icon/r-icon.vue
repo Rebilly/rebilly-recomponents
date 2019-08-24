@@ -1,11 +1,12 @@
 <template>
-    <svg class="icon icon-20" @click="bubbleClick">
+    <svg class="r-icon r-icon-20" @click="bubbleClick">
         <r-icon-sprites/>
         <use :xlink:href="iconName" xmlns:xlink="http://www.w3.org/1999/xlink"></use>
     </svg>
 </template>
 
 <script>
+    import './r-icon.scss';
     import rIconSprites from './r-icon-sprites.vue';
 
     export default {
