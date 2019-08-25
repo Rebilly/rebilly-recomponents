@@ -1,0 +1,261 @@
+// -----------------------------------------------------------------------------
+// This file contains all styles related to the toggle components.
+// (Checkbox, Radio and more...)
+// -----------------------------------------------------------------------------
+
+.r-field-label-toggle {
+    display: inline-block;
+    position: relative;
+    @include rem(padding-left, 20px + $space-s);
+    margin: 0;
+    cursor: pointer;
+}
+
+.r-field-label-toggle.is-disabled {
+    color: $muted;
+}
+
+.r-field-caption-toggle {
+    @include rem(padding-left, 20px + $space-s);
+    @include rem(margin-top, $space-xxs);
+}
+
+/**
+* Checkbox
+*/
+input.r-field-checkbox[type=checkbox] {
+    opacity: 0;
+    position: absolute;
+    left: 0;
+    top: 0;
+    height: 20px;
+    width: 20px;
+    box-sizing: border-box;
+    z-index: 10;
+    cursor: pointer;
+
+    &:checked ~ .r-field-checkbox-style,
+    &:focus ~ .r-field-checkbox-style {
+        box-shadow: 0 0 0 1px #0044D4 inset, 0 0 0 0 rgba(161, 178, 193, 0.5) inset, 0 0 0 1px #0044D4;
+    }
+
+    &:checked ~ .r-field-checkbox-style .r-icon {
+        fill: var(--primary-color);
+        opacity: 1;
+    }
+
+    &[disabled] ~ .r-field-checkbox-style {
+        background: var(--background-color);
+    }
+}
+
+.r-field-checkbox-style {
+    cursor: pointer;
+    box-sizing: border-box;
+    width: 16px;
+    height: 16px;
+    position: absolute;
+    top: $space-xxs;
+    left: $space-xxs;
+    border-radius: $border-radius - 2;
+    box-shadow: 0 0 0 1px #C4CED8 inset, 0 1px 2px 0 rgba(161, 178, 193, 0.5) inset, 0 0 0 0 #0044D4;
+    @include transition(box-shadow .1s ease);
+}
+
+.r-field-checkbox-style .r-icon {
+    position: absolute;
+    top: -$space-xxs;
+    right: -$space-xxs;
+    opacity: 0;
+}
+
+/**
+* Radio
+*/
+input.r-field-radio[type=radio] {
+    opacity: 0;
+    position: absolute;
+    left: 0;
+    top: 0;
+    height: 20px;
+    width: 20px;
+    box-sizing: border-box;
+    z-index: 10;
+    cursor: pointer;
+
+    &:checked ~ .r-field-radio-style,
+    &:focus ~ .r-field-radio-style {
+        box-shadow: 0 0 0 1px #0044D4 inset, 0 0 0 0 rgba(161, 178, 193, 0.5) inset, 0 0 0 1px #0044D4;
+    }
+
+    &:checked ~ .r-field-radio-style .r-icon {
+        fill: var(--primary-color);
+        opacity: 1;
+    }
+
+    &[disabled] ~ .r-field-radio-style {
+        background: var(--background-color);
+    }
+}
+
+.r-field-radio-style {
+    cursor: pointer;
+    box-sizing: border-box;
+    width: 16px;
+    height: 16px;
+    border-radius: 50%;
+    position: absolute;
+    top: $space-xxs;
+    left: $space-xxs;
+    box-shadow: 0 0 0 1px #C4CED8 inset, 0 1px 2px 0 rgba(161, 178, 193, 0.5) inset, 0 0 0 0 #0044D4;
+    @include transition(box-shadow .1s ease);
+}
+
+.r-field-radio-style .r-icon {
+    position: absolute;
+    top: -$space-xxs;
+    right: -$space-xxs;
+    opacity: 0;
+}
+
+/**
+* Radio Button
+*/
+.r-field.is-button {
+    & .r-field-label-toggle {
+        display: inline-block;
+        height: auto;
+        box-sizing: border-box;
+        text-transform: capitalize;
+        text-align: center;
+        vertical-align: baseline;
+        user-select: none;
+        appearance: none;
+        background: linear-gradient(to bottom, #FFFFFF 0%, #F6F8F9 100%);
+        box-shadow: 0 0 0 1px #C4CED8 inset, 0 1px 2px 0 rgba(161, 178, 193, 0.3);
+        color: var(--text-color);
+        cursor: pointer;
+        border-radius: $border-radius;
+        border: none;
+        @include rem(padding, $space-s $space-m);
+        font-family: var(--primary-font-stack);
+        font-weight: $regular;
+        @include rem(font-size, $paragraph);
+        @include rem(line-height, $line-height);
+        @include transition(box-shadow .15s ease);
+        outline: none;
+
+        &:hover {
+            background: var(--background-color) ;
+            text-decoration: none;
+        }
+
+        &:active {
+            background: var(--background-color);
+            box-shadow: 0 0 0 1px #C4CED8 inset, 0 1px 3px 1px #C4CED8 inset;
+        }
+
+        &.is-checked {
+            background: linear-gradient(to bottom, #0044D4 0%, #2600d4 100%);
+            color: #FFFFFF;
+            box-shadow: 0 1px 2px 0 rgba(161, 178, 193, 0.8);
+        }
+    }
+
+    & .r-field-radio-style {
+        display: none;
+    }
+}
+
+.r-field.is-button-group {
+    @extend .r-field, .is-button;
+    margin-right: -1px;
+    & .r-field-label-toggle {
+        width: 100%;
+    }
+}
+
+.btn-group .r-field.is-button-group:not(:first-child):not(:last-child) {
+    & .r-field-label-toggle  {
+        border-radius: 0;
+    }
+}
+
+.btn-group .r-field.is-button-group:first-child {
+    & .r-field-label-toggle  {
+        border-radius: $border-radius 0 0 $border-radius;
+    }
+}
+
+.btn-group .r-field.is-button-group:last-child {
+    & .r-field-label-toggle  {
+        border-radius: 0 $border-radius $border-radius 0;
+    }
+}
+
+/**
+* Switch
+*/
+.r-field-switch-body {
+    display: flex;
+    height: 20px;
+    width: 36px;
+    border-radius: 36px;
+    position: relative;
+    vertical-align: baseline;
+    cursor: pointer;
+}
+
+input.r-field-switch[type=checkbox] {
+    opacity: 0;
+    position: absolute;
+    left: 0;
+    top: 0;
+    height: 20px;
+    width: 20px;
+    box-sizing: border-box;
+
+    &:checked + .r-field-switch-handle {
+        background-color: var(--primary-color) ;
+    }
+
+    &:focus + .r-field-switch-handle {
+        box-shadow: 0 0 0 2px var(--primary-color);
+    }
+
+    &:checked:focus + .r-field-switch-handle {
+        box-shadow: 0 0 0 2px rgba(var(--primary-color), 0.5);
+    }
+
+    &:checked + .r-field-switch-handle::before {
+        transform: translateX(16px);
+    }
+
+    &[disabled] + .r-field-switch-handle {
+        background: var(--light-gray-color) ;
+    }
+}
+
+.r-field-switch-handle {
+    position: absolute;
+    border-radius: 20px;
+    cursor: pointer;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: var(--light-gray-color);
+    transition: 0.4s;
+}
+
+.r-field-switch-handle::before {
+    position: absolute;
+    content: "";
+    height: 16px;
+    width: 16px;
+    border-radius: 50%;
+    left: $space-xxs;
+    bottom: $space-xxs;
+    background-color: white;
+    transition: 0.2s;
+}
