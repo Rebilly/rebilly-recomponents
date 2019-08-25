@@ -6,6 +6,14 @@ html {
   -webkit-font-smoothing: antialiased;
 }
 
+body, .article {
+    font-size: 14px;
+    font-size: 1.4rem;
+    line-height: 20px;
+    line-height: 2rem;
+    font-weight: 400;
+}
+
 :root {
   --background-color: #F6F8F9;
   --primary-color: #0044D4;
