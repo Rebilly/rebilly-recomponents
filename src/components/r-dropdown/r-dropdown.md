@@ -13,7 +13,7 @@
 | slideFrom  | string: `'fade'` \| `'top'` \| `'bottom'` \| `'left'` \| `'right'`| `'fade'` |  
   
   
-```  
+```html
 <template>  
  <r-dropdown :escToHide="escToHide"  
   :autoHide="autoHide" :globalAutoHide="globalAutoHide" :openOnMount="openOnMount" :disabled="disabled"  

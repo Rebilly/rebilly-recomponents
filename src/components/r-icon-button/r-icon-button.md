@@ -2,9 +2,11 @@
 
 | prop  | type | default value |  
 |--|--|--|  
-| size  | string: `'small'` \| `'regular'`\| `'large'` | `'regular'` |  | tooltipRightEdge  | boolean | false |  
+| size  | string: `'small'` \| `'regular'`\| `'large'` | `'regular'` | 
+| tooltipRightEdge  | boolean | false |  
 | fitted  | boolean | false |  
-| type  | string: `'default'` \| `'primary'` \| `'warning'` \| `'danger'` | `'default'` |  | globalAutoHide  | boolean | true |  
+| type  | string: `'default'` \| `'primary'` \| `'warning'` \| `'danger'` | `'default'` | 
+| globalAutoHide  | boolean | true |  
 | tooltip  | string | '' |  
 | disabled  | boolean | false |  
 | fluid  | boolean | false |  
