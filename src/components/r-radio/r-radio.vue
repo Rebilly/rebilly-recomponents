@@ -1,17 +1,16 @@
 <template>
     <div class="r-field" :class="styles">
-        <label class="r-field-label r-field-label-toggle" :class="labelStyles" :for="name">
+        <label class="r-field-label r-field-label-toggle" :class="labelStyles" :for="id">
             <template v-if="label">
                 {{label}}
             </template>
             <slot v-else name="label"/>
         </label>
         <input type="radio" class="r-field-radio"
-               :id="name"
-               :name="group"
-               :value="value"
                :checked="isChecked"
-               :disabled="disabled" @change="update"/>
+               :id="id"
+               :name="name"
+               :disabled="disabled" @change="$emit('change', value)"/>
 
         <span class="r-field-radio-style">
             <r-icon icon="radio-checkmark"></r-icon>
@@ -28,32 +27,32 @@
     export default {
         name: 'RRadio',
         components: {rIcon},
+        model: {
+            prop: 'checked',
+            event: 'change',
+        },
         props: {
+            checked: {
+                type: [String, Number],
+                required: true,
+            },
             label: {
                 type: String,
             },
-            group: {
+            id: {
                 type: String,
-                default: shortid.generate(),
+                default: () => shortid.generate(),
             },
             name: {
                 type: String,
-                default: () => shortid.generate(),
+                default: 'default',
             },
             caption: {
                 type: String,
                 default: null,
             },
-            type: {
-                type: String,
-                default: null,
-            },
-            model: {
-                type: [String, Number, Boolean, Array],
-                default: null,
-            },
             value: {
-                type: [String, Number, Boolean, Array],
+                type: [String, Number],
                 required: true,
             },
             disabled: {
@@ -69,7 +68,6 @@
             styles() {
                 return {
                     'is-error': this.isInvalid,
-                    [`is-${this.type}`]: !!this.type,
                 };
             },
             labelStyles() {
@@ -85,15 +83,7 @@
                 return false;
             },
             isChecked() {
-                if (this.value === null) {
-                    return false;
-                }
-                return this.model === this.value;
-            },
-        },
-        methods: {
-            update() {
-                this.$emit('update', this.value);
+                return this.checked === this.value;
             },
         },
     };

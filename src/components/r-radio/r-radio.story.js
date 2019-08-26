@@ -11,22 +11,19 @@ storiesOf('Components/Radio', module)
             <div>
                 <h2>Billing Schedule</h2>
                 <r-radio
-                    class="stack-s"
                     label="Forever (until canceled)"
-                    :model="recurringInterval"
-                    @update="update"
+                    name="theGroupName"
+                    v-model="recurringInterval"
                     value="forever"/>
                 <r-radio
-                    class="stack-s"
                     label="Limited to XX periods"
-                    :model="recurringInterval"
-                    @update="update"
+                    name="theGroupName"
+                    v-model="recurringInterval"
                     value="limited"/>
                 <r-radio
-                    class="stack-s"
                     label="Never (one-time sale)"
-                    :model="recurringInterval"
-                    @update="update"
+                    name="theGroupName"
+                    v-model="recurringInterval"
                     value="never"/>
             </div>
         `,
@@ -35,7 +32,7 @@ storiesOf('Components/Radio', module)
         },
         props: {},
         data: () => ({
-            recurringInterval: '',
+            recurringInterval: 'forever',
         }),
     }), {
         notes: {markdown},
@@ -45,11 +42,10 @@ storiesOf('Components/Radio', module)
         template: `
             <r-radio
                     class="stack-s"
-                    :model="recurringInterval"
+                    v-model="recurringInterval"
                     :label="label"
                     :caption="caption"
                     :disabled="disabled"
-                    @update="update"
                     value="forever"/>
         `,
         methods: {
