@@ -5,7 +5,7 @@
             <input
                 v-if="!multiline"
                 class="r-field-input"
-                v-model="model"
+                :value="value"
                 @input="update"
                 :placeholder="placeholder"
                 :disabled="disabled"
@@ -21,7 +21,7 @@
                 ref="textarea"
                 v-else-if="multiline && submitOnEnter"
                 class="r-field-input"
-                v-model="model"
+                :value="value"
                 @input="update"
                 @keydown.enter.exact.prevent="keySubmit"
                 @keyup="keyPress"
@@ -36,7 +36,7 @@
                 ref="textarea"
                 v-else="multiline && !submitOnEnter"
                 class="r-field-input"
-                v-model="model"
+                :value="value"
                 @input="update"
                 @keydown.enter="keySubmit"
                 @keyup="keyPress"
@@ -51,10 +51,10 @@
         <div class="r-field-group" v-if="isGroupedInput">
             <div class="r-field-addon no-flex" v-if="leftLabel">{{leftLabel}}</div>
             <div class="r-field-control" :class="fieldStyles">
-                <r-icon :icon="leftIcon" v-if="leftIcon"></r-icon>
+                <v-icon :icon="leftIcon" v-if="leftIcon"></v-icon>
                 <input
                     class="r-field-input"
-                    v-model="model"
+                    :value="value"
                     @input="update"
                     :placeholder="placeholder"
                     :disabled="disabled"
@@ -66,15 +66,12 @@
                     @click="click"
                     :name="name"
                     :autocomplete="autocompleteFlag"/>
-                <r-icon :icon="rightIcon" v-if="rightIcon"></r-icon>
+                <v-icon :icon="rightIcon" v-if="rightIcon"></v-icon>
             </div>
             <slot name="right-button"/>
             <div class="r-field-addon no-flex" v-if="rightLabel">{{rightLabel}}</div>
         </div>
-        <span class="r-field-caption" v-if="helpText || maxLength">
-            {{helpText}}
-            <span v-if="maxLength">{{charactersLeft}}</span>
-        </span>
+        <span class="r-field-caption" v-if="helpText || maxLength">{{helpText}} <span v-if="maxLength">{{charactersLeft}}</span></span>
     </div>
 </template>
 
@@ -135,10 +132,6 @@
                 type: String,
                 default: null,
             },
-            stack: {
-                type: String,
-                default: null,
-            },
             password: {
                 type: Boolean,
                 default: false,
@@ -163,6 +156,10 @@
                 type: Boolean,
                 default: false,
             },
+            autoHighlightOnFocus: {
+                type: Boolean,
+                default: false,
+            },
             maxLength: {
                 type: String,
             },
@@ -171,16 +168,6 @@
                 default: false,
             },
             autoComplete: String,
-        },
-        watch: {
-            value(value) {
-                this.model = value;
-            },
-        },
-        data() {
-            return {
-                model: this.value,
-            };
         },
         computed: {
             isInvalid() {
@@ -220,15 +207,15 @@
                 return this.autoComplete || `new-${this.name}`;
             },
             charactersLeft() {
-                return `(${this.model ? Number.parseInt(this.maxLength, 10) - this.model.length : this.maxLength} characters left.)`;
+                return `(${this.value ? Number.parseInt(this.maxLength, 10) - this.value.length : this.maxLength} characters left.)`;
             },
         },
         methods: {
-            update() {
+            update($event) {
                 if (this.autoResize && this.$refs.textarea) {
                     this.autoResizeTextArea(this.$refs.textarea);
                 }
-                this.$emit('input', this.model);
+                this.$emit('input', $event.target.value);
             },
             keySubmit() {
                 this.$emit('key-submit');
@@ -246,6 +233,9 @@
                 this.$el.querySelector('input').blur();
             },
             focus() {
+                if (this.autoHighlightOnFocus) {
+                    this.highlight();
+                }
                 this.$emit('focus');
             },
             click() {
@@ -255,13 +245,18 @@
                 element.style.height = 'auto';
                 element.style.height = `${element.scrollHeight}px`;
             },
+            highlight() {
+                this.$nextTick(() => {
+                    this.$el.querySelector('input').select();
+                });
+            },
         },
         mounted() {
             if (this.autoFocus) {
                 this.getFocus();
             }
             if (this.autoHighlight) {
-                setTimeout(() => this.$el.querySelector('input').select(), 10);
+                this.highlight();
             }
             if (this.autoResize && this.$refs.textarea) {
                 this.autoResizeTextArea(this.$refs.textarea);
