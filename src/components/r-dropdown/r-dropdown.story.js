@@ -69,13 +69,13 @@ storiesOf('Components/Dropdown', module)
                                </r-icon-button>
                             </template>
                             <template #content>
-                                <div class="popover">
-                                    <div class="popover-control">
-                                        <div class="popover-content popover-menu">
-                                            <a class="popover-menu-item">
+                                <div class="r-popover">
+                                    <div class="r-popover-control">
+                                        <div class="r-popover-content r-popover-menu">
+                                            <a class="r-popover-menu-item">
                                                 Edit
                                             </a>
-                                            <a class="popover-menu-item popover-menu-item-negative">
+                                            <a class="r-popover-menu-item r-popover-menu-item-negative">
                                                Remove
                                             </a>
                                         </div>
@@ -147,14 +147,14 @@ storiesOf('Components/Dropdown', module)
                                </r-button>
                             </template>
                             <template #content>
-                             <div class="dropdown">
-                                <div class="dropdown-content">
-                                    <a class="dropdown-item">
+                             <div class="r-dropdown">
+                                <div class="r-dropdown-content">
+                                    <a class="r-dropdown-item">
                                         Reset to Default Columns
                                     </a>
                                 </div>
-                                <div class="dropdown-content">
-                                    <a class="dropdown-item">
+                                <div class="r-dropdown-content">
+                                    <a class="r-dropdown-item">
                                         Reset to Default Order
                                     </a>
                                 </div>

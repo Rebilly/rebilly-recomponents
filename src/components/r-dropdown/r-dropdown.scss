@@ -1,10 +1,373 @@
-.popper {
+.r-popper {
     display: inline-block;
     position: relative;
 }
 
-.popper.popper-fluid {
+.r-popper.r-popper-fluid {
     width: 100%;
+}
+
+.r-dropdown {
+}
+
+.r-dropdown .divider {
+    @include rem(margin, $space-m 0);
+}
+
+.r-dropdown {
+    box-sizing: border-box;
+    display: inline-block;
+    position: absolute;
+    border-radius: 4px;
+    z-index: 90;
+    box-shadow: 0 0 0 1px rgba(107, 115, 132, 0.09), 0 7px 14px 0 rgba(107, 115, 132, 0.15), 0 3px 6px 0 rgba(107, 115, 132, 0.07);
+    background: #FFFFFF;
+    visibility: hidden;
+    min-width: 280px;
+    opacity: 0;
+    -ms-filter: "progid:DXImageTransform.Microsoft.Alpha(Opacity=0)";
+    filter: alpha(opacity=0);
+    transition: visibility 0s ease 0.1s, opacity 0.1s ease;
+}
+
+.r-dropdown.is-visible {
+    visibility: visible;
+    opacity: 1;
+    -ms-filter: "progid:DXImageTransform.Microsoft.Alpha(Opacity=100)";
+    filter: alpha(opacity=100);
+    transition-delay: 0s;
+}
+
+.r-dropdown.r-dropdown-fluid {
+    width: 100%;
+}
+
+.r-dropdown-content {
+    @include rem(padding, $space-s 0);
+    border-bottom: 1px solid #E1E7EA;
+}
+
+.r-dropdown-content p, .r-dropdown-content ul, .r-dropdown-content ol, .r-dropdown-content pre, .r-dropdown-content table, .r-dropdown-content blockquote, .r-dropdown-content h1, .r-dropdown-content h2, .r-dropdown-content h3, .r-dropdown-content h4, .r-dropdown-content h5, .r-dropdown-content h6 {
+    margin: 0;
+}
+
+.r-dropdown-content:first-child {
+    border-radius: 4px 4px 0 0;
+}
+
+.r-dropdown-content:last-child {
+    border-bottom: 0;
+    border-radius: 0 0 4px 4px;
+}
+
+.r-dropdown-content .r-dropdown-title {
+    margin: 0;
+    @include rem(padding, $space-s $space-default);
+}
+
+.r-dropdown-content .r-dropdown-item {
+    white-space: nowrap;
+    display: block;
+    cursor: pointer;
+    line-height: 20px;
+    color: #0D2B3E;
+    box-sizing: border-box;
+    @include rem(padding, $space-s $space-default);
+}
+
+.r-dropdown-content .r-dropdown-item:hover, .r-dropdown-content .r-dropdown-itemfocus, .r-dropdown-content .r-dropdown-item:active, .r-dropdown-content .r-dropdown-item:hover, .r-dropdown-content .r-dropdown-item.is-active {
+    text-decoration: none;
+    background: #0044D4;
+    color: #FFFFFF;
+}
+
+.r-dropdown-content .r-dropdown-item:hover svg, .r-dropdown-content .r-dropdown-item:focus svg, .r-dropdown-content .r-dropdown-item:active svg, .r-dropdown-content .r-dropdown-item.is-active svg {
+    fill: #FFFFFF;
+}
+
+.r-dropdown-content .r-dropdown-item:hover .avatar .avatar-info-muted-text, .r-dropdown-content .r-dropdown-item:focus .avatar .avatar-info-muted-text, .r-dropdown-content .r-dropdown-item:active .avatar .avatar-info-muted-text {
+    color: rgba(255, 255, 255, 0.6);
+}
+
+.r-dropdown-content .r-dropdown-item:hover .text-muted, .r-dropdown-content .r-dropdown-item:focus .text-muted, .r-dropdown-content .r-dropdown-item:active .text-muted {
+    color: rgba(255, 255, 255, 0.6) !important;
+}
+
+.r-dropdown-content.is-scrollable {
+    max-height: 196px;
+    overflow-y: scroll;
+}
+
+/**
+* Types
+*/
+.r-dropdown-content.r-dropdown-content-padded {
+    @include rem(padding, $space-m);
+}
+
+.r-dropdown-content.r-dropdown-content-help {
+    @include rem(padding, $space-s $space-m);
+    text-align: center;
+    background: #F9FAFB;
+}
+
+.r-dropdown-content.r-dropdown-content-select-fixed {
+    min-height: 300px;
+    position: relative;
+    overflow: hidden;
+}
+
+.r-popover {
+    box-sizing: border-box;
+    display: inline-block;
+    min-width: 280px;
+    position: absolute;
+    background: #FFFFFF;
+    box-shadow: 0 0 0 1px rgba(107, 115, 132, 0.09), 0 7px 14px 0 rgba(107, 115, 132, 0.15), 0 3px 6px 0 rgba(107, 115, 132, 0.07);
+    border-radius: 4px;
+    z-index: 90;
+    visibility: hidden;
+    opacity: 0;
+    -ms-filter: "progid:DXImageTransform.Microsoft.Alpha(Opacity=0)";
+    filter: alpha(opacity=0);
+    transition: visibility 0s ease 0.1s, opacity 0.1s ease;
+}
+
+.r-popover.r-popover-centered {
+    left: 50%;
+    transform: translate3d(-50%, 0, 0);
+}
+
+.r-popover.is-visible {
+    opacity: 1;
+    -ms-filter: "progid:DXImageTransform.Microsoft.Alpha(Opacity=100)";
+    filter: alpha(opacity=100);
+    visibility: visible;
+    transition-delay: 0s;
+}
+
+.r-popover-arrow {
+    overflow: hidden;
+    position: absolute;
+    width: 20px;
+    height: 20px;
+    left: 50%;
+    @include rem(margin-left, -10px);
+    background: transparent;
+    top: -20px;
+    z-index: 80;
+}
+
+.r-popover-arrow.is-left {
+    -webkit-transform: rotate(-90deg);
+    -moz-transform: rotate(-90deg);
+    -ms-transform: rotate(-90deg);
+    transform: rotate(-90deg);
+    @include rem(margin-top, -10px);
+    top: 50%;
+    left: -10px;
+}
+
+.r-popover-arrow.is-left-bottom {
+    -webkit-transform: rotate(-90deg);
+    -moz-transform: rotate(-90deg);
+    -ms-transform: rotate(-90deg);
+    transform: rotate(-90deg);
+    @include rem(margin-top, -36px);
+    top: 100%;
+    left: -10px;
+}
+
+.r-popover-arrow.is-right {
+    -webkit-transform: rotate(90deg);
+    -moz-transform: rotate(90deg);
+    -ms-transform: rotate(90deg);
+    transform: rotate(90deg);
+    @include rem(margin-top, -10px);
+    top: 50%;
+    left: 100%;
+    margin-left: 0;
+}
+
+.r-popover-arrow.is-bottom {
+    -webkit-transform: rotate(180deg);
+    -moz-transform: rotate(180deg);
+    -ms-transform: rotate(180deg);
+    transform: rotate(180deg);
+    @include rem(margin-top, -10px);
+    margin-top: 0;
+    top: 100%;
+    left: 50%;
+}
+
+.r-popover-arrow::after {
+    content: "";
+    position: absolute;
+    width: 12px;
+    height: 12px;
+    left: 50%;
+    @include rem(margin-left, -6px);
+    background: #FFFFFF;
+    box-shadow: 0 0 0 1px rgba(107, 115, 132, 0.09), 0 1px 2px 0 rgba(107, 115, 132, 0.24), 4px 0 4px 0 rgba(107, 115, 132, 0.05);
+    top: 14px;
+    transform: rotate(45deg);
+}
+
+.r-popover-title {
+    @include rem(padding, $space-m);
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: -webkit-flex;
+    display: flex;
+    border-bottom: 1px solid #E1E7EA;
+}
+
+.r-popover-subtitle {
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: -webkit-flex;
+    display: flex;
+    @include rem(padding-bottom, $space-m);
+}
+
+.r-popover-title > *,
+.r-popover-subtitle > * {
+    margin: 0;
+    flex: 1 0 50%;
+    min-width: 0;
+}
+
+.r-popover-title h2,
+.r-popover-title h3 {
+    @include rem(padding, $space-default);
+}
+
+.r-popover-control {
+    max-height: 600px;
+}
+
+.r-popover-control.is-scrollable,
+.r-popover-content.is-scrollable {
+    overflow-y: scroll;
+}
+
+.r-popover-content {
+    @include rem(padding, $inset-m);
+}
+
+.r-popover-content p, .r-popover-content ul, .r-popover-content ol, .r-popover-content pre, .r-popover-content table, .r-popover-content blockquote, .r-popover-content h1, .r-popover-content h2, .r-popover-content h3, .r-popover-content h4, .r-popover-content h5, .r-popover-content h6 {
+    margin: 0;
+}
+
+.r-popover-content {
+    border-bottom: 1px solid #E1E7EA;
+}
+
+.r-popover-content:last-child {
+    border: none;
+    border-radius: 0 0 4px 4px;
+}
+
+/**
+* Types
+*/
+.r-popover-content.r-popover-content-secondary {
+    background: #F9FAFB;
+}
+
+.r-popover-content.r-popover-menu {
+    @include rem(padding, $space-s 0);
+}
+
+.r-popover-action-menu-item,
+.r-popover-menu-item {
+    @include rem(padding, $space-s $space-m);
+    display: block;
+    line-height: 20px;
+    color: #0D2B3E;
+    cursor: pointer;
+}
+
+.r-popover-action-menu-item:hover, .r-popover-action-menu-item:focus, .r-popover-action-menu-item:active,
+.r-popover-menu-item:hover,
+.r-popover-menu-item:focus,
+.r-popover-menu-item:active {
+    background: #0044D4;
+    text-decoration: none;
+    color: #FFFFFF;
+}
+
+.r-popover-action-menu-item.r-popover-menu-item-negative:hover, .r-popover-action-menu-item.r-popover-menu-item-negative:focus, .r-popover-action-menu-item.r-popover-menu-item-negative:active,
+.r-popover-menu-item.r-popover-menu-item-negative:hover,
+.r-popover-menu-item.r-popover-menu-item-negative:focus,
+.r-popover-menu-item.r-popover-menu-item-negative:active {
+    background: #E53935;
+    color: #FFFFFF;
+}
+
+.r-popover-action-menu-item:hover .icon,
+.r-popover-menu-item:hover .icon {
+    fill: #FFFFFF;
+}
+
+.r-popover-action-menu-item:hover .avatar-info-muted-text, .r-popover-action-menu-item:focus .avatar-info-muted-text, .r-popover-action-menu-item:active .avatar-info-muted-text,
+.r-popover-menu-item:hover .avatar-info-muted-text,
+.r-popover-menu-item:focus .avatar-info-muted-text,
+.r-popover-menu-item:active .avatar-info-muted-text {
+    color: rgba(255, 255, 255, 0.6);
+}
+
+.r-popover.r-popover-dark {
+    background: #505A6F;
+    box-shadow: 0 3px 6px 0 rgba(107, 115, 132, 0.2), 0 7px 14px 0 rgba(107, 115, 132, 0.35);
+}
+
+.r-popover.r-popover-dark .r-popover-title,
+.r-popover.r-popover-dark .r-popover-content {
+    border-bottom: 1px solid #454e60;
+}
+
+.r-popover.r-popover-dark .r-popover-content:last-child {
+    border: none;
+}
+
+.r-popover.r-popover-dark .r-popover-arrow::after {
+    background: #505A6F;
+    box-shadow: 0 1px 2px 0 rgba(107, 115, 132, 0.24), 4px 0 4px 0 rgba(107, 115, 132, 0.05);
+}
+
+.r-popover.r-popover-dark * {
+    color: #FFFFFF;
+}
+
+.r-popover.r-popover-dark *.text-muted {
+    color: var(--light-gray-color) !important;
+}
+
+.r-popover.r-popover-dark .r-popover-content.r-popover-content-secondary {
+    background: #454e60;
+}
+
+.r-popover.r-popover-dark .r-popover-menu-item {
+    @include rem(padding, $space-s $space-m);
+    cursor: pointer;
+}
+
+.r-popover.r-popover-dark .r-popover-menu-item .icon {
+    fill: #FFFFFF;
+}
+
+.r-popover.r-popover-dark .r-popover-menu-item .avatar-info .avatar-info-muted-text {
+    color: var(--light-gray-color);
+}
+
+.r-popover.r-popover-dark .r-popover-menu-item:hover, .r-popover.r-popover-dark .r-popover-menu-item:focus, .r-popover.r-popover-dark .r-popover-menu-item:active {
+    background: #475063;
+    color: #FFFFFF;
+}
+
+.r-popover.r-popover-dark .r-popover-menu-item:hover .avatar-info .avatar-info-muted-text {
+    color: var(--light-gray-color);
 }
 
 .fade-enter-active, .fade-leave-active,

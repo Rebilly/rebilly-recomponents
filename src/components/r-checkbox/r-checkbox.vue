@@ -1,19 +1,19 @@
 <template>
     <div>
-        <div class="field" :class="{'is-error': isInvalid}">
-            <label class="field-label field-label-toggle" :class="{'is-disabled': disabled}" :for="name">
+        <div class="r-field" :class="{'is-error': isInvalid}">
+            <label class="r-field-label r-field-label-toggle" :class="{'is-disabled': disabled}" :for="name">
                 <slot name="label">{{ label || $t('label') }}</slot>
             </label>
             <input type="checkbox"
-                   class="field-checkbox"
+                   class="r-field-checkbox"
                    :disabled="disabled"
                    :id="name"
                    :value="value"
                    :checked="isChecked" @change="change"/>
-            <span class="field-checkbox-style">
+            <span class="r-field-checkbox-style">
             <r-icon :icon="checkIcon"></r-icon>
         </span>
-            <span class="field-caption field-caption-toggle" v-if="caption">{{caption}}</span>
+            <span class="r-field-caption r-field-caption-toggle" v-if="caption">{{caption}}</span>
         </div>
     </div>
 </template>
@@ -124,4 +124,3 @@
         },
     };
 </script>
-

@@ -1,7 +1,7 @@
 <template>
-    <div class="popper" :class="{'popper-fluid': fluid}" v-click-outside="autoHidePopover" @keydown.esc="escapePopper">
+    <div class="r-popper" :class="{'r-popper-fluid': fluid}" v-click-outside="autoHidePopover" @keydown.esc="escapePopper">
         <slot name="trigger" :popper="popper"/>
-        <div class="popper-content-wrapper" ref="popper-content-ref">
+        <div class="r-popper-content-wrapper" ref="popper-content-ref">
             <transition :name="slideFrom" v-if="isPopperVisible">
                 <slot name="content" :popper="popper"/>
             </transition>
@@ -263,4 +263,3 @@
         },
     };
 </script>
-
