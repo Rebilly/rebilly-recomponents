@@ -20,5 +20,8 @@
   "devDependencies": {
     "semantic-release": "^15.13.24",
     "cz-conventional-changelog": "^3.0.2"
+  },
+  "scripts": {
+    "semantic-release": "semantic-release"
   }
 }
