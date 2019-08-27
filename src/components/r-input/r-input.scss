@@ -11,7 +11,7 @@
     display: block;
     font-family: var(--primary-font-stack);
     color: var(--text-color);
-    @include rem(margin-bottom, $space-xs);
+    margin-bottom: $space-rem-xs;
 }
 
 .r-field-input, .r-field-editable {
@@ -19,7 +19,7 @@
     width: 100%;
     height: auto;
     vertical-align: baseline;
-    @include rem(padding, $space-s $space-m);
+    padding: $space-rem-s $space-rem-m;
     appearance: none;
     border-radius: $border-radius;
     display: block;
@@ -33,8 +33,8 @@
     letter-spacing: initial;
     font-family: var(--primary-font-stack);
     font-weight: $regular;
-    @include rem(font-size, $paragraph);
-    @include rem(line-height, $line-height);
+    font-size: $paragraph-rem;
+    line-height: $line-height-rem;
     @include transition(box-shadow .05s ease);
 
     &:focus {
@@ -49,7 +49,7 @@
 }
 
 .r-field.is-error .r-field-input,
-.r-field.is-error input{
+.r-field.is-error input {
     color: var(--red-color);
     box-shadow: 0 0 0 1px var(--red-color) inset;
     background: rgba(var(--light-red-color), 0.6);
@@ -62,7 +62,7 @@
 .r-field-caption {
     display: block;
     color: $muted;
-    @include rem(margin-top, $space-xs);
+    margin-top: $space-rem-xs;
 }
 
 /**
@@ -76,7 +76,7 @@
 }
 
 .r-field-control.has-icon-right .r-field-input {
-    @include rem(padding, $space-s $space-l $space-s $space-m);
+    padding: $space-rem-s $space-rem-l $space-rem-s $space-rem-m;
 }
 
 .r-field-control.has-icon-left .r-icon:first-child {
@@ -86,7 +86,7 @@
 }
 
 .r-field-control.has-icon-left .r-field-input {
-    @include rem(padding, $space-s $space-m $space-s $space-l);
+    padding: $space-rem-s $space-rem-m $space-rem-s $space-rem-l;
 }
 
 .r-field.is-error .r-field-control.has-icon-right .r-icon,
@@ -114,7 +114,7 @@ select.r-field-input {
     min-height: 36px;
     background: linear-gradient(to bottom, #FFFFFF 0%, #F6F8F9 100%);
     box-shadow: 0 0 0 1px #C4CED8 inset, 0 1px 2px 0 rgba(161, 178, 193, 0.3);
-    @include rem(padding, $space-s $space-l $space-s $space-m);
+    padding: $space-rem-s $space-rem-l $space-rem-s $space-rem-m;
 }
 
 /**
@@ -163,7 +163,7 @@ select:-moz-focusring {
 
 .r-field-group > * {
     flex: 1 0;
-    @include rem(margin-left, -1px);
+    margin-left: -0.1rem;
 }
 
 .r-field-group > *:not(:first-child):not(:last-child),
@@ -185,7 +185,7 @@ select:-moz-focusring {
 .r-field-group > *:only-child,
 .r-field-group > *:only-child .r-field-input,
 .r-field-group > *:first-child:last-child,
-.r-field-group > *:first-child:last-child .r-field-input  {
+.r-field-group > *:first-child:last-child .r-field-input {
     border-radius: $border-radius;
 }
 
@@ -193,9 +193,9 @@ select:-moz-focusring {
 * Input Inline
 */
 .r-field-input.r-field-input-inline {
-    @include rem(padding, 0 $space-s);
+    padding: 0 $space-rem-s;
     display: inline-block;
-    background: rgba(var(--light-blue-color) , 0.6);
+    background: rgba(var(--light-blue-color), 0.6);
     box-shadow: none;
     border-radius: 0;
     box-sizing: border-box;
@@ -223,20 +223,25 @@ select:-moz-focusring {
 ::-webkit-input-placeholder { /* Chrome/Opera/Safari */
     color: var(--gray-color);
 }
+
 ::-moz-placeholder { /* Firefox 19+ */
     opacity: 1;
     color: var(--gray-color);
 }
+
 :-ms-input-placeholder { /* IE 10+ */
     color: var(--gray-color);
 }
+
 :-moz-placeholder { /* Firefox 18- */
     color: var(--gray-color);
 }
+
 /* Placeholder support for content editable field */
 .r-field-editable-wrapper {
     position: relative;
 }
+
 .r-field-editable-wrapper[placeholder]:empty:before {
     content: attr(placeholder);
     position: absolute;
@@ -251,6 +256,7 @@ select:-moz-focusring {
         width: 100%;
     }
 }
+
 .r-field-editable-wrapper[placeholder]:empty:focus:before {
     content: '';
     display: none;

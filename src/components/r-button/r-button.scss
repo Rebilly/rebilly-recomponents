@@ -188,23 +188,23 @@
 * Icons
 */
 .r-button.has-icon {
-    @include rem(padding, $space-s);
+    padding: $space-rem-s;
 }
 
 .r-button.has-icon.r-button-l {
-    @include rem(padding, $space-m $space-l);
+    padding: $space-rem-m $space-rem-l;
 }
 
 .r-button.has-icon.r-button-s {
-    @include rem(padding, $space-xs);
+    padding: $space-rem-xs;
 }
 
 .r-button.has-icon-left .r-icon {
-    @include rem(margin-right, $space-s);
+    margin-right: $space-rem-s;
 }
 
 .r-button.has-icon-right .r-icon {
-    @include rem(margin-left, $space-s);
+    margin-left: $space-rem-s;
 }
 
 .r-button.has-icon.r-button-fitted {

@@ -11,7 +11,7 @@
 }
 
 .r-dropdown .divider {
-    @include rem(margin, $space-m 0);
+    margin: $space-rem-m 0;
 }
 
 .r-dropdown {
@@ -43,7 +43,7 @@
 }
 
 .r-dropdown-content {
-    @include rem(padding, $space-s 0);
+    padding: $space-rem-s 0;
     border-bottom: 1px solid #E1E7EA;
 }
 
@@ -62,7 +62,7 @@
 
 .r-dropdown-content .r-dropdown-title {
     margin: 0;
-    @include rem(padding, $space-s $space-default);
+    padding: $space-rem-s $space-rem-default;
 }
 
 .r-dropdown-content .r-dropdown-item {
@@ -72,7 +72,7 @@
     line-height: 20px;
     color: #0D2B3E;
     box-sizing: border-box;
-    @include rem(padding, $space-s $space-default);
+    padding: $space-rem-s $space-rem-default;
 }
 
 .r-dropdown-content .r-dropdown-item:hover, .r-dropdown-content .r-dropdown-itemfocus, .r-dropdown-content .r-dropdown-item:active, .r-dropdown-content .r-dropdown-item:hover, .r-dropdown-content .r-dropdown-item.is-active {
@@ -102,11 +102,11 @@
 * Types
 */
 .r-dropdown-content.r-dropdown-content-padded {
-    @include rem(padding, $space-m);
+    padding: $space-rem-m;
 }
 
 .r-dropdown-content.r-dropdown-content-help {
-    @include rem(padding, $space-s $space-m);
+    padding: $space-rem-s $space-rem-m;
     text-align: center;
     background: #F9FAFB;
 }
@@ -152,7 +152,7 @@
     width: 20px;
     height: 20px;
     left: 50%;
-    @include rem(margin-left, -10px);
+    margin-left: -1rem;
     background: transparent;
     top: -20px;
     z-index: 80;
@@ -163,7 +163,7 @@
     -moz-transform: rotate(-90deg);
     -ms-transform: rotate(-90deg);
     transform: rotate(-90deg);
-    @include rem(margin-top, -10px);
+    margin-top: -1rem;
     top: 50%;
     left: -10px;
 }
@@ -173,7 +173,7 @@
     -moz-transform: rotate(-90deg);
     -ms-transform: rotate(-90deg);
     transform: rotate(-90deg);
-    @include rem(margin-top, -36px);
+    margin-top: -3.6rem;
     top: 100%;
     left: -10px;
 }
@@ -183,7 +183,7 @@
     -moz-transform: rotate(90deg);
     -ms-transform: rotate(90deg);
     transform: rotate(90deg);
-    @include rem(margin-top, -10px);
+    margin-top: -1rem;
     top: 50%;
     left: 100%;
     margin-left: 0;
@@ -194,7 +194,7 @@
     -moz-transform: rotate(180deg);
     -ms-transform: rotate(180deg);
     transform: rotate(180deg);
-    @include rem(margin-top, -10px);
+    margin-top: -1rem;
     margin-top: 0;
     top: 100%;
     left: 50%;
@@ -206,7 +206,7 @@
     width: 12px;
     height: 12px;
     left: 50%;
-    @include rem(margin-left, -6px);
+    margin-left: -0.6rem;
     background: #FFFFFF;
     box-shadow: 0 0 0 1px rgba(107, 115, 132, 0.09), 0 1px 2px 0 rgba(107, 115, 132, 0.24), 4px 0 4px 0 rgba(107, 115, 132, 0.05);
     top: 14px;
@@ -214,7 +214,7 @@
 }
 
 .r-popover-title {
-    @include rem(padding, $space-m);
+    padding: $space-rem-m;
     display: -webkit-box;
     display: -ms-flexbox;
     display: -webkit-flex;
@@ -227,7 +227,7 @@
     display: -ms-flexbox;
     display: -webkit-flex;
     display: flex;
-    @include rem(padding-bottom, $space-m);
+    padding-bottom: $space-rem-m;
 }
 
 .r-popover-title > *,
@@ -239,7 +239,7 @@
 
 .r-popover-title h2,
 .r-popover-title h3 {
-    @include rem(padding, $space-default);
+    padding: $space-rem-default;
 }
 
 .r-popover-control {
@@ -252,7 +252,7 @@
 }
 
 .r-popover-content {
-    @include rem(padding, $inset-m);
+    padding: $inset-rem-m;
 }
 
 .r-popover-content p, .r-popover-content ul, .r-popover-content ol, .r-popover-content pre, .r-popover-content table, .r-popover-content blockquote, .r-popover-content h1, .r-popover-content h2, .r-popover-content h3, .r-popover-content h4, .r-popover-content h5, .r-popover-content h6 {
@@ -276,12 +276,12 @@
 }
 
 .r-popover-content.r-popover-menu {
-    @include rem(padding, $space-s 0);
+    padding: $space-rem-s 0;
 }
 
 .r-popover-action-menu-item,
 .r-popover-menu-item {
-    @include rem(padding, $space-s $space-m);
+    padding: $space-rem-s $space-rem-m;
     display: block;
     line-height: 20px;
     color: #0D2B3E;
@@ -349,7 +349,7 @@
 }
 
 .r-popover.r-popover-dark .r-popover-menu-item {
-    @include rem(padding, $space-s $space-m);
+    padding: $space-rem-s $space-rem-m;
     cursor: pointer;
 }
 

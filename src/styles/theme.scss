@@ -7,8 +7,8 @@ html {
 }
 
 body, .article {
-    @include rem(font-size, $paragraph);
-    @include rem(line-height, $space-default);
+    font-size: $paragraph-rem;
+    line-height: $space-rem-default;
     font-weight: 400;
 }
 

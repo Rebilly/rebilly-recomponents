@@ -7,10 +7,10 @@
 
 .r-tile__title {
     display: flex;
-    @include rem(padding, $space-default $space-default 0 $space-default);
+    padding: $space-rem-default $space-rem-default 0 $space-rem-default;
 
     & h1, & h2, & h3, & h4, & h5 {
-        @include rem(padding-right, $space-default);
+        padding-right: $space-rem-default;
         margin: 0;
     }
 
@@ -22,7 +22,7 @@
 
 .r-tile__subtitle {
     display: flex;
-    @include rem(padding-bottom, $space-default);
+    padding-bottom: $space-rem-default;
 }
 
 .r-tile__title > *,
@@ -33,7 +33,7 @@
 }
 
 .r-tile__content {
-    @include rem(padding, $space-default);
+    padding: $space-rem-default;
     border-bottom: 1px solid $faint-gray;
 
     & p, & ul, & ol, & pre, & table, & blockquote, & h1, & h2, & h3, & h4, & h5, & h6 {
@@ -56,7 +56,7 @@
 }
 
 .r-tile__actions {
-    @include rem(padding, $space-default);
+    padding: $space-rem-default;
     text-align: right;
 
     & > * {

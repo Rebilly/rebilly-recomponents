@@ -5,7 +5,7 @@
 /* Base styles for the element that has a tooltip */
 
 .tooltip {
-    @include rem(padding, $inset-s);
+    padding: $inset-rem-s;
     background-color: var(--tooltip-background-color);
     color: #FFF;
     position: absolute;
