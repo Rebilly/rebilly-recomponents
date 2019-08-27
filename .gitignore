@@ -7,7 +7,7 @@ package-lock.json
 .out
 
 # Build output
-.dist
+dist
 
 # Editor directories and files
 .idea

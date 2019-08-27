@@ -1,6 +1,6 @@
 import {storiesOf} from '@storybook/vue';
 import {action} from '@storybook/addon-actions';
-import {boolean, text} from '@storybook/addon-knobs';
+import {boolean} from '@storybook/addon-knobs';
 import RTile from './r-tile.vue';
 import RButton from '../r-button/r-button.vue';
 import markdown from './r-tile.md';

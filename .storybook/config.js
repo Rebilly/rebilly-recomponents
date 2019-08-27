@@ -56,7 +56,7 @@ addDecorator(withCssResources)
 addParameters({
   cssresources: [{
       id: `boostrap`,
-      picked: true,
+      picked: false,
       code: `
         <style>
             :root {

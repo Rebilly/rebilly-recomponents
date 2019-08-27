@@ -1,11 +1,9 @@
 import {storiesOf} from '@storybook/vue';
 import {action} from '@storybook/addon-actions';
 import {text} from '@storybook/addon-knobs';
-import recomponents from '../components/index';
-
-const {
+import {
     RTile, RInput, RCheckbox, RButton,
-} = recomponents;
+} from '../index';
 
 storiesOf('Demo', module)
     .add('Payment Form', () => ({
