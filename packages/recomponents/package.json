@@ -28,6 +28,9 @@
     "Rebilly",
     "Vue"
   ],
+  "publishConfig": {
+    "access": "public"
+  },
   "engines": {
     "node": ">= 10",
     "yarn": ">= 1.12.0"
