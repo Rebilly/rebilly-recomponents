@@ -1,0 +1,13 @@
+{
+  "name": "recomponents-demo-gridsome",
+  "private": true,
+  "scripts": {
+    "build": "gridsome build",
+    "develop": "gridsome develop",
+    "explore": "gridsome explore"
+  },
+  "dependencies": {
+    "gridsome": "^0.6.0",
+    "@rebilly/recomponents": "^1.0.0"
+  }
+}

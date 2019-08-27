@@ -1,0 +1,20 @@
+# Regular git ignore
+.DS_Store
+node_modules
+package-lock.json
+
+# Storybook output
+.out
+
+# Build output
+dist
+
+# Editor directories and files
+.idea
+.vscode
+*.suo
+*.ntvs*
+*.njsproj
+*.sln
+*.sw*
+jsconfig.json

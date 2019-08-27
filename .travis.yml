@@ -1,0 +1,42 @@
+language: node_js
+cache:
+  yarn: true
+  directories:
+    - ~/.npm
+    - node_modules
+    - packages/nuxt/node_modules
+    - packages/gridsome/node_modules
+    - packages/recomponents/node_modules
+branches:
+  only:
+    - "master"
+notifications:
+  email: true
+node_js:
+  - '12'
+install: yarn
+jobs:
+  include:
+    - stage: compile
+      name: Build Recomponents and Storybook
+      before_script:
+        - cd packages/recomponents
+        - yarn
+      script:
+        - yarn build-storybook
+        - yarn build
+    - stage: test
+      name: 'Eslint checks and unit tests'
+      before_script:
+        - cd packages/recomponents
+      script:
+        - yarn lint
+        - yarn test
+    - stage: deploy
+      name: 'Release recomponents to NPM'
+      before_script:
+        - cd packages/recomponents
+      if: branch = master
+      script:
+        - yarn build
+        - yarn semantic-release
