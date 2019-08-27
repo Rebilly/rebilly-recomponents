@@ -1,23 +1,24 @@
 {
-  "name": "rebilly-recomponents",
-  "version": "0.0.0-development",
-  "description": "Officail Rebilly front-end components library",
-  "main": ".dist/rebilly-recomponents.common.js",
+  "name": "@rebilly/recomponents",
+  "version": "0.0.1",
+  "description": "Official Rebilly front-end components library",
+  "main": "dist/recomponents.common.js",
+  "unpkg": "dist/recomponents.umd.js",
   "author": "Rebilly SRL",
   "license": "MIT",
   "scripts": {
     "test": "vue-cli-service test:unit",
     "lint": "vue-cli-service lint",
     "build": "npm run build:wc & npm run build:lib",
-    "build:wc": "vue-cli-service build --target wc-async --name rebilly-recomponents 'src/components/**/*.vue'",
-    "build:lib": "vue-cli-service build --target lib --name rebilly-recomponents 'src/components/index.js'",
+    "build:wc": "vue-cli-service build --target wc-async --name recomponents 'src/components/**/*.vue'",
+    "build:lib": "vue-cli-service build --target lib --name recomponents 'src/index.js'",
     "storybook": "start-storybook -p 9001  -s public",
     "build-storybook": "build-storybook -c .storybook -o .out",
     "semantic-release": "semantic-release"
   },
   "files": [
     "package.json",
-    ".dist/*"
+    "dist/*"
   ],
   "repository": {
     "type": "git",
@@ -41,6 +42,7 @@
     "@storybook/addon-storysource": "^5.1.10",
     "@storybook/vue": "^5.1.10",
     "@vue/babel-preset-app": "^3.10.0",
+    "@vue/cli": "^3.11.0",
     "@vue/cli-plugin-babel": "^3.10.0",
     "@vue/cli-plugin-eslint": "^3.10.0",
     "@vue/cli-plugin-unit-jest": "^3.10.0",
@@ -83,7 +85,6 @@
     "babel-jest": "^24.8.0",
     "babel-plugin-transform-runtime": "^6.23.0",
     "babel7-jest": "^1.0.1",
-    "cz-conventional-changelog": "^3.0.2",
     "jest": "^24.8.0",
     "jest-cli": "^24.8.0",
     "jest-css-modules": "^2.1.0",
@@ -92,9 +93,7 @@
     "semantic-release": "^15.13.21",
     "vue-jest": "^3.0.4"
   },
-  "config": {
-    "commitizen": {
-      "path": "./node_modules/cz-conventional-changelog"
-    }
+  "peerDependencies": {
+    "vue": "^2.6.0"
   }
 }
