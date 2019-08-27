@@ -28,8 +28,6 @@ function install(Vue) {
     });
 }
 
-if (typeof window !== 'undefined' && window.Vue) install(window.Vue);
-
 export {
     RBadge,
     RButton,
