@@ -6,7 +6,7 @@
 .r-field-label-toggle {
     display: inline-block;
     position: relative;
-    @include rem(padding-left, 20px + $space-s);
+    padding-left: 2.8rem;
     margin: 0;
     cursor: pointer;
 }
@@ -16,8 +16,8 @@
 }
 
 .r-field-caption-toggle {
-    @include rem(padding-left, 20px + $space-s);
-    @include rem(margin-top, $space-xxs);
+    padding-left: 2.8rem;
+    margin-top: $space-rem-xxs;
 }
 
 /**
@@ -88,16 +88,16 @@ input.r-field-radio[type=radio] {
         cursor: pointer;
         border-radius: $border-radius;
         border: none;
-        @include rem(padding, $space-s $space-m);
+        padding: $space-rem-s $space-rem-m;
         font-family: var(--primary-font-stack);
         font-weight: $regular;
-        @include rem(font-size, $paragraph);
-        @include rem(line-height, $line-height);
+        font-size: $paragraph-rem;
+        line-height: $line-height-rem;
         @include transition(box-shadow .15s ease);
         outline: none;
 
         &:hover {
-            background: var(--background-color) ;
+            background: var(--background-color);
             text-decoration: none;
         }
 
@@ -121,25 +121,26 @@ input.r-field-radio[type=radio] {
 .r-field.is-button-group {
     @extend .r-field, .is-button;
     margin-right: -1px;
+
     & .r-field-label-toggle {
         width: 100%;
     }
 }
 
 .btn-group .r-field.is-button-group:not(:first-child):not(:last-child) {
-    & .r-field-label-toggle  {
+    & .r-field-label-toggle {
         border-radius: 0;
     }
 }
 
 .btn-group .r-field.is-button-group:first-child {
-    & .r-field-label-toggle  {
+    & .r-field-label-toggle {
         border-radius: $border-radius 0 0 $border-radius;
     }
 }
 
 .btn-group .r-field.is-button-group:last-child {
-    & .r-field-label-toggle  {
+    & .r-field-label-toggle {
         border-radius: 0 $border-radius $border-radius 0;
     }
 }
@@ -167,7 +168,7 @@ input.r-field-switch[type=checkbox] {
     box-sizing: border-box;
 
     &:checked + .r-field-switch-handle {
-        background-color: var(--primary-color) ;
+        background-color: var(--primary-color);
     }
 
     &:focus + .r-field-switch-handle {
@@ -183,7 +184,7 @@ input.r-field-switch[type=checkbox] {
     }
 
     &[disabled] + .r-field-switch-handle {
-        background: var(--light-gray-color) ;
+        background: var(--light-gray-color);
     }
 }
 

@@ -11,7 +11,7 @@
     color: transparent;
     display: inline-block;
     vertical-align: middle;
-    @include rem(margin, -4px 0 -2px 0);
+    margin: -0.4rem 0 -0.2rem 0;
     @include transition(all .15s ease);
 }
 
