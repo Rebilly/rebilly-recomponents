@@ -89,3 +89,6 @@ sw.*
 
 # Vim swap files
 *.swp
+
+# Ignore npm lock file
+package-lock.json
