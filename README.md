@@ -14,8 +14,8 @@
 
 # Rebilly Recomponents Monorepo
 
-As the list of projects grows for the UI in Rebilly it became apparent that we need to share UI components.
-This library could be used for any project based on Vue to help deliver consistency for the developers and the look and feel.
+As the number of projects at Rebilly requiring a UI grows larger, it has becme apparent that we need to share UI components.
+This library can be used for any project based on Vue to help deliver consistency in both look and feel to the end-user, and usage for Rebilly developers.
 
 ## Repository structure
 
