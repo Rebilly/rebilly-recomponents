@@ -43,7 +43,7 @@ Or they can be bundled by webpack:
 
 ## Documentation
 
-We adore [Storybook](https://storybook.js.org/) and we recomponent instead of boring documentation we used it to demonstrate all components we have.
+We adore [Storybook](https://storybook.js.org/) and for Recomponents instead of boring documentation we used it to demonstrate all components we have.
 Each component has comprehensive description, you can play with any customizable property and slot. 
 
 ## Licence
