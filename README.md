@@ -12,10 +12,9 @@
     </a>
 </p>
 
-# Rebilly Recomponents Monorepo
+# Rebilly Recomponents
 
-As the number of projects at Rebilly requiring a UI grows larger, it has becme apparent that we need to share UI components.
-This library can be used for any project based on Vue to help deliver consistency in both look and feel to the end-user, and usage for Rebilly developers.
+As the number of Web Apps developed at Rebilly grows larger, it has become apparent that we need a way to share UI components across projects. Recomponents offers similar levels of customization to projects like Twitter Bootstrap, but comes default with the familiar look and feel. This library also delivers consistency of implementation and usage to Rebilly developers (and in the future, the greater Vue community).
 
 ## Repository structure
 
