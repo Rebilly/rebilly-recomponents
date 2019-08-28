@@ -1,6 +1,6 @@
 # Recomponents demo with Gridsome
 
-This project is a demo, intended to demonstrate [Recomponents](https://recomponents.rebilly.com/)' ability to integrate with [Gridsome](https://gridsome.org/).
+This project is a demo, intended to showcase [Recomponents](https://recomponents.rebilly.com/)' ability to integrate with [Gridsome](https://gridsome.org/).
 
 ### Running the demo
 
