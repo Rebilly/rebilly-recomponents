@@ -1,6 +1,8 @@
-![Rebilly Recomponents](https://www.rebilly.com/wp-content/uploads/2019/01/kpi_dashboard_rebilly.png)
+![Rebilly Recomponents](https://media.giphy.com/media/Up1Otz0EISNQcDGmlc/giphy.gif)
 
 ## Installation
+
+Recomponents are compatible both with yarn and npm:
 
 ```bash
 npm install rebilly-recomponents --save
@@ -12,29 +14,38 @@ yarn add rebilly-recomponents
 Recomponents can be used as web components:
 
 ```html
-<script src="https://unpkg.com/vue-i18n"></script>
 <script src="https://unpkg.com/vue"></script>
-<script>
-    Vue.use(VueI18n)
-</script>
-<script src="./r-template.js"></script>
-<r-template></r-template>
+<script src="https://unpkg.com/@rebilly/recomponents"></script>
+<r-button>Click me</r-template>
 ```
 
-## Browser Support
+Or they can be bundled by webpack:
 
-TBD
+```html
+<template>
+    <main>
+        <r-loader/>
+    </main>
+</template>
 
-## Contributing
+<script>
+    import Vue from 'vue'
+    import '@rebilly/recomponents/dist/recomponents.css'
+    import Recomponents from '@rebilly/recomponents'
 
-TBD
+    Vue.use(Recomponents)
 
-## Licence
-
-TBD
+    export default {}
+</script>
+```
 
 ## Documentation
 
-TBD
+We adore [Storybook](https://storybook.js.org/) and we recomponent instead of boring documentation we used it to demonstrate all components we have.
+Each component has comprehensive description, you can play with any customizable property and slot. 
+
+## Licence
+
+Recomponents are open source and released under the MIT Licence.
 
 Copyright © 2019 Rebilly
