@@ -1,3 +1,5 @@
 Rebilly Recomponents Monorepo
 
-TBD
+* Demo project with Nuxt
+* Demo project with Gridsome
+* Recomponents itself
