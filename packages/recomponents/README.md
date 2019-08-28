@@ -4,7 +4,7 @@
 
 ## Installation
 
-Recomponents are compatible both with yarn and npm:
+Recomponents is compatible with both yarn and npm:
 
 ```bash
 npm install rebilly-recomponents --save
@@ -13,7 +13,7 @@ yarn add rebilly-recomponents
 
 ## Usage
 
-Recomponents can be used as web components:
+Recomponents can be imported directly via CDN:
 
 ```html
 <script src="https://unpkg.com/vue"></script>
@@ -21,7 +21,7 @@ Recomponents can be used as web components:
 <r-button>Click me</r-template>
 ```
 
-Or they can be bundled by webpack:
+Or bundled with webpack:
 
 ```html
 <template>
@@ -44,7 +44,7 @@ Or they can be bundled by webpack:
 ## Documentation
 
 We adore [Storybook](https://storybook.js.org/) and for Recomponents instead of boring documentation we used it to demonstrate all components we have.
-Each component has comprehensive description, you can play with any customizable property and slot. 
+We prefer [Storybook](https://storybook.js.org/) to plain-old documentation. [Check it out](https://recomponents.rebilly.com/) to see all of our components on display, with a comprehensive description and the ability to tweak properties and slots.
 
 ## Licence
 
