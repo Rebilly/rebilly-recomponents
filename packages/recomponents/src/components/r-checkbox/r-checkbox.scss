@@ -34,7 +34,7 @@ input.r-field-checkbox[type=checkbox] {
     left: $space-xxs;
     border-radius: $border-radius - 2;
     box-shadow: 0 0 0 1px #C4CED8 inset, 0 1px 2px 0 rgba(161, 178, 193, 0.5) inset, 0 0 0 0 #0044D4;
-    @include transition(box-shadow .1s ease);
+    transition: box-shadow .1s ease;
 }
 
 .r-field-checkbox-style .r-icon {

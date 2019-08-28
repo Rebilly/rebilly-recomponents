@@ -17,7 +17,7 @@
     line-height: $line-height;
     z-index: 1000;
     box-shadow: 0 3px 6px 0 rgba($muted, 0.2), 0 7px 14px 0 rgba($muted, 0.35);
-    @include transition(opacity 0.15s ease-in-out);
+    transition: opacity 0.15s ease-in-out;
     opacity: 0;
 }
 

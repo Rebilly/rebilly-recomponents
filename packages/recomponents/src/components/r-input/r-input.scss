@@ -35,7 +35,7 @@
     font-weight: $regular;
     font-size: $paragraph-rem;
     line-height: $line-height-rem;
-    @include transition(box-shadow .05s ease);
+    transition: box-shadow .05s ease;
 
     &:focus {
         //box-shadow: 0 0 0 1px var(--primary-color) inset, 0 0 0 0 rgba(var(--gray-color), 0.5) inset, 0 0 0 1px var(--primary-color);

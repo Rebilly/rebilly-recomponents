@@ -159,9 +159,6 @@
 }
 
 .r-popover-arrow.is-left {
-    -webkit-transform: rotate(-90deg);
-    -moz-transform: rotate(-90deg);
-    -ms-transform: rotate(-90deg);
     transform: rotate(-90deg);
     margin-top: -1rem;
     top: 50%;
@@ -169,9 +166,6 @@
 }
 
 .r-popover-arrow.is-left-bottom {
-    -webkit-transform: rotate(-90deg);
-    -moz-transform: rotate(-90deg);
-    -ms-transform: rotate(-90deg);
     transform: rotate(-90deg);
     margin-top: -3.6rem;
     top: 100%;
@@ -179,9 +173,6 @@
 }
 
 .r-popover-arrow.is-right {
-    -webkit-transform: rotate(90deg);
-    -moz-transform: rotate(90deg);
-    -ms-transform: rotate(90deg);
     transform: rotate(90deg);
     margin-top: -1rem;
     top: 50%;
@@ -190,9 +181,6 @@
 }
 
 .r-popover-arrow.is-bottom {
-    -webkit-transform: rotate(180deg);
-    -moz-transform: rotate(180deg);
-    -ms-transform: rotate(180deg);
     transform: rotate(180deg);
     margin-top: -1rem;
     margin-top: 0;
@@ -215,17 +203,11 @@
 
 .r-popover-title {
     padding: $space-rem-m;
-    display: -webkit-box;
-    display: -ms-flexbox;
-    display: -webkit-flex;
     display: flex;
     border-bottom: 1px solid #E1E7EA;
 }
 
 .r-popover-subtitle {
-    display: -webkit-box;
-    display: -ms-flexbox;
-    display: -webkit-flex;
     display: flex;
     padding-bottom: $space-rem-m;
 }
