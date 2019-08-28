@@ -5,7 +5,7 @@
     <h1>Recomponents + Gridsome</h1>
    
     <p>
-      Demo project to check how Recomponents are compatible with Gridsome
+      Simple demonstration of Recomponents in conjunction with Gridsome using SSR.
     </p>
 
     <p class="home-links">

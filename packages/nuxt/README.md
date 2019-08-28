@@ -1,4 +1,4 @@
-# Recomponents demo with Nuxt
+# Recomponents within Nuxt
 
 This project is a demo, intended to showcase [Recomponents](https://recomponents.rebilly.com/)' ability to integrate with [Nuxt](https://nuxtjs.org/).
 
