@@ -1,1 +1,6 @@
+# Ignore runtime Gridsome folders
 .temp
+.cache
+
+# Ignore static build of Gridsome
+dist

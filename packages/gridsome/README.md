@@ -1,14 +1,12 @@
-# Default starter for Gridsome
+# Recomponents demo with Gridsome
 
-This is the project you get when you run `gridsome create new-project`.
+This is the project to show how our [Recomponents](https://recomponents.rebilly.com/) works with [Gridsome](https://gridsome.org/).
 
-### 1. Install Gridsome CLI tool if you don't have
+### To make it work run next
 
-`npm install --global @gridsome/cli`
+* `yarn` to install all dependencies
+* `yarn develop` to get runtime application with live reload
+* `yarn build` to get static files that can be hosted via any server
+* Have a fun 🎉
 
-### 2. Create a Gridsome project
-
-1. `gridsome create my-gridsome-site` to install default starter
-2. `cd my-gridsome-site` to open the folder
-3. `gridsome develop` to start a local dev server at `http://localhost:8080`
-4. Happy coding 🎉🙌
+If you have any idea how to improve this demo project feel free to open as issue in out Github or even create a PR to this repository.
