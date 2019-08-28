@@ -43,7 +43,6 @@ Or bundled with webpack:
 
 ## Documentation
 
-We adore [Storybook](https://storybook.js.org/) and for Recomponents instead of boring documentation we used it to demonstrate all components we have.
 We prefer [Storybook](https://storybook.js.org/) to plain-old documentation. [Check it out](https://recomponents.rebilly.com/) to see all of our components on display, with a comprehensive description and the ability to tweak properties and slots.
 
 ## Licence
