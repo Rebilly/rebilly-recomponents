@@ -10,6 +10,7 @@ import RLoader from './components/r-loader/r-loader.vue';
 import RRadio from './components/r-radio/r-radio.vue';
 import RTile from './components/r-tile/r-tile.vue';
 
+import './styles/typography.scss';
 import './styles/theme.scss';
 
 const components = {

@@ -7,9 +7,10 @@ html {
 }
 
 body, .article {
+    font-family: var(--primary-font-stack);
     font-size: $paragraph-rem;
     line-height: $space-rem-default;
-    font-weight: 400;
+    font-weight: $regular;
 }
 
 :root {
@@ -18,6 +19,7 @@ body, .article {
     --primary-color-dark: #00236e;
     --primary-color-light: #2600d4;
     --primary-color-medium: #0034a1;
+    --primary-color-transparent: rgba(0, 68, 212, 0.5);
 
     --warning-color: #F1C400;
     --red-color: #E53935;
@@ -44,6 +46,7 @@ body, .article {
 
     --primary-font-stack: 'Roboto', sans-serif;
     --secondary-font-stack: 'Montserrat', sans-serif;
+    --code-font-stack: 'Roboto Mono', monospace;
 
     --font-weight-regular: 400;
     --border-radius: 4px;
