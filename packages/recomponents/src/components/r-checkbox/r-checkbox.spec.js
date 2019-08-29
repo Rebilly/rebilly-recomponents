@@ -19,6 +19,7 @@ describe('r-checkbox.vue', () => {
             propsData: {
                 name: 'snapshot',
                 label: 'Custom label',
+                id: 'id1234',
             },
             mocks: {$t},
         });
