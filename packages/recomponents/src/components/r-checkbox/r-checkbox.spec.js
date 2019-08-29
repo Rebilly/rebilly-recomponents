@@ -15,16 +15,16 @@ describe('r-checkbox.vue', () => {
     });
 
     it('should render via SSR and match snapshot', async () => {
-        // eslint-disable-next-line no-unused-vars
         const wrapper = renderToString(RCheckbox, {
             propsData: {
                 name: 'snapshot',
                 label: 'Custom label',
+                id: 'id1234',
             },
             mocks: {$t},
         });
 
-        // expect(wrapper).toMatchSnapshot();
+        expect(wrapper).toMatchSnapshot();
     });
 
     it('should render component with fuzzy prop', () => {
