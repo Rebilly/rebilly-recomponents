@@ -1,13 +1,13 @@
 <template>
     <div>
         <div class="r-field" :class="{'is-error': isInvalid}">
-            <label class="r-field-label r-field-label-toggle" :class="{'is-disabled': disabled}" :for="name">
+            <label class="r-field-label r-field-label-toggle" :class="{'is-disabled': disabled}" :for="id">
                 <slot name="label">{{ label || $t('label') }}</slot>
             </label>
             <input type="checkbox"
                    class="r-field-checkbox"
                    :disabled="disabled"
-                   :id="name"
+                   :id="id"
                    :value="value"
                    :checked="isChecked" @change="change"/>
             <span class="r-field-checkbox-style">
@@ -31,7 +31,7 @@
                 type: String,
                 default: '',
             },
-            name: {
+            id: {
                 type: String,
                 default: () => shortId.generate(),
             },

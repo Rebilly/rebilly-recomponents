@@ -4,16 +4,14 @@ import {boolean, text} from '@storybook/addon-knobs';
 import RCheckbox from './r-checkbox.vue';
 import markdown from './r-checkbox.md';
 
-storiesOf('Components', module)
-    .add('Checkbox', () => ({
+storiesOf('Components/Checkbox', module)
+    .add('1 Checkbox', () => ({
         data: () => ({
             checkboxModel: null,
-            value: true,
-            selected: [],
         }),
         props: {
             label: {default: text('Label', 'Here is the label')},
-            caption: {default: text('Caption', '')},
+            caption: {default: text('Caption', 'Caption is trying to explain something')},
             fuzzy: {default: boolean('Fuzzy', false)},
             disabled: {default: boolean('Disabled', false)},
         },
@@ -22,13 +20,32 @@ storiesOf('Components', module)
         },
         components: {RCheckbox},
         template: `<r-checkbox
-                        :caption='caption'
-                        :value='value'
                         :label="label"
-                        :disabled="disabled"
+                        :caption='caption'
+                        :value='true'
                         :fuzzy="fuzzy"
+                        :disabled="disabled"
                         v-model="checkboxModel"
                         @input="input"/>`,
+    }), {
+        notes: {markdown},
+    })
+    .add('Multiple checkboxes', () => ({
+        data: () => ({
+            checkboxModel: [],
+            options: [
+                {value: '1', label: 'label 1'},
+                {value: '2', label: 'label 2'},
+            ],
+        }),
+        components: {RCheckbox},
+        template: `<div>
+                        <r-checkbox
+                        v-for="o in options"
+                        :label="o.label"
+                        :value='o.value'
+                        v-model="checkboxModel" />
+                    </div>`,
     }), {
         notes: {markdown},
     });
