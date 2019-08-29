@@ -51,7 +51,7 @@
         <div class="r-field-group" v-if="isGroupedInput">
             <div class="r-field-addon no-flex" v-if="leftLabel">{{leftLabel}}</div>
             <div class="r-field-control" :class="fieldStyles">
-                <v-icon :icon="leftIcon" v-if="leftIcon"></v-icon>
+                <r-icon :icon="leftIcon" v-if="leftIcon"></r-icon>
                 <input
                     class="r-field-input"
                     :value="value"
@@ -66,7 +66,7 @@
                     @click="click"
                     :name="name"
                     :autocomplete="autocompleteFlag"/>
-                <v-icon :icon="rightIcon" v-if="rightIcon"></v-icon>
+                <r-icon :icon="rightIcon" v-if="rightIcon"></r-icon>
             </div>
             <slot name="right-button"/>
             <div class="r-field-addon no-flex" v-if="rightLabel">{{rightLabel}}</div>
