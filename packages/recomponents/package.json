@@ -8,7 +8,9 @@
   "license": "MIT",
   "scripts": {
     "test": "vue-cli-service test:unit",
-    "lint": "vue-cli-service lint & stylelint **/*.scss",
+    "lint": "npm run lint:js & npm run lint:styles",
+    "lint:js": "vue-cli-service lint",
+    "lint:styles": "stylelint **/*.scss",
     "build": "npm run build:wc & npm run build:lib",
     "build:wc": "vue-cli-service build --target wc-async --name recomponents 'src/components/**/*.vue'",
     "build:lib": "vue-cli-service build --target lib --name recomponents 'src/index.js'",
