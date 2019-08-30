@@ -11,7 +11,7 @@ module.exports = {
                 data: `
                     @import "@/styles/variables.scss";
                     @import "@/styles/mixins.scss";
-                    @import "@/styles/media.scss";
+                    @import "@/styles/theme.scss";
                 `,
             },
         },
