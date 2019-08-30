@@ -23,7 +23,6 @@ jobs:
         - cd packages/recomponents
         - yarn
       script:
-        - yarn build-storybook
         - yarn build
     - stage: test
       name: 'Eslint checks and unit tests'
@@ -41,6 +40,7 @@ jobs:
         - yarn build
         - yarn semantic-release
       after_script:
+        - yarn build-storybook
         - cd .out
         - git init
         - git config user.name "junyong"
