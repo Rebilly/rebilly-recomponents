@@ -13,7 +13,7 @@
     "build:wc": "vue-cli-service build --target wc-async --name recomponents 'src/components/**/*.vue'",
     "build:lib": "vue-cli-service build --target lib --name recomponents 'src/index.js'",
     "storybook": "start-storybook -p 9001  -s public",
-    "build-storybook": "build-storybook -c .storybook -o ../../docs",
+    "build-storybook": "build-storybook -c .storybook -o .out",
     "semantic-release": "semantic-release"
   },
   "files": [

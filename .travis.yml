@@ -40,3 +40,11 @@ jobs:
       script:
         - yarn build
         - yarn semantic-release
+      after_script:
+        - cd .out
+        - git init
+        - git config user.name "junyong"
+        - git config user.email "junyong.zeng@rebilly.com"
+        - git add .
+        - git commit -m "Update docs"
+        - git push -f "https://${GH_TOKEN}@github.com/Rebilly/rebilly-recomponents.git" master:gh-pages
