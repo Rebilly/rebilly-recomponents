@@ -84,9 +84,9 @@ $light-background: #F9FAFB;
 /// @prop {String} keys - Keys are identifiers mapped to a given length
 /// @prop {Map} values - Values are actual breakpoints expressed in pixels
 $breakpoints: (
-        'phone': 576px,
-        'tablet': 768px,
-        'small-desktop': 994px,
-        'desktop': 1100px,
-        'large-desktop': 1200px,
+    'phone': 576px,
+    'tablet': 768px,
+    'small-desktop': 994px,
+    'desktop': 1100px,
+    'large-desktop': 1200px,
 ) !default;
