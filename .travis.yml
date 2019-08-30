@@ -32,14 +32,13 @@ jobs:
         - yarn lint
         - yarn test
     - stage: deploy
-      name: 'Release recomponents to NPM'
+      name: 'Release recomponents to NPM and deploy storybook to github pages'
       before_script:
         - cd packages/recomponents
       if: branch = master
       script:
         - yarn build
         - yarn semantic-release
-      after_script:
         - yarn build-storybook
         - cd .out
         - git init
