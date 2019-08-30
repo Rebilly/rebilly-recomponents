@@ -55,7 +55,7 @@ storiesOf('Demo', module)
                     <r-checkbox label="Authorize company to charge your payment card, and agree to be bound by the terms of use and privacy policy"/>
                 </template>
                 <template v-slot:actions>
-                    <r-button type="default" @click="cancel">Cancle</r-button>
+                    <r-button type="default" @click="cancel">Cancel</r-button>
                     <r-button type="primary" @click="submit">Submit</r-button>
                 </template>
             </r-tile>
