@@ -1,16 +1,16 @@
 ## Dropdown
 
-| prop  | type | default value |  
-|--|--|--|  
-| escToHide  | boolean | true |  
-| autoHide  | boolean | true |  
-| globalAutoHide  | boolean | true |  
-| openOnMount  | boolean | false |  
-| disabled  | boolean | false |  
-| offset  | number | 4 |  
-| direction  | string: `'horizontal'` \| `'vertical'` | `'horizontal'` |  
-| position  | string: `'bottomStart'` \| `'bottomEnd'` \| `'topStart'` \| `'topEnd'` | `'bottomStart'` |  
-| slideFrom  | string: `'fade'` \| `'top'` \| `'bottom'` \| `'left'` \| `'right'`| `'fade'` |  
+| prop           | type                                                                | default value   |
+|--              | --                                                                  |               --|
+| escToHide      | boolean                                                             | true            |
+| autoHide       | boolean                                                             | true            |
+| globalAutoHide | boolean                                                             | true            |
+| openOnMount    | boolean                                                             | false           |
+| disabled       | boolean                                                             | false           |
+| offset         | number                                                              | 4               |
+| direction      | string: `'horizontal'` , `'vertical'`                               | `'horizontal'`  |
+| position       | string: `'bottomStart'` , `'bottomEnd'` , `'topStart'` , `'topEnd'` | `'bottomStart'` |
+| slideFrom      | string: `'fade'` , `'top'` , `'bottom'` , `'left'` , `'right'`      | `'fade'`        |
   
   
 ```html
