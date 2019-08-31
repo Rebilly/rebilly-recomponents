@@ -45,11 +45,6 @@ storiesOf('Demo', module)
                             placeholder="Phone"
                         />
                     </p>
-                    <p>
-                        <r-input
-                            placeholder="Credit card"
-                        />
-                    </p>
                 </template>
                 <template v-slot:secondary>
                     <r-checkbox label="Authorize company to charge your payment card, and agree to be bound by the terms of use and privacy policy"/>
