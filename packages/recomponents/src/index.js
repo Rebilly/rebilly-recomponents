@@ -1,3 +1,4 @@
+import VueI18n from 'vue-i18n';
 import RBadge from './components/r-badge/r-badge.vue';
 import RButton from './components/r-button/r-button.vue';
 import RCheckbox from './components/r-checkbox/r-checkbox.vue';
@@ -28,6 +29,8 @@ const components = {
 };
 
 function install(Vue) {
+    Vue.use(VueI18n);
+
     Object.keys(components).forEach((key) => {
         Vue.component(key, components[key]);
     });
