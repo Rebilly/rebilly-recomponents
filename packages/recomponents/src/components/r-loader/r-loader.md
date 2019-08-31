@@ -19,17 +19,33 @@ This component has not slots
 
 This component can be used in two modes
 
-#### UMD module
+#### Webcomponent module
 
 ```html
-<script src="https://unpkg.com/vue"></script>
-<script src="https://unpkg.com/rebilly-recomponents/rebilly-recomponents.umd.min.js"></script>
-
-<rebilly-recomponents-r-loader :show="true"/>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <script src="https://unpkg.com/vue"></script>
+        <script src="./recomponents.js"></script>
+        <link rel="stylesheet" href="./recomponents.css">
+    </head>
+    <body>
+        <recomponents-r-loader loading="true" show="true"/>            
+    </body>
+</html>
 
 ```
 #### CommonJS module
 
-```javascript
-// TBD
+```html
+<template>
+    <r-loader :loading="true" :show="true"/>
+</template>
+<script>
+    import Vue from 'vue'
+    import '@rebilly/recomponents/dist/recomponents.css'
+    import Recomponents from '@rebilly/recomponents'
+
+    Vue.use(Recomponents)
+</script>
 ```
