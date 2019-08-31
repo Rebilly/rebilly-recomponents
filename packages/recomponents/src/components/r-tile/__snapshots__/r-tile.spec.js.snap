@@ -1,6 +1,6 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`r-loader.vue should render Wrapper and match snapshot 1`] = `
+exports[`r-tile.vue should render Wrapper and match snapshot 1`] = `
 <div class="r-component r-tile">
   <!---->
   <!---->
@@ -9,7 +9,7 @@ exports[`r-loader.vue should render Wrapper and match snapshot 1`] = `
 </div>
 `;
 
-exports[`r-loader.vue should render via SSR and match snapshot 1`] = `
+exports[`r-tile.vue should render via SSR and match snapshot 1`] = `
 <div class="r-component r-tile">
   <!---->
   <!---->
