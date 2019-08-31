@@ -5,8 +5,6 @@
 </template>
 
 <script>
-    import './r-badge.scss';
-
     export default {
         name: 'RBadge',
         props: {
@@ -25,3 +23,7 @@
         },
     };
 </script>
+
+<style lang="scss">
+    @import './r-badge.scss';
+</style>

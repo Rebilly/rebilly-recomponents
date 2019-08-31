@@ -6,7 +6,6 @@
 </template>
 
 <script>
-    import './r-icon.scss';
     import rIconSprites from './r-icon-sprites.vue';
 
     export default {
@@ -40,3 +39,7 @@
         },
     };
 </script>
+
+<style lang="scss">
+    @import './r-icon.scss';
+</style>

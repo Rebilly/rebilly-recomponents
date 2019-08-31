@@ -76,7 +76,6 @@
 </template>
 
 <script>
-    import './r-input.scss';
     import shortid from 'shortid';
     import rIcon from '../r-icon/r-icon.vue';
 
@@ -265,7 +264,9 @@
     };
 </script>
 
-<style scoped>
+<style lang="scss">
+    @import './r-input.scss';
+
     textarea {
         resize: none;
         overflow-x: hidden;

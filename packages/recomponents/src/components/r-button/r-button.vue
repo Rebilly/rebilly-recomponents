@@ -33,7 +33,6 @@
 </template>
 
 <script>
-    import './r-button.scss';
     import RIcon from '../r-icon/r-icon.vue';
 
     export default {
@@ -100,3 +99,7 @@
         methods: {},
     };
 </script>
+
+<style lang="scss">
+    @import './r-button.scss';
+</style>

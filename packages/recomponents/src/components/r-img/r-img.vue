@@ -66,5 +66,5 @@
 </script>
 
 <style lang="scss">
-
+    @import './r-img.scss'
 </style>

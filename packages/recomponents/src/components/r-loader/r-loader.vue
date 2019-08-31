@@ -9,8 +9,6 @@
 </template>
 
 <script>
-    import './r-loader.scss';
-
     export default {
         name: 'RLoader',
 
@@ -39,3 +37,7 @@
         },
     };
 </script>
+
+<style lang="scss">
+    @import './r-loader.scss';
+</style>
