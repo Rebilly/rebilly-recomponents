@@ -267,7 +267,7 @@
 <style lang="scss">
     @import './r-input.scss';
 
-    textarea {
+    .r-field textarea {
         resize: none;
         overflow-x: hidden;
         overflow-y: auto;
