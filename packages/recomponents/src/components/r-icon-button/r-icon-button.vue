@@ -12,8 +12,6 @@
 </template>
 
 <script>
-    import '../r-button/r-button.scss';
-    import '../../directives/r-tooltip.scss';
     import '../../directives/r-tooltip';
 
     export default {
@@ -21,6 +19,7 @@
         props: {
             type: {
                 type: String,
+                default: 'default',
                 default: null,
             },
             size: {
@@ -69,3 +68,8 @@
         },
     };
 </script>
+
+<style lang="scss">
+    @import '../r-button/r-button.scss';
+    @import '../../directives/r-tooltip.scss';
+</style>
