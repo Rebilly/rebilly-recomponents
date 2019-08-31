@@ -20,7 +20,6 @@
             type: {
                 type: String,
                 default: 'default',
-                default: null,
             },
             size: {
                 type: String,
