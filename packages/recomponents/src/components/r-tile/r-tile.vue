@@ -16,9 +16,11 @@
 </template>
 
 <script>
-    import './r-tile.scss';
-
     export default {
         name: 'RTile',
     };
 </script>
+
+<style lang="scss">
+    @import './r-tile.scss';
+</style>

@@ -18,18 +18,33 @@ This component has 1 **required** slot that can accept any text:
 
 This component can be used in two modes:
 
-#### UMD module
+#### Webcomponent module
 
 ```html
-<script src="https://unpkg.com/vue"></script>
-<script src="https://unpkg.com/rebilly-recomponents/rebilly-recomponents.umd.min.js"></script>
-
-<rebilly-recomponents-r-badge :type="warning">Badge</rebilly-recomponents-r-badge>
-
+<html>
+    <head>
+        <meta charset="utf-8">
+        <script src="https://unpkg.com/vue"></script>
+        <script src="./recomponents.js"></script>
+        <link rel="stylesheet" href="./recomponents.css">
+    </head>
+    <body>
+        <recomponents-r-badge type="warning">Warning</recomponents-r-badge>
+    </body>
+</html>
 ```
 
 #### CommonJS module
 
-```javascript
-// TBD
+```html
+<template>
+    <r-badge type="warning">Warning</r-badge>  
+</template>
+<script>
+    import Vue from 'vue'
+    import '@rebilly/recomponents/dist/recomponents.css'
+    import Recomponents from '@rebilly/recomponents'
+
+    Vue.use(Recomponents)
+</script>
 ```

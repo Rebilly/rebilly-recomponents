@@ -18,7 +18,7 @@ Recomponents can be imported directly via CDN:
 ```html
 <script src="https://unpkg.com/vue"></script>
 <script src="https://unpkg.com/@rebilly/recomponents"></script>
-<r-button>Click me</r-template>
+<r-button>Click me</r-button>
 ```
 
 Or bundled with webpack:
@@ -26,14 +26,14 @@ Or bundled with webpack:
 ```html
 <template>
     <main>
-        <r-loader/>
+        <r-button>Click me</r-button>
     </main>
 </template>
 
 <script>
     import Vue from 'vue'
-    import '@rebilly/recomponents/dist/recomponents.css'
-    import Recomponents from '@rebilly/recomponents'
+    import 'rebilly-recomponents/dist/recomponents.css'
+    import Recomponents from 'rebilly-recomponents'
 
     Vue.use(Recomponents)
 

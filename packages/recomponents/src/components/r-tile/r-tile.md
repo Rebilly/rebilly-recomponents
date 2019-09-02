@@ -19,25 +19,53 @@ This component has 4 **optional** slots that can be filled with any html markup 
 
 This component can be used in two modes:
 
-#### UMD module
+#### Webcomponent module
 
 ```html
-<script src="https://unpkg.com/vue"></script>
-<script src="https://unpkg.com/rebilly-recomponents/rebilly-recomponents.umd.min.js"></script>
-
-<rebilly-recomponents-r-tile>
-    <template v-slot:title>
-        <h2>Title title</h2>
-    </template>
-    <template v-slot:primary >
-        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam.</p>
-    </template>
-</rebilly-recomponents-r-tile>
-
+<html>
+    <head>
+        <meta charset="utf-8">
+        <script src="https://unpkg.com/vue"></script>
+        <script src="./recomponents.js"></script>
+        <link rel="stylesheet" href="./recomponents.css">
+    </head>
+    <body>
+        <recomponents-r-tile>
+            <div slot="title">
+                <h1>Tile title</h1>
+            </div>
+            <div slot="primary">
+                <p>Tile primary content</p>
+            </div>
+            <div slot="secondary">
+                <p>Tile secondary content</p>
+            </div>
+        </recomponents-r-tile>
+    </body>
+</html>
 ```
 
 #### CommonJS module
 
-```javascript
-// TBD
+```html
+<template>
+    <r-tile>
+        <template v-slot:title>
+            <h2>Title title</h2>
+        </template>
+        <template v-slot:primary >
+            <p>Primary content</p>
+        </template>
+        <template v-slot:secondary>
+            <p>Secondary content</p>
+        </template>
+    </r-tile>
+</template>
+<script>
+    import Vue from 'vue'
+    import '@rebilly/recomponents/dist/recomponents.css'
+    import Recomponents from '@rebilly/recomponents'
+
+    Vue.use(Recomponents)
+</script>
 ```

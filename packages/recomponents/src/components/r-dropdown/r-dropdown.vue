@@ -10,7 +10,6 @@
 </template>
 
 <script>
-    import './r-dropdown.scss';
     import shortId from 'shortid';
     import '../../directives/r-click-outside';
 
@@ -263,3 +262,7 @@
         },
     };
 </script>
+
+<style lang="scss">
+    @import './r-dropdown.scss';
+</style>

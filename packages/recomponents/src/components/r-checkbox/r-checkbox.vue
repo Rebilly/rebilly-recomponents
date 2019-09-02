@@ -19,7 +19,6 @@
 </template>
 
 <script>
-    import './r-checkbox.scss';
     import shortId from 'shortid';
     import RIcon from '../r-icon/r-icon.vue';
 
@@ -124,3 +123,7 @@
         },
     };
 </script>
+
+<style lang="scss">
+    @import './r-checkbox.scss';
+</style>

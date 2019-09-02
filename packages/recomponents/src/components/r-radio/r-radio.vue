@@ -20,7 +20,6 @@
 </template>
 
 <script>
-    import './r-toggle.scss';
     import shortid from 'shortid';
     import rIcon from '../r-icon/r-icon.vue';
 
@@ -88,3 +87,7 @@
         },
     };
 </script>
+
+<style lang="scss">
+    @import './r-toggle.scss';
+</style>
