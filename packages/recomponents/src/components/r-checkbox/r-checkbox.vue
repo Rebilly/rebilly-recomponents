@@ -1,20 +1,18 @@
 <template>
-    <div>
-        <div class="r-field" :class="{'is-error': isInvalid}">
-            <label class="r-field-label r-field-label-toggle" :class="{'is-disabled': disabled}" :for="id">
-                <slot name="label">{{ label || $t('label') }}</slot>
-            </label>
-            <input type="checkbox"
-                   class="r-field-checkbox"
-                   :disabled="disabled"
-                   :id="id"
-                   :value="value"
-                   :checked="isChecked" @change="change"/>
-            <span class="r-field-checkbox-style">
-            <r-icon :icon="checkIcon"></r-icon>
+    <div class="r-checkbox" :class="{'is-error': isInvalid}">
+        <label class="r-field-label r-field-label-toggle" :class="{'is-disabled': disabled}" :for="id">
+            <slot name="label">{{ label || $t('label') }}</slot>
+        </label>
+        <input type="checkbox"
+                class="r-field-checkbox"
+                :disabled="disabled"
+                :id="id"
+                :value="value"
+                :checked="isChecked" @change="change"/>
+        <span class="r-field-checkbox-style">
+                <r-icon :icon="checkIcon"></r-icon>
         </span>
-            <span class="r-field-caption r-field-caption-toggle" v-if="caption">{{caption}}</span>
-        </div>
+        <span class="r-field-caption r-field-caption-toggle" v-if="caption">{{caption}}</span>
     </div>
 </template>
 
