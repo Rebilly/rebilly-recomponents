@@ -5,10 +5,8 @@
 </template>
 
 <script>
-    import Vue from 'vue';
     import RIconSprites from './r-icon-sprites';
 
-    Vue.use(RIconSprites().install);
     export default {
         name: 'RIcon',
         props: {
@@ -20,6 +18,14 @@
                 type: Boolean,
                 default: false,
             },
+        },
+        mounted() {
+            if (!document.getElementById('icon-heart')) {
+                const spritesDiv = document.createElement('div');
+                spritesDiv.style.display = 'none';
+                spritesDiv.innerHTML = RIconSprites;
+                document.body.append(spritesDiv);
+            }
         },
         computed: {
             iconName() {

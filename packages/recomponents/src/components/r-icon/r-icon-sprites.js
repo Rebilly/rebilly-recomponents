@@ -712,13 +712,4 @@ const sprites = `
         </svg>
 `;
 
-export default function RIconSprites() {
-    return {
-        install: function install() {
-            const spritesDiv = document.createElement('div');
-            spritesDiv.style.display = 'none';
-            spritesDiv.innerHTML = sprites;
-            document.body.append(spritesDiv);
-        },
-    };
-}
+export default sprites;
