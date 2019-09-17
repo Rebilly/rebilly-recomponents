@@ -2,11 +2,16 @@ import Vue from 'vue';
 
 const directive = {
     inserted: (el) => {
-        const loadImage = () => {
+        const loadImage = (observer) => {
             if (el) {
+                el.style.opacity = 0;
+
                 el.addEventListener('load', () => {
-                    setTimeout(() => el.classList.add('loaded'), 100);
+                    el.classList.add('loaded');
+                    el.style.opacity = 1;
+                    observer.unobserve(el);
                 });
+
                 el.addEventListener('error', () => console.log('error'));
                 el.src = el.dataset.url;
             }
@@ -15,8 +20,7 @@ const directive = {
         const handleIntersect = (entries, observer) => {
             entries.forEach((entry) => {
                 if (entry.isIntersecting) {
-                    loadImage();
-                    observer.unobserve(el);
+                    loadImage(observer);
                 }
             });
         };
@@ -24,7 +28,7 @@ const directive = {
         const createObserver = () => {
             const options = {
                 root: null,
-                threshold: '0',
+                threshold: 0,
             };
 
             const observer = new IntersectionObserver(handleIntersect, options);

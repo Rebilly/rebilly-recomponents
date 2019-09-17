@@ -11,7 +11,7 @@ storiesOf('Components', module)
                 default: text('Source', 'https://www.rebilly.com/wp-content/uploads/2019/01/new_features@2x-319x150.png'),
             },
             lazy: {
-                default: boolean('Laly load', true),
+                default: boolean('Lazy load', true),
             },
             alt: {
                 default: text('Alt text', 'Lazy loaded image'),
