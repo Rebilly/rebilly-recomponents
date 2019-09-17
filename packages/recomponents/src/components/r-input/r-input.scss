@@ -9,9 +9,9 @@
 
 .r-field-label {
     display: block;
-    font-family: var(--primary-font-stack);
-    color: var(--text-color);
-    margin-bottom: $space-rem-xs;
+    font-family: var(--input-label-font-family);
+    color: var(--input-label-color);
+    margin-bottom: var(--input-label-margin-bottom);
 }
 
 .r-field-input, .r-field-editable {
@@ -19,50 +19,50 @@
     width: 100%;
     height: auto;
     vertical-align: baseline;
-    padding: $space-rem-s $space-rem-m;
+    padding: var(--input-padding);
     appearance: none;
-    border-radius: $border-radius;
+    border-radius: var(--input-border-radius);
     display: block;
+    color: var(--input-color);
     box-sizing: border-box;
     margin: 0;
-    border-style: inset;
-    border: none;
-    //box-shadow: 0 0 0 1px var(--light-gray-color) inset, 0 1px 2px 0 rgba(var(--light-gray-color), 0.5) inset, 0 0 0 0 var(--primary-color);
-    box-shadow: 0 0 0 1px #C4CED8 inset, 0 1px 2px 0 rgba(161, 178, 193, 0.5) inset, 0 0 0 0 #0044D4;
+    border: var(--input-border);
+    box-shadow: var(--input-box-shadow);
     text-transform: initial;
     letter-spacing: initial;
-    font-family: var(--primary-font-stack);
-    font-weight: $regular;
-    font-size: $paragraph-rem;
-    line-height: $line-height-rem;
-    transition: box-shadow .05s ease;
+    font-family: var(--input-font-family);
+    font-weight: var(--input-font-weight);
+    font-size: var(--input-font-size);
+    line-height: var(--input-line-height);
+    transition: var(--input-transition);
+    outline: none;
 
     &:focus {
-        //box-shadow: 0 0 0 1px var(--primary-color) inset, 0 0 0 0 rgba(var(--gray-color), 0.5) inset, 0 0 0 1px var(--primary-color);
-        box-shadow: 0 0 0 1px #0044D4 inset, 0 0 0 0 rgba(161, 178, 193, 0.5) inset, 0 0 0 1px #0044D4;
+        box-shadow: var(--input-focus-box-shadow);
+        border: var(--input-focus-border);
     }
 }
 
 .r-field.is-error .r-field-label,
 .r-field.is-error label {
-    color: var(--red-color);
+    color: var(--input-is-error-color);
 }
 
 .r-field.is-error .r-field-input,
 .r-field.is-error input {
-    color: var(--red-color);
-    box-shadow: 0 0 0 1px var(--red-color) inset;
-    background: rgba(var(--light-red-color), 0.6);
+    color: var(--input-is-error-color);
+    box-shadow: var(--input-is-error-box-shadow);
+    background: var(--input-is-error-background);
 
     &:focus {
-        box-shadow: 0 0 0 1px var(--primary-color) inset, 0 0 0 1px rgba(var(--primary-color), 1);
+        box-shadow: var(--input-focus-is-error-box-shadow);
     }
 }
 
 .r-field-caption {
     display: block;
-    color: $muted;
-    margin-top: $space-rem-xs;
+    color: var(--input-caption-color);
+    margin-top: var(--input-caption-margin-top);
 }
 
 /**
@@ -71,27 +71,32 @@
 .r-field-control.has-icon-right .r-icon:last-child,
 .r-field-control.has-image-right .image-card {
     position: absolute;
-    top: $space-s;
-    right: $space-s;
+    top: var(--input-icon-top);
+    right: var(--input-icon-right);
 }
 
 .r-field-control.has-icon-right .r-field-input {
-    padding: $space-rem-s $space-rem-l $space-rem-s $space-rem-m;
+    padding: var(--input-icon-right-padding);
 }
 
 .r-field-control.has-icon-left .r-icon:first-child {
     position: absolute;
-    top: $space-s;
-    left: $space-s;
+    top: var(--input-icon-top);
+    left: var(--input-icon-left);
 }
 
 .r-field-control.has-icon-left .r-field-input {
-    padding: $space-rem-s $space-rem-m $space-rem-s $space-rem-l;
+    padding: var(--input-has-icon-left-padding);
+}
+
+.r-field .r-field-control.has-icon-right .r-icon,
+.r-field .r-field-control.has-icon-left .r-icon {
+    fill: var(--input-icon-color);
 }
 
 .r-field.is-error .r-field-control.has-icon-right .r-icon,
 .r-field.is-error .r-field-control.has-icon-left .r-icon {
-    fill: var(--red-color);
+    fill: var(--input-is-error-icon-color);
 }
 
 /**
@@ -108,24 +113,14 @@ textarea.r-field-input {
 }
 
 /**
-* Select
-*/
-select.r-field-input {
-    min-height: 36px;
-    background: linear-gradient(to bottom, #FFFFFF 0%, #F6F8F9 100%);
-    box-shadow: 0 0 0 1px #C4CED8 inset, 0 1px 2px 0 rgba(161, 178, 193, 0.3);
-    padding: $space-rem-s $space-rem-l $space-rem-s $space-rem-m;
-}
-
-/**
 * Input Addon
 */
 .r-field-addon {
     @extend .r-field-input;
     width: auto;
     min-width: auto;
-    box-shadow: 0 0 0 1px var(--light-gray-color) inset;
-    background: $light-background;
+    box-shadow: var(--input-addon-box-shadow);
+    background: var(--input-addon-background);
     text-align: center;
 }
 
@@ -141,7 +136,7 @@ select.r-field-input {
 // Removing Firefox dotted line
 select:-moz-focusring {
     color: transparent;
-    text-shadow: 0 0 0 #000;
+    text-shadow: 0 0 0 var(--mono-color-1000);
 }
 
 /**
@@ -169,72 +164,53 @@ select:-moz-focusring {
 .r-field-group > *:not(:first-child):not(:last-child),
 .r-field-group > *:not(:first-child):not(:last-child) .r-field-input {
     border-radius: 0;
-    z-index: $z-10;
+    z-index: var(--z-index-10);
 }
 
 .r-field-group > *:first-child,
 .r-field-group > *:first-child .r-field-input {
-    border-radius: $border-radius 0 0 $border-radius;
+    border-radius: var(--input-border-radius) 0 0 var(--input-border-radius);
 }
 
 .r-field-group > *:last-child,
 .r-field-group > *:last-child .r-field-input {
-    border-radius: 0 $border-radius $border-radius 0;
+    border-radius: 0 var(--input-border-radius) var(--input-border-radius) 0;
 }
 
 .r-field-group > *:only-child,
 .r-field-group > *:only-child .r-field-input,
 .r-field-group > *:first-child:last-child,
 .r-field-group > *:first-child:last-child .r-field-input {
-    border-radius: $border-radius;
-}
-
-/**
-* Input Inline
-*/
-.r-field-input.r-field-input-inline {
-    padding: 0 $space-rem-s;
-    display: inline-block;
-    background: rgba(var(--light-blue-color), 0.6);
-    box-shadow: none;
-    border-radius: 0;
-    box-sizing: border-box;
-    line-height: $line-height - 1;
-    border-bottom: 1px solid var(--primary-color);
-    min-width: auto;
-}
-
-.r-field.is-error .r-field-input.r-field-input-inline {
-    border-bottom: 1px solid var(--red-color);
-    box-shadow: none;
+    border-radius: var(--input-border-radius);
 }
 
 /**
 * Input Disabled
 */
 .r-field-input[disabled] {
-    background: $light-background;
-    box-shadow: 0 0 0 1px var(--light-gray-color) inset;
+    background: var(--input-disabled-background);
+    box-shadow: var(--input-disabled-box-shadow);
+    color: var(--input-disabled-color);
 }
 
 /**
 * Placeholders
 */
 ::-webkit-input-placeholder { /* Chrome/Opera/Safari */
-    color: var(--gray-color);
+    color: var(--input-placeholder-color);
 }
 
 ::-moz-placeholder { /* Firefox 19+ */
     opacity: 1;
-    color: var(--gray-color);
+    color: var(--input-placeholder-color);
 }
 
 :-ms-input-placeholder { /* IE 10+ */
-    color: var(--gray-color);
+    color: var(--input-placeholder-color);
 }
 
 :-moz-placeholder { /* Firefox 18- */
-    color: var(--gray-color);
+    color: var(--input-placeholder-color);
 }
 
 /* Placeholder support for content editable field */
@@ -246,7 +222,7 @@ select:-moz-focusring {
     content: attr(placeholder);
     position: absolute;
     width: 60%;
-    color: var(--gray-color);
+    color: var(--input-placeholder-color);
     white-space: nowrap;
     overflow: hidden;
     text-overflow: ellipsis;
@@ -278,5 +254,5 @@ Editable field special classes
 
 .r-field-editable-wrapper .keyword {
     color: var(--primary-color);
-    box-shadow: inset 0 -1px 0 var(--light-blue-color);
+    box-shadow: inset 0 -1px 0 var(--primary-color-light);
 }

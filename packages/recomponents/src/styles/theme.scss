@@ -132,6 +132,7 @@ body, .article {
 
     // Animations
     // ------------------------------------------------
+    --timing-10: .05s;
     --timing-50: .10s;
     --timing-100: .20s;
     --timing-400: .4s;
@@ -423,6 +424,43 @@ body, .article {
     // ------------------------------------------------
     --icon-color: var(--gray-color);
     --icon-transition: all var(--timing-50) var(--animation-ease);
+
+    // Inputs
+    // ------------------------------------------------
+    --input-label-font-family: var(--primary-font-stack);
+    --input-label-color: var(--text-color);
+    --input-label-margin-bottom: var(--space-xs);
+    --input-font-family: var(--primary-font-stack);
+    --input-font-weight: var(--font-weight-regular);
+    --input-line-height: var(--font-line-height-p);
+    --input-font-size: var(--font-size-p);
+    --input-color: var(--text-color);
+    --input-padding: var(--space-s) var(--space-m);
+    --input-border-radius: var(--border-radius);
+    --input-border: none;
+    --input-box-shadow: 0 0 0 1px var(--gray-color) inset, 0 1px 2px 0 var(--mono-color-300) inset, 0 0 0 0 var(--primary-color);
+    --input-transition: box-shadow var(--timing-10) var(--animation-ease);
+    --input-focus-box-shadow: 0 0 0 1px var(--primary-color) inset, 0 0 0 0 var(--mono-color-300) inset, 0 0 0 1px var(--primary-color);
+    --input-focus-border: none;
+    --input-caption-color: var(--text-muted);
+    --input-caption-margin-top: var(--space-xs);
+    --input-is-error-color: var(--negative-color);
+    --input-is-error-background: var(--negative-color-light);
+    --input-is-error-box-shadow: 0 0 0 1px var(--negative-color) inset;
+    --input-is-error-icon-color: var(--negative-color);
+    --input-focus-is-error-box-shadow: 0 0 0 1px var(--primary-color) inset, 0 0 0 1px rgba(var(--primary-color), 1);
+    --input-icon-top: var(--space-s);
+    --input-icon-right: var(--space-s);
+    --input-icon-left: var(--space-s);
+    --input-icon-color: var(--gray-color);
+    --input-has-icon-right-padding: var(--space-s) var(--space-l) var(--space-s) var(--space-m);
+    --input-has-icon-left-padding: var(--space-s) var(--space-m) var(--space-s) var(--space-l);
+    --input-addon-background: var(--background-color);
+    --input-addon-box-shadow: 0 0 0 1px var(--gray-color) inset;
+    --input-disabled-background: var(--background-color);
+    --input-disabled-box-shadow: 0 0 0 1px var(--gray-color) inset;
+    --input-disabled-color: var(--text-muted);
+    --input-placeholder-color: var(--gray-color);
 
     // Loader
     // ------------------------------------------------
