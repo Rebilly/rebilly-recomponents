@@ -34,7 +34,7 @@ describe('r-button.vue', () => {
             },
         });
 
-        expect(wrapper.classes()).toContain('r-button--type-warning');
+        expect(wrapper.classes()).toContain('r-button--type-danger');
     });
 
     it('should render component with size, fluid or disabled prop', () => {
