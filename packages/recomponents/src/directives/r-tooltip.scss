@@ -5,19 +5,20 @@
 /* Base styles for the element that has a tooltip */
 
 .tooltip {
-    padding: $inset-rem-s;
+    padding: var(--tooltip-padding);
     background-color: var(--tooltip-background-color);
-    color: #FFF;
+    color: var(--tooltip-color);
     position: absolute;
     top: 0;
     left: 0;
-    border-radius: $border-radius;
+    border-radius: var(--tooltip-border-radius);
     white-space: nowrap;
-    font-size: $paragraph;
-    line-height: $line-height;
-    z-index: 1000;
-    box-shadow: 0 3px 6px 0 rgba($muted, 0.2), 0 7px 14px 0 rgba($muted, 0.35);
-    transition: opacity 0.15s ease-in-out;
+    font-size: var(--tooltip-font-size);
+    line-height: var(--tooltip-line-height);
+    font-weight: var(--tooltip-font-weight);
+    z-index: var(--tooltip-z-index);
+    box-shadow: var(--tooltip-box-shadow);
+    transition: var(--tooltip-transition);
     opacity: 0;
 }
 

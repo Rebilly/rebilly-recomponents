@@ -1,28 +1,28 @@
 .r-tile {
     box-sizing: border-box;
-    background: #FFFFFF;
-    box-shadow: 0 0 0 1px var(--muted-color), 0 1px 2px 0 var(--muted-color), 0 4px 4px 0 var(--muted-color);
-    border-radius: $border-radius;
+    background: var(--tile-background);
+    box-shadow: var(--tile-drop-shadow);
+    border-radius: var(--tile-border-radius);
 }
 
 .r-tile__title {
     display: flex;
-    padding: $space-rem-default $space-rem-default 0 $space-rem-default;
+    padding: var(--tile-title-padding);
 
     & h1, & h2, & h3, & h4, & h5 {
-        padding-right: $space-rem-default;
+        padding-right: var(--tile-title-text-right-padding);
         margin: 0;
     }
 
     &:first-child {
         border-top: none;
-        border-radius: $border-radius $border-radius 0 0;
+        border-radius: var(--tile-border-radius) var(--tile-border-radius) 0 0;
     }
 }
 
 .r-tile__subtitle {
     display: flex;
-    padding-bottom: $space-rem-default;
+    padding-bottom: var(--tile-subtitle-padding-bottom);
 }
 
 .r-tile__title > *,
@@ -33,8 +33,8 @@
 }
 
 .r-tile__content {
-    padding: $space-rem-default;
-    border-bottom: 1px solid $faint-gray;
+    padding: var(--tile-content-padding);
+    border-bottom: var(--tile-content-divider);
 
     & p, & ul, & ol, & pre, & table, & blockquote, & h1, & h2, & h3, & h4, & h5, & h6 {
         margin: 0;
@@ -46,17 +46,16 @@
 
     &:last-child {
         border: none;
-        border-radius: 0 0 $border-radius $border-radius;
+        border-radius: 0 0 var(--tile-border-radius) var(--tile-border-radius);
     }
 }
 
 .r-tile__content--secondary {
-    background: $light-background;
-    box-shadow: 0 0 0 .5px var(--muted-color) inset;
+    background: var(--tile-content-secondary-background);
 }
 
 .r-tile__actions {
-    padding: $space-rem-default;
+    padding: var(--tile-actions-padding);
     text-align: right;
 
     & > * {

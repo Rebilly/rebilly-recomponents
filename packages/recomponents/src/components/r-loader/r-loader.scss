@@ -1,6 +1,6 @@
 .r-loader {
     position: fixed;
-    z-index: $z-max;
+    z-index: var(--loader-z-index);
     margin: auto;
     top: 0;
     left: 0;
@@ -13,8 +13,8 @@
         position: absolute;
         width: 36px;
         height: 36px;
-        background: var(--gray-color);
-        border-radius: $border-radius;
+        background: var(--loader-background);
+        border-radius: var(--loader-border-radius);
         top: 0;
         left: 0;
         right: 0;
