@@ -10,6 +10,9 @@
     padding: var(--tile-title-padding);
 
     & h1, & h2, & h3, & h4, & h5 {
+        font-family: var(--tile-title-font-family);
+        font-weight: var(--tile-title-font-weight);
+        line-height: var(--tile-title-line-height);
         padding-right: var(--tile-title-text-right-padding);
         margin: 0;
     }

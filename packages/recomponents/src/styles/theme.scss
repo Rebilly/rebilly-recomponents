@@ -473,6 +473,9 @@ body, .article {
     --tile-background: var(--mono-color-0);
     --tile-drop-shadow: var(--elevation-100);
     --tile-border-radius: var(--border-radius);
+    --tile-title-font-family: var(--secondary-font-stack);
+    --tile-title-font-weight: var(--font-weight-medium);
+    --tile-title-line-height: var(--font-line-height-h2);
     --tile-title-padding: var(--space-default) var(--space-default) 0 var(--space-default);
     --tile-title-text-right-padding: var(--space-default);
     --tile-subtitle-padding-bottom: var(--space-default);
