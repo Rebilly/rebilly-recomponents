@@ -20,7 +20,6 @@ storiesOf('Components/Button', module)
                 default: select('Type', {
                     Default: 'default',
                     Primary: 'primary',
-                    Warning: 'warning',
                     Danger: 'danger',
                 }, 'primary'),
             },
@@ -70,7 +69,6 @@ storiesOf('Components/Button', module)
                 default: select('Type', {
                     Default: 'default',
                     Primary: 'primary',
-                    Warning: 'warning',
                     Danger: 'danger',
                 }, 'primary'),
             },
@@ -124,7 +122,6 @@ storiesOf('Components/Button', module)
                 default: select('Type', {
                     Default: 'default',
                     Primary: 'primary',
-                    Warning: 'warning',
                     Danger: 'danger',
                 }, 'primary'),
             },

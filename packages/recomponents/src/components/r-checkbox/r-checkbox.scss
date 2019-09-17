@@ -7,66 +7,83 @@ input.r-field-checkbox[type=checkbox] {
     position: absolute;
     left: 0;
     top: 0;
-    height: 20px;
-    width: 20px;
+    height: var(--space-m);
+    width: var(--space-m);
     box-sizing: border-box;
     z-index: 10;
     cursor: pointer;
 
-    &:checked ~ .r-field-checkbox-style,
+    &:checked ~ .r-field-checkbox-style {
+        background: var(--checkbox-checked-background);
+        box-shadow: var(--checkbox-checked-box-shadow);
+        border: var(--checkbox-checked-border);
+    }
+
     &:focus ~ .r-field-checkbox-style {
-        box-shadow: 0 0 0 1px #0044D4 inset, 0 0 0 0 rgba(161, 178, 193, 0.5) inset, 0 0 0 1px #0044D4;
+        background: var(--checkbox-focus-background);
+        box-shadow: var(--checkbox-focus-box-shadow);
+        border: var(--checkbox-focus-border);
     }
 
     &:checked ~ .r-field-checkbox-style .r-icon {
-        fill: var(--primary-color);
+        fill: var(--checkbox-checked-icon-color);
         opacity: 1;
     }
 
     &[disabled] ~ .r-field-checkbox-style {
-        background: var(--background-color);
+        background: var(--checkbox-disabled-background);
+        box-shadow: var(--checkbox-disabled-box-shadow);
     }
 }
 
 .r-field-checkbox-style {
     cursor: pointer;
     box-sizing: border-box;
-    width: 16px;
-    height: 16px;
+    background: var(--checkbox-background);
+    height: var(--space-m);
+    width: var(--space-m);
     position: absolute;
-    top: $space-xxs;
-    left: $space-xxs;
-    border-radius: $border-radius - 2;
-    box-shadow: 0 0 0 1px #C4CED8 inset, 0 1px 2px 0 rgba(161, 178, 193, 0.5) inset, 0 0 0 0 #0044D4;
-    transition: box-shadow .1s ease;
+    top: var(--space-xxs);
+    left: var(--space-xxs);
+    border-radius: var(--checkbox-border-radius);
+    box-shadow: var(--checkbox-box-shadow);
+    transition: var(--checkbox-transition);
+    border: var(--checkbox-border);
 }
 
 .r-field-checkbox-style .r-icon {
     position: absolute;
-    top: -$space-xxs;
-    right: -$space-xxs;
+    top: calc(var(--space-xxs) * -1);
+    right: calc(var(--space-xxs) * -1);
     opacity: 0;
 }
 
 .r-field-label-toggle {
     display: inline-block;
+    color: var(--checkbox-label-color);
+    line-height: var(--checkbox-label-line-height);
+    font-size: var(--checkbox-label-font-size);
+    font-weight: var(--checkbox-label-font-weight);
     position: relative;
-    padding-left: 2.8rem;
+    padding-left: var(--checkbox-label-left-space);
     margin: 0;
     cursor: pointer;
 }
 
 .r-field-label-toggle.is-disabled {
-    color: $muted;
+    color: var(--checkbox-label-disabled-color);
 }
 
 .r-field-caption-toggle {
-    padding-left: 2.8rem;
-    margin-top: $space-rem-xxs;
+    padding-left: var(--checkbox-captions-left-space);
+    margin-top: var(--checkbox-captions-margin-top);
 }
 
 .r-field-caption {
     display: block;
-    color: $muted;
-    margin-top: $space-rem-xs;
+    color: var(--checkbox-caption-color);
+    line-height: var(--checkbox-caption-line-height);
+    font-size: var(--checkbox-caption-font-size);
+    font-weight: var(--checkbox-caption-font-weight);
+    margin-top: var(--space-xs);
 }

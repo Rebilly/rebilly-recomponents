@@ -5,35 +5,40 @@
     text-transform: none;
     text-align: center;
     vertical-align: baseline;
-    color: var(--text-color);
-    border-radius: $line-height;
+    color: var(--badge-text-color);
+    border-radius: var(--badge-border-radius);
     border: none;
-    padding: $space-rem-xxs $space-rem-s;
-    font-family: var(--primary-font-stack);
-    font-weight: $regular;
-    font-size: $paragraph-rem;
-    line-height: $line-height-rem;
+    padding: var(--badge-padding);
+    font-family: var(--badge-font-weight);
+    font-weight: var(--badge-font-weight);
+    font-size: var(--badge-font-size);
+    line-height: var(--badge-font-line-height);
     outline: none;
     white-space: nowrap;
     box-shadow: 0 0 0 2px #FFFFFF;
 
     &--type-default {
-        background: var(--faint-gray-color);
+        background: var(--badge-default-background);
+        border: var(--badge-default-border);
     }
 
     &--type-positive {
-        background: var(--light-green-color);
+        background: var(--badge-positive-background);
+        border: var(--badge-positive-border);
     }
 
     &--type-negative {
-        background: var(--light-red-color);
+        background: var(--badge-negative-background);
+        border: var(--badge-negative-border);
     }
 
     &--type-warning {
-        background: var(--light-yellow-color);
+        background: var(--badge-warning-background);
+        border: var(--badge-warning-border);
     }
 
     &--type-info {
-        background: var(--light-blue-color);
+        background: var(--badge-info-background);
+        border: var(--badge-info-border);
     }
 }

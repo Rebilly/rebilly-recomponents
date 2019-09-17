@@ -20,10 +20,12 @@
             type: {
                 type: String,
                 default: 'default',
+                validator: val => ['default', 'primary', 'danger'].includes(val),
             },
             size: {
                 type: String,
-                default: null,
+                default: 'regular',
+                validator: val => ['small', 'regular', 'large'].includes(val),
             },
             disabled: {
                 type: Boolean,
@@ -57,9 +59,11 @@
                 // it requires
                 if (this.$slots['left-icon']) {
                     style['has-icon-left'] = true;
-                } else if (this.$slots['right-icon']) {
+                }
+                if (this.$slots['right-icon']) {
                     style['has-icon-right'] = true;
-                } else {
+                }
+                if (!this.$slots['right-icon'] && !this.$slots['right-icon']){
                     style['has-icon'] = true;
                 }
                 return style;

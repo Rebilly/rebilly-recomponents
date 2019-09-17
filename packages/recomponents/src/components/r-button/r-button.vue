@@ -47,7 +47,7 @@
             type: {
                 type: String,
                 default: 'default',
-                validator: val => ['default', 'primary', 'warning', 'danger'].includes(val),
+                validator: val => ['default', 'primary', 'danger'].includes(val),
             },
             disabled: {
                 type: Boolean,
