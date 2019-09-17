@@ -28,10 +28,6 @@
                 type: Boolean,
                 default: false,
             },
-            size: {
-                type: String,
-                default: 'small',
-            },
         },
 
         methods: {
