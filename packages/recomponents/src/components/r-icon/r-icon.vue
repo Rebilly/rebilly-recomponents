@@ -1,16 +1,14 @@
 <template>
     <svg class="r-icon r-icon-20" @click="bubbleClick">
-        <r-icon-sprites/>
         <use :xlink:href="iconName" xmlns:xlink="http://www.w3.org/1999/xlink"></use>
     </svg>
 </template>
 
 <script>
-    import rIconSprites from './r-icon-sprites.vue';
+    import RIconSprites from './r-icon-sprites';
 
     export default {
         name: 'RIcon',
-        components: {rIconSprites},
         props: {
             icon: {
                 type: String,
@@ -21,10 +19,15 @@
                 default: false,
             },
         },
+        mounted() {
+            if (!document.getElementById('icon-heart')) {
+                const spritesDiv = document.createElement('div');
+                spritesDiv.style.display = 'none';
+                spritesDiv.innerHTML = RIconSprites;
+                document.body.append(spritesDiv);
+            }
+        },
         computed: {
-            isIconSpritesLoaded() {
-                return document.getElementsByClassName('svg-sprites').length > 0;
-            },
             iconName() {
                 return `#icon-${this.icon}`;
             },

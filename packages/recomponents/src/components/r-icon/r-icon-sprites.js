@@ -1,5 +1,6 @@
-<template>
-    <div class="svg-sprites" style="display:none;"><!-- SVG Sprite -->
+const sprites = `
+        <!-- SVG Sprite -->
+        
         <!-- Fingerprint -->
         <svg xmlns="http://www.w3.org/2000/svg">
             <symbol id="icon-fingerprint">
@@ -709,9 +710,6 @@
                 </svg>
             </symbol>
         </svg>
-    </div>
-</template>
+`;
 
-<script>
-    export default {};
-</script>
+export default sprites;
