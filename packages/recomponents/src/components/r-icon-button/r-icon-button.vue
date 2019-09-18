@@ -63,7 +63,7 @@
                 if (this.$slots['right-icon']) {
                     style['has-icon-right'] = true;
                 }
-                if (!this.$slots['right-icon'] && !this.$slots['right-icon']){
+                if (!this.$slots['right-icon'] && !this.$slots['right-icon']) {
                     style['has-icon'] = true;
                 }
                 return style;
