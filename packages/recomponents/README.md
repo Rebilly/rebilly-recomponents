@@ -1,5 +1,5 @@
 <p align="center">
-    <img alt="Recomponents" src="https://media.giphy.com/media/Up1Otz0EISNQcDGmlc/giphy.gif">
+    <img alt="Recomponents"  src="https://media.giphy.com/media/Up1Otz0EISNQcDGmlc/giphy.gif">
 </p>
 
 ## Installation
