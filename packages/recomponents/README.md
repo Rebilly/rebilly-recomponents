@@ -7,8 +7,8 @@
 Recomponents is compatible with both yarn and npm:
 
 ```bash
-npm install rebilly-recomponents --save
-yarn add rebilly-recomponents
+npm install @rebilly/recomponents --save
+yarn add @rebilly/recomponents
 ```
 
 ## Usage
