@@ -1,5 +1,5 @@
 <template>
-    <figure class="r-component r-img">
+    <figure class="r-component r-img" :style="{minHeight: height + 'px', minWidth: width + 'px'}">
         <template v-if="lazy">
             <img v-lazy :data-url="src" :alt="alt"/>
         </template>
@@ -27,6 +27,14 @@
             lazy: {
                 type: Boolean,
                 default: false,
+            },
+            width: {
+                type: Number,
+                default: 0,
+            },
+            height: {
+                type: Number,
+                default: 0,
             },
         },
 

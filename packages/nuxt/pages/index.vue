@@ -12,6 +12,9 @@
         <r-button type="primary" :push="{ path: '/payment' }">
           Payment form
         </r-button>
+        <r-button type="primary" :push="{ path: '/lazy-loading' }">
+          Lazy loading image
+        </r-button>
       </div>
       <div class="links">
         <a href="https://nuxtjs.org" target="_blank">
