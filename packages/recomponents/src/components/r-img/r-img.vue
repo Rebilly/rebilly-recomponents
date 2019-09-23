@@ -1,7 +1,7 @@
 <template>
-    <figure class="r-component r-img">
+    <figure class="r-component r-img" :style="{minHeight: height + 'px', minWidth: width + 'px'}">
         <template v-if="lazy">
-            <img ref="img" :alt="alt"/>
+            <img v-lazy :data-url="src" :alt="alt"/>
         </template>
         <template v-else>
             <img :src="src" :alt="alt"/>
@@ -10,7 +10,7 @@
 </template>
 
 <script>
-    const EVENTS = ['scroll', 'wheel', 'mousewheel', 'resize', 'animationend', 'transitionend', 'touchmove'];
+    import '../../directives/r-lazy';
 
     export default {
         name: 'RImg',
@@ -28,20 +28,14 @@
                 type: Boolean,
                 default: false,
             },
-        },
-
-        mounted() {
-            if (this.lazy && typeof window !== 'undefined') {
-                EVENTS.forEach((evt) => {
-                    window.document.addEventListener(evt, this.debounce(() => {
-                        const rect = this.$refs.img.getBoundingClientRect();
-
-                        if (rect.top < window.innerHeight && rect.left < window.innerWidth) {
-                            this.$refs.img.src = this.src;
-                        }
-                    }, 250));
-                });
-            }
+            width: {
+                type: Number,
+                default: 0,
+            },
+            height: {
+                type: Number,
+                default: 0,
+            },
         },
 
         methods: {
@@ -51,20 +45,10 @@
             onerrror() {
                 this.$emit('error');
             },
-            debounce(action, delay) {
-                let timeout;
-                return () => {
-                    const callback = (...args) => {
-                        action.apply(this, args);
-                    };
-                    clearTimeout(timeout);
-                    timeout = setTimeout(callback, delay);
-                };
-            },
         },
     };
 </script>
 
 <style lang="scss">
-    @import './r-img.scss'
+    @import './r-img.scss';
 </style>
