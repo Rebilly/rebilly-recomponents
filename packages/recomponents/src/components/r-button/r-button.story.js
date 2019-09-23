@@ -31,7 +31,7 @@ storiesOf('Components/Button', module)
                 default: boolean('Disabled', false),
             },
             loading: {
-                default: boolean('Disabled', false),
+                default: boolean('Loading', false),
             },
             fluid: {
                 default: boolean('Fluid', false),
@@ -48,6 +48,7 @@ storiesOf('Components/Button', module)
                 :type="type"
                 :fluid="fluid"
                 :disabled="disabled"
+                :loading="loading"
                 @click="click"
                 @focus="focus"
                 @blur="blur"

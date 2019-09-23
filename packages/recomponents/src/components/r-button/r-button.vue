@@ -24,7 +24,7 @@
     v-on="$listeners"
     class="r-component r-button"
     :class="classes"
-    :disabled="disabled"
+    :disabled="disabled || loading"
     :title="title"
   >
     <r-icon v-if="loading" icon="loading" class="is-spinning icon-light-gray inline-s"/>
