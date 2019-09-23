@@ -7,7 +7,7 @@ storiesOf('Demo', module)
         props: {},
         methods: {},
         template: `
-             <r-tile :style="{width: width}">
+             <r-tile>
    <template v-slot:title>
       <h2>Lazy Loading</h2>
    </template>
