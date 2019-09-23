@@ -1,6 +1,3 @@
-// leading debounce
-// TODO write test
-
 // created() {
 //     this.wrapper = _.debounce(this.checkThisContext);
 //     this.wrapper(1);

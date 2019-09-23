@@ -29,7 +29,7 @@ storiesOf('Components', module)
                 default: number('Limit', 2),
             },
             maxHeight: {
-                default: number('Max height', 40),
+                default: number('Max height', 500),
             },
             loading: {
                 default: boolean('Loading', false),
@@ -55,9 +55,6 @@ storiesOf('Components', module)
             internalSearch: {
                 default: boolean('Internal Search', true),
             },
-            // trackBy: {
-            //     type: String,
-            // },
             searchable: {
                 default: boolean('Searchable', true),
             },
@@ -88,28 +85,12 @@ storiesOf('Components', module)
             tagPosition: {
                 default: select('Tag position', {top: 'top'}, 'top'),
             },
-            // max: {
-            //     type: [Number, Boolean],
-            //     default: false,
-            // },
+            max: {
+                default: number('Max', 2),
+            },
             optionsLimit: {
                 default: number('Options limit', 1000),
             },
-            // groupValues: {
-            //     type: String,
-            // },
-            // groupLabel: {
-            //     type: String,
-            // },
-            groupSelect: {
-                default: boolean('Group select', false),
-            },
-            // blockKeys: {
-            //     type: Array,
-            //     default() {
-            //         return [];
-            //     },
-            // },
             preserveSearch: {
                 default: boolean('Preserve search', false),
 
@@ -134,13 +115,14 @@ storiesOf('Components', module)
                            :label="label"
                            :helpText="helpText"
                            :limit="limit"
+                           :multiple="multiple"
                            :maxHeight="maxHeight"
                            :loading="loading"
                            :disabled="disabled"
                            :openDirection="openDirection"
                            :showNoOptions="showNoOptions"
                            :showNoResults="showNoResults"
-                           :value="value"
+                           v-model="value"
                            :options="options"
                            :internalSearch="internalSearch"
                            :searchable="searchable"
@@ -157,6 +139,7 @@ storiesOf('Components', module)
                            :groupSelect="groupSelect"
                            :preserveSearch="preserveSearch"
                            :preselectFirst="preselectFirst"
+                           :max="max"
                            @input="input" 
                            @select="select"
                            @tag="tag"

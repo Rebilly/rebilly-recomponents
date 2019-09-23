@@ -138,6 +138,7 @@ body, .article {
     --timing-400: .4s;
     --timing-700: .6s;
     --animation-ease: ease;
+    --animation-ease-in-out: ease-in-out;
     --animation-ease-in-curve: cubic-bezier(.8, .2, .6, 1);
     --animation-ease-out-curve: cubic-bezier(.2, .8, .4, 1);
     --animation-ease-in-out-curve: cubic-bezier(0.4, 0, 0.2, 1);
@@ -184,7 +185,6 @@ body, .article {
     --badge-warning-border: none;
     --badge-info-background: var(--primary-color-light);
     --badge-info-border: none;
-
 
     // Buttons
     // ------------------------------------------------
@@ -496,4 +496,25 @@ body, .article {
     --tooltip-z-index: var(--z-index-1000);
     --tooltip-box-shadow: var(--elevation-200);
     --tooltip-transition: opacity var(--timing-100) var(--animation-ease);
+
+    --tooltip-background-color: #505A6F;
+
+    // Select
+    // -----------------------------------------------------
+
+    --select-border-color: var(--primary-color);
+    --select-text-color: var(--text-color);
+    --select-background-color: var(--background-color);
+
+    --select-spinner-background-color: #FFFFFF;
+    --select-spinner-height: 34px;
+    --select-spinner-width: 40px;
+    --select-spinner-border-radius: $border-radius;
+
+    --select-placeholder-color: var(--muted-text-color);
+
+    --select-hover-border-color: #cfcfcf;
+    --select-focus-border-color: #a8a8a8;
+
+    --select-loading-transition: opacity var(--timing-400) var(--animation-ease-in-out);
 }

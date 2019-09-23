@@ -245,7 +245,7 @@ export default {
         },
         optionKeys() {
             const options = this.groupValues ? this.flatAndStrip(this.options) : this.options;
-            return options.map(element => this.customLabel(element, this.label).toString().toLowerCase());
+            return options.map(element => this.customLabel(element, this.propLabel).toString().toLowerCase());
         },
         currentOptionLabel() {
             return this.multiple
@@ -263,7 +263,7 @@ export default {
             }
         },
         search() {
-            this.$emit('search-change', this.search, this.id);
+            this.$emit(' search-change', this.search, this.id);
         },
     },
     methods: {
@@ -385,9 +385,6 @@ export default {
             ) {
                 return;
             }
-            if (this.max && this.multiple && this.internalValue.length === this.max) {
-                return;
-            }
             if (key === 'Tab' && !this.pointerDirty) {
                 return;
             }
@@ -404,6 +401,10 @@ export default {
                     if (key !== 'Tab') {
                         this.removeElement(option);
                     }
+                    return;
+                }
+
+                if (this.max && this.multiple && this.internalValue.length === this.max) {
                     return;
                 }
 
