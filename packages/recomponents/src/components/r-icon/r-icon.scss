@@ -22,3 +22,177 @@
     margin: 0;
 }
 
+/**
+* Colors
+*/
+.r-icon-brand {
+    fill: #0044D4;
+}
+
+.r-icon-text {
+    fill: #0D2B3E;
+}
+
+.r-icon-muted {
+    fill: #4A4A4B;
+}
+
+.r-icon-gray {
+    fill: #A1B2C1;
+}
+
+.r-icon-light-gray {
+    fill: #C4CED8;
+}
+
+.r-icon-faint-gray {
+    fill: #E1E7EA;
+}
+
+.r-icon-blue {
+    fill: #0044D4;
+}
+
+.r-icon-light-blue {
+    fill: #DCE7FE;
+}
+
+.r-icon-yellow {
+    fill: #F1C400;
+}
+
+.r-icon-light-yellow {
+    fill: #FFF0AD;
+}
+
+.r-icon-green {
+    fill: #00AA13;
+}
+
+.r-icon-light-green {
+    fill: #C4F7CA;
+}
+
+.r-icon-red {
+    fill: #E53935;
+}
+
+.r-icon-light-red {
+    fill: #FFD4D3;
+}
+
+.r-icon-accent {
+    fill: #00CCC4;
+}
+
+.r-icon-background {
+    fill: #F6F8F9;
+}
+
+.r-icon-dark-background {
+    fill: #505A6F;
+}
+
+.r-icon-light-background {
+    fill: #F9FAFB;
+}
+
+/**
+* Animations
+*/
+.r-icon.is-spinning {
+    animation: spinning 0.7s linear infinite;
+}
+
+.r-icon.is-ringing {
+    transform-origin: 50% 4px;
+    animation: ringing 4s linear infinite;
+}
+
+@keyframes spinning {
+    0% {
+        transform: rotate(0deg);
+    }
+    100% {
+        transform: rotate(360deg);
+    }
+}
+
+@keyframes ringing {
+    0% {
+        transform: rotateZ(0deg);
+    }
+    1% {
+        transform: rotateZ(30deg);
+    }
+    3% {
+        transform: rotateZ(-28deg);
+    }
+    5% {
+        transform: rotateZ(34deg);
+    }
+    7% {
+        transform: rotateZ(-32deg);
+    }
+    9% {
+        transform: rotateZ(30deg);
+    }
+    11% {
+        transform: rotateZ(-28deg);
+    }
+    13% {
+        transform: rotateZ(26deg);
+    }
+    15% {
+        transform: rotateZ(-24deg);
+    }
+    17% {
+        transform: rotateZ(22deg);
+    }
+    19% {
+        transform: rotateZ(-20deg);
+    }
+    21% {
+        transform: rotateZ(18deg);
+    }
+    23% {
+        transform: rotateZ(-16deg);
+    }
+    25% {
+        transform: rotateZ(14deg);
+    }
+    27% {
+        transform: rotateZ(-12deg);
+    }
+    29% {
+        transform: rotateZ(10deg);
+    }
+    31% {
+        transform: rotateZ(-8deg);
+    }
+    33% {
+        transform: rotateZ(6deg);
+    }
+    35% {
+        transform: rotateZ(-4deg);
+    }
+    37% {
+        transform: rotateZ(2deg);
+    }
+    39% {
+        transform: rotateZ(-1deg);
+    }
+    41% {
+        transform: rotateZ(1deg);
+    }
+    43% {
+        transform: rotateZ(0deg);
+    }
+    100% {
+        transform: rotateZ(0deg);
+    }
+}
+
+.r-icon.is-rotating-right {
+    transform: rotate(90deg);
+}
