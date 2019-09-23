@@ -27,14 +27,14 @@ describe('r-button.vue', () => {
     it('should render component with type prop', () => {
         const wrapper = mount(RButton, {
             propsData: {
-                type: 'warning',
+                type: 'danger',
             },
             slots: {
-                badge: '<strong>warning button</strong>',
+                badge: '<strong>danger button</strong>',
             },
         });
 
-        expect(wrapper.classes()).toContain('r-button--type-warning');
+        expect(wrapper.classes()).toContain('r-button--type-danger');
     });
 
     it('should render component with size, fluid or disabled prop', () => {

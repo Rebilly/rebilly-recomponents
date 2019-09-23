@@ -12,7 +12,6 @@ storiesOf('Components/Button', module)
                 default: select('type', {
                     default: 'default',
                     primary: 'primary',
-                    warning: 'warning',
                     danger: 'danger',
                 }, 'primary'),
             },
