@@ -36,9 +36,6 @@
 }
 
 .r-tile__content {
-    padding: var(--tile-content-padding);
-    border-bottom: var(--tile-content-divider);
-
     & p, & ul, & ol, & pre, & table, & blockquote, & h1, & h2, & h3, & h4, & h5, & h6 {
         margin: 0;
 
@@ -53,7 +50,15 @@
     }
 }
 
+.r-tile__content--primary {
+    padding: var(--tile-content-padding);
+    border-bottom: var(--tile-content-divider);
+    background: var(--tile-content-background);
+}
+
 .r-tile__content--secondary {
+    padding: var(--tile-content-padding);
+    border-bottom: var(--tile-content-divider);
     background: var(--tile-content-secondary-background);
 }
 

@@ -2,6 +2,12 @@
     <div class="r-component r-tile">
         <div class="r-tile__title" v-if="$slots.title">
             <slot name="title"/>
+            <div class="r-tile__title--actions no-flex" v-if="$slots.titleActions">
+                <slot name="titleActions"/>
+            </div>
+        </div>
+        <div class="r-tile__content">
+            <slot name="contents"/>
         </div>
         <div class="r-tile__content r-tile__content--primary" v-if="$slots.primary">
             <slot name="primary"/>
@@ -16,6 +22,8 @@
 </template>
 
 <script>
+    import '../../directives/r-content';
+
     export default {
         name: 'RTile',
     };
