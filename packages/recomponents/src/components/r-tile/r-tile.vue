@@ -6,7 +6,7 @@
                 <slot name="titleActions"/>
             </div>
         </div>
-        <div class="r-tile__content">
+        <div class="r-tile__content" v-if="$slots.contents">
             <slot name="contents"/>
         </div>
         <div class="r-tile__content r-tile__content--primary" v-if="$slots.primary">
