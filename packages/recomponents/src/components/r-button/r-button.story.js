@@ -21,6 +21,7 @@ storiesOf('Components/Button', module)
                     Default: 'default',
                     Primary: 'primary',
                     Danger: 'danger',
+                    Link: 'link',
                 }, 'primary'),
             },
             text: {
@@ -71,6 +72,7 @@ storiesOf('Components/Button', module)
                     Default: 'default',
                     Primary: 'primary',
                     Danger: 'danger',
+                    Link: 'link',
                 }, 'primary'),
             },
             text: {
@@ -124,6 +126,7 @@ storiesOf('Components/Button', module)
                     Default: 'default',
                     Primary: 'primary',
                     Danger: 'danger',
+                    Link: 'link',
                 }, 'primary'),
             },
             text: {
