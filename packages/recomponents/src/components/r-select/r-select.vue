@@ -1,6 +1,5 @@
 <template>
     <div>
-        <p>{{ options }}</p>
         <label v-if="hasLabel"
                @click="activate"
                class="r-field-label">{{label}}</label>

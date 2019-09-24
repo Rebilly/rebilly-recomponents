@@ -10,11 +10,6 @@ export default {
             type: Number,
             default: 40,
         },
-        /**
-         * Enable/disable highlighting of the pointed value.
-         * @type {Boolean}
-         * @default true
-         */
         showPointer: {
             type: Boolean,
             default: true,

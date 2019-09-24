@@ -35,60 +35,26 @@ function filterOptions(options, search, label, customLabel) {
 export default {
     data() {
         return {
-            search: '',
             isOpen: false,
             preferredOpenDirection: 'below',
             optimizedHeight: this.maxHeight,
+            search: '',
         };
     },
     props: {
-        internalSearch: {
-            type: Boolean,
-            default: true,
-        },
-        options: {
-            type: Array,
-            required: true,
-        },
-        multiple: {
-            type: Boolean,
-            default: false,
-        },
-        value: {
-            type: null,
-            default() {
-                return [];
-            },
-        },
-        trackBy: {
-            type: String,
-        },
-        propLabel: {
-            type: String,
-        },
-        searchable: {
-            type: Boolean,
-            default: true,
-        },
-        clearOnSelect: {
-            type: Boolean,
-            default: true,
-        },
-        hideSelected: {
-            type: Boolean,
-            default: false,
-        },
-        placeholder: {
-            type: String,
-            default: 'Select option',
-        },
         allowEmpty: {
             type: Boolean,
             default: true,
         },
-        resetAfter: {
+        blockKeys: {
+            type: Array,
+            default() {
+                return [];
+            },
+        },
+        clearOnSelect: {
             type: Boolean,
-            default: false,
+            default: true,
         },
         closeOnSelect: {
             type: Boolean,
@@ -103,6 +69,60 @@ export default {
                 return label ? option[label] : option;
             },
         },
+        hideSelected: {
+            type: Boolean,
+            default: false,
+        },
+        id: {
+            type: String,
+            default: () => shortid.generate(),
+        },
+        internalSearch: {
+            type: Boolean,
+            default: true,
+        },
+        max: {
+            type: [Number, Boolean],
+            default: false,
+        },
+        multiple: {
+            type: Boolean,
+            default: false,
+        },
+        options: {
+            type: Array,
+            required: true,
+        },
+        optionsLimit: {
+            type: Number,
+            default: 1000,
+        },
+        preselectFirst: {
+            type: Boolean,
+            default: false,
+        },
+        preserveSearch: {
+            type: Boolean,
+            default: false,
+        },
+        placeholder: {
+            type: String,
+            default: 'Select option',
+        },
+        propLabel: {
+            type: String,
+        },
+        resetAfter: {
+            type: Boolean,
+            default: false,
+        },
+        searchable: {
+            type: Boolean,
+            default: true,
+        },
+        trackBy: {
+            type: String,
+        },
         taggable: {
             type: Boolean,
             default: false,
@@ -115,37 +135,11 @@ export default {
             type: String,
             default: 'top',
         },
-        max: {
-            type: [Number, Boolean],
-            default: false,
-        },
-        id: {
-            type: String,
-            default: () => shortid.generate(),
-        },
-        optionsLimit: {
-            type: Number,
-            default: 1000,
-        },
-        groupValues: {
-            type: String,
-        },
-        groupLabel: {
-            type: String,
-        },
-        blockKeys: {
-            type: Array,
+        value: {
+            type: null,
             default() {
                 return [];
             },
-        },
-        preserveSearch: {
-            type: Boolean,
-            default: false,
-        },
-        preselectFirst: {
-            type: Boolean,
-            default: false,
         },
     },
     mounted() {
@@ -168,7 +162,7 @@ export default {
             const search = this.search || '';
             const normalizedSearch = search.toLowerCase().trim();
 
-            let options = this.options.concat();
+            let options = this.options && this.options.concat();
 
             if (this.internalSearch) {
                 options = filterOptions(options, normalizedSearch, this.propLabel, this.customLabel);
@@ -218,67 +212,61 @@ export default {
             }
         },
         search() {
-            this.$emit(' search-change', this.search, this.id);
+            this.$emit('search-change', this.search, this.id);
         },
     },
     methods: {
-        /**
-         * Returns the internalValue in a way it can be emited to the parent
-         * @returns {Object||Array||String||Integer}
-         */
-        getValue() {
-            return this.multiple
-                ? this.internalValue
-                : this.internalValue.length === 0
-                    ? null
-                    : this.internalValue[0];
+        activate() {
+            if (this.isOpen || this.disabled) {
+                return;
+            }
+
+            this.adjustPosition();
+
+            this.isOpen = true;
+            if (this.searchable) {
+                if (!this.preserveSearch) {
+                    this.search = '';
+                }
+                this.$nextTick(() => this.$refs.search && this.$refs.search.focus());
+            } else {
+                this.$el.focus();
+            }
+            this.$emit('open', this.id);
         },
-        /**
-         * Updates the search value
-         * @param  {String}
-         */
-        updateSearch(query) {
-            this.search = query;
+        adjustPosition() {
+            if (typeof window === 'undefined') {
+                return;
+            }
+
+            const spaceAbove = this.$el.getBoundingClientRect().top;
+            const spaceBelow = window.innerHeight - this.$el.getBoundingClientRect().bottom;
+            const hasEnoughSpaceBelow = spaceBelow > this.maxHeight;
+
+            if (hasEnoughSpaceBelow || spaceBelow > spaceAbove || this.openDirection === 'below' || this.openDirection === 'bottom') {
+                this.preferredOpenDirection = 'below';
+                this.optimizedHeight = Math.min(spaceBelow - 40, this.maxHeight);
+            } else {
+                this.preferredOpenDirection = 'above';
+                this.optimizedHeight = Math.min(spaceAbove - 40, this.maxHeight);
+            }
         },
-        /**
-         * Finds out if the given query is already present
-         * in the available options
-         * @param  {String}
-         * @returns {Boolean} returns true if element is available
-         */
-        isExistingOption(query) {
-            return !this.options
-                ? false
-                : this.optionKeys.indexOf(query) > -1;
+        deactivate() {
+            if (!this.isOpen) {
+                return;
+            }
+
+            this.isOpen = false;
+            if (this.searchable) {
+                this.$refs.search && this.$refs.search.blur();
+            } else {
+                this.$el.blur();
+            }
+            if (!this.preserveSearch) {
+                this.search = '';
+            }
+            this.$emit('close', this.getValue(), this.id);
         },
-        /**
-         * Finds out if the given element is already present
-         * in the result value
-         * @param  {Object||String||Integer} option passed element to check
-         * @returns {Boolean} returns true if element is selected
-         */
-        isSelected(option) {
-            const opt = this.trackBy
-                ? option[this.trackBy]
-                : option;
-            return this.valueKeys.indexOf(opt) > -1;
-        },
-        /**
-         * Finds out if the given option is disabled
-         * @param  {Object||String||Integer} option passed element to check
-         * @returns {Boolean} returns true if element is disabled
-         */
-        isOptionDisabled(option) {
-            return !!option.$isDisabled;
-        },
-        /**
-         * Returns empty string when options is null/undefined
-         * Returns tag query if option is tag.
-         * Returns the customLabel() results and casts it to string.
-         *
-         * @param  {Object||String||Integer} Passed option
-         * @returns {Object||String}
-         */
         getOptionLabel(option) {
             if (isEmpty(option)) {
                 return '';
@@ -295,14 +283,63 @@ export default {
             }
             return label;
         },
-        /**
-         * Add the given option to the list of selected options
-         * or sets the option as the selected option.
-         * If option is already selected -> remove it from the results.
-         *
-         * @param  {Object||String||Integer} option to select/deselect
-         * @param  {Boolean} block removing
-         */
+        getValue() {
+            return this.multiple
+                ? this.internalValue
+                : this.internalValue.length === 0
+                    ? null
+                    : this.internalValue[0];
+        },
+        isExistingOption(query) {
+            return !this.options
+                ? false
+                : this.optionKeys.indexOf(query) > -1;
+        },
+        isOptionDisabled(option) {
+            return !!option.$isDisabled;
+        },
+        isSelected(option) {
+            const opt = this.trackBy
+                ? option[this.trackBy]
+                : option;
+            return this.valueKeys.indexOf(opt) > -1;
+        },
+        removeElement(option, shouldClose = true) {
+            if (this.disabled) {
+                return;
+            }
+            if (option.$isDisabled) {
+                return;
+            }
+            if (!this.allowEmpty && this.internalValue.length <= 1) {
+                this.deactivate();
+                return;
+            }
+
+            const index = typeof option === 'object'
+                ? this.valueKeys.indexOf(option[this.trackBy])
+                : this.valueKeys.indexOf(option);
+
+            this.$emit('remove', option, this.id);
+            if (this.multiple) {
+                const newValue = this.internalValue.slice(0, index).concat(this.internalValue.slice(index + 1));
+                this.$emit('input', newValue, this.id);
+            } else {
+                this.$emit('input', null, this.id);
+            }
+
+            if (this.closeOnSelect && shouldClose) {
+                this.deactivate();
+            }
+        },
+        removeLastElement() {
+            if (this.blockKeys.indexOf('Delete') !== -1) {
+                return;
+            }
+            if (this.search.length === 0 && Array.isArray(this.internalValue) && this.internalValue.length) {
+                this.removeElement(this.internalValue[this.internalValue.length - 1], false);
+            }
+        },
         select(option, key) {
             if (this.blockKeys.indexOf(key) !== -1 ||
                 this.disabled ||
@@ -314,8 +351,8 @@ export default {
                 return;
             }
             if (option.isTag) {
-                this.createTag(option);
                 this.$emit('tag', option.label, this.id);
+                this.select(option.label);
                 this.search = '';
                 if (this.closeOnSelect && !this.multiple) {
                     this.deactivate();
@@ -350,139 +387,13 @@ export default {
                 this.deactivate();
             }
         },
-        createTag(newTag) {
-            this.options.push(newTag.label);
-            if (this.options.indexOf(newTag.label) !== -1) {
-                this.select(newTag.label);
-            }
-        },
-        /**
-         * Removes the given option from the selected options.
-         * Additionally checks this.allowEmpty prop if option can be removed when
-         * it is the last selected option.
-         *
-         * @param  {type} option description
-         * @returns {type}        description
-         */
-        removeElement(option, shouldClose = true) {
-            if (this.disabled) {
-                return;
-            }
-            if (option.$isDisabled) {
-                return;
-            }
-            if (!this.allowEmpty && this.internalValue.length <= 1) {
-                this.deactivate();
-                return;
-            }
-
-            const index = typeof option === 'object'
-                ? this.valueKeys.indexOf(option[this.trackBy])
-                : this.valueKeys.indexOf(option);
-
-            this.$emit('remove', option, this.id);
-            if (this.multiple) {
-                const newValue = this.internalValue.slice(0, index).concat(this.internalValue.slice(index + 1));
-                this.$emit('input', newValue, this.id);
-            } else {
-                this.$emit('input', null, this.id);
-            }
-
-            if (this.closeOnSelect && shouldClose) {
-                this.deactivate();
-            }
-        },
-        /**
-         * Calls this.removeElement() with the last element
-         * from this.internalValue (selected element Array)
-         *
-         * @fires this#removeElement
-         */
-        removeLastElement() {
-            if (this.blockKeys.indexOf('Delete') !== -1) {
-                return;
-            }
-            if (this.search.length === 0 && Array.isArray(this.internalValue) && this.internalValue.length) {
-                this.removeElement(this.internalValue[this.internalValue.length - 1], false);
-            }
-        },
-        /**
-         * Opens the r-select’s dropdown.
-         * Sets this.isOpen to TRUE
-         */
-        activate() {
-            if (this.isOpen || this.disabled) {
-                return;
-            }
-
-            this.adjustPosition();
-            if (this.groupValues && this.pointer === 0 && this.filteredOptions.length) {
-                this.pointer = 1;
-            }
-
-            this.isOpen = true;
-            if (this.searchable) {
-                if (!this.preserveSearch) {
-                    this.search = '';
-                }
-                this.$nextTick(() => this.$refs.search && this.$refs.search.focus());
-            } else {
-                this.$el.focus();
-            }
-            this.$emit('open', this.id);
-        },
-        /**
-         * Closes the r-select’s dropdown.
-         * Sets this.isOpen to FALSE
-         */
-        deactivate() {
-            if (!this.isOpen) {
-                return;
-            }
-
-            this.isOpen = false;
-            if (this.searchable) {
-                this.$refs.search && this.$refs.search.blur();
-            } else {
-                this.$el.blur();
-            }
-            if (!this.preserveSearch) {
-                this.search = '';
-            }
-            this.$emit('close', this.getValue(), this.id);
-        },
-        /**
-         * Call this.activate() or this.deactivate()
-         * depending on this.isOpen value.
-         *
-         * @fires this#activate || this#deactivate
-         * @property {Boolean} isOpen indicates if dropdown is open
-         */
         toggle() {
             this.isOpen
                 ? this.deactivate()
                 : this.activate();
         },
-        /**
-         * Updates the hasEnoughSpace variable used for
-         * detecting where to expand the dropdown
-         */
-        adjustPosition() {
-            if (typeof window === 'undefined') {
-                return;
-            }
-
-            const spaceAbove = this.$el.getBoundingClientRect().top;
-            const spaceBelow = window.innerHeight - this.$el.getBoundingClientRect().bottom;
-            const hasEnoughSpaceBelow = spaceBelow > this.maxHeight;
-
-            if (hasEnoughSpaceBelow || spaceBelow > spaceAbove || this.openDirection === 'below' || this.openDirection === 'bottom') {
-                this.preferredOpenDirection = 'below';
-                this.optimizedHeight = Math.min(spaceBelow - 40, this.maxHeight);
-            } else {
-                this.preferredOpenDirection = 'above';
-                this.optimizedHeight = Math.min(spaceAbove - 40, this.maxHeight);
-            }
+        updateSearch(query) {
+            this.search = query;
         },
     },
 };
