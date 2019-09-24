@@ -44,7 +44,7 @@
         }
     }
 
-    &:last-child {
+    & *:last-child {
         border: none;
         border-radius: 0 0 var(--tile-border-radius) var(--tile-border-radius);
     }
@@ -63,6 +63,7 @@
 }
 
 .r-tile__actions {
+    border-top: var(--tile-content-divider);
     padding: var(--tile-actions-padding);
     text-align: right;
 

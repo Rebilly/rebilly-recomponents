@@ -15,12 +15,6 @@ storiesOf('Components', module)
             titleActions: {
                 default: boolean('Show title actions', true),
             },
-            primary: {
-                default: boolean('Show primary', true),
-            },
-            secondary: {
-                default: boolean('Show secondary', true),
-            },
             actions: {
                 default: boolean('Show actions', true),
             },
@@ -38,15 +32,15 @@ storiesOf('Components', module)
                     <r-button type="link">Title Action</r-button>
                 </template>
                 <template v-slot:contents>
-                    <div v-content>
+                    <section v-content>
                         <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Quisque ac lorem enim. Nullam id iaculis diam, quis mollis elit. Phasellus imperdiet sapien eu felis interdum facilisis.</p>
-                    </div>
-                    <div v-content>
+                    </section>
+                    <section v-content>
                         <p>Cras at varius turpis. Nulla vestibulum ullamcorper elit quis efficitur. Vestibulum quis luctus nisl. Sed feugiat varius metus, id dignissim mi ultrices eu.</p>
-                    </div>
-                    <div v-content.secondary>
+                    </section>
+                    <section v-content.secondary>
                         <p>Nam sit amet risus et sem suscipit volutpat sed mattis eros. Suspendisse accumsan hendrerit metus at elementum.</p>
-                    </div>
+                    </section>
                 </template>
                 <template v-slot:actions v-if="actions">
                     <r-button type="default" @click="cancel">Cancel</r-button>
