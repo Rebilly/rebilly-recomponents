@@ -502,19 +502,76 @@ body, .article {
     // Select
     // -----------------------------------------------------
 
-    --select-border-color: var(--primary-color);
-    --select-text-color: var(--text-color);
+    --select-above-border-bottom: 0;
+    --select-above-margin-bottom: var(--space-xs);
     --select-background-color: var(--background-color);
-
+    --select-below-border-top: 0;
+    --select-border-color: var(--primary-color);
+    --select-border-radius: var(--border-radius);
+    --select-caret: url('/static/icons/caret-down.svg');
+    --select-current-border-color: #E8E8E8;
+    --select-current-margin: 0;
+    --select-current-padding: var(--space-s) var(--space-l) 0 var(--space-m);
+    --select-disabled-background: var(--background-color);
+    --select-disabled-box-shadow: 0 0 0 1px var(--gray-color) inset;
+    --select-disabled-color: var(--text-muted);
+    --select-disabled-font-color: var(--mono-color-700);
+    --select-disabled-opacity: 0.6;
+    --select-enter-leave-transition: all var(--timing-100) var(--animation-ease);
+    --select-focus-border-color: #a8a8a8;
+    --select-highlight-color: var(--primary-color);
+    --select-highlight-font-color: #FFFFFF;
+    --select-hover-border-color: #cfcfcf;
+    --select-input-background: transparent;
+    --select-input-margin: 0 0 var(--space-s) 0;
+    --select-input-min-height: var(--font-line-height-p);
+    --select-input-padding: 0 0 0 var(--space-xs);
+    --select-input-transition: border var(--timing-100) var(--animation-ease);
+    --select-line-height: var(--font-line-height-p);
+    --select-loading-transition: opacity var(--timing-400) var(--animation-ease-in-out);
+    --select-min-height: 40px;
+    --select-option-actions-padding: var(--space-m);
+    --select-option-actions-right: 0;
+    --select-option-actions-top: var(--space-s);
+    --select-option-font-size: var(--font-size-p);
+    --select-option-min-height: 36px;
+    --select-option-padding: var(--space-s) var(--space-m);
+    --select-placeholder-color: var(--gray-color);
+    --select-placeholder-margin-bottom: var(--space-s);
+    --select-placeholder-padding-top: var(--space-xxs);
+    --select-selected-after-color: var(--mono-color-400);
+    --select-selected-font-color: var(--secondary-color);
+    --select-selected-font-weight: var(--font-weight-bold);
+    --select-single-margin: 0 0 var(--space-s) 0;
+    --select-single-padding: 0 0 0 var(--space-xs);
     --select-spinner-background-color: #FFFFFF;
+    --select-spinner-border-radius: var(--border-radius);
     --select-spinner-height: 34px;
     --select-spinner-width: 40px;
-    --select-spinner-border-radius: $border-radius;
-
-    --select-placeholder-color: var(--muted-text-color);
-
-    --select-hover-border-color: #cfcfcf;
-    --select-focus-border-color: #a8a8a8;
-
-    --select-loading-transition: opacity var(--timing-400) var(--animation-ease-in-out);
+    --select-tag-background: var(--gray-color-light);
+    --select-tag-border-radius: var(--border-radius-xxs);
+    --select-tag-color: var(--mono-color-700);
+    --select-tag-font-weight: var(--font-weight-bold);
+    --select-tag-icon-border-radius: none;
+    --select-tag-icon-color: var(--mono-color-800);
+    --select-tag-icon-margin-left: var(--space-xs);
+    --select-tag-icon-transition: all var(--timing-100) var(--animation-ease);
+    --select-tag-line-height: var(--font-line-height-p);
+    --select-tag-margin: 0 var(--space-xs) var(--space-xxs) 0;
+    --select-tag-padding: var(--space-xxs) var(--space-s) var(--space-xxs) var(--space-s);
+    --select-tags-background: #FFFFFF;
+    --select-tags-border-color: #E8E8E8;
+    --select-tags-border-radius: var(--border-radius);
+    --select-tags-font-size: var(--font-size-p);
+    --select-tags-padding: var(--space-s) var(--space-l) 0 var(--space-s);
+    --select-text-align: left;
+    --select-text-color: var(--text-color);
+    --select-transition: transform var(--timing-100) var(--animation-ease);
+    --select-wrapper-background-color: #FFFFFF;
+    --select-wrapper-border-color: #E8E8E8;
+    --select-wrapper-box-shadow: var(--elevation-200);
+    --select-wrapper-max-height: 240px;
+    --select-wrapper-padding: var(--space-s) 0;
+    --select-wrapper-z-index: 50;
+    --select-z-index: 50;
 }

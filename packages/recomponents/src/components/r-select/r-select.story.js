@@ -13,29 +13,44 @@ storiesOf('Components', module)
             };
         },
         props: {
-            label: {
-                default: text('Label', 'Label for select'),
+            allowEmpty: {
+                default: boolean('Allow empty', true),
+            },
+            clearOnSelect: {
+                default: boolean('Clear on select', true),
+            },
+            closeOnSelect: {
+                default: boolean('Close on select', true),
+            },
+            disabled: {
+                default: boolean('Disabled', false),
             },
             helpText: {
                 default: text('Help Text', 'Help text for select'),
             },
-            options: {
-                default: array('Options', ['Days', 'Weeks', 'Months', 'Years']),
+            hideSelected: {
+                default: boolean('Hide selected', false),
             },
-            multiple: {
-                default: boolean('Multiple', true),
+            internalSearch: {
+                default: boolean('Internal Search', true),
+            },
+            label: {
+                default: text('Label', 'Label for select'),
             },
             limit: {
                 default: number('Limit', 2),
             },
-            maxHeight: {
-                default: number('Max height', 500),
-            },
             loading: {
                 default: boolean('Loading', false),
             },
-            disabled: {
-                default: boolean('Disabled', false),
+            max: {
+                default: number('Max', 2),
+            },
+            maxHeight: {
+                default: number('Max height', 500),
+            },
+            multiple: {
+                default: boolean('Multiple', true),
             },
             openDirection: {
                 default: select('Direction', {
@@ -46,38 +61,34 @@ storiesOf('Components', module)
                     Auto: '',
                 }, ''),
             },
+            options: {
+                default: array('Options', ['Days', 'Weeks', 'Months', 'Years']),
+            },
+            optionsLimit: {
+                default: number('Options limit', 1000),
+            },
+            placeholder: {
+                default: text('Placeholder', 'Select option'),
+            },
+            preselectFirst: {
+                default: boolean('Preselect first', true),
+
+            },
+            preserveSearch: {
+                default: boolean('Preserve search', false),
+
+            },
+            resetAfter: {
+                default: boolean('Reset after', false),
+            },
+            searchable: {
+                default: boolean('Searchable', true),
+            },
             showNoOptions: {
                 default: boolean('Show \"No options\"', true),
             },
             showNoResults: {
                 default: boolean('Show \"No results\"', true),
-            },
-            internalSearch: {
-                default: boolean('Internal Search', true),
-            },
-            searchable: {
-                default: boolean('Searchable', true),
-            },
-            clearOnSelect: {
-                default: boolean('Clear on select', true),
-            },
-            hideSelected: {
-                default: boolean('Hide selected', false),
-            },
-            placeholder: {
-                default: text('Placeholder', 'Select option'),
-            },
-            allowEmpty: {
-                default: boolean('Allow empty', true),
-            },
-            resetAfter: {
-                default: boolean('Reset after', false),
-            },
-            closeOnSelect: {
-                default: boolean('Close on select', true),
-            },
-            taggable: {
-                default: boolean('Taggable', true),
             },
             tagPlaceholder: {
                 default: text('Tag placeholder', 'Press enter to create a tag'),
@@ -85,68 +96,56 @@ storiesOf('Components', module)
             tagPosition: {
                 default: select('Tag position', {top: 'top'}, 'top'),
             },
-            max: {
-                default: number('Max', 2),
-            },
-            optionsLimit: {
-                default: number('Options limit', 1000),
-            },
-            preserveSearch: {
-                default: boolean('Preserve search', false),
-
-            },
-            preselectFirst: {
-                default: boolean('Preselect first', true),
-
+            taggable: {
+                default: boolean('Taggable', true),
             },
         },
         methods: {
+            close: action('close'),
             input: action('input'),
-            select: action('select'),
-            tag: action('tag'),
+            open: action('open'),
             remove: action('remove'),
             searchChange: action('searchChange'),
-            open: action('open'),
-            close: action('close'),
+            select: action('select'),
+            tag: action('tag'),
         },
         template: `<div>
                        <p>Selected: {{ value }}</p>
                        <r-select
-                           :label="label"
-                           :helpText="helpText"
-                           :limit="limit"
-                           :multiple="multiple"
-                           :maxHeight="maxHeight"
-                           :loading="loading"
-                           :disabled="disabled"
-                           :openDirection="openDirection"
-                           :showNoOptions="showNoOptions"
-                           :showNoResults="showNoResults"
-                           v-model="value"
-                           :options="options"
-                           :internalSearch="internalSearch"
-                           :searchable="searchable"
-                           :clearOnSelect="clearOnSelect"
-                           :hideSelected="hideSelected"
-                           :placeholder="placeholder"
-                           :allowEmpty="allowEmpty"
-                           :resetAfter="resetAfter"
-                           :closeOnSelect="closeOnSelect"
-                           :taggable="taggable"
-                           :tagPlaceholder="tagPlaceholder"
-                           :tagPosition="tagPosition"
-                           :optionsLimit="optionsLimit"
-                           :groupSelect="groupSelect"
-                           :preserveSearch="preserveSearch"
-                           :preselectFirst="preselectFirst"
-                           :max="max"
-                           @input="input" 
-                           @select="select"
-                           @tag="tag"
-                           @remove="remove"
-                           @search-change="searchChange"
-                           @open="open"
-                           @close="close">
+                            v-model="value"
+                            :allowEmpty="allowEmpty"
+                            :clearOnSelect="clearOnSelect"
+                            :closeOnSelect="closeOnSelect"
+                            :disabled="disabled"
+                            :helpText="helpText"
+                            :hideSelected="hideSelected"
+                            :internalSearch="internalSearch"
+                            :label="label"
+                            :limit="limit"
+                            :loading="loading"
+                            :max="max"
+                            :maxHeight="maxHeight"
+                            :multiple="multiple"
+                            :openDirection="openDirection"
+                            :options="options"
+                            :optionsLimit="optionsLimit"
+                            :placeholder="placeholder"
+                            :preselectFirst="preselectFirst"
+                            :preserveSearch="preserveSearch"
+                            :resetAfter="resetAfter"
+                            :searchable="searchable"
+                            :showNoOptions="showNoOptions"
+                            :showNoResults="showNoResults"
+                            :tagPlaceholder="tagPlaceholder"
+                            :tagPosition="tagPosition"
+                            :taggable="taggable"
+                            @close="close"
+                            @input="input"
+                            @open="open"
+                            @remove="remove"
+                            @search-change="searchChange"
+                            @select="select"
+                            @tag="tag">
                        </r-select>
                      </div>
         `,

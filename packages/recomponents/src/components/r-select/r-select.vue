@@ -1,5 +1,6 @@
 <template>
     <div>
+        <p>{{ options }}</p>
         <label v-if="hasLabel"
                @click="activate"
                class="r-field-label">{{label}}</label>
@@ -39,15 +40,15 @@
                                           slot-scope="tagProps">
                                     <slot name="custom-tag" v-bind="tagProps"/>
                                 </template>
-                                <template v-else="requiresTagSlot">
-                        <span class="r-select__tag" :key="index">
-                        <span v-text="getOptionLabel(option)"></span>
-                        <i aria-hidden="true"
-                           tabindex="1"
-                           @keypress.enter.prevent="removeElement(option)"
-                           @mousedown.prevent="removeElement(option)"
-                           class="r-select__tag-icon"></i>
-                        </span>
+                                <template>
+                                    <span class="r-select__tag" :key="index">
+                                    <span v-text="getOptionLabel(option)"></span>
+                                    <i aria-hidden="true"
+                                       tabindex="1"
+                                       @keypress.enter.prevent="removeElement(option)"
+                                       @mousedown.prevent="removeElement(option)"
+                                       class="r-select__tag-icon"></i>
+                                    </span>
                                 </template>
                             </slot>
                         </template>
@@ -149,9 +150,8 @@
                             v-for="(option, index) of filteredOptions"
                             :key="index"
                             v-bind:id="id + '-' + index"
-                            v-bind:role="!(option && (option.$isLabel || option.$isDisabled)) ? 'option' : null">
-                        <span v-if="!(option && (option.$isLabel || option.$isDisabled))"
-                              :class="optionHighlight(index, option)"
+                            v-bind:role="option">
+                        <span :class="optionHighlight(index, option)"
                               @click.stop="select(option)"
                               @mouseenter.self="pointerSet(index)"
                               class="r-select__option">
@@ -160,17 +160,7 @@
                                  :search="search">
                               <span>{{ getOptionLabel(option) }}</span>
                            </slot>
-                        </span>
-                            <span v-if="option && (option.$isLabel || option.$isDisabled)"
-                                  :class="groupHighlight(index, option)"
-                                  @mouseenter.self="groupSelect && pointerSet(index)"
-                                  @mousedown.prevent="selectGroup(option)"
-                                  class="r-select__option">
-                           <slot name="option" :option="option" :search="search">
-                              <span>{{ getOptionLabel(option) }}</span>
-                           </slot>
-                        </span>
-                        </li>
+                        </span></li>
                         <!--</template>-->
                         <li v-show="showNoResults && (filteredOptions.length === 0 && search && !loading)">
                      <span class="r-select__option">
@@ -207,28 +197,34 @@
     </div>
 </template>
 <script>
-    import multiSelectMixin from './multiselectMixin';
-    import pointerMixin from './pointerMixin';
+    import RSelectMixin from './r-select-mixin';
+    import RPointerMixin from './r-pointer-mixin';
     import AsyncInputMixin from '../../mixins/async-input-mixin';
     import RIcon from '../r-icon/r-icon.vue';
     import RIconButton from '../r-icon-button/r-icon-button.vue';
 
     export default {
         name: 'r-select',
-        mixins: [multiSelectMixin, pointerMixin, new AsyncInputMixin().getMixin()],
+        mixins: [
+            RPointerMixin,
+            RSelectMixin,
+            new AsyncInputMixin().getMixin()
+        ],
         components: {RIcon, RIconButton},
         props: {
-            name: {
+            disabled: {
+                type: Boolean,
+                default: false,
+            },
+            helpText: {
                 type: String,
-                default: '',
+            },
+            label: {
+                type: String,
             },
             limit: {
                 type: Number,
                 default: 99999,
-            },
-            maxHeight: {
-                type: Number,
-                default: 300,
             },
             limitText: {
                 type: Function,
@@ -238,9 +234,13 @@
                 type: Boolean,
                 default: false,
             },
-            disabled: {
-                type: Boolean,
-                default: false,
+            maxHeight: {
+                type: Number,
+                default: 300,
+            },
+            name: {
+                type: String,
+                default: '',
             },
             openDirection: {
                 type: String,
@@ -258,29 +258,15 @@
                 type: Number,
                 default: 0,
             },
-            label: {
-                type: String,
-            },
-            helpText: {
-                type: String,
-            },
         },
         computed: {
-            isSingleLabelVisible() {
-                return (
-                    (this.singleValue || this.singleValue === 0) &&
-                    (!this.isOpen || !this.searchable) &&
-                    !this.visibleValues.length
-                );
+            contentStyle() {
+                return this.options.length
+                    ? {display: 'inline-block'}
+                    : {display: 'block'};
             },
-            isPlaceholderVisible() {
-                return !this.internalValue.length && (!this.searchable || !this.isOpen);
-            },
-            visibleValues() {
-                return this.multiple ? this.internalValue.slice(0, this.limit) : [];
-            },
-            singleValue() {
-                return this.internalValue[0];
+            hasLabel() {
+                return (this.label || '').trim() !== '';
             },
             inputStyle() {
                 if (
@@ -292,11 +278,6 @@
                         ? {width: '100%'}
                         : {width: '0', position: 'absolute', padding: '0'};
                 }
-            },
-            contentStyle() {
-                return this.options.length
-                    ? {display: 'inline-block'}
-                    : {display: 'block'};
             },
             isAbove() {
                 if (this.openDirection === 'above' || this.openDirection === 'top') {
@@ -310,20 +291,24 @@
                     return this.preferredOpenDirection === 'above';
                 }
             },
-            showSearchInput() {
-                return (
-                    this.searchable &&
-                    (this.hasSingleSelectedSlot &&
-                    (this.visibleSingleValue || this.visibleSingleValue === 0)
-                        ? this.isOpen
-                        : true)
-                );
+            isPlaceholderVisible() {
+                return !this.internalValue.length && (!this.searchable || !this.isOpen);
             },
-            hasLabel() {
-                return (this.label || '').trim() !== '';
+            isSingleLabelVisible() {
+                return (
+                    (this.singleValue || this.singleValue === 0) &&
+                    (!this.isOpen || !this.searchable) &&
+                    !this.visibleValues.length
+                );
             },
             requiresTagSlot() {
                 return this.$slots['custom-tag'] !== undefined;
+            },
+            singleValue() {
+                return this.internalValue[0];
+            },
+            visibleValues() {
+                return this.multiple ? this.internalValue.slice(0, this.limit) : [];
             },
         },
     };

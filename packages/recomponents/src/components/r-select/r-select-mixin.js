@@ -32,44 +32,6 @@ function filterOptions(options, search, label, customLabel) {
     return options.filter(option => includes(customLabel(option, label), search));
 }
 
-function stripGroups(options) {
-    return options.filter(option => !option.$isLabel);
-}
-
-function flattenOptions(values, label) {
-    return (options) =>
-        options.reduce((prev, curr) => {
-            if (curr[values] && curr[values].length) {
-                prev.push({
-                    $groupLabel: curr[label],
-                    $isLabel: true,
-                });
-                return prev.concat(curr[values]);
-            }
-            return prev;
-        }, []);
-}
-
-function filterGroups(search, label, values, groupLabel, customLabel) {
-    return (groups) =>
-        groups.map(group => {
-            if (!group[values]) {
-                console.warn(`Options passed to vue-r-select do not contain groups, despite the config.`);
-                return [];
-            }
-            const groupOptions = filterOptions(group[values], search, label, customLabel);
-
-            return groupOptions.length
-                ? {
-                    [groupLabel]: group[groupLabel],
-                    [values]: groupOptions,
-                }
-                : [];
-        });
-}
-
-const flow = (...fns) => x => fns.reduce((v, f) => f(v), x);
-
 export default {
     data() {
         return {
@@ -171,10 +133,6 @@ export default {
         groupLabel: {
             type: String,
         },
-        groupSelect: {
-            type: Boolean,
-            default: false,
-        },
         blockKeys: {
             type: Array,
             default() {
@@ -194,11 +152,9 @@ export default {
         if (!this.multiple && this.max) {
             console.warn('[Recomponents warn]: Max prop should not be used when prop Multiple equals false.');
         }
-        if (
-            this.preselectFirst &&
+        if (this.preselectFirst &&
             !this.internalValue.length &&
-            this.options.length
-        ) {
+            this.options.length) {
             this.select(this.filteredOptions[0]);
         }
     },
@@ -215,11 +171,7 @@ export default {
             let options = this.options.concat();
 
             if (this.internalSearch) {
-                options = this.groupValues
-                    ? this.filterAndFlat(options, normalizedSearch, this.label)
-                    : filterOptions(options, normalizedSearch, this.label, this.customLabel);
-            } else {
-                options = this.groupValues ? flattenOptions(this.groupValues, this.groupLabel)(options) : options;
+                options = filterOptions(options, normalizedSearch, this.propLabel, this.customLabel);
             }
 
             options = this.hideSelected
@@ -244,8 +196,11 @@ export default {
             }
         },
         optionKeys() {
-            const options = this.groupValues ? this.flatAndStrip(this.options) : this.options;
-            return options.map(element => this.customLabel(element, this.propLabel).toString().toLowerCase());
+            const options = this.options;
+            return options
+                .map(element => this.customLabel(element, this.propLabel)
+                    .toString()
+                    .toLowerCase());
         },
         currentOptionLabel() {
             return this.multiple
@@ -277,28 +232,6 @@ export default {
                 : this.internalValue.length === 0
                     ? null
                     : this.internalValue[0];
-        },
-        /**
-         * Filters and then flattens the options list
-         * @param  {Array}
-         * @returns {Array} returns a filtered and flat options list
-         */
-        filterAndFlat(options, search, label) {
-            return flow(
-                filterGroups(search, label, this.groupValues, this.groupLabel, this.customLabel),
-                flattenOptions(this.groupValues, this.groupLabel),
-            )(options);
-        },
-        /**
-         * Flattens and then strips the group labels from the options list
-         * @param  {Array}
-         * @returns {Array} returns a flat options list without group labels
-         */
-        flatAndStrip(options) {
-            return flow(
-                flattenOptions(this.groupValues, this.groupLabel),
-                stripGroups,
-            )(options);
         },
         /**
          * Updates the search value
@@ -350,11 +283,9 @@ export default {
             if (isEmpty(option)) {
                 return '';
             }
+
             if (option.isTag) {
                 return option.label;
-            }
-            if (option.$isLabel) {
-                return option.$groupLabel;
             }
 
             let label = this.customLabel(option, this.propLabel);
@@ -373,22 +304,17 @@ export default {
          * @param  {Boolean} block removing
          */
         select(option, key) {
-            console.log(option);
-            if (option.$isLabel && this.groupSelect) {
-                this.selectGroup(option);
-                return;
-            }
             if (this.blockKeys.indexOf(key) !== -1 ||
                 this.disabled ||
-                option.$isDisabled ||
-                option.$isLabel
-            ) {
+                option.$isDisabled) {
                 return;
             }
             if (key === 'Tab' && !this.pointerDirty) {
+
                 return;
             }
             if (option.isTag) {
+                this.createTag(option);
                 this.$emit('tag', option.label, this.id);
                 this.search = '';
                 if (this.closeOnSelect && !this.multiple) {
@@ -424,58 +350,11 @@ export default {
                 this.deactivate();
             }
         },
-        /**
-         * Add the given group options to the list of selected options
-         * If all group optiona are already selected -> remove it from the results.
-         *
-         * @param  {Object||String||Integer} group to select/deselect
-         */
-        selectGroup(selectedGroup) {
-            const group = this.options.find(option => {
-                return option[this.groupLabel] === selectedGroup.$groupLabel;
-            });
-
-            if (!group) {
-                return;
+        createTag(newTag) {
+            this.options.push(newTag.label);
+            if (this.options.indexOf(newTag.label) !== -1) {
+                this.select(newTag.label);
             }
-
-            if (this.wholeGroupSelected(group)) {
-                this.$emit('remove', group[this.groupValues], this.id);
-
-                const newValue = this.internalValue.filter(
-                    option => group[this.groupValues].indexOf(option) === -1,
-                );
-
-                this.$emit('input', newValue, this.id);
-            } else {
-                const optionsToAdd = group[this.groupValues].filter(
-                    option => !(this.isOptionDisabled(option) || this.isSelected(option)),
-                );
-
-                this.$emit('select', optionsToAdd, this.id);
-                this.$emit(
-                    'input',
-                    this.internalValue.concat(optionsToAdd),
-                    this.id,
-                );
-            }
-        },
-        /**
-         * Helper to identify if all values in a group are selected
-         *
-         * @param {Object} group to validated selected values against
-         */
-        wholeGroupSelected(group) {
-            return group[this.groupValues].every(option => this.isSelected(option) || this.isOptionDisabled(option),
-            );
-        },
-        /**
-         * Helper to identify if all values in a group are disabled
-         *
-         * @param {Object} group to check for disabled values
-         */
-        wholeGroupDisabled(group) {
-            return group[this.groupValues].every(this.isOptionDisabled);
         },
         /**
          * Removes the given option from the selected options.
