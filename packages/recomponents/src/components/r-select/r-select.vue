@@ -257,16 +257,6 @@
                 type: Boolean,
                 default: true,
             },
-            blockFactor: {
-                type: Number,
-                default: 0.5,
-            },
-            blockKeys: {
-                type: Array,
-                default() {
-                    return [];
-                },
-            },
             clearOnSelect: {
                 type: Boolean,
                 default: true,
@@ -287,10 +277,6 @@
             disabled: {
                 type: Boolean,
                 default: false,
-            },
-            extendFactor: {
-                type: Number,
-                default: 1,
             },
             helpText: {
                 type: String,
@@ -396,10 +382,6 @@
             taggable: {
                 type: Boolean,
                 default: false,
-            },
-            tagPlaceholder: {
-                type: String,
-                default: 'Press enter to create a tag',
             },
             tagPosition: {
                 type: String,

@@ -4,7 +4,42 @@ TBD
 
 ### Props
 
-TBD
+| Name | Type | Default |
+|--|--|--|
+| allowEmpty | boolean | `true` |
+| clearOnSelect |  boolean | `true` |
+| closeOnSelect |  boolean | `true` |
+| customLabel | function | `(option, label) => label ? option[label] : option` |
+| disabled | boolean | `true` |
+| helpText | string |` |
+| hideSelected | boolean | `false` |
+| id | string | `() => shortid.generate()` |
+| internalSearch | boolean | `true` |
+| label | string |  |
+| limit | number | `99999` |
+| limitText | function | `(count) => and ${count} more"` |
+| loading | boolean | `false` |
+| max | [number, boolean] | `false` |
+| maxHeight | number | `300` |
+| multiple | boolean | `false` |
+| name | string | `""` |
+| openDirection | string: `above`, `below`, `top`, `bottom` | `""` |
+| options | array |  |
+| optionHeight | number | `40` |
+| preselectFirst | boolean | `false` |
+| preserveSearch | boolean | `false` |
+| placeholder | string | `Select option` |
+| propLabel | string | |
+| resetAfter | boolean | `false` |
+| searchable | boolean | `true` |
+| showNoOptions | boolean | `true` |
+| showNoResults | boolean | `true` |
+| showPointer | boolean | `true` |
+| tabindex | number | `0` |
+| taggable | boolean | `false` |
+| tagPosition | string: `top`, `bottom` | `top` |
+| trackBy | string |  |
+| value | [string, array] | `[]` |
 
 ### Slots
 
