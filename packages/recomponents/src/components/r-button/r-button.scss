@@ -18,6 +18,10 @@
     outline: none;
     transition: var(--button-transition);
 
+    &:hover {
+        text-decoration: none;
+    }
+
     &--size-small {
         padding: var(--button-size-s);
     }
