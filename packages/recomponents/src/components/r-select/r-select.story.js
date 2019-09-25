@@ -95,7 +95,7 @@ storiesOf('Components/Select', module)
                 default: text('Tag placeholder', 'Press enter to create a tag'),
             },
             tagPosition: {
-                default: select('Tag position', {top: 'top'}, 'top'),
+                default: select('Tag position', {top: 'top', bottom: 'bottom'}, 'top'),
             },
             taggable: {
                 default: boolean('Taggable', true),
@@ -163,7 +163,7 @@ storiesOf('Components/Select', module)
     },
     props: {
         async: {
-            default: text('GET Request URL', 'https://jsonplaceholder.typicode.com/users'),
+            default: text('GET Request URL', 'https://jsonplaceholder.typicode.com/todos'),
         },
         allowEmpty: {
             default: boolean('Allow empty', true),
@@ -225,7 +225,7 @@ storiesOf('Components/Select', module)
 
         },
         propLabel: {
-            default: text('Property to display', 'name'),
+            default: text('Property to display', 'title'),
         },
         resetAfter: {
             default: boolean('Reset after', false),
@@ -243,7 +243,7 @@ storiesOf('Components/Select', module)
             default: text('Tag placeholder', 'Press enter to create a tag'),
         },
         tagPosition: {
-            default: select('Tag position', {top: 'top'}, 'top'),
+            default: select('Tag position', {top: 'top', bottom: 'bottom'}, 'top'),
         },
         taggable: {
             default: boolean('Taggable', true),

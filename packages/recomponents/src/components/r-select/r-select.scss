@@ -173,6 +173,14 @@ fieldset[disabled] .r-select {
     padding: var(--select-tag-padding);
 }
 
+.r-select__tag .r-select__tag-text {
+    width: calc(100% - 16px - var(--select-tag-icon-margin-left));
+    overflow: hidden;
+    display: inline-block;
+    text-overflow: ellipsis;
+    vertical-align: bottom;
+}
+
 .r-select__tag-icon {
     cursor: pointer;
     right: 0;
@@ -381,7 +389,7 @@ fieldset[disabled] .r-select {
 }
 
 *[dir='rtl'] .r-select__tags {
-    padding: 8px 8px 0px 40px;
+    padding: 8px 8px 0 40px;
 }
 
 *[dir='rtl'] .r-select__content {
