@@ -16,6 +16,8 @@
 
 As the number of Web Apps developed at Rebilly grows larger, it has become apparent that we need a way to share UI components across projects. Recomponents offers similar levels of customization to projects like Twitter Bootstrap, but comes default with the familiar look and feel. This library also delivers consistency of implementation and usage to Rebilly developers (and in the future, the greater Vue community).
 
+[View the storybook](https://recomponents.rebilly.com/)
+
 ## Repository structure
 
 * `packages/recomponents` Recomponents project
