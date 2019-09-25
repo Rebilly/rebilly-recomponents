@@ -18,6 +18,10 @@
     outline: none;
     transition: var(--button-transition);
 
+    &:hover {
+        text-decoration: none;
+    }
+
     &--size-small {
         padding: var(--button-size-s);
     }
@@ -141,6 +145,29 @@
             color: var(--button-danger-disabled-color);
             box-shadow: var(--button-danger-disabled-box-shadow);
             border: var(--button-danger-disabled-border);
+        }
+    }
+
+    &--type-link {
+        color: #0044D4;
+        vertical-align: baseline;
+        padding: 0;
+        background: none;
+        box-shadow: none;
+
+        &:hover {
+            background: none;
+            text-decoration: underline;
+            box-shadow: none;
+        }
+
+        &:focus {
+            box-shadow: 0 0 0 2px rgba(0, 68, 212, 0.5);
+        }
+
+        &:active {
+            background: none;
+            box-shadow: 0 1px 3px 1px var(--red-color-dark) inset;
         }
     }
 

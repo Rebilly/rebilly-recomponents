@@ -1,35 +1,33 @@
 <template>
-  <router-link
-    v-if="!!push"
-    class="r-component r-button"
-    :to="push"
-    v-on="$listeners"
-    :class="classes"
-    :disabled="disabled"
-  >
-    <slot>Link</slot>
-  </router-link>
-  <a
-    v-else-if="$attrs.href"
-    class="r-component r-button"
-    v-on="$listeners"
-    :class="classes"
-    :disabled="disabled"
-    target="_target"
-  >
-    <slot>Link</slot>
-  </a>
-  <button
-    v-else
-    v-on="$listeners"
-    class="r-component r-button"
-    :class="classes"
-    :disabled="disabled || loading"
-    :title="title"
-  >
-    <r-icon v-if="loading" icon="loading" class="is-spinning icon-light-gray inline-s"/>
-    <slot>Apply</slot>
-  </button>
+    <router-link
+        v-if="!!push"
+        class="r-component r-button"
+        :class="classes"
+        :to="disabled || loading ? '#' : push"
+        :disabled="disabled"
+        :target="$attrs.href ? '_target' : $attrs.target"
+        :event="disabled || loading ? '' : 'click'">
+        <slot>Link</slot>
+    </router-link>
+    <a v-else-if="!!$attrs.href"
+       class="r-component r-button"
+       :class="classes"
+       :href="link"
+       :disabled="disabled || loading"
+       :target="$attrs.href ? '_target' : $attrs.target || ''"
+    >
+        <slot>Link</slot>
+    </a>
+    <button v-else
+            class="r-component r-button"
+            :class="classes"
+            :disabled="disabled || loading"
+            v-on="$listeners"
+            :title="title"
+    >
+        <r-icon v-if="loading" icon="loading" class="is-spinning icon-light-gray inline-s"/>
+        <slot>Apply</slot>
+    </button>
 </template>
 
 <script>
@@ -47,7 +45,7 @@
             type: {
                 type: String,
                 default: 'default',
-                validator: val => ['default', 'primary', 'danger'].includes(val),
+                validator: val => ['default', 'primary', 'danger', 'link'].includes(val),
             },
             disabled: {
                 type: Boolean,
@@ -62,7 +60,7 @@
                 default: false,
             },
             push: {
-                type: Object,
+                type: [Object, String],
                 default: null,
             },
         },
