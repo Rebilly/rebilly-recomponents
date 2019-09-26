@@ -9,6 +9,7 @@ import RImg from './components/r-img/r-img.vue';
 import RInput from './components/r-input/r-input.vue';
 import RLoader from './components/r-loader/r-loader.vue';
 import RRadio from './components/r-radio/r-radio.vue';
+import RTabs from './components/r-tabs/r-tabs.vue';
 import RSelect from './components/r-select/r-select.vue';
 import RTile from './components/r-tile/r-tile.vue';
 
@@ -27,6 +28,7 @@ const components = {
     RLoader,
     RRadio,
     RSelect,
+    RTabs,
     RTile,
 };
 
@@ -50,6 +52,7 @@ export {
     RLoader,
     RRadio,
     RSelect,
+    RTabs,
     RTile,
 };
 

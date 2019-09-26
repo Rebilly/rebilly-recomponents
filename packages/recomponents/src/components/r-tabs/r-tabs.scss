@@ -1,0 +1,115 @@
+.tab {
+    flex-grow: 1;
+    padding-left: 0;
+    list-style: none;
+    position: relative;
+    overflow-x: auto;
+    overflow-y: hidden;
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: -webkit-flex;
+    display: flex;
+    -webkit-flex-wrap: nowrap;
+    -ms-flex-wrap: nowrap;
+    flex-wrap: nowrap;
+}
+
+.tab-divided {
+    border-bottom: 1px solid #E1E7EA;
+}
+
+.tab-item {
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: -webkit-flex;
+    display: flex;
+    -webkit-box-flex: 0 0 auto;
+    -webkit-flex: 0 0 auto;
+    -ms-flex: 0 0 auto;
+    flex: 0 0 auto;
+}
+
+.tab.tab-fluid .tab-item {
+    -webkit-box-flex: 1 0 auto;
+    -webkit-flex: 1 0 auto;
+    -ms-flex: 1 0 auto;
+    flex: 1 0 auto;
+}
+
+.tab-item .tab-link {
+    line-height: 1;
+    position: relative;
+    color: #6B7384;
+    border-bottom: 3px solid transparent;
+    padding: 16px 0;
+    padding: 1.6rem 0;
+    margin: 0 8px;
+    margin: 0 0.8rem;
+    cursor: pointer;
+    -webkit-transition: all 0.1s ease;
+    -moz-transition: all 0.1s ease;
+    -ms-transition: all 0.1s ease;
+    -o-transition: all 0.1s ease;
+    transition: all 0.1s ease;
+    text-decoration: none;
+}
+
+.tab-item .tab-link:hover {
+    text-decoration: none;
+    color: #0D2B3E;
+    border-bottom: 3px solid #A1B2C1;
+}
+
+.tab-item .tab-link.is-active {
+    color: #0044D4;
+    border-bottom: 3px solid #0044D4;
+}
+
+.tab-item .tab-link.has-error {
+    color: #E53935;
+}
+
+.tab-item .tab-link.is-active.has-error {
+    border-bottom: 3px solid #E53935;
+}
+
+.tab-item:first-child .tab-link {
+    margin-left: 16px;
+    margin-left: 1.6rem;
+}
+
+.tab-content {
+    padding: 20px;
+    padding: 2rem;
+}
+
+.tile-content .tab-content {
+    padding: 16px 0;
+    padding: 1.6rem 0;
+}
+
+.tab-content.tab-content-fitted {
+    padding: 0;
+}
+
+.tab-content-item {
+    border: 0;
+    clip: rect(0 0 0 0);
+    height: 1px;
+    margin: -1px;
+    margin: -0.1rem;
+    overflow: hidden;
+    padding: 0;
+    position: absolute;
+    width: 1px;
+}
+
+.tab-content-item.is-active {
+    clip: auto;
+    height: auto;
+    margin: auto;
+    overflow: visible;
+    padding: initial;
+    position: relative;
+    width: auto;
+}
