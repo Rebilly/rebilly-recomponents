@@ -56,6 +56,7 @@ fieldset[disabled] .r-select {
     touch-action: manipulation;
     line-height: var(--input-line-height);
     font-size: var(--input-font-size);
+    margin-bottom: 0;
 }
 
 .r-select {
@@ -63,6 +64,7 @@ fieldset[disabled] .r-select {
     display: block;
     position: relative;
     width: 100%;
+    height: var(--select-height);
     min-height: var(--select-min-height);
     text-align: var(--select-text-align);
     color: var(--select-text-color);
@@ -157,6 +159,7 @@ fieldset[disabled] .r-select {
     border: 1px solid var(--select-tags-border-color);
     background: var(--select-tags-background);
     font-size: var(--select-tags-font-size);
+    box-shadow: var(--select-tags-box-shadow);
 }
 
 .r-select__tag {

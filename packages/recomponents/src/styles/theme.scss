@@ -508,7 +508,7 @@ body, .article {
     --select-below-border-top: 0;
     --select-border-color: var(--primary-color);
     --select-border-radius: var(--border-radius);
-    --select-caret: url('/static/icons/caret-down.svg');
+    --select-caret: url('../../static/icons/caret-down.svg');
     --select-current-border-color: #E8E8E8;
     --select-current-margin: 0;
     --select-current-padding: var(--space-s) var(--space-l) 0 var(--space-m);
@@ -518,7 +518,9 @@ body, .article {
     --select-disabled-font-color: var(--mono-color-700);
     --select-disabled-opacity: 0.6;
     --select-enter-leave-transition: all var(--timing-100) var(--animation-ease);
-    --select-focus-border-color: #a8a8a8;
+    --select-focus-border-color: var(--input-focus-border);
+    --select-focus-box-shadow: var(--input-focus-box-shadow);
+    --select-height: auto;
     --select-highlight-color: var(--primary-color);
     --select-highlight-font-color: #FFFFFF;
     --select-hover-border-color: #cfcfcf;
@@ -529,7 +531,7 @@ body, .article {
     --select-input-transition: border var(--timing-100) var(--animation-ease);
     --select-line-height: var(--font-line-height-p);
     --select-loading-transition: opacity var(--timing-400) var(--animation-ease-in-out);
-    --select-min-height: 40px;
+    --select-min-height: 0;
     --select-option-actions-padding: var(--space-m);
     --select-option-actions-right: 0;
     --select-option-actions-top: var(--space-s);
@@ -560,8 +562,9 @@ body, .article {
     --select-tag-margin: 0 var(--space-xs) var(--space-xxs) 0;
     --select-tag-padding: var(--space-xxs) var(--space-s) var(--space-xxs) var(--space-s);
     --select-tags-background: #FFFFFF;
-    --select-tags-border-color: #E8E8E8;
+    --select-tags-border-color: var(--input-border);
     --select-tags-border-radius: var(--border-radius);
+    --select-tags-box-shadow: var(--input-box-shadow);
     --select-tags-font-size: var(--font-size-p);
     --select-tags-padding: var(--space-s) var(--space-l) 0 var(--space-s);
     --select-text-align: left;

@@ -14,7 +14,7 @@
              @keydown.self.up.prevent="pointerBackward()"
              @keypress.enter.tab.stop.self="addPointerElement($event)"
              @keyup.esc="deactivate()"
-             class="r-select"
+             class="r-select r-field"
              role="combobox"
              :aria-owns="'listbox-'+id">
             <slot name="caret" :toggle="toggle">
@@ -123,7 +123,6 @@
                         </span>
                             </template>
                             <template v-if="computedAsyncHasPrevOptions">
-                                <!-- TODO fix css -->
                                 <li class="r-select__option align-center r-select__option-load r-select__option-load-prev">
                                     <r-icon-button
                                             type="basic"
@@ -174,7 +173,6 @@
                         </li>
                         <slot name="afterList">
                             <template v-if="computedAsyncHasNextOptions">
-                                <!-- TODO fix css -->
                                 <li class="r-select__option align-center r-select__option-load r-select__option-load-next">
                                     <r-icon-button
                                             type="basic"
