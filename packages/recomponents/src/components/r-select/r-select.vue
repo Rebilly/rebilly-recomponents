@@ -2,7 +2,8 @@
     <div>
         <label v-if="hasLabel"
                @click="activate"
-               class="r-field-label">{{label}}</label>
+               class="r-field-label">{{label}}
+        </label>
         <div :tabindex="searchable ? -1 : tabindex"
              :class="{ 'r-select--active': isOpen,
                        'r-select--disabled': disabled,
@@ -35,19 +36,14 @@
                                   :option="option"
                                   :search="search"
                                   :remove="removeElement">
-                                <template v-if="requiresTagSlot"
-                                          slot-scope="tagProps">
-                                    <slot name="custom-tag" v-bind="tagProps"/>
-                                </template>
                                 <template>
-                                    <span class="r-select__tag" :key="index">
-                                    <span class="r-select__tag-text" v-text="getOptionLabel(option)"></span>
-                                    <i aria-hidden="true"
-                                       tabindex="1"
-                                       @keypress.enter.prevent="removeElement(option)"
-                                       @mousedown.prevent="removeElement(option)"
-                                       class="r-select__tag-icon"></i>
-                                    </span>
+                                    <r-badge class="r-select__tag" type="tag" @close="removeElement(option)">
+                                        <template v-slot:text>
+                                            <span class="r-select__tag-text">
+                                                {{ getOptionLabel(option) }}
+                                            </span>
+                                        </template>
+                                    </r-badge>
                                 </template>
                             </slot>
                         </template>
@@ -89,20 +85,18 @@
                 />
                 <span v-if="isSingleLabelVisible"
                       class="r-select__single"
-                      @mousedown.prevent="toggle"
-                >
-         <slot name="singleLabel" :option="singleValue">
-             <template>{{ currentOptionLabel }}</template>
-         </slot>
-         </span>
+                      @mousedown.prevent="toggle">
+                    <slot name="singleLabel" :option="singleValue">
+                        <template>{{ currentOptionLabel }}</template>
+                    </slot>
+                </span>
                 <span v-if="isPlaceholderVisible"
                       class="r-select__placeholder"
-                      @mousedown.prevent="toggle"
-                >
-         <slot name="placeholder">
-             {{ placeholder }}
-         </slot>
-         </span>
+                      @mousedown.prevent="toggle">
+                    <slot name="placeholder">
+                        {{ placeholder }}
+                    </slot>
+                </span>
             </div>
             <transition name="r-select">
                 <div class="r-select__content-wrapper"
@@ -118,9 +112,9 @@
                         :id="'listbox-'+id">
                         <slot name="beforeList">
                             <template v-if="computedIsLoading">
-                        <span class="r-select__option">
-                        Looking for matching results...
-                        </span>
+                                <span class="r-select__option">
+                                    {{ $t('loading') }}
+                                </span>
                             </template>
                             <template v-if="computedAsyncHasPrevOptions">
                                 <li class="r-select__option align-center r-select__option-load r-select__option-load-prev">
@@ -137,11 +131,11 @@
                             </template>
                         </slot>
                         <li v-if="multiple && max === internalValue.length">
-                     <span class="r-select__option">
-                        <slot name="maxElements">
-                           Maximum of {{ max }} options selected. First remove a selected option to select another.
-                        </slot>
-                     </span>
+                            <span class="r-select__option">
+                                <slot name="maxElements">
+                                    {{ $t('max', { max }) }}
+                                </slot>
+                            </span>
                         </li>
                         <!--<template v-if="!max || internalValue.length < max">-->
                         <li class="r-select__element"
@@ -149,27 +143,29 @@
                             :key="index"
                             v-bind:id="id + '-' + index"
                             v-bind:role="option">
-                        <span :class="optionHighlight(index, option)"
-                              @click.stop="select(option)"
-                              @mouseenter.self="pointerSet(index)"
-                              class="r-select__option">
-                           <slot name="option"
-                                 :option="option"
-                                 :search="search">
-                              <span>{{ getOptionLabel(option) }}</span>
-                           </slot>
-                        </span></li>
+                            <span :class="optionHighlight(index, option)"
+                                  @click.stop="select(option)"
+                                  @mouseenter.self="pointerSet(index)"
+                                  class="r-select__option">
+                                <slot name="option"
+                                      :option="option"
+                                      :search="search">
+                                    <span>{{ getOptionLabel(option) }}</span>
+                                </slot>
+                            </span>
+                        </li>
                         <!--</template>-->
                         <li v-show="showNoResults && (filteredOptions.length === 0 && search && !loading)">
-                     <span class="r-select__option">
-                        <slot name="noResult"
-                              :search="search">No elements found. Consider changing the search query.</slot>
-                     </span>
+                            <span class="r-select__option">
+                                <slot name="noResult"
+                                      :search="search">{{$t('noResult')}}
+                                </slot>
+                            </span>
                         </li>
                         <li v-show="showNoOptions && (options.length === 0 && !search && !loading)">
-                     <span class="r-select__option">
-                        <slot name="noOptions">List is empty.</slot>
-                     </span>
+                            <span class="r-select__option">
+                                <slot name="noOptions">{{$t('noOptions')}}</slot>
+                            </span>
                         </li>
                         <slot name="afterList">
                             <template v-if="computedAsyncHasNextOptions">
@@ -193,9 +189,11 @@
         <span v-if="helpText" class="r-field-caption" v-html="helpText"></span>
     </div>
 </template>
+
 <script>
     import AsyncInputMixin from '../../mixins/async-input-mixin';
     import RIcon from '../r-icon/r-icon.vue';
+    import RBadge from '../r-badge/r-badge.vue';
     import RIconButton from '../r-icon-button/r-icon-button.vue';
     import shortid from 'shortid';
 
@@ -243,13 +241,24 @@
                 search: '',
             };
         },
+        i18n: {
+            messages: {
+                en: {
+                    loading: 'Looking for matching results...',
+                    more: 'and {count} more',
+                    max: 'Maximum of {max} options selected. First remove a selected option to select another.',
+                    noOptions: 'List is empty.',
+                    noResult: 'No elements found. Consider changing the search query.',
+                },
+            },
+        },
         mounted() {
             if (!this.multiple && this.max) {
                 console.warn('[Recomponents warn]: Max prop should not be used when prop Multiple equals false.');
             }
         },
         mixins: [new AsyncInputMixin().getMixin()],
-        components: {RIcon, RIconButton},
+        components: {RIcon, RIconButton, RBadge},
         props: {
             allowEmpty: {
                 type: Boolean,
@@ -306,7 +315,9 @@
             },
             limitText: {
                 type: Function,
-                default: count => `and ${count} more`,
+                default: function (count) {
+                    return this.$t('more', {count});
+                },
             },
             loading: {
                 type: Boolean,
@@ -518,9 +529,6 @@
             },
             pointerPosition() {
                 return this.pointer * this.optionHeight;
-            },
-            requiresTagSlot() {
-                return this.$slots['custom-tag'] !== undefined;
             },
             singleValue() {
                 return this.internalValue[0];

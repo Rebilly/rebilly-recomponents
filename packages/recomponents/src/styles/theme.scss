@@ -185,6 +185,15 @@ body, .article {
     --badge-warning-border: none;
     --badge-info-background: var(--primary-color-light);
     --badge-info-border: none;
+    --badge-tag-background: var(--gray-color-light);
+    --badge-tag-color: var(--mono-color-700);
+    --badge-tag-border-radius: var(--border-radius-xxs);
+    --badge-icon-color: var(--mono-color-800);
+    --badge-tag-font-weight: var(--font-weight-bold);
+    --badge-tag-icon-transition: all var(--timing-100) var(--animation-ease);
+    --badge-tag-icon-margin-left: var(--space-xs);
+    --badge-tag-icon-border-radius: none;
+    --badge-icon-color: var(--mono-color-800);
 
     // Buttons
     // ------------------------------------------------
@@ -550,14 +559,6 @@ body, .article {
     --select-spinner-border-radius: var(--border-radius);
     --select-spinner-height: 34px;
     --select-spinner-width: 40px;
-    --select-tag-background: var(--gray-color-light);
-    --select-tag-border-radius: var(--border-radius-xxs);
-    --select-tag-color: var(--mono-color-700);
-    --select-tag-font-weight: var(--font-weight-bold);
-    --select-tag-icon-border-radius: none;
-    --select-tag-icon-color: var(--mono-color-800);
-    --select-tag-icon-margin-left: var(--space-xs);
-    --select-tag-icon-transition: all var(--timing-100) var(--animation-ease);
     --select-tag-line-height: var(--font-line-height-p);
     --select-tag-margin: 0 var(--space-xs) var(--space-xxs) 0;
     --select-tag-padding: var(--space-xxs) var(--space-s) var(--space-xxs) var(--space-s);
@@ -566,7 +567,7 @@ body, .article {
     --select-tags-border-radius: var(--border-radius);
     --select-tags-box-shadow: var(--input-box-shadow);
     --select-tags-font-size: var(--font-size-p);
-    --select-tags-padding: var(--space-s) var(--space-l) 0 var(--space-s);
+    --select-tags-padding: var(--space-s) var(--space-l) var(--space-xxs) var(--space-s);
     --select-text-align: left;
     --select-text-color: var(--text-color);
     --select-transition: transform var(--timing-100) var(--animation-ease);
