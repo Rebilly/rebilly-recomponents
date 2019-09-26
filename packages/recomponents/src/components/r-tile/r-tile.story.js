@@ -22,6 +22,7 @@ storiesOf('Components', module)
         methods: {
             cancel: action('cancel'),
             confirm: action('confirm'),
+            titleAction: action('titleAction'),
         },
         template: `
             <r-tile>
@@ -29,7 +30,7 @@ storiesOf('Components', module)
                     <h2>Title title</h2>
                 </template>
                 <template v-slot:titleActions v-if="titleActions">
-                    <r-button type="link">Title Action</r-button>
+                    <r-button type="link" @click="titleAction">Title Action</r-button>
                 </template>
                 <template v-slot:contents>
                     <section v-content>

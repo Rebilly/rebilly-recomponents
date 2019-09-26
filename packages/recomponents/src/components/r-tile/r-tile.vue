@@ -22,7 +22,7 @@
 </template>
 
 <script>
-    import '../../directives/r-content';
+    import '../../directives/r-content/r-content';
 
     export default {
         name: 'RTile',
