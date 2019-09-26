@@ -190,10 +190,10 @@ storiesOf('Components/Select', module)
             default: text('Label', 'Label for select'),
         },
         limit: {
-            default: number('Limit', 2),
+            default: number('Limit', 4),
         },
         max: {
-            default: number('Max', 2),
+            default: number('Max', 8),
         },
         maxHeight: {
             default: number('Max height', 500),

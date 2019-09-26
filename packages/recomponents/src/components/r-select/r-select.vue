@@ -92,7 +92,7 @@
                       @mousedown.prevent="toggle"
                 >
          <slot name="singleLabel" :option="singleValue">
-         <template>{{ currentOptionLabel }}</template>
+             <template>{{ currentOptionLabel }}</template>
          </slot>
          </span>
                 <span v-if="isPlaceholderVisible"
@@ -100,7 +100,7 @@
                       @mousedown.prevent="toggle"
                 >
          <slot name="placeholder">
-         {{ placeholder }}
+             {{ placeholder }}
          </slot>
          </span>
             </div>
@@ -256,6 +256,12 @@
             allowEmpty: {
                 type: Boolean,
                 default: true,
+            },
+            blockKeys: {
+                type: Array,
+                default() {
+                    return [];
+                },
             },
             clearOnSelect: {
                 type: Boolean,

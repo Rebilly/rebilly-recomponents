@@ -274,26 +274,6 @@ describe('r-select.vue', () => {
         expect(wrapper.vm.isOpen).toBe(true);
     });
 
-    it('should set set the pointer to the first non-group-propLabel option', () => {
-        const wrapper = shallowMount(RSelect, {
-            propsData: {
-                propLabel: 'id',
-                trackBy: 'id',
-                multiple: true,
-                groupValues: 'group',
-                groupLabel: 'groupLabel',
-                value: [],
-                options: [
-                    {group: [{id: '1'}, {id: '2'}], groupLabel: 'A'},
-                    {group: [{id: '3'}, {id: '4'}], groupLabel: 'B'},
-                ],
-            },
-        });
-        wrapper.vm.isOpen = false;
-        wrapper.vm.activate();
-        expect(wrapper.vm.pointer).toBe(1);
-    });
-
     it('should set isOpen value to FALSE when it is TRUE', () => {
         const wrapper = shallowMount(RSelect, {
             propsData: {
