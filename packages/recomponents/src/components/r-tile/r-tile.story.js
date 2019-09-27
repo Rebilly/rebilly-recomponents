@@ -12,11 +12,8 @@ storiesOf('Components', module)
             title: {
                 default: boolean('Show title', true),
             },
-            primary: {
-                default: boolean('Show primary', true),
-            },
-            secondary: {
-                default: boolean('Show secondary', true),
+            titleActions: {
+                default: boolean('Show title actions', true),
             },
             actions: {
                 default: boolean('Show actions', true),
@@ -25,17 +22,26 @@ storiesOf('Components', module)
         methods: {
             cancel: action('cancel'),
             confirm: action('confirm'),
+            titleAction: action('titleAction'),
         },
         template: `
             <r-tile>
                 <template v-slot:title v-if="title">
                     <h2>Title title</h2>
                 </template>
-                <template v-slot:primary v-if="primary">
-                    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
+                <template v-slot:titleActions v-if="titleActions">
+                    <r-button type="link" @click="titleAction">Title Action</r-button>
                 </template>
-                <template v-slot:secondary v-if="secondary">
-                    <p>At vero eos et accusamus et iusto odio dignissimos ducimus qui blanditiis praesentium voluptatum deleniti atque corrupti quos dolores et quas molestias excepturi</p>
+                <template v-slot:contents>
+                    <section v-content>
+                        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Quisque ac lorem enim. Nullam id iaculis diam, quis mollis elit. Phasellus imperdiet sapien eu felis interdum facilisis.</p>
+                    </section>
+                    <section v-content>
+                        <p>Cras at varius turpis. Nulla vestibulum ullamcorper elit quis efficitur. Vestibulum quis luctus nisl. Sed feugiat varius metus, id dignissim mi ultrices eu.</p>
+                    </section>
+                    <section v-content.secondary>
+                        <p>Nam sit amet risus et sem suscipit volutpat sed mattis eros. Suspendisse accumsan hendrerit metus at elementum.</p>
+                    </section>
                 </template>
                 <template v-slot:actions v-if="actions">
                     <r-button type="default" @click="cancel">Cancel</r-button>

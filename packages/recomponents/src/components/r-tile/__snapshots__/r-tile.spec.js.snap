@@ -6,11 +6,13 @@ exports[`r-tile.vue should render Wrapper and match snapshot 1`] = `
   <!---->
   <!---->
   <!---->
+  <!---->
 </div>
 `;
 
 exports[`r-tile.vue should render via SSR and match snapshot 1`] = `
 <div class="r-component r-tile">
+  <!---->
   <!---->
   <!---->
   <!---->

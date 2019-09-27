@@ -11,8 +11,8 @@ This component has no props, all logic is passed via slots
 This component has 4 **optional** slots that can be filled with any html markup or vue components
 
 * `title` can accept tags from h1 to h6 tag
-* `primary` will display content with white background
-* `secondary` will display content with gray background
+* `titleActions` for any button or link
+* `contents` displays multiple sections, use `v-content` directive to display primary or secondary content types. It is recommended to use `<section>` or `<div>` HTML tags
 * `actions` for any buttons if you want to use tile as form
 
 ### Usage
@@ -34,11 +34,9 @@ This component can be used in two modes:
             <div slot="title">
                 <h1>Tile title</h1>
             </div>
-            <div slot="primary">
-                <p>Tile primary content</p>
-            </div>
-            <div slot="secondary">
-                <p>Tile secondary content</p>
+            <div slot="contents">
+                <section v-content>Tile primary content</section>
+                <section v-content.secondary>Tile secondary content</section>
             </div>
         </recomponents-r-tile>
     </body>
@@ -53,11 +51,9 @@ This component can be used in two modes:
         <template v-slot:title>
             <h2>Title title</h2>
         </template>
-        <template v-slot:primary >
-            <p>Primary content</p>
-        </template>
-        <template v-slot:secondary>
-            <p>Secondary content</p>
+        <template v-slot:contents >
+            <section v-content>Tile primary content</section>
+            <section v-content.secondary>Tile secondary content</section>
         </template>
     </r-tile>
 </template>
