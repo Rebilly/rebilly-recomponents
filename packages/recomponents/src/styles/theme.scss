@@ -256,7 +256,7 @@ body, .article {
 
     // Danger
     --button-danger-color: var(--text-color-light);
-    --button-danger-background: linear-gradient(180deg, var(--negative-color) 0, var(--negative-color-dark));
+    --button-danger-background: linear-gradient(to bottom, #ff201b 0%, var(--negative-color) 100%);
     --button-danger-box-shadow: 0 1px 2px 0 var(--mono-color-200);
     --button-danger-border: none;
     // Danger Hover
