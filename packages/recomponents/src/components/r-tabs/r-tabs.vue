@@ -23,8 +23,6 @@
 </template>
 
 <script>
-    import Vue from 'vue';
-
     export default {
         name: 'r-tabs',
         props: {
@@ -60,8 +58,8 @@
         },
         methods: {
             selectTab({name, value}, index = null) {
-                this.tabs.forEach((tab) => {
-                    tab.isActive = (tab.name === name);
+                this.tabs.forEach((tab, i) => {
+                    tab.isActive = (index === i);
                 });
                 if (index !== null) {
                     this.$emit('tab-selected', {name, value, index});
@@ -109,32 +107,6 @@
             this.bootstrap();
         },
     };
-
-
-    Vue.component('r-tab', {
-        name: 'r-tab',
-        template: `<div v-show='isActive'><slot></slot></div>`,
-        props: {
-            name: {
-                required: true,
-            },
-            value: String,
-            active: {
-                type: Boolean,
-                default: false,
-            },
-            to: {
-                type: [Object, undefined],
-                required: false,
-                default: undefined,
-            },
-        },
-        data() {
-            return {
-                isActive: this.active,
-            };
-        },
-    });
 </script>
 
 <style>

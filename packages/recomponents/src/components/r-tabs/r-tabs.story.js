@@ -1,35 +1,69 @@
 import {storiesOf} from '@storybook/vue';
 import RTabs from './r-tabs.vue';
+import RTab from './r-tab.vue';
+import RTile from '../r-tile/r-tile.vue';
+import RButton from '../r-button/r-button.vue';
 import markdown from './r-tabs.md';
-import {array} from '@storybook/addon-knobs';
+import {boolean, text} from '@storybook/addon-knobs';
+import {action} from '@storybook/addon-actions';
 
 storiesOf('Components', module)
     .add('Tabs', () => ({
-        components: {RTabs},
+        components: {RTabs, RTab, RTile, RButton},
         template: `
-            <div>
-            <r-tabs></r-tabs>
-            
-             <r-tabs :divided="true">
-                        <r-tab
-                            v-for="(tab, tabIndex) in tabs"
-                            :key="tabIndex"
-                            :name="tab.name">
-                        </r-tab>
-                    </r-tabs>
-            </div>
+<div>
+    <r-tabs :divided="divided"
+            :menuClass="menuClass" 
+            :contentClass="contentClass" 
+            @tab-selected="tabSelected">
+            <r-tab v-for="(tab, tabIndex) in tabs"
+               :key="tabIndex"
+               :name="tab.name">
+               <r-tile>
+                    <template v-slot:title>
+                        <h2>{{ tab.name }}</h2>
+                    </template>
+                    <template v-slot:primary>
+                        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut
+                            labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco
+                            laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in
+                            voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat
+                            non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
+                    </template>
+                    <template v-slot:secondary>
+                        <p>At vero eos et accusamus et iusto odio dignissimos ducimus qui blanditiis praesentium voluptatum
+                            deleniti atque corrupti quos dolores et quas molestias excepturi</p>
+                    </template>
+                    <template v-slot:actions>
+                        <r-button type="default">Cancel</r-button>
+                        <r-button type="primary">Confirm</r-button>
+                    </template>
+                </r-tile>
+           </r-tab>     
+    </r-tabs>
+</div>
         `,
-        methods: {},
+        methods: {
+            tabSelected: action('tab-selected'),
+        },
         props: {
-            tabs: {
-                default: array('Tabs', [
-                    {name: 'Tab 1', resource: ''},
-                    {name: 'Tab 2', resource: ''},
-                    {name: 'Tab 3', resource: ''},
-                ], ','),
+            divided: {
+                default: boolean('Divided', false),
+            },
+            menuClass: {
+                default: text('Menu class', ''),
+            },
+            contentClass: {
+                default: text('Content class', ''),
             },
         },
-        data: () => ({}),
+        data: () => ({
+            tabs: [
+                {name: 'Tab 1', resource: ''},
+                {name: 'Tab 2', resource: ''},
+                {name: 'Tab 3', resource: ''},
+            ],
+        }),
     }), {
         notes: {markdown},
     });
