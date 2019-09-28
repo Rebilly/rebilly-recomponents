@@ -16,6 +16,14 @@
       <div class="PaymentRow">
         <r-input placeholder="Credit card" />
       </div>
+      <div class="PaymentRow">
+        <r-select
+          v-model="country"
+          placeholder="Country"
+          :multiple="false"
+          :options="['USA', 'Russia', 'Canada', 'Ukraine']"
+        />
+      </div>
     </template>
     <template v-slot:secondary>
       <r-checkbox
@@ -23,16 +31,27 @@
       />
     </template>
     <template v-slot:actions>
-      <r-button type="default">Canclel</r-button>
+      <r-button type="default">Cancel</r-button>
       <r-button type="primary">Submit</r-button>
     </template>
   </r-tile>
 </template>
 
+<script>
+export default {
+  data() {
+    return {
+      country: null
+    }
+  }
+}
+</script>
+
 <style>
 .Payment {
   max-width: 400px;
 }
+
 .PaymentRow {
   margin: 1rem 0;
 }

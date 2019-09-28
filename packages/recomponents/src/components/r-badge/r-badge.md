@@ -6,13 +6,14 @@ Small count and labeling component to highlight any information to a user. Could
 
 This component has 
 
-* `type` component's background color, could be `default`, `positive`, `negative`, `warning`, `info`,
+* `type` component's background color, could be `default`, `positive`, `negative`, `warning`, `info`, `tag`
 
 ### Slots
 
-This component has 1 **required** slot that can accept any text:
+This component has 2 slots:
 
-* `default` component's content
+* `text` component's content
+* `actions` to add icon, actions
 
 ### Usage
 

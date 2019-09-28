@@ -53,8 +53,8 @@ input.r-field-radio[type=radio] {
 
 .r-field-radio-style .r-icon {
     position: absolute;
-    top: calc(var(--space-xxs) * -1);
-    right: calc(var(--space-xxs) * -1);
+    top: -2px;
+    right: -2px;
     opacity: 0;
 }
 

@@ -13,7 +13,7 @@ Vue.component('no-ssr', NoSSR);
 Vue.use(VueRouter);
 
 const i18n = new VueI18n({
-    locale: 'ja',
+    locale: 'en',
 });
 
 const localeContext = {

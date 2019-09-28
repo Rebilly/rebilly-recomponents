@@ -53,8 +53,8 @@ input.r-field-checkbox[type=checkbox] {
 
 .r-field-checkbox-style .r-icon {
     position: absolute;
-    top: calc(var(--space-xxs) * -1);
-    right: calc(var(--space-xxs) * -1);
+    top: -2px;
+    right: -2px;
     opacity: 0;
 }
 

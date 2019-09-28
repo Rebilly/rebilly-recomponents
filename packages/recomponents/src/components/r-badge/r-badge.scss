@@ -41,4 +41,50 @@
         background: var(--badge-info-background);
         border: var(--badge-info-border);
     }
+
+    &--type-tag {
+        background: var(--badge-tag-background);
+        color: var(--badge-tag-color);
+        border-radius: var(--badge-tag-border-radius);
+        white-space: nowrap;
+        overflow: hidden;
+        max-width: 100%;
+        text-overflow: ellipsis;
+    }
+
+    &--icon-close {
+        cursor: pointer;
+        right: 0;
+        top: 0;
+        bottom: 0;
+        font-weight: var(--badge-tag-font-weight);
+        font-style: normal;
+        transition: var(--badge-tag-icon-transition);
+        margin-left: var(--badge-tag-icon-margin-left);
+        position: relative;
+        line-height: var(--badge-font-line-height);
+        display: block;
+        float: right;
+        text-align: center;
+        width: 16px;
+        border-radius: var(--badge-tag-icon-border-radius);
+
+        &:after {
+            content: '×';
+            color: var(--badge-icon-color);
+            font-size: 14px;
+        }
+
+        &:focus,
+        &:hover {
+            background: none;
+            color: var(--badge-tag-color);
+        }
+
+        &:focus:after,
+        &:hover:after {
+            color: var(--badge-tag-color);
+        }
+
+    }
 }
