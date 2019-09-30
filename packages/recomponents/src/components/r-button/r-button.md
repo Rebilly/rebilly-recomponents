@@ -37,3 +37,11 @@ This component can be used in two modes:
     Vue.use(Recomponents)
 </script>
 ```
+
+If only need to import a single component, not globally
+
+```html
+<script>
+    import {RButton} from '@rebilly/recomponents'
+</script>
+```
