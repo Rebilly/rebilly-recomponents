@@ -11,7 +11,7 @@ exports[`r-time-picker.vue should render Wrapper and match snapshot 1`] = `
         }
 
         return label ? option[label] : option;
-      }" id="id-hours" internalsearch="true" limit="99999" limittext="function (count) {
+      }" id="id-hours" internalsearch="true" limit="99999" limittext="default(count) {
         return this.$t('more', {
           count
         });
@@ -25,7 +25,7 @@ exports[`r-time-picker.vue should render Wrapper and match snapshot 1`] = `
         }
 
         return label ? option[label] : option;
-      }" id="id-minutes" internalsearch="true" limit="99999" limittext="function (count) {
+      }" id="id-minutes" internalsearch="true" limit="99999" limittext="default(count) {
         return this.$t('more', {
           count
         });

@@ -315,7 +315,7 @@
             },
             limitText: {
                 type: Function,
-                default: function (count) {
+                default(count) {
                     return this.$t('more', {count});
                 },
             },
