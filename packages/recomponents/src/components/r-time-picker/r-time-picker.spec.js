@@ -11,6 +11,7 @@ describe('r-time-picker.vue', () => {
             },
             propsData: {
                 id: 'id',
+                limitText: () => {}
             },
         });
 
@@ -25,6 +26,7 @@ describe('r-time-picker.vue', () => {
             },
             propsData: {
                 id: 'id',
+                limitText: () => {}
             },
         });
 

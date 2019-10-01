@@ -1,7 +1,7 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`r-time-picker.vue should render Wrapper and match snapshot 1`] = `
-<div class="r-field r-time-picker__wrapper">
+<div class="r-field r-time-picker__wrapper" limittext="() => {}">
   <!---->
   <div class="r-time-picker">
     <div class="r-time-picker__input">
@@ -37,7 +37,7 @@ exports[`r-time-picker.vue should render Wrapper and match snapshot 1`] = `
 `;
 
 exports[`r-time-picker.vue should render via SSR and match snapshot 1`] = `
-<div class="r-field r-time-picker__wrapper">
+<div limitText="() =&gt; {}" class="r-field r-time-picker__wrapper">
   <!---->
   <div class="r-time-picker">
     <div class="r-time-picker__input">
