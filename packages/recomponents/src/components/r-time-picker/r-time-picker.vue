@@ -107,7 +107,6 @@
             },
             updateTime(type, value) {
                 if (!value) {
-                    console.log('no value');
                     this.selectedTime.hours = '';
                     this.selectedTime.minutes = '';
                     this.$emit('input', null);
