@@ -6,6 +6,7 @@
         <g-link class="nav__link" to="/payment">Payment</g-link>
         <g-link class="nav__link" to="/todo">Todo</g-link>
         <g-link class="nav__link" to="/lazy-loading">Lazy Loading</g-link>
+        <g-link class="nav__link" to="/tabs">Tabs</g-link>
       </nav>
     </header>
     <slot/>

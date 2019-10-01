@@ -193,7 +193,6 @@ body, .article {
     --badge-tag-icon-transition: all var(--timing-100) var(--animation-ease);
     --badge-tag-icon-margin-left: var(--space-xs);
     --badge-tag-icon-border-radius: none;
-    --badge-icon-color: var(--mono-color-800);
 
     // Buttons
     // ------------------------------------------------
@@ -579,4 +578,21 @@ body, .article {
     --select-wrapper-padding: var(--space-s) 0;
     --select-wrapper-z-index: 50;
     --select-z-index: 50;
+
+    // Tabs
+    // -----------------------------------------------------
+
+    --tab-divided-border-bottom-color: var(--gray-color-light);
+    --tab-link-color: #6B7384;
+    --tab-link-padding: var(--space-m) 0;
+    --tab-link-margin: 0 var(--space-s);
+    --tab-link-transition: all var(--timing-50) var(--animation-ease);
+    --tab-link-hover-color: var(--secondary-color);
+    --tab-link-active-color: var(--primary-color);
+    --tab-link-active-border-bottom-color: var(--primary-color);
+    --tab-link-error-color: var(--negative-color);
+    --tab-link-error-border-bottom-color: var(--negative-color);
+    --tab-link-first-margin-left: var(--space-m);
+    --tab-content-padding: 2rem;
+    --tab-content-tile-padding: var(--space-m) 0;
 }
