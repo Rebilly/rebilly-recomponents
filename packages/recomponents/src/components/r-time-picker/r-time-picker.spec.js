@@ -4,13 +4,29 @@ import RTimePicker from './r-time-picker.vue';
 
 describe('r-time-picker.vue', () => {
     it('should render via SSR and match snapshot', async () => {
-        const wrapper = renderToString(RTimePicker, {});
+        const wrapper = renderToString(RTimePicker, {
+            mocks: {
+                $t: () => {
+                },
+            },
+            propsData: {
+                id: 'id',
+            },
+        });
 
         expect(wrapper).toMatchSnapshot();
     });
 
-    it('should not render if show property is false', () => {
-        const wrapper = shallowMount(RTimePicker, {});
+    it('should render Wrapper and match snapshot', () => {
+        const wrapper = shallowMount(RTimePicker, {
+            mocks: {
+                $t: () => {
+                },
+            },
+            propsData: {
+                id: 'id',
+            },
+        });
 
         expect(wrapper).toMatchSnapshot();
     });

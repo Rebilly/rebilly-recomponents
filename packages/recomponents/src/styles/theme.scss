@@ -541,7 +541,7 @@ body, .article {
     --select-input-transition: border var(--timing-100) var(--animation-ease);
     --select-line-height: var(--font-line-height-p);
     --select-loading-transition: opacity var(--timing-400) var(--animation-ease-in-out);
-    --select-min-height: 0;
+    --select-min-height: 38px;
     --select-option-actions-padding: var(--space-m);
     --select-option-actions-right: 0;
     --select-option-actions-top: var(--space-s);
@@ -579,4 +579,11 @@ body, .article {
     --select-wrapper-padding: var(--space-s) 0;
     --select-wrapper-z-index: 50;
     --select-z-index: 50;
+
+    // Time Picker
+    --time-picker-padding-right: var(--space-s);
+    --time-picker-divider-padding: var(--space-xs);
+    --time-picker-divider-font-family: var(--input-font-family);
+    --time-picker-divider-font-weight: var(--font-weight-bold);
+    --time-picker-input-width: 70px;
 }

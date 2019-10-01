@@ -24,6 +24,13 @@
           :options="['USA', 'Russia', 'Canada', 'Ukraine']"
         />
       </div>
+      <div class="PaymentRow">
+        <label class="r-field-label">Schedule</label>
+        <div class="r-time-range">
+          <r-time-picker v-model="time.start" label="Start" />
+          <r-time-picker v-model="time.end" label="End" />
+        </div>
+      </div>
     </template>
     <template v-slot:secondary>
       <r-checkbox
@@ -41,7 +48,11 @@
 export default {
   data() {
     return {
-      country: null
+      country: null,
+      time: {
+        start: null,
+        end: null
+      }
     }
   }
 }
@@ -54,5 +65,6 @@ export default {
 
 .PaymentRow {
   margin: 1rem 0;
+  text-align: left;
 }
 </style>

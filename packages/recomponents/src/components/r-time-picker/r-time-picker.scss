@@ -1,0 +1,24 @@
+.r-time-picker {
+    display: flex;
+    align-items: baseline;
+
+    &__wrapper {
+        max-width: calc(var(--time-picker-input-width) * 2 + var(--time-picker-divider-padding) * 2);
+        padding-right: var(--time-picker-padding-right);
+    }
+
+    &__input {
+        width: var(--time-picker-input-width);
+    }
+
+    &__divider {
+        padding: 0 var(--time-picker-divider-padding);
+        font-family: var(--time-picker-divider-font-family);
+        font-weight: var(--time-picker-divider-font-weight);
+    }
+}
+
+.r-time-range {
+    display: flex;
+    align-items: baseline;
+}

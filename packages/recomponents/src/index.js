@@ -11,6 +11,7 @@ import RLoader from './components/r-loader/r-loader.vue';
 import RRadio from './components/r-radio/r-radio.vue';
 import RSelect from './components/r-select/r-select.vue';
 import RTile from './components/r-tile/r-tile.vue';
+import RTimePicker from './components/r-time-picker/r-time-picker.vue';
 
 import './styles/typography.scss';
 import './styles/theme.scss';
@@ -28,6 +29,7 @@ const components = {
     RRadio,
     RSelect,
     RTile,
+    RTimePicker,
 };
 
 function install(Vue) {
@@ -51,6 +53,7 @@ export {
     RRadio,
     RSelect,
     RTile,
+    RTimePicker,
 };
 
 export default {
