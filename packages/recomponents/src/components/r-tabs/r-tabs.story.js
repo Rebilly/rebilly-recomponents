@@ -23,20 +23,12 @@ storiesOf('Components', module)
                     <template v-slot:title>
                         <h2>{{ tab.name }}</h2>
                     </template>
-                    <template v-slot:primary>
-                        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut
+                    <template v-slot:contents>
+                        <p v-content>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut
                             labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco
                             laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in
                             voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat
                             non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
-                    </template>
-                    <template v-slot:secondary>
-                        <p>At vero eos et accusamus et iusto odio dignissimos ducimus qui blanditiis praesentium voluptatum
-                            deleniti atque corrupti quos dolores et quas molestias excepturi</p>
-                    </template>
-                    <template v-slot:actions>
-                        <r-button type="default">Cancel</r-button>
-                        <r-button type="primary">Confirm</r-button>
                     </template>
                 </r-tile>
            </r-tab>     

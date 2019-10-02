@@ -9,8 +9,8 @@ const directive = {
             const tooltip = document.createElement('div');
             const tooltipArrow = document.createElement('div');
             const offset = value.offset || 8;
-            const appNavBar = 68;
-            const appHeaderHeight = 56;
+            const boundaryLeft = value.boundaryLeft || 0;
+            const boundaryTop = value.boundaryTop || 0;
             tooltip.classList.add('tooltip');
             tooltipArrow.classList.add('tooltip-arrow');
             tooltip.innerText = value.text;
@@ -18,8 +18,8 @@ const directive = {
 
             const tooltipOutOfViewPort = (elToCheck, tooltipEl) => {
                 const out = {};
-                out.top = tooltip.style.top.replace('px', '') < appHeaderHeight;
-                out.left = tooltip.style.left.replace('px', '') < appNavBar;
+                out.top = tooltip.style.top.replace('px', '') < boundaryTop;
+                out.left = tooltip.style.left.replace('px', '') < boundaryLeft;
                 out.right = (elToCheck.right + (tooltipEl.width / 2))
                     > (window.innerWidth || document.documentElement.clientWidth);
                 return out;
@@ -77,6 +77,8 @@ const directive = {
                             tooltipArrow.style.left = `${tooltipRect.width - (elRect.width / 2)}px`;
                         } else if (tooltip.classList.contains('tooltip-out-left')) {
                             tooltipArrow.style.left = `${elRect.width / 2}px`;
+                        } else {
+                            tooltipArrow.style.left = `${tooltipRect.width / 2}px`;
                         }
                         break;
                     default:
@@ -98,6 +100,10 @@ const directive = {
         }
     },
     unbind(el) {
+        const tooltip = document.querySelector('.tooltip');
+        if (tooltip) {
+            tooltip.remove();
+        }
         el.removeEventListener('mouseenter', el.vTooltipEnter);
         el.removeEventListener('mouseleave', el.vTooltipLeave);
         el.vTooltipEnter = null;
