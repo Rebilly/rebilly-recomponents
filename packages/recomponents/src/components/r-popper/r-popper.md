@@ -1,4 +1,4 @@
-## Dropdown
+## Popper
 
 | prop           | type                                                                | default value   |
 |--              | --                                                                  |               --|
@@ -27,7 +27,7 @@ This component can be used in two modes:
         <link rel="stylesheet" href="./recomponents.css">
     </head>
     <body>
-        <recomponents-r-dropdown>
+        <recomponents-r-popper>
             <div slot="trigger">
                 <recomponents-r-button type="primary">
                     Click me
@@ -36,7 +36,7 @@ This component can be used in two modes:
             <div slot="content">
                 <p>Tile primary content</p>
             </div>
-        </recomponents-r-dropdown>
+        </recomponents-r-popper>
     </body>
 </html>
 
@@ -46,7 +46,7 @@ This component can be used in two modes:
 
 ```html
 <template>
-    <r-dropdown>
+    <r-popper>
         <template #trigger="{popper}">
             <r-button type="primary" @click="popper.toggle">
                 Click me
@@ -55,7 +55,7 @@ This component can be used in two modes:
         <div slot="content">
             <p>Tile primary content</p>
         </div>
-    </r-dropdown>
+    </r-popper>
 </template>
 <script>
     import Vue from 'vue'

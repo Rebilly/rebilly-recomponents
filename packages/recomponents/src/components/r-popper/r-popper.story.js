@@ -1,13 +1,13 @@
 import {storiesOf} from '@storybook/vue';
 import {action} from '@storybook/addon-actions';
 import {boolean, number, select} from '@storybook/addon-knobs';
-import RDropdown from './r-dropdown.vue';
+import RPopper from './r-popper.vue';
 import RIconButton from '../r-icon-button/r-icon-button.vue';
 import RIcon from '../r-icon/r-icon.vue';
 import RButton from '../r-button/r-button.vue';
-import markdown from './r-dropdown.md';
+import markdown from './r-popper.md';
 
-storiesOf('Components/Dropdown', module)
+storiesOf('Components/Popper', module)
     .add('with icon button', () => ({
         props: {
             escToHide: {default: boolean('Escape to hide', true)},
@@ -47,8 +47,8 @@ storiesOf('Components/Dropdown', module)
             input: action('input'),
             setActivePopper: action('setActivePopper'),
         },
-        components: {RDropdown, RIcon, RIconButton},
-        template: `<r-dropdown 
+        components: {RPopper, RIcon, RIconButton},
+        template: `<r-popper
                         :escToHide="escToHide"
                         :autoHide="autoHide"
                         :globalAutoHide="globalAutoHide"
@@ -82,7 +82,7 @@ storiesOf('Components/Dropdown', module)
                                     </div>
                                 </div>
                            </template>
-                   </r-dropdown>`,
+                   </r-popper>`,
     }), {
         notes: {markdown},
     })
@@ -125,8 +125,8 @@ storiesOf('Components/Dropdown', module)
             input: action('input'),
             setActivePopper: action('setActivePopper'),
         },
-        components: {RDropdown, RIcon, RButton},
-        template: `<r-dropdown 
+        components: {RPopper, RIcon, RButton},
+        template: `<r-popper
                         :escToHide="escToHide"
                         :autoHide="autoHide"
                         :globalAutoHide="globalAutoHide"
@@ -142,12 +142,12 @@ storiesOf('Components/Dropdown', module)
                         @toggle-on="toggleOn"
                         @toggle-off="toggleOff">
                             <template #trigger="{popper}">
-                               <r-button type="primary" @click="popper.toggle">
+                                <r-button type="primary" @click="popper.toggle">
                                     Click me
-                               </r-button>
+                                </r-button>
                             </template>
                             <template #content>
-                             <div class="r-dropdown">
+                            <div class="r-dropdown">
                                 <div class="r-dropdown-content">
                                     <a class="r-dropdown-item">
                                         Reset to Default Columns
@@ -158,9 +158,9 @@ storiesOf('Components/Dropdown', module)
                                         Reset to Default Order
                                     </a>
                                 </div>
-                             </div>
-                           </template>
-                   </r-dropdown>`,
+                            </div>
+                            </template>
+                   </r-popper>`,
     }), {
         notes: {markdown},
     });

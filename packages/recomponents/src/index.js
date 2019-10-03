@@ -2,7 +2,7 @@ import VueI18n from 'vue-i18n';
 import RBadge from './components/r-badge/r-badge.vue';
 import RButton from './components/r-button/r-button.vue';
 import RCheckbox from './components/r-checkbox/r-checkbox.vue';
-import RDropdown from './components/r-dropdown/r-dropdown.vue';
+import RPopper from './components/r-popper/r-popper.vue';
 import RIcon from './components/r-icon/r-icon.vue';
 import RIconButton from './components/r-icon-button/r-icon-button.vue';
 import RImg from './components/r-img/r-img.vue';
@@ -21,12 +21,12 @@ const components = {
     RBadge,
     RButton,
     RCheckbox,
-    RDropdown,
     RIcon,
     RIconButton,
     RImg,
     RInput,
     RLoader,
+    RPopper,
     RRadio,
     RSelect,
     RTab,
@@ -46,12 +46,12 @@ export {
     RBadge,
     RButton,
     RCheckbox,
-    RDropdown,
     RIcon,
     RIconButton,
     RImg,
     RInput,
     RLoader,
+    RPopper,
     RRadio,
     RSelect,
     RTab,
