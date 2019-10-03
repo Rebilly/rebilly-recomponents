@@ -191,11 +191,11 @@
 </template>
 
 <script>
+    import shortid from 'shortid';
     import AsyncInputMixin from '../../mixins/async-input-mixin';
     import RIcon from '../r-icon/r-icon.vue';
     import RBadge from '../r-badge/r-badge.vue';
     import RIconButton from '../r-icon-button/r-icon-button.vue';
-    import shortid from 'shortid';
 
     function isEmpty(opt) {
         if (opt === 0) {
@@ -315,7 +315,7 @@
             },
             limitText: {
                 type: Function,
-                default: function (count) {
+                default(count) {
                     return this.$t('more', {count});
                 },
             },
@@ -426,15 +426,15 @@
                 this.pointerDirty = false;
             },
             options() {
-                if (this.preselectFirst &&
-                    !this.internalValue.length &&
-                    this.options.length) {
+                if (this.preselectFirst
+                    && !this.internalValue.length
+                    && this.options.length) {
                     this.select(this.filteredOptions[0]);
                 }
             },
             pointer() {
                 if (this.$refs.search) {
-                    this.$refs.search.setAttribute('aria-activedescendant', this.id + '-' + this.pointer.toString());
+                    this.$refs.search.setAttribute('aria-activedescendant', `${this.id}-${this.pointer.toString()}`);
                 }
             },
             search() {
@@ -484,8 +484,8 @@
             },
             inputStyle() {
                 if (
-                    this.searchable ||
-                    (this.multiple && this.value && this.value.length)
+                    this.searchable
+                    || (this.multiple && this.value && this.value.length)
                 ) {
                     // Hide input by setting the width to 0 allowing it to receive focus
                     return this.isOpen
@@ -501,27 +501,26 @@
             isAbove() {
                 if (this.openDirection === 'above' || this.openDirection === 'top') {
                     return true;
-                } else if (
-                    this.openDirection === 'below' ||
-                    this.openDirection === 'bottom'
+                } if (
+                    this.openDirection === 'below'
+                    || this.openDirection === 'bottom'
                 ) {
                     return false;
-                } else {
-                    return this.preferredOpenDirection === 'above';
                 }
+                return this.preferredOpenDirection === 'above';
             },
             isPlaceholderVisible() {
                 return !this.internalValue.length && (!this.searchable || !this.isOpen);
             },
             isSingleLabelVisible() {
                 return (
-                    (this.singleValue || this.singleValue === 0) &&
-                    (!this.isOpen || !this.searchable) &&
-                    !this.visibleValues.length
+                    (this.singleValue || this.singleValue === 0)
+                    && (!this.isOpen || !this.searchable)
+                    && !this.visibleValues.length
                 );
             },
             optionKeys() {
-                const options = this.options;
+                const {options} = this;
                 return options
                     .map(element => this.customLabel(element, this.propLabel)
                         .toString()
@@ -536,16 +535,14 @@
             valueKeys() {
                 if (this.trackBy) {
                     return this.internalValue.map(element => element[this.trackBy]);
-                } else {
-                    return this.internalValue;
                 }
+                return this.internalValue;
             },
             visibleElements() {
                 return this.optimizedHeight / this.optionHeight;
             },
             visibleValues() {
                 return this.multiple ? this.internalValue.slice(0, this.limit) : [];
-
             },
         },
         methods: {
@@ -615,7 +612,7 @@
                     return option.label;
                 }
 
-                let label = this.customLabel(option, this.propLabel);
+                const label = this.customLabel(option, this.propLabel);
 
                 if (isEmpty(label)) {
                     return '';
@@ -724,13 +721,12 @@
                 }
             },
             select(option, key) {
-                if (this.blockKeys.indexOf(key) !== -1 ||
-                    this.disabled ||
-                    option.$isDisabled) {
+                if (this.blockKeys.indexOf(key) !== -1
+                    || this.disabled
+                    || option.$isDisabled) {
                     return;
                 }
                 if (key === 'Tab' && !this.pointerDirty) {
-
                     return;
                 }
                 if (option.isTag) {

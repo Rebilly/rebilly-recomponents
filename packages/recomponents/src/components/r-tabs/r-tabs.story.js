@@ -1,15 +1,17 @@
 import {storiesOf} from '@storybook/vue';
+import {boolean, text} from '@storybook/addon-knobs';
+import {action} from '@storybook/addon-actions';
 import RTabs from './r-tabs.vue';
 import RTab from './r-tab.vue';
 import RTile from '../r-tile/r-tile.vue';
 import RButton from '../r-button/r-button.vue';
 import markdown from './r-tabs.md';
-import {boolean, text} from '@storybook/addon-knobs';
-import {action} from '@storybook/addon-actions';
 
 storiesOf('Components', module)
     .add('Tabs', () => ({
-        components: {RTabs, RTab, RTile, RButton},
+        components: {
+            RTabs, RTab, RTile, RButton,
+        },
         template: `
 <div>
     <r-tabs :divided="divided"
