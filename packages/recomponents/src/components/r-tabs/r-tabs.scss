@@ -10,6 +10,7 @@
     display: -webkit-flex;
     display: flex;
     flex-wrap: nowrap;
+    border-bottom: 1px solid var(--tab-divided-border-bottom-color);
 }
 
 .tab-divided {

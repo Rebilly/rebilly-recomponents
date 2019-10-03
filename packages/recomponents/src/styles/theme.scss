@@ -497,7 +497,7 @@ body, .article {
     // ------------------------------------------------
     --tooltip-background-color: var(--background-color-dark);
     --tooltip-padding: var(--space-s);
-    --tooltip-border-radius: var(--border-radius-s);
+    --tooltip-border-radius: var(--border-radius);
     --tooltip-color: var(--text-color-light);
     --tooltip-font-size: var(--font-size-p);
     --tooltip-font-weight: var(--font-weight-regular);
@@ -505,8 +505,6 @@ body, .article {
     --tooltip-z-index: var(--z-index-1000);
     --tooltip-box-shadow: var(--elevation-200);
     --tooltip-transition: opacity var(--timing-100) var(--animation-ease);
-
-    --tooltip-background-color: #505A6F;
 
     // Select
     // -----------------------------------------------------
@@ -588,11 +586,12 @@ body, .article {
     --tab-link-margin: 0 var(--space-s);
     --tab-link-transition: all var(--timing-50) var(--animation-ease);
     --tab-link-hover-color: var(--secondary-color);
+    --tab-link-hover-border-bottom-color: var(--gray-color);
     --tab-link-active-color: var(--primary-color);
     --tab-link-active-border-bottom-color: var(--primary-color);
     --tab-link-error-color: var(--negative-color);
     --tab-link-error-border-bottom-color: var(--negative-color);
     --tab-link-first-margin-left: var(--space-m);
-    --tab-content-padding: 2rem;
+    --tab-content-padding: 0 20px 20px 20px;
     --tab-content-tile-padding: var(--space-m) 0;
 }
