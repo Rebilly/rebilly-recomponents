@@ -1,17 +1,17 @@
 import {mount, shallowMount} from '@vue/test-utils';
 import {renderToString} from '@vue/server-test-utils';
-import RDropdown from './r-dropdown.vue';
+import RPopper from './r-popper.vue';
 
 const $t = () => 'custom text';
 
-describe('r-dropdown.vue', () => {
+describe('r-popper.vue', () => {
     it('renders', () => {
-        const wrapper = shallowMount(RDropdown);
+        const wrapper = shallowMount(RPopper);
         expect(wrapper.exists()).toBe(true);
     });
 
     it('should render via SSR and match snapshot', async () => {
-        const wrapper = renderToString(RDropdown, {
+        const wrapper = renderToString(RPopper, {
             propsData: {
                 escToHide: true,
                 autoHide: true,
@@ -33,7 +33,7 @@ describe('r-dropdown.vue', () => {
     });
 
     it('should listen for ESC keydown event when escToHide is true', () => {
-        const wrapper = shallowMount(RDropdown, {
+        const wrapper = shallowMount(RPopper, {
             propsData: {
                 openOnMount: true,
                 escToHide: true,
@@ -48,7 +48,7 @@ describe('r-dropdown.vue', () => {
     });
 
     it('should render component with disabled prop', () => {
-        const wrapper = mount(RDropdown, {
+        const wrapper = mount(RPopper, {
             propsData: {
                 disabled: true,
             },

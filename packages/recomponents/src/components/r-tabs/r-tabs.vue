@@ -75,9 +75,9 @@
 
                 // get active route tab
                 return routableTabs
-                    .find(tab => this.$router &&
-                        this.$router.resolve(tab.to).route.fullPath &&
-                        this.$router.resolve(tab.to).route.fullPath === currentPath);
+                    .find(tab => this.$router
+                        && this.$router.resolve(tab.to).route.fullPath
+                        && this.$router.resolve(tab.to).route.fullPath === currentPath);
             },
             bootstrap() {
                 this.tabs = this.$children;

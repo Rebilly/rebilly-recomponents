@@ -59,7 +59,8 @@ describe('r-select.vue', () => {
             mocks: {
                 $t: () => {
                 },
-            }, propsData: {
+            },
+            propsData: {
                 value: ['3'],
                 options: ['1', '2', '3'],
                 id: 'id',
@@ -75,7 +76,8 @@ describe('r-select.vue', () => {
             mocks: {
                 $t: () => {
                 },
-            }, propsData: {
+            },
+            propsData: {
                 value: ['3'],
                 options: ['1', '2', '3'],
                 id: 'id',
@@ -91,7 +93,8 @@ describe('r-select.vue', () => {
             mocks: {
                 $t: () => {
                 },
-            }, propsData: {
+            },
+            propsData: {
                 value: ['1', '2'],
                 options: ['1', '2', '3'],
                 multiple: true,
@@ -107,7 +110,8 @@ describe('r-select.vue', () => {
             mocks: {
                 $t: () => {
                 },
-            }, propsData: {
+            },
+            propsData: {
                 value: '1',
                 options: ['1', '2', '3'],
             },
@@ -121,7 +125,8 @@ describe('r-select.vue', () => {
             mocks: {
                 $t: () => {
                 },
-            }, propsData: {
+            },
+            propsData: {
                 value: [],
                 options: ['1', '2', '3'],
                 multiple: true,
@@ -137,7 +142,8 @@ describe('r-select.vue', () => {
             mocks: {
                 $t: () => {
                 },
-            }, propsData: {
+            },
+            propsData: {
                 multiple: true,
                 value: ['1'],
                 options: ['1', '2', '3'],
@@ -153,7 +159,8 @@ describe('r-select.vue', () => {
             mocks: {
                 $t: () => {
                 },
-            }, propsData: {
+            },
+            propsData: {
                 value: [{id: '1'}],
                 options: [{id: '1'}, {id: '2'}, {id: '3'}],
                 propLabel: 'id',
@@ -173,7 +180,8 @@ describe('r-select.vue', () => {
             mocks: {
                 $t: () => {
                 },
-            }, propsData: {
+            },
+            propsData: {
                 value: [{id: '2'}],
                 options: [{id: '1'}, {id: '2'}, {id: '3'}],
                 propLabel: 'id',
@@ -192,7 +200,8 @@ describe('r-select.vue', () => {
             mocks: {
                 $t: () => {
                 },
-            }, propsData: {
+            },
+            propsData: {
                 value: [{id: '1'}, {id: '2'}, {id: '3'}],
                 options: [{id: '1'}, {id: '2'}, {id: '3'}, {id: '4'}],
                 propLabel: 'id',
@@ -211,7 +220,8 @@ describe('r-select.vue', () => {
             mocks: {
                 $t: () => {
                 },
-            }, propsData: {
+            },
+            propsData: {
                 value: [{id: '1'}],
                 options: [{id: '1'}, {id: '2'}, {id: '3'}],
                 id: 'id',
@@ -229,7 +239,8 @@ describe('r-select.vue', () => {
             mocks: {
                 $t: () => {
                 },
-            }, propsData: {
+            },
+            propsData: {
                 value: [{id: '1'}],
                 options: [{id: '1'}, {id: '2'}, {id: '3'}],
                 multiple: true,
@@ -247,7 +258,8 @@ describe('r-select.vue', () => {
             mocks: {
                 $t: () => {
                 },
-            }, propsData: {
+            },
+            propsData: {
                 value: [],
                 options: [{id: '1'}, {id: '2'}, {id: '3'}],
                 id: 'id',
@@ -266,7 +278,8 @@ describe('r-select.vue', () => {
             mocks: {
                 $t: () => {
                 },
-            }, propsData: {
+            },
+            propsData: {
                 value: [],
                 options: [{id: '1'}, {id: '2'}, {id: '3'}],
                 propLabel: 'id',
@@ -285,7 +298,8 @@ describe('r-select.vue', () => {
             mocks: {
                 $t: () => {
                 },
-            }, propsData: {
+            },
+            propsData: {
                 value: [],
                 options: [{id: '1'}, {id: '2'}, {id: '3'}],
                 propLabel: 'id',
@@ -304,7 +318,8 @@ describe('r-select.vue', () => {
             mocks: {
                 $t: () => {
                 },
-            }, propsData: {
+            },
+            propsData: {
                 value: null,
                 options: [{id: '1'}, {id: '2'}, {id: '3'}],
                 id: 'id',
@@ -321,7 +336,8 @@ describe('r-select.vue', () => {
             mocks: {
                 $t: () => {
                 },
-            }, propsData: {
+            },
+            propsData: {
                 value: [],
                 options: [{id: '1'}, {id: '2'}, {id: '3'}],
                 propLabel: 'id',
@@ -339,7 +355,8 @@ describe('r-select.vue', () => {
             mocks: {
                 $t: () => {
                 },
-            }, propsData: {
+            },
+            propsData: {
                 propLabel: 'id',
                 trackBy: 'id',
                 searchable: false,
@@ -361,7 +378,8 @@ describe('r-select.vue', () => {
             mocks: {
                 $t: () => {
                 },
-            }, propsData: {
+            },
+            propsData: {
                 value: [],
                 options: [{id: '1'}, {id: '2'}, {id: '3'}],
                 propLabel: 'id',
@@ -379,7 +397,8 @@ describe('r-select.vue', () => {
             mocks: {
                 $t: () => {
                 },
-            }, propsData: {
+            },
+            propsData: {
                 multiple: true,
                 value: ['1'],
                 options: ['1', '2', '3'],
@@ -394,7 +413,8 @@ describe('r-select.vue', () => {
             mocks: {
                 $t: () => {
                 },
-            }, propsData: {
+            },
+            propsData: {
                 multiple: true,
                 value: ['1'],
                 options: ['1', '2', '3'],
@@ -409,7 +429,8 @@ describe('r-select.vue', () => {
             mocks: {
                 $t: () => {
                 },
-            }, propsData: {
+            },
+            propsData: {
                 options: ['1', '2', '3'],
             },
         });
@@ -420,7 +441,8 @@ describe('r-select.vue', () => {
             mocks: {
                 $t: () => {
                 },
-            }, propsData: {
+            },
+            propsData: {
                 multiple: true,
                 value: [],
                 options: ['1', '2', '3'],
@@ -435,7 +457,8 @@ describe('r-select.vue', () => {
             mocks: {
                 $t: () => {
                 },
-            }, propsData: {
+            },
+            propsData: {
                 value: [],
                 options: [{id: '1'}, {id: '2'}, {id: '3'}],
                 propLabel: 'id',
@@ -453,7 +476,8 @@ describe('r-select.vue', () => {
             mocks: {
                 $t: () => {
                 },
-            }, propsData: {
+            },
+            propsData: {
                 propLabel: 'id',
                 value: [],
                 options: [{id: '1'}, {id: '2'}, {id: '3'}],
@@ -477,7 +501,8 @@ describe('r-select.vue', () => {
             mocks: {
                 $t: () => {
                 },
-            }, propsData: {
+            },
+            propsData: {
                 propLabel: 'id',
                 value: [],
                 options: [{id: '1'}, {id: '2'}, {id: '3'}],
@@ -501,7 +526,8 @@ describe('r-select.vue', () => {
             mocks: {
                 $t: () => {
                 },
-            }, propsData: {
+            },
+            propsData: {
                 propLabel: 'id',
                 trackBy: 'id',
                 value: [{id: '2'}],
@@ -519,7 +545,8 @@ describe('r-select.vue', () => {
             mocks: {
                 $t: () => {
                 },
-            }, propsData: {
+            },
+            propsData: {
                 searchable: true,
                 multiple: true,
                 taggable: true,
@@ -547,7 +574,8 @@ describe('r-select.vue', () => {
             mocks: {
                 $t: () => {
                 },
-            }, propsData: {
+            },
+            propsData: {
                 multiple: true,
                 optionsLimit: 2,
                 value: [],
@@ -567,7 +595,8 @@ describe('r-select.vue', () => {
             mocks: {
                 $t: () => {
                 },
-            }, propsData: {
+            },
+            propsData: {
                 searchable: true,
                 multiple: true,
                 taggable: true,

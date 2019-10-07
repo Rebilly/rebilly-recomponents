@@ -28,7 +28,7 @@ describe('r-tile.vue', () => {
         const wrapper = shallowMount(RTile, {
             slots: {
                 title: '<h2>This is a title</h2>',
-                titleActions: '<a>Link</a>'
+                titleActions: '<a>Link</a>',
             },
         });
         expect(wrapper.find('.r-tile__title--actions').is('.r-tile__title--actions')).toBe(true);
@@ -37,7 +37,7 @@ describe('r-tile.vue', () => {
     it('should not render title actions when title slot is not present', () => {
         const wrapper = shallowMount(RTile, {
             slots: {
-                titleActions: '<a>Link</a>'
+                titleActions: '<a>Link</a>',
             },
         });
         expect(wrapper.isEmpty()).toBe(false);

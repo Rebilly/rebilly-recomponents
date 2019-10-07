@@ -12,13 +12,13 @@ const mockTemplate = {
                             <p>Text</p>
                         </section> 
                     </div>
-                </div>`
+                </div>`,
 };
 
 createLocalVue().directive('r-content', {RContent});
 
 const wrapper = shallowMount(mockTemplate, {
-    createLocalVue
+    createLocalVue,
 });
 
 describe('r-content.js', () => {

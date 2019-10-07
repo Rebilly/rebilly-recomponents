@@ -29,7 +29,7 @@
     };
 
     export default {
-        name: 'RDropdown',
+        name: 'RPopper',
         props: {
             state: {
                 type: Boolean,
@@ -264,5 +264,5 @@
 </script>
 
 <style lang="scss">
-    @import './r-dropdown.scss';
+    @import './r-popper.scss';
 </style>

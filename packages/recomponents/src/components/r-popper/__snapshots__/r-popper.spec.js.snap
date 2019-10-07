@@ -1,6 +1,6 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`r-dropdown.vue should render via SSR and match snapshot 1`] = `
+exports[`r-popper.vue should render via SSR and match snapshot 1`] = `
 <div class="r-popper">
   <div class="r-popper-content-wrapper">
     <!---->

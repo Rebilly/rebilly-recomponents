@@ -27,12 +27,12 @@ class AsyncExtension {
     };
 
     constructor({
-                    component,
-                    config,
-                    asyncGetInitValue,
-                    asyncFind,
-                    prepareCacheValuePrefix,
-                }) {
+        component,
+        config,
+        asyncGetInitValue,
+        asyncFind,
+        prepareCacheValuePrefix,
+    }) {
         this.component = component;
         this.config = AsyncExtension.prepareConfig(config);
 
@@ -91,11 +91,11 @@ class AsyncExtension {
     }
 
     static makeCacheKey({
-                            type,
-                            value,
-                            limit,
-                            offset,
-                        }) {
+        type,
+        value,
+        limit,
+        offset,
+    }) {
         return [
             value,
             limit,
@@ -422,12 +422,12 @@ class AsyncExtension {
      * @param query
      */
     saveToCache({
-                    key,
-                    type,
-                    options,
-                    value,
-                    query,
-                }) {
+        key,
+        type,
+        options,
+        value,
+        query,
+    }) {
         Vue.set(this.cache.itemsByKey, key, {
             created: Date.now(),
             key,
