@@ -1,9 +1,8 @@
-import Vue from 'vue';
-
+import './r-tooltip.scss';
 /**
  * Simple directive to add a tooltip
  */
-const directive = {
+export default {
     bind(el, {value}) {
         if (value.text) {
             const tooltip = document.createElement('div');
@@ -110,5 +109,3 @@ const directive = {
         el.vTooltipLeave = null;
     },
 };
-
-Vue.directive('tooltip', directive);
