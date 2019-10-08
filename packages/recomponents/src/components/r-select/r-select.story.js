@@ -4,12 +4,10 @@ import {
     array, boolean, number, select, text,
 } from '@storybook/addon-knobs';
 import axios from 'axios';
-import RSelect from './r-select.vue';
 import markdown from './r-select.md';
 
 storiesOf('Components/Select', module)
     .add('Select', () => ({
-        components: {RSelect},
         data() {
             return {
                 value: null,

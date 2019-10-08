@@ -2,7 +2,6 @@ import {storiesOf} from '@storybook/vue';
 import {action} from '@storybook/addon-actions';
 import {boolean, select, text} from '@storybook/addon-knobs';
 import StoryRouter from 'storybook-vue-router';
-import RButton from './r-button.vue';
 import markdown from './r-button.md';
 
 storiesOf('Components/Button', module)
@@ -42,7 +41,6 @@ storiesOf('Components/Button', module)
             focus: action('focus'),
             blur: action('blur'),
         },
-        components: {RButton},
         template: `<r-button
                 :size="size"
                 :type="type"
@@ -96,7 +94,6 @@ storiesOf('Components/Button', module)
             focus: action('focus'),
             blur: action('blur'),
         },
-        components: {RButton},
         template: `<r-button
                     :size="size"
                     :type="type"
@@ -150,7 +147,6 @@ storiesOf('Components/Button', module)
             focus: action('focus'),
             blur: action('blur'),
         },
-        components: {RButton},
         template: `<r-button
                     :size="size"
                     :type="type"

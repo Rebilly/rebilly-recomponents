@@ -1,10 +1,6 @@
 import {storiesOf} from '@storybook/vue';
 import {action} from '@storybook/addon-actions';
 import {boolean, number, select} from '@storybook/addon-knobs';
-import RPopper from './r-popper.vue';
-import RIconButton from '../r-icon-button/r-icon-button.vue';
-import RIcon from '../r-icon/r-icon.vue';
-import RButton from '../r-button/r-button.vue';
 import markdown from './r-popper.md';
 
 storiesOf('Components/Popper', module)
@@ -47,7 +43,6 @@ storiesOf('Components/Popper', module)
             input: action('input'),
             setActivePopper: action('setActivePopper'),
         },
-        components: {RPopper, RIcon, RIconButton},
         template: `<r-popper
                         :escToHide="escToHide"
                         :autoHide="autoHide"

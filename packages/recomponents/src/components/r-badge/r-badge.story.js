@@ -1,11 +1,9 @@
 import {storiesOf} from '@storybook/vue';
 import {text, select} from '@storybook/addon-knobs';
 import markdown from './r-badge.md';
-import RBadge from './r-badge.vue';
 
 storiesOf('Components', module)
     .add('Badge', () => ({
-        components: {RBadge},
         template: `
         <r-badge
             :type="type"

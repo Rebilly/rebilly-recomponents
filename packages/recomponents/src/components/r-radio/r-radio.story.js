@@ -1,12 +1,10 @@
 import {storiesOf} from '@storybook/vue';
 import {action} from '@storybook/addon-actions';
 import {text, boolean} from '@storybook/addon-knobs';
-import RRadio from './r-radio.vue';
 import markdown from './r-radio.md';
 
 storiesOf('Components/Radio', module)
     .add('Radio group', () => ({
-        components: {RRadio},
         template: `
             <div>
                 <h2>Billing Schedule</h2>
