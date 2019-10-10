@@ -68,7 +68,7 @@ storiesOf('Components/Modal', module)
         data() {
             return {
                 activeStep: null,
-                steps: [{name: 'Step 1',}, {name: 'Step 2'}, {name: 'Step 3'}],
+                steps: [{name: 'Step 1'}, {name: 'Step 2'}, {name: 'Step 3'}],
             };
         },
         props: {

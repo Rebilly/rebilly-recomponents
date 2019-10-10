@@ -20,5 +20,4 @@ describe('r-modal.vue', () => {
 
         expect(wrapper).toMatchSnapshot();
     });
-
 });
