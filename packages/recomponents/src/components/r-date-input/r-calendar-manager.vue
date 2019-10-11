@@ -1,6 +1,11 @@
 <template>
     <div class="calendar">
+        <r-input
+            :disabled="disabled"
+            right-icon="calendar"
+            v-show="disabled" />
         <v-date-picker
+            v-show="!disabled"
             v-if="isDateRange"
             mode="range"
             is-double-paned
@@ -16,17 +21,16 @@
             :value="internalPeriod">
         </v-date-picker>
         <v-date-picker
+            v-show="!disabled"
             v-if="!isDateRange"
             mode="single"
-            :disabled-dates="disabled"
             popover-visibility="focus"
             :popover-content-offset="4"
             :theme-styles="themeStyles"
             :tint-color="tintColor"
             :available-dates="availableDates"
             @input="dateInput"
-            :value="internalDate"
-        >
+            :value="internalDate">
         </v-date-picker>
     </div>
 </template>
@@ -35,7 +39,9 @@
     import Vue from 'vue';
     import moment from 'moment-timezone';
     import vCalendar from 'v-calendar';
+    import 'v-calendar/lib/v-calendar.min.css';
     import {DateTimeFormats} from '../../common/datetime-formats';
+    import rInput from '../r-input/r-input.vue';
 
     Vue.use(vCalendar, {
         formats: {
@@ -52,6 +58,8 @@
     });
 
     export default {
+        name: 'RCalendarManager',
+        components: {rInput},
         props: {
             type: {
                 type: String,
@@ -78,10 +86,8 @@
                 const start = this.value.start.clone();
                 const end = this.value.end.clone();
                 return {
-                    start: start.tz(moment.tz.guess(), true)
-                        .toDate(),
-                    end: end.tz(moment.tz.guess(), true)
-                        .toDate(),
+                    start: start.tz(moment.tz.guess(), true).toDate(),
+                    end: end.tz(moment.tz.guess(), true).toDate(),
                 };
             },
             internalDate() {
@@ -89,8 +95,7 @@
                     return null;
                 }
                 const date = this.value.clone();
-                return date.tz(moment.tz.guess(), true)
-                    .toDate();
+                return date.tz(moment.tz.guess(), true).toDate();
             },
         },
         data() {
@@ -155,19 +160,17 @@
                 // convert `v-calendar` Date objects to Moment instances
                 // in the user's preferred time zone
                 const mutablePeriod = {
-                    start: this.$tz()
-                        .fromDate(start)
-                        .startOf('day'),
-                    end: this.$tz()
-                        .fromDate(end)
-                        .endOf('day'),
+                    start: moment(start).startOf('day'),
+                    end: moment(end).endOf('day'),
                 };
                 this.$emit('input', mutablePeriod);
             },
             dateInput(date) {
-                this.$emit('input', this.$tz()
-                    .fromDate(date)
-                    .startOf('day'));
+                // v-date-picker will return null if the selected date is the same as the currently selected date.
+                if (!date) {
+                    return;
+                }
+                this.$emit('input', moment(date).startOf('day'));
             },
         },
     };
