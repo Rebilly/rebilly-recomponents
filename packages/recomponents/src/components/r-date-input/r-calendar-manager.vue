@@ -175,3 +175,6 @@
         },
     };
 </script>
+<style lang="scss">
+    @import './r-date-input.scss';
+</style>

@@ -1,17 +1,17 @@
 <template>
     <div :class="{'no-flex': noFlex}">
         <template v-if="type === 'date'">
-            <div class="field" :class="{'is-error': isInvalid}">
-                <label v-if="label" class="field-label">{{label}}</label>
+            <div class="r-field" :class="{'is-error': isInvalid}">
+                <label v-if="label" class="r-field-label">{{label}}</label>
                 <r-calendar-manager
-                    class="date-input"
+                    class="r-date-input"
                     type="calendar"
                     @input="dateChange"
                     :value="value"
                     :disabled="disabled"
                     :available-dates="availableDates"
                 />
-                <span class="field-caption" v-if="helpText">{{helpText}}</span>
+                <span class="r-field-caption" v-if="helpText">{{helpText}}</span>
             </div>
         </template>
         <template v-if="type === 'datetime'">
@@ -19,7 +19,7 @@
             <div class="grid-fitted grid-unstackable align-items-center" :class="{'is-error': isInvalid}">
                 <div class="grid-item inline-s">
                     <r-calendar-manager
-                        class="date-input"
+                        class="r-date-input"
                         type="calendar"
                         @input="dateChange"
                         :value="value"
@@ -34,10 +34,10 @@
                         placeholder=""
                         :disabled="disabled"
                         @input="updateHours"
-                        class="no-flex date-time-input"/>
+                        class="no-flex r-date-time-input"/>
                 </div>
                 <div class="grid-item no-flex">
-                    <span class="date-time-divider">:</span>
+                    <span class="r-date-time-divider">:</span>
                 </div>
                 <div class="grid-item no-flex">
                     <r-select
@@ -45,12 +45,12 @@
                         placeholder=""
                         :disabled="disabled"
                         :value="selectedTime.minutes"
-                        class="no-flex date-time-input"
+                        class="no-flex r-date-time-input"
                         @input="updateMinutes"
                     />
                 </div>
             </div>
-            <span class="field-caption" v-if="helpText">{{helpText}}</span>
+            <span class="r-field-caption" v-if="helpText">{{helpText}}</span>
         </template>
         <template v-if="type === 'time'">
             <p v-if="label" class="stack-xs">{{label}}</p>
@@ -68,11 +68,11 @@
                             placeholder=""
                             :disabled="disabled"
                             @input="updateHours"
-                            class="no-flex date-time-input"/>
+                            class="no-flex r-date-time-input"/>
                     </slot>
                 </div>
                 <div class="grid-item no-flex">
-                    <span class="date-time-divider">:</span>
+                    <span class="r-date-time-divider">:</span>
                 </div>
                 <div class="grid-item no-flex">
                     <slot
@@ -86,12 +86,12 @@
                             placeholder=""
                             :disabled="disabled"
                             :value="selectedTime.minutes"
-                            class="no-flex date-time-input"
+                            class="no-flex r-date-time-input"
                             @input="updateMinutes"/>
                     </slot>
                 </div>
             </div>
-            <span class="field-caption" v-if="helpText">{{helpText}}</span>
+            <span class="r-field-caption" v-if="helpText">{{helpText}}</span>
         </template>
     </div>
 </template>
@@ -251,5 +251,7 @@
     };
 </script>
 <style lang="scss">
+    @import '../../styles/grid.scss';
+    @import '../r-input/r-input.scss';
     @import './r-date-input.scss';
 </style>
