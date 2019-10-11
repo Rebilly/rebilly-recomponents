@@ -8,6 +8,7 @@ import RIconButton from './components/r-icon-button/r-icon-button.vue';
 import RImg from './components/r-img/r-img.vue';
 import RInput from './components/r-input/r-input.vue';
 import RLoader from './components/r-loader/r-loader.vue';
+import RPagination from './components/r-pagination/r-pagination.vue';
 import RRadio from './components/r-radio/r-radio.vue';
 import RTab from './components/r-tabs/r-tab.vue';
 import RTabs from './components/r-tabs/r-tabs.vue';
@@ -26,6 +27,7 @@ const components = {
     RImg,
     RInput,
     RLoader,
+    RPagination,
     RPopper,
     RRadio,
     RSelect,
@@ -51,6 +53,7 @@ export {
     RImg,
     RInput,
     RLoader,
+    RPagination,
     RPopper,
     RRadio,
     RSelect,

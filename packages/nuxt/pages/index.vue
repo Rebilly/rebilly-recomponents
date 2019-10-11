@@ -18,6 +18,9 @@
         <r-button type="primary" :push="{ path: '/tabs' }">
           Tabs
         </r-button>
+        <r-button type="primary" :push="{ path: '/pagination' }">
+          Pagination
+        </r-button>
       </div>
       <div class="links">
         <a href="https://nuxtjs.org" target="_blank">
