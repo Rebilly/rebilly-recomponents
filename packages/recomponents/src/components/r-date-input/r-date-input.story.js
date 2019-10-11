@@ -23,12 +23,10 @@ storiesOf('Components/DateInput', module)
             date: null,
         }),
         methods: {
-            input(date) {
-                this.date = date;
-            },
+            input: action('input'),
         },
         components: {RDateInput},
-        template: `<r-date-input :type="type" :value="date" @input="input"/>`,
+        template: `<r-date-input :type="type"  v-model="date" @input="input"/>`,
     }), {
         notes: {markdown},
     });
