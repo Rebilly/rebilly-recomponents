@@ -13,6 +13,7 @@ import RTab from './components/r-tabs/r-tab.vue';
 import RTabs from './components/r-tabs/r-tabs.vue';
 import RSelect from './components/r-select/r-select.vue';
 import RTile from './components/r-tile/r-tile.vue';
+import RDateInput from './components/r-date-input/r-date-input.vue';
 
 import './styles/typography.scss';
 import './styles/theme.scss';
@@ -32,6 +33,7 @@ const components = {
     RTab,
     RTabs,
     RTile,
+    RDateInput,
 };
 
 function install(Vue) {
@@ -57,6 +59,7 @@ export {
     RTab,
     RTabs,
     RTile,
+    RDateInput,
 };
 
 export default {

@@ -1,11 +1,9 @@
-import {shallowMount} from '@vue/test-utils';
-
-// TODO: Not sure why appeared: SyntaxError: Invalid or unexpected token, so ignore this test.
+import {mount} from '@vue/test-utils';
 import RDateInput from './r-date-input.vue';
 
 describe('r-date-input.vue', () => {
     it('should renders date without hours/minutes', () => {
-        const wrapper = shallowMount(RDateInput, {
+        const wrapper = mount(RDateInput, {
             propsData: {
                 type: 'date',
             },

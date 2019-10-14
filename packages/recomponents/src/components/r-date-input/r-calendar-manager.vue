@@ -39,7 +39,6 @@
     import Vue from 'vue';
     import moment from 'moment-timezone';
     import vCalendar from 'v-calendar';
-    import 'v-calendar/lib/v-calendar.min.css';
     import {DateTimeFormats} from '../../common/datetime-formats';
     import rInput from '../r-input/r-input.vue';
 
@@ -176,5 +175,6 @@
     };
 </script>
 <style lang="scss">
+    @import './v-calendar.min.css';
     @import './r-date-input.scss';
 </style>
