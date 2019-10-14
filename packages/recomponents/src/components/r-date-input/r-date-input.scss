@@ -122,7 +122,7 @@
 }
 
 .is-error .calendar input {
-    box-shadow: 0 0 0 1px var(--negative-color-dark) var() inset;
+    box-shadow: 0 0 0 1px var(--negative-color-dark) inset;
     background: rgba(var(--input-is-error-background), 0.6);
 }
 
