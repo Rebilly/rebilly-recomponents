@@ -12,30 +12,22 @@ Based on vCalendar, but can choose hours/minutes.
 
 Try to understand these props fast in `Knobs` tab   
 
-| prop          | type    | default value |
-|--             | --      |             --|
-| label         | string  |               |
-| disabled      | boolean | false         |
-| placeholder   | string  |               |
-| helpText      | string  |               |
-| multiline     | boolean | false         |
-| submitOnEnter | boolean | false         |
-| leftIcon      | string  |               |
-| rightIcon     | string  |               |
-| leftLabel     | string  |               |
-| rightLabel    | string  |               |
-| password      | string  |               |
-| numeric       | string  |               |
-| rows          | string  | '1'           |
-| autoFocus     | string  |               |
-| autoHighlight | boolean | false         |
-| maxLength     | string  |               |
-| autoResize    | string  |               |
-| autoComplete  | string  |               |
+| prop           | type    | default value | note                             |
+|--              | --      | --            |                                --|
+| availableDates | object  | null          |                                  |
+| label          | string  | null          |                                  |
+| disabled       | boolean | false         |                                  |
+| placeholder    | string  | null          |                                  |
+| helpText       | string  | null          |                                  |
+| stack          | string  | null          |                                  |
+| type           | string  | 'date'        | also can be `datetime' or 'time' |
+| value          | object  |               |                                  |
+| validate       | object  | null          |                                  |
+| noFlex         | boolean | false         |                                  |
 
 ### Events
 
-Possible events are `focus`, `click`, `input`, `keySubmit`, `keyPress`, `keyDown`, watch them in `Actions` tab.  
+Possible events are `input`, watch it in `Actions` tab.  
 
 ### Usage
 
@@ -52,7 +44,7 @@ This component can be used in two modes:
         <link rel="stylesheet" href="./recomponents.css">
     </head>
     <body>
-        <recomponents-r-button>Click me</recomponents-r-button>
+        <recomponents-r-date-input .../>
     </body>
 </html>
 
@@ -62,7 +54,7 @@ This component can be used in two modes:
 
 ```html
 <template>
-    <r-button>Click me</r-button>
+    <recomponents-r-date-input .../>
 </template>
 <script>
     import Vue from 'vue'
