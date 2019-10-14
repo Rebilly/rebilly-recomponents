@@ -538,7 +538,7 @@ body, .article {
     --select-input-transition: border var(--timing-100) var(--animation-ease);
     --select-line-height: var(--font-line-height-p);
     --select-loading-transition: opacity var(--timing-400) var(--animation-ease-in-out);
-    --select-min-height: 0;
+    --select-min-height: 36px;
     --select-option-actions-padding: var(--space-m);
     --select-option-actions-right: 0;
     --select-option-actions-top: var(--space-s);
