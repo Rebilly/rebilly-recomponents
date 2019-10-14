@@ -24,6 +24,9 @@
           :options="['USA', 'Russia', 'Canada', 'Ukraine']"
         />
       </div>
+      <div class="PaymentRow">
+        <r-date-input v-model="date" type="date" />
+      </div>
     </template>
     <template v-slot:secondary>
       <r-checkbox
@@ -41,7 +44,8 @@
 export default {
   data() {
     return {
-      country: null
+      country: null,
+      date: null
     }
   }
 }
