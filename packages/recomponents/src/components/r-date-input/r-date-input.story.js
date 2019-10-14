@@ -4,8 +4,8 @@ import {boolean, select, text} from '@storybook/addon-knobs';
 import RDateInput from './r-date-input.vue';
 import markdown from './r-date-input.md';
 
-storiesOf('Components/DateInput', module)
-    .add('Date', () => ({
+storiesOf('Components', module)
+    .add('DateInput', () => ({
         props: {
             availableDates: {
                 default: select(
