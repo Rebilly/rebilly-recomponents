@@ -21,6 +21,9 @@
         <r-button type="primary" :push="{ path: '/multi-step-form' }">
           Multi-step Form
         </r-button>
+        <r-button type="primary" :push="{ path: '/pagination' }">
+          Pagination
+        </r-button>
       </div>
       <div class="links">
         <a href="https://nuxtjs.org" target="_blank">

@@ -612,4 +612,9 @@ body, .article {
     --modal-content-scrollable-max-height: 400px;
     --modal-icon-color: #6B7384;
     --modal-loader-background-color: var(--primary-color);
+
+    // Pagination
+    // -----------------------------------------------------
+
+    --pagination-buttons-margin: 0 var(--space-xxs);
 }
