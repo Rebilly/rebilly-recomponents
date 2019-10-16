@@ -18,6 +18,9 @@
         <r-button type="primary" :push="{ path: '/tabs' }">
           Tabs
         </r-button>
+        <r-button type="primary" :push="{ path: '/multi-step-form' }">
+          Multi-step Form
+        </r-button>
         <r-button type="primary" :push="{ path: '/pagination' }">
           Pagination
         </r-button>

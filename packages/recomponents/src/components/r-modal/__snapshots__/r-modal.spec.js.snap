@@ -1,0 +1,23 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`r-modal.vue should render Wrapper and match snapshot 1`] = `
+<div tabindex="0" name="modal">
+  <div class="modal-overlay">
+    <r-loader-stub show="true" loading="true" class="modal-loader is-loading"></r-loader-stub>
+  </div>
+</div>
+`;
+
+exports[`r-modal.vue should render via SSR and match snapshot 1`] = `
+<div tabindex="0" name="modal">
+  <div class="modal-overlay">
+    <div class="r-component r-loader modal-loader is-loading r-loader--loading">
+      <div class="wrapper">
+        <div class="mr-re"></div>
+        <div class="mr-bil"></div>
+        <div class="mr-ly"></div>
+      </div>
+    </div>
+  </div>
+</div>
+`;

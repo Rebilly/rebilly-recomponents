@@ -1,0 +1,130 @@
+// -----------------------------------------------------------------------------
+// This file contains all styles related to the modal component.
+// -----------------------------------------------------------------------------
+
+.modal-overlay {
+    background-color: var(--modal-overlay-background-color);
+    box-sizing: border-box;
+    flex-direction: column;
+    position: fixed;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    z-index: var(--modal-overlay-z-index);
+    overflow-y: auto;
+    padding: var(--modal-overlay-padding);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.modal-overlay.is-scrollable {
+    justify-content: flex-start;
+}
+
+.modal-control {
+    z-index: var(--modal-control-z-index);
+    box-sizing: border-box;
+    background: var(--modal-control-background-color);
+    box-shadow: var(--modal-control-box-shadow);
+    border-radius: var(--modal-control-border-radius);
+    width: var(--modal-control-width);
+    transform: scale(1);
+
+    @include media-query-breakpoint('tablet', $type: max) {
+        width: 90% !important;
+    }
+}
+
+.modal-header, .modal-actions {
+    flex-wrap: nowrap;
+    display: flex;
+}
+
+.modal-actions--right {
+    text-align: right;
+}
+
+.modal-header {
+    justify-content: space-between;
+}
+
+.modal-actions > * {
+    flex: 1 0;
+}
+
+.modal-header, .modal-content {
+    border-bottom: 1px solid var(--modal-border-color);
+}
+
+.modal-content p,
+.modal-content-secondary p {
+    margin-bottom: 0;
+}
+
+//Secondary
+.modal-content.modal-content-secondary {
+    background: var(--modal-content-background-color);
+}
+
+.modal-content.is-scrollable {
+    max-height: var(--modal-content-scrollable-max-height);
+    overflow-y: scroll;
+}
+
+.modal-header, .modal-content, .modal-actions {
+    padding: var(--modal-padding);
+}
+
+.modal-header h2 {
+    margin: 0;
+    text-transform: capitalize;
+}
+
+.modal-header .btn > .icon {
+    fill: var(--modal-icon-color);
+}
+
+.modal-loader.loader.is-loading {
+    opacity: .6;
+}
+
+.modal-loader .wrapper {
+    background-color: var(--modal-loader-background-color);
+}
+
+/**
+* Transitions
+*/
+.modal-enter-active, .modal-leave-active {
+    transition: all .2s;
+}
+
+.modal-enter, .modal-leave-to {
+    opacity: 1;
+}
+
+.modal-enter-active .modal-control, .modal-leave-active .modal-control {
+    transition: all .2s;
+}
+
+.modal-enter .modal-control, .modal-leave-to .modal-control {
+    transform: scale(.9);
+    opacity: 0;
+}
+
+/**
+* Sizes
+*/
+.modal-control.modal-control-l {
+    width: 600px;
+}
+
+.modal-control.modal-control-xl {
+    width: 800px;
+}
+
+.modal-control.modal-control-fluid {
+    width: 70%;
+}
