@@ -2,14 +2,14 @@
 
 exports[`r-tabs.vue should render Wrapper and match snapshot 1`] = `
 <div>
-  <ul class="tab"></ul>
-  <div class="tab-content"></div>
+  <ul class="r-tab"></ul>
+  <div class="r-tab-content"></div>
 </div>
 `;
 
 exports[`r-tabs.vue should render via SSR and match snapshot 1`] = `
 <div>
-  <ul class="tab"></ul>
-  <div class="tab-content"></div>
+  <ul class="r-tab"></ul>
+  <div class="r-tab-content"></div>
 </div>
 `;
