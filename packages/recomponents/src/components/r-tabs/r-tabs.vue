@@ -1,22 +1,22 @@
 <template>
     <div>
-        <ul class="tab" :class="[{'tab-divided': divided}, menuClass]">
-            <li v-for="(tab, index) in tabs" class="tab-item">
+        <ul class="r-tab" :class="[{'r-tab-divided': divided}, menuClass]">
+            <li v-for="(tab, index) in tabs" class="r-tab-item">
                 <a v-if="tab.to"
                    :to="tab.to"
-                   class="tab-link"
+                   class="r-tab-link"
                    @click="selectTab(tab, index)"
                    :class="{'is-active': tab.isActive}">
                     {{tab.name}}
                 </a>
-                <a v-else class="tab-link"
+                <a v-else class="r-tab-link"
                    @click="selectTab(tab, index)"
                    :class="{'is-active': tab.isActive}">
                     {{tab.name}}
                 </a>
             </li>
         </ul>
-        <div class="tab-content" :class="contentClass">
+        <div class="r-tab-content" :class="contentClass">
             <slot></slot>
         </div>
     </div>
