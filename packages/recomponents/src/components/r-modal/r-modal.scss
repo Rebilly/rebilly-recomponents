@@ -1,0 +1,130 @@
+// -----------------------------------------------------------------------------
+// This file contains all styles related to the modal component.
+// -----------------------------------------------------------------------------
+
+.r-modal-overlay {
+    background-color: var(--modal-overlay-background-color);
+    box-sizing: border-box;
+    flex-direction: column;
+    position: fixed;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    z-index: var(--modal-overlay-z-index);
+    overflow-y: auto;
+    padding: var(--modal-overlay-padding);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.r-modal-overlay.is-scrollable {
+    justify-content: flex-start;
+}
+
+.r-modal-control {
+    z-index: var(--modal-control-z-index);
+    box-sizing: border-box;
+    background: var(--modal-control-background-color);
+    box-shadow: var(--modal-control-box-shadow);
+    border-radius: var(--modal-control-border-radius);
+    width: var(--modal-control-width);
+    transform: scale(1);
+
+    @include media-query-breakpoint('tablet', $type: max) {
+        width: 90% !important;
+    }
+}
+
+.r-modal-header, .r-modal-actions {
+    flex-wrap: nowrap;
+    display: flex;
+}
+
+.r-modal-actions--right {
+    text-align: right;
+}
+
+.r-modal-header {
+    justify-content: space-between;
+}
+
+.r-modal-actions > * {
+    flex: 1 0;
+}
+
+.r-modal-header, .r-modal-content {
+    border-bottom: 1px solid var(--modal-border-color);
+}
+
+.r-modal-content p,
+.r-modal-content-secondary p {
+    margin-bottom: 0;
+}
+
+//Secondary
+.r-modal-content.r-modal-content-secondary {
+    background: var(--modal-content-background-color);
+}
+
+.r-modal-content.is-scrollable {
+    max-height: var(--modal-content-scrollable-max-height);
+    overflow-y: scroll;
+}
+
+.r-modal-header, .r-modal-content, .r-modal-actions {
+    padding: var(--modal-padding);
+}
+
+.r-modal-header h2 {
+    margin: 0;
+    text-transform: capitalize;
+}
+
+.r-modal-header .btn > .icon {
+    fill: var(--modal-icon-color);
+}
+
+.r-modal-loader.loader.is-loading {
+    opacity: .6;
+}
+
+.r-modal-loader .wrapper {
+    background-color: var(--modal-loader-background-color);
+}
+
+/**
+* Transitions
+*/
+.r-modal-enter-active, .r-modal-leave-active {
+    transition: all .2s;
+}
+
+.r-modal-enter, .r-modal-leave-to {
+    opacity: 1;
+}
+
+.r-modal-enter-active .r-modal-control, .r-modal-leave-active .r-modal-control {
+    transition: all .2s;
+}
+
+.r-modal-enter .r-modal-control, .r-modal-leave-to .r-modal-control {
+    transform: scale(.9);
+    opacity: 0;
+}
+
+/**
+* Sizes
+*/
+.r-modal-control.r-modal-control-l {
+    width: 600px;
+}
+
+.r-modal-control.r-modal-control-xl {
+    width: 800px;
+}
+
+.r-modal-control.r-modal-control-fluid {
+    width: 70%;
+}

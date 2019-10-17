@@ -44,6 +44,7 @@
     "shortid": "^2.2.14",
     "v-calendar": "^0.9.7"
   },
+
   "devDependencies": {
     "@babel/core": "^7.5.5",
     "@babel/preset-env": "^7.5.5",

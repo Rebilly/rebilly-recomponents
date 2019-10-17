@@ -1,0 +1,18 @@
+.r-pagination-control {
+    display: flex;
+    flex-flow: column;
+    margin: 0 auto;
+    width: fit-content;
+}
+
+.r-pagination-control-wrapper {
+    display: flex;
+    flex: 1 0;
+}
+
+.r-pagination-control-button {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin: var(--pagination-buttons-margin);
+}
