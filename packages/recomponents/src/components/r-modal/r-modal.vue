@@ -1,24 +1,24 @@
 <template>
     <transition name="modal" @enter="enter" @leave="leave">
         <div @mousedown="close" tabindex="0" ref="container" @keyup.esc="close" @keyup.enter="submit">
-            <div v-if="$slots.content || $slots.contents" class="modal-overlay" :class="{'is-scrollable': scroll}">
-                <div class="modal-control" :class="styles" @mousedown="$event.stopPropagation()">
-                    <div v-if="title" class="modal-header">
+            <div v-if="$slots.content || $slots.contents" class="r-modal-overlay" :class="{'is-scrollable': scroll}">
+                <div class="r-modal-control" :class="styles" @mousedown="$event.stopPropagation()">
+                    <div v-if="title" class="r-modal-header">
                         <h2>{{title}}</h2>
-                        <r-button type="link" class="modal-btn-close" @click="$emit('close')">
+                        <r-button type="link" class="r-modal-btn-close" @click="$emit('close')">
                             <r-icon icon="close"/>
                         </r-button>
                     </div>
                     <slot name="contents">
-                        <div class="modal-content" :class="{'is-scrollable': scrollContent}">
+                        <div class="r-modal-content" :class="{'is-scrollable': scrollContent}">
                             <slot name="content"/>
                         </div>
                     </slot>
-                    <div class="modal-actions">
+                    <div class="r-modal-actions">
                         <div v-if="$slots['left-actions']">
                             <slot name="left-actions"/>
                         </div>
-                        <div class="modal-actions--right equal-widths-elements-mobile">
+                        <div class="r-modal-actions--right equal-widths-elements-mobile">
                             <slot name="right-actions">
                                 <r-button :class="{'inline-s': $slots['actions']}" @click="close">
                                     {{cancelLabel}}
@@ -29,8 +29,8 @@
                     </div>
                 </div>
             </div>
-            <div v-else class="modal-overlay">
-                <r-loader class="modal-loader is-loading" :show="true" :loading="true"/>
+            <div v-else class="r-modal-overlay">
+                <r-loader class="r-modal-loader is-loading" :show="true" :loading="true"/>
             </div>
         </div>
     </transition>
@@ -85,7 +85,7 @@
                         key = 'fluid';
                     }
                     if (key) {
-                        style[`modal-control-${key}`] = true;
+                        style[`r-modal-control-${key}`] = true;
                     }
                 }
                 return style;

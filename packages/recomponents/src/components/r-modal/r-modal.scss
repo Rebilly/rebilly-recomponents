@@ -2,7 +2,7 @@
 // This file contains all styles related to the modal component.
 // -----------------------------------------------------------------------------
 
-.modal-overlay {
+.r-modal-overlay {
     background-color: var(--modal-overlay-background-color);
     box-sizing: border-box;
     flex-direction: column;
@@ -19,11 +19,11 @@
     justify-content: center;
 }
 
-.modal-overlay.is-scrollable {
+.r-modal-overlay.is-scrollable {
     justify-content: flex-start;
 }
 
-.modal-control {
+.r-modal-control {
     z-index: var(--modal-control-z-index);
     box-sizing: border-box;
     background: var(--modal-control-background-color);
@@ -37,79 +37,79 @@
     }
 }
 
-.modal-header, .modal-actions {
+.r-modal-header, .r-modal-actions {
     flex-wrap: nowrap;
     display: flex;
 }
 
-.modal-actions--right {
+.r-modal-actions--right {
     text-align: right;
 }
 
-.modal-header {
+.r-modal-header {
     justify-content: space-between;
 }
 
-.modal-actions > * {
+.r-modal-actions > * {
     flex: 1 0;
 }
 
-.modal-header, .modal-content {
+.r-modal-header, .r-modal-content {
     border-bottom: 1px solid var(--modal-border-color);
 }
 
-.modal-content p,
-.modal-content-secondary p {
+.r-modal-content p,
+.r-modal-content-secondary p {
     margin-bottom: 0;
 }
 
 //Secondary
-.modal-content.modal-content-secondary {
+.r-modal-content.r-modal-content-secondary {
     background: var(--modal-content-background-color);
 }
 
-.modal-content.is-scrollable {
+.r-modal-content.is-scrollable {
     max-height: var(--modal-content-scrollable-max-height);
     overflow-y: scroll;
 }
 
-.modal-header, .modal-content, .modal-actions {
+.r-modal-header, .r-modal-content, .r-modal-actions {
     padding: var(--modal-padding);
 }
 
-.modal-header h2 {
+.r-modal-header h2 {
     margin: 0;
     text-transform: capitalize;
 }
 
-.modal-header .btn > .icon {
+.r-modal-header .btn > .icon {
     fill: var(--modal-icon-color);
 }
 
-.modal-loader.loader.is-loading {
+.r-modal-loader.loader.is-loading {
     opacity: .6;
 }
 
-.modal-loader .wrapper {
+.r-modal-loader .wrapper {
     background-color: var(--modal-loader-background-color);
 }
 
 /**
 * Transitions
 */
-.modal-enter-active, .modal-leave-active {
+.r-modal-enter-active, .r-modal-leave-active {
     transition: all .2s;
 }
 
-.modal-enter, .modal-leave-to {
+.r-modal-enter, .r-modal-leave-to {
     opacity: 1;
 }
 
-.modal-enter-active .modal-control, .modal-leave-active .modal-control {
+.r-modal-enter-active .r-modal-control, .r-modal-leave-active .r-modal-control {
     transition: all .2s;
 }
 
-.modal-enter .modal-control, .modal-leave-to .modal-control {
+.r-modal-enter .r-modal-control, .r-modal-leave-to .r-modal-control {
     transform: scale(.9);
     opacity: 0;
 }
@@ -117,14 +117,14 @@
 /**
 * Sizes
 */
-.modal-control.modal-control-l {
+.r-modal-control.r-modal-control-l {
     width: 600px;
 }
 
-.modal-control.modal-control-xl {
+.r-modal-control.r-modal-control-xl {
     width: 800px;
 }
 
-.modal-control.modal-control-fluid {
+.r-modal-control.r-modal-control-fluid {
     width: 70%;
 }
