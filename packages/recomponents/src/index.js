@@ -14,8 +14,8 @@ const RIconButton = () => import(/* webpackChunkName: "r-icon-button" */ './comp
 const RImg = () => import(/* webpackChunkName: "r-img" */ './components/r-img/r-img.vue');
 const RInput = () => import(/* webpackChunkName: "r-input" */ './components/r-input/r-input.vue');
 const RLoader = () => import(/* webpackChunkName: "r-loader" */ './components/r-loader/r-loader.vue');
-import RModal from './components/r-modal/r-modal.vue';
-import RPagination from './components/r-pagination/r-pagination.vue';
+const RModal = () => import(/* webpackChunkName: "r-modal" */ './components/r-modal/r-modal.vue');
+const RPagination = () => import(/* webpackChunkName: "r-pagination" */ './components/r-pagination/r-pagination.vue');
 const RRadio = () => import(/* webpackChunkName: "r-radio" */ './components/r-radio/r-radio.vue');
 const RTab = () => import(/* webpackChunkName: "r-tab" */ './components/r-tabs/r-tab.vue');
 const RTabs = () => import(/* webpackChunkName: "r-tabs" */ './components/r-tabs/r-tabs.vue');

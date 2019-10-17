@@ -1,14 +1,10 @@
 import {storiesOf} from '@storybook/vue';
 import {boolean, select, text} from '@storybook/addon-knobs';
 import {action} from '@storybook/addon-actions';
-import RModal from './r-modal.vue';
-import RInput from '../r-input/r-input.vue';
-import RButton from '../r-button/r-button.vue';
 import markdown from './r-modal.md';
 
 storiesOf('Components/Modal', module)
     .add('Modal', () => ({
-        components: {RModal, RButton},
         data() {
             return {
                 isModalOpen: false,
@@ -40,7 +36,7 @@ storiesOf('Components/Modal', module)
         template: `
         <div>
             <r-button @click="isModalOpen = true;">Open</r-button>
-            <r-modal v-if="isModalOpen" 
+            <r-modal v-if="isModalOpen"
                      :title="title"
                      :cancelLabel="cancelLabel"
                      :size="size"
@@ -64,7 +60,6 @@ storiesOf('Components/Modal', module)
         notes: {markdown},
     })
     .add('Multi-step Form', () => ({
-        components: {RModal, RButton, RInput},
         data() {
             return {
                 activeStep: null,
@@ -96,7 +91,7 @@ storiesOf('Components/Modal', module)
         <div>
             <r-button @click="activeStep = 0;">Open</r-button>
             <template v-for="(step, index) in steps">
-                <r-modal v-if="index === activeStep" 
+                <r-modal v-if="index === activeStep"
                          :title="step.name"
                          :cancelLabel="cancelLabel"
                          :size="size"
@@ -120,14 +115,14 @@ storiesOf('Components/Modal', module)
                             <p style="margin: 10px 0;"><r-input placeholder="Phone number"/></p>
                         </template>
                     </div>
-                    
+
                     <template slot="actions">
                         <r-button v-if="activeStep !== 0" @click="activeStep = activeStep - 1">Back</r-button>
                         <r-button v-if="activeStep < steps.length - 1" @click="activeStep = activeStep + 1">Next</r-button>
                         <r-button v-if="activeStep === steps.length - 1" @click="finish">Finish</r-button>
                     </template>
                 </r-modal>
-            </template> 
+            </template>
         </div>
         `,
     }), {
