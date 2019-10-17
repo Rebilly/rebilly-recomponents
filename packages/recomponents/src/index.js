@@ -3,6 +3,7 @@ import VueI18n from 'vue-i18n';
 import RTooltip from './directives/r-tooltip/r-tooltip';
 
 import './styles/typography.scss';
+import './styles/helpers.scss';
 import './styles/theme.scss';
 
 const RBadge = () => import(/* webpackChunkName: "r-badge" */ './components/r-badge/r-badge.vue');
