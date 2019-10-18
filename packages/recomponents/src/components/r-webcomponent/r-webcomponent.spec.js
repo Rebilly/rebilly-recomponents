@@ -2,7 +2,7 @@ import {mount} from '@vue/test-utils';
 import {renderToString} from '@vue/server-test-utils';
 import RWebcomponent from './r-webcomponent.vue';
 
-describe('r-button.vue', () => {
+describe('r-webcomponent.vue', () => {
     it('should render Wrapper and match snapshot', async () => {
         const wrapper = mount(RWebcomponent, {
             slots: {

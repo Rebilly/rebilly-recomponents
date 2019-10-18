@@ -14,10 +14,12 @@ describe('r-button.vue', () => {
         expect(wrapper.text()).toMatch(msg);
     });
 
-    it('should render via SSR and match snapshot', async () => {
+    it('should render via SSR and match snapshot', () => {
+        const msg = 'Apply';
         const wrapper = renderToString(RButton, {
-            slots: {
-                default: '<strong>default button</strong>',
+            propsData: {msg},
+            mocks: {
+                $t: () => msg,
             },
         });
 

@@ -1,5 +1,5 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`r-button.vue should render Wrapper and match snapshot 1`] = `<main><strong>default button</strong></main>`;
+exports[`r-webcomponent.vue should render Wrapper and match snapshot 1`] = `<div class="r-webcomponent"><strong>default button</strong></div>`;
 
-exports[`r-button.vue should render via SSR and match snapshot 1`] = `<main><strong>default button</strong></main>`;
+exports[`r-webcomponent.vue should render via SSR and match snapshot 1`] = `<div class="r-webcomponent"><strong>default button</strong></div>`;
