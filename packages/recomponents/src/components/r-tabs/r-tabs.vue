@@ -1,7 +1,7 @@
 <template>
     <div>
         <ul class="r-tab" :class="[{'r-tab-divided': divided}, menuClass]">
-            <li v-for="(tab, index) in tabs" class="r-tab-item">
+            <li v-for="(tab, index) in tabs" class="r-tab-item" :key="index">
                 <a v-if="tab.to"
                    :to="tab.to"
                    class="r-tab-link"
@@ -57,12 +57,12 @@
             };
         },
         methods: {
-            selectTab({name, value}, index = null) {
+            selectTab({name}, index = null) {
                 this.tabs.forEach((tab, i) => {
                     tab.isActive = (index === i);
                 });
                 if (index !== null) {
-                    this.$emit('tab-selected', {name, value, index});
+                    this.$emit('tab-selected', {name, index});
                 }
             },
             getRouteTab() {

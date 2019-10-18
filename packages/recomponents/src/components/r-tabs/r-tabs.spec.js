@@ -1,4 +1,4 @@
-import {shallowMount} from '@vue/test-utils';
+import {shallowMount, mount} from '@vue/test-utils';
 import {renderToString} from '@vue/server-test-utils';
 import RTabs from './r-tabs.vue';
 import RTab from './r-tab.vue';
@@ -30,5 +30,69 @@ describe('r-tabs.vue', () => {
 
         expect(wrapper.find('.tab.test')).not.toBe(undefined);
         expect(wrapper.find('.tab-content.test')).not.toBe(undefined);
+    });
+
+    it('should use plain active tab if specified', async () => {
+        const wrapper = mount(RTabs, {
+            render(h) {
+                return h(RTabs, {}, [
+                    h(RTab, {
+                        props: {
+                            name: 'Tab 1',
+                        },
+                    }, [
+                        h('p', 'Lorem ipsum'),
+                    ]),
+                    h(RTab, {
+                        props: {
+                            name: 'Tab 2',
+                            active: true,
+                        },
+                    }, [
+                        h('p', 'Domus anthem'),
+                    ]),
+                ]);
+            },
+        });
+
+        const links = wrapper.findAll('.r-tab-link');
+        expect(links.at(0).classes().includes('is-active')).toBeFalsy();
+        expect(links.at(1).classes().includes('is-active')).toBeTruthy();
+    });
+
+    it('should swtich tab on click', async () => {
+        const wrapper = mount(RTabs, {
+            render(h) {
+                return h(RTabs, {}, [
+                    h(RTab, {
+                        props: {
+                            name: 'Tab 1',
+                        },
+                    }, [
+                        h('p', 'Lorem ipsum'),
+                    ]),
+                    h(RTab, {
+                        props: {
+                            name: 'Tab 2',
+                        },
+                    }, [
+                        h('p', 'Domus anthem'),
+                    ]),
+                ]);
+            },
+        });
+
+        const links = wrapper.findAll('.r-tab-link');
+        expect(links.at(0).classes().includes('is-active')).toBeTruthy();
+        links.at(1).trigger('click');
+        expect(links.at(0).classes().includes('is-active')).toBeFalsy();
+    });
+
+    it('should match all incoming props types', () => {
+        const {divided, menuClass, contentClass} = RTabs.props;
+
+        expect(divided.type).toBe(Boolean);
+        expect(menuClass.type).toBe(String);
+        expect(contentClass.type).toBe(String);
     });
 });
