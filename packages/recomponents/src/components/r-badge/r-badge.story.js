@@ -5,15 +5,21 @@ import markdown from './r-badge.md';
 storiesOf('Components', module)
     .add('Badge', () => ({
         template: `
-        <r-badge
-            :type="type"
-        >
-            {{text}}
-        </r-badge>
-    `,
+            <r-badge
+                :type="type">
+                {{text}}
+            </r-badge>
+        `,
         props: {
             type: {
-                default: select('Type', ['default', 'positive', 'negative', 'warning', 'info', 'tag']),
+                default: select('Type', [
+                    'default',
+                    'positive',
+                    'negative',
+                    'warning',
+                    'info',
+                    'tag',
+                ]),
             },
             text: {
                 default: text('Text', 'Click me'),

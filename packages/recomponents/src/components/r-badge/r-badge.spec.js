@@ -10,8 +10,7 @@ describe('r-badge.vue', () => {
             },
         });
 
-        expect(wrapper.html())
-            .toMatchSnapshot();
+        expect(wrapper.html()).toMatchSnapshot();
     });
 
     it('should render via SSR and match snapshot', async () => {
@@ -21,8 +20,19 @@ describe('r-badge.vue', () => {
             },
         });
 
-        expect(wrapper)
-            .toMatchSnapshot();
+        expect(wrapper).toMatchSnapshot();
+    });
+
+    it('should validate all incoming props', () => {
+        const {type} = RBadge.props;
+
+        expect(type.validator('default')).toBeTruthy();
+        expect(type.validator('positive')).toBeTruthy();
+        expect(type.validator('negative')).toBeTruthy();
+        expect(type.validator('warning')).toBeTruthy();
+        expect(type.validator('info')).toBeTruthy();
+        expect(type.validator('tag')).toBeTruthy();
+        expect(type.validator('impossible')).toBeFalsy();
     });
 
     it('should render component with type prop', () => {
@@ -35,7 +45,6 @@ describe('r-badge.vue', () => {
             },
         });
 
-        expect(wrapper.classes())
-            .toContain('r-badge--type-warning');
+        expect(wrapper.classes()).toContain('r-badge--type-warning');
     });
 });

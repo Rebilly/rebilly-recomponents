@@ -20,7 +20,14 @@
             type: {
                 type: String,
                 default: 'default',
-                validator: val => ['default', 'positive', 'negative', 'warning', 'info', 'tag'].includes(val),
+                validator: val => [
+                    'default',
+                    'positive',
+                    'negative',
+                    'warning',
+                    'info',
+                    'tag'
+                ].includes(val),
             },
         },
         computed: {
