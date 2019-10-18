@@ -1,15 +1,9 @@
 import {storiesOf} from '@storybook/vue';
 import {action} from '@storybook/addon-actions';
 import {text} from '@storybook/addon-knobs';
-import {
-    RTile, RInput, RCheckbox, RButton,
-} from '../index';
 
 storiesOf('Demo', module)
     .add('Payment Form', () => ({
-        components: {
-            RTile, RInput, RCheckbox, RButton,
-        },
         props: {
             width: {
                 default: text('Form width', '400px'),

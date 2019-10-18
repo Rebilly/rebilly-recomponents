@@ -12,7 +12,6 @@
 </template>
 
 <script>
-    import '../../directives/r-tooltip';
 
     export default {
         name: 'RIconButton',
@@ -74,5 +73,4 @@
 
 <style lang="scss">
     @import '../r-button/r-button.scss';
-    @import '../../directives/r-tooltip.scss';
 </style>

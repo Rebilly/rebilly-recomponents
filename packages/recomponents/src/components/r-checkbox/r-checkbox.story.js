@@ -1,7 +1,6 @@
 import {storiesOf} from '@storybook/vue';
 import {action} from '@storybook/addon-actions';
 import {boolean, text} from '@storybook/addon-knobs';
-import RCheckbox from './r-checkbox.vue';
 import markdown from './r-checkbox.md';
 
 storiesOf('Components/Checkbox', module)
@@ -18,7 +17,6 @@ storiesOf('Components/Checkbox', module)
         methods: {
             input: action('input'),
         },
-        components: {RCheckbox},
         template: `<r-checkbox
                         :label="label"
                         :caption='caption'
@@ -38,7 +36,6 @@ storiesOf('Components/Checkbox', module)
                 {value: '2', label: 'label 2'},
             ],
         }),
-        components: {RCheckbox},
         template: `<div>
                         <r-checkbox
                         v-for="o in options"

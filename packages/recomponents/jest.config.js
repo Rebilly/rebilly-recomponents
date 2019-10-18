@@ -27,4 +27,11 @@ module.exports = {
         'jest-watch-typeahead/filename',
         'jest-watch-typeahead/testname',
     ],
+    collectCoverage: false,
+    collectCoverageFrom: [
+        'src/components/**/*.{js,vue}',
+        'src/directives/**/*.{js,vue}',
+        '!src/**/*.story.js',
+        '!src/index.js',
+    ],
 };

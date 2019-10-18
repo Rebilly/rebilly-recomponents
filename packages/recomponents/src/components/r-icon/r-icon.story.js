@@ -1,12 +1,10 @@
 import {storiesOf} from '@storybook/vue';
 import {action} from '@storybook/addon-actions';
 import {select, boolean} from '@storybook/addon-knobs';
-import RIcon from './r-icon.vue';
 import markdown from './r-icon.md';
 
 storiesOf('Components', module)
     .add('Icon', () => ({
-        components: {RIcon},
         template: `
             <r-icon
                 :icon="icon"

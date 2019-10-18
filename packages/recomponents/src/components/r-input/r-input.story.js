@@ -1,16 +1,14 @@
 import {storiesOf} from '@storybook/vue';
 import {action} from '@storybook/addon-actions';
 import {text, select, boolean} from '@storybook/addon-knobs';
-import RInput from './r-input.vue';
 import markdown from './r-input.md';
 
 storiesOf('Components', module)
     .add('Input', () => ({
-        components: {RInput},
         template: `
-            <r-input 
-                v-model="model" 
-                :label="label" 
+            <r-input
+                v-model="model"
+                :label="label"
                 :disabled="disabled"
                 :placeholder="placeholder"
                 :helpText="helpText"

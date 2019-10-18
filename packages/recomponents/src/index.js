@@ -1,4 +1,11 @@
 import VueI18n from 'vue-i18n';
+
+import RTooltip from './directives/r-tooltip/r-tooltip';
+
+import './styles/typography.scss';
+import './styles/helpers.scss';
+import './styles/theme.scss';
+
 import RBadge from './components/r-badge/r-badge.vue';
 import RButton from './components/r-button/r-button.vue';
 import RCheckbox from './components/r-checkbox/r-checkbox.vue';
@@ -15,9 +22,6 @@ import RTab from './components/r-tabs/r-tab.vue';
 import RTabs from './components/r-tabs/r-tabs.vue';
 import RSelect from './components/r-select/r-select.vue';
 import RTile from './components/r-tile/r-tile.vue';
-
-import './styles/typography.scss';
-import './styles/theme.scss';
 
 const components = {
     RBadge,
@@ -38,13 +42,31 @@ const components = {
     RTile,
 };
 
+const directives = {
+    RTooltip,
+};
+
 function install(Vue) {
     Vue.use(VueI18n);
 
+    /**
+     * Injecting all components according to their filenames
+     */
     Object.keys(components).forEach((key) => {
         Vue.component(key, components[key]);
     });
+
+    /**
+     * Injecting all directives without 'r' prefix
+     */
+    Object.keys(directives).forEach((key) => {
+        Vue.directive(key.substr(1).toLowerCase(), directives[key]);
+    });
 }
+
+export {
+    RTooltip,
+};
 
 export {
     RBadge,
@@ -67,5 +89,6 @@ export {
 
 export default {
     install,
+    ...directives,
     ...components,
 };
