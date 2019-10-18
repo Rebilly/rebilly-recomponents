@@ -153,7 +153,6 @@ storiesOf('Components/Select', module)
     }), {
         notes: {markdown},
     }).add('Select with async loading data', () => ({
-        components: {RSelect},
         data() {
             return {
                 loading: false,

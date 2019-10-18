@@ -120,7 +120,6 @@ storiesOf('Components/Popper', module)
             input: action('input'),
             setActivePopper: action('setActivePopper'),
         },
-        components: {RPopper, RIcon, RButton},
         template: `<r-popper
                         :escToHide="escToHide"
                         :autoHide="autoHide"

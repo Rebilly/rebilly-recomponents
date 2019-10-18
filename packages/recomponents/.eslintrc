@@ -4,51 +4,54 @@
         "browser": true,
         "jest": true
     },
-    rules: {
-        'no-console': 'off',
-        // 'import/no-unresolved': 0,
-        'import/no-extraneous-dependencies': [
-            'error',
+    "rules": {
+        "no-console": "off",
+        "import/no-extraneous-dependencies": [
+            "error",
             {
-                optionalDependencies: [
-                    'test/unit/index.js',
-                ],
-            },
+                "optionalDependencies": [
+                    "test/unit/index.js"
+                ]
+            }
         ],
-        'no-debugger': 0,
-        'no-restricted-globals': 0,
-        indent: ['error', 4, {SwitchCase: 1}],
-        'object-curly-spacing': ['error', 'never'],
-        'linebreak-style': 0,
-        'no-param-reassign': 0,
-        quotes: ['error', 'single', {allowTemplateLiterals: true}],
-        'vue/script-indent': ['error', 4, {baseIndent: 1, switchCase: 1}], // fix indent in script tags
-        'no-underscore-dangle': ['error', {allow: ['_links', '_embedded']}]
+        "no-debugger": 0,
+        "no-restricted-globals": 0,
+        "indent": ["error", 4, {"SwitchCase": 1}],
+        "object-curly-spacing": ["error", "never"],
+        "linebreak-style": 0,
+        "no-param-reassign": 0,
+        "quotes": ["error", "single", {"allowTemplateLiterals": true}],
+        "vue/script-indent": ["error", 4, {"baseIndent": 1, "switchCase": 1}],
+        "no-underscore-dangle": ["error", {"allow": ["_links", "_embedded"]}],
+        "no-nested-ternary": 1,
+        "no-useless-escape": 1,
+        "no-plusplus": 1,
+        "no-unused-expressions": 1,
+        "consistent-return": 1
     },
     "extends": [
         "plugin:vue/base",
         "@vue/airbnb"
     ],
-    overrides: [
+    "overrides": [
         {
-            files: [
-                '*.vue'
+            "files": [
+                "*.vue"
             ],
-            rules: {
-                'max-len': 'off',
-                // disables line length check
-                indent: 'off'
+            "rules": {
+                "max-len": "off",
+                "indent": "off"
             }
         }
     ],
     "parserOptions": {
         "parser": "babel-eslint"
     },
-    settings: {
-        'import/resolver': {
-            node: {
-                extensions: ['.js', '.jsx', '.vue'],
-            },
-        },
+    "settings": {
+        "import/resolver": {
+            "node": {
+                "extensions": [".js", ".jsx", ".vue"]
+            }
+        }
     }
 }

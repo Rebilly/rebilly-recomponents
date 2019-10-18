@@ -4,7 +4,7 @@
 
 <script>
     import Vue from 'vue';
-    import PaginationControl from './r-pagination-control';
+    import PaginationControl from './r-pagination-control.vue';
 
     Vue.component('r-pagination-control', PaginationControl);
 
@@ -72,7 +72,7 @@
         },
         computed: {
             items() {
-                const totalVisible = this.totalVisible;
+                const {totalVisible} = this;
 
                 if (!totalVisible) {
                     return;
@@ -106,19 +106,18 @@
                     }
 
                     return [1, '...', ...this.range(start, end), '...', this.pages];
-                } else if (this.page === left) {
+                } if (this.page === left) {
                     const end = this.page + left - 1 - even;
                     return end < 1 ? [...this.range(1, this.page), '...'] : [...this.range(1, end), '...', this.pages];
-                } else if (this.page === right) {
+                } if (this.page === right) {
                     const start = this.page - left + 1;
                     return [1, '...', ...this.range(start, this.pages)];
-                } else {
-                    return [
-                        ...this.range(1, left),
-                        '...',
-                        ...this.range(right, this.pages),
-                    ];
                 }
+                return [
+                    ...this.range(1, left),
+                    '...',
+                    ...this.range(right, this.pages),
+                ];
             },
             pages() {
                 let pages = Math.ceil(this.total / this.limit);

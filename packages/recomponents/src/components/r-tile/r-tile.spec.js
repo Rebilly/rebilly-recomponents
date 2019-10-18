@@ -1,4 +1,4 @@
-import {mount, shallowMount} from '@vue/test-utils';
+import {shallowMount} from '@vue/test-utils';
 import {renderToString} from '@vue/server-test-utils';
 import RTile from './r-tile.vue';
 

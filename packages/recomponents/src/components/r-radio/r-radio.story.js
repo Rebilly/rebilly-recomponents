@@ -36,7 +36,6 @@ storiesOf('Components/Radio', module)
         notes: {markdown},
     })
     .add('Radio props', () => ({
-        components: {RRadio},
         template: `
             <r-radio
                     class="stack-s"

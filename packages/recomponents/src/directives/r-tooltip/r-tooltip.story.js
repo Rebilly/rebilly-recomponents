@@ -1,6 +1,5 @@
 import {storiesOf} from '@storybook/vue';
-import {action} from '@storybook/addon-actions';
-import {text, boolean} from '@storybook/addon-knobs';
+import {text} from '@storybook/addon-knobs';
 import RButton from '../../components/r-button/r-button.vue';
 import markdown from './r-tooltip.md';
 
