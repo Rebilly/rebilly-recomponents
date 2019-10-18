@@ -653,7 +653,7 @@
             },
             pointerBackward() {
                 if (this.pointer > 0) {
-                    this.pointer = -1;
+                    this.pointer = this.pointer - 1;
                     if (this.$refs.list.scrollTop >= this.pointerPosition) {
                         this.$refs.list.scrollTop = this.pointerPosition;
                     }
@@ -662,7 +662,7 @@
             },
             pointerForward() {
                 if (this.pointer < this.filteredOptions.length - 1) {
-                    this.pointer = +1;
+                    this.pointer = this.pointer + 1;
                     if (this.$refs.list.scrollTop <= this.pointerPosition - (this.visibleElements - 1) * this.optionHeight) {
                         this.$refs.list.scrollTop = this.pointerPosition - (this.visibleElements - 1) * this.optionHeight;
                     }
