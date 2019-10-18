@@ -444,11 +444,11 @@
         },
         computed: {
             currentOptionLabel() {
-                return this.multiple
-                    ? this.searchable ? '' : this.placeholder
-                    : this.internalValue.length
-                        ? this.getOptionLabel(this.internalValue[0])
-                        : this.searchable ? '' : this.placeholder;
+                const placeholder = this.searchable ? '' : this.placeholder;
+                const value = this.internalValue && this.internalValue.length
+                    ? this.getOptionLabel(this.internalValue[0])
+                    : placeholder;
+                return this.multiple ? placeholder : value;
             },
             contentStyle() {
                 return this.options.length
@@ -483,25 +483,25 @@
                 return (this.label || '').trim() !== '';
             },
             inputStyle() {
-                if (
-                    this.searchable
-                    || (this.multiple && this.value && this.value.length)
-                ) {
+                if (this.searchable
+                    || (this.multiple && this.value && this.value.length)) {
                     // Hide input by setting the width to 0 allowing it to receive focus
                     return this.isOpen
                         ? {width: '100%'}
                         : {width: '0', position: 'absolute', padding: '0'};
                 }
+
+                return {};
             },
             internalValue() {
-                return this.value || this.value === 0
-                    ? Array.isArray(this.value) ? this.value : [this.value]
-                    : [];
+                const value = Array.isArray(this.value) ? this.value : [this.value];
+                return this.value || this.value === 0 ? value : [];
             },
             isAbove() {
                 if (this.openDirection === 'above' || this.openDirection === 'top') {
                     return true;
-                } if (
+                }
+                if (
                     this.openDirection === 'below'
                     || this.openDirection === 'bottom'
                 ) {
@@ -593,8 +593,8 @@
                 }
 
                 this.isOpen = false;
-                if (this.searchable) {
-                    this.$refs.search && this.$refs.search.blur();
+                if (this.searchable && this.$refs.search) {
+                    this.$refs.search.blur();
                 } else {
                     this.$el.blur();
                 }
@@ -620,11 +620,8 @@
                 return label;
             },
             getValue() {
-                return this.multiple
-                    ? this.internalValue
-                    : this.internalValue.length === 0
-                        ? null
-                        : this.internalValue[0];
+                const value = this.internalValue.length === 0 ? null : this.internalValue[0];
+                return this.multiple ? this.internalValue : value;
             },
             isExistingOption(query) {
                 return !this.options
@@ -656,7 +653,7 @@
             },
             pointerBackward() {
                 if (this.pointer > 0) {
-                    this.pointer--;
+                    this.pointer = -1;
                     if (this.$refs.list.scrollTop >= this.pointerPosition) {
                         this.$refs.list.scrollTop = this.pointerPosition;
                     }
@@ -665,7 +662,7 @@
             },
             pointerForward() {
                 if (this.pointer < this.filteredOptions.length - 1) {
-                    this.pointer++;
+                    this.pointer = +1;
                     if (this.$refs.list.scrollTop <= this.pointerPosition - (this.visibleElements - 1) * this.optionHeight) {
                         this.$refs.list.scrollTop = this.pointerPosition - (this.visibleElements - 1) * this.optionHeight;
                     }
@@ -767,9 +764,11 @@
                 }
             },
             toggle() {
-                this.isOpen
-                    ? this.deactivate()
-                    : this.activate();
+                if (this.isOpen) {
+                    this.deactivate();
+                } else {
+                    this.activate();
+                }
             },
             updateSearch(query) {
                 this.search = query;

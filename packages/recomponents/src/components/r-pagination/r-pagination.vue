@@ -50,7 +50,7 @@
                 const range = [];
 
                 start = start > 0 ? start : 1;
-                for (let i = start; i <= end; i++) {
+                for (let i = start; i <= end; i + 1) {
                     range.push(i);
                 }
 
@@ -75,7 +75,7 @@
                 const {totalVisible} = this;
 
                 if (!totalVisible) {
-                    return;
+                    return null;
                 }
 
                 if (this.pages <= totalVisible || totalVisible < 1) {
@@ -106,10 +106,12 @@
                     }
 
                     return [1, '...', ...this.range(start, end), '...', this.pages];
-                } if (this.page === left) {
+                }
+                if (this.page === left) {
                     const end = this.page + left - 1 - even;
                     return end < 1 ? [...this.range(1, this.page), '...'] : [...this.range(1, end), '...', this.pages];
-                } if (this.page === right) {
+                }
+                if (this.page === right) {
                     const start = this.page - left + 1;
                     return [1, '...', ...this.range(start, this.pages)];
                 }
