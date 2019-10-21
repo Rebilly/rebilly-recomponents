@@ -1,5 +1,5 @@
 <template>
-    <figure class="r-component r-img" :style="{minHeight: height + 'px', minWidth: width + 'px'}">
+    <figure class="r-component r-img" :style="{minHeight: height + 'px', minWidth: width + 'px'}" role="img">
         <template v-if="lazy">
             <img v-lazy :data-url="src" :alt="alt"/>
         </template>
@@ -42,7 +42,7 @@
             onload() {
                 this.$emit('onload');
             },
-            onerrror() {
+            onerror() {
                 this.$emit('error');
             },
         },

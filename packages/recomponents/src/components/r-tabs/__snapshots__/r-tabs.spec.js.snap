@@ -1,57 +1,36 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
+exports[`r-tabs.vue should open current route tab 1`] = `
+<div>
+  <div role="tablist" class="r-tab">
+    <div class="r-tab-item"><a to="[object Object]" role="tab" class="r-tab-link">
+        Tab 1
+      </a></div>
+    <div class="r-tab-item"><a to="[object Object]" role="tab" class="r-tab-link is-active">
+        Tab 2
+      </a></div>
+  </div>
+  <div class="r-tab-content">
+    <div style="display: none;">
+      <p>Lorem ipsum</p>
+    </div>
+    <div style="">
+      <p>Domus anthem</p>
+    </div>
+  </div>
+</div>
+`;
+
 exports[`r-tabs.vue should render Wrapper and match snapshot 1`] = `
 <div>
-  <ul class="r-tab"></ul>
+  <div role="tablist" class="r-tab"></div>
   <div class="r-tab-content"></div>
 </div>
 `;
 
 exports[`r-tabs.vue should render via SSR and match snapshot 1`] = `
 <div>
-  <ul class="r-tab"></ul>
+  <div role="tablist" class="r-tab"></div>
   <div class="r-tab-content"></div>
-</div>
-`;
-
-exports[`r-tabs.vue should set a class if the props are set 1`] = `
-<div>
-  <ul class="r-tab">
-    <li class="r-tab-item"><a class="r-tab-link is-active">
-        Tab 1
-      </a></li>
-    <li class="r-tab-item"><a class="r-tab-link">
-        Tab 2
-      </a></li>
-  </ul>
-  <div class="r-tab-content">
-    <div style="">
-      <p>Lorem ipsum</p>
-    </div>
-    <div style="display: none;">
-      <p>Domus anthem</p>
-    </div>
-  </div>
-</div>
-`;
-
-exports[`r-tabs.vue should swtich tab on click 1`] = `
-<div>
-  <ul class="r-tab">
-    <li class="r-tab-item"><a class="r-tab-link is-active">
-        Tab 1
-      </a></li>
-    <li class="r-tab-item"><a class="r-tab-link">
-        Tab 2
-      </a></li>
-  </ul>
-  <div class="r-tab-content">
-    <div style="">
-      <p>Lorem ipsum</p>
-    </div>
-    <div style="display: none;">
-      <p>Domus anthem</p>
-    </div>
-  </div>
 </div>
 `;

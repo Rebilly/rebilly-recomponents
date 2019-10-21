@@ -1,7 +1,7 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`r-checkbox.vue should render via SSR and match snapshot 1`] = `
-<div name="snapshot" class="r-checkbox"><label for="id1234" class="r-field-label r-field-label-toggle">Custom label</label> <input type="checkbox" id="id1234" value="on" class="r-field-checkbox"> <span class="r-field-checkbox-style"><svg class="r-icon r-icon-20"><use xlink:href="#icon-checkbox-checkmark" xmlns:xlink="http://www.w3.org/1999/xlink"></use></svg></span>
+<div role="checkbox" name="snapshot" class="r-checkbox"><label for="id1234" class="r-field-label r-field-label-toggle">Custom label</label> <input type="checkbox" id="id1234" value="on" class="r-field-checkbox"> <span class="r-field-checkbox-style"><svg class="r-icon r-icon-20"><use xlink:href="#icon-checkbox-checkmark" xmlns:xlink="http://www.w3.org/1999/xlink"></use></svg></span>
   <!---->
 </div>
 `;

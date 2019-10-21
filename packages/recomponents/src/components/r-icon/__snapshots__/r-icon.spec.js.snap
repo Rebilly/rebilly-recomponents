@@ -1,0 +1,13 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`r-icon.vue should render Wrapper and match snapshot 1`] = `
+<svg class="r-icon r-icon-20">
+  <use xlink:href="#icon-user" xmlns:xlink="http://www.w3.org/1999/xlink"></use>
+</svg>
+`;
+
+exports[`r-icon.vue should render via SSR and match snapshot 1`] = `
+<svg class="r-icon r-icon-20">
+  <use xlink:href="#icon-user" xmlns:xlink="http://www.w3.org/1999/xlink"></use>
+</svg>
+`;

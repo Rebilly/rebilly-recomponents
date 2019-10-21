@@ -20,7 +20,7 @@ module.exports = {
         'jest-serializer-vue',
     ],
     testMatch: [
-        '**/r-tabs.spec.(js)|**/__tests__/*.(js|jsx|ts|tsx)',
+        '**/r-*.spec.(js)|**/__tests__/*.(js|jsx|ts|tsx)',
     ],
     testURL: 'http://localhost/',
     watchPlugins: [
@@ -29,9 +29,9 @@ module.exports = {
     ],
     collectCoverage: true,
     collectCoverageFrom: [
-        'src/components/**/r-tabs.{js,vue}',
-        // 'src/directives/**/*.{js,vue}',
-        // '!src/**/*.story.js',
-        // '!src/index.js',
+        'src/components/**/r-*.{js,vue}',
+        'src/directives/**/r-*.{js,vue}',
+        '!src/**/*.story.js',
+        '!src/index.js',
     ],
 };

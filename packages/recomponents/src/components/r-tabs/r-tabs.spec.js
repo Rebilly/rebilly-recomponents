@@ -88,6 +88,46 @@ describe('r-tabs.vue', () => {
         expect(links.at(0).classes().includes('is-active')).toBeFalsy();
     });
 
+    it('should open current route tab', async () => {
+        const wrapper = mount({
+            render(h) {
+                return h(RTabs, {}, [
+                    h(RTab, {
+                        props: {
+                            name: 'Tab 1',
+                            to: {
+                                fullPath: 'default-route',
+                            },
+                        },
+                    }, [
+                        h('p', 'Lorem ipsum'),
+                    ]),
+                    h(RTab, {
+                        props: {
+                            name: 'Tab 2',
+                            to: {
+                                fullPath: 'test-route',
+                            },
+                        },
+                    }, [
+                        h('p', 'Domus anthem'),
+                    ]),
+                ]);
+            },
+        }, {
+            mocks: {
+                $route: {
+                    fullPath: 'test-route',
+                },
+                $router: {
+                    resolve: route => ({route}),
+                },
+            },
+        });
+
+        expect(wrapper).toMatchSnapshot();
+    });
+
     it('should match all incoming props types', () => {
         const {divided, menuClass, contentClass} = RTabs.props;
 

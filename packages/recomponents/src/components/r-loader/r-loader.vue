@@ -1,5 +1,5 @@
 <template>
-    <div class="r-component r-loader" :class="classes" v-if="show">
+    <div class="r-component r-loader" :class="classes" v-if="show" role="alert" aria-busy="true">
         <div class="wrapper">
             <div class="mr-re"></div>
             <div class="mr-bil"></div>

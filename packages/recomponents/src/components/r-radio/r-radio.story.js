@@ -6,7 +6,7 @@ import markdown from './r-radio.md';
 storiesOf('Components/Radio', module)
     .add('Radio group', () => ({
         template: `
-            <div>
+            <div role="radiogroup" aria-label="Billing Schedule">
                 <h2>Billing Schedule</h2>
                 <r-radio
                     label="Forever (until canceled)"

@@ -1,11 +1,11 @@
 <template>
     <transition name="modal" @enter="enter" @leave="leave">
-        <div @mousedown="close" tabindex="0" ref="container" @keyup.esc="close" @keyup.enter="submit">
+        <div @mousedown="close" tabindex="0" ref="container" @keyup.esc="close" @keyup.enter="submit" role="dialog" :aria-label="title">
             <div v-if="$slots.content || $slots.contents" class="r-modal-overlay" :class="{'is-scrollable': scroll}">
                 <div class="r-modal-control" :class="styles" @mousedown="$event.stopPropagation()">
                     <div v-if="title" class="r-modal-header">
                         <h2>{{title}}</h2>
-                        <r-button type="link" class="r-modal-btn-close" @click="$emit('close')">
+                        <r-button type="link" class="r-modal-btn-close" @click="$emit('close')" aria-label="close">
                             <r-icon icon="close"/>
                         </r-button>
                     </div>
@@ -20,7 +20,7 @@
                         </div>
                         <div class="r-modal-actions--right equal-widths-elements-mobile">
                             <slot name="right-actions">
-                                <r-button :class="{'inline-s': $slots['actions']}" @click="close">
+                                <r-button :class="{'inline-s': $slots['actions']}" @click="close" aria-label="close">
                                     {{cancelLabel}}
                                 </r-button>
                                 <slot name="actions"/>
