@@ -26,7 +26,7 @@
                     'negative',
                     'warning',
                     'info',
-                    'tag'
+                    'tag',
                 ].includes(val),
             },
         },
