@@ -1,17 +1,17 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`r-radio.vue should render Wrapper and match snapshot 1`] = `
-<div role="radio" aria-checked="true" class="r-field"><label for="c8YA38ShC" class="r-field-label r-field-label-toggle is-checked">
+<div role="radio" aria-checked="true" class="r-field"><label for="id1234" class="r-field-label r-field-label-toggle is-checked">
     Checkbox
-  </label> <input type="radio" id="c8YA38ShC" name="default" class="r-field-radio"> <span class="r-field-radio-style"><r-icon-stub icon="radio-checkmark"></r-icon-stub></span>
+  </label> <input type="radio" id="id1234" name="default" class="r-field-radio"> <span class="r-field-radio-style"><r-icon-stub icon="radio-checkmark"></r-icon-stub></span>
   <!---->
 </div>
 `;
 
 exports[`r-radio.vue should render via SSR and match snapshot 1`] = `
-<div role="radio" aria-checked="true" class="r-field"><label for="6ywvODi1Hx" class="r-field-label r-field-label-toggle is-checked">
+<div role="radio" aria-checked="true" class="r-field"><label for="id1234" class="r-field-label r-field-label-toggle is-checked">
     Checkbox
-  </label> <input type="radio" id="6ywvODi1Hx" name="default" checked="checked" class="r-field-radio"> <span class="r-field-radio-style"><svg class="r-icon r-icon-20"><use xlink:href="#icon-radio-checkmark" xmlns:xlink="http://www.w3.org/1999/xlink"></use></svg></span>
+  </label> <input type="radio" id="id1234" name="default" checked="checked" class="r-field-radio"> <span class="r-field-radio-style"><svg class="r-icon r-icon-20"><use xlink:href="#icon-radio-checkmark" xmlns:xlink="http://www.w3.org/1999/xlink"></use></svg></span>
   <!---->
 </div>
 `;

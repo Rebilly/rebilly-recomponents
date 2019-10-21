@@ -11,6 +11,7 @@ describe('r-radio.vue', () => {
                 checked: 'value',
                 value: 'value',
                 label: 'Checkbox',
+                id: 'id1234',
             },
             mocks: {$t},
         });
@@ -24,6 +25,7 @@ describe('r-radio.vue', () => {
                 checked: 'value',
                 value: 'value',
                 label: 'Checkbox',
+                id: 'id1234',
             },
             mocks: {$t},
         });
@@ -41,6 +43,7 @@ describe('r-radio.vue', () => {
                     $invalid: true,
                     $dirty: false,
                 },
+                id: 'id1234',
             },
             mocks: {$t},
         });
