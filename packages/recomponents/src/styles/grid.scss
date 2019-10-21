@@ -3,7 +3,7 @@
 // This file contains all styles related to the grid system.
 // -----------------------------------------------------------------------------
 */
-.container {
+.r-container {
     box-sizing: border-box;
     margin-left: auto;
     margin-right: auto;
@@ -15,13 +15,13 @@
 }
 
 @media screen and (min-width: 1200px) {
-    .container {
+    .r-container {
         max-width: 1140px;
     }
 }
 
 @media screen and (max-width: 1099px) {
-    .container {
+    .r-container {
         padding-left: 20px;
         padding-left: 2rem;
         padding-right: 20px;
@@ -29,7 +29,7 @@
     }
 }
 
-.container-fluid {
+.r-container-fluid {
     box-sizing: border-box;
     margin-left: auto;
     margin-right: auto;
@@ -41,7 +41,7 @@
 }
 
 @media screen and (max-width: 1099px) {
-    .container-fluid {
+    .r-container-fluid {
         padding-left: 20px;
         padding-left: 2rem;
         padding-right: 20px;
@@ -49,7 +49,7 @@
     }
 }
 
-.grid {
+.r-grid {
     display: -webkit-box;
     display: -ms-flexbox;
     display: -webkit-flex;
@@ -66,19 +66,19 @@
 }
 
 @media screen and (max-width: 993px) {
-    .grid {
+    .r-grid {
         display: block;
     }
 }
 
-.grid.grid-unstackable {
+.r-grid.r-grid-unstackable {
     -webkit-flex-wrap: nowrap;
     -ms-flex-wrap: nowrap;
     flex-wrap: nowrap;
 }
 
 @media screen and (max-width: 1099px) {
-    .grid.grid-unstackable {
+    .r-grid.r-grid-unstackable {
         display: -webkit-box;
         display: -ms-flexbox;
         display: -webkit-flex;
@@ -86,12 +86,12 @@
     }
 }
 
-.grid + .grid {
+.r-grid + .r-grid {
     margin-top: 10px;
     margin-top: 1rem;
 }
 
-.grid > .grid-item {
+.r-grid > .r-grid-item {
     -webkit-box-flex: 1 0;
     -webkit-flex: 1 0;
     -ms-flex: 1 0;
@@ -101,22 +101,22 @@
 }
 
 @media screen and (max-width: 575px) {
-    .grid > .grid-item {
+    .r-grid > .r-grid-item {
         width: 100%;
     }
 }
 
-.grid > .grid-item.grid-item-compact {
+.r-grid > .r-grid-item.r-grid-item-compact {
     width: 0;
 }
 
 @media screen and (max-width: 767px) {
-    .grid > .grid-item.grid-item-compact {
+    .r-grid > .r-grid-item.r-grid-item-compact {
         width: 100%;
     }
 }
 
-.grid-content, .grid-fitted {
+.r-grid-content, .r-grid-fitted {
     display: -webkit-box;
     display: -ms-flexbox;
     display: -webkit-flex;
@@ -133,7 +133,7 @@
 }
 
 @media screen and (max-width: 1099px) {
-    .grid-content, .grid-fitted {
+    .r-grid-content, .r-grid-fitted {
         display: -webkit-box;
         display: -ms-flexbox;
         display: -webkit-flex;
@@ -142,19 +142,19 @@
 }
 
 @media screen and (max-width: 767px) {
-    .grid-content, .grid-fitted {
+    .r-grid-content, .r-grid-fitted {
         display: block;
     }
 }
 
-.grid-content.grid-unstackable, .grid-unstackable.grid-fitted {
+.r-grid-content.r-grid-unstackable, .r-grid-unstackable.r-grid-fitted {
     -webkit-flex-wrap: nowrap;
     -ms-flex-wrap: nowrap;
     flex-wrap: nowrap;
 }
 
 @media screen and (max-width: 1099px) {
-    .grid-content.grid-unstackable, .grid-unstackable.grid-fitted {
+    .r-grid-content.r-grid-unstackable, .r-grid-unstackable.r-grid-fitted {
         display: -webkit-box;
         display: -ms-flexbox;
         display: -webkit-flex;
@@ -162,12 +162,12 @@
     }
 }
 
-.grid-content + .grid-content, .grid-fitted + .grid-content, .grid-content + .grid-fitted, .grid-fitted + .grid-fitted {
+.r-grid-content + .r-grid-content, .r-grid-fitted + .r-grid-content, .r-grid-content + .r-grid-fitted, .r-grid-fitted + .r-grid-fitted {
     margin-top: 8px;
     margin-top: 0.8rem;
 }
 
-.grid-content > .grid-item, .grid-fitted > .grid-item {
+.r-grid-content > .r-grid-item, .r-grid-fitted > .r-grid-item {
     -webkit-box-flex: 1 0;
     -webkit-flex: 1 0;
     -ms-flex: 1 0;
@@ -176,13 +176,13 @@
 }
 
 @media screen and (max-width: 767px) {
-    .grid-content > .grid-item, .grid-fitted > .grid-item {
+    .r-grid-content > .r-grid-item, .r-grid-fitted > .r-grid-item {
         width: 100%;
     }
 }
 
 @media screen and (max-width: 767px) {
-    .grid-content.grid-unstackable > .grid-item, .grid-unstackable.grid-fitted > .grid-item {
+    .r-grid-content.r-grid-unstackable > .r-grid-item, .r-grid-unstackable.r-grid-fitted > .r-grid-item {
         width: auto;
         -webkit-box-flex: 1 0;
         -webkit-flex: 1 0;
@@ -191,18 +191,18 @@
     }
 }
 
-.grid-fitted {
+.r-grid-fitted {
     margin: 0;
 }
 
-.grid-fitted.grid-unstackable {
+.r-grid-fitted.r-grid-unstackable {
     -webkit-flex-wrap: nowrap;
     -ms-flex-wrap: nowrap;
     flex-wrap: nowrap;
 }
 
 @media screen and (max-width: 1099px) {
-    .grid-fitted.grid-unstackable {
+    .r-grid-fitted.r-grid-unstackable {
         display: -webkit-box;
         display: -ms-flexbox;
         display: -webkit-flex;
@@ -210,11 +210,11 @@
     }
 }
 
-.grid-fitted + .grid-content, .grid-fitted + .grid-fitted {
+.r-grid-fitted + .r-grid-content, .r-grid-fitted + .r-grid-fitted {
     margin-top: 0;
 }
 
-.grid-fitted > .grid-item {
+.r-grid-fitted > .r-grid-item {
     -webkit-box-flex: 1 0;
     -webkit-flex: 1 0;
     -ms-flex: 1 0;
@@ -223,13 +223,13 @@
 }
 
 @media screen and (max-width: 575px) {
-    .grid-fitted > .grid-item {
+    .r-grid-fitted > .r-grid-item {
         width: auto;
     }
 }
 
 @media screen and (max-width: 767px) {
-    .grid-fitted.grid-unstackable > .grid-item {
+    .r-grid-fitted.r-grid-unstackable > .r-grid-item {
         width: auto;
         -webkit-box-flex: 1 0;
         -webkit-flex: 1 0;
@@ -238,74 +238,74 @@
     }
 }
 
-.grid-item.grid-item-primary {
+.r-grid-item.r-grid-item-primary {
     -webkit-box-flex: 2 1 48rem;
     -webkit-flex: 2 1 48rem;
     -ms-flex: 2 1 48rem;
     flex: 2 1 48rem;
 }
 
-.grid-item.grid-item-secondary {
+.r-grid-item.r-grid-item-secondary {
     -webkit-box-flex: 1 0 24rem;
     -webkit-flex: 1 0 24rem;
     -ms-flex: 1 0 24rem;
     flex: 1 0 24rem;
 }
 
-.grid-item.grid-item-full {
+.r-grid-item.r-grid-item-full {
     -webkit-box-flex: 0 0 100%;
     -webkit-flex: 0 0 100%;
     -ms-flex: 0 0 100%;
     flex: 0 0 100%;
 }
 
-.grid-item.grid-item-half {
+.r-grid-item.r-grid-item-half {
     -webkit-box-flex: 0 0 50%;
     -webkit-flex: 0 0 50%;
     -ms-flex: 0 0 50%;
     flex: 0 0 50%;
 }
 
-.grid-item.grid-item-third {
+.r-grid-item.r-grid-item-third {
     -webkit-box-flex: 0 0 33.33%;
     -webkit-flex: 0 0 33.33%;
     -ms-flex: 0 0 33.33%;
     flex: 0 0 33.33%;
 }
 
-.grid-item.grid-item-quarter {
+.r-grid-item.r-grid-item-quarter {
     -webkit-box-flex: 0 0 25%;
     -webkit-flex: 0 0 25%;
     -ms-flex: 0 0 25%;
     flex: 0 0 25%;
 }
 
-.grid-item.grid-item-offset-half {
+.r-grid-item.r-grid-item-offset-half {
     margin-left: 50%;
 }
 
-.grid-item.grid-item-offset-third {
+.r-grid-item.r-grid-item-offset-third {
     margin-left: 33.33%;
 }
 
-.grid-item.grid-item-offset-quarter {
+.r-grid-item.r-grid-item-offset-quarter {
     margin-left: 25%;
 }
 
 @media screen and (max-width: 767px) {
-    .grid-item.grid-item-offset-half,
-    .grid-item.grid-item-offset-third,
-    .grid-item.grid-item-offset-quarter {
+    .r-grid-item.r-grid-item-offset-half,
+    .r-grid-item.r-grid-item-offset-third,
+    .r-grid-item.r-grid-item-offset-quarter {
         margin: 0;
     }
 }
 
-.grid-item-break-half {
+.r-grid-item-break-half {
     margin-right: 50%;
 }
 
 @media screen and (max-width: 767px) {
-    .grid-item-break-half {
+    .r-grid-item-break-half {
         margin-right: 0;
     }
 }

@@ -16,8 +16,8 @@
         </template>
         <template v-if="type === 'datetime'">
             <p v-if="label" class="stack-xs">{{label}}</p>
-            <div class="grid-fitted grid-unstackable align-items-center" :class="{'is-error': isInvalid}">
-                <div class="grid-item inline-s">
+            <div class="r-grid-fitted grid-unstackable align-items-center" :class="{'is-error': isInvalid}">
+                <div class="r-grid-item inline-s">
                     <r-calendar-manager
                         class="r-date-input"
                         type="calendar"
@@ -27,7 +27,7 @@
                         :available-dates="availableDates"
                     />
                 </div>
-                <div class="grid-item no-flex">
+                <div class="r-grid-item no-flex">
                     <r-select
                         :options="timeOptions.hours"
                         :value="selectedTime.hours"
@@ -36,10 +36,10 @@
                         @input="updateHours"
                         class="no-flex r-date-time-input"/>
                 </div>
-                <div class="grid-item no-flex">
+                <div class="r-grid-item no-flex">
                     <span class="r-date-time-divider">:</span>
                 </div>
-                <div class="grid-item no-flex">
+                <div class="r-grid-item no-flex">
                     <r-select
                         :options="timeOptions.minutes"
                         placeholder=""
@@ -54,8 +54,8 @@
         </template>
         <template v-if="type === 'time'">
             <p v-if="label" class="stack-xs">{{label}}</p>
-            <div class="grid-fitted grid-unstackable align-items-center">
-                <div class="grid-item no-flex">
+            <div class="r-grid-fitted grid-unstackable align-items-center">
+                <div class="r-grid-item no-flex">
                     <slot
                         :options="timeOptions.hours"
                         :value="selectedTime.hours"
@@ -71,10 +71,10 @@
                             class="no-flex r-date-time-input"/>
                     </slot>
                 </div>
-                <div class="grid-item no-flex">
+                <div class="r-grid-item no-flex">
                     <span class="r-date-time-divider">:</span>
                 </div>
-                <div class="grid-item no-flex">
+                <div class="r-grid-item no-flex">
                     <slot
                         :options="timeOptions.minutes"
                         :value="selectedTime.minutes"
