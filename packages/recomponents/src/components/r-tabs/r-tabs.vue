@@ -1,9 +1,10 @@
 <template>
     <div>
-        <ul class="r-tab" :class="[{'r-tab-divided': divided}, menuClass]">
-            <li v-for="(tab, index) in tabs" class="r-tab-item">
+        <div class="r-tab" :class="[{'r-tab-divided': divided}, menuClass]" role="tablist">
+            <div v-for="(tab, index) in tabs" class="r-tab-item" :key="index">
                 <a v-if="tab.to"
                    :to="tab.to"
+                   role="tab"
                    class="r-tab-link"
                    @click="selectTab(tab, index)"
                    :class="{'is-active': tab.isActive}">
@@ -11,11 +12,12 @@
                 </a>
                 <a v-else class="r-tab-link"
                    @click="selectTab(tab, index)"
+                   role="tab"
                    :class="{'is-active': tab.isActive}">
                     {{tab.name}}
                 </a>
-            </li>
-        </ul>
+            </div>
+        </div>
         <div class="r-tab-content" :class="contentClass">
             <slot></slot>
         </div>
@@ -57,12 +59,12 @@
             };
         },
         methods: {
-            selectTab({name, value}, index = null) {
+            selectTab({name}, index = null) {
                 this.tabs.forEach((tab, i) => {
                     tab.isActive = (index === i);
                 });
                 if (index !== null) {
-                    this.$emit('tab-selected', {name, value, index});
+                    this.$emit('tab-selected', {name, index});
                 }
             },
             getRouteTab() {
@@ -73,7 +75,6 @@
                 // current route full path
                 const currentPath = this.$route && this.$route.fullPath;
 
-                // get active route tab
                 return routableTabs
                     .find(tab => this.$router
                         && this.$router.resolve(tab.to).route.fullPath

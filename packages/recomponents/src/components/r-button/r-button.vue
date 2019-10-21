@@ -1,6 +1,7 @@
 <template>
     <router-link
         v-if="!!push"
+        role="button"
         class="r-component r-button"
         :class="classes"
         :to="disabled || loading ? '#' : push"
@@ -10,6 +11,7 @@
         <slot>Link</slot>
     </router-link>
     <a v-else-if="!!$attrs.href"
+       role="button"
        class="r-component r-button"
        :class="classes"
        :href="link"
@@ -19,6 +21,7 @@
         <slot>Link</slot>
     </a>
     <button v-else
+            role="button"
             class="r-component r-button"
             :class="classes"
             :disabled="disabled || loading"

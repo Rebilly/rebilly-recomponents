@@ -22,4 +22,18 @@ describe('r-loader.vue', () => {
 
         expect(wrapper).toMatchSnapshot();
     });
+
+    it('should trigger load and error events', async () => {
+        const wrapper = shallowMount(RImg, {
+            propsData: {
+                src: 'https://www.rebilly.com/wp-content/uploads/2019/01/new_features@2x-319x150.png',
+            },
+        });
+
+        wrapper.vm.onload();
+        wrapper.vm.onerror();
+
+        expect(wrapper.emitted().onload).toBeTruthy();
+        expect(wrapper.emitted().error).toBeTruthy();
+    });
 });

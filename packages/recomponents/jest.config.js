@@ -2,13 +2,13 @@ module.exports = {
     moduleFileExtensions: [
         'js',
         'jsx',
-        'json',
         'vue',
+        'json',
     ],
     transform: {
         '^.+\\.vue$': 'vue-jest',
-        '.+\\.(css|styl|less|sass|scss|svg|png|jpg|ttf|woff|woff2)$': 'jest-transform-stub',
         '^.+\\.jsx?$': 'babel-jest',
+        '.+\\.(css|styl|less|sass|scss|svg|png|jpg|ttf|woff|woff2)$': 'jest-transform-stub',
     },
     transformIgnorePatterns: [
         '/node_modules/',
@@ -20,17 +20,17 @@ module.exports = {
         'jest-serializer-vue',
     ],
     testMatch: [
-        '**/*.spec.(js)|**/__tests__/*.(js|jsx|ts|tsx)',
+        '**/r-*.spec.(js)|**/__tests__/*.(js|jsx|ts|tsx)',
     ],
     testURL: 'http://localhost/',
     watchPlugins: [
         'jest-watch-typeahead/filename',
         'jest-watch-typeahead/testname',
     ],
-    collectCoverage: false,
+    collectCoverage: true,
     collectCoverageFrom: [
-        'src/components/**/*.{js,vue}',
-        'src/directives/**/*.{js,vue}',
+        'src/components/**/r-*.{js,vue}',
+        'src/directives/**/r-*.{js,vue}',
         '!src/**/*.story.js',
         '!src/index.js',
     ],

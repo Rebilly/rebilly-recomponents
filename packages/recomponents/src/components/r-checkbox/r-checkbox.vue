@@ -1,5 +1,5 @@
 <template>
-    <div class="r-checkbox" :class="{'is-error': isInvalid}">
+    <div class="r-checkbox" :class="{'is-error': isInvalid}" role="checkbox" :aria-checked="isChecked">
         <label class="r-field-label r-field-label-toggle" :class="{'is-disabled': disabled}" :for="id">
             <slot name="label">{{ label || $t('label') }}</slot>
         </label>

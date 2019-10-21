@@ -18,4 +18,33 @@ describe('r-input.vue', () => {
         });
         expect(wrapper.find('input').attributes().disabled).not.toBe(undefined);
     });
+
+    it('should handle autofocus', () => {
+        const wrapper = mount(RInput, {
+            propsData: {
+                autoFocus: true,
+                attachToDocument: true,
+            },
+        });
+
+        expect(wrapper.find('input').element).toBe(document.activeElement);
+    });
+
+    it('should trigger all events', () => {
+        const wrapper = mount(RInput, {
+            propsData: {},
+        });
+
+        wrapper.vm.update({target: {}});
+        wrapper.vm.keySubmit();
+        wrapper.vm.keyPress();
+        wrapper.vm.keyDown();
+        wrapper.vm.focus();
+        wrapper.vm.click();
+
+        expect(wrapper.emitted()['key-submit']).toBeTruthy();
+        expect(wrapper.emitted()['key-press']).toBeTruthy();
+        expect(wrapper.emitted()['key-down']).toBeTruthy();
+        expect(wrapper.emitted().input).toBeTruthy();
+    });
 });

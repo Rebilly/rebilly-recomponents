@@ -21,7 +21,7 @@ describe('r-tile.vue', () => {
                 title: '<h2>This is a title</h2>',
             },
         });
-        expect(wrapper.find('.r-tile__title').is('.r-tile__title')).toBe(true);
+        expect(wrapper.find('.r-tile__title').exists()).toBeTruthy();
     });
 
     it('should render title actions', () => {
@@ -31,7 +31,7 @@ describe('r-tile.vue', () => {
                 titleActions: '<a>Link</a>',
             },
         });
-        expect(wrapper.find('.r-tile__title--actions').is('.r-tile__title--actions')).toBe(true);
+        expect(wrapper.find('.r-tile__title--actions').exists()).toBeTruthy();
     });
 
     it('should not render title actions when title slot is not present', () => {
@@ -49,7 +49,7 @@ describe('r-tile.vue', () => {
                 contents: '<p>Content</p>',
             },
         });
-        expect(wrapper.find('.r-tile__content').is('.r-tile__content')).toBe(true);
+        expect(wrapper.find('.r-tile__content').exists()).toBeTruthy();
     });
 
     it('should render actions', () => {
@@ -58,6 +58,12 @@ describe('r-tile.vue', () => {
                 actions: '<a>Link</a>',
             },
         });
-        expect(wrapper.find('.r-tile__actions').is('.r-tile__actions')).toBe(true);
+        expect(wrapper.find('.r-tile__actions').exists()).toBeTruthy();
+    });
+
+    it('should not contain any props', () => {
+        const {props} = RTile;
+
+        expect(props).toBeUndefined();
     });
 });

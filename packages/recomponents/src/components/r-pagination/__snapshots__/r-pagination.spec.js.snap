@@ -5,12 +5,12 @@ exports[`r-pagination.vue should render Wrapper and match snapshot 1`] = `<r-pag
 exports[`r-pagination.vue should render via SSR and match snapshot 1`] = `
 <div pagination="[object Object]">
   <div class="r-pagination-control">
-    <div class="r-pagination-control-wrapper"><button disabled="disabled" class="r-component r-button r-pagination-control-button r-button--size-regular r-button--type-default">
+    <div class="r-pagination-control-wrapper"><button role="button" disabled="disabled" class="r-component r-button r-pagination-control-button r-button--size-regular r-button--type-default">
         <!----> <svg class="r-icon r-icon-20">
           <use xlink:href="#icon-arrow-left" xmlns:xlink="http://www.w3.org/1999/xlink"></use>
         </svg>
         Prev
-      </button> <button title="" class="r-component r-button r-pagination-control-button r-button--size-regular r-button--type-default">
+      </button> <button role="button" title="" class="r-component r-button r-pagination-control-button r-button--size-regular r-button--type-default">
         <!---->
         Next
         <svg class="r-icon r-icon-20">

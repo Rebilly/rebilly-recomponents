@@ -47,4 +47,18 @@ describe('r-checkbox.vue', () => {
         });
         expect(wrapper.find('input').attributes().disabled).not.toBe(undefined);
     });
+
+    it('should handle change event', () => {
+        const wrapper = mount(RCheckbox, {
+            propsData: {
+                name: 'checkbox',
+                label: 'Label',
+                selected: [false, true],
+            },
+            mocks: {$t},
+        });
+
+        wrapper.find('.r-field-checkbox').trigger('change');
+        expect(wrapper.emitted().input).toBeTruthy();
+    });
 });

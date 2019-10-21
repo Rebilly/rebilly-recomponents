@@ -1,5 +1,5 @@
 <template>
-    <div class="r-field" :class="styles">
+    <div class="r-field" :class="styles" role="radio" :aria-checked="isChecked">
         <label class="r-field-label r-field-label-toggle" :class="labelStyles" :for="id">
             <template v-if="label">
                 {{label}}

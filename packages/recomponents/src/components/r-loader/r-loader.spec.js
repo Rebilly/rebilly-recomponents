@@ -35,4 +35,12 @@ describe('r-loader.vue', () => {
         expect(wrapper.classes()).toContain('r-loader--loading');
         expect(wrapper.classes()).toContain('r-loader--fullscreen');
     });
+
+    it('should match all incoming props types', () => {
+        const {show, loading, fullscreen} = RLoader.props;
+
+        expect(show.type).toBe(Boolean);
+        expect(loading.type).toBe(Boolean);
+        expect(fullscreen.type).toBe(Boolean);
+    });
 });
