@@ -19,7 +19,7 @@
     "explore": "gridsome explore"
   },
   "dependencies": {
-    "@rebilly/recomponents": "^1.0.2",
+    "@rebilly/recomponents": "^1.5.1",
     "core-js": "^2.6.5",
     "gridsome": "^0.6.0"
   }

@@ -22,6 +22,7 @@ import RTab from './components/r-tabs/r-tab.vue';
 import RTabs from './components/r-tabs/r-tabs.vue';
 import RSelect from './components/r-select/r-select.vue';
 import RTile from './components/r-tile/r-tile.vue';
+import RDateInput from './components/r-date-input/r-date-input.vue';
 
 const components = {
     RBadge,
@@ -40,6 +41,7 @@ const components = {
     RTab,
     RTabs,
     RTile,
+    RDateInput,
 };
 
 const directives = {
@@ -85,6 +87,7 @@ export {
     RTab,
     RTabs,
     RTile,
+    RDateInput,
 };
 
 export default {

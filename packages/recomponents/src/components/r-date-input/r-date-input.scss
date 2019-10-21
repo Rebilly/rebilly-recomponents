@@ -1,0 +1,178 @@
+/* style from _v-calendar.scss*/
+// -----------------------------------------------------------------------------
+// This file contains all styles related to the v-calendar plugin.
+// -----------------------------------------------------------------------------
+
+.c-nav {
+    background: #FFFFFF !important;
+    height: 100% !important;
+    padding: 0 !important;
+    box-shadow: none !important;
+    border-radius: var(--border-radius) !important;
+}
+
+.c-nav .c-header {
+    background: #FFFFFF !important;
+    padding: 8px 4px !important;
+    border-radius: var(--border-radius) var(--border-radius) 0 0 !important;
+}
+
+.c-nav .c-header .c-title {
+    font-family: var(--secondary-font-stack) !important;
+    font-size: var(--font-size-h3) !important;
+    text-transform: uppercase !important;
+    font-weight: var(--font-weight-semi-bold) !important;
+    line-height: var(--input-line-height) !important;
+}
+
+.c-nav .c-table {
+    margin-bottom: 0 !important;
+    background: transparent !important;
+
+    & td {
+        border: 1px solid var(--gray-color-light) !important;
+
+        &:first-child {
+            border-left: 0 !important;
+        }
+
+        &:last-child {
+            border-right: 0 !important;
+        }
+    }
+
+    & tr {
+        &:first-child td {
+            border-top: 0 !important;
+        }
+
+        &:last-child td {
+            border-bottom: 0 !important;
+        }
+    }
+}
+
+.c-nav .c-table-cell {
+    font-family: var(--primary-font-stack) !important;
+    font-size: 14px !important;
+    padding: 0px !important;
+    box-shadow: none !important;
+
+    &:hover {
+        background: var(--background-color);
+    }
+}
+
+.c-nav .c-active {
+    background: var(--gray-color-light) !important;
+    box-shadow: none !important;
+}
+
+.c-arrow {
+    width: 20px !important;
+    height: 20px !important;
+}
+
+.c-day-background {
+    height: 32px !important;
+    border: none !important;
+    border-radius: 0 !important;
+}
+
+.c-day-content {
+    color: var(--text-color) !important;
+    transition: all 0.05s ease !important;
+}
+
+.c-day-slide-right-translate-enter .c-day-background,
+.c-day-slide-left-translate-enter .c-day-background,
+.c-day-scale-enter .c-day-background {
+    width: 32px !important;
+    background: #DCE7FE !important;
+    border-radius: 50% !important;
+}
+
+//Calendar
+.calendar .popover-container {
+    display: block;
+}
+
+.calendar > .popover-container::after {
+    content: '';
+    width: 32px;
+    height: 32px;
+    background: url('/static/icons/calendar.svg') center no-repeat #FFFFFF;
+    position: absolute;
+    top: var(--space-xxs);
+    right: var(--space-xxs);
+    box-shadow: -16px 0 16px -8px #FFFFFF;
+}
+
+.is-error > .calendar > .popover-container::after {
+    background-color: rgba(var(--input-is-error-background), 0.3);
+    box-shadow: none;
+}
+
+.calendar .popover-container .c-pane-container {
+    box-shadow: 0 0 0 1px rgba(var(--text-muted), 0.09), 0 7px 14px 0 rgba(var(--text-muted), 0.15), 0 3px 6px 0 rgba(var(--text-muted), 0.07);
+}
+
+.popover-origin .popover-content-wrapper .popover-content::after {
+    display: none !important;
+}
+
+.is-error .calendar input {
+    box-shadow: 0 0 0 1px var(--negative-color-dark) inset;
+    background: rgba(var(--input-is-error-background), 0.6);
+}
+
+.is-error .calendar > .popover-container::after {
+    background-color: transparent;
+    box-shadow: none;
+}
+
+.calendar input {
+    min-width: 70px;
+    width: 100%;
+    height: auto;
+    vertical-align: baseline;
+    padding: var(--space-s) var(--space-m);
+    appearance: none;
+    border-radius: var(--border-radius);
+    display: block;
+    box-sizing: border-box;
+    margin: 0;
+    border-style: inset;
+    border: none;
+    box-shadow: 0 0 0 1px #C4CED8 inset, 0 1px 2px 0 rgba(#A1B2C1, 0.5) inset, 0 0 0 0 var(--primary-color);
+    text-transform: initial;
+    letter-spacing: initial;
+    font-family: var(--primary-font-stack);
+    font-weight: var(--font-weight-regular);
+    font-size: var(--input-font-size);
+    line-height: var(--input-line-height);
+    transition: box-shadow 0.05s ease;
+
+    &:focus {
+        box-shadow: 0 0 0 1px var(--primary-color) inset, 0 0 0 0 rgba(#A1B2C1, 0.5) inset, 0 0 0 1px var(--primary-color);
+    }
+}
+
+.popover-origin ~ input {
+    box-shadow: 0 0 0 1px var(--primary-color) inset, 0 0 0 0 rgba(#A1B2C1, 0.5) inset, 0 0 0 1px var(--primary-color);
+}
+
+/* style from _v-date-input.scss*/
+.r-date-input {
+    min-width: 130px;
+}
+
+.r-date-time-input {
+    width: 70px !important;
+}
+
+.r-date-time-divider {
+    padding: var(--space-s) var(--space-xs);
+    font-family: var(--secondary-font-stack);
+    font-weight: var(--font-weight-bold);
+}
