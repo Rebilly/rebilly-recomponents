@@ -3,6 +3,7 @@ import {action} from '@storybook/addon-actions';
 import {boolean, select, text} from '@storybook/addon-knobs';
 import StoryRouter from 'storybook-vue-router';
 import markdown from './r-button.md';
+import markdownGroup from './r-button-group.md';
 
 storiesOf('Components/Button', module)
     .addDecorator(StoryRouter())
@@ -76,5 +77,5 @@ storiesOf('Components/Button', module)
                         <r-button>Four</r-button>
                     </r-button-group>`,
     }), {
-        notes: {markdown},
+        notes: {markdown: markdownGroup},
     });
