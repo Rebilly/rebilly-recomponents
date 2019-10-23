@@ -54,6 +54,10 @@
                 type: Boolean,
                 default: false,
             },
+            active: {
+                type: Boolean,
+                default: false,
+            },
             fluid: {
                 type: Boolean,
                 default: false,
@@ -73,6 +77,7 @@
                     [`r-button--size-${this.size}`]: !!this.size,
                     [`r-button--type-${this.type}`]: !!this.type,
                     'r-button--fluid': !!this.fluid,
+                    'is-active': !!this.active,
                 };
             },
             title() {
