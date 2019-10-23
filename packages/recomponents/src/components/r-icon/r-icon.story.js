@@ -6,17 +6,19 @@ import markdown from './r-icon.md';
 storiesOf('Components', module)
     .add('Icon', () => ({
         template: `
-            <r-icon
-                :icon="icon"
-                :stopPropagation="stopPropagation"
-            ></r-icon>
+            <div style="background: white;height: 100px;">
+                <r-icon
+                    :icon="icon"
+                    :stopPropagation="stopPropagation"
+                    :color="color"/>
+            </div> 
         `,
         methods: {
             click: action('click'),
         },
         props: {
             icon: {
-                default: select('Icon', {
+                default: select('icon', {
                     dashboard: 'dashboard',
                     lists: 'lists',
                     automation: 'automation',
@@ -102,6 +104,29 @@ storiesOf('Components', module)
             },
             stopPropagation: {
                 default: boolean('stopPropagation', false),
+            },
+            color: {
+                default: select('color', {
+                    '': null,
+                    brand: 'brand',
+                    text: 'text',
+                    muted: 'muted',
+                    gray: 'gray',
+                    'light-gray': 'light-gray',
+                    'faint-gray': 'faint-gray',
+                    blue: 'blue',
+                    'light-blue': 'light-blue',
+                    yellow: 'yellow',
+                    'light-yellow': 'light-yellow',
+                    red: 'red',
+                    'light-red': 'light-red',
+                    green: 'green',
+                    'light-green': 'light-green',
+                    accent: 'accent',
+                    background: 'background',
+                    'light-background': 'light-background',
+                    'dark-background': 'dark-background',
+                }, null),
             },
         },
     }), {
