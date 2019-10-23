@@ -1,7 +1,7 @@
 <template>
-    <a v-if="!!$attrs.href"
+    <a v-if="isLink"
        role="button"
-       class="r-component r-button"
+       class="r-button"
        :class="classes"
        :href="link"
        :disabled="disabled || loading"
@@ -11,7 +11,7 @@
     </a>
     <button v-else
             role="button"
-            class="r-component r-button"
+            class="r-button"
             :class="classes"
             :disabled="disabled || loading"
             v-on="$listeners"
@@ -57,6 +57,9 @@
             },
         },
         computed: {
+            isLink() {
+                return !!this.$attrs.href && this.type === 'link';
+            },
             classes() {
                 return {
                     [`r-button--size-${this.size}`]: !!this.size,

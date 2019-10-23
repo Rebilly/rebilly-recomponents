@@ -35,6 +35,9 @@ storiesOf('Components/Button', module)
             fluid: {
                 default: boolean('Fluid', false),
             },
+            href: {
+                default: text('href', 'https://google.com/'),
+            },
         },
         methods: {
             click: action('click'),
@@ -47,6 +50,7 @@ storiesOf('Components/Button', module)
                 :fluid="fluid"
                 :disabled="disabled"
                 :loading="loading"
+                :href="href" 
                 @click="click"
                 @focus="focus"
                 @blur="blur"
@@ -71,59 +75,6 @@ storiesOf('Components/Button', module)
                         <r-button :active="active">Three</r-button>
                         <r-button>Four</r-button>
                     </r-button-group>`,
-    }), {
-        notes: {markdown},
-    })
-    .add('Button Link with external link', () => ({
-        props: {
-            size: {
-                default: select('Size', {
-                    Small: 'small',
-                    Regular: 'regular',
-                    Large: 'large',
-                }, 'regular'),
-            },
-            type: {
-                default: select('Type', {
-                    Default: 'default',
-                    Primary: 'primary',
-                    Danger: 'danger',
-                    Link: 'link',
-                }, 'primary'),
-            },
-            text: {
-                default: text('Text', 'Click me'),
-            },
-            disabled: {
-                default: boolean('Disabled', false),
-            },
-            loading: {
-                default: boolean('Loading', false),
-            },
-            fluid: {
-                default: boolean('Fluid', false),
-            },
-            link: {
-                default: text('Link', 'https://google.com/'),
-            },
-        },
-        methods: {
-            click: action('click'),
-            focus: action('focus'),
-            blur: action('blur'),
-        },
-        template: `<r-button
-                    :size="size"
-                    :type="type"
-                    :disabled="disabled"
-                    :href="link"
-                    :fluid="fluid"
-                    @click="click"
-                    @focus="focus"
-                    @blur="blur"
-                    >
-                    {{text}}
-                </r-button>`,
     }), {
         notes: {markdown},
     });
