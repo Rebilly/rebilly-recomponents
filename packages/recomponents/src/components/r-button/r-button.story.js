@@ -65,11 +65,6 @@ storiesOf('Components/Button', module)
                 default: boolean('fluid', false),
             },
         },
-        methods: {
-            click: action('click'),
-            focus: action('focus'),
-            blur: action('blur'),
-        },
         template: `<r-button-group :fluid="fluid">
                         <r-button>One</r-button>
                         <r-button>Two</r-button>
@@ -103,7 +98,7 @@ storiesOf('Components/Button', module)
                 default: boolean('Disabled', false),
             },
             loading: {
-                default: boolean('Disabled', false),
+                default: boolean('Loading', false),
             },
             fluid: {
                 default: boolean('Fluid', false),
@@ -123,59 +118,6 @@ storiesOf('Components/Button', module)
                     :disabled="disabled"
                     :href="link"
                     :fluid="fluid"
-                    @click="click"
-                    @focus="focus"
-                    @blur="blur"
-                    >
-                    {{text}}
-                </r-button>`,
-    }), {
-        notes: {markdown},
-    })
-    .add('Button Link with routing', () => ({
-        props: {
-            size: {
-                default: select('Size', {
-                    Small: 'small',
-                    Regular: 'regular',
-                    Large: 'large',
-                }, 'regular'),
-            },
-            type: {
-                default: select('Type', {
-                    Default: 'default',
-                    Primary: 'primary',
-                    Danger: 'danger',
-                    Link: 'link',
-                }, 'primary'),
-            },
-            text: {
-                default: text('Text', 'Click me'),
-            },
-            disabled: {
-                default: boolean('Disabled', false),
-            },
-            loading: {
-                default: boolean('Disabled', false),
-            },
-            fluid: {
-                default: boolean('Fluid', false),
-            },
-            push: {
-                default: text('Push', 'test'),
-            },
-        },
-        methods: {
-            click: action('click'),
-            focus: action('focus'),
-            blur: action('blur'),
-        },
-        template: `<r-button
-                    :size="size"
-                    :type="type"
-                    :disabled="disabled"
-                    :fluid="fluid"
-                    :push="{path: push}"
                     @click="click"
                     @focus="focus"
                     @blur="blur"
