@@ -1,5 +1,5 @@
 <template>
-    <div class="r-button-group" :class="classes">
+    <div class="r-button-group" :class="classes" role="group">
         <slot>Apply</slot>
     </div>
 </template>
