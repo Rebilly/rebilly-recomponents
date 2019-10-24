@@ -6,7 +6,7 @@ storiesOf('Components/Button', module)
     .add('Button group', () => ({
         data: () => ({
             list: ['One', 'Two', 'Three', 'Four', 'Five'],
-            current: 1,
+            current: 0,
         }),
         props: {
             active: {
