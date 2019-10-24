@@ -1,18 +1,7 @@
 <template>
-    <router-link
-        v-if="!!push"
-        role="button"
-        class="r-component r-button"
-        :class="classes"
-        :to="disabled || loading ? '#' : push"
-        :disabled="disabled"
-        :target="$attrs.href ? '_target' : $attrs.target"
-        :event="disabled || loading ? '' : 'click'">
-        <slot>Link</slot>
-    </router-link>
-    <a v-else-if="!!$attrs.href"
+    <a v-if="isLink"
        role="button"
-       class="r-component r-button"
+       class="r-button"
        :class="classes"
        :href="link"
        :disabled="disabled || loading"
@@ -22,7 +11,7 @@
     </a>
     <button v-else
             role="button"
-            class="r-component r-button"
+            class="r-button"
             :class="classes"
             :disabled="disabled || loading"
             v-on="$listeners"
@@ -54,6 +43,10 @@
                 type: Boolean,
                 default: false,
             },
+            active: {
+                type: Boolean,
+                default: false,
+            },
             fluid: {
                 type: Boolean,
                 default: false,
@@ -62,17 +55,17 @@
                 type: Boolean,
                 default: false,
             },
-            push: {
-                type: [Object, String],
-                default: null,
-            },
         },
         computed: {
+            isLink() {
+                return !!this.$attrs.href && this.type === 'link';
+            },
             classes() {
                 return {
                     [`r-button--size-${this.size}`]: !!this.size,
                     [`r-button--type-${this.type}`]: !!this.type,
                     'r-button--fluid': !!this.fluid,
+                    'is-active': !!this.active,
                 };
             },
             title() {

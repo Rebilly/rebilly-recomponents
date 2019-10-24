@@ -35,6 +35,9 @@ storiesOf('Components/Button', module)
             fluid: {
                 default: boolean('Fluid', false),
             },
+            href: {
+                default: text('href', 'https://google.com/'),
+            },
         },
         methods: {
             click: action('click'),
@@ -47,118 +50,13 @@ storiesOf('Components/Button', module)
                 :fluid="fluid"
                 :disabled="disabled"
                 :loading="loading"
+                :href="href" 
                 @click="click"
                 @focus="focus"
                 @blur="blur"
             >
                 {{text}}
             </r-button>`,
-    }), {
-        notes: {markdown},
-    })
-    .add('Button Link with external link', () => ({
-        props: {
-            size: {
-                default: select('Size', {
-                    Small: 'small',
-                    Regular: 'regular',
-                    Large: 'large',
-                }, 'regular'),
-            },
-            type: {
-                default: select('Type', {
-                    Default: 'default',
-                    Primary: 'primary',
-                    Danger: 'danger',
-                    Link: 'link',
-                }, 'primary'),
-            },
-            text: {
-                default: text('Text', 'Click me'),
-            },
-            disabled: {
-                default: boolean('Disabled', false),
-            },
-            loading: {
-                default: boolean('Disabled', false),
-            },
-            fluid: {
-                default: boolean('Fluid', false),
-            },
-            link: {
-                default: text('Link', 'https://google.com/'),
-            },
-        },
-        methods: {
-            click: action('click'),
-            focus: action('focus'),
-            blur: action('blur'),
-        },
-        template: `<r-button
-                    :size="size"
-                    :type="type"
-                    :disabled="disabled"
-                    :href="link"
-                    :fluid="fluid"
-                    @click="click"
-                    @focus="focus"
-                    @blur="blur"
-                    >
-                    {{text}}
-                </r-button>`,
-    }), {
-        notes: {markdown},
-    })
-    .add('Button Link with routing', () => ({
-        props: {
-            size: {
-                default: select('Size', {
-                    Small: 'small',
-                    Regular: 'regular',
-                    Large: 'large',
-                }, 'regular'),
-            },
-            type: {
-                default: select('Type', {
-                    Default: 'default',
-                    Primary: 'primary',
-                    Danger: 'danger',
-                    Link: 'link',
-                }, 'primary'),
-            },
-            text: {
-                default: text('Text', 'Click me'),
-            },
-            disabled: {
-                default: boolean('Disabled', false),
-            },
-            loading: {
-                default: boolean('Disabled', false),
-            },
-            fluid: {
-                default: boolean('Fluid', false),
-            },
-            push: {
-                default: text('Push', 'test'),
-            },
-        },
-        methods: {
-            click: action('click'),
-            focus: action('focus'),
-            blur: action('blur'),
-        },
-        template: `<r-button
-                    :size="size"
-                    :type="type"
-                    :disabled="disabled"
-                    :fluid="fluid"
-                    :push="{path: push}"
-                    @click="click"
-                    @focus="focus"
-                    @blur="blur"
-                    >
-                    {{text}}
-                </r-button>`,
     }), {
         notes: {markdown},
     });

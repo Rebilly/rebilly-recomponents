@@ -27,6 +27,14 @@
       <div class="PaymentRow">
         <r-date-input v-model="date" type="date" />
       </div>
+      <div class="PaymentRow">
+        <r-button-group :fluid="true">
+          <r-button>One</r-button>
+          <r-button>Two</r-button>
+          <r-button :active="true">Three</r-button>
+          <r-button>Four</r-button>
+        </r-button-group>
+      </div>
     </template>
     <template v-slot:secondary>
       <r-checkbox
