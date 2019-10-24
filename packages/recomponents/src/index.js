@@ -8,7 +8,7 @@ import './styles/theme.scss';
 
 import RBadge from './components/r-badge/r-badge.vue';
 import RButton from './components/r-button/r-button.vue';
-import RButtonGroup from './components/r-button/r-button-group.vue';
+import RButtonGroup from './components/r-button-group/r-button-group.vue';
 import RCheckbox from './components/r-checkbox/r-checkbox.vue';
 import RPopper from './components/r-popper/r-popper.vue';
 import RIcon from './components/r-icon/r-icon.vue';

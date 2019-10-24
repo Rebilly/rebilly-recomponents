@@ -24,5 +24,5 @@
 </script>
 
 <style lang="scss">
-    @import './r-button.scss';
+    @import '../r-button/r-button.scss';
 </style>
