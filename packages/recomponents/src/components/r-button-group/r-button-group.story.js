@@ -9,9 +9,6 @@ storiesOf('Components/Button', module)
             current: 0,
         }),
         props: {
-            active: {
-                default: boolean('active', false),
-            },
             fluid: {
                 default: boolean('fluid', false),
             },
