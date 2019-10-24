@@ -50,7 +50,7 @@
                 const range = [];
 
                 start = start > 0 ? start : 1;
-                for (let i = start; i <= end; i + 1) {
+                for (let i = start; i <= end; i++) {
                     range.push(i);
                 }
 
