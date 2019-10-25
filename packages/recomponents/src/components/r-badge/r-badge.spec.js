@@ -6,7 +6,7 @@ describe('r-badge.vue', () => {
     it('should render Wrapper and match snapshot', async () => {
         const wrapper = mount(RBadge, {
             slots: {
-                default: '<strong>default message</strong>',
+                default: 'text',
             },
         });
 
@@ -16,7 +16,7 @@ describe('r-badge.vue', () => {
     it('should render via SSR and match snapshot', async () => {
         const wrapper = renderToString(RBadge, {
             slots: {
-                default: '<strong>default message</strong>',
+                default: 'text',
             },
         });
 

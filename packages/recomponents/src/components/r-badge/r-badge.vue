@@ -1,21 +1,23 @@
 <template>
     <span class="r-component r-badge" :class="classes">
-        <slot name="text">Badge</slot>
-        <slot name="actions">
-            <template v-if="type === 'tag'">
-                <i aria-hidden="true"
-                   tabindex="1"
-                   @keypress.enter.prevent="$emit('close')"
-                   @mousedown.prevent="$emit('close')"
-                   class="r-badge--icon-close"></i>
-            </template>
-        </slot>
+        <slot>Badge</slot>
+        <r-icon
+            v-if="close"
+            aria-hidden="true"
+            class="r-icon-gray r-badge-icon"
+            @click="$emit('close')"
+            @keypress.enter.prevent="$emit('close')"
+            @mousedown.prevent="$emit('close')"
+            icon="close-s"/>
     </span>
 </template>
 
 <script>
+    import rIcon from '../r-icon/r-icon.vue';
+
     export default {
         name: 'RBadge',
+        components: {rIcon},
         props: {
             type: {
                 type: String,
@@ -27,12 +29,15 @@
                     'warning',
                     'info',
                     'tag',
+                    'tag-secondary'
                 ].includes(val),
             },
+            close: Boolean,
         },
         computed: {
             classes() {
                 return {
+                    'has-icon-close': !!this.close,
                     [`r-badge--type-${this.type}`]: !!this.type,
                 };
             },

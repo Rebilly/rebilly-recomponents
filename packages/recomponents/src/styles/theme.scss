@@ -92,7 +92,7 @@ body, .article {
     --mono-color-900: #313232;
     --mono-color-1000: #000000;
 
-    --text-color: var(--secondary-color);
+    --text-color: #0D2B3E;
     --text-color-light: var(--mono-color-0);
     --text-muted: var(--mono-color-800);
 
@@ -188,11 +188,11 @@ body, .article {
     --badge-tag-background: var(--gray-color-light);
     --badge-tag-color: var(--mono-color-700);
     --badge-tag-border-radius: var(--border-radius-xxs);
-    --badge-icon-color: var(--mono-color-800);
     --badge-tag-font-weight: var(--font-weight-bold);
-    --badge-tag-icon-transition: all var(--timing-100) var(--animation-ease);
-    --badge-tag-icon-margin-left: var(--space-xs);
-    --badge-tag-icon-border-radius: none;
+    --badge-tag-secondary-background: var(--mono-color-0);
+    --badge-tag-secondary-color: var(--mono-color-700);
+    --badge-tag-secondary-border-radius: var(--border-radius-xxs);
+    --badge-tag-secondary-box-shadow: 0 0 0 1px var(--gray-color);
 
     // Buttons
     // ------------------------------------------------
