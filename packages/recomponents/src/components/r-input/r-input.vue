@@ -72,10 +72,10 @@
                     :name="name"
                     :maxlength="maxLength"
                     :autocomplete="autocompleteFlag"/>
-                <r-icon :icon="rightIcon" v-if="rightIcon"></r-icon>
+                <r-icon :icon="rightIcon" v-if="rightIcon" :class="{'cursor-pointer': rightIconClickPointer}" @click.stop="$emit('right-icon-click')"></r-icon>
             </div>
             <slot name="right-button"/>
-            <div class="r-field-addon no-flex text-muted" v-if="rightLabel" :class="{'cursor-pointer': rightIconClickPointer}" @click.stop="$emit('right-icon-click')">{{rightLabel}}</div>
+            <div class="r-field-addon no-flex text-muted" v-if="rightLabel">{{rightLabel}}</div>
         </div>
         <span class="r-field-caption" v-if="helpText || maxLength">{{helpText}} <span v-if="maxLength">{{charactersLeft}}</span></span>
     </div>
