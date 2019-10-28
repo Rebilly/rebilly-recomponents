@@ -6,7 +6,7 @@ describe('r-badge.vue', () => {
     it('should render Wrapper and match snapshot', async () => {
         const wrapper = mount(RBadge, {
             slots: {
-                default: '<strong>default message</strong>',
+                default: 'text',
             },
         });
 
@@ -16,7 +16,7 @@ describe('r-badge.vue', () => {
     it('should render via SSR and match snapshot', async () => {
         const wrapper = renderToString(RBadge, {
             slots: {
-                default: '<strong>default message</strong>',
+                default: 'text',
             },
         });
 
@@ -32,6 +32,7 @@ describe('r-badge.vue', () => {
         expect(type.validator('warning')).toBeTruthy();
         expect(type.validator('info')).toBeTruthy();
         expect(type.validator('tag')).toBeTruthy();
+        expect(type.validator('tag-secondary')).toBeTruthy();
         expect(type.validator('impossible')).toBeFalsy();
     });
 
@@ -45,6 +46,6 @@ describe('r-badge.vue', () => {
             },
         });
 
-        expect(wrapper.classes()).toContain('r-badge--type-warning');
+        expect(wrapper.classes()).toContain('r-badge-warning');
     });
 });

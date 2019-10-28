@@ -1,5 +1,5 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`r-badge.vue should render Wrapper and match snapshot 1`] = `<span class="r-component r-badge r-badge--type-default">Badge <!----></span>`;
+exports[`r-badge.vue should render Wrapper and match snapshot 1`] = `<span class="r-component r-badge r-badge-default">text <!----></span>`;
 
-exports[`r-badge.vue should render via SSR and match snapshot 1`] = `<span class="r-component r-badge r-badge--type-default">Badge <!----></span>`;
+exports[`r-badge.vue should render via SSR and match snapshot 1`] = `<span class="r-component r-badge r-badge-default">text <!----></span>`;

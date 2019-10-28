@@ -17,32 +17,36 @@
     white-space: nowrap;
     box-shadow: 0 0 0 2px #FFFFFF;
 
-    &--type-default {
+    &.has-icon-close {
+        padding-right: var(--space-xs);
+    }
+
+    &.r-badge-default {
         background: var(--badge-default-background);
         border: var(--badge-default-border);
     }
 
-    &--type-positive {
+    &.r-badge-positive {
         background: var(--badge-positive-background);
         border: var(--badge-positive-border);
     }
 
-    &--type-negative {
+    &.r-badge-negative {
         background: var(--badge-negative-background);
         border: var(--badge-negative-border);
     }
 
-    &--type-warning {
+    &.r-badge-warning {
         background: var(--badge-warning-background);
         border: var(--badge-warning-border);
     }
 
-    &--type-info {
+    &.r-badge-info {
         background: var(--badge-info-background);
         border: var(--badge-info-border);
     }
 
-    &--type-tag {
+    &.r-badge-tag {
         background: var(--badge-tag-background);
         color: var(--badge-tag-color);
         border-radius: var(--badge-tag-border-radius);
@@ -52,39 +56,19 @@
         text-overflow: ellipsis;
     }
 
-    &--icon-close {
+    &.r-badge-tag-secondary {
+        background: var(--badge-tag-secondary-background);
+        color: var(--badge-tag-secondary-color);
+        border-radius: var(--badge-tag-secondary-border-radius);
+        box-shadow: var(--badge-tag-secondary-box-shadow);
+        white-space: nowrap;
+        overflow: hidden;
+        max-width: 100%;
+        text-overflow: ellipsis;
+    }
+
+    & .r-badge-icon {
         cursor: pointer;
-        right: 0;
-        top: 0;
-        bottom: 0;
-        font-weight: var(--badge-tag-font-weight);
-        font-style: normal;
-        transition: var(--badge-tag-icon-transition);
-        margin-left: var(--badge-tag-icon-margin-left);
-        position: relative;
-        line-height: var(--badge-font-line-height);
-        display: block;
-        float: right;
-        text-align: center;
-        width: 16px;
-        border-radius: var(--badge-tag-icon-border-radius);
-
-        &:after {
-            content: '×';
-            color: var(--badge-icon-color);
-            font-size: 14px;
-        }
-
-        &:focus,
-        &:hover {
-            background: none;
-            color: var(--badge-tag-color);
-        }
-
-        &:focus:after,
-        &:hover:after {
-            color: var(--badge-tag-color);
-        }
-
+        fill: var(--gray-color-dark);
     }
 }
