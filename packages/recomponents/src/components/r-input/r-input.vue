@@ -5,6 +5,7 @@
             <input
                 v-if="!multiline"
                 class="r-field-input"
+                v-fs-block
                 :value="value"
                 @input="update"
                 :placeholder="placeholder"
@@ -16,11 +17,13 @@
                 @focus="focus"
                 @click="click"
                 :name="name"
+                :maxlength="maxLength"
                 :autocomplete="autocompleteFlag"/>
             <textarea
                 ref="textarea"
                 v-else-if="multiline && submitOnEnter"
                 class="r-field-input"
+                v-fs-block
                 :value="value"
                 @input="update"
                 @keydown.enter.exact.prevent="keySubmit"
@@ -36,6 +39,7 @@
                 ref="textarea"
                 v-else="multiline && !submitOnEnter"
                 class="r-field-input"
+                v-fs-block
                 :value="value"
                 @input="update"
                 @keydown.enter="keySubmit"
@@ -49,11 +53,12 @@
             </textarea>
         </template>
         <div class="r-field-group" v-if="isGroupedInput">
-            <div class="r-field-addon no-flex" v-if="leftLabel">{{leftLabel}}</div>
+            <div class="r-field-addon no-flex text-muted" v-if="leftLabel">{{leftLabel}}</div>
             <div class="r-field-control" :class="fieldStyles">
-                <r-icon :icon="leftIcon" v-if="leftIcon"></r-icon>
+                <r-icon :icon="leftIcon" v-if="leftIcon" :class="{'cursor-pointer': leftIconClickPointer}" @click.stop="$emit('left-icon-click')"></r-icon>
                 <input
                     class="r-field-input"
+                    v-fs-block
                     :value="value"
                     @input="update"
                     :placeholder="placeholder"
@@ -65,11 +70,12 @@
                     @focus="focus"
                     @click="click"
                     :name="name"
+                    :maxlength="maxLength"
                     :autocomplete="autocompleteFlag"/>
                 <r-icon :icon="rightIcon" v-if="rightIcon"></r-icon>
             </div>
             <slot name="right-button"/>
-            <div class="r-field-addon no-flex" v-if="rightLabel">{{rightLabel}}</div>
+            <div class="r-field-addon no-flex text-muted" v-if="rightLabel" :class="{'cursor-pointer': rightIconClickPointer}" @click.stop="$emit('right-icon-click')">{{rightLabel}}</div>
         </div>
         <span class="r-field-caption" v-if="helpText || maxLength">{{helpText}} <span v-if="maxLength">{{charactersLeft}}</span></span>
     </div>
@@ -77,6 +83,7 @@
 
 <script>
     import shortid from 'shortid';
+    import '../../directives/r-fs-block';
     import rIcon from '../r-icon/r-icon.vue';
 
     export default {
@@ -119,9 +126,17 @@
                 type: String,
                 default: null,
             },
+            leftIconClickPointer: {
+                type: Boolean,
+                default: false,
+            },
             rightIcon: {
                 type: String,
                 default: null,
+            },
+            rightIconClickPointer: {
+                type: Boolean,
+                default: false,
             },
             leftLabel: {
                 type: String,
@@ -160,7 +175,7 @@
                 default: false,
             },
             maxLength: {
-                type: String,
+                type: Number,
             },
             autoResize: {
                 type: Boolean,
@@ -210,11 +225,11 @@
             },
         },
         methods: {
-            update($event) {
+            update({target: {value}}) {
                 if (this.autoResize && this.$refs.textarea) {
                     this.autoResizeTextArea(this.$refs.textarea);
                 }
-                this.$emit('input', $event.target.value);
+                this.$emit('input', value);
             },
             keySubmit() {
                 this.$emit('key-submit');
@@ -226,10 +241,10 @@
                 this.$emit('key-down', event);
             },
             getFocus() {
-                this.$el.querySelector('input').focus();
+                this.$el.querySelector('input,textarea').focus();
             },
             blur() {
-                this.$el.querySelector('input').blur();
+                this.$el.querySelector('input,textarea').blur();
             },
             focus() {
                 if (this.autoHighlightOnFocus) {
