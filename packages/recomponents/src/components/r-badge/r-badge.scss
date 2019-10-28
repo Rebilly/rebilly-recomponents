@@ -21,32 +21,32 @@
         padding-right: var(--space-xs);
     }
 
-    &--type-default {
+    &.r-badge-default {
         background: var(--badge-default-background);
         border: var(--badge-default-border);
     }
 
-    &--type-positive {
+    &.r-badge-positive {
         background: var(--badge-positive-background);
         border: var(--badge-positive-border);
     }
 
-    &--type-negative {
+    &.r-badge-negative {
         background: var(--badge-negative-background);
         border: var(--badge-negative-border);
     }
 
-    &--type-warning {
+    &.r-badge-warning {
         background: var(--badge-warning-background);
         border: var(--badge-warning-border);
     }
 
-    &--type-info {
+    &.r-badge-info {
         background: var(--badge-info-background);
         border: var(--badge-info-border);
     }
 
-    &--type-tag {
+    &.r-badge-tag {
         background: var(--badge-tag-background);
         color: var(--badge-tag-color);
         border-radius: var(--badge-tag-border-radius);
@@ -56,7 +56,7 @@
         text-overflow: ellipsis;
     }
 
-    &--type-tag-secondary {
+    &.r-badge-tag-secondary {
         background: var(--badge-tag-secondary-background);
         color: var(--badge-tag-secondary-color);
         border-radius: var(--badge-tag-secondary-border-radius);

@@ -32,13 +32,16 @@
                     'tag-secondary'
                 ].includes(val),
             },
-            close: Boolean,
+            close: {
+                type: Boolean,
+                default: false,
+            },
         },
         computed: {
             classes() {
                 return {
                     'has-icon-close': !!this.close,
-                    [`r-badge--type-${this.type}`]: !!this.type,
+                    [`r-badge-${this.type}`]: !!this.type,
                 };
             },
         },

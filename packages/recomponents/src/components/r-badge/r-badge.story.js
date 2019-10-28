@@ -26,7 +26,7 @@ storiesOf('Components', module)
                 ]),
             },
             text: {
-                default: text('Text', 'Click me'),
+                default: text('Text', 'Badge'),
             },
             close: {
                 default: boolean('Close', false),
