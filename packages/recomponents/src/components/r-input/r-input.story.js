@@ -98,7 +98,7 @@ storiesOf('Components', module)
             },
             maxLength: {
                 // TODO: bug? it could be saying: '(-4 characters left.)' if multiline is false
-                default: select('maxLength', ['', '15', '50'], ''),
+                default: select('maxLength', [null, 15, 50], null),
             },
             autoResize: {
                 default: boolean('autoResize', false),
