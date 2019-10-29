@@ -1,6 +1,7 @@
 import VueI18n from 'vue-i18n';
 
 import RTooltip from './directives/r-tooltip/r-tooltip';
+import RFsBlock from './directives/r-fs-block';
 
 import './styles/typography.scss';
 import './styles/helpers.scss';
@@ -48,6 +49,7 @@ const components = {
 
 const directives = {
     RTooltip,
+    RFsBlock,
 };
 
 function install(Vue) {
@@ -70,6 +72,7 @@ function install(Vue) {
 
 export {
     RTooltip,
+    RFsBlock,
 };
 
 export {

@@ -5,7 +5,7 @@
             <input
                 v-if="!multiline"
                 class="r-field-input"
-                v-fs-block
+                v-fsblock
                 :value="value"
                 @input="update"
                 :placeholder="placeholder"
@@ -23,7 +23,7 @@
                 ref="textarea"
                 v-else-if="multiline && submitOnEnter"
                 class="r-field-input"
-                v-fs-block
+                v-fsblock
                 :value="value"
                 @input="update"
                 @keydown.enter.exact.prevent="keySubmit"
@@ -39,7 +39,7 @@
                 ref="textarea"
                 v-else="multiline && !submitOnEnter"
                 class="r-field-input"
-                v-fs-block
+                v-fsblock
                 :value="value"
                 @input="update"
                 @keydown.enter="keySubmit"
@@ -58,7 +58,7 @@
                 <r-icon :icon="leftIcon" v-if="leftIcon" :class="{'cursor-pointer': leftIconClickPointer}" @click.stop="$emit('left-icon-click')"></r-icon>
                 <input
                     class="r-field-input"
-                    v-fs-block
+                    v-fsblock
                     :value="value"
                     @input="update"
                     :placeholder="placeholder"
@@ -83,7 +83,6 @@
 
 <script>
     import shortid from 'shortid';
-    import '../../directives/r-fs-block';
     import rIcon from '../r-icon/r-icon.vue';
 
     export default {
