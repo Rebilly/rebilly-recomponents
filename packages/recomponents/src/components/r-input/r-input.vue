@@ -3,6 +3,7 @@
         <label v-if="label" class="r-field-label">{{label}}</label>
         <template v-if="!isGroupedInput">
             <input
+                ref="input"
                 v-if="!multiline"
                 class="r-field-input"
                 v-fsblock
@@ -57,6 +58,7 @@
             <div class="r-field-control" :class="fieldStyles">
                 <r-icon :icon="leftIcon" v-if="leftIcon" :class="{'cursor-pointer': leftIconClickPointer}" @click.stop="$emit('left-icon-click')"></r-icon>
                 <input
+                    ref="input"
                     class="r-field-input"
                     v-fsblock
                     :value="value"
@@ -240,10 +242,10 @@
                 this.$emit('key-down', event);
             },
             getFocus() {
-                this.$el.querySelector('input,textarea').focus();
+                (this.$refs.input || this.$refs.textarea).focus();
             },
             blur() {
-                this.$el.querySelector('input,textarea').blur();
+                (this.$refs.input || this.$refs.textarea).blur();
             },
             focus() {
                 if (this.autoHighlightOnFocus) {
@@ -260,7 +262,7 @@
             },
             highlight() {
                 this.$nextTick(() => {
-                    this.$el.querySelector('input').select();
+                    this.$refs.input.select();
                 });
             },
         },
