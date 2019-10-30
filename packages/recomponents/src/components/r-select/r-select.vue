@@ -256,6 +256,7 @@
             if (!this.multiple && this.max) {
                 console.warn('[Recomponents warn]: Max prop should not be used when prop Multiple equals false.');
             }
+            this.preselect();
         },
         mixins: [new AsyncInputMixin().getMixin()],
         components: {RIcon, RIconButton, RBadge},
@@ -284,7 +285,8 @@
                     if (isEmpty(option)) {
                         return '';
                     }
-                    return label ? option[label] : option;
+
+                    return option[label] || option;
                 },
             },
             disabled: {
@@ -367,8 +369,9 @@
                 type: String,
                 default: 'Select option',
             },
-            propLabel: {
+            optionLabel: {
                 type: String,
+                default: 'label',
             },
             resetAfter: {
                 type: Boolean,
@@ -402,9 +405,6 @@
                 type: String,
                 default: 'top',
             },
-            trackBy: {
-                type: String,
-            },
             value: {
                 type: null,
                 default() {
@@ -425,13 +425,6 @@
             isOpen() {
                 this.pointerDirty = false;
             },
-            options() {
-                if (this.preselectFirst
-                    && !this.internalValue.length
-                    && this.options.length) {
-                    this.select(this.filteredOptions[0]);
-                }
-            },
             pointer() {
                 if (this.$refs.search) {
                     this.$refs.search.setAttribute('aria-activedescendant', `${this.id}-${this.pointer.toString()}`);
@@ -440,20 +433,34 @@
             search() {
                 this.$emit('search-change', this.search, this.id);
             },
-
+            loading() {
+                this.preselect();
+            },
         },
         computed: {
+            computedLabel() {
+                return this.fieldOrDefaultValue('optionLabel', 'label');
+            },
+            computedOptions() {
+                if (!this.computedIsAsync) {
+                    return this.options;
+                }
+                return this.computedAsyncLastOptions || [];
+            },
+            computedTrackBy() {
+                return this.fieldOrDefaultValue('optionKey', 'value');
+            },
+            contentStyle() {
+                return this.options.length
+                    ? {display: 'inline-block'}
+                    : {display: 'block'};
+            },
             currentOptionLabel() {
                 const placeholder = this.searchable ? '' : this.placeholder;
                 const value = this.internalValue && this.internalValue.length
                     ? this.getOptionLabel(this.internalValue[0])
                     : placeholder;
                 return this.multiple ? placeholder : value;
-            },
-            contentStyle() {
-                return this.options.length
-                    ? {display: 'inline-block'}
-                    : {display: 'block'};
             },
             filteredOptions() {
                 const search = this.search || '';
@@ -462,7 +469,7 @@
                 let options = this.options && this.options.concat();
 
                 if (this.internalSearch) {
-                    options = filterOptions(this.options, normalizedSearch, this.propLabel, this.customLabel);
+                    options = filterOptions(this.options, normalizedSearch, this.computedLabel, this.customLabel);
                 }
 
                 options = this.hideSelected
@@ -509,6 +516,13 @@
                 }
                 return this.preferredOpenDirection === 'above';
             },
+            isComplexOptions() {
+                if (this.computedOptions) {
+                    const [firstOption] = this.computedOptions;
+                    return typeof firstOption !== 'string';
+                }
+                return false;
+            },
             isPlaceholderVisible() {
                 return !this.internalValue.length && (!this.searchable || !this.isOpen);
             },
@@ -522,7 +536,7 @@
             optionKeys() {
                 const {options} = this;
                 return options
-                    .map(element => this.customLabel(element, this.propLabel)
+                    .map(element => this.customLabel(element, this.computedLabel)
                         .toString()
                         .toLowerCase());
             },
@@ -533,10 +547,7 @@
                 return this.internalValue[0];
             },
             valueKeys() {
-                if (this.trackBy) {
-                    return this.internalValue.map(element => element[this.trackBy]);
-                }
-                return this.internalValue;
+                return this.internalValue.map(element => element[this.computedTrackBy] || element);
             },
             visibleElements() {
                 return this.optimizedHeight / this.optionHeight;
@@ -612,7 +623,7 @@
                     return option.label;
                 }
 
-                const label = this.customLabel(option, this.propLabel);
+                const label = this.customLabel(option, this.computedLabel);
 
                 if (isEmpty(label)) {
                     return '';
@@ -623,6 +634,12 @@
                 const value = this.internalValue.length === 0 ? null : this.internalValue[0];
                 return this.multiple ? this.internalValue : value;
             },
+            fieldOrDefaultValue(prop, defaultValue) {
+                if (this.isComplexOptions) {
+                    return this[prop] || defaultValue;
+                }
+                return undefined;
+            },
             isExistingOption(query) {
                 return !this.options
                     ? false
@@ -632,10 +649,8 @@
                 return option && !!option.$isDisabled;
             },
             isSelected(option) {
-                const opt = this.trackBy
-                    ? option[this.trackBy]
-                    : option;
-
+                const opt = option[this.computedTrackBy] || option;
+                console.log(this.valueKeys);
                 return this.valueKeys.indexOf(opt) > -1;
             },
             optionHighlight(index, option) {
@@ -694,8 +709,8 @@
                     return;
                 }
 
-                const index = typeof option === 'object' && this.trackBy
-                    ? this.valueKeys.indexOf(option[this.trackBy])
+                const index = typeof option === 'object' && this.computedTrackBy
+                    ? this.valueKeys.indexOf(option[this.computedTrackBy])
                     : this.valueKeys.indexOf(option);
                 this.$emit('remove', option, this.id);
                 if (this.multiple) {
@@ -707,6 +722,13 @@
 
                 if (this.closeOnSelect && shouldClose) {
                     this.deactivate();
+                }
+            },
+            preselect() {
+                if (this.preselectFirst
+                    && !this.internalValue.length
+                    && this.options.length) {
+                    this.select(this.filteredOptions[0]);
                 }
             },
             removeLastElement() {
@@ -746,8 +768,7 @@
                     if (this.max && this.multiple && this.internalValue.length === this.max) {
                         return;
                     }
-
-                    this.$emit('select', option, this.id);
+                    this.$emit('select', option[this.computedTrackBy] || option, this.id);
 
                     if (this.multiple) {
                         this.$emit('input', this.internalValue.concat([option]), this.id);
