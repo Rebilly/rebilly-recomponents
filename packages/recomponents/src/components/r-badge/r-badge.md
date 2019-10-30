@@ -6,7 +6,7 @@ Small count and labeling component to highlight any information to a user. Could
 
 | prop     | type    | required | default value | Description                          |
 |--        | --      | --       | --            |                                    --|
-| type     | string  | no       | `'default'`   | Changes background color             |
+| type     | string  | no       | `'default'`   | Changes background color            |
 | close    | boolean | no       | `false`       | adds a close button to the component |
 
 ### Usage
