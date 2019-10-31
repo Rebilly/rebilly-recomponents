@@ -256,3 +256,9 @@ Editable field special classes
     color: var(--primary-color);
     box-shadow: inset 0 -1px 0 var(--primary-color-light);
 }
+
+.inline-edit-display:hover {
+    box-shadow: 0 0 0 1px #C4CED8;
+    background-color: #F6F8F9;
+    border-radius: 4px;
+}
