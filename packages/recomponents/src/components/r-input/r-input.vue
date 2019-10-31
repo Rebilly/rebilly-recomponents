@@ -86,6 +86,7 @@
 <script>
     import shortid from 'shortid';
     import rIcon from '../r-icon/r-icon.vue';
+    import '../../directives/r-fs-block';
 
     export default {
         name: 'RInput',
