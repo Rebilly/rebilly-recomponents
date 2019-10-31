@@ -6,7 +6,7 @@
                 ref="input"
                 v-if="!multiline"
                 class="r-field-input"
-                v-fsblock
+                v-fs-block
                 :value="value"
                 @input="update"
                 :placeholder="placeholder"
@@ -24,7 +24,7 @@
                 ref="textarea"
                 v-else-if="multiline && submitOnEnter"
                 class="r-field-input"
-                v-fsblock
+                v-fs-block
                 :value="value"
                 @input="update"
                 @keydown.enter.exact.prevent="keySubmit"
@@ -40,7 +40,7 @@
                 ref="textarea"
                 v-else="multiline && !submitOnEnter"
                 class="r-field-input"
-                v-fsblock
+                v-fs-block
                 :value="value"
                 @input="update"
                 @keydown.enter="keySubmit"
@@ -60,7 +60,7 @@
                 <input
                     ref="input"
                     class="r-field-input"
-                    v-fsblock
+                    v-fs-block
                     :value="value"
                     @input="update"
                     :placeholder="placeholder"
