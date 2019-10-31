@@ -18,3 +18,17 @@
     margin: 0 8px 0 0 !important;
     margin: 0 0.8rem 0 0 !important;
 }
+
+/**
+* Text color
+*/
+.text-muted {
+    color: var(--mono-color-800) !important;
+}
+
+/**
+* Cursor Type
+*/
+.cursor-pointer {
+    cursor: pointer !important;
+}
