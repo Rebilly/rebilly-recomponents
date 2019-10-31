@@ -2,12 +2,126 @@ import {mount, shallowMount} from '@vue/test-utils';
 import RInput from './r-input.vue';
 
 describe('r-input.vue', () => {
-    it('renders label if not null', () => {
+    it('renders default correctly', () => {
+        const wrapper = shallowMount(RInput);
+
+        expect(wrapper.contains('input.r-field-input')).toBe(true);
+        expect(wrapper.contains('.r-field-label')).toBe(false);
+        expect(wrapper.contains('.r-field-caption')).toBe(false);
+        expect(wrapper.find('input.r-field-input').attributes('disabled')).toBe(undefined);
+    });
+
+    it('renders multiline correctly', () => {
+        const placeholder = `placeholder-${new Date().getTime()}`;
         const wrapper = shallowMount(RInput, {
-            propsData: {label: 'custom label'},
+            propsData: {
+                multiline: true,
+                placeholder,
+            },
         });
 
-        expect(wrapper.text()).toMatch('custom label');
+        expect(wrapper.contains('input.r-field-input')).toBe(false);
+        expect(wrapper.contains('textarea.r-field-input')).toBe(true);
+        expect(wrapper.find('textarea.r-field-input').attributes('placeholder')).toEqual(placeholder);
+    });
+
+    it('renders multiline-enter correctly', () => {
+        const placeholder = `placeholder-${new Date().getTime()}`;
+        const wrapper = shallowMount(RInput, {
+            propsData: {
+                multiline: true,
+                submitOnEnter: true,
+                placeholder,
+            },
+        });
+
+        expect(wrapper.contains('input.r-field-input')).toBe(false);
+        expect(wrapper.contains('textarea.r-field-input')).toBe(true);
+        expect(wrapper.find('textarea.r-field-input').attributes('placeholder')).toEqual(placeholder);
+    });
+
+    it('renders disabled correctly', () => {
+        const wrapper = shallowMount(RInput, {
+            propsData: {disabled: true},
+        });
+
+        expect(wrapper.find('input.r-field-input').attributes('disabled')).toBe('disabled');
+    });
+
+    it('renders multiline disabled correctly', () => {
+        const wrapper = shallowMount(RInput, {
+            propsData: {
+                multiline: true,
+                disabled: true,
+            },
+        });
+
+        expect(wrapper.find('textarea.r-field-input').attributes('disabled')).toBe('disabled');
+    });
+
+    it('renders multiline-submit  disabled correctly', () => {
+        const wrapper = shallowMount(RInput, {
+            propsData: {
+                multiline: true,
+                submitOnEnter: true,
+                disabled: true,
+            },
+        });
+
+        expect(wrapper.find('textarea.r-field-input').attributes('disabled')).toBe('disabled');
+    });
+
+    it('renders grouped correctly', () => {
+        const leftLabel = `leftLabel-${new Date().getTime()}`;
+        const rightLabel = `leftLabel-${new Date().getTime()}`;
+
+        const wrapper = shallowMount(RInput, {
+            propsData: {
+                leftLabel,
+                rightLabel,
+            },
+        });
+
+        expect(wrapper.text()).toMatch(leftLabel);
+        expect(wrapper.text()).toMatch(rightLabel);
+    });
+
+    it('renders grouped disabled correctly', () => {
+        const wrapper = shallowMount(RInput, {
+            propsData: {
+                disabled: true,
+                leftLabel: 'leftLabel',
+            },
+        });
+
+        expect(wrapper.find('input.r-field-input').attributes('disabled')).toBe('disabled');
+    });
+
+    it('renders label if not null', () => {
+        const label = `label-${new Date().getTime()}`;
+        const wrapper = shallowMount(RInput, {
+            propsData: {label},
+        });
+
+        expect(wrapper.text()).toMatch(label);
+    });
+
+    it('renders helpText if not null', () => {
+        const helpText = `helpText-${new Date().getTime()}`;
+        const wrapper = shallowMount(RInput, {
+            propsData: {helpText},
+        });
+
+        expect(wrapper.find('.r-field-caption').text()).toEqual(helpText);
+    });
+
+    it('renders maxLength if not null', () => {
+        const helpText = `helpText-${new Date().getTime()}`;
+        const wrapper = shallowMount(RInput, {
+            propsData: {helpText, maxLength: '10'},
+        });
+
+        expect(wrapper.find('.r-field-caption').text()).toEqual(`${helpText} (10 characters left.)`);
     });
 
     it('should render component with disabled prop', () => {

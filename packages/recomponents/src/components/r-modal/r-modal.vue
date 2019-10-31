@@ -42,6 +42,7 @@
     import RButton from '../r-button/r-button.vue';
     import RLoader from '../r-loader/r-loader.vue';
 
+    // TODO: class prefix equal-widths-elements-mobile, is-loading
     export default {
         name: 'r-modal',
         components: {

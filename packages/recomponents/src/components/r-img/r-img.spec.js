@@ -36,4 +36,15 @@ describe('r-loader.vue', () => {
         expect(wrapper.emitted().onload).toBeTruthy();
         expect(wrapper.emitted().error).toBeTruthy();
     });
+
+    it('shouldn render data-url attribute if lazy is true', async () => {
+        const src = 'https://www.rebilly.com/wp-content/uploads/2019/01/new_features@2x-319x150.png';
+        const wrapper = shallowMount(RImg, {
+            propsData: {
+                src,
+                lazy: true,
+            },
+        });
+        expect(wrapper.find('img').attributes('data-url')).toBe(src);
+    });
 });

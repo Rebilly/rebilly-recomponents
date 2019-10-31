@@ -45,7 +45,6 @@
             'paginationPrevious',
             'paginationOffset',
             'paginationTotal',
-            'paginationTotal',
             'paginationLimit',
             'paginationItems',
             'paginationHasNext',

@@ -79,6 +79,7 @@
     import shortid from 'shortid';
     import rIcon from '../r-icon/r-icon.vue';
 
+    // TODO classes prefix is-error, no-flex, etc.
     export default {
         name: 'RInput',
         components: {rIcon},
