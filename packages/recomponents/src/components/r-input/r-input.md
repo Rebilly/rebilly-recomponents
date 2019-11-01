@@ -22,8 +22,10 @@ Try to understand these props fast in `Knobs` tab
 | submitOnEnter         | boolean | false         |
 | leftIcon              | string  |               |
 | leftIconClickPointer  | boolean | false         |
+| leftIconSpinning      | boolean | false         |
 | rightIcon             | string  |               |
 | rightIconClickPointer | boolean | false         |
+| rightIconSpinning     | boolean | false         |
 | leftLabel             | string  |               |
 | rightLabel            | string  |               |
 | password              | string  |               |

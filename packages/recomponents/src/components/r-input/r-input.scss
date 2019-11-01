@@ -38,8 +38,7 @@
     outline: none;
 
     &:focus {
-        box-shadow: var(--input-focus-box-shadow);
-        border: var(--input-focus-border);
+        box-shadow: inset 0 0 0 2px var(--primary-color);
     }
 }
 
