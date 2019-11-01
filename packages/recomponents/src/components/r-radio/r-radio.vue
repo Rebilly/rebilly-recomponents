@@ -33,7 +33,7 @@
         },
         props: {
             checked: {
-                type: [Boolean, String, Number],
+                type: [String, Number, Boolean, Array],
                 required: true,
             },
             label: {
@@ -52,7 +52,7 @@
                 default: null,
             },
             value: {
-                type: [Boolean, String, Number],
+                type: [String, Number, Boolean, Array],
                 required: true,
             },
             disabled: {
