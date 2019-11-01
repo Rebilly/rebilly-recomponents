@@ -29,7 +29,7 @@
                     'warning',
                     'info',
                     'tag',
-                    'tag-secondary'
+                    'tag-secondary',
                 ].includes(val),
             },
             close: {
