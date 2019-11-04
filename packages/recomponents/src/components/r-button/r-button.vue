@@ -25,6 +25,8 @@
 <script>
     import RIcon from '../r-icon/r-icon.vue';
 
+    // TODO: button type link disabled property doesn't work (hide target, hide link, fix css)
+    // TODO prefixes icon classes "is-spinning icon-light-gray inline-s"
     export default {
         name: 'RButton',
         components: {RIcon},
