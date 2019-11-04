@@ -20,6 +20,7 @@
     import shortId from 'shortid';
     import RIcon from '../r-icon/r-icon.vue';
 
+    // TODO: prefixes of simple classes `r-is-error, is-disabled`
     export default {
         name: 'RCheckbox',
         components: {RIcon},

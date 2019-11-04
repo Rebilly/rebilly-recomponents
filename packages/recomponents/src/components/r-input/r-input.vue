@@ -90,6 +90,7 @@
     import rIcon from '../r-icon/r-icon.vue';
     import '../../directives/r-fs-block';
 
+    // TODO classes prefix is-error, no-flex, etc.
     export default {
         name: 'RInput',
         components: {rIcon},

@@ -15,6 +15,7 @@
 <script>
     import rIcon from '../r-icon/r-icon.vue';
 
+    // TODO classes prefix has-icon-close
     export default {
         name: 'RBadge',
         components: {rIcon},
@@ -29,7 +30,7 @@
                     'warning',
                     'info',
                     'tag',
-                    'tag-secondary'
+                    'tag-secondary',
                 ].includes(val),
             },
             close: {

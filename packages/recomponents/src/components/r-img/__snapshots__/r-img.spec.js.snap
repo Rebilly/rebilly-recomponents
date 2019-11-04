@@ -1,5 +1,5 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`r-loader.vue renders props.msg when passed 1`] = `<figure role="img" class="r-component r-img" style="min-height: 0px; min-width: 0px;"><img src="https://www.rebilly.com/wp-content/uploads/2019/01/new_features@2x-319x150.png" alt="Recomponents image"></figure>`;
+exports[`r-img.vue renders props.msg when passed 1`] = `<figure role="img" class="r-component r-img" style="min-height: 0px; min-width: 0px;"><img src="https://www.rebilly.com/wp-content/uploads/2019/01/new_features@2x-319x150.png" alt="Recomponents image"></figure>`;
 
-exports[`r-loader.vue should render via SSR and match snapshot 1`] = `<figure role="img" class="r-component r-img" style="min-height:0px;min-width:0px;"><img src="https://www.rebilly.com/wp-content/uploads/2019/01/new_features@2x-319x150.png" alt="Recomponents image"></figure>`;
+exports[`r-img.vue should render via SSR and match snapshot 1`] = `<figure role="img" class="r-component r-img" style="min-height:0px;min-width:0px;"><img src="https://www.rebilly.com/wp-content/uploads/2019/01/new_features@2x-319x150.png" alt="Recomponents image"></figure>`;

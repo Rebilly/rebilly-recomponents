@@ -103,6 +103,8 @@
     import rIcon from '../r-icon/r-icon.vue';
     import rSelect from '../r-select/r-select.vue';
 
+    // TODO: prefixes simple classes `stack-xs, is-error, etc`
+    // TODO: detailed description of props
     export default {
         name: 'RDateInput',
         components: {
@@ -190,6 +192,7 @@
                 }
                 this.$emit('input', this.selectedDate);
             },
+            // TODO 00 hours/time
             updateTime(type, value) {
                 // set empty value
                 if (!value) {
@@ -236,6 +239,7 @@
                         minutes: '',
                     };
                 }
+                // TODO how about {hours: '', minutes:''} value
                 if (date !== null && moment.isMoment(date)) {
                     return {
                         hours: date.format('HH'),
