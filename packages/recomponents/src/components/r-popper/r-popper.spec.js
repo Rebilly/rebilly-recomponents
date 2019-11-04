@@ -76,12 +76,14 @@ describe('r-popper.vue', () => {
 
     it('should render slot content', () => {
         const content = `<span>content-${new Date().getTime()}</span>`;
+        const trigger = `<span>trigger-${new Date().getTime()}</span>`;
         const slot = `<div>${content}</div>`;
 
         const wrapper = mount(RPopper, {
             propsData: {},
             mocks: {$t},
             slots: {
+                trigger,
                 content: slot,
             },
         });
