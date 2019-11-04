@@ -15,7 +15,6 @@
 <script>
     import rIcon from '../r-icon/r-icon.vue';
 
-    // TODO classes prefix has-icon-close
     export default {
         name: 'RBadge',
         components: {rIcon},
@@ -23,15 +22,6 @@
             type: {
                 type: String,
                 default: 'default',
-                validator: val => [
-                    'default',
-                    'positive',
-                    'negative',
-                    'warning',
-                    'info',
-                    'tag',
-                    'tag-secondary',
-                ].includes(val),
             },
             close: {
                 type: Boolean,
@@ -40,10 +30,15 @@
         },
         computed: {
             classes() {
-                return {
-                    'has-icon-close': !!this.close,
-                    [`r-badge-${this.type}`]: !!this.type,
+                const classes = {
+                    'r-badge-has-icon-close': !!this.close,
                 };
+                if (this.type) {
+                    classes[`r-badge-${this.type}`] = true;
+                } else {
+                    classes['r-badge-default'] = true;
+                }
+                return classes;
             },
         },
     };
