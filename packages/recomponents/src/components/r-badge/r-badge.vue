@@ -40,10 +40,15 @@
         },
         computed: {
             classes() {
-                return {
-                    'has-icon-close': !!this.close,
-                    [`r-badge-${this.type}`]: !!this.type,
+                const classes = {
+                    'r-badge-has-icon-close': !!this.close,
                 };
+                if (this.type) {
+                    classes[`r-badge-${this.type}`] = true;
+                } else {
+                    classes['r-badge-default'] = true;
+                }
+                return classes;
             },
         },
     };
