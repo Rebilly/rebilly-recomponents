@@ -16,8 +16,10 @@ storiesOf('Components', module)
                 :submitOnEnter="submitOnEnter"
                 :leftIcon="leftIcon"
                 :leftIconClickPointer="leftIconClickPointer"
+                :leftIconSpinning="leftIconSpinning"
                 :rightIcon="rightIcon"
                 :rightIconClickPointer="rightIconClickPointer"
+                :rightIconSpinning="rightIconSpinning"
                 :leftLabel="leftLabel"
                 :rightLabel="rightLabel"
                 :password="password"
@@ -69,11 +71,17 @@ storiesOf('Components', module)
             leftIconClickPointer: {
                 default: boolean('leftIconClickPointer', false),
             },
+            leftIconSpinning: {
+                default: boolean('leftIconSpinning', false),
+            },
             rightIcon: {
                 default: select('rightIcon', ['', 'search', 'customers', 'lock', 'burger'], ''),
             },
             rightIconClickPointer: {
                 default: boolean('rightIconClickPointer', false),
+            },
+            rightIconSpinning: {
+                default: boolean('rightIconSpinning', false),
             },
             leftLabel: {
                 default: select('leftLabel', ['', 'left label'], ''),

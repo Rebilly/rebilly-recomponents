@@ -16,6 +16,7 @@
                 @keyup="keyPress"
                 @keydown="keyDown"
                 @focus="focus"
+                @blur="blur"
                 @click="click"
                 :name="name"
                 :maxlength="maxLength"
@@ -56,7 +57,7 @@
         <div class="r-field-group" v-if="isGroupedInput">
             <div class="r-field-addon no-flex text-muted" v-if="leftLabel">{{leftLabel}}</div>
             <div class="r-field-control" :class="fieldStyles">
-                <r-icon :icon="leftIcon" v-if="leftIcon" :class="{'cursor-pointer': leftIconClickPointer}" @click.stop="$emit('left-icon-click')"></r-icon>
+                <r-icon :icon="leftIcon" v-if="leftIcon" :class="{'cursor-pointer': leftIconClickPointer, 'is-spinning': leftIconSpinning}" @click.stop="$emit('left-icon-click')"></r-icon>
                 <input
                     ref="input"
                     class="r-field-input"
@@ -70,11 +71,12 @@
                     @keyup="keyPress"
                     @keydown="keyDown"
                     @focus="focus"
+                    @blur="blur"
                     @click="click"
                     :name="name"
                     :maxlength="maxLength"
                     :autocomplete="autocompleteFlag"/>
-                <r-icon :icon="rightIcon" v-if="rightIcon" :class="{'cursor-pointer': rightIconClickPointer}" @click.stop="$emit('right-icon-click')"></r-icon>
+                <r-icon :icon="rightIcon" v-if="rightIcon" :class="{'cursor-pointer': rightIconClickPointer, 'is-spinning': rightIconSpinning}" @click.stop="$emit('right-icon-click')"></r-icon>
             </div>
             <slot name="right-button"/>
             <div class="r-field-addon no-flex text-muted" v-if="rightLabel">{{rightLabel}}</div>
@@ -137,6 +139,14 @@
                 default: null,
             },
             rightIconClickPointer: {
+                type: Boolean,
+                default: false,
+            },
+            leftIconSpinning: {
+                type: Boolean,
+                default: false,
+            },
+            rightIconSpinning: {
                 type: Boolean,
                 default: false,
             },
@@ -247,6 +257,7 @@
             },
             blur() {
                 (this.$refs.input || this.$refs.textarea).blur();
+                this.$emit('blur');
             },
             focus() {
                 if (this.autoHighlightOnFocus) {
