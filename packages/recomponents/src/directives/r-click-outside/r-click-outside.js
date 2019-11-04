@@ -16,3 +16,5 @@ const directive = {
 };
 
 Vue.directive('click-outside', directive);
+
+export default directive;
