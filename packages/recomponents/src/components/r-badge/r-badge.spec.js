@@ -36,17 +36,14 @@ describe('r-badge.vue', () => {
         expect(wrapper).toMatchSnapshot();
     });
 
-    it('should validate all incoming props', () => {
-        const {type} = RBadge.props;
+    it('should render default value if prop is falsy', () => {
+        const wrapper = mount(RBadge, {
+            props: {
+                type: false,
+            },
+        });
 
-        expect(type.validator('default')).toBeTruthy();
-        expect(type.validator('positive')).toBeTruthy();
-        expect(type.validator('negative')).toBeTruthy();
-        expect(type.validator('warning')).toBeTruthy();
-        expect(type.validator('info')).toBeTruthy();
-        expect(type.validator('tag')).toBeTruthy();
-        expect(type.validator('tag-secondary')).toBeTruthy();
-        expect(type.validator('impossible')).toBeFalsy();
+        expect(wrapper.classes()).toContain('r-badge-default');
     });
 
     it('should render component with type prop', () => {
@@ -69,7 +66,7 @@ describe('r-badge.vue', () => {
             },
         });
 
-        expect(wrapper.classes()).toContain('has-icon-close');
+        expect(wrapper.classes()).toContain('r-badge-has-icon-close');
         expect(wrapper.contains(RIcon)).toBe(true);
     });
 
