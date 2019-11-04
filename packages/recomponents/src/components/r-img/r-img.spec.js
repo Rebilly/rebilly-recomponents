@@ -2,7 +2,7 @@ import {shallowMount} from '@vue/test-utils';
 import {renderToString} from '@vue/server-test-utils';
 import RImg from './r-img.vue';
 
-describe('r-loader.vue', () => {
+describe('r-img.vue', () => {
     it('renders props.msg when passed', () => {
         const wrapper = shallowMount(RImg, {
             propsData: {
