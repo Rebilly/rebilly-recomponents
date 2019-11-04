@@ -40,6 +40,9 @@ export default {
 
                 tooltip.style.opacity = '1';
 
+                // TODO probably additional positions
+                //  like 'bottom-left', 'bottom-center', 'bottom-right'
+                // will be useful with checkboxes/labels/etc.
                 switch (value.position) {
                     case 'left':
                         tooltip.classList.add('tooltip-left');
@@ -103,6 +106,7 @@ export default {
         if (tooltip) {
             tooltip.remove();
         }
+        // TODO mobile usage
         el.removeEventListener('mouseenter', el.vTooltipEnter);
         el.removeEventListener('mouseleave', el.vTooltipLeave);
         el.vTooltipEnter = null;

@@ -30,6 +30,7 @@
         data() {
             return {
                 data: [],
+                // TODO probably page as props value, to able to start with page from url query (or etc)
                 page: 1,
             };
         },

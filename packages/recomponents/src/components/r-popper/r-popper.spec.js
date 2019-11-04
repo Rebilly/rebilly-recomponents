@@ -59,4 +59,35 @@ describe('r-popper.vue', () => {
         wrapper.vm.setPopperVisible(true);
         expect(wrapper.vm.$data.isPopperVisible).toBe(false);
     });
+
+    it('should render slot trigger', () => {
+        const slot = `<span>trigger-${new Date().getTime()}</span>`;
+
+        const wrapper = mount(RPopper, {
+            propsData: {},
+            mocks: {$t},
+            slots: {
+                trigger: slot,
+            },
+        });
+
+        expect(wrapper.html()).toMatch(slot);
+    });
+
+    it('should render slot content', () => {
+        const content = `<span>content-${new Date().getTime()}</span>`;
+        const slot = `<div>${content}</div>`;
+
+        const wrapper = mount(RPopper, {
+            propsData: {},
+            mocks: {$t},
+            slots: {
+                content: slot,
+            },
+        });
+
+        expect(wrapper.html()).not.toMatch(content);
+        wrapper.vm.setPopperVisible(true);
+        expect(wrapper.html()).toMatch(content);
+    });
 });
