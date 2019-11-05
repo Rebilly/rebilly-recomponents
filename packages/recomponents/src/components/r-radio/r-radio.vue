@@ -34,7 +34,7 @@
         props: {
             checked: {
                 type: [String, Number, Boolean, Array],
-                required: true,
+                default: null,
             },
             label: {
                 type: String,
@@ -83,6 +83,9 @@
                 return false;
             },
             isChecked() {
+                if (this.value === null) {
+                    return false;
+                }
                 return this.checked === this.value;
             },
         },
