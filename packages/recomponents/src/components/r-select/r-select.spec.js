@@ -1,3 +1,4 @@
+import jest from 'jest-mock';
 import {shallowMount} from '@vue/test-utils';
 import {renderToString} from '@vue/server-test-utils';
 import RSelect from './r-select.vue';
@@ -163,15 +164,15 @@ describe('r-select.vue', () => {
             propsData: {
                 value: [{id: '1'}],
                 options: [{id: '1'}, {id: '2'}, {id: '3'}],
-                propLabel: 'id',
-                trackBy: 'id',
+                optionLabel: 'id',
+                optionKey: 'id',
                 multiple: true,
                 id: 'id',
             },
         });
         wrapper.vm.select(wrapper.vm.options[1]);
         expect(wrapper.emitted().input).toEqual([
-            [[{id: '1'}, {id: '2'}], 'id'],
+            [['1', '2'], 'id'],
         ]);
     });
 
@@ -184,8 +185,8 @@ describe('r-select.vue', () => {
             propsData: {
                 value: [{id: '2'}],
                 options: [{id: '1'}, {id: '2'}, {id: '3'}],
-                propLabel: 'id',
-                trackBy: 'id',
+                optionLabel: 'id',
+                optionKey: 'id',
                 multiple: true,
                 id: 'id',
             },
@@ -204,8 +205,8 @@ describe('r-select.vue', () => {
             propsData: {
                 value: [{id: '1'}, {id: '2'}, {id: '3'}],
                 options: [{id: '1'}, {id: '2'}, {id: '3'}, {id: '4'}],
-                propLabel: 'id',
-                trackBy: 'id',
+                optionLabel: 'id',
+                optionKey: 'id',
                 multiple: true,
                 id: 'id',
                 max: 3,
@@ -226,8 +227,8 @@ describe('r-select.vue', () => {
                 options: [{id: '1'}, {id: '2'}, {id: '3'}],
                 id: 'id',
                 multiple: true,
-                propLabel: 'id',
-                trackBy: 'id',
+                optionLabel: 'id',
+                optionKey: 'id',
             },
         });
         wrapper.vm.removeElement(wrapper.vm.value[0]);
@@ -244,9 +245,9 @@ describe('r-select.vue', () => {
                 value: [{id: '1'}],
                 options: [{id: '1'}, {id: '2'}, {id: '3'}],
                 multiple: true,
-                propLabel: 'id',
+                optionLabel: 'id',
                 id: 'id',
-                trackBy: 'id',
+                optionKey: 'id',
                 allowEmpty: false,
             },
         });
@@ -263,14 +264,14 @@ describe('r-select.vue', () => {
                 value: [],
                 options: [{id: '1'}, {id: '2'}, {id: '3'}],
                 id: 'id',
-                propLabel: 'id',
-                trackBy: 'id',
+                optionLabel: 'id',
+                optionKey: 'id',
                 multiple: true,
             },
         });
         wrapper.vm.pointer = 2;
         wrapper.vm.addPointerElement();
-        expect(wrapper.emitted().input).toEqual([[[{id: '3'}], 'id']]);
+        expect(wrapper.emitted().input).toEqual([[['3'], 'id']]);
     });
 
     it('should increase the pointer value by 1', () => {
@@ -282,8 +283,8 @@ describe('r-select.vue', () => {
             propsData: {
                 value: [],
                 options: [{id: '1'}, {id: '2'}, {id: '3'}],
-                propLabel: 'id',
-                trackBy: 'id',
+                optionLabel: 'id',
+                optionKey: 'id',
                 multiple: true,
             },
         });
@@ -302,8 +303,8 @@ describe('r-select.vue', () => {
             propsData: {
                 value: [],
                 options: [{id: '1'}, {id: '2'}, {id: '3'}],
-                propLabel: 'id',
-                trackBy: 'id',
+                optionLabel: 'id',
+                optionKey: 'id',
                 multiple: true,
             },
         });
@@ -323,8 +324,8 @@ describe('r-select.vue', () => {
                 value: null,
                 options: [{id: '1'}, {id: '2'}, {id: '3'}],
                 id: 'id',
-                propLabel: 'id',
-                trackBy: 'id',
+                optionLabel: 'id',
+                optionKey: 'id',
                 clearOnSelect: false,
             },
         });
@@ -340,8 +341,8 @@ describe('r-select.vue', () => {
             propsData: {
                 value: [],
                 options: [{id: '1'}, {id: '2'}, {id: '3'}],
-                propLabel: 'id',
-                trackBy: 'id',
+                optionLabel: 'id',
+                optionKey: 'id',
                 multiple: true,
             },
         });
@@ -357,8 +358,8 @@ describe('r-select.vue', () => {
                 },
             },
             propsData: {
-                propLabel: 'id',
-                trackBy: 'id',
+                optionLabel: 'id',
+                optionKey: 'id',
                 searchable: false,
                 value: null,
                 options: [{id: '1'}, {id: '2'}, {id: '3'}],
@@ -382,8 +383,8 @@ describe('r-select.vue', () => {
             propsData: {
                 value: [],
                 options: [{id: '1'}, {id: '2'}, {id: '3'}],
-                propLabel: 'id',
-                trackBy: 'id',
+                optionLabel: 'id',
+                optionKey: 'id',
                 multiple: true,
             },
         });
@@ -452,7 +453,7 @@ describe('r-select.vue', () => {
         expect(wrapper.vm.getOptionLabel(option)).toBe('2');
     });
 
-    it('should return option.propLabel for passed option', () => {
+    it('should return option.optionLabel for passed option', () => {
         const wrapper = shallowMount(RSelect, {
             mocks: {
                 $t: () => {
@@ -461,8 +462,8 @@ describe('r-select.vue', () => {
             propsData: {
                 value: [],
                 options: [{id: '1'}, {id: '2'}, {id: '3'}],
-                propLabel: 'id',
-                trackBy: 'id',
+                optionLabel: 'id',
+                optionKey: 'id',
                 multiple: true,
             },
         });
@@ -478,10 +479,10 @@ describe('r-select.vue', () => {
                 },
             },
             propsData: {
-                propLabel: 'id',
+                optionLabel: 'id',
                 value: [],
                 options: [{id: '1'}, {id: '2'}, {id: '3'}],
-                trackBy: 'id',
+                optionKey: 'id',
                 searchable: true,
                 multiple: true,
             },
@@ -503,10 +504,10 @@ describe('r-select.vue', () => {
                 },
             },
             propsData: {
-                propLabel: 'id',
+                optionLabel: 'id',
                 value: [],
                 options: [{id: '1'}, {id: '2'}, {id: '3'}],
-                trackBy: 'id',
+                optionKey: 'id',
                 searchable: true,
                 multiple: true,
             },
@@ -528,8 +529,8 @@ describe('r-select.vue', () => {
                 },
             },
             propsData: {
-                propLabel: 'id',
-                trackBy: 'id',
+                optionLabel: 'id',
+                optionKey: 'id',
                 value: [{id: '2'}],
                 options: [{id: '1'}, {id: '2'}, {id: '3'}],
                 searchable: true,
@@ -605,8 +606,48 @@ describe('r-select.vue', () => {
                 options: ['1', '2', '3'],
             },
         });
-        wrapper.vm.search = 'TEST';
+        wrapper.vm.updateSearch('TEST');
         wrapper.vm.select(wrapper.vm.filteredOptions[0]);
         expect(wrapper.emitted().tag).toEqual([['TEST', 'id']]);
+    });
+
+    it('should call deactivate() if closeOnSelect is true and it is not multiple ', () => {
+        const wrapper = shallowMount(RSelect, {
+            mocks: {
+                $t: () => {
+                },
+            },
+            propsData: {
+                searchable: true,
+                multiple: false,
+                closeOnSelect: true,
+                id: 'id',
+                value: null,
+                options: ['1', '2', '3'],
+            },
+        });
+        wrapper.vm.deactivate = jest.fn();
+        wrapper.vm.select(wrapper.vm.filteredOptions[0]);
+        expect(wrapper.emitted().input).toEqual([['1', 'id']]);
+        expect(wrapper.vm.deactivate).toBeCalled();
+    });
+
+    it('should remove last element when removeLastElement is called', () => {
+        const wrapper = shallowMount(RSelect, {
+            mocks: {
+                $t: () => {
+                },
+            },
+            propsData: {
+                multiple: true,
+                closeOnSelect: true,
+                id: 'id',
+                value: ['1', '2'],
+                options: ['1', '2', '3'],
+            },
+        });
+
+        wrapper.vm.removeLastElement();
+        expect(wrapper.emitted().input).toEqual([[['1'], 'id']]);
     });
 });

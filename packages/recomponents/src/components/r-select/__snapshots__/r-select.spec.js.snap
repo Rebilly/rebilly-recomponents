@@ -18,14 +18,8 @@ exports[`r-select.vue should render Wrapper and match snapshot 1`] = `
         <!---->
         <!---->
         <!---->
-        <li id="id-0" role="[object Object]" class="r-select__element"><span class="r-select__option r-select__option--highlight"><span>{
-  "val": 1,
-  "label": "1"
-}</span></span></li>
-        <li id="id-1" role="[object Object]" class="r-select__element"><span class="r-select__option"><span>{
-  "val": 2,
-  "label": "2"
-}</span></span></li>
+        <li id="id-0" role="[object Object]" class="r-select__element"><span class="r-select__option r-select__option--highlight"><span>1</span></span></li>
+        <li id="id-1" role="[object Object]" class="r-select__element"><span class="r-select__option"><span>2</span></span></li>
         <li style="display: none;"><span class="r-select__option">
                             </span></li>
         <li style="display: none;"><span class="r-select__option"></span></li>
@@ -55,14 +49,8 @@ exports[`r-select.vue should render via SSR and match snapshot 1`] = `
         <!---->
         <!---->
         <!---->
-        <li id="id-0" role="[object Object]" class="r-select__element"><span class="r-select__option r-select__option--highlight"><span>{
-  &quot;val&quot;: 1,
-  &quot;label&quot;: &quot;1&quot;
-}</span></span></li>
-        <li id="id-1" role="[object Object]" class="r-select__element"><span class="r-select__option"><span>{
-  &quot;val&quot;: 2,
-  &quot;label&quot;: &quot;2&quot;
-}</span></span></li>
+        <li id="id-0" role="[object Object]" class="r-select__element"><span class="r-select__option r-select__option--highlight"><span>1</span></span></li>
+        <li id="id-1" role="[object Object]" class="r-select__element"><span class="r-select__option"><span>2</span></span></li>
         <li style="display:none;"><span class="r-select__option">
                             </span></li>
         <li style="display:none;"><span class="r-select__option"></span></li>

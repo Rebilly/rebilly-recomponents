@@ -24,23 +24,27 @@
             <slot name="clear" :search="search"></slot>
             <div ref="tags" class="r-select__tags">
                 <slot name="selection"
+                      v-if="!loading"
                       :search="search"
                       :remove="removeElement"
-                      :values="visibleValues"
+                      :values="computedValue"
                       :is-open="isOpen">
                     <div class="r-select__tags-wrap"
                          v-show="visibleValues.length > 0">
-                        <template v-for="(option, index) of visibleValues"
+                        <template v-for="(option, index) of computedValue"
                                   @mousedown.prevent>
                             <slot name="tag"
                                   :option="option"
                                   :search="search"
                                   :remove="removeElement">
                                 <template>
-                                    <r-badge class="r-select__tag" type="tag" @close="removeElement(option)">
-                                        <template v-slot:text>
+                                    <r-badge class="r-select__tag"
+                                             type="tag"
+                                             :close="true"
+                                             @close="removeElement(option)">
+                                        <template>
                                             <span class="r-select__tag-text">
-                                                {{ getOptionLabel(option) }}
+                                                {{ option[computedLabel] || option }}
                                             </span>
                                         </template>
                                     </r-badge>
@@ -83,14 +87,14 @@
                        class="r-select__input"
                        :aria-controls="'listbox-'+id"
                 />
-                <span v-if="isSingleLabelVisible"
+                <span v-if="isSingleLabelVisible && !loading"
                       class="r-select__single"
                       @mousedown.prevent="toggle">
                     <slot name="singleLabel" :option="singleValue">
                         <template>{{ currentOptionLabel }}</template>
                     </slot>
                 </span>
-                <span v-if="isPlaceholderVisible"
+                <span v-if="isPlaceholderVisible || loading"
                       class="r-select__placeholder"
                       @mousedown.prevent="toggle">
                     <slot name="placeholder">
@@ -353,6 +357,12 @@
                 type: Number,
                 default: 40,
             },
+            optionKey: {
+                type: String,
+            },
+            optionLabel: {
+                type: String,
+            },
             optionsLimit: {
                 type: Number,
                 default: 1000,
@@ -368,10 +378,6 @@
             placeholder: {
                 type: String,
                 default: 'Select option',
-            },
-            optionLabel: {
-                type: String,
-                default: 'label',
             },
             resetAfter: {
                 type: Boolean,
@@ -439,7 +445,7 @@
         },
         computed: {
             computedLabel() {
-                return this.fieldOrDefaultValue('optionLabel', 'label');
+                return this.optionLabel || 'label';
             },
             computedOptions() {
                 if (!this.computedIsAsync) {
@@ -448,7 +454,37 @@
                 return this.computedAsyncLastOptions || [];
             },
             computedTrackBy() {
-                return this.fieldOrDefaultValue('optionKey', 'value');
+                return this.optionKey || 'label';
+            },
+            computedValue() {
+                const options = this.computedIsAsync
+                    ? this.async.getAllCacheItems()
+                    : this.computedOptions;
+
+                const value = this.primitiveValue;
+
+                if (this.isComplexOptions && value !== null) {
+                    if (!this.multiple) {
+                        // multiple selection enabled
+                        const option = options
+                            .find(option => this.getOptionValue({
+                                option,
+                                trackBy: this.computedTrackBy,
+                            }) === value);
+                        if (option) {
+                            return option;
+                        }
+                    } else if (value) {
+                        return value.map((val) => {
+                            const option = options.find(opt => this.getOptionValue({
+                                option: opt,
+                                trackBy: this.computedTrackBy,
+                            }) === val);
+                            return option || {[this.computedTrackBy]: val, [this.computedLabel]: val};
+                        });
+                    }
+                }
+                return this.primitiveValue;
             },
             contentStyle() {
                 return this.options.length
@@ -457,8 +493,13 @@
             },
             currentOptionLabel() {
                 const placeholder = this.searchable ? '' : this.placeholder;
+                const option = this.options.find(option => this.getOptionValue({
+                    option,
+                    trackBy: this.computedTrackBy,
+                }) === this.internalValue[0]);
+
                 const value = this.internalValue && this.internalValue.length
-                    ? this.getOptionLabel(this.internalValue[0])
+                    ? (option && option[this.computedLabel]) || this.internalValue[0]
                     : placeholder;
                 return this.multiple ? placeholder : value;
             },
@@ -542,6 +583,13 @@
             },
             pointerPosition() {
                 return this.pointer * this.optionHeight;
+            },
+            primitiveValue() {
+                return this.getPrimitiveValueFromValue({
+                    value: this.multiple ? this.internalValue : this.value,
+                    multiple: this.multiple,
+                    trackBy: this.computedTrackBy,
+                });
             },
             singleValue() {
                 return this.internalValue[0];
@@ -630,15 +678,24 @@
                 }
                 return label;
             },
+            getOptionValue({option, trackBy}) {
+                return option[trackBy] || option;
+            },
+            getPrimitiveValueFromValue({value, trackBy, multiple}) {
+                if (value === undefined || value === null) {
+                    return value;
+                }
+                if (multiple) {
+                    if (value) {
+                        return value.map(item => item[trackBy] || item);
+                    }
+                    return value;
+                }
+                return typeof value === 'object' && value[trackBy] || value;
+            },
             getValue() {
                 const value = this.internalValue.length === 0 ? null : this.internalValue[0];
                 return this.multiple ? this.internalValue : value;
-            },
-            fieldOrDefaultValue(prop, defaultValue) {
-                if (this.isComplexOptions) {
-                    return this[prop] || defaultValue;
-                }
-                return undefined;
             },
             isExistingOption(query) {
                 return !this.options
@@ -650,7 +707,6 @@
             },
             isSelected(option) {
                 const opt = option[this.computedTrackBy] || option;
-                console.log(this.valueKeys);
                 return this.valueKeys.indexOf(opt) > -1;
             },
             optionHighlight(index, option) {
@@ -712,9 +768,11 @@
                 const index = typeof option === 'object' && this.computedTrackBy
                     ? this.valueKeys.indexOf(option[this.computedTrackBy])
                     : this.valueKeys.indexOf(option);
+
+
                 this.$emit('remove', option, this.id);
                 if (this.multiple) {
-                    const newValue = this.internalValue.slice(0, index).concat(this.internalValue.slice(index + 1));
+                    const newValue = this.primitiveValue.slice(0, index).concat(this.primitiveValue.slice(index + 1));
                     this.$emit('input', newValue, this.id);
                 } else {
                     this.$emit('input', null, this.id);
@@ -771,9 +829,9 @@
                     this.$emit('select', option[this.computedTrackBy] || option, this.id);
 
                     if (this.multiple) {
-                        this.$emit('input', this.internalValue.concat([option]), this.id);
+                        this.$emit('input', this.primitiveValue.concat([option[this.computedTrackBy] || option]), this.id);
                     } else {
-                        this.$emit('input', option, this.id);
+                        this.$emit('input', option[this.computedTrackBy] || option, this.id);
                     }
 
                     if (this.clearOnSelect) {
