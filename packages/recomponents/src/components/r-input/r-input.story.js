@@ -14,6 +14,7 @@ storiesOf('Components', module)
                 :helpText="helpText"
                 :multiline="multiline"
                 :submitOnEnter="submitOnEnter"
+                :validate="validate"
                 :leftIcon="leftIcon"
                 :leftIconClickPointer="leftIconClickPointer"
                 :leftIconSpinning="leftIconSpinning"
@@ -48,16 +49,35 @@ storiesOf('Components', module)
         },
         props: {
             label: {
-                default: text('label', 'Label'),
+                default: text('label', 'Label', 'Text'),
             },
             disabled: {
-                default: boolean('disabled', false),
+                default: boolean('disabled', false, 'State'),
+            },
+            validate: {
+                default: select('validate', {
+                    valid: {
+                        $dirty: false,
+                        $invalid: false,
+                    },
+                    dirty: {
+                        $dirty: true,
+                        $invalid: false,
+                    },
+                    invalid: {
+                        $dirty: true,
+                        $invalid: true,
+                    },
+                }, {
+                    $dirty: false,
+                    $invalid: false,
+                }, 'State'),
             },
             placeholder: {
-                default: text('placeholder', 'Please input value here'),
+                default: text('placeholder', 'Please input value here', 'Text'),
             },
             helpText: {
-                default: text('helpText', 'Help text here to explain something'),
+                default: text('helpText', 'Help text here to explain something', 'Text'),
             },
             multiline: {
                 default: boolean('multiline', false),
@@ -66,28 +86,28 @@ storiesOf('Components', module)
                 default: boolean('submitOnEnter', false),
             },
             leftIcon: {
-                default: select('leftIcon', ['', 'search', 'customers', 'lock', 'burger'], ''),
+                default: select('leftIcon', ['', 'search', 'customers', 'lock', 'burger'], '', 'Icons'),
             },
             leftIconClickPointer: {
-                default: boolean('leftIconClickPointer', false),
+                default: boolean('leftIconClickPointer', false, 'Icons'),
             },
             leftIconSpinning: {
-                default: boolean('leftIconSpinning', false),
+                default: boolean('leftIconSpinning', false, 'Icons'),
             },
             rightIcon: {
-                default: select('rightIcon', ['', 'search', 'customers', 'lock', 'burger'], ''),
+                default: select('rightIcon', ['', 'search', 'customers', 'lock', 'burger'], '', 'Icons'),
             },
             rightIconClickPointer: {
-                default: boolean('rightIconClickPointer', false),
+                default: boolean('rightIconClickPointer', false, 'Icons'),
             },
             rightIconSpinning: {
-                default: boolean('rightIconSpinning', false),
+                default: boolean('rightIconSpinning', false, 'Icons'),
             },
             leftLabel: {
-                default: select('leftLabel', ['', 'left label'], ''),
+                default: select('leftLabel', ['', 'left label'], '', 'Icons'),
             },
             rightLabel: {
-                default: select('rightLabel', ['', 'right label'], ''),
+                default: select('rightLabel', ['', 'right label'], '', 'Icons'),
             },
             password: {
                 default: boolean('password', false),
