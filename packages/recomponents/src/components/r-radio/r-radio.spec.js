@@ -5,6 +5,36 @@ import RRadio from './r-radio.vue';
 const $t = () => 'custom label';
 
 describe('r-radio.vue', () => {
+    it('renders default radio correctly', () => {
+        const label = `label-${new Date().getTime()}`;
+
+        const wrapper = shallowMount(RRadio, {
+            propsData: {
+                label,
+                checked: '',
+                value: '1',
+            },
+        });
+
+        expect(wrapper.find('label').text()).toEqual(label);
+        expect(wrapper.contains('.r-field-caption')).toBe(false);
+    });
+
+    it('should render caption props if passed', () => {
+        const caption = `caption-${new Date().getTime()}`;
+
+        const wrapper = shallowMount(RRadio, {
+            propsData: {
+                caption,
+                checked: '',
+                value: '1',
+            },
+        });
+
+        expect(wrapper.find('.r-field-caption').text()).toEqual(caption);
+    });
+
+
     it('should render Wrapper and match snapshot', () => {
         const wrapper = shallowMount(RRadio, {
             propsData: {

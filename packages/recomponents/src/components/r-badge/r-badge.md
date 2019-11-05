@@ -4,16 +4,10 @@ Small count and labeling component to highlight any information to a user. Could
 
 ### Props
 
-This component has 
-
-* `type` component's background color, could be `default`, `positive`, `negative`, `warning`, `info`, `tag`
-
-### Slots
-
-This component has 2 slots:
-
-* `text` component's content
-* `actions` to add icon, actions
+| prop     | type    | required | default value | Description                          |
+|--        | --      | --       | --            |                                    --|
+| type     | string  | no       | `'default'`   | Changes background color             |
+| close    | boolean | no       | `false`       | adds a close button to the component |
 
 ### Usage
 

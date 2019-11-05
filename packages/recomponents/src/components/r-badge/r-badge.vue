@@ -1,40 +1,44 @@
 <template>
     <span class="r-component r-badge" :class="classes">
-        <slot name="text">Badge</slot>
-        <slot name="actions">
-            <template v-if="type === 'tag'">
-                <i aria-hidden="true"
-                   tabindex="1"
-                   @keypress.enter.prevent="$emit('close')"
-                   @mousedown.prevent="$emit('close')"
-                   class="r-badge--icon-close"></i>
-            </template>
-        </slot>
+        <slot>Badge</slot>
+        <r-icon
+            v-if="close"
+            aria-hidden="true"
+            class="r-icon-gray r-badge-icon"
+            @click="$emit('close')"
+            @keypress.enter.prevent="$emit('close')"
+            @mousedown.prevent="$emit('close')"
+            icon="close-s"/>
     </span>
 </template>
 
 <script>
+    import rIcon from '../r-icon/r-icon.vue';
+
     export default {
         name: 'RBadge',
+        components: {rIcon},
         props: {
             type: {
                 type: String,
                 default: 'default',
-                validator: val => [
-                    'default',
-                    'positive',
-                    'negative',
-                    'warning',
-                    'info',
-                    'tag',
-                ].includes(val),
+            },
+            close: {
+                type: Boolean,
+                default: false,
             },
         },
         computed: {
             classes() {
-                return {
-                    [`r-badge--type-${this.type}`]: !!this.type,
+                const classes = {
+                    'r-badge-has-icon-close': !!this.close,
                 };
+                if (this.type) {
+                    classes[`r-badge-${this.type}`] = true;
+                } else {
+                    classes['r-badge-default'] = true;
+                }
+                return classes;
             },
         },
     };

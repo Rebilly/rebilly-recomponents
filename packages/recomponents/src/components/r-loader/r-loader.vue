@@ -9,6 +9,7 @@
 </template>
 
 <script>
+    // TODO classes prefix wrapper, mr, etc.
     export default {
         name: 'RLoader',
 

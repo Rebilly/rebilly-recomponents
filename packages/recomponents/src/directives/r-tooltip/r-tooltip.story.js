@@ -16,7 +16,9 @@ storiesOf('Directives', module)
                 <div>
                     <r-button type="primary" v-tooltip="{text: text}">With button</r-button>
                     <r-badge type="info" v-tooltip="{text: text}">With badge</r-badge>
+                    <!-- TODO tooltip usage -->
                     <r-radio label="With radio"/>
+                    <!-- TODO tooltip usage -->
                     <r-checkbox label="With checkbox"/>
                 </div>
                 <div>

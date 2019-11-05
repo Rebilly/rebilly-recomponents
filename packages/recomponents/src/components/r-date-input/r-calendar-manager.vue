@@ -58,6 +58,7 @@
         },
     });
 
+    // TODO disabled state + active value (no-editable date value)
     export default {
         name: 'RCalendarManager',
         components: {rInput},

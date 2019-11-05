@@ -1,16 +1,36 @@
 import {mount, shallowMount} from '@vue/test-utils';
 import {renderToString} from '@vue/server-test-utils';
 import RCheckbox from './r-checkbox.vue';
+import RIcon from '../r-icon/r-icon.vue';
 
 const $t = () => 'custom label';
 
 describe('r-checkbox.vue', () => {
+    it('renders default checkbox correctly', async () => {
+        const label = `label-${new Date().getTime()}`;
+        const wrapper = shallowMount(RCheckbox, {
+            propsData: {},
+            mocks: {$t: () => label},
+        });
+        // should render label with default text
+        expect(wrapper.find('label').text()).toBe(label);
+        // only basic class name
+        expect(wrapper.attributes('class')).toBe('r-checkbox');
+        // input shouldn't be disabled
+        expect(wrapper.find('input').attributes('disabled')).toBe(undefined);
+        // input shouldn't be checked
+        expect(wrapper.find('input').attributes('checked')).toBe(undefined);
+        // no caption
+        expect(wrapper.contains('.r-field-caption')).toBe(false);
+        // contain icon
+        expect(wrapper.contains(RIcon)).toBe(true);
+    });
+
     it('renders props.label when passed', () => {
         const wrapper = shallowMount(RCheckbox, {
             propsData: {label: 'custom label'},
             mocks: {$t},
         });
-
         expect(wrapper.text()).toMatch('custom label');
     });
 
@@ -45,7 +65,8 @@ describe('r-checkbox.vue', () => {
             },
             mocks: {$t},
         });
-        expect(wrapper.find('input').attributes().disabled).not.toBe(undefined);
+        expect(wrapper.find('label').classes('is-disabled')).toBe(true);
+        expect(wrapper.find('input').attributes('disabled')).not.toBe(undefined);
     });
 
     it('should handle change event', () => {
@@ -59,6 +80,6 @@ describe('r-checkbox.vue', () => {
         });
 
         wrapper.find('.r-field-checkbox').trigger('change');
-        expect(wrapper.emitted().input).toBeTruthy();
+        expect(wrapper.emitted('input')).toBeTruthy();
     });
 });

@@ -11,7 +11,7 @@
 
 <script>
     import shortId from 'shortid';
-    import '../../directives/r-click-outside';
+    import '../../directives/r-click-outside/r-click-outside';
 
     const directions = {
         horizontal: {

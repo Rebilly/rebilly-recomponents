@@ -15,7 +15,11 @@ storiesOf('Components', module)
                 :multiline="multiline"
                 :submitOnEnter="submitOnEnter"
                 :leftIcon="leftIcon"
+                :leftIconClickPointer="leftIconClickPointer"
+                :leftIconSpinning="leftIconSpinning"
                 :rightIcon="rightIcon"
+                :rightIconClickPointer="rightIconClickPointer"
+                :rightIconSpinning="rightIconSpinning"
                 :leftLabel="leftLabel"
                 :rightLabel="rightLabel"
                 :password="password"
@@ -64,8 +68,20 @@ storiesOf('Components', module)
             leftIcon: {
                 default: select('leftIcon', ['', 'search', 'customers', 'lock', 'burger'], ''),
             },
+            leftIconClickPointer: {
+                default: boolean('leftIconClickPointer', false),
+            },
+            leftIconSpinning: {
+                default: boolean('leftIconSpinning', false),
+            },
             rightIcon: {
                 default: select('rightIcon', ['', 'search', 'customers', 'lock', 'burger'], ''),
+            },
+            rightIconClickPointer: {
+                default: boolean('rightIconClickPointer', false),
+            },
+            rightIconSpinning: {
+                default: boolean('rightIconSpinning', false),
             },
             leftLabel: {
                 default: select('leftLabel', ['', 'left label'], ''),
@@ -90,7 +106,7 @@ storiesOf('Components', module)
             },
             maxLength: {
                 // TODO: bug? it could be saying: '(-4 characters left.)' if multiline is false
-                default: select('maxLength', ['', '15', '50'], ''),
+                default: select('maxLength', [null, 15, 50], null),
             },
             autoResize: {
                 default: boolean('autoResize', false),

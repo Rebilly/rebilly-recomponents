@@ -2,7 +2,7 @@ import {shallowMount} from '@vue/test-utils';
 import {renderToString} from '@vue/server-test-utils';
 import RImg from './r-img.vue';
 
-describe('r-loader.vue', () => {
+describe('r-img.vue', () => {
     it('renders props.msg when passed', () => {
         const wrapper = shallowMount(RImg, {
             propsData: {
@@ -35,5 +35,16 @@ describe('r-loader.vue', () => {
 
         expect(wrapper.emitted().onload).toBeTruthy();
         expect(wrapper.emitted().error).toBeTruthy();
+    });
+
+    it('shouldn render data-url attribute if lazy is true', async () => {
+        const src = 'https://www.rebilly.com/wp-content/uploads/2019/01/new_features@2x-319x150.png';
+        const wrapper = shallowMount(RImg, {
+            propsData: {
+                src,
+                lazy: true,
+            },
+        });
+        expect(wrapper.find('img').attributes('data-url')).toBe(src);
     });
 });

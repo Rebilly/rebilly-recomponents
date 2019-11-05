@@ -30,6 +30,7 @@
         data() {
             return {
                 data: [],
+                // TODO probably page as props value, to able to start with page from url query (or etc)
                 page: 1,
             };
         },
@@ -50,7 +51,7 @@
                 const range = [];
 
                 start = start > 0 ? start : 1;
-                for (let i = start; i <= end; i++) {
+                for (let i = start; i <= end; i += 1) {
                     range.push(i);
                 }
 

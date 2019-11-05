@@ -1,11 +1,14 @@
 import {storiesOf} from '@storybook/vue';
-import {text, select} from '@storybook/addon-knobs';
+import {text, select, boolean} from '@storybook/addon-knobs';
 import markdown from './r-badge.md';
+import {action} from '@storybook/addon-actions';
 
 storiesOf('Components', module)
     .add('Badge', () => ({
         template: `
             <r-badge
+                :close="close"
+                @close="closeBadge"
                 :type="type">
                 {{text}}
             </r-badge>
@@ -19,12 +22,19 @@ storiesOf('Components', module)
                     'warning',
                     'info',
                     'tag',
+                    'tag-secondary',
                 ]),
             },
             text: {
-                default: text('Text', 'Click me'),
+                default: text('Text', 'Badge'),
             },
+            close: {
+                default: boolean('Close', false),
+            }
         },
+        methods: {
+            closeBadge: action('close'),
+        }
     }), {
         notes: {markdown},
     });
