@@ -28,6 +28,7 @@ storiesOf('Components', module)
                 :rows="rows"
                 :autoFocus="autoFocus"
                 :autoHighlight="autoHighlight"
+                :autoHighlightOnFocus="autoHighlightOnFocus"
                 :maxLength="maxLength"
                 :autoResize="autoResize"
                 :autoComplete="autoComplete"
@@ -123,6 +124,9 @@ storiesOf('Components', module)
             },
             autoHighlight: {
                 default: boolean('autoHighlight', false),
+            },
+            autoHighlightOnFocus: {
+                default: boolean('autoHighlightOnFocus', false),
             },
             maxLength: {
                 // TODO: bug? it could be saying: '(-4 characters left.)' if multiline is false
