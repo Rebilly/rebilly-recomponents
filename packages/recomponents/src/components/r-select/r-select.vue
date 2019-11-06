@@ -1,5 +1,5 @@
 <template>
-    <div>
+    <div v-fs-block>
         <label v-if="hasLabel"
                @click="activate"
                class="r-field-label">{{label}}
