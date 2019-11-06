@@ -118,7 +118,7 @@ describe('r-input.vue', () => {
     it('renders maxLength if not null', () => {
         const helpText = `helpText-${new Date().getTime()}`;
         const wrapper = shallowMount(RInput, {
-            propsData: {helpText, maxLength: '10'},
+            propsData: {helpText, maxLength: 10},
         });
 
         expect(wrapper.find('.r-field-caption').text()).toEqual(`${helpText} (10 characters left.)`);
