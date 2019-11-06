@@ -1,5 +1,5 @@
 <template>
-    <div v-fs-block>
+    <div :class="computedClasses" v-fs-block>
         <label v-if="hasLabel"
                @click="activate"
                class="r-field-label">{{label}}
@@ -293,6 +293,10 @@
                     return option[label] || option;
                 },
             },
+            validate: {
+                type: Object,
+                default: null,
+            },
             disabled: {
                 type: Boolean,
                 default: false,
@@ -529,6 +533,15 @@
             },
             hasLabel() {
                 return (this.label || '').trim() !== '';
+            },
+            computedClasses() {
+                return this.isInvalid ? 'is-error' : '';
+            },
+            isInvalid() {
+                if (this.validate) {
+                    return this.validate.$invalid && this.validate.$dirty;
+                }
+                return false;
             },
             inputStyle() {
                 if (this.searchable

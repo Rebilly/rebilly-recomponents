@@ -162,6 +162,11 @@ fieldset[disabled] .r-select {
     box-shadow: var(--select-tags-box-shadow);
 }
 
+.is-error .r-select__tags {
+    box-shadow: 0 0 0 1px var(--negative-color-dark) inset;
+    background: rgba(255, 212, 211, 0.6);
+}
+
 .r-select__tag-text {
     width: calc(100% - 16px - var(--badge-tag-icon-margin-left));
     overflow: hidden;
@@ -406,4 +411,9 @@ fieldset[disabled] .r-select {
     top: 4px;
     max-height: 230px !important;
     display: block;
+}
+
+//Label
+.is-error .r-field-label {
+    color: var(--input-is-error-color);
 }

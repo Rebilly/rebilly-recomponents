@@ -1,6 +1,8 @@
 import {storiesOf} from '@storybook/vue';
 import {action} from '@storybook/addon-actions';
-import {array, boolean, number, select, text} from '@storybook/addon-knobs';
+import {
+    array, boolean, number, select, text,
+} from '@storybook/addon-knobs';
 import axios from 'axios';
 import markdown from './r-select.md';
 
@@ -166,6 +168,25 @@ storiesOf('Components/Select', module)
             closeOnSelect: {
                 default: boolean('Close on select', true),
             },
+            validate: {
+                default: select('validate', {
+                    valid: {
+                        $dirty: false,
+                        $invalid: false,
+                    },
+                    dirty: {
+                        $dirty: true,
+                        $invalid: false,
+                    },
+                    invalid: {
+                        $dirty: true,
+                        $invalid: true,
+                    },
+                }, {
+                    $dirty: false,
+                    $invalid: false,
+                }),
+            },
             disabled: {
                 default: boolean('Disabled', false),
             },
@@ -268,6 +289,7 @@ storiesOf('Components/Select', module)
                             :allowEmpty="allowEmpty"
                             :clearOnSelect="clearOnSelect"
                             :closeOnSelect="closeOnSelect"
+                            :validate="validate"
                             :disabled="disabled"
                             :helpText="helpText"
                             :hideSelected="hideSelected"
