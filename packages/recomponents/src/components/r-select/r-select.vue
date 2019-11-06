@@ -200,6 +200,7 @@
     import RIcon from '../r-icon/r-icon.vue';
     import RBadge from '../r-badge/r-badge.vue';
     import RIconButton from '../r-icon-button/r-icon-button.vue';
+    import '../../directives/r-fs-block';
 
     function isEmpty(opt) {
         if (opt === 0) {
