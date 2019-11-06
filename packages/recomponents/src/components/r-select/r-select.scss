@@ -228,7 +228,7 @@ fieldset[disabled] .r-select {
     overflow: auto;
     z-index: var(--select-wrapper-z-index);
     padding: var(--select-wrapper-padding);
-    top: var(--select-min-height);
+    top: calc(100% + 4px);
     border-radius: var(--select-border-radius);
     border: none;
     box-shadow: var(--select-wrapper-box-shadow);
