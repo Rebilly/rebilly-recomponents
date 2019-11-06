@@ -456,7 +456,7 @@ body, .article {
     --input-is-error-background: var(--negative-color-light);
     --input-is-error-box-shadow: 0 0 0 1px var(--negative-color) inset;
     --input-is-error-icon-color: var(--negative-color);
-    --input-focus-is-error-box-shadow: 0 0 0 1px var(--primary-color) inset, 0 0 0 1px rgba(var(--primary-color), 1);
+    --input-focus-is-error-box-shadow: 0 0 0 2px var(--negative-color) inset;
     --input-icon-top: var(--space-s);
     --input-icon-right: var(--space-s);
     --input-icon-left: var(--space-s);

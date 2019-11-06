@@ -172,7 +172,7 @@
                 default: () => shortid.generate(),
             },
             rows: {
-                type: String,
+                type: [String, Number],
                 default: '1',
             },
             autoFocus: {
