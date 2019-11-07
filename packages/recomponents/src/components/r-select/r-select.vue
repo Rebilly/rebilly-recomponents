@@ -472,19 +472,14 @@
                     if (!this.multiple) {
                         // multiple selection enabled
                         const option = options
-                            .find(option => this.getOptionValue({
-                                option,
-                                trackBy: this.computedTrackBy,
-                            }) === value);
+                            .find(opt => this.getOptionValue({option: opt, trackBy: this.computedTrackBy}) === value);
                         if (option) {
                             return option;
                         }
                     } else if (value) {
                         return value.map((val) => {
-                            const option = options.find(opt => this.getOptionValue({
-                                option: opt,
-                                trackBy: this.computedTrackBy,
-                            }) === val);
+                            const option = options
+                                .find(opt => this.getOptionValue({option: opt, trackBy: this.computedTrackBy}) === value);
                             return option || {[this.computedTrackBy]: val, [this.computedLabel]: val};
                         });
                     }
@@ -705,7 +700,7 @@
                     }
                     return value;
                 }
-                return typeof value === 'object' && value[trackBy] || value;
+                return typeof (value === 'object' && value[trackBy]) || value;
             },
             getValue() {
                 const value = this.internalValue.length === 0 ? null : this.internalValue[0];
