@@ -187,8 +187,11 @@ body, .article {
     --badge-info-border: none;
     --badge-tag-background: var(--gray-color-light);
     --badge-tag-color: var(--mono-color-700);
+    --badge-tag-line-height: 16px;
     --badge-tag-border-radius: var(--border-radius-xxs);
     --badge-tag-font-weight: var(--font-weight-bold);
+    --badge-tag-margin: 0 var(--space-xs) var(--space-xxs) 0;
+    --badge-tag-padding: var(--space-xxs) var(--space-s) var(--space-xxs) var(--space-s);
     --badge-tag-secondary-background: var(--mono-color-0);
     --badge-tag-secondary-color: var(--mono-color-700);
     --badge-tag-secondary-border-radius: var(--border-radius-xxs);
@@ -554,7 +557,7 @@ body, .article {
     --select-selected-font-weight: var(--font-weight-bold);
     --select-single-margin: 0 0 var(--space-s) 0;
     --select-single-padding: 0 0 0 var(--space-xs);
-    --select-spinner-background-color: #FFFFFF;
+    --select-spinner-background-color: var(--select-tags-background);
     --select-spinner-border-radius: var(--border-radius);
     --select-spinner-height: 34px;
     --select-spinner-width: 40px;

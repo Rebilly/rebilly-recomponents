@@ -459,7 +459,7 @@
                 return this.computedAsyncLastOptions || [];
             },
             computedTrackBy() {
-                return this.optionKey || 'label';
+                return this.optionKey || 'value';
             },
             computedValue() {
                 const options = this.computedIsAsync
@@ -479,7 +479,7 @@
                     } else if (value) {
                         return value.map((val) => {
                             const option = options
-                                .find(opt => this.getOptionValue({option: opt, trackBy: this.computedTrackBy}) === value);
+                                .find(opt => this.getOptionValue({option: opt, trackBy: this.computedTrackBy}) === val);
                             return option || {[this.computedTrackBy]: val, [this.computedLabel]: val};
                         });
                     }
@@ -551,7 +551,10 @@
                 return {};
             },
             internalValue() {
-                const value = Array.isArray(this.value) ? this.value : [this.value];
+                const value = Array.isArray(this.value)
+                    ? this.value
+                    : ((this.options.find(opt => opt === this.value || opt[this.computedTrackBy] === this.value) || this.taggable) && [this.value]) || [];
+
                 return this.value || this.value === 0 ? value : [];
             },
             isAbove() {
