@@ -1,5 +1,5 @@
 <template>
-    <div :class="computedClasses" v-fs-block>
+    <div :class="classes" v-fs-block>
         <label v-if="hasLabel"
                @click="activate"
                class="r-field-label">{{label}}
@@ -535,7 +535,7 @@
             hasLabel() {
                 return (this.label || '').trim() !== '';
             },
-            computedClasses() {
+            classes() {
                 return this.isInvalid ? 'is-error' : '';
             },
             isInvalid() {
