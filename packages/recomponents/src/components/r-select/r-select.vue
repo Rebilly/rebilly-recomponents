@@ -1,5 +1,5 @@
 <template>
-    <div>
+    <div :class="classes" v-fs-block>
         <label v-if="hasLabel"
                @click="activate"
                class="r-field-label">{{label}}
@@ -24,23 +24,27 @@
             <slot name="clear" :search="search"></slot>
             <div ref="tags" class="r-select__tags">
                 <slot name="selection"
+                      v-if="!loading"
                       :search="search"
                       :remove="removeElement"
-                      :values="visibleValues"
+                      :values="computedValue"
                       :is-open="isOpen">
                     <div class="r-select__tags-wrap"
                          v-show="visibleValues.length > 0">
-                        <template v-for="(option, index) of visibleValues"
+                        <template v-for="(option, index) of computedValue"
                                   @mousedown.prevent>
                             <slot name="tag"
                                   :option="option"
                                   :search="search"
                                   :remove="removeElement">
                                 <template>
-                                    <r-badge class="r-select__tag" type="tag" @close="removeElement(option)">
-                                        <template v-slot:text>
+                                    <r-badge class="r-select__tag"
+                                             type="tag"
+                                             :close="true"
+                                             @close="removeElement(option)">
+                                        <template>
                                             <span class="r-select__tag-text">
-                                                {{ getOptionLabel(option) }}
+                                                {{ option[computedLabel] || option }}
                                             </span>
                                         </template>
                                     </r-badge>
@@ -83,14 +87,14 @@
                        class="r-select__input"
                        :aria-controls="'listbox-'+id"
                 />
-                <span v-if="isSingleLabelVisible"
+                <span v-if="isSingleLabelVisible && !loading"
                       class="r-select__single"
                       @mousedown.prevent="toggle">
                     <slot name="singleLabel" :option="singleValue">
                         <template>{{ currentOptionLabel }}</template>
                     </slot>
                 </span>
-                <span v-if="isPlaceholderVisible"
+                <span v-if="isPlaceholderVisible || loading"
                       class="r-select__placeholder"
                       @mousedown.prevent="toggle">
                     <slot name="placeholder">
@@ -196,6 +200,7 @@
     import RIcon from '../r-icon/r-icon.vue';
     import RBadge from '../r-badge/r-badge.vue';
     import RIconButton from '../r-icon-button/r-icon-button.vue';
+    import '../../directives/r-fs-block';
 
     function isEmpty(opt) {
         if (opt === 0) {
@@ -256,6 +261,7 @@
             if (!this.multiple && this.max) {
                 console.warn('[Recomponents warn]: Max prop should not be used when prop Multiple equals false.');
             }
+            this.preselect();
         },
         mixins: [new AsyncInputMixin().getMixin()],
         components: {RIcon, RIconButton, RBadge},
@@ -284,8 +290,13 @@
                     if (isEmpty(option)) {
                         return '';
                     }
-                    return label ? option[label] : option;
+
+                    return option[label] || option;
                 },
+            },
+            validate: {
+                type: Object,
+                default: null,
             },
             disabled: {
                 type: Boolean,
@@ -351,6 +362,12 @@
                 type: Number,
                 default: 40,
             },
+            optionKey: {
+                type: String,
+            },
+            optionLabel: {
+                type: String,
+            },
             optionsLimit: {
                 type: Number,
                 default: 1000,
@@ -366,9 +383,6 @@
             placeholder: {
                 type: String,
                 default: 'Select option',
-            },
-            propLabel: {
-                type: String,
             },
             resetAfter: {
                 type: Boolean,
@@ -402,9 +416,6 @@
                 type: String,
                 default: 'top',
             },
-            trackBy: {
-                type: String,
-            },
             value: {
                 type: null,
                 default() {
@@ -425,13 +436,6 @@
             isOpen() {
                 this.pointerDirty = false;
             },
-            options() {
-                if (this.preselectFirst
-                    && !this.internalValue.length
-                    && this.options.length) {
-                    this.select(this.filteredOptions[0]);
-                }
-            },
             pointer() {
                 if (this.$refs.search) {
                     this.$refs.search.setAttribute('aria-activedescendant', `${this.id}-${this.pointer.toString()}`);
@@ -440,20 +444,69 @@
             search() {
                 this.$emit('search-change', this.search, this.id);
             },
-
+            loading() {
+                this.preselect();
+            },
         },
         computed: {
-            currentOptionLabel() {
-                const placeholder = this.searchable ? '' : this.placeholder;
-                const value = this.internalValue && this.internalValue.length
-                    ? this.getOptionLabel(this.internalValue[0])
-                    : placeholder;
-                return this.multiple ? placeholder : value;
+            computedLabel() {
+                return this.optionLabel || 'label';
+            },
+            computedOptions() {
+                if (!this.computedIsAsync) {
+                    return this.options;
+                }
+                return this.computedAsyncLastOptions || [];
+            },
+            computedTrackBy() {
+                return this.optionKey || 'label';
+            },
+            computedValue() {
+                const options = this.computedIsAsync
+                    ? this.async.getAllCacheItems()
+                    : this.computedOptions;
+
+                const value = this.primitiveValue;
+
+                if (this.isComplexOptions && value !== null) {
+                    if (!this.multiple) {
+                        // multiple selection enabled
+                        const option = options
+                            .find(option => this.getOptionValue({
+                                option,
+                                trackBy: this.computedTrackBy,
+                            }) === value);
+                        if (option) {
+                            return option;
+                        }
+                    } else if (value) {
+                        return value.map((val) => {
+                            const option = options.find(opt => this.getOptionValue({
+                                option: opt,
+                                trackBy: this.computedTrackBy,
+                            }) === val);
+                            return option || {[this.computedTrackBy]: val, [this.computedLabel]: val};
+                        });
+                    }
+                }
+                return this.primitiveValue;
             },
             contentStyle() {
                 return this.options.length
                     ? {display: 'inline-block'}
                     : {display: 'block'};
+            },
+            currentOptionLabel() {
+                const placeholder = this.searchable ? '' : this.placeholder;
+                const option = this.options.find(option => this.getOptionValue({
+                    option,
+                    trackBy: this.computedTrackBy,
+                }) === this.internalValue[0]);
+
+                const value = this.internalValue && this.internalValue.length
+                    ? (option && option[this.computedLabel]) || this.internalValue[0]
+                    : placeholder;
+                return this.multiple ? placeholder : value;
             },
             filteredOptions() {
                 const search = this.search || '';
@@ -462,7 +515,7 @@
                 let options = this.options && this.options.concat();
 
                 if (this.internalSearch) {
-                    options = filterOptions(this.options, normalizedSearch, this.propLabel, this.customLabel);
+                    options = filterOptions(this.options, normalizedSearch, this.computedLabel, this.customLabel);
                 }
 
                 options = this.hideSelected
@@ -481,6 +534,15 @@
             },
             hasLabel() {
                 return (this.label || '').trim() !== '';
+            },
+            classes() {
+                return this.isInvalid ? 'is-error' : '';
+            },
+            isInvalid() {
+                if (this.validate) {
+                    return this.validate.$invalid && this.validate.$dirty;
+                }
+                return false;
             },
             inputStyle() {
                 if (this.searchable
@@ -509,6 +571,13 @@
                 }
                 return this.preferredOpenDirection === 'above';
             },
+            isComplexOptions() {
+                if (this.computedOptions) {
+                    const [firstOption] = this.computedOptions;
+                    return typeof firstOption !== 'string';
+                }
+                return false;
+            },
             isPlaceholderVisible() {
                 return !this.internalValue.length && (!this.searchable || !this.isOpen);
             },
@@ -522,21 +591,25 @@
             optionKeys() {
                 const {options} = this;
                 return options
-                    .map(element => this.customLabel(element, this.propLabel)
+                    .map(element => this.customLabel(element, this.computedLabel)
                         .toString()
                         .toLowerCase());
             },
             pointerPosition() {
                 return this.pointer * this.optionHeight;
             },
+            primitiveValue() {
+                return this.getPrimitiveValueFromValue({
+                    value: this.multiple ? this.internalValue : this.value,
+                    multiple: this.multiple,
+                    trackBy: this.computedTrackBy,
+                });
+            },
             singleValue() {
                 return this.internalValue[0];
             },
             valueKeys() {
-                if (this.trackBy) {
-                    return this.internalValue.map(element => element[this.trackBy]);
-                }
-                return this.internalValue;
+                return this.internalValue.map(element => element[this.computedTrackBy] || element);
             },
             visibleElements() {
                 return this.optimizedHeight / this.optionHeight;
@@ -612,12 +685,27 @@
                     return option.label;
                 }
 
-                const label = this.customLabel(option, this.propLabel);
+                const label = this.customLabel(option, this.computedLabel);
 
                 if (isEmpty(label)) {
                     return '';
                 }
                 return label;
+            },
+            getOptionValue({option, trackBy}) {
+                return option[trackBy] || option;
+            },
+            getPrimitiveValueFromValue({value, trackBy, multiple}) {
+                if (value === undefined || value === null) {
+                    return value;
+                }
+                if (multiple) {
+                    if (value) {
+                        return value.map(item => item[trackBy] || item);
+                    }
+                    return value;
+                }
+                return typeof value === 'object' && value[trackBy] || value;
             },
             getValue() {
                 const value = this.internalValue.length === 0 ? null : this.internalValue[0];
@@ -632,10 +720,7 @@
                 return option && !!option.$isDisabled;
             },
             isSelected(option) {
-                const opt = this.trackBy
-                    ? option[this.trackBy]
-                    : option;
-
+                const opt = option[this.computedTrackBy] || option;
                 return this.valueKeys.indexOf(opt) > -1;
             },
             optionHighlight(index, option) {
@@ -694,12 +779,14 @@
                     return;
                 }
 
-                const index = typeof option === 'object' && this.trackBy
-                    ? this.valueKeys.indexOf(option[this.trackBy])
+                const index = typeof option === 'object' && this.computedTrackBy
+                    ? this.valueKeys.indexOf(option[this.computedTrackBy])
                     : this.valueKeys.indexOf(option);
+
+
                 this.$emit('remove', option, this.id);
                 if (this.multiple) {
-                    const newValue = this.internalValue.slice(0, index).concat(this.internalValue.slice(index + 1));
+                    const newValue = this.primitiveValue.slice(0, index).concat(this.primitiveValue.slice(index + 1));
                     this.$emit('input', newValue, this.id);
                 } else {
                     this.$emit('input', null, this.id);
@@ -707,6 +794,13 @@
 
                 if (this.closeOnSelect && shouldClose) {
                     this.deactivate();
+                }
+            },
+            preselect() {
+                if (this.preselectFirst
+                    && !this.internalValue.length
+                    && this.options.length) {
+                    this.select(this.filteredOptions[0]);
                 }
             },
             removeLastElement() {
@@ -746,13 +840,12 @@
                     if (this.max && this.multiple && this.internalValue.length === this.max) {
                         return;
                     }
-
-                    this.$emit('select', option, this.id);
+                    this.$emit('select', option[this.computedTrackBy] || option, this.id);
 
                     if (this.multiple) {
-                        this.$emit('input', this.internalValue.concat([option]), this.id);
+                        this.$emit('input', this.primitiveValue.concat([option[this.computedTrackBy] || option]), this.id);
                     } else {
-                        this.$emit('input', option, this.id);
+                        this.$emit('input', option[this.computedTrackBy] || option, this.id);
                     }
 
                     if (this.clearOnSelect) {
