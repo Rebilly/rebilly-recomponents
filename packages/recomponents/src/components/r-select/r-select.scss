@@ -91,18 +91,8 @@ fieldset[disabled] .r-select {
     z-index: var(--select-z-index);
 }
 
-.r-select--active:not(.r-select--above) .r-select__current,
-.r-select--active:not(.r-select--above) .r-select__input,
-.r-select--active:not(.r-select--above) .r-select__tags {
-    border-bottom-left-radius: var(--select-above-border-bottom);
-    border-bottom-right-radius: var(--select-above-border-bottom);
-}
-
-.r-select--above.r-select--active .r-select__current,
-.r-select--above.r-select--active .r-select__input,
-.r-select--above.r-select--active .r-select__tags {
-    border-top-left-radius: var(--select-below-border-top);
-    border-top-right-radius: var(--select-below-border-top);
+.r-select--active .r-select__tags {
+    box-shadow: var(--select-active-box-shadow);
 }
 
 .r-select__input,
@@ -196,7 +186,7 @@ fieldset[disabled] .r-select {
     position: absolute;
     box-sizing: border-box;
     width: 40px;
-    height: 38px;
+    height: 36px;
     right: 1px;
     top: 1px;
     padding: 4px 8px;

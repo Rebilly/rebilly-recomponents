@@ -511,6 +511,7 @@ body, .article {
 
     --select-above-border-bottom: 0;
     --select-above-margin-bottom: var(--space-xs);
+    --select-active-box-shadow: 0 0 0 1px var(--primary-color) inset, 0 0 0 1px var(--primary-color);
     --select-background-color: var(--background-color);
     --select-below-border-top: 0;
     --select-border-color: var(--primary-color);
@@ -560,12 +561,13 @@ body, .article {
     --select-tag-line-height: var(--font-line-height-p);
     --select-tag-margin: 0 var(--space-xs) var(--space-xxs) 0;
     --select-tag-padding: var(--space-xxs) var(--space-s) var(--space-xxs) var(--space-s);
-    --select-tags-background: #FFFFFF;
+    --select-tags-background: linear-gradient(180deg, #FFFFFF, var(--background-color));
     --select-tags-border-color: var(--input-border);
     --select-tags-border-radius: var(--border-radius);
     --select-tags-box-shadow: var(--input-box-shadow);
     --select-tags-font-size: var(--font-size-p);
-    --select-tags-padding: var(--space-s) var(--space-l) var(--space-xxs) var(--space-s);
+    //--select-tags-padding: var(--space-s) var(--space-l) var(--space-xxs) var(--space-s);
+    --select-tags-padding: 8px 40px 0 11px;
     --select-text-align: left;
     --select-text-color: var(--text-color);
     --select-transition: transform var(--timing-100) var(--animation-ease);
