@@ -52,8 +52,17 @@ const directives = {
     RFsBlock,
 };
 
-function install(Vue) {
+function install(Vue, options = {}) {
     Vue.use(VueI18n);
+
+    /**
+     * Set global settings
+     */
+
+    Vue.RecomponentsSettings = {
+      timezone: 'America/Montreal',
+      ...options,
+    };
 
     /**
      * Injecting all components according to their filenames

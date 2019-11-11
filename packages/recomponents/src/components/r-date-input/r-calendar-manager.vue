@@ -41,7 +41,7 @@
     import Vue from 'vue';
     import moment from 'moment-timezone';
     import vCalendar from 'v-calendar';
-    import {DateTimeFormats} from '../../common/datetime-formats';
+    import DateTimeFormats from '../../common/datetime-formats';
     import rInput from '../r-input/r-input.vue';
 
     Vue.use(vCalendar, {
