@@ -539,7 +539,7 @@ body, .article {
     --select-input-background: transparent;
     --select-input-margin: 0 0 var(--space-s) 0;
     --select-input-min-height: var(--font-line-height-p);
-    --select-input-padding: 0 0 0 var(--space-xxs);
+    --select-input-padding: 0 0 0 var(--space-xs);
     --select-input-transition: border var(--timing-100) var(--animation-ease);
     --select-line-height: var(--font-line-height-p);
     --select-loading-transition: opacity var(--timing-400) var(--animation-ease-in-out);
@@ -552,12 +552,12 @@ body, .article {
     --select-option-padding: var(--space-s) var(--space-m);
     --select-placeholder-color: var(--gray-color);
     --select-placeholder-margin-bottom: var(--space-s);
-    --select-placeholder-padding: 0 var(--space-xxs);
+    --select-placeholder-padding: 0 var(--space-xs);
     --select-selected-after-color: var(--mono-color-400);
     --select-selected-font-color: var(--secondary-color);
     --select-selected-font-weight: var(--font-weight-bold);
     --select-single-margin: 0 0 var(--space-s) 0;
-    --select-single-padding: 0;
+    --select-single-padding: 0 0 0 var(--space-xs);
     --select-spinner-background-color: var(--select-tags-background);
     --select-spinner-border-radius: var(--border-radius);
     --select-spinner-height: 34px;
