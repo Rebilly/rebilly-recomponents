@@ -155,7 +155,7 @@ storiesOf('Components/Select', module)
     .add('Select with object options', () => ({
         data() {
             return {
-                value: null,
+                value: 'test',
             };
         },
         props: {
@@ -270,7 +270,7 @@ storiesOf('Components/Select', module)
                 default: select('Tag position', {top: 'top', bottom: 'bottom'}, 'top'),
             },
             taggable: {
-                default: boolean('Taggable', true),
+                default: boolean('Taggable', false),
             },
         },
         methods: {

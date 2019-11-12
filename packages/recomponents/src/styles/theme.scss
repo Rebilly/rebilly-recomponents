@@ -187,8 +187,11 @@ body, .article {
     --badge-info-border: none;
     --badge-tag-background: var(--gray-color-light);
     --badge-tag-color: var(--mono-color-700);
+    --badge-tag-line-height: 16px;
     --badge-tag-border-radius: var(--border-radius-xxs);
     --badge-tag-font-weight: var(--font-weight-bold);
+    --badge-tag-margin: 0 var(--space-xs) var(--space-xxs) 0;
+    --badge-tag-padding: var(--space-xxs) var(--space-s) var(--space-xxs) var(--space-s);
     --badge-tag-secondary-background: var(--mono-color-0);
     --badge-tag-secondary-color: var(--mono-color-700);
     --badge-tag-secondary-border-radius: var(--border-radius-xxs);
@@ -511,6 +514,7 @@ body, .article {
 
     --select-above-border-bottom: 0;
     --select-above-margin-bottom: var(--space-xs);
+    --select-active-box-shadow: 0 0 0 1px var(--primary-color) inset, 0 0 0 1px var(--primary-color);
     --select-background-color: var(--background-color);
     --select-below-border-top: 0;
     --select-border-color: var(--primary-color);
@@ -553,19 +557,19 @@ body, .article {
     --select-selected-font-weight: var(--font-weight-bold);
     --select-single-margin: 0 0 var(--space-s) 0;
     --select-single-padding: 0 0 0 var(--space-xs);
-    --select-spinner-background-color: #FFFFFF;
+    --select-spinner-background-color: var(--select-tags-background);
     --select-spinner-border-radius: var(--border-radius);
     --select-spinner-height: 34px;
     --select-spinner-width: 40px;
     --select-tag-line-height: var(--font-line-height-p);
     --select-tag-margin: 0 var(--space-xs) var(--space-xxs) 0;
     --select-tag-padding: var(--space-xxs) var(--space-s) var(--space-xxs) var(--space-s);
-    --select-tags-background: #FFFFFF;
+    --select-tags-background: linear-gradient(180deg, #FFFFFF, var(--background-color));
     --select-tags-border-color: var(--input-border);
     --select-tags-border-radius: var(--border-radius);
     --select-tags-box-shadow: var(--input-box-shadow);
     --select-tags-font-size: var(--font-size-p);
-    --select-tags-padding: var(--space-s) var(--space-l) var(--space-xxs) var(--space-s);
+    --select-tags-padding: 8px 40px 0 11px;
     --select-text-align: left;
     --select-text-color: var(--text-color);
     --select-transition: transform var(--timing-100) var(--animation-ease);
