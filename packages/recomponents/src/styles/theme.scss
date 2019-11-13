@@ -535,6 +535,7 @@ body, .article {
     --select-highlight-color: var(--primary-color);
     --select-highlight-font-color: #FFFFFF;
     --select-hover-border-color: #cfcfcf;
+    --select-input-font-family: var(--primary-font-stack);
     --select-input-background: transparent;
     --select-input-margin: 0 0 var(--space-s) 0;
     --select-input-min-height: var(--font-line-height-p);
@@ -551,7 +552,7 @@ body, .article {
     --select-option-padding: var(--space-s) var(--space-m);
     --select-placeholder-color: var(--gray-color);
     --select-placeholder-margin-bottom: var(--space-s);
-    --select-placeholder-padding-top: var(--space-xxs);
+    --select-placeholder-padding: 0 var(--space-xs);
     --select-selected-after-color: var(--mono-color-400);
     --select-selected-font-color: var(--secondary-color);
     --select-selected-font-weight: var(--font-weight-bold);

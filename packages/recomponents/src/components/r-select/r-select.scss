@@ -103,7 +103,6 @@ fieldset[disabled] .r-select {
     line-height: var(--select-line-height);
     border: none;
     border-radius: var(--select-border-radius);
-    padding: var(--select-input-padding);
     width: calc(100%);
     transition: var(--select-input-transition);
     box-sizing: border-box;
@@ -112,8 +111,13 @@ fieldset[disabled] .r-select {
     background: var(--select-input-background);
 }
 
+.r-select__input {
+    padding: var(--select-input-padding);
+}
+
 .r-select__input::placeholder {
     color: var(--select-placeholder-color);
+    font-family: var(--select-input-font-family);
 }
 
 .r-select__tag ~ .r-select__input,
@@ -202,7 +206,7 @@ fieldset[disabled] .r-select {
     color: var(--select-placeholder-color);
     display: inline-block;
     margin-bottom: var(--select-placeholder-margin-bottom);
-    padding-top: var(--select-placeholder-padding-top);
+    padding: var(--select-placeholder-padding);
 }
 
 .r-select--active .r-select__placeholder {

@@ -24,10 +24,29 @@ storiesOf('Components/Select', module)
                 default: boolean('Close on select', true),
             },
             disabled: {
-                default: boolean('Disabled', false),
+                default: boolean('Disabled', false, 'State'),
+            },
+            validate: {
+                default: select('validate', {
+                    valid: {
+                        $dirty: false,
+                        $invalid: false,
+                    },
+                    dirty: {
+                        $dirty: true,
+                        $invalid: false,
+                    },
+                    invalid: {
+                        $dirty: true,
+                        $invalid: true,
+                    },
+                }, {
+                    $dirty: false,
+                    $invalid: false,
+                }, 'State'),
             },
             helpText: {
-                default: text('Help Text', 'Help text for select'),
+                default: text('Help Text', 'Help text for select', 'Text'),
             },
             hideSelected: {
                 default: boolean('Hide selected', false),
@@ -36,7 +55,7 @@ storiesOf('Components/Select', module)
                 default: boolean('Internal Search', true),
             },
             label: {
-                default: text('Label', 'Label for select'),
+                default: text('Label', 'Label for select', 'Text'),
             },
             limit: {
                 default: number('Limit', 2),
@@ -69,7 +88,7 @@ storiesOf('Components/Select', module)
                 default: number('Options limit', 1000),
             },
             placeholder: {
-                default: text('Placeholder', 'Select option'),
+                default: text('Placeholder', 'Select option', 'Text'),
             },
             preselectFirst: {
                 default: boolean('Preselect first', true),
@@ -117,6 +136,7 @@ storiesOf('Components/Select', module)
                             :clearOnSelect="clearOnSelect"
                             :closeOnSelect="closeOnSelect"
                             :disabled="disabled"
+                            :validate="validate"
                             :helpText="helpText"
                             :hideSelected="hideSelected"
                             :internalSearch="internalSearch"
