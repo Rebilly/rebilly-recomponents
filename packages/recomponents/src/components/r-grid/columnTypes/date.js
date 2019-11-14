@@ -1,5 +1,5 @@
 import timezone from '../../../common/helpers/timezone';
-import DateTimeFormats from '../../../common/datetime-formats';
+import DateFormats from '../../../common/datetime-formats';
 
 /**
  * renderOptions

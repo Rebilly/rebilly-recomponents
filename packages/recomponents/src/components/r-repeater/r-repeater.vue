@@ -1,6 +1,6 @@
 <template>
     <div class="table-control flex-center">
-        <v-loader v-if="isLoading"/>
+        <r-loader v-if="isLoading"/>
         <template v-else>
             <table class="table" v-if="hasRows">
                 <slot name="colgroup"/>

@@ -21,7 +21,7 @@ export default ({createElement, props}) => {
                 currency,
                 percentage,
                 digits,
-            },
+            } = {},
         },
     } = props;
     let displayValue;

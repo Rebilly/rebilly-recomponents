@@ -25,6 +25,8 @@ import RTabs from './components/r-tabs/r-tabs.vue';
 import RSelect from './components/r-select/r-select.vue';
 import RTile from './components/r-tile/r-tile.vue';
 import RDateInput from './components/r-date-input/r-date-input.vue';
+import RRepeater from './components/r-repeater/r-repeater.vue';
+import RGrid from './components/r-grid/r-grid.vue';
 
 const components = {
     RBadge,
@@ -45,6 +47,8 @@ const components = {
     RTabs,
     RTile,
     RDateInput,
+    RRepeater,
+    RGrid,
 };
 
 const directives = {
@@ -60,8 +64,8 @@ function install(Vue, options = {}) {
      */
 
     Vue.RecomponentsSettings = {
-      timezone: 'America/Montreal',
-      ...options,
+        timezone: 'America/Montreal',
+        ...options,
     };
 
     /**
@@ -103,6 +107,8 @@ export {
     RTabs,
     RTile,
     RDateInput,
+    RRepeater,
+    RGrid,
 };
 
 export default {

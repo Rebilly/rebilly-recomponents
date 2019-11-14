@@ -85,7 +85,8 @@
             },
             renderRepeaterRow(createElement, prop) {
                 const row = [];
-                this.computedColumns.forEach((column, columnIndex) => {
+                this.computedColumns.forEach((column) => {
+                    console.log('prop.item[column.name]', prop.item[column.name]);
                     if (column.renderAs) {
                         const component = typeof column.renderAs === 'string'
                             ? ColumnTypes[column.renderAs]
@@ -102,7 +103,7 @@
                                             row: prop.item,
                                             column,
                                             columns: this.columns,
-                                            value: prop.item[columnIndex],
+                                            value: prop.item[column.name],
                                             emitRowAction: (name, data) => this.$emit(`table-row-action-${name}`, data),
                                         },
                                     }),
@@ -121,7 +122,7 @@
                                             row: prop.item,
                                             column,
                                             columns: this.columns,
-                                            value: prop.item[columnIndex],
+                                            value: prop.item[column.name],
                                             emitRowAction: (name, data) => this.$emit(`table-row-action-${name}`, data),
                                         },
                                     }),
@@ -132,7 +133,7 @@
                         row.push(createElement('td', {
                             style: column.style || null,
                             class: column.class || null,
-                        }, prop.item[columnIndex]));
+                        }, prop.item[column.name]));
                     }
                 });
                 return createElement('tr', {

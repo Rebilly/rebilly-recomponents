@@ -3,7 +3,7 @@ import {action} from '@storybook/addon-actions';
 import {number} from '@storybook/addon-knobs';
 import markdown from './r-pagination.md';
 
-storiesOf('Components', module)
+storiesOf('Components/Grid', module)
     .add('Pagination', () => ({
         template: `
         <div>
