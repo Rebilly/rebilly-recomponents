@@ -86,7 +86,6 @@
             renderRepeaterRow(createElement, prop) {
                 const row = [];
                 this.computedColumns.forEach((column) => {
-                    console.log('prop.item[column.name]', prop.item[column.name]);
                     if (column.renderAs) {
                         const component = typeof column.renderAs === 'string'
                             ? ColumnTypes[column.renderAs]

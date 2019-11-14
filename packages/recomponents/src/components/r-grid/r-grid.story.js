@@ -7,7 +7,7 @@ storiesOf('Components/Grid', module)
         <div>
             <r-pagination :provider="provider" :limit="limit" :total="total">
                 <template #pagination="{pagination}">
-                    <r-grid :provider="pagination.provider" :columns="columns" :key="pagination.page">
+                    <r-grid :provider="pagination.provider" :columns="columns" :key="pagination.offset">
                         <header slot="header">
                             <h2>Stuff</h2>
                         </header>
@@ -34,6 +34,7 @@ storiesOf('Components/Grid', module)
                             name: 'name',
                             style: {
                                 minWidth: '300px',
+                                textAlign: 'center',
                             },
                             renderAs: 'text',
                         },

@@ -28,7 +28,7 @@ This component has 5 optional slots:
 <template>
     <r-pagination :provider="provider" :limit="limit" :total="total" :key="filter">
         <template #pagination="{pagination}">
-            <r-grid :provider="pagination.provider" :columns="columns" :key="pagination.page">
+            <r-grid :provider="pagination.provider" :columns="columns" :key="pagination.offset">
                 <header slot="header">
                     <h2>Stuff</h2>
                 </header>
