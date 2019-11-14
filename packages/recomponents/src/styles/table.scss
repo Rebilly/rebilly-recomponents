@@ -1,0 +1,188 @@
+// -----------------------------------------------------------------------------
+// This file contains all styles related to the table component.
+// -----------------------------------------------------------------------------
+
+.table-control {
+    width: 10px;
+    max-width: 100%;
+    min-width: 100%;
+    overflow-x: auto;
+    -webkit-overflow-scrolling: touch;
+}
+
+.table {
+    width: 100%;
+    border-collapse: separate;
+    border-spacing: 0;
+    margin: 0;
+}
+
+.table th {
+    font-weight: var(--font-weight-medium);
+    text-align: left;
+    text-transform: capitalize;
+}
+
+.table td,
+.table th {
+    @include rem(padding, var(--space-s) var(--space-s));
+    border-bottom: 1px solid var(--gray-color-light);
+}
+
+.table td:first-of-type,
+.table th:first-of-type {
+    @include rem(padding-left, var(--space-m));
+}
+
+.table td:last-of-type,
+.table th:last-of-type {
+    @include rem(padding-right, var(--space-m));
+}
+
+.table > tbody > tr:last-child > td {
+    border-bottom: none;
+}
+
+/**
+* States
+*/
+
+//Negative
+.table tr.is-negative td,
+.table tr td.is-negative {
+    color: var(--negative-color-dark);
+}
+
+//Positive
+.table tr.is-positive td,
+.table tr td.is-positive {
+    color: var(--positive-color);
+}
+
+//Numeric
+.table td.is-numeric,
+.table td .is-numeric {
+    font-family: var(--code-font-stack);
+    text-align: right;
+}
+
+//Button
+.table td .is-button {
+    text-align: right;
+}
+
+/**
+* Types
+*/
+
+//Hover
+.table.table-hoverable tr:hover > td {
+    background: var(--background-color);
+}
+
+//Dark
+.table.table-dark td,
+.table.table-dark th {
+    background: var(--background-color);
+}
+
+//Compact
+.table.table-compact td {
+    @include rem(padding, var(--space-xs) var(--space-s));
+}
+
+//Collapsing
+.table.table-collapsed {
+    width: auto;
+}
+
+//Sortable
+.table th:hover.is-sortable {
+    color: var(--primary-color);
+    cursor: pointer;
+}
+
+.table th.is-sortable .icon {
+    @include rem(margin-left, var(--space-s));
+}
+
+//Definition
+.table.table-definition th {
+    border-bottom: none;
+    padding-left: 0;
+    padding-right: 0;
+    background: var(--background);
+}
+
+.table.table-definition th:first-child {
+    width: 20px;
+}
+
+.table.table-definition tr td {
+    @include rem(padding, var(--space-xs) 0);
+}
+
+.table.table-definition tr:first-child td {
+    padding-top: 0;
+}
+
+.table.table-definition tr:last-child td {
+    padding-bottom: 0;
+}
+
+.table.table-definition tr td {
+    border-bottom: none;
+}
+
+.table.table-definition.table-compact tr > td,
+.table.table-definition.table-compact tr:first-child td,
+.table.table-definition.table-compact tr:last-child td {
+    @include rem(padding, 0);
+}
+
+.table.table-definition tr td:first-child,
+.table.table-definition.table-compact tr td:first-child  {
+    color: var(--text-muted);
+    @include rem(padding-right, var(--space-m));
+}
+
+//External
+.table td .is-external .icon {
+    @include transition(all .1s ease);
+    @include rem(margin-left, var(--space-s));
+    @include opacity(0);
+    cursor: pointer;
+}
+
+.table tr:hover td .is-external .icon {
+    visibility: visible;
+    @include opacity(1);
+}
+
+.table tr td:hover .is-external .icon {
+    fill: var(--primary-color);
+}
+
+/**
+* Alignment
+*/
+.table.table-v-alignment-top > tr > td,
+.table.table-v-alignment-top > tbody > tr > td,
+.table.table-v-alignment-top > tr > th,
+.table.table-v-alignment-top > thead> tr > th {
+    vertical-align: top;
+}
+.table.table-v-alignment-bottom > tr > td,
+.table.table-v-alignment-bottom > tbody > tr > td,
+.table.table-v-alignment-bottom > tr > th,
+.table.table-v-alignment-bottom > thead > tr > th {
+    vertical-align: bottom;
+}
+
+/**
+* Table layout
+*/
+
+.table.table-layout-fixed {
+    table-layout: fixed;
+}

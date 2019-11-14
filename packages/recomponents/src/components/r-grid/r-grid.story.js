@@ -28,7 +28,7 @@ storiesOf('Components/Grid', module)
                     columns: [
                         {
                             name: 'id',
-                            renderAs: 'text',
+                            renderAs: 'numeric',
                         },
                         {
                             name: 'name',
@@ -41,6 +41,9 @@ storiesOf('Components/Grid', module)
                         {
                             name: 'type',
                             renderAs: 'badge',
+                            renderOptions: {
+                                type: 'negative',
+                            },
                         },
                     ],
                 },
@@ -53,20 +56,20 @@ storiesOf('Components/Grid', module)
                 if (page === 1) {
                     return [
                         {id: 1, name: 'One', type: 'Odd'},
-                        {id: 2, name: 'Two', type: 'Even'},
-                        {id: 3, name: 'Three', type: 'Odd'},
+                        {id: 2, name: 'Two', type: ['Even', 'Prime']},
+                        {id: 3, name: 'Three', type: ['Odd', 'Prime']},
                     ];
                 }
                 if (page === 2) {
                     return [
                         {id: 4, name: 'Four', type: 'Even'},
-                        {id: 5, name: 'Five', type: 'Odd'},
+                        {id: 5, name: 'Five', type: ['Odd', 'Prime']},
                         {id: 6, name: 'Six', type: 'Even'},
                     ];
                 }
                 if (page === 3) {
                     return [
-                        {id: 7, name: 'Seven', type: 'Odd'},
+                        {id: 7, name: 'Seven', type: ['Odd', 'Prime']},
                         {id: 8, name: 'Eight', type: 'Even'},
                         {id: 9, name: 'Nine', type: 'Odd'},
                     ];

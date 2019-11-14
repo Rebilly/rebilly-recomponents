@@ -1,12 +1,16 @@
 <template>
-    <div v-if="Array.isArray(value)">
-        <span class="badge" style="margin-right: 0.25em;" :style="badgeStyle" v-for="(data, index) in value" :key="index">
-            {{data}}
-        </span>
+    <div>
+        <template v-if="Array.isArray(value)">
+            <r-badge v-for="(data, index) in value" :key="index" :type="badgeType" style="margin-right: 0.25em">
+                {{data}}
+            </r-badge>
+        </template>
+        <template v-else>
+            <r-badge :type="badgeType" style="margin-right: 0.25em">
+                {{value}}
+            </r-badge>
+        </template>
     </div>
-    <span class="badge" :style="badgeStyle" v-else>
-        {{value}}
-    </span>
 </template>
 
 <script>
@@ -33,19 +37,14 @@
             },
         },
         computed: {
-            badgeStyle() {
-                if (this.column.renderOptions) {
-                    const backgroundColor = this.column.renderOptions.backgroundColor || null;
-                    const color = this.column.renderOptions.color || null;
-                    const styles = this.column.renderOptions.styles || {};
+            badgeType() {
+                const {type} = this.column.renderOptions || {};
 
-                    return {
-                        backgroundColor,
-                        color,
-                        ...styles,
-                    };
+                if (type) {
+                  return type;
+                } else {
+                  return 'default';
                 }
-                return null;
             },
         },
     };

@@ -58,3 +58,7 @@
         },
     };
 </script>
+
+<style>
+    @import '../../styles/table.scss';
+</style>

@@ -193,9 +193,6 @@
     };
 </script>
 
-<style lang="scss" scoped>
-    .grid {
-        display: block;
-        margin: 0;
-    }
+<style lang="scss">
+    @import './r-grid.scss';
 </style>
