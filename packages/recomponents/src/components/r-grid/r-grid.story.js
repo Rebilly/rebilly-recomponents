@@ -9,10 +9,10 @@ storiesOf('Components/Grid', module)
                 <template #pagination="{pagination}">
                     <r-grid :provider="pagination.provider" :columns="columns" :key="pagination.offset">
                         <header slot="header">
-                            <h2>Stuff</h2>
+                            <h2>Numbers</h2>
                         </header>
                         <section slot="empty">
-                            <p>No stuff found.</p>
+                            <p>No numbers found.</p>
                         </section>
                         <footer slot="footer" v-if="pagination.hasPagination">
                             <r-pagination-control/>
