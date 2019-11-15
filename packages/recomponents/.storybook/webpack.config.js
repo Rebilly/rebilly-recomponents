@@ -1,16 +1,18 @@
+const path = require('path');
+
 module.exports = function({ config }) {
     /**
      * Add source loader
      */
     config.module.rules.push({
-      test: /\.story\.js?$/,
-      loaders: [
-        {
-          loader: require.resolve('@storybook/addon-storysource/loader'),
-          options: { parser: 'typescript' },
-        },
-      ],
-      enforce: 'pre',
+        test: /\.story\.js?$/,
+        loaders: [{
+            loader: require.resolve('@storybook/addon-storysource/loader'),
+            options: {
+                parser: 'typescript'
+            },
+        }],
+        enforce: 'pre',
     });
 
     /**
@@ -33,5 +35,10 @@ module.exports = function({ config }) {
         ],
     });
 
+    /**
+     * Add @ alias to storybook scripts and styles
+     */
+    config.resolve.alias['@'] = path.resolve(__dirname, '../src');
+
     return config;
-  };
+};
