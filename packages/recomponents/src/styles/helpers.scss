@@ -32,3 +32,24 @@
 .cursor-pointer {
     cursor: pointer !important;
 }
+
+
+$spacing-scale: (default, xxs, xs, s, m, l, xl);
+
+$directions: (
+    t: top,
+    b: bottom,
+    l: left,
+    r: right,
+);
+
+/**
+* Generate margin helper classes like mt-xl, mr-xxs, etc.
+*/
+@each $scale in $spacing-scale {
+    @each $shortcut, $direction in $directions {
+        .m#{$shortcut}-#{$scale} {
+            margin-#{$direction}: var(--space-#{$scale});
+        }
+    }
+}
