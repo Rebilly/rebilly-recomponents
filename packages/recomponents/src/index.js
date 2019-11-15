@@ -63,7 +63,9 @@ function install(Vue, options = {}) {
      * Set global settings
      */
 
-    Vue.RecomponentsSettings = {
+    Vue.$recomponents = {};
+
+    Vue.$recomponents.settings = {
         timezone: 'America/Montreal',
         ...options,
     };

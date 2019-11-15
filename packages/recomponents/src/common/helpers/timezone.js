@@ -1,15 +1,13 @@
 import Moment from 'moment-timezone';
 import Vue from 'vue';
 
-const {RecomponentsSettings} = Vue;
-
 export class TimezoneHandler {
     /**
      * Returns the timezone string for the current user.
      * @returns {string}
      */
     tz() { // eslint-disable-line
-        return RecomponentsSettings.timezone;
+        return Vue.$recomponents.settings.timezone;
     }
 
     /**
