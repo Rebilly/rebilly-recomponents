@@ -5,7 +5,7 @@
                 <button v-if="tab.to"
                         :to="tab.to"
                         role="tab"
-                        :id="tab.computedPanelId + '-control'"
+                        :id="generateControlId(tab.computedPanelId)"
                         :aria-controls="tab.computedPanelId"
                         class="r-tab-link"
                         @click="selectTab(tab, index)"
@@ -16,7 +16,7 @@
                 <button v-else
                         @click="selectTab(tab, index)"
                         role="tab"
-                        :id="tab.computedPanelId + '-control'"
+                        :id="generateControlId(tab.computedPanelId)"
                         :aria-controls="tab.computedPanelId"
                         class="r-tab-link"
                         :class="{'is-active': tab.isActive}"
@@ -32,6 +32,8 @@
 </template>
 
 <script>
+    import { generateControlId } from './id-helpers';
+
     export default {
         name: 'r-tabs',
         props: {
@@ -66,6 +68,7 @@
             };
         },
         methods: {
+            generateControlId,
             selectTab({name, value}, index = null) {
                 this.tabs.forEach((tab, i) => {
                     tab.isActive = (index === i);
