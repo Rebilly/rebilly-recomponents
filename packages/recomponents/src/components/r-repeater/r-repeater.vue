@@ -59,6 +59,6 @@
     };
 </script>
 
-<style>
+<style lang="scss">
     @import '../../styles/table.scss';
 </style>

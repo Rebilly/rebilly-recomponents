@@ -25,18 +25,18 @@
 
 .table td,
 .table th {
-    @include rem(padding, var(--space-s) var(--space-s));
+    padding: var(--space-s) var(--space-s);
     border-bottom: 1px solid var(--gray-color-light);
 }
 
 .table td:first-of-type,
 .table th:first-of-type {
-    @include rem(padding-left, var(--space-m));
+    padding-left: var(--space-m);
 }
 
 .table td:last-of-type,
 .table th:last-of-type {
-    @include rem(padding-right, var(--space-m));
+    padding-right: var(--space-m);
 }
 
 .table > tbody > tr:last-child > td {
@@ -88,7 +88,7 @@
 
 //Compact
 .table.table-compact td {
-    @include rem(padding, var(--space-xs) var(--space-s));
+    padding: var(--space-xs) var(--space-s);
 }
 
 //Collapsing
@@ -103,7 +103,7 @@
 }
 
 .table th.is-sortable .icon {
-    @include rem(margin-left, var(--space-s));
+    margin-left: var(--space-s);
 }
 
 //Definition
@@ -119,7 +119,7 @@
 }
 
 .table.table-definition tr td {
-    @include rem(padding, var(--space-xs) 0);
+    padding: var(--space-xs) 0;
 }
 
 .table.table-definition tr:first-child td {
@@ -137,26 +137,26 @@
 .table.table-definition.table-compact tr > td,
 .table.table-definition.table-compact tr:first-child td,
 .table.table-definition.table-compact tr:last-child td {
-    @include rem(padding, 0);
+    padding: 0;
 }
 
 .table.table-definition tr td:first-child,
 .table.table-definition.table-compact tr td:first-child  {
     color: var(--text-muted);
-    @include rem(padding-right, var(--space-m));
+    padding-right: var(--space-m);
 }
 
 //External
 .table td .is-external .icon {
-    @include transition(all .1s ease);
-    @include rem(margin-left, var(--space-s));
-    @include opacity(0);
+    transition: all .1s ease;
+    margin-left: var(--space-s);
+    opacity: 0;
     cursor: pointer;
 }
 
 .table tr:hover td .is-external .icon {
     visibility: visible;
-    @include opacity(1);
+    opacity: 1;
 }
 
 .table tr td:hover .is-external .icon {
