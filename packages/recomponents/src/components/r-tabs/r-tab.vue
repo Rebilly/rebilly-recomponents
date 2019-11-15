@@ -1,5 +1,10 @@
 <template>
-    <div v-show='isActive'>
+    <div :id="computedPanelId"
+         role="tabpanel"
+         :aria-labelledby="computedPanelId + '-control'"
+         v-if="$slots.default"
+         v-show="isActive"
+    >
         <slot></slot>
     </div>
 </template>
@@ -11,6 +16,7 @@
             name: {
                 required: true,
             },
+            panelId: String,
             value: String,
             active: {
                 type: Boolean,
@@ -26,6 +32,11 @@
             return {
                 isActive: this.active,
             };
+        },
+        computed: {
+            computedPanelId() {
+                return this.panelId || `tab-${this._uid}`;
+            }
         },
     };
 </script>
