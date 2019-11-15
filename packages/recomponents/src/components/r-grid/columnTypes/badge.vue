@@ -39,12 +39,7 @@
         computed: {
             badgeType() {
                 const {type} = this.column.renderOptions || {};
-
-                if (type) {
-                  return type;
-                } else {
-                  return 'default';
-                }
+                return type;
             },
         },
     };
