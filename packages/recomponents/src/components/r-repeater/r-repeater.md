@@ -1,6 +1,6 @@
 # Repeater
 
-This is an abstract component to help you render data in a naked table. It is notably used by `r-grid` under the hood, which is probably the component you want to use :)
+This is an abstract component to help you render tabular data. It is notably used by `r-grid` under the hood.
 
 ### Props
 
