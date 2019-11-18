@@ -24,6 +24,60 @@ As the number of Web Apps developed at Rebilly grows larger, it has become appar
 * `packages/gridsome` Demo project with Gridsome
 * `packages/nuxt` Demo project with Nuxt
 
+## Browser support
+
+Currently we support all modern browsers
+
+<details>
+  <summary>Actual status</summary>
+  
+  <br>
+  
+  | Browser | Version | Status |           
+  | --------|---------|--------|
+  | <img src="http://icons.iconarchive.com/icons/dtafalonso/android-l/32/Chrome-icon.png" width="16"> Chrome | 78 | Main development |
+  | <img src="http://icons.iconarchive.com/icons/dakirby309/simply-styled/32/Firefox-icon.png" width="16"> Firefox | 70 | Main development |
+  | <img src="http://icons.iconarchive.com/icons/johanchalibert/mac-osx-yosemite/32/safari-icon.png" width="16"> Safari | 13 | Supported |
+  | <img src="https://img.icons8.com/color/344/ms-edge.png" width="16"> Edge    | ? | ? |
+  | <img src="http://icons.iconarchive.com/icons/tatice/cristal-intense/32/Internet-Explorer-icon.png" width="16"> Internet Explorer | 11     | Not supported |
+</details>
+
+Partial support of Internet Explorer 11 is in progress and will be added soon. Some features like [wecomponent mode](https://github.com/vuejs/vue-web-component-wrapper/issues/31) won't be supported.
+
 ## Contribute guide
 
-* TBD
+This package is following the [Semantic Versioning](http://semver.org/) specification and using full power of [Semantic Release](https://semantic-release.gitbook.io/semantic-release/) tool. To make it work we should keep our commit consistent. It's possible to create any commit type but only types below can trigger npm publish:
+
+| Commit                                                                                | Version |           
+| ------------------------------------------------------------------------------------- |--------:|
+| fix(datepicker): use margin of parent component in picker allocation                  |  Patch  |
+| feat(datepicker): add option to specify picker vertical alignment                     |  Minor  |
+| feat(datepicker): BREAKING CHANGE migrate from vuejs-datepicker to vue-date-picker    |  Major  |
+
+Other types like `docs`, `test` doesn't affect components build itself so there is no need to perform publish.
+
+There are several ways to follow this convection:
+
+<details>
+  <summary>Use console application like <a href="https://github.com/commitizen/cz-cli">Commitizen</a></summary>
+    
+  <div><br><img src="https://media.giphy.com/media/QWLJmI2eMTND1em2wJ/giphy.gif"></div>
+</details>
+
+<details>
+  <summary>Use plugin for Webstorm like <a href="https://plugins.jetbrains.com/plugin/9861-git-commit-template">Git Commit Template</a></summary>
+
+  <div><br><img src="https://media.giphy.com/media/QvFbItmr8cuJXQmjAl/giphy.gif"></div>
+</details>
+
+<details>
+  <summary>Use extension for Visual Studio Code like <a href="https://marketplace.visualstudio.com/items?itemName=KnisterPeter.vscode-commitizen">Visual Studio Code Commitizen Support</a></summary>
+
+  <div><br><img src="https://media.giphy.com/media/Ifs3YZ3kipnTDlpRAK/giphy.gif"></div>
+</details>
+
+<details>
+  <summary>Or create commits manually</summary>
+    
+  <div><br><img src="https://media3.giphy.com/media/UqZ4imFIoljlr5O2sM/giphy.gif"></div>
+</details>
