@@ -246,8 +246,8 @@
                 search: '',
                 messages: {
                     loading: 'Looking for matching results...',
-                    more: (count) => `and ${count} more`,
-                    max: (max) => `Maximum of ${max} options selected. First remove a selected option to select another.`,
+                    more: count => `and ${count} more`,
+                    max: max => `Maximum of ${max} options selected. First remove a selected option to select another.`,
                     noOptions: 'List is empty.',
                     noResult: 'No elements found. Consider changing the search query.',
                 },
@@ -489,8 +489,8 @@
             },
             currentOptionLabel() {
                 const placeholder = this.searchable ? '' : this.placeholder;
-                const option = this.options.find(option => this.getOptionValue({
-                    option,
+                const option = this.options.find(opt => this.getOptionValue({
+                    option: opt,
                     trackBy: this.computedTrackBy,
                 }) === this.internalValue[0]);
 
