@@ -1,4 +1,3 @@
-import jest from 'jest-mock';
 import {shallowMount} from '@vue/test-utils';
 import {renderToString} from '@vue/server-test-utils';
 import RSelect from './r-select.vue';
