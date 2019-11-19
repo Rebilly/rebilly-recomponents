@@ -489,13 +489,13 @@
             },
             currentOptionLabel() {
                 const placeholder = this.searchable ? '' : this.placeholder;
-                const option = this.options.find(opt => this.getOptionValue({
-                    option: opt,
+                const activeOption = this.options.find(option => this.getOptionValue({
+                    option,
                     trackBy: this.computedTrackBy,
                 }) === this.internalValue[0]);
 
                 const value = this.internalValue && this.internalValue.length
-                    ? (option && option[this.computedLabel]) || this.internalValue[0]
+                    ? (activeOption && activeOption[this.computedLabel]) || this.internalValue[0]
                     : placeholder;
                 return this.multiple ? placeholder : value;
             },
