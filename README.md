@@ -59,7 +59,7 @@ Other types like `docs`, `test` doesn't affect components build itself so there 
 There are several ways to follow this convention:
 
 <details>
-  <summary>Use console application like <a href="https://github.com/commitizen/cz-cli">Commitizen</a></summary>
+  <summary>Use a console application like <a href="https://github.com/commitizen/cz-cli">Commitizen</a></summary>
     
   <div><br><img src="https://media.giphy.com/media/QWLJmI2eMTND1em2wJ/giphy.gif"></div>
 </details>
