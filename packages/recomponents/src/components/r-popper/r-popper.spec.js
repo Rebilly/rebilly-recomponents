@@ -2,8 +2,6 @@ import {mount, shallowMount} from '@vue/test-utils';
 import {renderToString} from '@vue/server-test-utils';
 import RPopper from './r-popper.vue';
 
-const $t = () => 'custom text';
-
 describe('r-popper.vue', () => {
     it('renders', () => {
         const wrapper = shallowMount(RPopper);
@@ -26,7 +24,6 @@ describe('r-popper.vue', () => {
                 position: 'bottomStart',
                 slideFrom: 'fade',
             },
-            mocks: {$t},
         });
 
         expect(wrapper).toMatchSnapshot();
@@ -38,7 +35,6 @@ describe('r-popper.vue', () => {
                 openOnMount: true,
                 escToHide: true,
             },
-            mocks: {$t},
         });
 
         expect(wrapper.vm.$data.isPopperVisible).toBe(true);
@@ -52,7 +48,6 @@ describe('r-popper.vue', () => {
             propsData: {
                 disabled: true,
             },
-            mocks: {$t},
         });
 
         expect(wrapper.vm.$data.isPopperVisible).toBe(false);
@@ -65,7 +60,6 @@ describe('r-popper.vue', () => {
 
         const wrapper = mount(RPopper, {
             propsData: {},
-            mocks: {$t},
             slots: {
                 trigger: slot,
             },
@@ -81,7 +75,6 @@ describe('r-popper.vue', () => {
 
         const wrapper = mount(RPopper, {
             propsData: {},
-            mocks: {$t},
             slots: {
                 trigger,
                 content: slot,
