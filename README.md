@@ -26,7 +26,7 @@ As the number of Web Apps developed at Rebilly grows larger, it has become appar
 
 ## Browser support
 
-Currently we support all modern browsers
+Currently we support all modern browsers.
 
 <details>
   <summary>Actual status</summary>
