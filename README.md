@@ -46,7 +46,7 @@ Partial support of Internet Explorer 11 is in progress and will be added soon. S
 
 ## Contribute guide
 
-This package is following the [Semantic Versioning](http://semver.org/) specification and using full power of [Semantic Release](https://semantic-release.gitbook.io/semantic-release/) tool. To make it work we should keep our commit consistent. It's possible to create any commit type but only types below can trigger npm publish:
+This package is following the [Semantic Versioning](http://semver.org/) specification and using the [Semantic Release](https://semantic-release.gitbook.io/semantic-release/) tool. To make it work, we should keep our commit messages consistent. It's possible to create any commit type but only types below can trigger npm publish:
 
 | Commit                                                                                | Version |           
 | ------------------------------------------------------------------------------------- |--------:|
