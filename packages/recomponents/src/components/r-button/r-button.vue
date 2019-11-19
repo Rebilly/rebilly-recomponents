@@ -72,10 +72,10 @@
             },
             title() {
                 if (this.disabled) {
-                    return this.messages['disabled'];
+                    return this.messages.disabled;
                 }
                 if (this.loading) {
-                    return this.messages['loading'];
+                    return this.messages.loading;
                 }
                 return '';
             },

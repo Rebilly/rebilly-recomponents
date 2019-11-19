@@ -8,7 +8,7 @@ describe('r-checkbox.vue', () => {
         const label = `label-${new Date().getTime()}`;
         const wrapper = shallowMount(RCheckbox, {
             propsData: {
-                label
+                label,
             },
         });
         // should render label with default text
