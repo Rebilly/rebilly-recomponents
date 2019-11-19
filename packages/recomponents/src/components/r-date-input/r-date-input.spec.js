@@ -91,9 +91,6 @@ describe('r-date-input.vue', () => {
             propsData: {
                 type: 'datetime',
             },
-            mocks: {
-                $t: value => value,
-            },
             stubs: ['no-ssr'],
         });
         expect(wrapper.contains('.r-date-time-divider')).toEqual(true);
@@ -103,9 +100,6 @@ describe('r-date-input.vue', () => {
         const wrapper = shallowMount(RDateInput, {
             propsData: {
                 type: 'time',
-            },
-            mocks: {
-                $t: value => value,
             },
             stubs: ['no-ssr'],
         });
@@ -117,9 +111,6 @@ describe('r-date-input.vue', () => {
             propsData: {
                 type: 'datetime',
             },
-            mocks: {
-                $t: value => value,
-            },
             stubs: ['no-ssr'],
         });
         wrapper.vm.dateChange(null);
@@ -130,9 +121,6 @@ describe('r-date-input.vue', () => {
         const wrapper = mount(RDateInput, {
             propsData: {
                 type: 'time',
-            },
-            mocks: {
-                $t: value => value,
             },
             stubs: ['no-ssr'],
         });

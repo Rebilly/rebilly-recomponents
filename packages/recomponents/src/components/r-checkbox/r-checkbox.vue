@@ -1,7 +1,7 @@
 <template>
     <div class="r-checkbox" :class="{'is-error': isInvalid}" role="checkbox" :aria-checked="isChecked">
         <label class="r-field-label r-field-label-toggle" :class="{'is-disabled': disabled}" :for="id">
-            <slot name="label">{{ label || $t('label') }}</slot>
+            <slot name="label">{{ label }}</slot>
         </label>
         <input type="checkbox"
                 class="r-field-checkbox"
@@ -84,16 +84,6 @@
             },
             checkIcon() {
                 return this.fuzzy ? 'dash-l' : 'checkbox-checkmark';
-            },
-        },
-        i18n: {
-            messages: {
-                en: {
-                    label: 'Label',
-                },
-                ja: {
-                    label: 'ラベル',
-                },
             },
         },
         methods: {
