@@ -56,7 +56,7 @@ This package is following the [Semantic Versioning](http://semver.org/) specific
 
 Other types like `docs`, `test` doesn't affect components build itself so there is no need to perform publish.
 
-There are several ways to follow this convection:
+There are several ways to follow this convention:
 
 <details>
   <summary>Use console application like <a href="https://github.com/commitizen/cz-cli">Commitizen</a></summary>
