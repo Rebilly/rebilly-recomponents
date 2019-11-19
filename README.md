@@ -42,7 +42,7 @@ Currently we support all modern browsers
   | <img src="http://icons.iconarchive.com/icons/tatice/cristal-intense/32/Internet-Explorer-icon.png" width="16"> Internet Explorer | 11     | Not supported |
 </details>
 
-Partial support of Internet Explorer 11 is in progress and will be added soon. Some features like [wecomponent mode](https://github.com/vuejs/vue-web-component-wrapper/issues/31) won't be supported.
+Partial support of Internet Explorer 11 is in progress and will be added soon. Some features like [webcomponent mode](https://github.com/vuejs/vue-web-component-wrapper/issues/31) won't be supported.
 
 ## Contribute guide
 
