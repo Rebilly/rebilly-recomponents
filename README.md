@@ -65,7 +65,7 @@ There are several ways to follow this convention:
 </details>
 
 <details>
-  <summary>Use plugin for Webstorm like <a href="https://plugins.jetbrains.com/plugin/9861-git-commit-template">Git Commit Template</a></summary>
+  <summary>Use a plugin for Webstorm like <a href="https://plugins.jetbrains.com/plugin/9861-git-commit-template">Git Commit Template</a></summary>
 
   <div><br><img src="https://media.giphy.com/media/QvFbItmr8cuJXQmjAl/giphy.gif"></div>
 </details>
