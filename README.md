@@ -71,7 +71,7 @@ There are several ways to follow this convection:
 </details>
 
 <details>
-  <summary>Use extension for Visual Studio Code like <a href="https://marketplace.visualstudio.com/items?itemName=KnisterPeter.vscode-commitizen">Visual Studio Code Commitizen Support</a></summary>
+  <summary>Use an extension for Visual Studio Code like <a href="https://marketplace.visualstudio.com/items?itemName=KnisterPeter.vscode-commitizen">Visual Studio Code Commitizen Support</a></summary>
 
   <div><br><img src="https://media.giphy.com/media/Ifs3YZ3kipnTDlpRAK/giphy.gif"></div>
 </details>
