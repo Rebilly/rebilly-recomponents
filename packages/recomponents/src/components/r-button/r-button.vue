@@ -72,25 +72,21 @@
             },
             title() {
                 if (this.disabled) {
-                    return this.$t('disabled');
+                    return this.messages.disabled;
                 }
                 if (this.loading) {
-                    return this.$t('loading');
+                    return this.messages.loading;
                 }
                 return '';
             },
         },
-        i18n: {
-            messages: {
-                en: {
+        data() {
+            return {
+                messages: {
                     loading: 'Waiting for response',
                     disabled: 'Action is disabled',
                 },
-                ja: {
-                    loading: '応答待ち',
-                    disabled: 'アクションは無効です',
-                },
-            },
+            };
         },
         methods: {},
     };

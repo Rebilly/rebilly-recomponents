@@ -5,10 +5,6 @@ import RPagination from './r-pagination.vue';
 describe('r-pagination.vue', () => {
     it('should render Wrapper and match snapshot', () => {
         const wrapper = shallowMount(RPagination, {
-            mocks: {
-                $t: () => {
-                },
-            },
             propsData: {
                 provider: () => {
                 },
@@ -22,10 +18,6 @@ describe('r-pagination.vue', () => {
 
     it('should render via SSR and match snapshot', async () => {
         const wrapper = renderToString(RPagination, {
-            mocks: {
-                $t: () => {
-                },
-            },
             propsData: {
                 provider: () => {
                 },
@@ -39,10 +31,6 @@ describe('r-pagination.vue', () => {
 
     it('should enable hasPagination property when limit < total', () => {
         const wrapper = shallowMount(RPagination, {
-            mocks: {
-                $t: () => {
-                },
-            },
             propsData: {
                 provider: () => {
                 },
@@ -56,10 +44,6 @@ describe('r-pagination.vue', () => {
 
     it('should disable hasPagination property when limit < total', () => {
         const wrapper = shallowMount(RPagination, {
-            mocks: {
-                $t: () => {
-                },
-            },
             propsData: {
                 provider: () => {
                 },
@@ -73,10 +57,6 @@ describe('r-pagination.vue', () => {
 
     it('pages count correctly when total/limit < 1.5', () => {
         const wrapper = shallowMount(RPagination, {
-            mocks: {
-                $t: () => {
-                },
-            },
             propsData: {
                 provider: () => {
                 },
@@ -90,10 +70,6 @@ describe('r-pagination.vue', () => {
 
     it('pages count correctly when total/limit > 1.5', () => {
         const wrapper = shallowMount(RPagination, {
-            mocks: {
-                $t: () => {
-                },
-            },
             propsData: {
                 provider: () => {
                 },
@@ -107,10 +83,6 @@ describe('r-pagination.vue', () => {
 
     it('hasNext property correctly', () => {
         const wrapper = shallowMount(RPagination, {
-            mocks: {
-                $t: () => {
-                },
-            },
             propsData: {
                 provider: () => {
                 },
@@ -126,10 +98,6 @@ describe('r-pagination.vue', () => {
 
     it('hasPrevious property correctly', () => {
         const wrapper = shallowMount(RPagination, {
-            mocks: {
-                $t: () => {
-                },
-            },
             propsData: {
                 provider: () => {
                 },
@@ -145,10 +113,6 @@ describe('r-pagination.vue', () => {
 
     it('items property correctly', () => {
         const wrapper = shallowMount(RPagination, {
-            mocks: {
-                $t: () => {
-                },
-            },
             propsData: {
                 provider: () => {
                 },

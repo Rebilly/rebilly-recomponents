@@ -28,9 +28,6 @@ describe('r-pagination-control.vue', () => {
     it('should render Wrapper and match snapshot', () => {
         const wrapper = shallowMount(RPaginationControl, {
             provide: {...makeProvide()},
-            mocks: {
-                $t: value => value,
-            },
         });
         expect(wrapper).toMatchSnapshot();
     });
@@ -38,9 +35,6 @@ describe('r-pagination-control.vue', () => {
     it('should render via SSR and match snapshot', async () => {
         const wrapper = renderToString(RPaginationControl, {
             provide: {...makeProvide()},
-            mocks: {
-                $t: value => value,
-            },
         });
         expect(wrapper).toMatchSnapshot();
     });

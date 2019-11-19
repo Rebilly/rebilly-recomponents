@@ -43,7 +43,6 @@ describe('r-radio.vue', () => {
                 label: 'Checkbox',
                 id: 'id1234',
             },
-            mocks: {$t},
         });
 
         expect(wrapper).toMatchSnapshot();
@@ -57,7 +56,6 @@ describe('r-radio.vue', () => {
                 label: 'Checkbox',
                 id: 'id1234',
             },
-            mocks: {$t},
         });
 
         expect(wrapper).toMatchSnapshot();
@@ -75,7 +73,6 @@ describe('r-radio.vue', () => {
                 },
                 id: 'id1234',
             },
-            mocks: {$t},
         });
 
         expect(wrapper.isInvalid).toBeFalsy();

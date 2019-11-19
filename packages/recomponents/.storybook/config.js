@@ -1,6 +1,5 @@
 import Vue from 'vue';
 import NoSSR from 'vue-no-ssr';
-import VueI18n from 'vue-i18n';
 import VueRouter from 'vue-router';
 import Recomponents from '../src/index';
 import { addDecorator, addParameters, configure } from '@storybook/vue';
@@ -9,14 +8,9 @@ import { withKnobs } from '@storybook/addon-knobs';
 import { withContexts } from '@storybook/addon-contexts/vue';
 import { withCssResources } from '@storybook/addon-cssresources';
 
-Vue.use(VueI18n);
 Vue.use(VueRouter);
 Vue.use(Recomponents);
 Vue.component('no-ssr', NoSSR);
-
-const i18n = new VueI18n({
-    locale: 'en',
-});
 
 const localeContext = {
     name: 'I18NProvider',
@@ -26,7 +20,6 @@ const localeContext = {
             this.$root.$i18n.locale = newValue;
         }
     },
-    i18n,
     beforeCreate: function() {
         this.$root._i18n = this.$i18n;
     },
