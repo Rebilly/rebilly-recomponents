@@ -117,7 +117,7 @@
                         <slot name="beforeList">
                             <template v-if="computedIsLoading">
                                 <span class="r-select__option">
-                                    {{ $t('loading') }}
+                                    {{ messages['loading'] }}
                                 </span>
                             </template>
                             <template v-if="computedAsyncHasPrevOptions">
@@ -137,7 +137,7 @@
                         <li v-if="multiple && max === internalValue.length">
                             <span class="r-select__option">
                                 <slot name="maxElements">
-                                    {{ $t('max', { max }) }}
+                                    {{ messages.max(max) }}
                                 </slot>
                             </span>
                         </li>
@@ -162,13 +162,13 @@
                         <li v-show="showNoResults && (filteredOptions.length === 0 && search && !loading)">
                             <span class="r-select__option">
                                 <slot name="noResult"
-                                      :search="search">{{$t('noResult')}}
+                                      :search="search">{{messages['noResult']}}
                                 </slot>
                             </span>
                         </li>
                         <li v-show="showNoOptions && (options.length === 0 && !search && !loading)">
                             <span class="r-select__option">
-                                <slot name="noOptions">{{$t('noOptions')}}</slot>
+                                <slot name="noOptions">{{messages['noOptions']}}</slot>
                             </span>
                         </li>
                         <slot name="afterList">
@@ -244,18 +244,14 @@
                 pointerDirty: false,
                 preferredOpenDirection: 'below',
                 search: '',
-            };
-        },
-        i18n: {
-            messages: {
-                en: {
+                messages: {
                     loading: 'Looking for matching results...',
-                    more: 'and {count} more',
-                    max: 'Maximum of {max} options selected. First remove a selected option to select another.',
+                    more: count => `and ${count} more`,
+                    max: max => `Maximum of ${max} options selected. First remove a selected option to select another.`,
                     noOptions: 'List is empty.',
                     noResult: 'No elements found. Consider changing the search query.',
                 },
-            },
+            };
         },
         mounted() {
             if (!this.multiple && this.max) {
@@ -327,7 +323,7 @@
             limitText: {
                 type: Function,
                 default(count) {
-                    return this.$t('more', {count});
+                    return this.messages.more(count);
                 },
             },
             loading: {

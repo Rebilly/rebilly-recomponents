@@ -1,5 +1,3 @@
-import VueI18n from 'vue-i18n';
-
 import RTooltip from './directives/r-tooltip/r-tooltip';
 import RFsBlock from './directives/r-fs-block';
 
@@ -53,8 +51,6 @@ const directives = {
 };
 
 function install(Vue) {
-    Vue.use(VueI18n);
-
     /**
      * Injecting all components according to their filenames
      */
