@@ -10,7 +10,8 @@
 </template>
 
 <script>
-import { generateControlId, generatePanelId } from './id-helpers';
+    /* eslint-disable no-underscore-dangle */
+    import {generateControlId, generatePanelId} from './id-helpers';
 
     export default {
         name: 'r-tab',

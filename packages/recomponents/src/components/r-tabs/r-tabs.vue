@@ -32,7 +32,7 @@
 </template>
 
 <script>
-    import { generateControlId } from './id-helpers';
+    import {generateControlId} from './id-helpers';
 
     export default {
         name: 'r-tabs',
