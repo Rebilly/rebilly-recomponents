@@ -132,6 +132,10 @@ textarea.r-field-input {
     padding-left: 0;
 }
 
+.r-field-addon .r-field-label-toggle {
+    margin-bottom: 0;
+}
+
 // Removing Firefox dotted line
 select:-moz-focusring {
     color: transparent;
