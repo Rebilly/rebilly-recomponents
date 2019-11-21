@@ -38,12 +38,12 @@ storiesOf('Components/Radio', module)
     .add('Radio props', () => ({
         template: `
             <r-radio
-                    class="stack-s"
-                    v-model="recurringInterval"
-                    :label="label"
-                    :caption="caption"
-                    :disabled="disabled"
-                    value="forever"/>
+                class="stack-s"
+                v-model="recurringInterval"
+                :label="label"
+                :caption="caption"
+                :disabled="disabled"
+                value="forever"/>
         `,
         methods: {
             update: action('update'),

@@ -39,6 +39,7 @@ describe('r-radio.vue', () => {
                 checked: 'value',
                 value: 'value',
                 label: 'Checkbox',
+                name: 'radio-group',
                 id: 'id1234',
             },
         });
@@ -52,6 +53,7 @@ describe('r-radio.vue', () => {
                 checked: 'value',
                 value: 'value',
                 label: 'Checkbox',
+                name: 'radio-group',
                 id: 'id1234',
             },
         });
@@ -69,6 +71,7 @@ describe('r-radio.vue', () => {
                     $invalid: true,
                     $dirty: false,
                 },
+                name: 'radio-group',
                 id: 'id1234',
             },
         });
