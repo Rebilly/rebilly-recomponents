@@ -59,12 +59,12 @@
             };
         },
         methods: {
-            selectTab({name}, index = null) {
+            selectTab({name, value}, index = null) {
                 this.tabs.forEach((tab, i) => {
                     tab.isActive = (index === i);
                 });
                 if (index !== null) {
-                    this.$emit('tab-selected', {name, index});
+                    this.$emit('tab-selected', {name, value, index});
                 }
             },
             getRouteTab() {

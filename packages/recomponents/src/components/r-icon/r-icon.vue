@@ -48,7 +48,7 @@
                 const spritesDiv = document.createElement('div');
                 spritesDiv.style.display = 'none';
                 spritesDiv.innerHTML = RIconSprites;
-                document.body.append(spritesDiv);
+                document.body.appendChild(spritesDiv);
             }
         },
         computed: {

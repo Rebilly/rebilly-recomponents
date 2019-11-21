@@ -6,7 +6,6 @@ import RModal from './r-modal.vue';
 describe('r-modal.vue', () => {
     it('should render Wrapper and match snapshot', () => {
         const wrapper = shallowMount(RModal, {
-            mocks: {},
             propsData: {
                 size: 'large',
             },
@@ -27,7 +26,6 @@ describe('r-modal.vue', () => {
 
     it('should emit all available event destroy', () => {
         const wrapper = shallowMount(RModal, {
-            mocks: {},
             propsData: {
                 size: 'fluid',
             },

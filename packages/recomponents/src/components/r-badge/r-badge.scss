@@ -54,6 +54,10 @@
         overflow: hidden;
         max-width: 100%;
         text-overflow: ellipsis;
+        line-height: var(--badge-tag-line-height);
+        margin: var(--badge-tag-margin);
+        padding: var(--badge-tag-padding);
+        box-shadow: none;
     }
 
     &.r-badge-tag-secondary {

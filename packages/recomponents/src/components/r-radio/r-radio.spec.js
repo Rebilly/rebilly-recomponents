@@ -2,8 +2,6 @@ import {mount, shallowMount} from '@vue/test-utils';
 import {renderToString} from '@vue/server-test-utils';
 import RRadio from './r-radio.vue';
 
-const $t = () => 'custom label';
-
 describe('r-radio.vue', () => {
     it('renders default radio correctly', () => {
         const label = `label-${new Date().getTime()}`;
@@ -44,7 +42,6 @@ describe('r-radio.vue', () => {
                 name: 'radio-group',
                 id: 'id1234',
             },
-            mocks: {$t},
         });
 
         expect(wrapper).toMatchSnapshot();
@@ -59,7 +56,6 @@ describe('r-radio.vue', () => {
                 name: 'radio-group',
                 id: 'id1234',
             },
-            mocks: {$t},
         });
 
         expect(wrapper).toMatchSnapshot();
@@ -78,7 +74,6 @@ describe('r-radio.vue', () => {
                 name: 'radio-group',
                 id: 'id1234',
             },
-            mocks: {$t},
         });
 
         expect(wrapper.isInvalid).toBeFalsy();
