@@ -1,0 +1,31 @@
+name: Node CI
+on:
+  push:
+    branches:
+    - master
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    strategy:
+      matrix:
+        node-version: [10.x]
+    env:
+      NODE_ENV: test
+    steps:
+    - uses: actions/checkout@master
+    - name: Use Node.js ${{ matrix.node-version }}
+      uses: actions/setup-node@v1
+      with:
+        node-version: ${{ matrix.node-version }}
+    - name: Build recomponents
+      run: |
+        npm ci
+        npm run build
+    - name: Build storybook
+      run: |
+        npm run build
+    - name: Build website
+      run: |
+        npm run build
+      env:
+        CI: true
