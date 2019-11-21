@@ -24,8 +24,5 @@ jobs:
     - name: Build storybook
       run: |
         npm run build
-    - name: Build website
-      run: |
-        npm run build
       env:
         CI: true
