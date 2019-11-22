@@ -1,44 +1,31 @@
 <template>
     <div>
         <div class="r-tab" :class="[{'r-tab-divided': divided}, menuClass]" role="tablist">
-            <template v-if="tabHeaderMode && justTabs && justTabs.length > 0">
-                <div v-for="(tab, index) in justTabs" class="r-tab-item" :key="index">
-                    <button role="tab"
-                            :class="{'is-active': tab.isActive}"
-                            class="r-tab-link"
-                            @click="selectTab(tab, index)"
-                    >
-                        {{tab.name}}
-                    </button>
-                </div>
-            </template>
-            <template v-else>
-                <div v-for="(tab, index) in tabs" class="r-tab-item" :key="index">
-                    <button v-if="tab.to"
-                            :to="tab.to"
-                            role="tab"
-                            :id="tab.computedTabId"
-                            :aria-controls="tab.computedPanelId"
-                            class="r-tab-link"
-                            @click="selectTab(tab, index)"
-                            :class="{'is-active': tab.isActive}"
-                    >
-                        {{tab.name}}
-                    </button>
-                    <button v-else
-                            @click="selectTab(tab, index)"
-                            role="tab"
-                            :id="tab.computedTabId"
-                            :aria-controls="tab.computedPanelId"
-                            class="r-tab-link"
-                            :class="{'is-active': tab.isActive}"
-                    >
-                        {{tab.name}}
-                    </button>
-                </div>
-            </template>
+            <div v-for="(tab, index) in tabs" class="r-tab-item" :key="index">
+                <button v-if="tab.to"
+                        :to="tab.to"
+                        role="tab"
+                        :id="tab.computedTabId"
+                        :aria-controls="tab.computedPanelId"
+                        class="r-tab-link"
+                        @click="selectTab(tab, index)"
+                        :class="{'is-active': tab.isActive}"
+                >
+                    {{tab.name}}
+                </button>
+                <button v-else
+                        @click="selectTab(tab, index)"
+                        role="tab"
+                        :id="tab.computedTabId"
+                        :aria-controls="tab.computedPanelId"
+                        class="r-tab-link"
+                        :class="{'is-active': tab.isActive}"
+                >
+                    {{tab.name}}
+                </button>
+            </div>
         </div>
-        <div class="r-tab-content" :class="contentClass" v-if="!tabHeaderMode">
+        <div class="r-tab-content" :class="contentClass" v-show="!tabHeaderMode">
             <slot></slot>
         </div>
     </div>
@@ -64,7 +51,7 @@
                 type: Boolean,
                 default: false
             },
-            justTabs: Array
+            contentlessTabs: Array
         },
         watch: {
             $route(to, from) {

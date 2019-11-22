@@ -11,9 +11,12 @@ storiesOf('Components', module)
                         :menuClass="menuClass"
                         :contentClass="contentClass"
                         :tabHeaderMode="true"
-                        :justTabs="justTabs"
                         @tab-selected="tabSelected"
                 >
+                    <r-tab v-for="(tab, tabIndex) in contentlessTabs"
+                            :key="tabIndex"
+                            :name="tab.name"
+                    />
                 </r-tabs>
             </div>
         `,
@@ -37,10 +40,10 @@ storiesOf('Components', module)
                 {name: 'Tab 2', resource: 'Tab 2 Content'},
                 {name: 'Tab 3', resource: 'Tab 3 Content'},
             ],
-            justTabs: [
-                {name: 'Just 1'},
-                {name: 'Just 2'},
-                {name: 'Just 3'},
+            contentlessTabs: [
+                {name: 'Contentless 1'},
+                {name: 'Contentless 2'},
+                {name: 'Contentless 3'},
             ],
         }),
     }), {
