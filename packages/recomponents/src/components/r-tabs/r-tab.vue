@@ -11,7 +11,7 @@
 
 <script>
     /* eslint-disable no-underscore-dangle */
-    import {generateTabId, generatePanelId} from './id-helpers';
+    import {generateTabId, generateTabpanelId} from './id-helpers';
 
     export default {
         name: 'r-tab',
@@ -41,7 +41,7 @@
                 return this.panelId || this._uid;
             },
             computedPanelId() {
-                return generatePanelId(this.computedAccessibilityId);
+                return generateTabpanelId(this.computedAccessibilityId);
             },
             computedTabId() {
                 return generateTabId(this.computedAccessibilityId);

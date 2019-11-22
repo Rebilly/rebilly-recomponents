@@ -2,6 +2,6 @@ export function generateTabId(panelId) {
     return `tab-${panelId}`;
 }
 
-export function generatePanelId(id) {
+export function generateTabpanelId(id) {
     return `tabpanel-${id}`;
 }
