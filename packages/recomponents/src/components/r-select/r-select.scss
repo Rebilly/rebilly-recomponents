@@ -206,11 +206,11 @@ fieldset[disabled] .r-select {
     color: var(--select-placeholder-color);
     display: inline-block;
     margin-bottom: var(--select-placeholder-margin-bottom);
-    padding: var(--select-placeholder-padding);
+    //padding: var(--select-placeholder-padding);
 }
 
 .r-select--active .r-select__placeholder {
-    display: none;
+    visibility: hidden;
 }
 
 .r-select__content-wrapper {

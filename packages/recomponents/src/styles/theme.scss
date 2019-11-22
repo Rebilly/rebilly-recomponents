@@ -539,7 +539,7 @@ body, .article {
     --select-input-background: transparent;
     --select-input-margin: 0 0 var(--space-s) 0;
     --select-input-min-height: var(--font-line-height-p);
-    --select-input-padding: 0 0 0 var(--space-xs);
+    --select-input-padding: 0 0 0 0;
     --select-input-transition: border var(--timing-100) var(--animation-ease);
     --select-line-height: var(--font-line-height-p);
     --select-loading-transition: opacity var(--timing-400) var(--animation-ease-in-out);
@@ -561,7 +561,7 @@ body, .article {
     --select-spinner-background-color: var(--select-tags-background);
     --select-spinner-border-radius: var(--border-radius);
     --select-spinner-height: 34px;
-    --select-spinner-width: 40px;
+    --select-spinner-width: 36px;
     --select-tag-line-height: var(--font-line-height-p);
     --select-tag-margin: 0 var(--space-xs) var(--space-xxs) 0;
     --select-tag-padding: var(--space-xxs) var(--space-s) var(--space-xxs) var(--space-s);
@@ -570,7 +570,7 @@ body, .article {
     --select-tags-border-radius: var(--border-radius);
     --select-tags-box-shadow: var(--input-box-shadow);
     --select-tags-font-size: var(--font-size-p);
-    --select-tags-padding: 8px 40px 0 11px;
+    --select-tags-padding: 8px 36px 0 11px;
     --select-text-align: left;
     --select-text-color: var(--text-color);
     --select-transition: transform var(--timing-100) var(--animation-ease);
