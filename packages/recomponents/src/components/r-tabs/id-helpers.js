@@ -1,7 +1,7 @@
-export function generateControlId(panelId) {
-    return `${panelId}-control`;
+export function generateTabId(panelId) {
+    return `tab-${panelId}`;
 }
 
-export function generatePanelId(uid) {
-    return `tab-${uid}`;
+export function generatePanelId(id) {
+    return `tabpanel-${id}`;
 }

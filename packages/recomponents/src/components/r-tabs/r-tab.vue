@@ -1,7 +1,7 @@
 <template>
     <div :id="computedPanelId"
          role="tabpanel"
-         :aria-labelledby="computedControlId"
+         :aria-labelledby="computedTabId"
          v-if="$slots.default"
          v-show="isActive"
     >
@@ -11,7 +11,7 @@
 
 <script>
     /* eslint-disable no-underscore-dangle */
-    import {generateControlId, generatePanelId} from './id-helpers';
+    import {generateTabId, generatePanelId} from './id-helpers';
 
     export default {
         name: 'r-tab',
@@ -37,11 +37,14 @@
             };
         },
         computed: {
-            computedPanelId() {
-                return this.panelId || generatePanelId(this._uid);
+            computedAccessibilityId() {
+                return this.panelId || this._uid;
             },
-            computedControlId() {
-                return generateControlId(this.computedPanelId);
+            computedPanelId() {
+                return generatePanelId(this.computedAccessibilityId);
+            },
+            computedTabId() {
+                return generateTabId(this.computedAccessibilityId);
             },
         },
     };
