@@ -10,7 +10,6 @@
 </template>
 
 <script>
-    /* eslint-disable no-underscore-dangle */
     import {generateTabId, generateTabpanelId} from './id-helpers';
 
     export default {
@@ -38,7 +37,7 @@
         },
         computed: {
             computedAccessibilityId() {
-                return this.panelId || this._uid;
+                return this.panelId || this._uid; /* eslint-disable-line no-underscore-dangle */
             },
             computedPanelId() {
                 return generateTabpanelId(this.computedAccessibilityId);
