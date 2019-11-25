@@ -5,8 +5,8 @@
                 <button v-if="tab.to"
                         :to="tab.to"
                         role="tab"
-                        :id="tab.computedTabId"
-                        :aria-controls="tab.computedPanelId"
+                        :id="tab.tabId"
+                        :aria-controls="tab.tabPanelId"
                         class="r-tab-link"
                         @click="selectTab(tab, index)"
                         :class="{'is-active': tab.isActive}"
@@ -16,8 +16,8 @@
                 <button v-else
                         @click="selectTab(tab, index)"
                         role="tab"
-                        :id="tab.computedTabId"
-                        :aria-controls="tab.computedPanelId"
+                        :id="tab. tabId"
+                        :aria-controls="tab.tabPanelId"
                         class="r-tab-link"
                         :class="{'is-active': tab.isActive}"
                 >
