@@ -10,13 +10,17 @@ storiesOf('Components', module)
                 <r-tabs :divided="divided"
                         :menuClass="menuClass"
                         :contentClass="contentClass"
-                        :tabHeaderMode="true"
+                        :tabHeaderMode="tabHeaderMode"
                         @tab-selected="tabSelected"
                 >
-                    <r-tab v-for="(tab, tabIndex) in contentlessTabs"
+                    <r-tab v-for="(tab, tabIndex) in tabs"
                             :key="tabIndex"
                             :name="tab.name"
-                    />
+                    >
+                        <template v-if="!tabHeaderMode">
+                            {{tab.content}}
+                        </template>
+                   </r-tab>
                 </r-tabs>
             </div>
         `,
@@ -27,6 +31,9 @@ storiesOf('Components', module)
             divided: {
                 default: boolean('Divided', false),
             },
+            tabHeaderMode: {
+                default: boolean('Tab Header Mode', false),
+            },
             menuClass: {
                 default: text('Menu class', ''),
             },
@@ -36,14 +43,9 @@ storiesOf('Components', module)
         },
         data: () => ({
             tabs: [
-                {name: 'Tab 1', resource: 'Tab 1 Content'},
-                {name: 'Tab 2', resource: 'Tab 2 Content'},
-                {name: 'Tab 3', resource: 'Tab 3 Content'},
-            ],
-            contentlessTabs: [
-                {name: 'Contentless 1'},
-                {name: 'Contentless 2'},
-                {name: 'Contentless 3'},
+                {name: 'Tab 1', content: 'Tab 1 Content'},
+                {name: 'Tab 2', content: 'Tab 2 Content'},
+                {name: 'Tab 3', content: 'Tab 3 Content'},
             ],
         }),
     }), {
