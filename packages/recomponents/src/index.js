@@ -5,6 +5,7 @@ import './styles/typography.scss';
 import './styles/helpers.scss';
 import './styles/theme.scss';
 
+import RAvatar from './components/r-avatar/r-avatar.vue';
 import RBadge from './components/r-badge/r-badge.vue';
 import RButton from './components/r-button/r-button.vue';
 import RButtonGroup from './components/r-button-group/r-button-group.vue';
@@ -25,6 +26,7 @@ import RTile from './components/r-tile/r-tile.vue';
 import RDateInput from './components/r-date-input/r-date-input.vue';
 
 const components = {
+    RAvatar,
     RBadge,
     RButton,
     RButtonGroup,
@@ -72,6 +74,7 @@ export {
 };
 
 export {
+    RAvatar,
     RBadge,
     RButton,
     RButtonGroup,

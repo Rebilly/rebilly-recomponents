@@ -1,0 +1,100 @@
+// -----------------------------------------------------------------------------
+// This file contains all styles related to the avatar component.
+// -----------------------------------------------------------------------------
+
+.avatar {
+    max-width: 100%;
+    display: inline-block;
+    position: relative;
+}
+
+.avatar.avatar-description {
+    display: flex;
+    align-items: center;
+}
+
+.avatar-image {
+    width: 36px;
+    height: 36px;
+    margin-right: 0;
+    text-align: center;
+    flex: 0 0 auto;
+}
+
+.avatar.avatar-description > .avatar-image {
+    margin-right: var(--avatar-margin-right);
+}
+
+.avatar-info > * {
+    margin: 0;
+    line-height: var(--avatar-font-line-height);
+}
+
+.avatar-info .avatar-info-muted-text {
+    color: var(--text-muted);
+}
+
+.avatar-icon,
+.avatar-initials {
+    border-radius: var(--avatar-border-radius);
+    padding: var(--avatar-padding);
+    background: var(--avatar-background);
+}
+
+.avatar-initials {
+    position: relative;
+    padding: 0;
+    width: 36px;
+    height: 36px;
+    text-align: center;
+}
+
+.avatar-initials-gray {
+    background-color: var(--avatar-background-gray);
+}
+
+.avatar-initials-yellow {
+    background-color: var(--avatar-background-yellow);
+}
+
+.avatar-initials-green {
+    background-color: var(--avatar-background-green);
+}
+
+.avatar-initials-accent {
+    background-color: var(--avatar-background-accent);
+}
+
+.avatar-initials-dark-background {
+    background-color: var(--avatar-background-dark-background);
+}
+
+.avatar-initials span {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    color: #FFFFFF;
+    // font-weight: $medium;
+    // font-family: $secondary-font-stack;
+    text-transform: uppercase;
+}
+
+// Sizes
+.avatar-l {
+    & .avatar-image,
+    & .avatar-image .image,
+    & .avatar-initials {
+        width: 64px;
+        height: 64px;
+    }
+    & .avatar-info > * {
+        // line-height: $line-height;
+    }
+    & .avatar-initials span {
+        // @include rem(font-size, 20px);
+    }
+    &.avatar-description > .avatar-image {
+        margin-right: var(--avatar-description-margin-right);
+    }
+}

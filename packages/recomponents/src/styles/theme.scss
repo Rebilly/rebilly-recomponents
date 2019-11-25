@@ -166,6 +166,21 @@ body, .article {
     // Components
     // ------------------------------------------------
 
+    // Avatars
+    // ------------------------------------------------
+    --avatar-margin-right: var(--space-s);
+    --avatar-padding: var(--space-s);
+    --avatar-font-line-height: var(--font-line-height-p);
+    --avatar-info-muted-text: var(--text-muted);
+    --avatar-border-radius: var(--border-radius);
+    --avatar-background: var(--background-color);
+    --avatar-background-gray: var(--gray-color);
+    --avatar-background-yellow: var(--warning-color);
+    --avatar-background-green: var(--positive-color);
+    --avatar-background-accent: var(--accent-color);
+    --avatar-background-dark-background: var(--gray-color-dark);
+    --avatar-description-margin-right: var(--space-m);
+
     // Badges
     // ------------------------------------------------
     --badge-text-color: var(--text-color);
