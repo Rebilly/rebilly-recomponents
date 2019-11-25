@@ -49,9 +49,9 @@
             },
             tabHeaderMode: {
                 type: Boolean,
-                default: false
+                default: false,
             },
-            contentlessTabs: Array
+            contentlessTabs: Array,
         },
         watch: {
             $route(to, from) {
