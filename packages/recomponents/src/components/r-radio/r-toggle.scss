@@ -1,12 +1,12 @@
 .r-field-label-toggle {
-    display: inline-block;
-    color: var(--text-color);
+    display: inline-block !important;
+    color: var(--text-color) !important;
     line-height: var(--font-line-height-p);
     font-size: var(--font-size-p);
     font-weight: var(--font-weight-regular);
     position: relative;
     padding-left: 28px;
-    margin: 0;
+    margin: 0 !important;
     cursor: pointer;
 }
 
@@ -16,7 +16,7 @@
 
 .r-field-caption-toggle {
     padding-left: 28px;
-    margin-top: var(--space-xxs);
+    margin-top: var(--space-xxs) !important;
 }
 
 .r-field-caption {

@@ -7,8 +7,8 @@ input.r-field-radio[type=radio] {
     position: absolute;
     left: 0;
     top: 0;
-    height: var(--space-m);
-    width: var(--space-m);
+    height: var(--space-default);
+    width: var(--space-default);
     box-sizing: border-box;
     z-index: 10;
     cursor: pointer;
