@@ -60,7 +60,7 @@ describe('r-tabs.vue', () => {
         expect(links.at(1).classes().includes('is-active')).toBeTruthy();
     });
 
-    it('should swtich tab on click', async () => {
+    it('should switch tab on click', async () => {
         const wrapper = mount(RTabs, {
             render(h) {
                 return h(RTabs, {}, [
