@@ -7,6 +7,7 @@
             <slot v-else name="label"/>
         </label>
         <input type="radio" class="r-field-radio"
+               :value="value"
                :checked="isChecked"
                :id="id"
                :name="name"
@@ -32,8 +33,8 @@
         },
         props: {
             checked: {
-                type: [String, Number],
-                required: true,
+                type: [String, Number, Boolean, Array],
+                default: null,
             },
             label: {
                 type: String,
@@ -44,14 +45,14 @@
             },
             name: {
                 type: String,
-                default: 'default',
+                default: () => shortid.generate(),
             },
             caption: {
                 type: String,
                 default: null,
             },
             value: {
-                type: [String, Number],
+                type: [String, Number, Boolean, Array],
                 required: true,
             },
             disabled: {
@@ -82,6 +83,9 @@
                 return false;
             },
             isChecked() {
+                if (this.value === null) {
+                    return false;
+                }
                 return this.checked === this.value;
             },
         },

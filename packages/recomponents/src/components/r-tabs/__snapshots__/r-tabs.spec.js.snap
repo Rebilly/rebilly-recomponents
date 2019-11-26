@@ -3,18 +3,16 @@
 exports[`r-tabs.vue should open current route tab 1`] = `
 <div>
   <div role="tablist" class="r-tab">
-    <div class="r-tab-item"><a to="[object Object]" role="tab" class="r-tab-link">
+    <div class="r-tab-item"><button to="[object Object]" role="tab" id="tab-custom-id-1" aria-controls="tabpanel-custom-id-1" class="r-tab-link">
         Tab 1
-      </a></div>
-    <div class="r-tab-item"><a to="[object Object]" role="tab" class="r-tab-link is-active">
+      </button></div>
+    <div class="r-tab-item"><button to="[object Object]" role="tab" id="tab-custom-id-2" aria-controls="tabpanel-custom-id-2" class="r-tab-link is-active">
         Tab 2
-      </a></div>
+      </button></div>
   </div>
   <div class="r-tab-content">
-    <div style="display: none;">
-      <p>Lorem ipsum</p>
-    </div>
-    <div style="">
+    <!---->
+    <div id="tabpanel-custom-id-2" role="tabpanel" aria-labelledby="tab-custom-id-2">
       <p>Domus anthem</p>
     </div>
   </div>

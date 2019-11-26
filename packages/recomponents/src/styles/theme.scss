@@ -145,8 +145,8 @@ body, .article {
 
     // Elevation
     // ------------------------------------------------
-    --elevation-100: 0 0 0 1px var(--gray-color-light), 0 1px 2px 0 var(--gray-color-light), 0 4px 4px 0 var(--mono-color-100);
-    --elevation-200: 0 0 0 1px var(--gray-color-light), 0 7px 14px 0 var(--gray-color-light), 0 3px 6px 0 var(--gray-color-light);
+    --elevation-100: 0 0 0 1px rgba(74, 74, 75, 0.09), 0 1px 2px 0 rgba(74, 74, 75, 0.15), 0 4px 4px 0 rgba(74, 74, 75, 0.07);
+    --elevation-200: 0 0 0 1px rgba(74, 74, 75, 0.09), 0 7px 14px 0 rgba(74, 74, 75, 0.15), 0 3px 6px 0 rgba(74, 74, 75, 0.07);
 
     // Z-Index
     // ------------------------------------------------
@@ -187,7 +187,7 @@ body, .article {
     --badge-info-border: none;
     --badge-tag-background: var(--gray-color-light);
     --badge-tag-color: var(--mono-color-700);
-    --badge-tag-line-height: 16px;
+    --badge-tag-line-height: 20px;
     --badge-tag-border-radius: var(--border-radius-xxs);
     --badge-tag-font-weight: var(--font-weight-bold);
     --badge-tag-margin: 0 var(--space-xs) var(--space-xxs) 0;
@@ -524,7 +524,6 @@ body, .article {
     --select-current-margin: 0;
     --select-current-padding: var(--space-s) var(--space-l) 0 var(--space-m);
     --select-disabled-background: var(--background-color);
-    --select-disabled-box-shadow: 0 0 0 1px var(--gray-color) inset;
     --select-disabled-color: var(--text-muted);
     --select-disabled-font-color: var(--mono-color-700);
     --select-disabled-opacity: 0.6;
@@ -568,7 +567,7 @@ body, .article {
     --select-tags-background: linear-gradient(180deg, #FFFFFF, var(--background-color));
     --select-tags-border-color: var(--input-border);
     --select-tags-border-radius: var(--border-radius);
-    --select-tags-box-shadow: var(--input-box-shadow);
+    --select-tags-box-shadow: var(--button-default-box-shadow);
     --select-tags-font-size: var(--font-size-p);
     --select-tags-padding: 8px 36px 0 11px;
     --select-text-align: left;
