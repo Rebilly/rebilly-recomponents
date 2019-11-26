@@ -206,18 +206,18 @@ fieldset[disabled] .r-select {
     color: var(--select-placeholder-color);
     display: inline-block;
     margin-bottom: var(--select-placeholder-margin-bottom);
-    //padding: var(--select-placeholder-padding);
+    padding: var(--select-placeholder-padding);
 }
 
 .r-select--active .r-select__placeholder {
-    visibility: hidden;
+  display: none;
 }
 
 .r-select__content-wrapper {
     position: absolute;
     display: block;
     background: var(--select-wrapper-background-color);
-    width: 100%;
+    min-width: 100%;
     max-height: var(--select-wrapper-max-height);
     overflow: auto;
     z-index: var(--select-wrapper-z-index);
