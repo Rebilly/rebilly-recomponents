@@ -2,8 +2,7 @@
     <div :id="tabPanelId"
          role="tabpanel"
          :aria-labelledby="tabId"
-         v-if="$slots.default"
-         v-show="isActive"
+         v-if="$slots.default && isActive"
     >
         <slot></slot>
     </div>
