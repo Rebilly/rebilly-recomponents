@@ -254,10 +254,16 @@
                 this.$emit('key-down', event);
             },
             getFocus() {
-                (this.$refs.input || this.$refs.textarea).focus();
+                const e = this.$refs.input || this.$refs.textarea;
+                if (e) {
+                    e.focus();
+                }
             },
             blur() {
-                (this.$refs.input || this.$refs.textarea).blur();
+                const e = this.$refs.input || this.$refs.textarea;
+                if (e) {
+                    e.blur();
+                }
                 this.$emit('blur');
             },
             focus() {
