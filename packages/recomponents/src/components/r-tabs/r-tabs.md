@@ -10,6 +10,8 @@ There are 2 component: `r-tabs` and `r-tab`.
 | divided      | boolean     | `false`       |
 | menuClass    | string      |               |
 | contentClass | string      |               |
+| tabHeaderMode | boolean    | `false`       |
+
 ### Slots
 
 This component has 1 **required** slot that can be filled by any quantity of `r-tab` components.
@@ -21,6 +23,7 @@ This component has 1 **required** slot that can be filled by any quantity of `r-
 |------------| --------------------|---------------|
 | name       | string (required)   |               |
 | value      | string              |               |
+| panelId    | string (optional)   |               |
 | active     | boolean             | `false`       |
 | to         | [object, undefined] |               |
 
@@ -28,10 +31,36 @@ This component has 1 **required** slot that can be filled by any quantity of `r-
 
 This component has 1 **required** slot that can be filled with any html markup or vue components - the content of tab
 
+### Modes  
+*Standard*  
+
+In this mode we have a contentful header of tabs, where each `tab` in the header has a corresponding `tabpanel`.  
+  
+```html  
+<r-tabs>  
+    <r-tab v-for="(tab, tabIndex) in tabs"  
+            :key="tabIndex"  
+            :name="tab.name">  
+            {{tab.content}}  
+    </r-tab>  
+</r-tabs>  
+```  
+
+*Header only mode*  
+
+In this mode we have a contentless header of `tabs` that is independent of `tabpanels`.
+Ideally, when using this mode, we do not want there to be any content in `<r-tab></r-tab>` in order to avoid creating unnecessary DOM elements.
+
+```html
+<r-tabs tabHeaderMode="true">
+    <r-tab v-for="(tab, tabIndex) in tabs" :name="tab.name"></r-tab>
+</r-tabs>
+```
+
 
 ### Usage
 
-This component can be used in two modes:
+This component can be used in two different ways:
 
 #### Webcomponent module
 
