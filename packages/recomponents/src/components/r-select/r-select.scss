@@ -213,14 +213,14 @@ fieldset[disabled] .r-select {
 }
 
 .r-select--active .r-select__placeholder {
-  display: none;
+    display: none;
 }
 
 .r-select__content-wrapper {
     position: absolute;
     display: block;
     background: var(--select-wrapper-background-color);
-    min-width: 100%;
+    width: 100%;
     max-height: var(--select-wrapper-max-height);
     overflow: auto;
     z-index: var(--select-wrapper-z-index);
