@@ -98,6 +98,7 @@ describe('r-tabs.vue', () => {
                             to: {
                                 fullPath: 'default-route',
                             },
+                            panelId: 'custom-id-1',
                         },
                     }, [
                         h('p', 'Lorem ipsum'),
@@ -108,6 +109,7 @@ describe('r-tabs.vue', () => {
                             to: {
                                 fullPath: 'test-route',
                             },
+                            panelId: 'custom-id-2',
                         },
                     }, [
                         h('p', 'Domus anthem'),
