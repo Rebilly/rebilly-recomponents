@@ -9,6 +9,8 @@
 </template>
 
 <script>
+    import shortId from 'shortid';
+
     export default {
         name: 'r-tab',
         props: {
@@ -34,7 +36,7 @@
         },
         computed: {
             accessibilityId() {
-                return this.panelId || this._uid; /* eslint-disable-line no-underscore-dangle */
+                return this.panelId || shortId.generate();
             },
             tabPanelId() {
                 return `tabpanel-${this.accessibilityId}`;
