@@ -16,7 +16,7 @@
                 <button v-else
                         @click="selectTab(tab, index)"
                         role="tab"
-                        :id="tab. tabId"
+                        :id="tab.tabId"
                         :aria-controls="tab.tabPanelId"
                         class="r-tab-link"
                         :class="{'is-active': tab.isActive}"
@@ -51,7 +51,6 @@
                 type: Boolean,
                 default: false,
             },
-            contentlessTabs: Array,
         },
         watch: {
             $route(to, from) {
