@@ -127,4 +127,5 @@
 
 <style lang="scss">
     @import './r-checkbox.scss';
+    @import '../r-radio/r-toggle.scss';
 </style>

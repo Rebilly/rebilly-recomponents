@@ -57,33 +57,3 @@ input.r-field-checkbox[type=checkbox] {
     right: -2px;
     opacity: 0;
 }
-
-.r-field-label-toggle {
-    display: inline-block;
-    color: var(--checkbox-label-color);
-    line-height: var(--checkbox-label-line-height);
-    font-size: var(--checkbox-label-font-size);
-    font-weight: var(--checkbox-label-font-weight);
-    position: relative;
-    padding-left: var(--checkbox-label-left-space);
-    margin: 0;
-    cursor: pointer;
-}
-
-.r-field-label-toggle.is-disabled {
-    color: var(--checkbox-label-disabled-color);
-}
-
-.r-field-caption-toggle {
-    padding-left: var(--checkbox-caption-left-space);
-    margin-top: var(--checkbox-caption-margin-top);
-}
-
-.r-field-caption {
-    display: block;
-    color: var(--checkbox-caption-color);
-    line-height: var(--checkbox-caption-line-height);
-    font-size: var(--checkbox-caption-font-size);
-    font-weight: var(--checkbox-caption-font-weight);
-    margin-top: var(--space-xs);
-}

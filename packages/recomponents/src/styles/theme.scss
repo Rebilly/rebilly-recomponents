@@ -319,18 +319,6 @@ body, .article {
     --checkbox-focus-border: none;
     --checkbox-disabled-background: var(--mono-color-100);
     --checkbox-disabled-box-shadow: 0 0 0 1px var(--gray-color) inset;
-    --checkbox-label-font-size: var(--font-size-p);
-    --checkbox-label-color: var(--text-color);
-    --checkbox-label-line-height: var(--font-line-height-p);
-    --checkbox-label-font-weight: var(--font-weight-regular);
-    --checkbox-label-left-space: 28px;
-    --checkbox-label-disabled-color: var(--text-muted);
-    --checkbox-caption-font-size: var(--font-size-p);
-    --checkbox-caption-color: var(--text-muted);
-    --checkbox-caption-line-height: var(--font-line-height-p);
-    --checkbox-caption-font-weight: var(--font-weight-regular);
-    --checkbox-caption-left-space: 28px;
-    --checkbox-caption-margin-top: var(--space-xxs);
 
     // Radios
     // ------------------------------------------------
@@ -348,18 +336,6 @@ body, .article {
     --radio-focus-border: none;
     --radio-disabled-background: var(--mono-color-100);
     --radio-disabled-box-shadow: 0 0 0 1px var(--gray-color) inset;
-    --radio-label-font-size: var(--font-size-p);
-    --radio-label-color: var(--text-color);
-    --radio-label-line-height: var(--font-line-height-p);
-    --radio-label-font-weight: var(--font-weight-regular);
-    --radio-label-left-space: 28px;
-    --radio-label-disabled-color: var(--text-muted);
-    --radio-caption-font-size: var(--font-size-p);
-    --radio-caption-color: var(--text-muted);
-    --radio-caption-line-height: var(--font-line-height-p);
-    --radio-caption-font-weight: var(--font-weight-regular);
-    --radio-caption-left-space: 28px;
-    --radio-caption-margin-top: var(--space-xxs);
 
     // Dropdown
     // ------------------------------------------------
