@@ -1,25 +1,14 @@
 <template>
     <div>
-        <div class="r-tab" :class="[{'r-tab-divided': divided}, menuClass]" role="tablist">
+        <div class="r-tab" :class="[{'r-tab-divided': divided}, menuClass]" :role="tabHeaderMode ? null : 'tablist'">
             <div v-for="(tab, index) in tabs" class="r-tab-item" :key="index">
-                <button v-if="tab.to"
-                        :to="tab.to"
-                        role="tab"
+                <button :to="tab.to"
                         :id="tab.tabId"
-                        :aria-controls="tab.tabPanelId"
+                        :role="tabHeaderMode ? null : 'tab'"
+                        :aria-controls="tabHeaderMode ? null : tab.tabPanelId"
+                        :class="{'is-active': tab.isActive}"
                         class="r-tab-link"
                         @click="selectTab(tab, index)"
-                        :class="{'is-active': tab.isActive}"
-                >
-                    {{tab.name}}
-                </button>
-                <button v-else
-                        @click="selectTab(tab, index)"
-                        role="tab"
-                        :id="tab.tabId"
-                        :aria-controls="tab.tabPanelId"
-                        class="r-tab-link"
-                        :class="{'is-active': tab.isActive}"
                 >
                     {{tab.name}}
                 </button>
