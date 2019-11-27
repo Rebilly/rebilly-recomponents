@@ -23,12 +23,12 @@ jobs:
         cd packages/recomponents
     - name: Install dependencies 
       run: |
-        npm ci
+        yarn
     - name: Build Recomponents
       run: |
-        npm run build
+        yarn build
     - name: Build Storybook
       run: |
-        npm run build
+        yarn build-storybook
       env:
         CI: true
