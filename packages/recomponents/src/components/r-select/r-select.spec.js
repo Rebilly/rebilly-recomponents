@@ -65,7 +65,7 @@ describe('r-select.vue', () => {
             },
         });
         wrapper.vm.select(wrapper.vm.options[2]);
-        expect(wrapper.emitted().remove).toEqual([['3', 'id']]);
+        expect(wrapper.emitted().remove).toEqual([['3', 'id'], ['3']]);
     });
 
     it('should preselect passed array of values', () => {

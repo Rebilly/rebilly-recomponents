@@ -236,7 +236,7 @@ fieldset[disabled] .r-select {
     display: inline-block;
     padding: 0;
     margin: 0;
-    min-width: 100%;
+    width: 100%;
     vertical-align: top;
 }
 
@@ -264,6 +264,8 @@ fieldset[disabled] .r-select {
     position: relative;
     cursor: pointer;
     white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
     line-height: var(--select-line-height);
     padding: var(--select-option-padding);
     min-height: var(--select-option-min-height);
