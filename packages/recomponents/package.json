@@ -91,7 +91,7 @@
     "node-sass": "^4.12.0",
     "npm-run-all": "^4.1.5",
     "rimraf": "^3.0.0",
-    "sass-loader": "^7.2.0",
+    "sass-loader": "^8.0.0",
     "semantic-release": "^15.13.21",
     "storybook-vue-router": "^1.0.7",
     "stylelint": "^10.1.0",
