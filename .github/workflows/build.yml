@@ -18,16 +18,16 @@ jobs:
       uses: actions/setup-node@v1
       with:
         node-version: ${{ matrix.node-version }}
-    - name: Init Recomponents
-      run: |
-        cd packages/recomponents
-    - name: Install dependencies 
+    - name: Install dependencies
+      working-directory: packages/recomponents
       run: |
         yarn
     - name: Build Recomponents
+      working-directory: packages/recomponents
       run: |
         yarn build
     - name: Build Storybook
+      working-directory: packages/recomponents
       run: |
         yarn build-storybook
       env:
