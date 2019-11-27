@@ -3,6 +3,8 @@ import {renderToString} from '@vue/server-test-utils';
 import RTabs from './r-tabs.vue';
 import RTab from './r-tab.vue';
 
+const extractIdSegment = str => str.replace('tab-', '');
+
 describe('r-tabs.vue', () => {
     it('should render Wrapper and match snapshot', () => {
         const wrapper = shallowMount(RTabs);
@@ -131,14 +133,77 @@ describe('r-tabs.vue', () => {
     });
 
     it('should match all incoming props types', () => {
-        const {divided, menuClass, contentClass} = RTabs.props;
+        const {
+            divided, menuClass, contentClass, tabHeaderMode,
+        } = RTabs.props;
 
         expect(divided.type).toBe(Boolean);
         expect(menuClass.type).toBe(String);
         expect(contentClass.type).toBe(String);
+        expect(tabHeaderMode.type).toBe(Boolean);
     });
 
-    describe('r-tabs accessibility', () => {
+    describe('tabHeaderMode', () => {
+        const customId = 'custom-panel-id';
+        const wrapper = mount(RTabs, {
+            render(h) {
+                return h(RTabs, {
+                    props: {
+                        tabHeaderMode: true,
+                    },
+                }, [
+                    h(RTab, {
+                        props: {
+                            name: 'Tab 1',
+                            panelId: customId,
+                        },
+                    }),
+                    h(RTab, {
+                        props: {
+                            name: 'Tab 2',
+                        },
+                    }),
+                ]);
+            },
+        });
+
+        const tabHeaderWrapper = wrapper.find('div:first-child > div');
+        const tabPanel = wrapper.find('.r-tab-content');
+        let tabs;
+        let tabWithPanelId;
+        let tabWithoutPanelId;
+
+        beforeEach(() => {
+            tabs = wrapper.findAll('.r-tab-link');
+            tabWithPanelId = tabs.at(0);
+            tabWithoutPanelId = tabs.at(1);
+        });
+
+        it('should hide tabpanel contents', () => {
+            expect(tabPanel.isEmpty()).toBe(true);
+        });
+
+        it('should remove a11y attributes from tabs header', () => {
+            expect(tabHeaderWrapper.attributes('role')).toBeUndefined();
+
+            expect(tabWithPanelId.attributes('role')).toBeUndefined();
+            expect(tabWithPanelId.attributes('aria-controls')).toBeUndefined();
+
+            expect(tabWithoutPanelId.attributes('role')).toBeUndefined();
+            expect(tabWithoutPanelId.attributes('aria-controls')).toBeUndefined();
+        });
+
+        it(`should keep id from r-tab's panelId when provided`, () => {
+            const appendedIdString = extractIdSegment(tabWithPanelId.attributes('id'));
+            expect(appendedIdString).toEqual(customId);
+        });
+
+        it('should generate random short IDs if panelId is not provided in r-tab', () => {
+            expect(tabWithoutPanelId.attributes('id')).toBeDefined();
+        });
+    });
+
+    describe('accessibility', () => {
         it('should set the correct IDs when panelId is provided', () => {
             const customId1 = 'custom-id-1';
             const tabA11yId = `tab-${customId1}`;
@@ -159,8 +224,11 @@ describe('r-tabs.vue', () => {
                 },
             });
 
+            const tabHeaderWrapper = wrapper.find('div:first-child > div');
             const tab = wrapper.findAll('.r-tab-link').at(0);
             const tabPanel = wrapper.find('.r-tab-content > div');
+
+            expect(tabHeaderWrapper.attributes('role')).toBe('tablist');
 
             expect(tab.attributes('id')).toBe(tabA11yId);
             expect(tab.attributes('aria-controls')).toBe(tabPanelA11yId);
@@ -187,7 +255,7 @@ describe('r-tabs.vue', () => {
             const tab = wrapper.findAll('.r-tab-link').at(0);
             const tabPanel = wrapper.find('.r-tab-content > div');
 
-            const generatedShortId = tab.attributes('id').replace('tab-', '');
+            const generatedShortId = extractIdSegment(tab.attributes('id'));
             const tabA11yId = `tab-${generatedShortId}`;
             const tabPanelA11yId = `tabpanel-${generatedShortId}`;
 
