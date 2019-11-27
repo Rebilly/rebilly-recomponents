@@ -1,5 +1,8 @@
 import RTooltip from './directives/r-tooltip/r-tooltip';
 import RFsBlock from './directives/r-fs-block';
+import RLazy from './directives/r-lazy';
+import RContent from './directives/r-content/r-content';
+import RClickOutside from './directives/r-click-outside/r-click-outside';
 
 import './styles/typography.scss';
 import './styles/helpers.scss';
@@ -23,6 +26,8 @@ import RTabs from './components/r-tabs/r-tabs.vue';
 import RSelect from './components/r-select/r-select.vue';
 import RTile from './components/r-tile/r-tile.vue';
 import RDateInput from './components/r-date-input/r-date-input.vue';
+
+import kebabCase from './common/helpers/kebab-case';
 
 const components = {
     RBadge,
@@ -48,6 +53,9 @@ const components = {
 const directives = {
     RTooltip,
     RFsBlock,
+    RLazy,
+    RContent,
+    RClickOutside,
 };
 
 function install(Vue) {
@@ -62,13 +70,16 @@ function install(Vue) {
      * Injecting all directives without 'r' prefix
      */
     Object.keys(directives).forEach((key) => {
-        Vue.directive(key.substr(1).toLowerCase(), directives[key]);
+        Vue.directive(kebabCase(key.substr(1)), directives[key]);
     });
 }
 
 export {
     RTooltip,
     RFsBlock,
+    RLazy,
+    RContent,
+    RClickOutside,
 };
 
 export {
