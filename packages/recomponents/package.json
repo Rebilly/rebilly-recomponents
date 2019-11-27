@@ -12,8 +12,8 @@
     "lint:js": "vue-cli-service lint",
     "lint:styles": "stylelint **/*.scss",
     "build": "run-s build:wc build:lib",
-    "build:wc": "vue-cli-service build --target wc-async --name recomponents 'src/**/*.vue'",
-    "build:lib": "vue-cli-service build --target lib --name recomponents 'src/index.js'",
+    "build:wc": "vue-cli-service build --target wc-async --name recomponents 'src/**/*.vue' --no-clean",
+    "build:lib": "vue-cli-service build --target lib --name recomponents 'src/index.js' --no-clean",
     "storybook": "start-storybook -p 9001  -s public",
     "build-storybook": "build-storybook -c .storybook -o ../../docs",
     "semantic-release": "semantic-release"
