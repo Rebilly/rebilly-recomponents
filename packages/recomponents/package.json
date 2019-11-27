@@ -39,7 +39,6 @@
     "yarn": ">= 1.10.1"
   },
   "dependencies": {
-    "core-js": "^3.4.3",
     "lodash.clonedeep": "^4.5.0",
     "moment": "^2.22.2",
     "moment-timezone": "^0.5.23",
@@ -47,6 +46,7 @@
     "v-calendar": "^0.9.7"
   },
   "devDependencies": {
+    "core-js": "^3.4.3",
     "@babel/core": "^7.5.5",
     "@babel/preset-env": "^7.5.5",
     "@semantic-release/changelog": "^3.0.4",
