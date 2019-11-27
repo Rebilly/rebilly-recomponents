@@ -472,9 +472,7 @@
                 if (this.isComplexOptions && value !== null) {
                     if (!this.multiple) {
                         const option = options
-                            .find(opt => {
-                                return this.getOptionValue({option: opt, trackBy: this.computedTrackBy}) === value;
-                            });
+                            .find(opt => this.getOptionValue({option: opt, trackBy: this.computedTrackBy}) === value);
                         if (option) {
                             return option;
                         }
