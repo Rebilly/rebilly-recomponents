@@ -1,3 +1,4 @@
+import 'intersection-observer';
 import cssVars from 'css-vars-ponyfill';
 
 import RTooltip from './directives/r-tooltip/r-tooltip';

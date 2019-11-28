@@ -39,6 +39,7 @@
   },
   "dependencies": {
     "css-vars-ponyfill": "^2.1.2",
+    "intersection-observer": "^0.7.0",
     "lodash.clonedeep": "^4.5.0",
     "moment": "^2.22.2",
     "moment-timezone": "^0.5.23",
