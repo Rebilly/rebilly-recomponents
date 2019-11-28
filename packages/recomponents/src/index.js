@@ -1,5 +1,4 @@
-import 'intersection-observer';
-import cssVars from 'css-vars-ponyfill';
+import './polyfill';
 
 import RTooltip from './directives/r-tooltip/r-tooltip';
 import RFsBlock from './directives/r-fs-block';
@@ -26,9 +25,6 @@ import RTabs from './components/r-tabs/r-tabs.vue';
 import RSelect from './components/r-select/r-select.vue';
 import RTile from './components/r-tile/r-tile.vue';
 import RDateInput from './components/r-date-input/r-date-input.vue';
-
-cssVars({
-});
 
 const components = {
     RBadge,
