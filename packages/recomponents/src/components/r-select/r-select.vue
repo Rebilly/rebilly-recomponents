@@ -123,7 +123,7 @@
                             <template v-if="computedAsyncHasPrevOptions">
                                 <li class="r-select__option align-center r-select__option-load r-select__option-load-prev">
                                     <r-icon-button
-                                            type="basic"
+                                            type="default"
                                             size="small"
                                             @click="handleAsyncLoadPrev"
                                             :disabled="computedIsLoading"
@@ -159,14 +159,16 @@
                             </span>
                         </li>
                         <!--</template>-->
-                        <li v-show="showNoResults && (filteredOptions.length === 0 && search && !loading)">
+                        <li class="r-select__element"
+                            v-show="showNoResults && (filteredOptions.length === 0 && search && !loading)">
                             <span class="r-select__option">
                                 <slot name="noResult"
                                       :search="search">{{messages['noResult']}}
                                 </slot>
                             </span>
                         </li>
-                        <li v-show="showNoOptions && (options.length === 0 && !search && !loading)">
+                        <li class="r-select__element"
+                            v-show="showNoOptions && (computedOptions.length === 0 && !search && !loading)">
                             <span class="r-select__option">
                                 <slot name="noOptions">{{messages['noOptions']}}</slot>
                             </span>
@@ -175,7 +177,7 @@
                             <template v-if="computedAsyncHasNextOptions">
                                 <li class="r-select__option align-center r-select__option-load r-select__option-load-next">
                                     <r-icon-button
-                                            type="basic"
+                                            type="default"
                                             size="small"
                                             @click="handleAsyncLoadNext"
                                             :disabled="computedIsLoading"
@@ -233,6 +235,9 @@
     function filterOptions(options, search, label, customLabel) {
         return options.filter(option => includes(customLabel(option, label), search));
     }
+
+    const getAllCachedAsyncValues = asyncCacheItems => asyncCacheItems
+        .reduce((memo, item) => ([...memo, ...item.options]), []);
 
     export default {
         name: 'r-select',
@@ -352,7 +357,7 @@
             },
             options: {
                 type: Array,
-                required: true,
+                default: () => [],
             },
             optionHeight: {
                 type: Number,
@@ -459,14 +464,13 @@
             },
             computedValue() {
                 const options = this.computedIsAsync
-                    ? this.async.getAllCacheItems()
+                    ? getAllCachedAsyncValues(this.async.getAllCacheItems())
                     : this.computedOptions;
 
                 const value = this.primitiveValue;
 
                 if (this.isComplexOptions && value !== null) {
                     if (!this.multiple) {
-                        // multiple selection enabled
                         const option = options
                             .find(opt => this.getOptionValue({option: opt, trackBy: this.computedTrackBy}) === value);
                         if (option) {
@@ -483,13 +487,14 @@
                 return this.primitiveValue;
             },
             contentStyle() {
-                return this.options.length
-                    ? {display: 'inline-block'}
-                    : {display: 'block'};
+                return {
+                    display: this.computedOptions && this.computedOptions.length ? 'inline-block' : 'block',
+                    minWidth: '100%',
+                };
             },
             currentOptionLabel() {
                 const placeholder = this.searchable ? '' : this.placeholder;
-                const activeOption = this.options.find(option => this.getOptionValue({
+                const activeOption = this.computedOptions.find(option => this.getOptionValue({
                     option,
                     trackBy: this.computedTrackBy,
                 }) === this.internalValue[0]);
@@ -503,10 +508,10 @@
                 const search = this.search || '';
                 const normalizedSearch = search.toLowerCase().trim();
 
-                let options = this.options && this.options.concat();
+                let options = this.computedOptions && this.computedOptions.concat();
 
-                if (this.internalSearch) {
-                    options = filterOptions(this.options, normalizedSearch, this.computedLabel, this.customLabel);
+                if (this.computedOptions && this.internalSearch) {
+                    options = filterOptions(this.computedOptions, normalizedSearch, this.computedLabel, this.customLabel);
                 }
 
                 options = this.hideSelected
@@ -520,7 +525,6 @@
                         options.unshift({isTag: true, label: search});
                     }
                 }
-
                 return options.slice(0, this.optionsLimit);
             },
             hasLabel() {
@@ -549,9 +553,8 @@
             internalValue() {
                 const value = Array.isArray(this.value)
                     ? this.value
-                    : ((this.options.find(opt => opt === this.value || opt[this.computedTrackBy] === this.value) || this.taggable) && [this.value]) || [];
-
-                return this.value || this.value === 0 ? value : [];
+                    : ((this.computedOptions.find(opt => opt === this.value || opt[this.computedTrackBy] === this.value) || this.taggable) && [this.value]) || [];
+                return this.value !== undefined ? value : [];
             },
             isAbove() {
                 if (this.openDirection === 'above' || this.openDirection === 'top') {
@@ -577,7 +580,7 @@
             },
             isSingleLabelVisible() {
                 return (
-                    (this.singleValue || this.singleValue === 0)
+                    (this.singleValue || this.singleValue !== undefined)
                     && (!this.isOpen || !this.searchable)
                     && !this.visibleValues.length
                 );
@@ -603,7 +606,7 @@
                 return this.internalValue[0];
             },
             valueKeys() {
-                return this.internalValue.map(element => element[this.computedTrackBy] || element);
+                return this.internalValue.map(option => this.getOptionValue({option, trackBy: this.computedTrackBy}));
             },
             visibleElements() {
                 return this.optimizedHeight / this.optionHeight;
@@ -687,7 +690,7 @@
                 return label;
             },
             getOptionValue({option, trackBy}) {
-                return option[trackBy] || option;
+                return option[trackBy] !== undefined ? option[trackBy] : option;
             },
             getPrimitiveValueFromValue({value, trackBy, multiple}) {
                 if (value === undefined || value === null) {
@@ -699,14 +702,14 @@
                     }
                     return value;
                 }
-                return typeof (value === 'object' && value[trackBy]) || value;
+                return (typeof value === 'object' && value[trackBy]) || value;
             },
             getValue() {
                 const value = this.internalValue.length === 0 ? null : this.internalValue[0];
                 return this.multiple ? this.internalValue : value;
             },
             isExistingOption(query) {
-                return !this.options
+                return !this.computedOptions
                     ? false
                     : this.optionKeys.indexOf(query) > -1;
             },
@@ -761,6 +764,16 @@
                 this.pointer = index;
                 this.pointerDirty = true;
             },
+            prepareCacheValuePrefix(value) {
+                if (typeof value === 'string') {
+                    return value;
+                }
+                return String(this.getPrimitiveValueFromValue({
+                    value,
+                    multiple: this.multiple,
+                    trackBy: this.computedTrackBy,
+                }));
+            },
             removeElement(option, shouldClose = true) {
                 if (this.disabled) {
                     return;
@@ -793,7 +806,7 @@
             preselect() {
                 if (this.preselectFirst
                     && !this.internalValue.length
-                    && this.options.length) {
+                    && this.computedOptions.length) {
                     this.select(this.filteredOptions[0]);
                 }
             },
@@ -824,9 +837,10 @@
                 } else {
                     const isSelected = this.isSelected(option);
 
-                    if (isSelected) {
+                    if (isSelected && this.multiple) {
                         if (key !== 'Tab') {
                             this.removeElement(option);
+                            this.$emit('remove', option);
                         }
                         return;
                     }
@@ -834,12 +848,15 @@
                     if (this.max && this.multiple && this.internalValue.length === this.max) {
                         return;
                     }
-                    this.$emit('select', option[this.computedTrackBy] || option, this.id);
+                    this.$emit('select', option, this.id);
 
                     if (this.multiple) {
-                        this.$emit('input', this.primitiveValue.concat([option[this.computedTrackBy] || option]), this.id);
+                        this.$emit('input', this.primitiveValue.concat([this.getOptionValue({
+                            option,
+                            trackBy: this.computedTrackBy,
+                        })]), this.id);
                     } else {
-                        this.$emit('input', option[this.computedTrackBy] || option, this.id);
+                        this.$emit('input', this.getOptionValue({option, trackBy: this.computedTrackBy}), this.id);
                     }
 
                     if (this.clearOnSelect) {

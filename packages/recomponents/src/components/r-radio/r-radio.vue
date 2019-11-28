@@ -93,5 +93,6 @@
 </script>
 
 <style lang="scss">
+    @import './r-radio.scss';
     @import './r-toggle.scss';
 </style>
