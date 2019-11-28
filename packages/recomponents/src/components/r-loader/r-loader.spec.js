@@ -32,7 +32,7 @@ describe('r-loader.vue', () => {
             },
         });
 
-        expect(wrapper.classes()).toContain('r-loader--loading');
+        expect(wrapper.classes()).toContain('r-loader--is-loading');
         expect(wrapper.classes()).toContain('r-loader--fullscreen');
     });
 
