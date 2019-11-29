@@ -10,7 +10,7 @@ storiesOf('Components/Select', module)
     .add('Select', () => ({
         data() {
             return {
-                value: ['Weeks'],
+                value: null,
             };
         },
         props: {
