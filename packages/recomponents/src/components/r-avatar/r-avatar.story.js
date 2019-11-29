@@ -23,7 +23,7 @@ storiesOf('Components', module)
                 default: text('Initials', 'VP', 'Text'),
             },
             descriptionSlot: {
-                default: text('Description as slot', `<p>Some Text</p>\n<p class="avatar-info-muted-text">Some Text</p>`, 'Text'),
+                default: text('Description as slot', `<p>Some Text</p>\n<p class="r-avatar-info-muted-text">Some Text</p>`, 'Text'),
             },
             desciptionProp: {
                 default: text('Description as prop', '', 'Text'),

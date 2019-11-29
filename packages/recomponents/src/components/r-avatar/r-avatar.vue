@@ -1,17 +1,17 @@
 <template>
-    <div class="avatar avatar-description">
-        <div class="avatar-image" v-fs-block>
-            <div class="avatar-initials" :class="['avatar-initials-' + initialsColor]" v-if="initials">
+    <div class="r-avatar r-avatar-description">
+        <div class="r-avatar-main" v-fs-block>
+            <div class="r-avatar-initials" :class="['r-avatar-initials-' + initialsColor]" v-if="initials">
                 <span>{{initials}}</span>
             </div>
-            <div class="avatar-icon" v-if="icon">
+            <div class="r-avatar-icon" v-if="icon">
                 <r-icon :icon="icon"/>
             </div>
-            <div class="avatar-image-image" v-if="image">
+            <div class="r-avatar-image" v-if="image">
                 <r-img :src="image"/>
             </div>
         </div>
-        <div class="avatar-info">
+        <div class="r-avatar-info">
             <template v-if="description">
                 {{description}}
             </template>
@@ -22,6 +22,7 @@
 
 <script>
     const colors = ['gray', 'yellow', 'green', 'accent', 'dark-background'];
+
     export default {
         name: 'RAvatar',
         props: {

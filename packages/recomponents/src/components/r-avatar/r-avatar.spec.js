@@ -51,7 +51,7 @@ describe('r-avatar.vue', () => {
             },
         });
 
-        expect(wrapper.find('.avatar-icon').exists()).toBeTruthy();
+        expect(wrapper.find('.r-avatar-icon').exists()).toBeTruthy();
         expect(wrapper.find(RIcon).exists()).toBeTruthy();
         expect(wrapper).toMatchSnapshot();
     });
@@ -67,7 +67,7 @@ describe('r-avatar.vue', () => {
             },
         });
 
-        expect(wrapper.find('.avatar-image-image').exists()).toBeTruthy();
+        expect(wrapper.find('.r-avatar-image').exists()).toBeTruthy();
         expect(wrapper.find(RImg).exists()).toBeTruthy();
         expect(wrapper).toMatchSnapshot();
     });
