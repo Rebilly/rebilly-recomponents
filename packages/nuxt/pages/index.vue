@@ -6,22 +6,22 @@
         Recomponents Nuxt Demo
       </h1>
       <div>
-        <r-button type="primary" :push="{ path: '/todo' }">
+        <r-button :push="{ path: '/todo' }" type="primary">
           Todo list
         </r-button>
-        <r-button type="primary" :push="{ path: '/payment' }">
+        <r-button :push="{ path: '/payment' }" type="primary">
           Payment form
         </r-button>
-        <r-button type="primary" :push="{ path: '/lazy-loading' }">
+        <r-button :push="{ path: '/lazy-loading' }" type="primary">
           Lazy loading image
         </r-button>
-        <r-button type="primary" :push="{ path: '/tabs' }">
+        <r-button :push="{ path: '/tabs' }" type="primary">
           Tabs
         </r-button>
-        <r-button type="primary" :push="{ path: '/multi-step-form' }">
+        <r-button :push="{ path: '/multi-step-form' }" type="primary">
           Multi-step Form
         </r-button>
-        <r-button type="primary" :push="{ path: '/pagination' }">
+        <r-button :push="{ path: '/pagination' }" type="primary">
           Pagination
         </r-button>
       </div>
