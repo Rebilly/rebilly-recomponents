@@ -44,7 +44,7 @@
                                              @close="removeElement(option)">
                                         <template>
                                             <span class="r-select__tag-text">
-                                                {{ option[computedLabel] || option }}
+                                                {{ getOptionLabel(option) }}
                                             </span>
                                         </template>
                                     </r-badge>
@@ -141,7 +141,6 @@
                                 </slot>
                             </span>
                         </li>
-                        <!--<template v-if="!max || internalValue.length < max">-->
                         <li class="r-select__element"
                             v-for="(option, index) of filteredOptions"
                             :key="index"
@@ -158,7 +157,6 @@
                                 </slot>
                             </span>
                         </li>
-                        <!--</template>-->
                         <li class="r-select__element"
                             v-show="showNoResults && (filteredOptions.length === 0 && search && !loading)">
                             <span class="r-select__option">
@@ -292,7 +290,7 @@
                         return '';
                     }
 
-                    return option[label] || option;
+                    return option && option[label] || option;
                 },
             },
             validate: {
@@ -472,14 +470,14 @@
                 if (this.isComplexOptions && value !== null) {
                     if (!this.multiple) {
                         const option = options
-                            .find(opt => this.getOptionValue({option: opt, trackBy: this.computedTrackBy}) === value);
+                            .find(opt => this.getOptionValue(opt) === value);
                         if (option) {
                             return option;
                         }
                     } else if (value) {
                         return value.map((val) => {
                             const option = options
-                                .find(opt => this.getOptionValue({option: opt, trackBy: this.computedTrackBy}) === val);
+                                .find(opt => this.getOptionValue(opt) === val);
                             return option || {[this.computedTrackBy]: val, [this.computedLabel]: val};
                         });
                     }
@@ -494,13 +492,11 @@
             },
             currentOptionLabel() {
                 const placeholder = this.searchable ? '' : this.placeholder;
-                const activeOption = this.computedOptions.find(option => this.getOptionValue({
-                    option,
-                    trackBy: this.computedTrackBy,
-                }) === this.internalValue[0]);
+                const activeOption = this.computedOptions
+                    .find(option => this.getOptionValue(option) === this.internalValue[0]);
 
                 const value = this.internalValue && this.internalValue.length
-                    ? (activeOption && activeOption[this.computedLabel]) || this.internalValue[0]
+                    ? this.getOptionLabel(activeOption)
                     : placeholder;
                 return this.multiple ? placeholder : value;
             },
@@ -551,9 +547,14 @@
                 return {};
             },
             internalValue() {
+                const hasOptions = !!this.value
+                    && (this.computedOptions
+                            .find(opt => opt === this.value || opt[this.computedTrackBy] === this.value)
+                        || this.taggable);
                 const value = Array.isArray(this.value)
                     ? this.value
-                    : ((this.computedOptions.find(opt => opt === this.value || opt[this.computedTrackBy] === this.value) || this.taggable) && [this.value]) || [];
+                    : (hasOptions && [this.value] || []);
+
                 return this.value !== undefined ? value : [];
             },
             isAbove() {
@@ -606,7 +607,7 @@
                 return this.internalValue[0];
             },
             valueKeys() {
-                return this.internalValue.map(option => this.getOptionValue({option, trackBy: this.computedTrackBy}));
+                return this.internalValue.map(option => this.getOptionValue(option));
             },
             visibleElements() {
                 return this.optimizedHeight / this.optionHeight;
@@ -689,8 +690,9 @@
                 }
                 return label;
             },
-            getOptionValue({option, trackBy}) {
-                return option[trackBy] !== undefined ? option[trackBy] : option;
+            getOptionValue(option) {
+                const trackBy = this.computedTrackBy;
+                return option && option[trackBy] !== undefined ? option[trackBy] : option;
             },
             getPrimitiveValueFromValue({value, trackBy, multiple}) {
                 if (value === undefined || value === null) {
@@ -698,7 +700,7 @@
                 }
                 if (multiple) {
                     if (value) {
-                        return value.map(item => item[trackBy] || item);
+                        return value.map(item => this.getOptionValue(item));
                     }
                     return value;
                 }
@@ -717,7 +719,7 @@
                 return option && !!option.$isDisabled;
             },
             isSelected(option) {
-                const opt = option[this.computedTrackBy] || option;
+                const opt = this.getOptionValue(option);
                 return this.valueKeys.indexOf(opt) > -1;
             },
             optionHighlight(index, option) {
@@ -851,12 +853,9 @@
                     this.$emit('select', option, this.id);
 
                     if (this.multiple) {
-                        this.$emit('input', this.primitiveValue.concat([this.getOptionValue({
-                            option,
-                            trackBy: this.computedTrackBy,
-                        })]), this.id);
+                        this.$emit('input', this.primitiveValue.concat([this.getOptionValue(option)]), this.id);
                     } else {
-                        this.$emit('input', this.getOptionValue({option, trackBy: this.computedTrackBy}), this.id);
+                        this.$emit('input', this.getOptionValue(option), this.id);
                     }
 
                     if (this.clearOnSelect) {
