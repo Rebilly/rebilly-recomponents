@@ -27,11 +27,11 @@
         props: {
             initials: {
                 type: String,
-                validator: function (value) {
+                validator(value) {
                     if (value.length > 2) {
-                        console.warn('RAvatar: should provide only 2 symbols for initials')
+                        console.warn('RAvatar: should provide only 2 symbols for initials');
                     }
-                    return true
+                    return true;
                 },
             },
             description: {
@@ -45,7 +45,7 @@
             },
             icon: {
                 type: String,
-            }
+            },
         },
         computed: {
             initialsColor() {
