@@ -290,7 +290,7 @@
                         return '';
                     }
 
-                    return option && option[label] || option;
+                    return (option && option[label]) || option;
                 },
             },
             validate: {
@@ -549,11 +549,11 @@
             internalValue() {
                 const hasOptions = !!this.value
                     && (this.computedOptions
-                            .find(opt => opt === this.value || opt[this.computedTrackBy] === this.value)
-                        || this.taggable);
+                        .find(opt => opt === this.value || opt[this.computedTrackBy] === this.value)
+                    || this.taggable);
                 const value = Array.isArray(this.value)
                     ? this.value
-                    : (hasOptions && [this.value] || []);
+                    : ((hasOptions && [this.value]) || []);
 
                 return this.value !== undefined ? value : [];
             },
