@@ -7,7 +7,7 @@
             <div class="avatar-icon" v-if="icon">
                 <r-icon :icon="icon"/>
             </div>
-            <div class="avatar-image-image">
+            <div class="avatar-image-image" v-if="image">
                 <r-img :src="image"/>
             </div>
         </div>

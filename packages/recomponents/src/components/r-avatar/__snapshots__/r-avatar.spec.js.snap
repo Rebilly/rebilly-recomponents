@@ -1,0 +1,68 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`r-avatar.vue should render Wrapper and match snapshot 1`] = `
+<div class="avatar avatar-description">
+  <div class="avatar-image fs-block">
+    <div class="avatar-initials avatar-initials-accent"><span>RB</span></div>
+    <!---->
+    <!---->
+  </div>
+  <div class="avatar-info">
+    <!----> Avatar component</div>
+</div>
+`;
+
+exports[`r-avatar.vue should render icon 1`] = `
+<div class="avatar avatar-description">
+  <div class="avatar-image fs-block">
+    <!---->
+    <div class="avatar-icon"><svg class="r-icon r-icon-20">
+        <use xlink:href="#icon-heart" xmlns:xlink="http://www.w3.org/1999/xlink"></use>
+      </svg></div>
+    <!---->
+  </div>
+  <div class="avatar-info">
+    <!---->
+  </div>
+</div>
+`;
+
+exports[`r-avatar.vue should render image 1`] = `
+<div class="avatar avatar-description">
+  <div class="avatar-image fs-block">
+    <!---->
+    <!---->
+    <div class="avatar-image-image">
+      <figure role="img" class="r-component r-img" style="min-height: 0px; min-width: 0px;"><img src="https://www.meme-arsenal.com/memes/86b1de6ff6981be012d40bf26c6992ab.jpg" alt="Recomponents image"></figure>
+    </div>
+  </div>
+  <div class="avatar-info">
+    <!---->
+  </div>
+</div>
+`;
+
+exports[`r-avatar.vue should render via SSR and match snapshot 1`] = `
+<div class="avatar avatar-description">
+  <div class="avatar-image">
+    <div class="avatar-initials avatar-initials-yellow"><span>VP</span></div>
+    <!---->
+    <!---->
+  </div>
+  <div class="avatar-info">
+    <!----> Avatar component</div>
+</div>
+`;
+
+exports[`r-avatar.vue should trigger validation warning 1`] = `
+<div class="avatar avatar-description">
+  <div class="avatar-image fs-block">
+    <div class="avatar-initials avatar-initials-green"><span>Rebilly</span></div>
+    <!---->
+    <!---->
+  </div>
+  <div class="avatar-info">
+    <!---->
+  </div>
+</div>
+`;
