@@ -26,7 +26,7 @@ module.exports = function({ config }) {
             {
                 loader: 'sass-loader',
                 options: {
-                    data: `
+                    prependData: `
                         @import "src/styles/variables.scss";
                         @import "src/styles/mixins.scss";
                     `,
