@@ -4,6 +4,10 @@
  * returns version of IE/Edge or false, if browser is not a Microsoft browser
  */
 function detectIEEdge() {
+    if (typeof window === 'undefined') {
+        return false;
+    }
+
     const ua = window.navigator.userAgent;
 
     const msie = ua.indexOf('MSIE ');
