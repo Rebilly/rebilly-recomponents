@@ -151,6 +151,7 @@ body, .article {
     // Z-Index
     // ------------------------------------------------
     --z-index-1000: 1000;
+    --z-index-800: 800;
     --z-index-100: 100;
     --z-index-90: 90;
     --z-index-80: 80;
@@ -443,9 +444,6 @@ body, .article {
     --input-has-icon-right-padding: var(--space-s) var(--space-l) var(--space-s) var(--space-m);
     --input-has-icon-left-padding: var(--space-s) var(--space-m) var(--space-s) var(--space-l);
     --input-addon-background: #F9FAFB;
-
-
-
     --input-addon-box-shadow: 0 0 0 1px var(--gray-color) inset;
     --input-disabled-background: var(--background-color);
     --input-disabled-box-shadow: 0 0 0 1px var(--gray-color) inset;
@@ -455,7 +453,7 @@ body, .article {
     // Loader
     // ------------------------------------------------
     --loader-background: var(--background-color);
-    --loader-z-index: var(--z-index-1000);
+    --loader-z-index: var(--z-index-800);
     --loader-wrapper-color: #A1B2C1;
     --loader-border-radius: var(--border-radius);
 

@@ -32,7 +32,6 @@
                 return {
                     'r-loader--loading': !!this.loading,
                     'r-loader--fullscreen': !!this.fullscreen,
-                    'r-loader--is-secondary': !this.fullscreen,
                 };
             },
         },
