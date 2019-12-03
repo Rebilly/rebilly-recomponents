@@ -29,8 +29,6 @@ import RSelect from './components/r-select/r-select.vue';
 import RTile from './components/r-tile/r-tile.vue';
 import RDateInput from './components/r-date-input/r-date-input.vue';
 
-import kebabCase from './common/helpers/kebab-case';
-
 const components = {
     RBadge,
     RButton,
@@ -53,12 +51,13 @@ const components = {
 };
 
 const directives = {
-    RTooltip,
-    RFsBlock,
-    RLazy,
-    RContent,
-    RClickOutside,
+    tooltip: RTooltip,
+    'fs-block': RFsBlock,
+    lazy: RLazy,
+    content: RContent,
+    'click-outside': RClickOutside,
 };
+
 
 function install(Vue) {
     /**
@@ -69,10 +68,10 @@ function install(Vue) {
     });
 
     /**
-     * Injecting all directives without 'r' prefix
+     * Injecting all directives according to the defined directive keys
      */
-    Object.keys(directives).forEach((key) => {
-        Vue.directive(kebabCase(key.substr(1)), directives[key]);
+    Object.entries(directives).forEach(([key, value]) => {
+        Vue.directive(key, value);
     });
 }
 
