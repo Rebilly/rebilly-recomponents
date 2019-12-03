@@ -1,3 +1,5 @@
+import './polyfill';
+
 import RTooltip from './directives/r-tooltip/r-tooltip';
 import RFsBlock from './directives/r-fs-block';
 import RLazy from './directives/r-lazy';
