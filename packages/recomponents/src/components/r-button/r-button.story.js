@@ -2,6 +2,7 @@ import {storiesOf} from '@storybook/vue';
 import {action} from '@storybook/addon-actions';
 import {boolean, select, text} from '@storybook/addon-knobs';
 import StoryRouter from 'storybook-vue-router';
+
 import markdown from './r-button.md';
 
 storiesOf('Components/Button', module)
@@ -50,7 +51,7 @@ storiesOf('Components/Button', module)
                 :fluid="fluid"
                 :disabled="disabled"
                 :loading="loading"
-                :href="href" 
+                :href="href"
                 @click="click"
                 @focus="focus"
                 @blur="blur"
