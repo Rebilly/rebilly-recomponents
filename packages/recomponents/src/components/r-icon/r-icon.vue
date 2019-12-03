@@ -10,6 +10,9 @@
     export default {
         name: 'RIcon',
         props: {
+            /**
+             * djfhsd
+             */
             icon: {
                 type: String,
                 default: null,

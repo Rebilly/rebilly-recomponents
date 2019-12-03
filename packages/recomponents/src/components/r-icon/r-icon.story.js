@@ -2,16 +2,16 @@ import {storiesOf} from '@storybook/vue';
 import {action} from '@storybook/addon-actions';
 import {select, boolean} from '@storybook/addon-knobs';
 import markdown from './r-icon.md';
+import RIcon from './r-icon.vue';
 
-storiesOf('Components', module)
-    .add('Icon', () => ({
+storiesOf('Refactored.Icon', module)
+    .addParameters({component: RIcon})
+    .add('all', () => ({
         template: `
-            <div style="background: white;height: 100px;">
-                <r-icon
-                    :icon="icon"
-                    :stopPropagation="stopPropagation"
-                    :color="color"/>
-            </div> 
+            <r-icon
+                :icon="icon"
+                :stopPropagation="stopPropagation"
+                :color="color"/>
         `,
         methods: {
             click: action('click'),

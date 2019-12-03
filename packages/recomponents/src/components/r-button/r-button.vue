@@ -36,6 +36,9 @@
                 default: 'regular',
                 validator: val => ['small', 'regular', 'large'].includes(val),
             },
+            /**
+             * Specify button type according to your theme colors
+             */
             type: {
                 type: String,
                 default: 'default',
