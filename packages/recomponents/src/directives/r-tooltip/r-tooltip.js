@@ -1,4 +1,5 @@
 import './r-tooltip.scss';
+
 /**
  * Simple directive to add a tooltip
  */
