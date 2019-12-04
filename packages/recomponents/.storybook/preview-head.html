@@ -1,5 +1,29 @@
 <style>
-    html, body {
+    html, body, #root {
+        height: 100%;
+        padding: 0;
         background: #f9f9f9 !important;
+    }
+
+    #root {
+        padding: 0 !important;
+    }
+
+    #root > div {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        height: 100%;
+        padding: 20px;
+        box-sizing: border-box;
+    }
+
+    #root > div > * {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        width: 100%;
+        height: 100%;
+        flex-wrap: wrap;
     }
 </style>

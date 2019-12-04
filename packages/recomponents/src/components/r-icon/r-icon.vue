@@ -11,12 +11,15 @@
         name: 'RIcon',
         props: {
             /**
-             * djfhsd
+             * Select any icon available in our svg sprite
              */
             icon: {
                 type: String,
                 default: null,
             },
+            /**
+             * Choose any color available in our pallete
+             */
             color: {
                 type: String,
                 default: null,
@@ -41,6 +44,9 @@
                     'dark-background',
                 ].includes(val),
             },
+            /**
+             * Prevent native click events from capturing in parent components
+             */
             stopPropagation: {
                 type: Boolean,
                 default: false,
