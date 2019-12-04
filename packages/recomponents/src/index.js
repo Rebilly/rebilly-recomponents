@@ -2,6 +2,9 @@ import './polyfill';
 
 import RTooltip from './directives/r-tooltip/r-tooltip';
 import RFsBlock from './directives/r-fs-block';
+import RLazy from './directives/r-lazy';
+import RContent from './directives/r-content/r-content';
+import RClickOutside from './directives/r-click-outside/r-click-outside';
 
 import './styles/typography.scss';
 import './styles/helpers.scss';
@@ -50,9 +53,13 @@ const components = {
 };
 
 const directives = {
-    RTooltip,
-    RFsBlock,
+    tooltip: RTooltip,
+    'fs-block': RFsBlock,
+    lazy: RLazy,
+    content: RContent,
+    'click-outside': RClickOutside,
 };
+
 
 function install(Vue) {
     /**
@@ -63,16 +70,19 @@ function install(Vue) {
     });
 
     /**
-     * Injecting all directives without 'r' prefix
+     * Injecting all directives according to the defined directive keys
      */
-    Object.keys(directives).forEach((key) => {
-        Vue.directive(key.substr(1).toLowerCase(), directives[key]);
+    Object.entries(directives).forEach(([key, value]) => {
+        Vue.directive(key, value);
     });
 }
 
 export {
     RTooltip,
     RFsBlock,
+    RLazy,
+    RContent,
+    RClickOutside,
 };
 
 export {
