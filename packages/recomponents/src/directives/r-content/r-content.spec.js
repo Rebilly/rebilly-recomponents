@@ -1,5 +1,4 @@
 import {shallowMount} from '@vue/test-utils';
-import RContent from './r-content';
 
 const mockTemplate = {
     template: `
