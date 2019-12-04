@@ -1,22 +1,21 @@
 <template>
-    <div class="r-component r-loader" :class="classes" v-if="show" role="alert" aria-busy="true">
-        <div class="wrapper">
-            <div class="mr-re"></div>
-            <div class="mr-bil"></div>
-            <div class="mr-ly"></div>
+    <div class="r-component r-loader" role="alert" aria-busy="true" v-if="show" :class="classes">
+        <div class="r-loader-wrapper">
+            <div class="r-mr-re"></div>
+            <div class="r-mr-bil"></div>
+            <div class="r-mr-ly"></div>
         </div>
     </div>
 </template>
 
 <script>
-    // TODO classes prefix wrapper, mr, etc.
     export default {
         name: 'RLoader',
 
         props: {
             show: {
                 type: Boolean,
-                default: false,
+                default: true,
             },
             loading: {
                 type: Boolean,
@@ -24,15 +23,15 @@
             },
             fullscreen: {
                 type: Boolean,
-                default: false,
+                default: true,
             },
         },
 
         computed: {
             classes() {
                 return {
-                    'r-loader--loading': !!this.loading,
-                    'r-loader--fullscreen': !!this.fullscreen,
+                    'is-loading': !!this.loading,
+                    'is-fullscreen': !!this.fullscreen,
                 };
             },
         },
