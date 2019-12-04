@@ -32,8 +32,8 @@ describe('r-loader.vue', () => {
             },
         });
 
-        expect(wrapper.classes()).toContain('r-loader--loading');
-        expect(wrapper.classes()).toContain('r-loader--fullscreen');
+        expect(wrapper.classes()).toContain('is-loading');
+        expect(wrapper.classes()).toContain('is-fullscreen');
     });
 
     it('should match all incoming props types', () => {

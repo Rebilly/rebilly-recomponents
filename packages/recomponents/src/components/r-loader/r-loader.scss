@@ -55,7 +55,7 @@
         }
     }
 
-    &--loading {
+    &.is-loading {
         .r-loader-wrapper {
             .r-mr-re {
                 height: 0px;
@@ -74,7 +74,7 @@
         }
     }
 
-    &--fullscreen {
+    &.is-fullscreen {
         position: fixed;
         opacity: 1;
 

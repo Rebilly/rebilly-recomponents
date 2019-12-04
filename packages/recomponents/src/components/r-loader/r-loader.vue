@@ -1,5 +1,5 @@
 <template>
-    <div class="r-component r-loader" v-if="show" :class="classes">
+    <div class="r-component r-loader" role="alert" aria-busy="true" v-if="show" :class="classes">
         <div class="r-loader-wrapper">
             <div class="r-mr-re"></div>
             <div class="r-mr-bil"></div>
@@ -30,8 +30,8 @@
         computed: {
             classes() {
                 return {
-                    'r-loader--loading': !!this.loading,
-                    'r-loader--fullscreen': !!this.fullscreen,
+                    'is-loading': !!this.loading,
+                    'is-fullscreen': !!this.fullscreen,
                 };
             },
         },
