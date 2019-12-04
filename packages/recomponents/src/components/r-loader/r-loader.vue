@@ -1,5 +1,5 @@
 <template>
-    <div class="r-component r-loader" :class="classes">
+    <div class="r-component r-loader" v-if="show" :class="classes">
         <div class="r-loader-wrapper">
             <div class="r-mr-re"></div>
             <div class="r-mr-bil"></div>
@@ -15,7 +15,7 @@
         props: {
             show: {
                 type: Boolean,
-                default: false,
+                default: true,
             },
             loading: {
                 type: Boolean,

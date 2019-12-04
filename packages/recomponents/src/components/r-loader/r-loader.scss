@@ -2,12 +2,12 @@
     position: absolute;
     z-index: var(--loader-z-index);
     background: var(--loader-background);
-    display: none;
+    display: block;
     bottom: 0;
     right: 0;
     top: 0;
     left: 0;
-    opacity: 1;
+    opacity: 0.8;
     transition: opacity 0.3s ease-out;
     border-radius: var(--loader-border-radius);
 
@@ -18,6 +18,10 @@
         height: 36px;
         background: var(--loader-wrapper-color);
         border-radius: 4px;
+        background-clip: padding-box;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
 
         * {
             display: block;
@@ -50,18 +54,9 @@
             animation: r-mr-ly-reset .5s normal;
         }
     }
+
     &--loading {
-        display: block;
-        position: absolute;
-        opacity: 0.8;
-
         .r-loader-wrapper {
-            position: absolute;
-            background-clip: padding-box;
-            top: 50%;
-            left: 50%;
-            transform: translate(-50%, -50%);
-
             .r-mr-re {
                 height: 0px;
                 animation: r-mr-re-animation 1s infinite;
@@ -82,6 +77,10 @@
     &--fullscreen {
         position: fixed;
         opacity: 1;
+
+        .r-loader-wrapper {
+            border-radius: 0;
+        }
     }
 }
 
