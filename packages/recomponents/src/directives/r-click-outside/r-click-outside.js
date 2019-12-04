@@ -1,6 +1,7 @@
-import Vue from 'vue';
-
-const directive = {
+/**
+ * Simple directive to add click-outside detection to a component
+ */
+export default {
     bind(element, binding, vNode) {
         element.vClickOutside = (event) => {
             if (!element.contains(event.target)) {
@@ -14,7 +15,3 @@ const directive = {
         element.vClickOutside = null;
     },
 };
-
-Vue.directive('click-outside', directive);
-
-export default directive;
