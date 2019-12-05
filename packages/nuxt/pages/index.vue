@@ -6,24 +6,42 @@
         Recomponents Nuxt Demo
       </h1>
       <div>
-        <r-button :push="{ path: '/todo' }" type="primary">
+        <a
+          class="r-button r-button--size-regular r-button--type-primary"
+          href="/todo"
+        >
           Todo list
-        </r-button>
-        <r-button :push="{ path: '/payment' }" type="primary">
+        </a>
+        <a
+          class="r-button r-button--size-regular r-button--type-primary"
+          href="/payment"
+        >
           Payment form
-        </r-button>
-        <r-button :push="{ path: '/lazy-loading' }" type="primary">
+        </a>
+        <a
+          class="r-button r-button--size-regular r-button--type-primary"
+          href="/lazy-loading"
+        >
           Lazy loading image
-        </r-button>
-        <r-button :push="{ path: '/tabs' }" type="primary">
+        </a>
+        <a
+          class="r-button r-button--size-regular r-button--type-primary"
+          href="/tabs"
+        >
           Tabs
-        </r-button>
-        <r-button :push="{ path: '/multi-step-form' }" type="primary">
+        </a>
+        <a
+          class="r-button r-button--size-regular r-button--type-primary"
+          href="/multi-step-form"
+        >
           Multi-step Form
-        </r-button>
-        <r-button :push="{ path: '/pagination' }" type="primary">
+        </a>
+        <a
+          class="r-button r-button--size-regular r-button--type-primary"
+          href="/pagination"
+        >
           Pagination
-        </r-button>
+        </a>
       </div>
       <div class="links">
         <a href="https://nuxtjs.org" target="_blank">
