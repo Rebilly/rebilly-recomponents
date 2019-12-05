@@ -1,3 +1,4 @@
+import RAvatar from './r-avatar/r-avatar.vue';
 import RBadge from './r-badge/r-badge.vue';
 import RButton from './r-button/r-button.vue';
 import RButtonGroup from './r-button-group/r-button-group.vue';
@@ -18,6 +19,7 @@ import RTile from './r-tile/r-tile.vue';
 import RDateInput from './r-date-input/r-date-input.vue';
 
 export {
+    RAvatar,
     RBadge,
     RButton,
     RButtonGroup,
