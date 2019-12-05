@@ -25,40 +25,8 @@ function install(Vue) {
     });
 }
 
-<<<<<<< HEAD
-export {
-    RTooltip,
-    RFsBlock,
-    RLazy,
-    RContent,
-    RClickOutside,
-};
-
-export {
-    RAvatar,
-    RBadge,
-    RButton,
-    RButtonGroup,
-    RCheckbox,
-    RIcon,
-    RIconButton,
-    RImg,
-    RInput,
-    RLoader,
-    RModal,
-    RPagination,
-    RPopper,
-    RRadio,
-    RSelect,
-    RTab,
-    RTabs,
-    RTile,
-    RDateInput,
-};
-=======
 export * from './directives';
 export * from './components';
->>>>>>> 7891a1eb9121c89fec468204fa4f8b08731286ac
 
 export default {
     install,
