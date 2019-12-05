@@ -1,6 +1,7 @@
-import Vue from 'vue';
-
-const directive = {
+/**
+ * Simple directive to add additional content to RTile
+ */
+export default {
     inserted: (el, {modifiers}) => {
         const parentClass = el.parentElement.className;
         const particle = modifiers.secondary ? '--secondary' : '--primary';
@@ -10,5 +11,3 @@ const directive = {
         el.className = '';
     },
 };
-
-Vue.directive('content', directive);

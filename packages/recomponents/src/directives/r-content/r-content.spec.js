@@ -16,7 +16,7 @@ const mockTemplate = {
 };
 
 const localVue = createLocalVue();
-localVue.directive('r-content', RContent);
+localVue.directive('content', RContent);
 
 const wrapper = shallowMount(mockTemplate, {
     localVue,

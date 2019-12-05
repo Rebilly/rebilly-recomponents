@@ -3,7 +3,7 @@
 exports[`r-modal.vue should render Wrapper and match snapshot 1`] = `
 <div tabindex="0" role="dialog" name="modal">
   <div class="r-modal-overlay">
-    <r-loader-stub show="true" loading="true" class="r-modal-loader is-loading"></r-loader-stub>
+    <r-loader-stub show="true" loading="true" fullscreen="true" class="r-modal-loader is-loading"></r-loader-stub>
   </div>
 </div>
 `;
@@ -11,11 +11,11 @@ exports[`r-modal.vue should render Wrapper and match snapshot 1`] = `
 exports[`r-modal.vue should render via SSR and match snapshot 1`] = `
 <div tabindex="0" role="dialog" name="modal">
   <div class="r-modal-overlay">
-    <div role="alert" aria-busy="true" class="r-component r-loader r-modal-loader is-loading r-loader--loading">
-      <div class="wrapper">
-        <div class="mr-re"></div>
-        <div class="mr-bil"></div>
-        <div class="mr-ly"></div>
+    <div role="alert" aria-busy="true" class="r-component r-loader r-modal-loader is-loading is-loading is-fullscreen">
+      <div class="r-loader-wrapper">
+        <div class="r-mr-re"></div>
+        <div class="r-mr-bil"></div>
+        <div class="r-mr-ly"></div>
       </div>
     </div>
   </div>
