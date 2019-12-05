@@ -5,6 +5,7 @@ module.exports = {
         'vue',
         'json',
     ],
+    setupFiles: ['./src/setup-test.js'],
     transform: {
         '^.+\\.vue$': 'vue-jest',
         '^.+\\.jsx?$': 'babel-jest',
