@@ -190,7 +190,7 @@
                 </div>
             </transition>
         </div>
-        <span v-if="helpText" class="r-field-caption" v-html="helpText"></span>
+        <span v-if="helpText" class="r-field-caption">{{helpText}}</span>
     </div>
 </template>
 
