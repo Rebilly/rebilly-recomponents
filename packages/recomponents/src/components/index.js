@@ -18,7 +18,6 @@ import RTabs from './r-tabs/r-tabs.vue';
 import RSelect from './r-select/r-select.vue';
 import RTile from './r-tile/r-tile.vue';
 import RToggle from './r-toggle/r-toggle.vue';
-import RWebcomponent from './r-webcomponent/r-webcomponent.vue';
 
 export {
     RAvatar,
@@ -41,5 +40,4 @@ export {
     RTabs,
     RTile,
     RToggle,
-    RWebcomponent,
 };

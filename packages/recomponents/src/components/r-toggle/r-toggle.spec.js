@@ -1,7 +1,6 @@
 import {mount, shallowMount} from '@vue/test-utils';
 import {renderToString} from '@vue/server-test-utils';
 import RToggle from './r-toggle.vue';
-import RIcon from '../r-icon/r-icon.vue';
 
 describe('r-toggle.vue', () => {
     it('should render Wrapper and match snapshot', async () => {

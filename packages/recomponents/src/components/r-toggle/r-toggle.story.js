@@ -1,6 +1,6 @@
 import {storiesOf} from '@storybook/vue';
 import {action} from '@storybook/addon-actions';
-import {boolean, select, text} from '@storybook/addon-knobs';
+import {boolean, text} from '@storybook/addon-knobs';
 
 import markdown from './r-toggle.md';
 
