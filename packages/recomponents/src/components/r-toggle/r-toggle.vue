@@ -1,8 +1,8 @@
 <template>
-    <div class="r-toggle">
+    <div class="r-toggle" role="checkbox" :aria-checked="isChecked">
         <label class="r-toggle-body" :for="name">
-            <input class="r-field-switch" type="checkbox" :disabled="disabled" :id="name" :value="value" :checked="isChecked" @change="change"/>
-            <span class="r-field-switch-handle"></span>
+            <input class="r-toggle-switch" type="checkbox" :disabled="disabled" :id="name" :value="value" :checked="isChecked" @change="change"/>
+            <span class="r-toggle-switch-handle"></span>
         </label>
         <label v-if="label" class="r-toggle-label" :for="name">{{label}}</label>
     </div>
@@ -39,7 +39,7 @@
                 type: [Array, String, Number, Boolean],
             },
             /**
-             * TBD
+             * Used to decide if checkbox is selected
              */
             value: {
                 type: [String, Boolean],

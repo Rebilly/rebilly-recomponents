@@ -20,13 +20,39 @@ storiesOf('Components.Toggle', module)
         methods: {
             change: action('change'),
         },
+        data: () => ({
+            model: false,
+        }),
         template: `
             <div class="storybook-center">
                 <r-toggle
+                    v-model="model"
                     :label="label"
                     :name="name"
                     :disabled="disabled"
+                    :value="true"
                     @change="change"/>
+                <p>Toggle value: {{model}}</p>
+            </div>
+        `,
+    }), {
+        notes: {markdown},
+    })
+    .add('Multiple toggles', () => ({
+        data: () => ({
+            toggleModel: [],
+            options: [
+                {value: '1', label: 'label 1'},
+                {value: '2', label: 'label 2'},
+            ],
+        }),
+        template: `
+            <div class="storybook-center">
+                <r-toggle
+                    v-for="option in options"
+                    v-model="toggleModel"
+                    :label="option.label"
+                />
             </div>
         `,
     }), {
