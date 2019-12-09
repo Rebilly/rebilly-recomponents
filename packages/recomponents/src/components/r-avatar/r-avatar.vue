@@ -26,6 +26,9 @@
     export default {
         name: 'RAvatar',
         props: {
+            /**
+             * TBD
+             */
             initials: {
                 type: String,
                 validator(value) {
@@ -35,15 +38,27 @@
                     return true;
                 },
             },
+            /**
+             * TBD
+             */
             description: {
                 type: String,
             },
+            /**
+             * TBD
+             */
             image: {
                 type: String,
             },
+            /**
+             * TBD
+             */
             color: {
                 type: String,
             },
+            /**
+             * TBD
+             */
             icon: {
                 type: String,
             },

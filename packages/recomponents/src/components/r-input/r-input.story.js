@@ -2,43 +2,47 @@ import {storiesOf} from '@storybook/vue';
 import {action} from '@storybook/addon-actions';
 import {text, select, boolean} from '@storybook/addon-knobs';
 import markdown from './r-input.md';
+import RInput from './r-input.vue';
 
-storiesOf('Components', module)
-    .add('Input', () => ({
+storiesOf('Refactored.Input', module)
+    .addParameters({component: RInput})
+    .add('Component', () => ({
         template: `
-            <r-input
-                v-model="model"
-                :label="label"
-                :disabled="disabled"
-                :placeholder="placeholder"
-                :helpText="helpText"
-                :multiline="multiline"
-                :submitOnEnter="submitOnEnter"
-                :validate="validate"
-                :leftIcon="leftIcon"
-                :leftIconClickPointer="leftIconClickPointer"
-                :leftIconSpinning="leftIconSpinning"
-                :rightIcon="rightIcon"
-                :rightIconClickPointer="rightIconClickPointer"
-                :rightIconSpinning="rightIconSpinning"
-                :leftLabel="leftLabel"
-                :rightLabel="rightLabel"
-                :password="password"
-                :numeric="numeric"
-                :rows="rows"
-                :autoFocus="autoFocus"
-                :autoHighlight="autoHighlight"
-                :autoHighlightOnFocus="autoHighlightOnFocus"
-                :maxLength="maxLength"
-                :autoResize="autoResize"
-                :autoComplete="autoComplete"
-                @focus="focus"
-                @click="click"
-                @input="input"
-                @key-submit="keySubmit"
-                @key-press="keyPress"
-                @key-down="keyDown"
-                />
+            <div class="storybook-center">
+                <r-input
+                    v-model="model"
+                    :label="label"
+                    :disabled="disabled"
+                    :placeholder="placeholder"
+                    :helpText="helpText"
+                    :multiline="multiline"
+                    :submitOnEnter="submitOnEnter"
+                    :validate="validate"
+                    :leftIcon="leftIcon"
+                    :leftIconClickPointer="leftIconClickPointer"
+                    :leftIconSpinning="leftIconSpinning"
+                    :rightIcon="rightIcon"
+                    :rightIconClickPointer="rightIconClickPointer"
+                    :rightIconSpinning="rightIconSpinning"
+                    :leftLabel="leftLabel"
+                    :rightLabel="rightLabel"
+                    :password="password"
+                    :numeric="numeric"
+                    :rows="rows"
+                    :autoFocus="autoFocus"
+                    :autoHighlight="autoHighlight"
+                    :autoHighlightOnFocus="autoHighlightOnFocus"
+                    :maxLength="maxLength"
+                    :autoResize="autoResize"
+                    :autoComplete="autoComplete"
+                    @focus="focus"
+                    @click="click"
+                    @input="input"
+                    @key-submit="keySubmit"
+                    @key-press="keyPress"
+                    @key-down="keyDown"
+                    />
+            </div>
         `,
         methods: {
             focus: action('focus'),

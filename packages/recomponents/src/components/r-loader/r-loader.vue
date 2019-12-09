@@ -13,14 +13,23 @@
         name: 'RLoader',
 
         props: {
+            /**
+             * Boolean value to show or hide component
+             */
             show: {
                 type: Boolean,
                 default: true,
             },
+            /**
+             * Flag to start / stop animation
+             */
             loading: {
                 type: Boolean,
                 default: true,
             },
+            /**
+             * Fill parent component or entire application
+             */
             fullscreen: {
                 type: Boolean,
                 default: true,

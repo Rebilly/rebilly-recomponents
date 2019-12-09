@@ -5,9 +5,11 @@ import {
 } from '@storybook/addon-knobs';
 import axios from 'axios';
 import markdown from './r-select.md';
+import RSelect from './r-select.vue';
 
-storiesOf('Components/Select', module)
-    .add('Select', () => ({
+storiesOf('Refactored.Select', module)
+    .addParameters({component: RSelect})
+    .add('Component', () => ({
         data() {
             return {
                 value: null,
@@ -128,51 +130,53 @@ storiesOf('Components/Select', module)
             select: action('select'),
             tag: action('tag'),
         },
-        template: `<div>
-                       <p>Selected: {{ value }}</p>
-                       <r-select
-                            v-model="value"
-                            :allowEmpty="allowEmpty"
-                            :clearOnSelect="clearOnSelect"
-                            :closeOnSelect="closeOnSelect"
-                            :disabled="disabled"
-                            :validate="validate"
-                            :helpText="helpText"
-                            :hideSelected="hideSelected"
-                            :internalSearch="internalSearch"
-                            :label="label"
-                            :limit="limit"
-                            :loading="loading"
-                            :max="max"
-                            :maxHeight="maxHeight"
-                            :multiple="multiple"
-                            :openDirection="openDirection"
-                            :options="options"
-                            :optionsLimit="optionsLimit"
-                            :placeholder="placeholder"
-                            :preselectFirst="preselectFirst"
-                            :preserveSearch="preserveSearch"
-                            :resetAfter="resetAfter"
-                            :searchable="searchable"
-                            :showNoOptions="showNoOptions"
-                            :showNoResults="showNoResults"
-                            :tagPlaceholder="tagPlaceholder"
-                            :tagPosition="tagPosition"
-                            :taggable="taggable"
-                            @close="close"
-                            @input="input"
-                            @open="open"
-                            @remove="remove"
-                            @search-change="searchChange"
-                            @select="select"
-                            @tag="tag">
-                       </r-select>
-                     </div>
+        template: `
+            <div class="storybook-center">
+                <div style="width: 50%;">
+                    <p>Selected: {{ value }}</p>
+                    <r-select
+                        v-model="value"
+                        :allowEmpty="allowEmpty"
+                        :clearOnSelect="clearOnSelect"
+                        :closeOnSelect="closeOnSelect"
+                        :disabled="disabled"
+                        :validate="validate"
+                        :helpText="helpText"
+                        :hideSelected="hideSelected"
+                        :internalSearch="internalSearch"
+                        :label="label"
+                        :limit="limit"
+                        :loading="loading"
+                        :max="max"
+                        :maxHeight="maxHeight"
+                        :multiple="multiple"
+                        :openDirection="openDirection"
+                        :options="options"
+                        :optionsLimit="optionsLimit"
+                        :placeholder="placeholder"
+                        :preselectFirst="preselectFirst"
+                        :preserveSearch="preserveSearch"
+                        :resetAfter="resetAfter"
+                        :searchable="searchable"
+                        :showNoOptions="showNoOptions"
+                        :showNoResults="showNoResults"
+                        :tagPlaceholder="tagPlaceholder"
+                        :tagPosition="tagPosition"
+                        :taggable="taggable"
+                        @close="close"
+                        @input="input"
+                        @open="open"
+                        @remove="remove"
+                        @search-change="searchChange"
+                        @select="select"
+                        @tag="tag"/>
+                </div>
+            </div>
         `,
     }), {
         notes: {markdown},
     })
-    .add('Select with object options', () => ({
+    .add('Object options', () => ({
         data() {
             return {
                 value: 'test',
@@ -302,51 +306,53 @@ storiesOf('Components/Select', module)
             select: action('select'),
             tag: action('tag'),
         },
-        template: `<div>
-                       <p>Selected: {{ value }}</p>
-                       <r-select
-                            v-model="value"
-                            :allowEmpty="allowEmpty"
-                            :clearOnSelect="clearOnSelect"
-                            :closeOnSelect="closeOnSelect"
-                            :validate="validate"
-                            :disabled="disabled"
-                            :helpText="helpText"
-                            :hideSelected="hideSelected"
-                            :internalSearch="internalSearch"
-                            :label="label"
-                            :limit="limit"
-                            :loading="loading"
-                            :max="max"
-                            :maxHeight="maxHeight"
-                            :multiple="multiple"
-                            :openDirection="openDirection"
-                            :options="options"
-                            :optionsLimit="optionsLimit"
-                            :placeholder="placeholder"
-                            :preselectFirst="preselectFirst"
-                            :preserveSearch="preserveSearch"
-                            :resetAfter="resetAfter"
-                            :searchable="searchable"
-                            :showNoOptions="showNoOptions"
-                            :showNoResults="showNoResults"
-                            :tagPlaceholder="tagPlaceholder"
-                            :tagPosition="tagPosition"
-                            :taggable="taggable"
-                            @close="close"
-                            @input="input"
-                            @open="open"
-                            @remove="remove"
-                            @search-change="searchChange"
-                            @select="select"
-                            @tag="tag">
-                       </r-select>
-                     </div>
+        template: `
+            <div class="storybook-center">
+                <div style="width: 50%;">
+                    <p>Selected: {{ value }}</p>
+                    <r-select
+                        v-model="value"
+                        :allowEmpty="allowEmpty"
+                        :clearOnSelect="clearOnSelect"
+                        :closeOnSelect="closeOnSelect"
+                        :validate="validate"
+                        :disabled="disabled"
+                        :helpText="helpText"
+                        :hideSelected="hideSelected"
+                        :internalSearch="internalSearch"
+                        :label="label"
+                        :limit="limit"
+                        :loading="loading"
+                        :max="max"
+                        :maxHeight="maxHeight"
+                        :multiple="multiple"
+                        :openDirection="openDirection"
+                        :options="options"
+                        :optionsLimit="optionsLimit"
+                        :placeholder="placeholder"
+                        :preselectFirst="preselectFirst"
+                        :preserveSearch="preserveSearch"
+                        :resetAfter="resetAfter"
+                        :searchable="searchable"
+                        :showNoOptions="showNoOptions"
+                        :showNoResults="showNoResults"
+                        :tagPlaceholder="tagPlaceholder"
+                        :tagPosition="tagPosition"
+                        :taggable="taggable"
+                        @close="close"
+                        @input="input"
+                        @open="open"
+                        @remove="remove"
+                        @search-change="searchChange"
+                        @select="select"
+                        @tag="tag"/>
+                </div>
+            </div>
         `,
     }), {
         notes: {markdown},
     })
-    .add('Select with async loading data', () => ({
+    .add('Async data', () => ({
         data() {
             return {
                 loading: false,
@@ -464,47 +470,49 @@ storiesOf('Components/Select', module)
                     }, 2000);
                 });
         },
-        template: `<div>
-                       <p>Selected: {{ value }}</p>
-                       <r-select
-                            v-model="value"
-                            :allowEmpty="allowEmpty"
-                            :clearOnSelect="clearOnSelect"
-                            :closeOnSelect="closeOnSelect"
-                            :disabled="disabled"
-                            :helpText="helpText"
-                            :hideSelected="hideSelected"
-                            :internalSearch="internalSearch"
-                            :label="label"
-                            :limit="limit"
-                            :loading="loading"
-                            :max="max"
-                            :maxHeight="maxHeight"
-                            :multiple="multiple"
-                            :openDirection="openDirection"
-                            :options="options"
-                            :optionsLimit="optionsLimit"
-                            :optionLabel="optionLabel"
-                            :optionKey="optionKey"
-                            :placeholder="placeholder"
-                            :preselectFirst="preselectFirst"
-                            :preserveSearch="preserveSearch"
-                            :resetAfter="resetAfter"
-                            :searchable="searchable"
-                            :showNoOptions="showNoOptions"
-                            :showNoResults="showNoResults"
-                            :tagPlaceholder="tagPlaceholder"
-                            :tagPosition="tagPosition"
-                            :taggable="taggable"
-                            @close="close"
-                            @input="input"
-                            @open="open"
-                            @remove="remove"
-                            @search-change="searchChange"
-                            @select="select"
-                            @tag="tag">
-                       </r-select>
-                     </div>
+        template: `
+            <div class="storybook-center">
+                <div style="width: 50%;">
+                    <p>Selected: {{ value }}</p>
+                    <r-select
+                        v-model="value"
+                        :allowEmpty="allowEmpty"
+                        :clearOnSelect="clearOnSelect"
+                        :closeOnSelect="closeOnSelect"
+                        :disabled="disabled"
+                        :helpText="helpText"
+                        :hideSelected="hideSelected"
+                        :internalSearch="internalSearch"
+                        :label="label"
+                        :limit="limit"
+                        :loading="loading"
+                        :max="max"
+                        :maxHeight="maxHeight"
+                        :multiple="multiple"
+                        :openDirection="openDirection"
+                        :options="options"
+                        :optionsLimit="optionsLimit"
+                        :optionLabel="optionLabel"
+                        :optionKey="optionKey"
+                        :placeholder="placeholder"
+                        :preselectFirst="preselectFirst"
+                        :preserveSearch="preserveSearch"
+                        :resetAfter="resetAfter"
+                        :searchable="searchable"
+                        :showNoOptions="showNoOptions"
+                        :showNoResults="showNoResults"
+                        :tagPlaceholder="tagPlaceholder"
+                        :tagPosition="tagPosition"
+                        :taggable="taggable"
+                        @close="close"
+                        @input="input"
+                        @open="open"
+                        @remove="remove"
+                        @search-change="searchChange"
+                        @select="select"
+                        @tag="tag"/>
+                </div>
+            </div>
         `,
     }), {
         notes: {markdown},

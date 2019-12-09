@@ -16,32 +16,53 @@
     export default {
         name: 'RIconButton',
         props: {
+            /**
+             * TBD
+             */
             type: {
                 type: String,
                 default: 'default',
                 validator: val => ['default', 'primary', 'danger'].includes(val),
             },
+            /**
+             * TBD
+             */
             size: {
                 type: String,
                 default: 'regular',
                 validator: val => ['small', 'regular', 'large'].includes(val),
             },
+            /**
+             * TBD
+             */
             disabled: {
                 type: Boolean,
                 default: false,
             },
+            /**
+             * TBD
+             */
             fluid: {
                 type: Boolean,
                 default: false,
             },
+            /**
+             * TBD
+             */
             tooltip: {
                 type: String,
                 default: null,
             },
+            /**
+             * TBD
+             */
             fitted: {
                 type: Boolean,
                 default: false,
             },
+            /**
+             * TBD
+             */
             tooltipRightEdge: {
                 type: Boolean,
                 default: false,

@@ -1,11 +1,12 @@
 import {storiesOf} from '@storybook/vue';
 import {action} from '@storybook/addon-actions';
 import {boolean, select, text} from '@storybook/addon-knobs';
-import RDateInput from './r-date-input.vue';
 import markdown from './r-date-input.md';
+import RDateInput from './r-date-input.vue';
 
-storiesOf('Components', module)
-    .add('DateInput', () => ({
+storiesOf('Refactored.Date Input', module)
+    .addParameters({component: RDateInput})
+    .add('Component', () => ({
         props: {
             availableDates: {
                 default: select(
@@ -59,19 +60,22 @@ storiesOf('Components', module)
         methods: {
             input: action('input'),
         },
-        components: {RDateInput},
-        template: `<r-date-input 
-                        :available-dates="availableDates"
-                        :label="label"
-                        :disabled="disabled"
-                        :placeholder="placeholder"
-                        :helpText="helpText"
-                        :stack="stack"
-                        :type="type"  
-                        :validate="validate"  
-                        :noFlex="noFlex"  
-                        v-model="date"
-                        @input="input"/>`,
+        template: `
+            <div class="storybook-center">
+                <r-date-input
+                    :available-dates="availableDates"
+                    :label="label"
+                    :disabled="disabled"
+                    :placeholder="placeholder"
+                    :helpText="helpText"
+                    :stack="stack"
+                    :type="type"
+                    :validate="validate"
+                    :noFlex="noFlex"
+                    v-model="date"
+                    @input="input"/>
+            </div>
+        `,
     }), {
         notes: {markdown},
     });

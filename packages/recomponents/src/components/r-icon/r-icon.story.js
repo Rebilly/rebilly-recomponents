@@ -10,10 +10,12 @@ storiesOf('Refactored.Icon', module)
     .addParameters({component: RIcon})
     .add('Component', () => ({
         template: `
-            <r-icon
-                :icon="icon"
-                :stopPropagation="stopPropagation"
-                :color="color"/>
+            <div class="storybook-center">
+                <r-icon
+                    :icon="icon"
+                    :stopPropagation="stopPropagation"
+                    :color="color"/>
+            </div>
         `,
         methods: {
             click: action('click'),
@@ -34,7 +36,7 @@ storiesOf('Refactored.Icon', module)
     })
     .add('All Icons', () => ({
         template: `
-            <div>
+            <div class="storybook-center">
                 <r-icon
                     v-for="icon in icons"
                     v-tooltip="{text: icon}"
@@ -51,7 +53,7 @@ storiesOf('Refactored.Icon', module)
     })
     .add('All Colors', () => ({
         template: `
-            <div>
+            <div class="storybook-center">
                 <r-icon
                     v-for="color in colors"
                     v-tooltip="{text: color}"

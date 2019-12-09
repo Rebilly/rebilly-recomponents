@@ -52,22 +52,37 @@
             RIconButton,
         },
         props: {
+            /**
+             * TBD
+             */
             title: {
                 type: String,
                 default: null,
             },
+            /**
+             * TBD
+             */
             cancelLabel: {
                 type: String,
                 default: 'Cancel',
             },
+            /**
+             * TBD
+             */
             size: {
                 type: String,
                 default: null,
             },
+            /**
+             * TBD
+             */
             scroll: {
                 type: Boolean,
                 default: false,
             },
+            /**
+             * TBD
+             */
             scrollContent: {
                 type: Boolean,
                 default: false,

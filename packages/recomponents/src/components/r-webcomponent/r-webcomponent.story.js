@@ -1,8 +1,10 @@
 import {storiesOf} from '@storybook/vue';
 import markdown from './r-webcomponent.md';
+import RWebcomponent from './r-webcomponent.vue';
 
-storiesOf('Components', module)
-    .add('Webcomponent', () => {
+storiesOf('Refactored.Webcomponent', module)
+    .addParameters({component: RWebcomponent})
+    .add('Component', () => {
         setTimeout(() => {
             const vue = document.createElement('script');
             vue.src = 'https://unpkg.com/vue';

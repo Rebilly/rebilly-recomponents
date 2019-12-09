@@ -1,11 +1,11 @@
 import {storiesOf} from '@storybook/vue';
 import {action} from '@storybook/addon-actions';
 import {boolean, select, text} from '@storybook/addon-knobs';
-import RIconButton from './r-icon-button.vue';
-import RIcon from '../r-icon/r-icon.vue';
 import markdown from './r-icon-button.md';
+import RIconButton from './r-icon-button.vue';
 
-storiesOf('Components/Button', module)
+storiesOf('Refactored.Icon Button', module)
+    .addParameters({component: RIconButton})
     .add('Icon Button', () => ({
         props: {
             type: {
@@ -43,24 +43,26 @@ storiesOf('Components/Button', module)
             focus: action('focus'),
             blur: action('blur'),
         },
-        components: {RIconButton, RIcon},
         template: `
-            <r-icon-button
-                :type="type"
-                :size="size"
-                :disabled="disabled"
-                :fluid="fluid"
-                :tooltip="tooltip"
-                :fitted="fitted"
-                :tooltipRightEdge="tooltipRightEdge"
-                @click="click"
-                @focus="focus"
-                @blur="blur"
-            >
-                <r-icon slot="left-icon" icon="heart"/>
-                Icon button
-                <r-icon slot="right-icon" icon="heart"/>
-            </r-icon-button>`,
+            <div class="storybook-center">
+                <r-icon-button
+                    :type="type"
+                    :size="size"
+                    :disabled="disabled"
+                    :fluid="fluid"
+                    :tooltip="tooltip"
+                    :fitted="fitted"
+                    :tooltipRightEdge="tooltipRightEdge"
+                    @click="click"
+                    @focus="focus"
+                    @blur="blur"
+                >
+                    <r-icon slot="left-icon" icon="heart"/>
+                    Icon button
+                    <r-icon slot="right-icon" icon="heart"/>
+                </r-icon-button>
+            </div>
+        `,
     }), {
         notes: {markdown},
     });

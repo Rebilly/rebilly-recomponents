@@ -2,11 +2,13 @@ import {storiesOf} from '@storybook/vue';
 import {boolean, text} from '@storybook/addon-knobs';
 import {action} from '@storybook/addon-actions';
 import markdown from './r-tabs.md';
+import RTabs from './r-tabs.vue';
 
-storiesOf('Components', module)
-    .add('Tabs', () => ({
+storiesOf('Refactored.Tabs', module)
+    .addParameters({component: RTabs})
+    .add('Component', () => ({
         template: `
-            <div>
+            <div class="storybook-center">
                 <r-tabs :divided="divided"
                         :menuClass="menuClass"
                         :contentClass="contentClass"
