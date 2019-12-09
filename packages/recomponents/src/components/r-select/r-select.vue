@@ -30,7 +30,8 @@
                       :values="computedValue"
                       :is-open="isOpen">
                     <div class="r-select__tags-wrap"
-                         v-show="visibleValues.length > 0">
+                         v-show="visibleValues.length > 0"
+                         @mousedown.prevent>
                         <template v-for="(option, index) of computedValue"
                                   @mousedown.prevent>
                             <slot name="tag"
@@ -43,7 +44,8 @@
                                              :close="true"
                                              @close="removeElement(option)">
                                         <template>
-                                            <span class="r-select__tag-text">
+                                            <span class="r-select__tag-text"
+                                                  @mousedown.prevent="toggle()">
                                                 {{ getOptionLabel(option) }}
                                             </span>
                                         </template>
