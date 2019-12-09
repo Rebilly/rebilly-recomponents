@@ -4,6 +4,11 @@
       <h1 class="title">
         Todo List
       </h1>
+      <div class="avatar">
+        <r-avatar initials="AU" color="green">
+          <p>Awesome user</p>
+        </r-avatar>
+      </div>
       <div>
         <todo />
       </div>
@@ -39,5 +44,12 @@ export default {
   font-size: 3rem;
   color: #35495e;
   letter-spacing: 1px;
+}
+
+.avatar {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin: 2rem 0;
 }
 </style>

@@ -1,10 +1,6 @@
-import {shallowMount, createLocalVue} from '@vue/test-utils';
+import {shallowMount} from '@vue/test-utils';
 import {renderToString} from '@vue/server-test-utils';
 import RSelect from './r-select.vue';
-import RFsBlock from '../../directives/r-fs-block';
-
-const localVue = createLocalVue();
-localVue.directive('fs-block', RFsBlock);
 
 describe('r-select.vue', () => {
     it('should render Wrapper and match snapshot', () => {
@@ -14,7 +10,6 @@ describe('r-select.vue', () => {
                 id: 'id',
                 options: [{val: 1, label: '1'}, {val: 2, label: '2'}],
             },
-            localVue,
         });
 
         expect(wrapper).toMatchSnapshot();

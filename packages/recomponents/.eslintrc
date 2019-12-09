@@ -22,6 +22,7 @@
         "no-param-reassign": 0,
         "quotes": ["error", "single", {"allowTemplateLiterals": true}],
         "vue/script-indent": ["error", 4, {"baseIndent": 1, "switchCase": 1}],
+        "vue/no-v-html": 1,
         "no-underscore-dangle": ["error", {"allow": ["_links", "_embedded"]}],
         "no-nested-ternary": 1,
         "no-useless-escape": 1,

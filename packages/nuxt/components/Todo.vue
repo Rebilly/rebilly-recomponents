@@ -3,8 +3,8 @@
     <template v-slot:primary>
       <r-input
         v-model="name"
-        placeholder="What needs to be done"
         @key-submit="add"
+        placeholder="What needs to be done"
       />
     </template>
     <template v-slot:secondary>
