@@ -3227,6 +3227,10 @@
   version "3.0.2"
   resolved "https://registry.yarnpkg.com/@types/vfile/-/vfile-3.0.2.tgz#19c18cd232df11ce6fa6ad80259bc86c366b09b9"
   integrity sha512-b3nLFGaGkJ9rzOcuXRfHkZMdjsawuDD0ENL9fzTophtBg8FJHSGbH7daXkEpcwy3v7Xol3pAvsmlYyFhR4pqJw==
+  dependencies:
+    "@types/node" "*"
+    "@types/unist" "*"
+    "@types/vfile-message" "*"
 
 "@types/ws@^6.0.0":
   version "6.0.3"
