@@ -105,7 +105,7 @@
              * The focus works on the DIV because tabindex attribute see:
              * https://developer.mozilla.org/en-US/docs/Web/HTML/Global_attributes/tabindex
              */
-            enter() {
+            focus() {
                 const elContainer = this.$refs.container;
                 const currentElFocus = document.activeElement;
 
@@ -117,21 +117,14 @@
                         preventScroll: true,
                     });
                 }
+            },
+            enter() {
+                this.focus();
                 this.$emit('enter');
             },
             appear() {
-                const elContainer = this.$refs.container;
-                const currentElFocus = document.activeElement;
-
-                document.body.classList.add('no-scroll');
-
-                if (elContainer !== currentElFocus
-                    && !elContainer.contains(currentElFocus)) {
-                    elContainer.focus({
-                        preventScroll: true,
-                    });
-                }
-                this.$emit('enter');
+                this.focus();
+                this.$emit('appear');
             },
             leave() {
                 document.body.classList.remove('no-scroll');
