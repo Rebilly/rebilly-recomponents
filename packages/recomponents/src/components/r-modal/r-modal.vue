@@ -1,5 +1,5 @@
 <template>
-    <transition name="r-modal"  @appear="appear" @enter="enter" @leave="leave">
+    <transition name="r-modal" @appear="appear" @enter="enter" @leave="leave">
         <div @mousedown="close" tabindex="0" ref="container" @keyup.esc="close" @keyup.enter="submit" role="dialog" :aria-label="title">
             <div v-if="$slots.content || $slots.contents" class="r-modal-overlay" :class="{'is-scrollable': scroll}">
                 <div class="r-modal-control" :class="styles" @mousedown="$event.stopPropagation()">
