@@ -2,9 +2,11 @@ import {storiesOf} from '@storybook/vue';
 import {action} from '@storybook/addon-actions';
 import {boolean, text} from '@storybook/addon-knobs';
 import markdown from './r-checkbox.md';
+import RCheckbox from './r-checkbox.vue';
 
-storiesOf('Components/Checkbox', module)
-    .add('1 Checkbox', () => ({
+storiesOf('Components.Checkbox', module)
+    .addParameters({component: RCheckbox})
+    .add('Component', () => ({
         data: () => ({
             checkboxModel: null,
         }),
@@ -17,14 +19,18 @@ storiesOf('Components/Checkbox', module)
         methods: {
             input: action('input'),
         },
-        template: `<r-checkbox
-                        :label="label"
-                        :caption='caption'
-                        :value='true'
-                        :fuzzy="fuzzy"
-                        :disabled="disabled"
-                        v-model="checkboxModel"
-                        @input="input"/>`,
+        template: `
+            <div class="storybook-center">
+                <r-checkbox
+                    :label="label"
+                    :caption='caption'
+                    :value='true'
+                    :fuzzy="fuzzy"
+                    :disabled="disabled"
+                    v-model="checkboxModel"
+                    @input="input"/>
+            </div>
+        `,
     }), {
         notes: {markdown},
     })
@@ -36,13 +42,15 @@ storiesOf('Components/Checkbox', module)
                 {value: '2', label: 'label 2'},
             ],
         }),
-        template: `<div>
-                        <r-checkbox
-                        v-for="o in options"
-                        :label="o.label"
-                        :value='o.value'
-                        v-model="checkboxModel" />
-                    </div>`,
+        template: `
+            <div class="storybook-center">
+                <r-checkbox
+                    v-for="o in options"
+                    v-model="checkboxModel"
+                    :label="o.label"
+                    :value='o.value'/>
+            </div>
+        `,
     }), {
         notes: {markdown},
     });
