@@ -15,14 +15,14 @@
     box-sizing: border-box;
     display: inline-block;
     position: absolute;
-    border-radius: var(--popper-border-radius);
-    z-index: var(--popper-z-index);
-    box-shadow: var(--popper-box-shadow);
-    background: var(--popper-background);
-    min-width: var(--popper-min-width);
+    border-radius: var(--popover-border-radius);
+    z-index: var(--z-index-90);
+    box-shadow: var(--popover-box-shadow);
+    background: var(--popover-background);
+    //min-width: var(--popover-min-width);
     -ms-filter: "progid:DXImageTransform.Microsoft.Alpha(Opacity=0)";
     filter: alpha(opacity=0);
-    transition: var(--popper-transition);
+    transition: var(--popover-transition);
 }
 
 .r-popper.is-visible {
@@ -38,8 +38,8 @@
 }
 
 .r-popper-content {
-    padding: var(--popper-content-padding);
-    border-bottom: var(--popper-content-divider);
+    padding: var(--popover-content-padding);
+    border-bottom: var(--popover-content-divider);
 }
 
 .r-popper-content p, .r-popper-content ul, .r-popper-content ol, .r-popper-content pre, .r-popper-content table, .r-popper-content blockquote, .r-popper-content h1, .r-popper-content h2, .r-popper-content h3, .r-popper-content h4, .r-popper-content h5, .r-popper-content h6 {
@@ -47,50 +47,50 @@
 }
 
 .r-popper-content:first-child {
-    border-radius: var(--popper-border-radius) var(--popper-border-radius) 0 0;
+    border-radius: var(--popover-border-radius) var(--popover-border-radius) 0 0;
 }
 
 .r-popper-content:last-child {
     border-bottom: 0;
-    border-radius: 0 0 var(--popper-border-radius) var(--popper-border-radius);
+    border-radius: 0 0 var(--popover-border-radius) var(--popover-border-radius);
 }
 
 .r-popper-content .r-popper-title {
     margin: 0;
-    padding: var(--popper-content-title-padding);
+    padding: var(--popover-content-title-padding);
 }
 
 .r-popper-content .r-popper-item {
     white-space: nowrap;
     display: block;
     cursor: pointer;
-    font-weight: var(--popper-content-item-font-weight);
-    line-height: var(--popper-content-item-line-height);
-    color: var(--popper-content-item-color);
+    font-weight: var(--popover-content-item-font-weight);
+    line-height: var(--popover-content-item-line-height);
+    color: var(--popover-content-item-color);
     box-sizing: border-box;
-    padding: var(--popper-content-item-padding);
+    padding: var(--popover-content-item-padding);
 }
 
 .r-popper-content .r-popper-item:hover, .r-popper-content .r-popper-itemfocus, .r-popper-content .r-popper-item:active, .r-popper-content .r-popper-item:hover, .r-popper-content .r-popper-item.is-active {
     text-decoration: none;
-    background: var(--popper-content-item-hover-background);
-    color: var(--popper-content-item-hover-color);
+    background: var(--popover-content-item-hover-background);
+    color: var(--popover-content-item-hover-color);
 }
 
 .r-popper-content .r-popper-item:hover svg, .r-popper-content .r-popper-item:focus svg, .r-popper-content .r-popper-item:active svg, .r-popper-content .r-popper-item.is-active svg {
-    fill: var(--popper-content-item-icon-hover-color);
+    fill: var(--popover-content-item-icon-hover-color);
 }
 
 .r-popper-content .r-popper-item:hover .avatar .avatar-info-muted-text, .r-popper-content .r-popper-item:focus .avatar .avatar-info-muted-text, .r-popper-content .r-popper-item:active .avatar .avatar-info-muted-text {
-    color: var(--popper-content-item-avatar-hover-color);
+    color: var(--popover-content-item-avatar-hover-color);
 }
 
 .r-popper-content .r-popper-item:hover .text-muted, .r-popper-content .r-popper-item:focus .text-muted, .r-popper-content .r-popper-item:active .text-muted {
-    color: var(--popper-content-item-avatar-hover-color) !important;
+    color: var(--popover-content-item-avatar-hover-color) !important;
 }
 
 .r-popper-content.is-scrollable {
-    max-height: var(--popper-content-scroll-max-height);
+    max-height: var(--popover-content-scroll-max-height);
     overflow-y: scroll;
 }
 
@@ -98,13 +98,13 @@
 * Types
 */
 .r-popper-content.r-popper-content-padded {
-    padding: var(--popper-content-padded);
+    padding: var(--popover-content-padded);
 }
 
 .r-popper-content.r-popper-content-help {
-    padding: var(--popper-content-help);
-    text-align: var(--popper-content-help-text-align);
-    background: var(--popper-content-help-background);
+    padding: var(--popover-content-help);
+    text-align: var(--popover-content-help-text-align);
+    background: var(--popover-content-help-background);
 }
 
 //.r-popper-content.r-popper-content-select-fixed {
