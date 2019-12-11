@@ -141,18 +141,18 @@ storiesOf('Components/Popper', module)
                                 </r-button>
                             </template>
                             <template #content>
-                            <div class="r-dropdown">
-                                <div class="r-dropdown-content">
-                                    <a class="r-dropdown-item">
-                                        Reset to Default Columns
-                                    </a>
+                                <div class="r-popover">
+                                    <div class="r-popover-control">
+                                        <div class="r-popover-content r-popover-menu">
+                                            <a class="r-popover-menu-item">
+                                                Reset to Default Columns
+                                            </a>
+                                            <a class="r-popover-menu-item">
+                                                Reset to Default Order
+                                            </a>
+                                        </div>
+                                    </div>
                                 </div>
-                                <div class="r-dropdown-content">
-                                    <a class="r-dropdown-item">
-                                        Reset to Default Order
-                                    </a>
-                                </div>
-                            </div>
                             </template>
                    </r-popper>`,
     }), {
