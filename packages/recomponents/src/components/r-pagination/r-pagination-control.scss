@@ -3,6 +3,7 @@
     flex-flow: column;
     margin: 0 auto;
     width: fit-content;
+    height: 36px; // fix the bugs on IE11
 }
 
 .r-pagination-control-wrapper {
