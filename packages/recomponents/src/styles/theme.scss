@@ -195,6 +195,7 @@ body, .article {
     --badge-font-line-height: var(--font-line-height-p);
     --badge-box-shadow: 0 0 0 2px var(--mono-color-0);
     --badge-default-background: var(--mono-color-200);
+    --badge-default-border: none;
     --badge-positive-background: var(--positive-color-light);
     --badge-positive-border: none;
     --badge-negative-background: var(--negative-color-light);
@@ -214,6 +215,7 @@ body, .article {
     --badge-tag-secondary-color: var(--mono-color-700);
     --badge-tag-secondary-border-radius: var(--border-radius-xxs);
     --badge-tag-secondary-box-shadow: 0 0 0 1px var(--gray-color);
+    --badge-tag-icon-margin-left: var(--space-xs);
 
     // Buttons
     // ------------------------------------------------
