@@ -58,8 +58,8 @@ storiesOf('Components/Popper', module)
                         @toggle="toggle"
                         @toggle-on="toggleOn"
                         @toggle-off="toggleOff">
-                            <template #trigger="{popper}">
-                               <r-icon-button @click="popper.toggle">
+                            <template #trigger="scope">
+                               <r-icon-button @click="scope.popper.toggle">
                                     <r-icon icon="actions"/>
                                </r-icon-button>
                             </template>
@@ -135,8 +135,8 @@ storiesOf('Components/Popper', module)
                         @toggle="toggle"
                         @toggle-on="toggleOn"
                         @toggle-off="toggleOff">
-                            <template #trigger="{popper}">
-                                <r-button type="primary" @click="popper.toggle">
+                            <template #trigger="scope">
+                                <r-button type="primary" @click="scope.popper.toggle">
                                     Click me
                                 </r-button>
                             </template>
