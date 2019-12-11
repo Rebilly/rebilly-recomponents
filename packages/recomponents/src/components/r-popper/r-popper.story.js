@@ -4,7 +4,7 @@ import {boolean, number, select} from '@storybook/addon-knobs';
 import markdown from './r-popper.md';
 import RPopper from './r-popper.vue';
 
-storiesOf('Refactored.Popper', module)
+storiesOf('Components.Popper', module)
     .addParameters({component: RPopper})
     .add('With icon button', () => ({
         props: {

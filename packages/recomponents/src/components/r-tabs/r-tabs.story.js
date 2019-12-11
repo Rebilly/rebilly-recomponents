@@ -4,7 +4,7 @@ import {action} from '@storybook/addon-actions';
 import markdown from './r-tabs.md';
 import RTabs from './r-tabs.vue';
 
-storiesOf('Refactored.Tabs', module)
+storiesOf('Components.Tabs', module)
     .addParameters({component: RTabs})
     .add('Component', () => ({
         template: `

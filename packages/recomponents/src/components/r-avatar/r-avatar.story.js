@@ -4,7 +4,7 @@ import markdown from './r-avatar.md';
 import RAvatar from './r-avatar.vue';
 import {icons} from '../../../.storybook/knobs';
 
-storiesOf('Refactored.Avatar', module)
+storiesOf('Components.Avatar', module)
     .addParameters({component: RAvatar})
     .add('Component', () => ({
         template: `

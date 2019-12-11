@@ -4,7 +4,7 @@ import {boolean, text} from '@storybook/addon-knobs';
 import markdown from './r-checkbox.md';
 import RCheckbox from './r-checkbox.vue';
 
-storiesOf('Refactored.Checkbox', module)
+storiesOf('Components.Checkbox', module)
     .addParameters({component: RCheckbox})
     .add('Component', () => ({
         data: () => ({

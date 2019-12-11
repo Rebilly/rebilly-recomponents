@@ -4,7 +4,7 @@ import {boolean, select, text} from '@storybook/addon-knobs';
 import markdown from './r-icon-button.md';
 import RIconButton from './r-icon-button.vue';
 
-storiesOf('Refactored.Icon Button', module)
+storiesOf('Components.Icon Button', module)
     .addParameters({component: RIconButton})
     .add('Icon Button', () => ({
         props: {

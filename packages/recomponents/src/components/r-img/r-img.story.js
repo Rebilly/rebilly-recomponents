@@ -3,7 +3,7 @@ import {boolean, number, text} from '@storybook/addon-knobs';
 import markdown from './r-img.md';
 import RImg from './r-img.vue';
 
-storiesOf('Refactored.Image', module)
+storiesOf('Components.Image', module)
     .addParameters({component: RImg})
     .add('Component', () => ({
         props: {

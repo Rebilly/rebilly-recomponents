@@ -4,7 +4,7 @@ import {text, boolean} from '@storybook/addon-knobs';
 import markdown from './r-radio.md';
 import RRadio from './r-radio.vue';
 
-storiesOf('Refactored.Radio', module)
+storiesOf('Components.Radio', module)
     .addParameters({component: RRadio})
     .add('Component', () => ({
         template: `

@@ -3,7 +3,7 @@ import {boolean} from '@storybook/addon-knobs';
 import markdown from './r-loader.md';
 import RLoader from './r-loader.vue';
 
-storiesOf('Refactored.Loader', module)
+storiesOf('Components.Loader', module)
     .addParameters({component: RLoader})
     .add('Component', () => ({
         props: {

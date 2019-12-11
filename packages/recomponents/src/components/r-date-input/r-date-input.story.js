@@ -4,7 +4,7 @@ import {boolean, select, text} from '@storybook/addon-knobs';
 import markdown from './r-date-input.md';
 import RDateInput from './r-date-input.vue';
 
-storiesOf('Refactored.Date Input', module)
+storiesOf('Components.Date Input', module)
     .addParameters({component: RDateInput})
     .add('Component', () => ({
         props: {

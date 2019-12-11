@@ -4,7 +4,7 @@ import {text, select, boolean} from '@storybook/addon-knobs';
 import markdown from './r-input.md';
 import RInput from './r-input.vue';
 
-storiesOf('Refactored.Input', module)
+storiesOf('Components.Input', module)
     .addParameters({component: RInput})
     .add('Component', () => ({
         template: `

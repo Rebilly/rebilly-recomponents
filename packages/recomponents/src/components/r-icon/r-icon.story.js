@@ -6,7 +6,7 @@ import RIcon from './r-icon.vue';
 
 import {icons, colors} from '../../../.storybook/knobs';
 
-storiesOf('Refactored.Icon', module)
+storiesOf('Components.Icon', module)
     .addParameters({component: RIcon})
     .add('Component', () => ({
         template: `

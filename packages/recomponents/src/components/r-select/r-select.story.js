@@ -7,7 +7,7 @@ import axios from 'axios';
 import markdown from './r-select.md';
 import RSelect from './r-select.vue';
 
-storiesOf('Refactored.Select', module)
+storiesOf('Components.Select', module)
     .addParameters({component: RSelect})
     .add('Component', () => ({
         data() {

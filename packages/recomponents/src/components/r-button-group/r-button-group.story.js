@@ -3,7 +3,7 @@ import {boolean} from '@storybook/addon-knobs';
 import markdown from './r-button-group.md';
 import RButtonGroup from './r-button-group.vue';
 
-storiesOf('Refactored.Button Group', module)
+storiesOf('Components.Button Group', module)
     .addParameters({component: RButtonGroup})
     .add('Component', () => ({
         data: () => ({

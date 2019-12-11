@@ -4,7 +4,7 @@ import {action} from '@storybook/addon-actions';
 import markdown from './r-modal.md';
 import RModal from './r-modal.vue';
 
-storiesOf('Refactored.Modal', module)
+storiesOf('Components.Modal', module)
     .addParameters({component: RModal})
     .add('Component', () => ({
         data() {

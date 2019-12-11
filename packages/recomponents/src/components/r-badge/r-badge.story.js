@@ -4,7 +4,7 @@ import {action} from '@storybook/addon-actions';
 import markdown from './r-badge.md';
 import RBadge from './r-badge.vue';
 
-storiesOf('Refactored.Badge', module)
+storiesOf('Components.Badge', module)
     .addParameters({component: RBadge})
     .add('Component', () => ({
         template: `

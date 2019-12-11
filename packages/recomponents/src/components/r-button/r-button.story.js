@@ -4,7 +4,7 @@ import {boolean, select, text} from '@storybook/addon-knobs';
 import markdown from './r-button.md';
 import RButton from './r-button.vue';
 
-storiesOf('Refactored.Button', module)
+storiesOf('Components.Button', module)
     .addParameters({component: RButton})
     .add('Component', () => ({
         props: {

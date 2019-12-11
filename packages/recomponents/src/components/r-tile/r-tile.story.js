@@ -4,7 +4,7 @@ import {boolean} from '@storybook/addon-knobs';
 import markdown from './r-tile.md';
 import RTile from './r-tile.vue';
 
-storiesOf('Refactored.Tile', module)
+storiesOf('Components.Tile', module)
     .addParameters({component: RTile})
     .add('Component', () => ({
         props: {

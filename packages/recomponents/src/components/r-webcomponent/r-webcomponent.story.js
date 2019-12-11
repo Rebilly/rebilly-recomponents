@@ -2,7 +2,7 @@ import {storiesOf} from '@storybook/vue';
 import markdown from './r-webcomponent.md';
 import RWebcomponent from './r-webcomponent.vue';
 
-storiesOf('Refactored.Webcomponent', module)
+storiesOf('Components.Webcomponent', module)
     .addParameters({component: RWebcomponent})
     .add('Component', () => {
         setTimeout(() => {
