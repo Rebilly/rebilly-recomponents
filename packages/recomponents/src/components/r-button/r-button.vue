@@ -31,28 +31,46 @@
         name: 'RButton',
         components: {RIcon},
         props: {
+            /**
+             * Specify button size
+             */
             size: {
                 type: String,
                 default: 'regular',
                 validator: val => ['small', 'regular', 'large'].includes(val),
             },
+            /**
+             * Specify button type according to your theme colors
+             */
             type: {
                 type: String,
                 default: 'default',
                 validator: val => ['default', 'primary', 'danger', 'link'].includes(val),
             },
+            /**
+             * Disabed state just like for regulat html button
+             */
             disabled: {
                 type: Boolean,
                 default: false,
             },
+            /**
+             * Active state just like for regular button
+             */
             active: {
                 type: Boolean,
                 default: false,
             },
+            /**
+             * Make button full width
+             */
             fluid: {
                 type: Boolean,
                 default: false,
             },
+            /**
+             * Append loading spinner to button
+             */
             loading: {
                 type: Boolean,
                 default: false,

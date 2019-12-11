@@ -2,9 +2,11 @@ import {storiesOf} from '@storybook/vue';
 import {action} from '@storybook/addon-actions';
 import {boolean} from '@storybook/addon-knobs';
 import markdown from './r-tile.md';
+import RTile from './r-tile.vue';
 
-storiesOf('Components', module)
-    .add('Tile', () => ({
+storiesOf('Components.Tile', module)
+    .addParameters({component: RTile})
+    .add('Component', () => ({
         props: {
             title: {
                 default: boolean('Show title', true),
