@@ -1,5 +1,5 @@
 <template>
-    <transition name="modal" @enter="enter" @leave="leave">
+    <transition name="r-modal" @appear="appear" @enter="enter" @leave="leave">
         <div @mousedown="close" tabindex="0" ref="container" @keyup.esc="close" @keyup.enter="submit" role="dialog" :aria-label="title">
             <div v-if="$slots.content || $slots.contents" class="r-modal-overlay" :class="{'is-scrollable': scroll}">
                 <div class="r-modal-control" :class="styles" @mousedown="$event.stopPropagation()">
@@ -120,7 +120,7 @@
              * The focus works on the DIV because tabindex attribute see:
              * https://developer.mozilla.org/en-US/docs/Web/HTML/Global_attributes/tabindex
              */
-            enter() {
+            focus() {
                 const elContainer = this.$refs.container;
                 const currentElFocus = document.activeElement;
 
@@ -132,7 +132,14 @@
                         preventScroll: true,
                     });
                 }
+            },
+            enter() {
+                this.focus();
                 this.$emit('enter');
+            },
+            appear() {
+                this.focus();
+                this.$emit('appear');
             },
             leave() {
                 document.body.classList.remove('no-scroll');
