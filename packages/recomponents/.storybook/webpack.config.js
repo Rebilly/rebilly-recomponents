@@ -2,18 +2,13 @@ const path = require('path');
 
 module.exports = function({ config }) {
     /**
-     * Add source loader
+     * Add info addon loader
      */
     config.module.rules.push({
-        test: /\.story\.js?$/,
-        loaders: [{
-            loader: require.resolve('@storybook/addon-storysource/loader'),
-            options: {
-                parser: 'typescript'
-            },
-        }],
-        enforce: 'pre',
-    });
+        test: /\.vue$/,
+        loader: 'storybook-addon-vue-info/loader',
+        enforce: 'post'
+    })
 
     /**
      * Add sass loader

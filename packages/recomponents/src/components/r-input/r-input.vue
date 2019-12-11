@@ -95,105 +95,183 @@
         name: 'RInput',
         components: {rIcon},
         props: {
+            /**
+             * TBD
+             */
             label: {
                 type: String,
                 default: null,
             },
+            /**
+             * TBD
+             */
             value: {
                 type: [String, Number, Boolean],
                 default: null,
             },
+            /**
+             * TBD
+             */
             disabled: {
                 type: Boolean,
                 default: false,
             },
+            /**
+             * TBD
+             */
             validate: {
                 type: Object,
                 default: null,
             },
+            /**
+             * TBD
+             */
             placeholder: {
                 type: String,
                 default: null,
             },
+            /**
+             * TBD
+             */
             helpText: {
                 type: String,
                 default: null,
             },
+            /**
+             * TBD
+             */
             multiline: {
                 type: Boolean,
                 default: false,
             },
+            /**
+             * TBD
+             */
             submitOnEnter: {
                 type: Boolean,
                 default: false,
             },
+            /**
+             * TBD
+             */
             leftIcon: {
                 type: String,
                 default: null,
             },
+            /**
+             * TBD
+             */
             leftIconClickPointer: {
                 type: Boolean,
                 default: false,
             },
+            /**
+             * TBD
+             */
             rightIcon: {
                 type: String,
                 default: null,
             },
+            /**
+             * TBD
+             */
             rightIconClickPointer: {
                 type: Boolean,
                 default: false,
             },
+            /**
+             * TBD
+             */
             leftIconSpinning: {
                 type: Boolean,
                 default: false,
             },
+            /**
+             * TBD
+             */
             rightIconSpinning: {
                 type: Boolean,
                 default: false,
             },
+            /**
+             * TBD
+             */
             leftLabel: {
                 type: String,
                 default: null,
             },
+            /**
+             * TBD
+             */
             rightLabel: {
                 type: String,
                 default: null,
             },
+            /**
+             * TBD
+             */
             password: {
                 type: Boolean,
                 default: false,
             },
+            /**
+             * TBD
+             */
             numeric: {
                 type: Boolean,
                 default: false,
             },
+            /**
+             * TBD
+             */
             name: {
                 type: String,
                 default: () => shortid.generate(),
             },
+            /**
+             * TBD
+             */
             rows: {
                 type: [String, Number],
                 default: '1',
             },
+            /**
+             * TBD
+             */
             autoFocus: {
                 type: Boolean,
                 default: false,
             },
+            /**
+             * TBD
+             */
             autoHighlight: {
                 type: Boolean,
                 default: false,
             },
+            /**
+             * TBD
+             */
             autoHighlightOnFocus: {
                 type: Boolean,
                 default: false,
             },
+            /**
+             * TBD
+             */
             maxLength: {
                 type: Number,
             },
+            /**
+             * TBD
+             */
             autoResize: {
                 type: Boolean,
                 default: false,
             },
+            /**
+             * TBD
+             */
             autoComplete: String,
         },
         computed: {

@@ -16,22 +16,37 @@
         name: 'RImg',
 
         props: {
+            /**
+             * TBD
+             */
             src: {
                 type: String,
                 required: true,
             },
+            /**
+             * TBD
+             */
             alt: {
                 type: String,
                 default: 'Recomponents image',
             },
+            /**
+             * TBD
+             */
             lazy: {
                 type: Boolean,
                 default: false,
             },
+            /**
+             * TBD
+             */
             width: {
                 type: Number,
                 default: 0,
             },
+            /**
+             * TBD
+             */
             height: {
                 type: Number,
                 default: 0,

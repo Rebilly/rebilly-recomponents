@@ -267,24 +267,39 @@
         mixins: [new AsyncInputMixin().getMixin()],
         components: {RIcon, RIconButton, RBadge},
         props: {
+            /**
+             * TBD
+             */
             allowEmpty: {
                 type: Boolean,
                 default: true,
             },
+            /**
+             * TBD
+             */
             blockKeys: {
                 type: Array,
                 default() {
                     return [];
                 },
             },
+            /**
+             * TBD
+             */
             clearOnSelect: {
                 type: Boolean,
                 default: true,
             },
+            /**
+             * TBD
+             */
             closeOnSelect: {
                 type: Boolean,
                 default: true,
             },
+            /**
+             * TBD
+             */
             customLabel: {
                 type: Function,
                 default(option, label) {
@@ -295,128 +310,224 @@
                     return (option && option[label]) || option;
                 },
             },
+            /**
+             * TBD
+             */
             validate: {
                 type: Object,
                 default: null,
             },
+            /**
+             * TBD
+             */
             disabled: {
                 type: Boolean,
                 default: false,
             },
+            /**
+             * TBD
+             */
             helpText: {
                 type: String,
             },
+            /**
+             * TBD
+             */
             hideSelected: {
                 type: Boolean,
                 default: false,
             },
+            /**
+             * TBD
+             */
             id: {
                 type: String,
                 default: () => shortid.generate(),
             },
+            /**
+             * TBD
+             */
             internalSearch: {
                 type: Boolean,
                 default: true,
             },
+            /**
+             * TBD
+             */
             label: {
                 type: String,
             },
+            /**
+             * TBD
+             */
             limit: {
                 type: Number,
                 default: 99999,
             },
+            /**
+             * TBD
+             */
             limitText: {
                 type: Function,
                 default(count) {
                     return this.messages.more(count);
                 },
             },
+            /**
+             * TBD
+             */
             loading: {
                 type: Boolean,
                 default: false,
             },
+            /**
+             * TBD
+             */
             max: {
                 type: [Number, Boolean],
                 default: false,
             },
+            /**
+             * TBD
+             */
             maxHeight: {
                 type: Number,
                 default: 300,
             },
+            /**
+             * TBD
+             */
             multiple: {
                 type: Boolean,
                 default: false,
             },
+            /**
+             * TBD
+             */
             name: {
                 type: String,
                 default: '',
             },
+            /**
+             * TBD
+             */
             openDirection: {
                 type: String,
                 default: '',
             },
+            /**
+             * TBD
+             */
             options: {
                 type: Array,
                 default: () => [],
             },
+            /**
+             * TBD
+             */
             optionHeight: {
                 type: Number,
                 default: 40,
             },
+            /**
+             * TBD
+             */
             optionKey: {
                 type: String,
             },
+            /**
+             * TBD
+             */
             optionLabel: {
                 type: String,
             },
+            /**
+             * TBD
+             */
             optionsLimit: {
                 type: Number,
                 default: 1000,
             },
+            /**
+             * TBD
+             */
             preselectFirst: {
                 type: Boolean,
                 default: false,
             },
+            /**
+             * TBD
+             */
             preserveSearch: {
                 type: Boolean,
                 default: false,
             },
+            /**
+             * TBD
+             */
             placeholder: {
                 type: String,
                 default: 'Select option',
             },
+            /**
+             * TBD
+             */
             resetAfter: {
                 type: Boolean,
                 default: false,
             },
+            /**
+             * TBD
+             */
             searchable: {
                 type: Boolean,
                 default: true,
             },
+            /**
+             * TBD
+             */
             showNoOptions: {
                 type: Boolean,
                 default: true,
             },
+            /**
+             * TBD
+             */
             showNoResults: {
                 type: Boolean,
                 default: true,
             },
+            /**
+             * TBD
+             */
             showPointer: {
                 type: Boolean,
                 default: true,
             },
+            /**
+             * TBD
+             */
             tabindex: {
                 type: Number,
                 default: 0,
             },
+            /**
+             * TBD
+             */
             taggable: {
                 type: Boolean,
                 default: false,
             },
+            /**
+             * TBD
+             */
             tagPosition: {
                 type: String,
                 default: 'top',
             },
+            /**
+             * TBD
+             */
             value: {
                 type: null,
                 default() {

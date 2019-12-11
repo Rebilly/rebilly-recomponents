@@ -31,52 +31,88 @@
     export default {
         name: 'RPopper',
         props: {
+            /**
+             * TBD
+             */
             state: {
                 type: Boolean,
                 default: null,
             },
+            /**
+             * TBD
+             */
             escToHide: {
                 type: Boolean,
                 default: true,
             },
+            /**
+             * TBD
+             */
             autoHide: {
                 type: Boolean,
                 default: true,
             },
+            /**
+             * TBD
+             */
             globalAutoHide: {
                 type: Boolean,
                 default: true,
             },
+            /**
+             * TBD
+             */
             closeFunction: {
                 type: Function,
                 default: null,
             },
+            /**
+             * TBD
+             */
             openOnMount: {
                 type: Boolean,
                 default: false,
             },
+            /**
+             * TBD
+             */
             disabled: {
                 type: Boolean,
                 default: false,
             },
+            /**
+             * TBD
+             */
             fluid: {
                 type: Boolean,
                 default: false,
             },
+            /**
+             * TBD
+             */
             offset: {
                 type: Number,
                 default: 4, // px
             },
+            /**
+             * TBD
+             */
             direction: {
                 type: String,
                 default: 'horizontal',
                 validator: direction => ['horizontal', 'vertical'].includes(direction),
             },
+            /**
+             * TBD
+             */
             position: {
                 type: String,
                 default: 'bottomStart',
                 validator: position => ['bottomStart', 'bottomEnd', 'topStart', 'topEnd'].includes(position),
             },
+            /**
+             * TBD
+             */
             slideFrom: {
                 type: String,
                 default: 'fade',

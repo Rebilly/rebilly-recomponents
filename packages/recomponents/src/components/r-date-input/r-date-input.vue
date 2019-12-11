@@ -111,46 +111,79 @@
             rIcon, rCalendarManager, rSelect,
         },
         props: {
+            /**
+             * TBD
+             */
             availableDates: {
                 type: Object,
                 required: false,
                 default: null,
             },
+            /**
+             * TBD
+             */
             label: {
                 type: String,
                 default: null,
             },
+            /**
+             * TBD
+             */
             disabled: {
                 type: Boolean,
                 default: false,
             },
+            /**
+             * TBD
+             */
             placeholder: {
                 type: String,
                 default: null,
             },
+            /**
+             * TBD
+             */
             helpText: {
                 type: String,
                 default: null,
             },
+            /**
+             * TBD
+             */
             stack: {
                 type: String,
                 default: null,
             },
+            /**
+             * TBD
+             */
             type: {
                 type: String,
                 default: 'date',
             },
+            /**
+             * TBD
+             */
             name: {
                 type: String,
                 default: () => shortid.generate(),
             },
+            /**
+             * TBD
+             */
             value: {
                 type: Object,
             },
+            /**
+             * TBD
+             */
             validate: {
                 type: Object,
                 default: null,
             },
+            /**
+             * TBD
+             */
             noFlex: {
                 type: Boolean,
                 required: false,
