@@ -57,40 +57,39 @@
 
 .r-popper-content .r-popper-title {
     margin: 0;
-    padding: var(--popover-content-title-padding);
+    padding: 8px 20px;
 }
 
 .r-popper-content .r-popper-item {
     white-space: nowrap;
     display: block;
     cursor: pointer;
-    font-weight: var(--popover-content-item-font-weight);
-    line-height: var(--popover-content-item-line-height);
-    color: var(--popover-content-item-color);
+    line-height: 20px;
+    color: var(--popover-content-menu-item-color);
     box-sizing: border-box;
-    padding: var(--popover-content-item-padding);
+    padding: 8px 20px;
 }
 
 .r-popper-content .r-popper-item:hover, .r-popper-content .r-popper-itemfocus, .r-popper-content .r-popper-item:active, .r-popper-content .r-popper-item:hover, .r-popper-content .r-popper-item.is-active {
     text-decoration: none;
-    background: var(--popover-content-item-hover-background);
-    color: var(--popover-content-item-hover-color);
+    background: var(--primary-color);
+    color: var(--mono-color-0);
 }
 
 .r-popper-content .r-popper-item:hover svg, .r-popper-content .r-popper-item:focus svg, .r-popper-content .r-popper-item:active svg, .r-popper-content .r-popper-item.is-active svg {
-    fill: var(--popover-content-item-icon-hover-color);
+    fill: var(--mono-color-0);
 }
 
 .r-popper-content .r-popper-item:hover .avatar .avatar-info-muted-text, .r-popper-content .r-popper-item:focus .avatar .avatar-info-muted-text, .r-popper-content .r-popper-item:active .avatar .avatar-info-muted-text {
-    color: var(--popover-content-item-avatar-hover-color);
+    color: rgba(255, 255, 255, 0.6);
 }
 
 .r-popper-content .r-popper-item:hover .text-muted, .r-popper-content .r-popper-item:focus .text-muted, .r-popper-content .r-popper-item:active .text-muted {
-    color: var(--popover-content-item-avatar-hover-color) !important;
+    color: rgba(255, 255, 255, 0.6) !important;
 }
 
 .r-popper-content.is-scrollable {
-    max-height: var(--popover-content-scroll-max-height);
+    max-height: 196px;
     overflow-y: scroll;
 }
 
@@ -98,13 +97,13 @@
 * Types
 */
 .r-popper-content.r-popper-content-padded {
-    padding: var(--popover-content-padded);
+    padding: 16px;
 }
 
 .r-popper-content.r-popper-content-help {
-    padding: var(--popover-content-help);
-    text-align: var(--popover-content-help-text-align);
-    background: var(--popover-content-help-background);
+    padding: 8px 16px;
+    text-align: center;
+    background: var(--background-color-light);
 }
 
 //.r-popper-content.r-popper-content-select-fixed {
