@@ -2,9 +2,11 @@ import {storiesOf} from '@storybook/vue';
 import {action} from '@storybook/addon-actions';
 import {boolean, number, select} from '@storybook/addon-knobs';
 import markdown from './r-popper.md';
+import RPopper from './r-popper.vue';
 
-storiesOf('Components/Popper', module)
-    .add('with icon button', () => ({
+storiesOf('Components.Popper', module)
+    .addParameters({component: RPopper})
+    .add('With icon button', () => ({
         props: {
             escToHide: {default: boolean('Escape to hide', true)},
             autoHide: {default: boolean('Auto hide', true)},
@@ -43,45 +45,49 @@ storiesOf('Components/Popper', module)
             input: action('input'),
             setActivePopper: action('setActivePopper'),
         },
-        template: `<r-popper
-                        :escToHide="escToHide"
-                        :autoHide="autoHide"
-                        :globalAutoHide="globalAutoHide"
-                        :openOnMount="openOnMount"
-                        :disabled="disabled"
-                        :offset="offset"
-                        :direction="direction"
-                        :position="position"
-                        :slideFrom="slideFrom"
-                        @input="input"
-                        @setActivePopper="setActivePopper"
-                        @toggle="toggle"
-                        @toggle-on="toggleOn"
-                        @toggle-off="toggleOff">
-                            <template #trigger="scope">
-                               <r-icon-button @click="scope.popper.toggle">
-                                    <r-icon icon="actions"/>
-                               </r-icon-button>
-                            </template>
-                            <template #content>
-                                <div class="r-popover">
-                                    <div class="r-popover-control">
-                                        <div class="r-popover-content r-popover-menu">
-                                            <a class="r-popover-menu-item">
-                                                Edit
-                                            </a>
-                                            <a class="r-popover-menu-item r-popover-menu-item-negative">
-                                               Remove
-                                            </a>
-                                        </div>
-                                    </div>
+        template: `
+            <div class="storybook-center">
+                <r-popper
+                    :escToHide="escToHide"
+                    :autoHide="autoHide"
+                    :globalAutoHide="globalAutoHide"
+                    :openOnMount="openOnMount"
+                    :disabled="disabled"
+                    :offset="offset"
+                    :direction="direction"
+                    :position="position"
+                    :slideFrom="slideFrom"
+                    @input="input"
+                    @setActivePopper="setActivePopper"
+                    @toggle="toggle"
+                    @toggle-on="toggleOn"
+                    @toggle-off="toggleOff">
+                    <template #trigger="scope">
+                        <r-icon-button @click="scope.popper.toggle">
+                            <r-icon icon="actions"/>
+                        </r-icon-button>
+                    </template>
+                    <template #content>
+                        <div class="r-popover">
+                            <div class="r-popover-control">
+                                <div class="r-popover-content r-popover-menu">
+                                    <a class="r-popover-menu-item">
+                                        Edit
+                                    </a>
+                                    <a class="r-popover-menu-item r-popover-menu-item-negative">
+                                        Remove
+                                    </a>
                                 </div>
-                           </template>
-                   </r-popper>`,
+                            </div>
+                        </div>
+                    </template>
+                </r-popper>
+            </div>
+        `,
     }), {
         notes: {markdown},
     })
-    .add('with button', () => ({
+    .add('With regular button', () => ({
         props: {
             escToHide: {default: boolean('Escape to hide', true)},
             autoHide: {default: boolean('Auto hide', true)},
@@ -120,41 +126,45 @@ storiesOf('Components/Popper', module)
             input: action('input'),
             setActivePopper: action('setActivePopper'),
         },
-        template: `<r-popper
-                        :escToHide="escToHide"
-                        :autoHide="autoHide"
-                        :globalAutoHide="globalAutoHide"
-                        :openOnMount="openOnMount"
-                        :disabled="disabled"
-                        :offset="offset"
-                        :direction="direction"
-                        :position="position"
-                        :slideFrom="slideFrom"
-                        @input="input"
-                        @setActivePopper="setActivePopper"
-                        @toggle="toggle"
-                        @toggle-on="toggleOn"
-                        @toggle-off="toggleOff">
-                            <template #trigger="scope">
-                                <r-button type="primary" @click="scope.popper.toggle">
-                                    Click me
-                                </r-button>
-                            </template>
-                            <template #content>
-                                <div class="r-popover">
-                                    <div class="r-popover-control">
-                                        <div class="r-popover-content r-popover-menu">
-                                            <a class="r-popover-menu-item">
-                                                Reset to Default Columns
-                                            </a>
-                                            <a class="r-popover-menu-item">
-                                                Reset to Default Order
-                                            </a>
-                                        </div>
-                                    </div>
+        template: `
+            <div class="storybook-center">
+                <r-popper
+                    :escToHide="escToHide"
+                    :autoHide="autoHide"
+                    :globalAutoHide="globalAutoHide"
+                    :openOnMount="openOnMount"
+                    :disabled="disabled"
+                    :offset="offset"
+                    :direction="direction"
+                    :position="position"
+                    :slideFrom="slideFrom"
+                    @input="input"
+                    @setActivePopper="setActivePopper"
+                    @toggle="toggle"
+                    @toggle-on="toggleOn"
+                    @toggle-off="toggleOff">
+                    <template #trigger="scope">
+                        <r-button type="primary" @click="scope.popper.toggle">
+                            Click me
+                        </r-button>
+                    </template>
+                    <template #content>
+                        <div class="r-popover">
+                            <div class="r-popover-control">
+                                <div class="r-popover-content r-popover-menu">
+                                    <a class="r-popover-menu-item">
+                                        Reset to Default Columns
+                                    </a>
+                                    <a class="r-popover-menu-item">
+                                        Reset to Default Order
+                                    </a>
                                 </div>
-                            </template>
-                   </r-popper>`,
+                            </div>
+                        </div>
+                    </template>
+                </r-popper>
+            </div>
+        `,
     }), {
         notes: {markdown},
     });
