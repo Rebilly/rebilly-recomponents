@@ -1,0 +1,73 @@
+.r-toggle {
+    display: flex;
+}
+
+.r-toggle-body {
+    display: flex;
+    height: var(--toggle-body-width);
+    width: var(--toggle-body-height);
+    border-radius: var(--toggle-body-height);
+    position: relative;
+    vertical-align: baseline;
+    cursor: pointer;
+}
+
+.r-toggle-switch[type=checkbox] {
+    opacity: 0;
+    position: absolute;
+    left: 0;
+    top: 0;
+    height: 20px;
+    width: 20px;
+    box-sizing: border-box;
+
+    &:checked + .r-toggle-switch-handle {
+        background-color: var(--toggle-background-primary-color);
+    }
+
+    &:focus + .r-toggle-switch-handle {
+        box-shadow: 0 0 0 2px var(--toggle-background-primary-color);
+    }
+
+    &:checked:focus + .r-toggle-switch-handle {
+        box-shadow: 0 0 0 2px rgba(var(--toggle-background-primary-color), 0.5);
+    }
+
+    &:checked + .r-toggle-switch-handle::before {
+        transform: translateX(var(--toggle-handle-size));
+    }
+
+    &:disabled + .r-toggle-switch-handle {
+        background: var(--toggle-background-secondary-color);
+        opacity: 0.6;
+        cursor: default;
+    }
+}
+
+.r-toggle-switch-handle {
+    position: absolute;
+    border-radius: var(--toggle-body-width);
+    cursor: pointer;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: var(--toggle-background-secondary-color);
+    transition: all linear .4s;
+}
+
+.r-toggle-switch-handle:before {
+    position: absolute;
+    content: "";
+    height: var(--toggle-handle-size);
+    width: var(--toggle-handle-size);
+    border-radius: 50%;
+    left: var(--toggle-background-spacing);
+    bottom: var(--toggle-background-spacing);
+    background-color: white;
+    transition: all linear .2s;
+}
+
+.r-toggle-label {
+    margin-left: 10px;
+}
