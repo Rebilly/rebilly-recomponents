@@ -11,20 +11,6 @@
     margin: $space-rem-m 0;
 }
 
-.r-popper {
-    box-sizing: border-box;
-    display: inline-block;
-    position: absolute;
-    border-radius: var(--popper-border-radius);
-    z-index: var(--popper-z-index);
-    box-shadow: var(--popper-box-shadow);
-    background: var(--popper-background);
-    min-width: var(--popper-min-width);
-    -ms-filter: "progid:DXImageTransform.Microsoft.Alpha(Opacity=0)";
-    filter: alpha(opacity=0);
-    transition: var(--popper-transition);
-}
-
 .r-popper.is-visible {
     visibility: visible;
     opacity: 1;
