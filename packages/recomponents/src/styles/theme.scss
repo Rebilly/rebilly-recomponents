@@ -75,6 +75,7 @@ body, .article {
     --warning-color-dark: #604E00;
     --background-color: #F6F8F9;
     --background-color-light: #F9FAFB;
+    --background-color-medium: #C4CED8;
     --background-color-dark: #485164;
     --background-color-extra-dark: #303c59;
     --gray-color: #BDC9D4;
@@ -595,6 +596,16 @@ body, .article {
     --tab-link-first-margin-left: var(--space-m);
     --tab-content-padding: 0 20px 20px 20px;
     --tab-content-tile-padding: var(--space-m) 0;
+
+    // Toggle
+    // -----------------------------------------------------
+    --toggle-body-width: 20px;
+    --toggle-body-height: 36px;
+    --toggle-handle-size: 16px;
+    --toggle-background-spacing: var(--space-xxs);
+    --toggle-background-primary-color: var(--primary-color);
+    --toggle-background-secondary-color: var(--background-color-medium);
+
 
     // Modal
     // --------------------------------------------------------
