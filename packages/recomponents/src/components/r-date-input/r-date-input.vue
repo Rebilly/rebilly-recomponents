@@ -93,6 +93,12 @@
             </div>
             <span class="r-field-caption" v-if="helpText">{{helpText}}</span>
         </template>
+        <template v-if="type === 'datepicker'">
+            <v-date-picker
+                v-model="value"
+                is-inline
+            />
+        </template>
     </div>
 </template>
 
