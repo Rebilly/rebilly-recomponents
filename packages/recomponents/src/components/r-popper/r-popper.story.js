@@ -62,10 +62,10 @@ storiesOf('Components.Popper', module)
                     @toggle="toggle"
                     @toggle-on="toggleOn"
                     @toggle-off="toggleOff">
-                    <template #trigger="{popper}">
-                    <r-icon-button @click="popper.toggle">
+                    <template #trigger="scope">
+                        <r-icon-button @click="scope.popper.toggle">
                             <r-icon icon="actions"/>
-                    </r-icon-button>
+                        </r-icon-button>
                     </template>
                     <template #content>
                         <div class="r-popover">
@@ -75,7 +75,7 @@ storiesOf('Components.Popper', module)
                                         Edit
                                     </a>
                                     <a class="r-popover-menu-item r-popover-menu-item-negative">
-                                    Remove
+                                        Remove
                                     </a>
                                 </div>
                             </div>
@@ -143,24 +143,24 @@ storiesOf('Components.Popper', module)
                     @toggle="toggle"
                     @toggle-on="toggleOn"
                     @toggle-off="toggleOff">
-                    <template #trigger="{popper}">
-                        <r-button type="primary" @click="popper.toggle">
+                    <template #trigger="scope">
+                        <r-button type="primary" @click="scope.popper.toggle">
                             Click me
                         </r-button>
                     </template>
                     <template #content>
-                    <div class="r-dropdown">
-                        <div class="r-dropdown-content">
-                            <a class="r-dropdown-item">
-                                Reset to Default Columns
-                            </a>
+                        <div class="r-popover">
+                            <div class="r-popover-control">
+                                <div class="r-popover-content r-popover-menu">
+                                    <a class="r-popover-menu-item">
+                                        Reset to Default Columns
+                                    </a>
+                                    <a class="r-popover-menu-item">
+                                        Reset to Default Order
+                                    </a>
+                                </div>
+                            </div>
                         </div>
-                        <div class="r-dropdown-content">
-                            <a class="r-dropdown-item">
-                                Reset to Default Order
-                            </a>
-                        </div>
-                    </div>
                     </template>
                 </r-popper>
             </div>
