@@ -63,7 +63,7 @@
 
         &[disabled] {
             opacity: var(--button-default-disabled-opacity);
-            cursor: var(--button-default--disabled-cursor);
+            cursor: var(--button-default-disabled-cursor);
             pointer-events: none;
             background: var(--button-default-disabled-background);
             color: var(--button-default-disabled-color);
@@ -101,7 +101,7 @@
 
         &[disabled] {
             opacity: var(--button-primary-disabled-opacity);
-            cursor: var(--button-primary--disabled-cursor);
+            cursor: var(--button-primary-disabled-cursor);
             pointer-events: none;
             background: var(--button-primary-disabled-background);
             color: var(--button-primary-disabled-color);
@@ -139,7 +139,7 @@
 
         &[disabled] {
             opacity: var(--button-danger-disabled-opacity);
-            cursor: var(--button-danger--disabled-cursor);
+            cursor: var(--button-danger-disabled-cursor);
             pointer-events: none;
             background: var(--button-danger-disabled-background);
             color: var(--button-danger-disabled-color);
@@ -167,7 +167,6 @@
 
         &:active {
             background: none;
-            box-shadow: 0 1px 3px 1px var(--red-color-dark) inset;
         }
     }
 
