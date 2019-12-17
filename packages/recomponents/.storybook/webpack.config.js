@@ -22,7 +22,7 @@ module.exports = function({ config }) {
                 loader: 'sass-loader',
                 options: {
                     prependData: `
-                        @import "src/styles/theme.scss";
+                        @import "src/styles/recomm.scss";
                         @import "src/styles/mixins.scss";
                     `,
                 }
