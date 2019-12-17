@@ -8,6 +8,7 @@ import RIcon from './r-icon/r-icon.vue';
 import RIconButton from './r-icon-button/r-icon-button.vue';
 import RImg from './r-img/r-img.vue';
 import RInput from './r-input/r-input.vue';
+import RFileUpload from './r-file-upload/r-file-upload.vue';
 import RLoader from './r-loader/r-loader.vue';
 import RModal from './r-modal/r-modal.vue';
 import RPagination from './r-pagination/r-pagination.vue';
@@ -30,6 +31,7 @@ export {
     RIconButton,
     RImg,
     RInput,
+    RFileUpload,
     RLoader,
     RModal,
     RPagination,
