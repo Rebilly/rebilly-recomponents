@@ -1,0 +1,9 @@
+version: '3'
+
+services:
+  recomponents-docker-tests:
+    container_name: recomponents-docker-tests
+    build: .
+    volumes:
+      - ../../docs:/usr/src/rebilly/rebilly-recomponents/docs
+      - ./.image-snapshots:/usr/src/rebilly/rebilly-recomponents/packages/recomponents/.image-snapshots
