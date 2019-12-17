@@ -2,13 +2,15 @@ import {storiesOf} from '@storybook/vue';
 import {action} from '@storybook/addon-actions';
 import {select, boolean} from '@storybook/addon-knobs';
 import markdown from './r-icon.md';
+import RIcon from './r-icon.vue';
 
-import {colors, icons} from '../../../.storybook/knobs';
+import {icons, colors} from '../../../.storybook/knobs';
 
-storiesOf('Components', module)
-    .add('Icon', () => ({
+storiesOf('Components.Icon', module)
+    .addParameters({component: RIcon})
+    .add('Component', () => ({
         template: `
-            <div style="background: white;height: 100px;">
+            <div class="storybook-center">
                 <r-icon
                     :icon="icon"
                     :stopPropagation="stopPropagation"
@@ -22,11 +24,46 @@ storiesOf('Components', module)
             icon: {
                 default: select('icon', icons, 'heart'),
             },
+            stopPropagation: {
+                default: boolean('stopPropagation', false),
+            },
             color: {
                 default: select('color', colors, null),
             },
-            stopPropagation: {
-                default: boolean('stopPropagation', false),
+        },
+    }), {
+        notes: {markdown},
+    })
+    .add('All Icons', () => ({
+        template: `
+            <div class="storybook-center">
+                <r-icon
+                    v-for="icon in icons"
+                    v-tooltip="{text: icon}"
+                    :icon="icon"/>
+            </div>
+        `,
+        props: {
+            icons: {
+                default: icons,
+            },
+        },
+    }), {
+        notes: {markdown},
+    })
+    .add('All Colors', () => ({
+        template: `
+            <div class="storybook-center">
+                <r-icon
+                    v-for="color in colors"
+                    v-tooltip="{text: color}"
+                    :color="color"
+                    icon="info"/>
+            </div>
+        `,
+        props: {
+            colors: {
+                default: colors,
             },
         },
     }), {

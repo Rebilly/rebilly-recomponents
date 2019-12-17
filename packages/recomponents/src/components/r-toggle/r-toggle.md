@@ -1,0 +1,1 @@
+Toggle component allow a user to select any of independent options.

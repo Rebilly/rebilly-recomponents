@@ -1,22 +1,25 @@
 import {storiesOf} from '@storybook/vue';
 import {text, select} from '@storybook/addon-knobs';
 import markdown from './r-avatar.md';
-
+import RAvatar from './r-avatar.vue';
 import {icons} from '../../../.storybook/knobs';
 
-storiesOf('Components', module)
-    .add('Avatar', () => ({
+storiesOf('Components.Avatar', module)
+    .addParameters({component: RAvatar})
+    .add('Component', () => ({
         template: `
-            <r-avatar
-                :initials="initials"
-                :description="desciptionProp"
-                :image="image"
-                :color="color"
-                :icon="icon">
-                <template v-if="descriptionSlot">
-                    <div v-html="descriptionSlot"></div>
-                </template>
-            </r-avatar>
+            <div class="storybook-center">
+                <r-avatar
+                    :initials="initials"
+                    :description="desciptionProp"
+                    :image="image"
+                    :color="color"
+                    :icon="icon">
+                    <template v-if="descriptionSlot">
+                        <div v-html="descriptionSlot"></div>
+                    </template>
+                </r-avatar>
+            </div>
         `,
         props: {
             initials: {
@@ -52,4 +55,47 @@ storiesOf('Components', module)
         knobs: {
             escapeHTML: false,
         },
+    })
+    .add('All Colors', () => ({
+        template: `
+            <div class="storybook-center">
+                <r-avatar
+                    v-for="color in colors"
+                    v-tooltip="{text: color}"
+                    initials="RB"
+                    :color="color"/>
+            </div>
+        `,
+        props: {
+            colors: {
+                default: [
+                    'gray',
+                    'yellow',
+                    'green',
+                    'accent',
+                    'dark-background',
+                ],
+            },
+        },
+    }), {
+        notes: {markdown},
+    })
+    .add('Variations', () => ({
+        template: `
+            <div class="storybook-center">
+                <div class="r-grid">
+                    <div class="r-grid-item">
+                        <r-avatar initials="VP">Initials</r-avatar>
+                    </div>
+                    <div class="r-grid-item">
+                        <r-avatar icon="heart">Icon</r-avatar>
+                    </div>
+                    <div class="r-grid-item">
+                        <r-avatar image="https://www.meme-arsenal.com/memes/86b1de6ff6981be012d40bf26c6992ab.jpg">Image</r-avatar>
+                    </div>
+                </div>
+            </div>
+        `,
+    }), {
+        notes: {markdown},
     });

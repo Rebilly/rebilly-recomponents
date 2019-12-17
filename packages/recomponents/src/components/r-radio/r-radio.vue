@@ -32,33 +32,57 @@
             event: 'change',
         },
         props: {
+            /**
+             * TBD
+             */
             checked: {
                 type: [String, Number, Boolean, Array],
                 default: null,
             },
+            /**
+             * TBD
+             */
             label: {
                 type: String,
             },
+            /**
+             * TBD
+             */
             id: {
                 type: String,
                 default: () => shortid.generate(),
             },
+            /**
+             * TBD
+             */
             name: {
                 type: String,
                 default: () => shortid.generate(),
             },
+            /**
+             * TBD
+             */
             caption: {
                 type: String,
                 default: null,
             },
+            /**
+             * TBD
+             */
             value: {
                 type: [String, Number, Boolean, Array],
                 required: true,
             },
+            /**
+             * TBD
+             */
             disabled: {
                 type: Boolean,
                 default: false,
             },
+            /**
+             * TBD
+             */
             validate: {
                 type: Object,
                 default: null,

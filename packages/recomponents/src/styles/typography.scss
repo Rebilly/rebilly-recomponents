@@ -225,7 +225,7 @@ code {
 pre {
     display: block;
     border-radius: $border-radius;
-    box-shadow: 0 0 0 1px var(--faint-gray-color);
+    box-shadow: 0 0 0 1px var(--gray-color-light);
     padding: $inset-m;
     background: var(--background-color);
     font-family: var(--code-font-stack);
@@ -243,7 +243,7 @@ code.text {
 kbd {
     font-family: var(--primary-font-stack);
     border: 0;
-    box-shadow: 0 0 0 1px var(--light-gray-color), 0 0.18em 0 0 #ffffff, 0 0.18em 0 1px var(--light-gray-color);
+    box-shadow: 0 0 0 1px var(--gray-color-light), 0 0.18em 0 0 #ffffff, 0 0.18em 0 1px var(--gray-color-light);
     color: var(--text-color);
     height: auto;
     margin: 0 0.4rem;
@@ -277,7 +277,7 @@ a {
 
     &:focus {
         text-decoration: none;
-        box-shadow: 0 0 0 2px var(--primary-color-transparent);
+        box-shadow: 0 0 0 2px  rgba(0, 68, 212, 0.5);
         border-radius: $border-radius;
     }
 }

@@ -5,6 +5,13 @@
     width: fit-content;
 }
 
+// fix the bugs on IE11
+@media screen and (-ms-high-contrast: active), (-ms-high-contrast: none) {
+    .r-pagination-control {
+        height: 36px;
+    }
+}
+
 .r-pagination-control-wrapper {
     display: flex;
     flex: 1 0;
