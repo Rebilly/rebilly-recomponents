@@ -48,7 +48,6 @@ const componentsWithLoaderIcon = [
 const getGotoOptions = () => ({waitUntil: 'networkidle0'});
 
 const beforeScreenshot = (page, {url}) => new Promise((resolve) => {
-
     const [name, delay] = componentsWithAsyncData.find(([name]) => url.endsWith(`iframe.html?id=${name}`)) || [];
 
     if (!name) {
