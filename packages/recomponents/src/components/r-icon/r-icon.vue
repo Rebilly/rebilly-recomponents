@@ -10,10 +10,16 @@
     export default {
         name: 'RIcon',
         props: {
+            /**
+             * Select any icon available in our svg sprite
+             */
             icon: {
                 type: String,
                 default: null,
             },
+            /**
+             * Choose any color available in our pallete
+             */
             color: {
                 type: String,
                 default: null,
@@ -38,6 +44,9 @@
                     'dark-background',
                 ].includes(val),
             },
+            /**
+             * Prevent native click events from capturing in parent components
+             */
             stopPropagation: {
                 type: Boolean,
                 default: false,
@@ -48,7 +57,7 @@
                 const spritesDiv = document.createElement('div');
                 spritesDiv.style.display = 'none';
                 spritesDiv.innerHTML = RIconSprites;
-                document.body.append(spritesDiv);
+                document.body.appendChild(spritesDiv);
             }
         },
         computed: {

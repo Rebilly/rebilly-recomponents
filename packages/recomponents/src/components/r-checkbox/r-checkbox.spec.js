@@ -3,14 +3,13 @@ import {renderToString} from '@vue/server-test-utils';
 import RCheckbox from './r-checkbox.vue';
 import RIcon from '../r-icon/r-icon.vue';
 
-const $t = () => 'custom label';
-
 describe('r-checkbox.vue', () => {
     it('renders default checkbox correctly', async () => {
         const label = `label-${new Date().getTime()}`;
         const wrapper = shallowMount(RCheckbox, {
-            propsData: {},
-            mocks: {$t: () => label},
+            propsData: {
+                label,
+            },
         });
         // should render label with default text
         expect(wrapper.find('label').text()).toBe(label);
@@ -29,7 +28,6 @@ describe('r-checkbox.vue', () => {
     it('renders props.label when passed', () => {
         const wrapper = shallowMount(RCheckbox, {
             propsData: {label: 'custom label'},
-            mocks: {$t},
         });
         expect(wrapper.text()).toMatch('custom label');
     });
@@ -41,7 +39,6 @@ describe('r-checkbox.vue', () => {
                 label: 'Custom label',
                 id: 'id1234',
             },
-            mocks: {$t},
         });
 
         expect(wrapper).toMatchSnapshot();
@@ -52,7 +49,6 @@ describe('r-checkbox.vue', () => {
             propsData: {
                 fuzzy: true,
             },
-            mocks: {$t},
         });
 
         expect(wrapper.find('use').attributes().href).toBe('#icon-dash-l');
@@ -63,7 +59,6 @@ describe('r-checkbox.vue', () => {
             propsData: {
                 disabled: true,
             },
-            mocks: {$t},
         });
         expect(wrapper.find('label').classes('is-disabled')).toBe(true);
         expect(wrapper.find('input').attributes('disabled')).not.toBe(undefined);
@@ -76,7 +71,6 @@ describe('r-checkbox.vue', () => {
                 label: 'Label',
                 selected: [false, true],
             },
-            mocks: {$t},
         });
 
         wrapper.find('.r-field-checkbox').trigger('change');

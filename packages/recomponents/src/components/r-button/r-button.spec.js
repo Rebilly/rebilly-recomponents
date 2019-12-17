@@ -46,9 +46,9 @@ describe('r-button.vue', () => {
     it('renders disabled button correctly', () => {
         const title = `disabled-${new Date().getTime()}`;
         const wrapper = shallowMount(RButton, {
-            propsData: {disabled: true},
-            mocks: {
-                $t: () => title,
+            propsData: {
+                disabled: true,
+                title,
             },
         });
         // button has disabled attribute
@@ -60,9 +60,9 @@ describe('r-button.vue', () => {
     it('renders loading button correctly', () => {
         const title = `loading-${new Date().getTime()}`;
         const wrapper = shallowMount(RButton, {
-            propsData: {loading: true},
-            mocks: {
-                $t: () => title,
+            propsData: {
+                loading: true,
+                title,
             },
         });
         // button has disabled attribute
@@ -77,9 +77,6 @@ describe('r-button.vue', () => {
         const msg = 'Apply';
         const wrapper = shallowMount(RButton, {
             propsData: {msg},
-            mocks: {
-                $t: () => msg,
-            },
         });
         expect(wrapper.text()).toMatch(msg);
     });
@@ -88,9 +85,6 @@ describe('r-button.vue', () => {
         const msg = 'Apply';
         const wrapper = renderToString(RButton, {
             propsData: {msg},
-            mocks: {
-                $t: () => msg,
-            },
         });
 
         expect(wrapper).toMatchSnapshot();
@@ -110,9 +104,6 @@ describe('r-button.vue', () => {
     });
 
     it('should render component with size, fluid or disabled prop', () => {
-        const $t = () => {
-        };
-
         const wrapper = shallowMount(RButton, {
             propsData: {
                 size: 'small',
@@ -122,7 +113,6 @@ describe('r-button.vue', () => {
             slots: {
                 badge: '<strong>small button</strong>',
             },
-            mocks: {$t},
         });
 
         expect(wrapper.classes()).toContain('r-button--size-small');

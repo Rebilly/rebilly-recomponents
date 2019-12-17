@@ -15,18 +15,30 @@
     export default {
         name: 'r-pagination',
         props: {
+            /**
+             * TBD
+             */
             provider: {
                 type: Function,
                 required: true,
             },
+            /**
+             * TBD
+             */
             total: {
                 type: Number,
                 required: true,
             },
+            /**
+             * TBD
+             */
             limit: {
                 type: Number,
                 required: true,
             },
+            /**
+             * TBD
+             */
             totalVisible: {
                 type: [Number, Boolean],
             },
@@ -49,6 +61,10 @@
             },
             navigate(number) {
                 this.page = number;
+                /**
+                 * Emits when it is navigated to next, previous or another page
+                 * @type {Event}
+                 */
                 this.$emit('navigate', this.page);
             },
             range(start, end) {

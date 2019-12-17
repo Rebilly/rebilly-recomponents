@@ -1,5 +1,4 @@
 import {mount, createLocalVue} from '@vue/test-utils';
-import RClickOutside from './r-click-outside';
 import RButton from '../../components/r-button/r-button.vue';
 
 const mockTemplate = {
@@ -14,7 +13,6 @@ const mockTemplate = {
 const localVue = createLocalVue();
 
 localVue.component('r-button', RButton);
-localVue.directive('click-outside', RClickOutside);
 
 describe('r-click-outside.js', () => {
     it('Shouldn handle outside click', () => {

@@ -7,6 +7,7 @@
             <slot v-else name="label"/>
         </label>
         <input type="radio" class="r-field-radio"
+               :value="value"
                :checked="isChecked"
                :id="id"
                :name="name"
@@ -31,33 +32,57 @@
             event: 'change',
         },
         props: {
+            /**
+             * TBD
+             */
             checked: {
-                type: [String, Number],
-                required: true,
+                type: [String, Number, Boolean, Array],
+                default: null,
             },
+            /**
+             * TBD
+             */
             label: {
                 type: String,
             },
+            /**
+             * TBD
+             */
             id: {
                 type: String,
                 default: () => shortid.generate(),
             },
+            /**
+             * TBD
+             */
             name: {
                 type: String,
-                default: 'default',
+                default: () => shortid.generate(),
             },
+            /**
+             * TBD
+             */
             caption: {
                 type: String,
                 default: null,
             },
+            /**
+             * TBD
+             */
             value: {
-                type: [String, Number],
+                type: [String, Number, Boolean, Array],
                 required: true,
             },
+            /**
+             * TBD
+             */
             disabled: {
                 type: Boolean,
                 default: false,
             },
+            /**
+             * TBD
+             */
             validate: {
                 type: Object,
                 default: null,
@@ -82,6 +107,9 @@
                 return false;
             },
             isChecked() {
+                if (this.value === null) {
+                    return false;
+                }
                 return this.checked === this.value;
             },
         },
@@ -89,5 +117,6 @@
 </script>
 
 <style lang="scss">
+    @import './r-radio.scss';
     @import './r-toggle.scss';
 </style>

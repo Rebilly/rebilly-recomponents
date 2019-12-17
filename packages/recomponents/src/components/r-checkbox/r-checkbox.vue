@@ -1,7 +1,7 @@
 <template>
     <div class="r-checkbox" :class="{'is-error': isInvalid}" role="checkbox" :aria-checked="isChecked">
         <label class="r-field-label r-field-label-toggle" :class="{'is-disabled': disabled}" :for="id">
-            <slot name="label">{{ label || $t('label') }}</slot>
+            <slot name="label">{{ label }}</slot>
         </label>
         <input type="checkbox"
                 class="r-field-checkbox"
@@ -25,33 +25,57 @@
         name: 'RCheckbox',
         components: {RIcon},
         props: {
+            /**
+             * TBD
+             */
             label: {
                 type: String,
                 default: '',
             },
+            /**
+             * TBD
+             */
             id: {
                 type: String,
                 default: () => shortId.generate(),
             },
+            /**
+             * TBD
+             */
             caption: {
                 type: String,
                 default: null,
             },
-            selected: { // this is the actual parent model for the component
+            /**
+             * Actual parent model for the component
+             */
+            selected: {
                 type: [Array, String, Number, Boolean],
             },
-            value: { // might be used to decide if checkbox is selected
+            /**
+             * Used to decide if checkbox is selected
+             */
+            value: {
                 type: [String, Boolean],
                 default: 'on',
             },
-            fuzzy: { // semi-selected (indeterminate)
+            /**
+             * Semi-selected state
+             */
+            fuzzy: {
                 type: Boolean,
                 default: false,
             },
+            /**
+             * TBD
+             */
             disabled: {
                 type: Boolean,
                 default: false,
             },
+            /**
+             * TBD
+             */
             validate: {
                 type: Object,
                 default: null,
@@ -84,16 +108,6 @@
             },
             checkIcon() {
                 return this.fuzzy ? 'dash-l' : 'checkbox-checkmark';
-            },
-        },
-        i18n: {
-            messages: {
-                en: {
-                    label: 'Label',
-                },
-                ja: {
-                    label: 'ラベル',
-                },
             },
         },
         methods: {
@@ -137,4 +151,5 @@
 
 <style lang="scss">
     @import './r-checkbox.scss';
+    @import '../r-radio/r-toggle.scss';
 </style>

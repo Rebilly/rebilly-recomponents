@@ -2,20 +2,27 @@
     <div>
         <div class="r-tab" :class="[{'r-tab-divided': divided}, menuClass]" role="tablist">
             <div v-for="(tab, index) in tabs" class="r-tab-item" :key="index">
-                <a v-if="tab.to"
-                   :to="tab.to"
-                   role="tab"
-                   class="r-tab-link"
-                   @click="selectTab(tab, index)"
-                   :class="{'is-active': tab.isActive}">
+                <button v-if="tab.to"
+                        :to="tab.to"
+                        role="tab"
+                        :id="tab.tabId"
+                        :aria-controls="tab.tabPanelId"
+                        class="r-tab-link"
+                        @click="selectTab(tab, index)"
+                        :class="{'is-active': tab.isActive}"
+                >
                     {{tab.name}}
-                </a>
-                <a v-else class="r-tab-link"
-                   @click="selectTab(tab, index)"
-                   role="tab"
-                   :class="{'is-active': tab.isActive}">
+                </button>
+                <button v-else
+                        @click="selectTab(tab, index)"
+                        role="tab"
+                        :id="tab.tabId"
+                        :aria-controls="tab.tabPanelId"
+                        class="r-tab-link"
+                        :class="{'is-active': tab.isActive}"
+                >
                     {{tab.name}}
-                </a>
+                </button>
             </div>
         </div>
         <div class="r-tab-content" :class="contentClass">
@@ -28,14 +35,23 @@
     export default {
         name: 'r-tabs',
         props: {
+            /**
+             * TBD
+             */
             divided: {
                 type: Boolean,
                 default: false,
             },
+            /**
+             * TBD
+             */
             menuClass: {
                 type: String,
                 default: '',
             },
+            /**
+             * TBDs
+             */
             contentClass: {
                 type: String,
                 default: '',
@@ -110,6 +126,6 @@
     };
 </script>
 
-<style>
+<style lang="scss">
     @import 'r-tabs.scss';
 </style>

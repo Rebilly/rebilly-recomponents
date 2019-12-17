@@ -30,7 +30,8 @@
                       :values="computedValue"
                       :is-open="isOpen">
                     <div class="r-select__tags-wrap"
-                         v-show="visibleValues.length > 0">
+                         v-show="visibleValues.length > 0"
+                         @mousedown.prevent>
                         <template v-for="(option, index) of computedValue"
                                   @mousedown.prevent>
                             <slot name="tag"
@@ -43,8 +44,9 @@
                                              :close="true"
                                              @close="removeElement(option)">
                                         <template>
-                                            <span class="r-select__tag-text">
-                                                {{ option[computedLabel] || option }}
+                                            <span class="r-select__tag-text"
+                                                  @mousedown.prevent="toggle()">
+                                                {{ getOptionLabel(option) }}
                                             </span>
                                         </template>
                                     </r-badge>
@@ -117,13 +119,13 @@
                         <slot name="beforeList">
                             <template v-if="computedIsLoading">
                                 <span class="r-select__option">
-                                    {{ $t('loading') }}
+                                    {{ messages['loading'] }}
                                 </span>
                             </template>
                             <template v-if="computedAsyncHasPrevOptions">
                                 <li class="r-select__option align-center r-select__option-load r-select__option-load-prev">
                                     <r-icon-button
-                                            type="basic"
+                                            type="default"
                                             size="small"
                                             @click="handleAsyncLoadPrev"
                                             :disabled="computedIsLoading"
@@ -137,11 +139,10 @@
                         <li v-if="multiple && max === internalValue.length">
                             <span class="r-select__option">
                                 <slot name="maxElements">
-                                    {{ $t('max', { max }) }}
+                                    {{ messages.max(max) }}
                                 </slot>
                             </span>
                         </li>
-                        <!--<template v-if="!max || internalValue.length < max">-->
                         <li class="r-select__element"
                             v-for="(option, index) of filteredOptions"
                             :key="index"
@@ -158,24 +159,25 @@
                                 </slot>
                             </span>
                         </li>
-                        <!--</template>-->
-                        <li v-show="showNoResults && (filteredOptions.length === 0 && search && !loading)">
+                        <li class="r-select__element"
+                            v-show="showNoResults && (filteredOptions.length === 0 && search && !loading)">
                             <span class="r-select__option">
                                 <slot name="noResult"
-                                      :search="search">{{$t('noResult')}}
+                                      :search="search">{{messages['noResult']}}
                                 </slot>
                             </span>
                         </li>
-                        <li v-show="showNoOptions && (options.length === 0 && !search && !loading)">
+                        <li class="r-select__element"
+                            v-show="showNoOptions && (computedOptions.length === 0 && !search && !loading)">
                             <span class="r-select__option">
-                                <slot name="noOptions">{{$t('noOptions')}}</slot>
+                                <slot name="noOptions">{{messages['noOptions']}}</slot>
                             </span>
                         </li>
                         <slot name="afterList">
                             <template v-if="computedAsyncHasNextOptions">
                                 <li class="r-select__option align-center r-select__option-load r-select__option-load-next">
                                     <r-icon-button
-                                            type="basic"
+                                            type="default"
                                             size="small"
                                             @click="handleAsyncLoadNext"
                                             :disabled="computedIsLoading"
@@ -190,7 +192,7 @@
                 </div>
             </transition>
         </div>
-        <span v-if="helpText" class="r-field-caption" v-html="helpText"></span>
+        <span v-if="helpText" class="r-field-caption">{{helpText}}</span>
     </div>
 </template>
 
@@ -234,6 +236,9 @@
         return options.filter(option => includes(customLabel(option, label), search));
     }
 
+    const getAllCachedAsyncValues = asyncCacheItems => asyncCacheItems
+        .reduce((memo, item) => ([...memo, ...item.options]), []);
+
     export default {
         name: 'r-select',
         data() {
@@ -244,18 +249,14 @@
                 pointerDirty: false,
                 preferredOpenDirection: 'below',
                 search: '',
-            };
-        },
-        i18n: {
-            messages: {
-                en: {
+                messages: {
                     loading: 'Looking for matching results...',
-                    more: 'and {count} more',
-                    max: 'Maximum of {max} options selected. First remove a selected option to select another.',
+                    more: count => `and ${count} more`,
+                    max: max => `Maximum of ${max} options selected. First remove a selected option to select another.`,
                     noOptions: 'List is empty.',
                     noResult: 'No elements found. Consider changing the search query.',
                 },
-            },
+            };
         },
         mounted() {
             if (!this.multiple && this.max) {
@@ -266,24 +267,39 @@
         mixins: [new AsyncInputMixin().getMixin()],
         components: {RIcon, RIconButton, RBadge},
         props: {
+            /**
+             * TBD
+             */
             allowEmpty: {
                 type: Boolean,
                 default: true,
             },
+            /**
+             * TBD
+             */
             blockKeys: {
                 type: Array,
                 default() {
                     return [];
                 },
             },
+            /**
+             * TBD
+             */
             clearOnSelect: {
                 type: Boolean,
                 default: true,
             },
+            /**
+             * TBD
+             */
             closeOnSelect: {
                 type: Boolean,
                 default: true,
             },
+            /**
+             * TBD
+             */
             customLabel: {
                 type: Function,
                 default(option, label) {
@@ -291,131 +307,227 @@
                         return '';
                     }
 
-                    return option[label] || option;
+                    return (option && option[label]) || option;
                 },
             },
+            /**
+             * TBD
+             */
             validate: {
                 type: Object,
                 default: null,
             },
+            /**
+             * TBD
+             */
             disabled: {
                 type: Boolean,
                 default: false,
             },
+            /**
+             * TBD
+             */
             helpText: {
                 type: String,
             },
+            /**
+             * TBD
+             */
             hideSelected: {
                 type: Boolean,
                 default: false,
             },
+            /**
+             * TBD
+             */
             id: {
                 type: String,
                 default: () => shortid.generate(),
             },
+            /**
+             * TBD
+             */
             internalSearch: {
                 type: Boolean,
                 default: true,
             },
+            /**
+             * TBD
+             */
             label: {
                 type: String,
             },
+            /**
+             * TBD
+             */
             limit: {
                 type: Number,
                 default: 99999,
             },
+            /**
+             * TBD
+             */
             limitText: {
                 type: Function,
                 default(count) {
-                    return this.$t('more', {count});
+                    return this.messages.more(count);
                 },
             },
+            /**
+             * TBD
+             */
             loading: {
                 type: Boolean,
                 default: false,
             },
+            /**
+             * TBD
+             */
             max: {
                 type: [Number, Boolean],
                 default: false,
             },
+            /**
+             * TBD
+             */
             maxHeight: {
                 type: Number,
                 default: 300,
             },
+            /**
+             * TBD
+             */
             multiple: {
                 type: Boolean,
                 default: false,
             },
+            /**
+             * TBD
+             */
             name: {
                 type: String,
                 default: '',
             },
+            /**
+             * TBD
+             */
             openDirection: {
                 type: String,
                 default: '',
             },
+            /**
+             * TBD
+             */
             options: {
                 type: Array,
-                required: true,
+                default: () => [],
             },
+            /**
+             * TBD
+             */
             optionHeight: {
                 type: Number,
                 default: 40,
             },
+            /**
+             * TBD
+             */
             optionKey: {
                 type: String,
             },
+            /**
+             * TBD
+             */
             optionLabel: {
                 type: String,
             },
+            /**
+             * TBD
+             */
             optionsLimit: {
                 type: Number,
                 default: 1000,
             },
+            /**
+             * TBD
+             */
             preselectFirst: {
                 type: Boolean,
                 default: false,
             },
+            /**
+             * TBD
+             */
             preserveSearch: {
                 type: Boolean,
                 default: false,
             },
+            /**
+             * TBD
+             */
             placeholder: {
                 type: String,
                 default: 'Select option',
             },
+            /**
+             * TBD
+             */
             resetAfter: {
                 type: Boolean,
                 default: false,
             },
+            /**
+             * TBD
+             */
             searchable: {
                 type: Boolean,
                 default: true,
             },
+            /**
+             * TBD
+             */
             showNoOptions: {
                 type: Boolean,
                 default: true,
             },
+            /**
+             * TBD
+             */
             showNoResults: {
                 type: Boolean,
                 default: true,
             },
+            /**
+             * TBD
+             */
             showPointer: {
                 type: Boolean,
                 default: true,
             },
+            /**
+             * TBD
+             */
             tabindex: {
                 type: Number,
                 default: 0,
             },
+            /**
+             * TBD
+             */
             taggable: {
                 type: Boolean,
                 default: false,
             },
+            /**
+             * TBD
+             */
             tagPosition: {
                 type: String,
                 default: 'top',
             },
+            /**
+             * TBD
+             */
             value: {
                 type: null,
                 default() {
@@ -463,23 +575,22 @@
             },
             computedValue() {
                 const options = this.computedIsAsync
-                    ? this.async.getAllCacheItems()
+                    ? getAllCachedAsyncValues(this.async.getAllCacheItems())
                     : this.computedOptions;
 
                 const value = this.primitiveValue;
 
                 if (this.isComplexOptions && value !== null) {
                     if (!this.multiple) {
-                        // multiple selection enabled
                         const option = options
-                            .find(opt => this.getOptionValue({option: opt, trackBy: this.computedTrackBy}) === value);
+                            .find(opt => this.getOptionValue(opt) === value);
                         if (option) {
                             return option;
                         }
                     } else if (value) {
                         return value.map((val) => {
                             const option = options
-                                .find(opt => this.getOptionValue({option: opt, trackBy: this.computedTrackBy}) === val);
+                                .find(opt => this.getOptionValue(opt) === val);
                             return option || {[this.computedTrackBy]: val, [this.computedLabel]: val};
                         });
                     }
@@ -487,19 +598,18 @@
                 return this.primitiveValue;
             },
             contentStyle() {
-                return this.options.length
-                    ? {display: 'inline-block'}
-                    : {display: 'block'};
+                return {
+                    display: this.computedOptions && this.computedOptions.length ? 'inline-block' : 'block',
+                    minWidth: '100%',
+                };
             },
             currentOptionLabel() {
                 const placeholder = this.searchable ? '' : this.placeholder;
-                const option = this.options.find(option => this.getOptionValue({
-                    option,
-                    trackBy: this.computedTrackBy,
-                }) === this.internalValue[0]);
+                const activeOption = this.computedOptions
+                    .find(option => this.getOptionValue(option) === this.internalValue[0]);
 
                 const value = this.internalValue && this.internalValue.length
-                    ? (option && option[this.computedLabel]) || this.internalValue[0]
+                    ? this.getOptionLabel(activeOption)
                     : placeholder;
                 return this.multiple ? placeholder : value;
             },
@@ -507,10 +617,10 @@
                 const search = this.search || '';
                 const normalizedSearch = search.toLowerCase().trim();
 
-                let options = this.options && this.options.concat();
+                let options = this.computedOptions && this.computedOptions.concat();
 
-                if (this.internalSearch) {
-                    options = filterOptions(this.options, normalizedSearch, this.computedLabel, this.customLabel);
+                if (this.computedOptions && this.internalSearch) {
+                    options = filterOptions(this.computedOptions, normalizedSearch, this.computedLabel, this.customLabel);
                 }
 
                 options = this.hideSelected
@@ -524,7 +634,6 @@
                         options.unshift({isTag: true, label: search});
                     }
                 }
-
                 return options.slice(0, this.optionsLimit);
             },
             hasLabel() {
@@ -551,11 +660,15 @@
                 return {};
             },
             internalValue() {
+                const hasOptions = !!this.value
+                    && (this.computedOptions
+                        .find(opt => opt === this.value || opt[this.computedTrackBy] === this.value)
+                    || this.taggable);
                 const value = Array.isArray(this.value)
                     ? this.value
-                    : ((this.options.find(opt => opt === this.value || opt[this.computedTrackBy] === this.value) || this.taggable) && [this.value]) || [];
+                    : ((hasOptions && [this.value]) || []);
 
-                return this.value || this.value === 0 ? value : [];
+                return this.value !== undefined ? value : [];
             },
             isAbove() {
                 if (this.openDirection === 'above' || this.openDirection === 'top') {
@@ -581,7 +694,7 @@
             },
             isSingleLabelVisible() {
                 return (
-                    (this.singleValue || this.singleValue === 0)
+                    (this.singleValue || this.singleValue !== undefined)
                     && (!this.isOpen || !this.searchable)
                     && !this.visibleValues.length
                 );
@@ -607,7 +720,7 @@
                 return this.internalValue[0];
             },
             valueKeys() {
-                return this.internalValue.map(element => element[this.computedTrackBy] || element);
+                return this.internalValue.map(option => this.getOptionValue(option));
             },
             visibleElements() {
                 return this.optimizedHeight / this.optionHeight;
@@ -690,8 +803,9 @@
                 }
                 return label;
             },
-            getOptionValue({option, trackBy}) {
-                return option[trackBy] || option;
+            getOptionValue(option) {
+                const trackBy = this.computedTrackBy;
+                return option && option[trackBy] !== undefined ? option[trackBy] : option;
             },
             getPrimitiveValueFromValue({value, trackBy, multiple}) {
                 if (value === undefined || value === null) {
@@ -699,18 +813,18 @@
                 }
                 if (multiple) {
                     if (value) {
-                        return value.map(item => item[trackBy] || item);
+                        return value.map(item => this.getOptionValue(item));
                     }
                     return value;
                 }
-                return typeof (value === 'object' && value[trackBy]) || value;
+                return (typeof value === 'object' && value[trackBy]) || value;
             },
             getValue() {
                 const value = this.internalValue.length === 0 ? null : this.internalValue[0];
                 return this.multiple ? this.internalValue : value;
             },
             isExistingOption(query) {
-                return !this.options
+                return !this.computedOptions
                     ? false
                     : this.optionKeys.indexOf(query) > -1;
             },
@@ -718,7 +832,7 @@
                 return option && !!option.$isDisabled;
             },
             isSelected(option) {
-                const opt = option[this.computedTrackBy] || option;
+                const opt = this.getOptionValue(option);
                 return this.valueKeys.indexOf(opt) > -1;
             },
             optionHighlight(index, option) {
@@ -765,6 +879,16 @@
                 this.pointer = index;
                 this.pointerDirty = true;
             },
+            prepareCacheValuePrefix(value) {
+                if (typeof value === 'string') {
+                    return value;
+                }
+                return String(this.getPrimitiveValueFromValue({
+                    value,
+                    multiple: this.multiple,
+                    trackBy: this.computedTrackBy,
+                }));
+            },
             removeElement(option, shouldClose = true) {
                 if (this.disabled) {
                     return;
@@ -797,7 +921,7 @@
             preselect() {
                 if (this.preselectFirst
                     && !this.internalValue.length
-                    && this.options.length) {
+                    && this.computedOptions.length) {
                     this.select(this.filteredOptions[0]);
                 }
             },
@@ -828,9 +952,10 @@
                 } else {
                     const isSelected = this.isSelected(option);
 
-                    if (isSelected) {
+                    if (isSelected && this.multiple) {
                         if (key !== 'Tab') {
                             this.removeElement(option);
+                            this.$emit('remove', option);
                         }
                         return;
                     }
@@ -838,12 +963,12 @@
                     if (this.max && this.multiple && this.internalValue.length === this.max) {
                         return;
                     }
-                    this.$emit('select', option[this.computedTrackBy] || option, this.id);
+                    this.$emit('select', option, this.id);
 
                     if (this.multiple) {
-                        this.$emit('input', this.primitiveValue.concat([option[this.computedTrackBy] || option]), this.id);
+                        this.$emit('input', this.primitiveValue.concat([this.getOptionValue(option)]), this.id);
                     } else {
-                        this.$emit('input', option[this.computedTrackBy] || option, this.id);
+                        this.$emit('input', this.getOptionValue(option), this.id);
                     }
 
                     if (this.clearOnSelect) {

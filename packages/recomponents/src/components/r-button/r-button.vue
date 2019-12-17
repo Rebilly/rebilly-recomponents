@@ -31,28 +31,46 @@
         name: 'RButton',
         components: {RIcon},
         props: {
+            /**
+             * Specify button size
+             */
             size: {
                 type: String,
                 default: 'regular',
                 validator: val => ['small', 'regular', 'large'].includes(val),
             },
+            /**
+             * Specify button type according to your theme colors
+             */
             type: {
                 type: String,
                 default: 'default',
                 validator: val => ['default', 'primary', 'danger', 'link'].includes(val),
             },
+            /**
+             * Disabed state just like for regulat html button
+             */
             disabled: {
                 type: Boolean,
                 default: false,
             },
+            /**
+             * Active state just like for regular button
+             */
             active: {
                 type: Boolean,
                 default: false,
             },
+            /**
+             * Make button full width
+             */
             fluid: {
                 type: Boolean,
                 default: false,
             },
+            /**
+             * Append loading spinner to button
+             */
             loading: {
                 type: Boolean,
                 default: false,
@@ -72,25 +90,21 @@
             },
             title() {
                 if (this.disabled) {
-                    return this.$t('disabled');
+                    return this.messages.disabled;
                 }
                 if (this.loading) {
-                    return this.$t('loading');
+                    return this.messages.loading;
                 }
                 return '';
             },
         },
-        i18n: {
-            messages: {
-                en: {
+        data() {
+            return {
+                messages: {
                     loading: 'Waiting for response',
                     disabled: 'Action is disabled',
                 },
-                ja: {
-                    loading: '応答待ち',
-                    disabled: 'アクションは無効です',
-                },
-            },
+            };
         },
         methods: {},
     };

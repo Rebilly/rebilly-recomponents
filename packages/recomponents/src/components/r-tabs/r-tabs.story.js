@@ -2,30 +2,23 @@ import {storiesOf} from '@storybook/vue';
 import {boolean, text} from '@storybook/addon-knobs';
 import {action} from '@storybook/addon-actions';
 import markdown from './r-tabs.md';
+import RTabs from './r-tabs.vue';
 
-storiesOf('Components', module)
-    .add('Tabs', () => ({
+storiesOf('Components.Tabs', module)
+    .addParameters({component: RTabs})
+    .add('Component', () => ({
         template: `
-            <div>
+            <div class="storybook-center">
                 <r-tabs :divided="divided"
                         :menuClass="menuClass"
                         :contentClass="contentClass"
-                        @tab-selected="tabSelected">
-                        <r-tab v-for="(tab, tabIndex) in tabs"
-                        :key="tabIndex"
-                        :name="tab.name">
-                        <r-tile>
-                                <template v-slot:title>
-                                    <h2>{{ tab.name }}</h2>
-                                </template>
-                                <template v-slot:contents>
-                                    <p v-content>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut
-                                        labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco
-                                        laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in
-                                        voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat
-                                        non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
-                                </template>
-                            </r-tile>
+                        @tab-selected="tabSelected"
+                >
+                    <r-tab v-for="(tab, tabIndex) in tabs"
+                           :key="tabIndex"
+                           :name="tab.name"
+                    >
+                        {{tab.resource}}
                     </r-tab>
                 </r-tabs>
             </div>
@@ -46,9 +39,9 @@ storiesOf('Components', module)
         },
         data: () => ({
             tabs: [
-                {name: 'Tab 1', resource: ''},
-                {name: 'Tab 2', resource: ''},
-                {name: 'Tab 3', resource: ''},
+                {name: 'Tab 1', resource: 'Tab 1 Content'},
+                {name: 'Tab 2', resource: 'Tab 2 Content'},
+                {name: 'Tab 3', resource: 'Tab 3 Content'},
             ],
         }),
     }), {

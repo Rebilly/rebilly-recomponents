@@ -14,15 +14,15 @@ exports[`r-select.vue should render Wrapper and match snapshot 1`] = `
                 </span>
     </div>
     <div tabindex="-1" class="r-select__content-wrapper" style="max-height: 300px; display: none;" name="r-select">
-      <ul role="listbox" id="listbox-id" class="r-select__content" style="display: inline-block;">
+      <ul role="listbox" id="listbox-id" class="r-select__content" style="display: inline-block; min-width: 100%;">
         <!---->
         <!---->
         <!---->
         <li id="id-0" role="[object Object]" class="r-select__element"><span class="r-select__option r-select__option--highlight"><span>1</span></span></li>
         <li id="id-1" role="[object Object]" class="r-select__element"><span class="r-select__option"><span>2</span></span></li>
-        <li style="display: none;"><span class="r-select__option">
+        <li class="r-select__element" style="display: none;"><span class="r-select__option">No elements found. Consider changing the search query.
                             </span></li>
-        <li style="display: none;"><span class="r-select__option"></span></li>
+        <li class="r-select__element" style="display: none;"><span class="r-select__option">List is empty.</span></li>
         <!---->
       </ul>
     </div>
@@ -45,15 +45,15 @@ exports[`r-select.vue should render via SSR and match snapshot 1`] = `
                 </span>
     </div>
     <div tabindex="-1" name="r-select" class="r-select__content-wrapper" style="max-height:300px;display:none;">
-      <ul role="listbox" id="listbox-id" class="r-select__content" style="display:inline-block;">
+      <ul role="listbox" id="listbox-id" class="r-select__content" style="display:inline-block;min-width:100%;">
         <!---->
         <!---->
         <!---->
         <li id="id-0" role="[object Object]" class="r-select__element"><span class="r-select__option r-select__option--highlight"><span>1</span></span></li>
         <li id="id-1" role="[object Object]" class="r-select__element"><span class="r-select__option"><span>2</span></span></li>
-        <li style="display:none;"><span class="r-select__option">
+        <li class="r-select__element" style="display:none;"><span class="r-select__option">No elements found. Consider changing the search query.
                             </span></li>
-        <li style="display:none;"><span class="r-select__option"></span></li>
+        <li class="r-select__element" style="display:none;"><span class="r-select__option">List is empty.</span></li>
         <!---->
       </ul>
     </div>

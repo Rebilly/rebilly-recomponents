@@ -1,5 +1,6 @@
 <template>
     <div class="r-webcomponent">
+        <!-- @slot Child content  -->
         <slot/>
     </div>
 </template>

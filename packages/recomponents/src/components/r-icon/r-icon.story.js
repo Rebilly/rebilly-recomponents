@@ -2,131 +2,68 @@ import {storiesOf} from '@storybook/vue';
 import {action} from '@storybook/addon-actions';
 import {select, boolean} from '@storybook/addon-knobs';
 import markdown from './r-icon.md';
+import RIcon from './r-icon.vue';
 
-storiesOf('Components', module)
-    .add('Icon', () => ({
+import {icons, colors} from '../../../.storybook/knobs';
+
+storiesOf('Components.Icon', module)
+    .addParameters({component: RIcon})
+    .add('Component', () => ({
         template: `
-            <div style="background: white;height: 100px;">
+            <div class="storybook-center">
                 <r-icon
                     :icon="icon"
                     :stopPropagation="stopPropagation"
                     :color="color"/>
-            </div> 
+            </div>
         `,
         methods: {
             click: action('click'),
         },
         props: {
             icon: {
-                default: select('icon', {
-                    dashboard: 'dashboard',
-                    lists: 'lists',
-                    automation: 'automation',
-                    orders: 'orders',
-                    transactions: 'transactions',
-                    guides: 'guides',
-                    setting: 'settings',
-                    notification: 'notifications',
-                    customers: 'customers',
-                    stream: 'stream',
-                    search: 'search',
-                    filte: 'filter',
-                    'collapse-segments': 'collapse-segments',
-                    'resize-columns': 'resize-columns',
-                    segment: 'segments',
-                    lock: 'lock',
-                    'caret-up': 'caret-up',
-                    'caret-down': 'caret-down',
-                    'caret-left': 'caret-left',
-                    'caret-right': 'caret-right',
-                    'arrow-up': 'arrow-up',
-                    'arrow-down': 'arrow-down',
-                    'arrow-left': 'arrow-left',
-                    'arrow-right': 'arrow-right',
-                    'arrow-up-l': 'arrow-up-l',
-                    'arrow-down-l': 'arrow-down-l',
-                    'arrow-left-l': 'arrow-left-l',
-                    'arrow-right-l': 'arrow-right-l',
-                    close: 'close',
-                    'close-s': 'close-s',
-                    actions: 'actions',
-                    circl: 'circle',
-                    eye: 'eye',
-                    'eye-closed': 'eye-closed',
-                    logout: 'logout',
-                    burger: 'burger',
-                    help: 'help',
-                    info: 'info',
-                    'dash-l': 'dash-l',
-                    company: 'company',
-                    website: 'website',
-                    email: 'email',
-                    'external-link': 'external-link',
-                    trash: 'trash',
-                    bank: 'bank',
-                    'map-marker': 'map-marker',
-                    'credit-tile': 'credit-tile',
-                    'check-s': 'check-s',
-                    'custom-fields': 'custom-fields',
-                    calendar: 'calendar',
-                    columns: 'columns',
-                    blacklists: 'blacklists',
-                    webhooks: 'webhooks',
-                    'sticky-note': 'sticky-note',
-                    clip: 'clip',
-                    loading: 'loading',
-                    product: 'product',
-                    'api-key': 'api-key',
-                    heart: 'heart',
-                    coupon: 'coupon',
-                    tag: 'tag',
-                    stop: 'stop',
-                    clone: 'clone',
-                    edi: 'edit',
-                    unloc: 'unlock',
-                    rule: 'rules',
-                    lis: 'list',
-                    even: 'event',
-                    user: 'users',
-                    a: 'at',
-                    shar: 'sharp',
-                    fil: 'file',
-                    downloa: 'download',
-                    expor: 'export',
-                    'data-export': 'data-exports',
-                    shippin: 'shipping',
-                    plu: 'plus',
-                    dra: 'drag',
-                    rese: 'reset',
-                    'drag-mov': 'drag-move',
-                    integration: 'integrations',
-                }, 'heart'),
+                default: select('icon', icons, 'heart'),
             },
             stopPropagation: {
                 default: boolean('stopPropagation', false),
             },
             color: {
-                default: select('color', {
-                    '': null,
-                    brand: 'brand',
-                    text: 'text',
-                    muted: 'muted',
-                    gray: 'gray',
-                    'light-gray': 'light-gray',
-                    'faint-gray': 'faint-gray',
-                    blue: 'blue',
-                    'light-blue': 'light-blue',
-                    yellow: 'yellow',
-                    'light-yellow': 'light-yellow',
-                    red: 'red',
-                    'light-red': 'light-red',
-                    green: 'green',
-                    'light-green': 'light-green',
-                    accent: 'accent',
-                    background: 'background',
-                    'light-background': 'light-background',
-                    'dark-background': 'dark-background',
-                }, null),
+                default: select('color', colors, null),
+            },
+        },
+    }), {
+        notes: {markdown},
+    })
+    .add('All Icons', () => ({
+        template: `
+            <div class="storybook-center">
+                <r-icon
+                    v-for="icon in icons"
+                    v-tooltip="{text: icon}"
+                    :icon="icon"/>
+            </div>
+        `,
+        props: {
+            icons: {
+                default: icons,
+            },
+        },
+    }), {
+        notes: {markdown},
+    })
+    .add('All Colors', () => ({
+        template: `
+            <div class="storybook-center">
+                <r-icon
+                    v-for="color in colors"
+                    v-tooltip="{text: color}"
+                    :color="color"
+                    icon="info"/>
+            </div>
+        `,
+        props: {
+            colors: {
+                default: colors,
             },
         },
     }), {
