@@ -23,6 +23,7 @@ module.exports = function({ config }) {
                 options: {
                     prependData: `
                         @import "src/styles/variables.scss";
+                        @import "src/styles/theme.scss";
                         @import "src/styles/mixins.scss";
                     `,
                 }
