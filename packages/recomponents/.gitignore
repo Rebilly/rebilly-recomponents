@@ -18,5 +18,3 @@ dist
 *.sln
 *.sw*
 jsconfig.json
-src/style/theme.css
-src/style/theme.css.map
