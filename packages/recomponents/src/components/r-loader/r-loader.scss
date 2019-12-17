@@ -78,10 +78,6 @@
         position: fixed;
         opacity: 1;
         z-index: var(--loader-z-index-fullscreen);
-
-        .r-loader-wrapper {
-            border-radius: 0;
-        }
     }
 }
 
