@@ -43,6 +43,7 @@ storiesOf('Components.Date Input', module)
                         date: 'date',
                         datetime: 'datetime',
                         time: 'time',
+                        datepicker: 'datepicker',
                     },
                     'date',
                 ),
