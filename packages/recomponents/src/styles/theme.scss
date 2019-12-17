@@ -75,6 +75,7 @@ body, .article {
     --warning-color-dark: #604E00;
     --background-color: #F6F8F9;
     --background-color-light: #F9FAFB;
+    --background-color-medium: #C4CED8;
     --background-color-dark: #485164;
     --background-color-extra-dark: #303c59;
     --gray-color: #BDC9D4;
@@ -151,6 +152,8 @@ body, .article {
     // Z-Index
     // ------------------------------------------------
     --z-index-1000: 1000;
+    --z-index-801: 801;
+    --z-index-800: 800;
     --z-index-100: 100;
     --z-index-90: 90;
     --z-index-80: 80;
@@ -166,6 +169,23 @@ body, .article {
     // Components
     // ------------------------------------------------
 
+    // Avatars
+    // ------------------------------------------------
+    --avatar-margin-right: var(--space-s);
+    --avatar-padding: var(--space-s);
+    --avatar-font-line-height: var(--font-line-height-p);
+    --avatar-info-muted-text: var(--text-muted);
+    --avatar-border-radius: var(--border-radius);
+    --avatar-background: var(--background-color);
+    --avatar-background-gray: var(--gray-color);
+    --avatar-background-yellow: var(--warning-color);
+    --avatar-background-green: var(--positive-color);
+    --avatar-background-accent: var(--accent-color);
+    --avatar-background-dark-background: var(--gray-color-dark);
+    --avatar-description-margin-right: var(--space-m);
+    --avatar-main-font-veight: var(--font-weight-medium);
+    --avatar-main-font-family: var(--secondary-font-stack);
+
     // Badges
     // ------------------------------------------------
     --badge-text-color: var(--text-color);
@@ -177,6 +197,7 @@ body, .article {
     --badge-font-line-height: var(--font-line-height-p);
     --badge-box-shadow: 0 0 0 2px var(--mono-color-0);
     --badge-default-background: var(--mono-color-200);
+    --badge-default-border: none;
     --badge-positive-background: var(--positive-color-light);
     --badge-positive-border: none;
     --badge-negative-background: var(--negative-color-light);
@@ -196,6 +217,7 @@ body, .article {
     --badge-tag-secondary-color: var(--mono-color-700);
     --badge-tag-secondary-border-radius: var(--border-radius-xxs);
     --badge-tag-secondary-box-shadow: 0 0 0 1px var(--gray-color);
+    --badge-tag-icon-margin-left: var(--space-xs);
 
     // Buttons
     // ------------------------------------------------
@@ -451,8 +473,10 @@ body, .article {
 
     // Loader
     // ------------------------------------------------
-    --loader-background: var(--gray-color);
-    --loader-z-index: var(--z-index-1000);
+    --loader-background: var(--background-color);
+    --loader-z-index-inline: var(--z-index-800);
+    --loader-z-index-fullscreen: var(--z-index-801);
+    --loader-wrapper-color: #A1B2C1;
     --loader-border-radius: var(--border-radius);
 
     // Tiles
@@ -574,6 +598,16 @@ body, .article {
     --tab-link-first-margin-left: var(--space-m);
     --tab-content-padding: 0 20px 20px 20px;
     --tab-content-tile-padding: var(--space-m) 0;
+
+    // Toggle
+    // -----------------------------------------------------
+    --toggle-body-width: 20px;
+    --toggle-body-height: 36px;
+    --toggle-handle-size: 16px;
+    --toggle-background-spacing: var(--space-xxs);
+    --toggle-background-primary-color: var(--primary-color);
+    --toggle-background-secondary-color: var(--background-color-medium);
+
 
     // Modal
     // --------------------------------------------------------

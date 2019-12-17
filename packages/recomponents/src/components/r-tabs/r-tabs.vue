@@ -35,14 +35,23 @@
     export default {
         name: 'r-tabs',
         props: {
+            /**
+             * TBD
+             */
             divided: {
                 type: Boolean,
                 default: false,
             },
+            /**
+             * TBD
+             */
             menuClass: {
                 type: String,
                 default: '',
             },
+            /**
+             * TBDs
+             */
             contentClass: {
                 type: String,
                 default: '',

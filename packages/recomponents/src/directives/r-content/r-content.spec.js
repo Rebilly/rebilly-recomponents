@@ -1,5 +1,4 @@
-import {createLocalVue, shallowMount} from '@vue/test-utils';
-import RContent from './r-content';
+import {shallowMount} from '@vue/test-utils';
 
 const mockTemplate = {
     template: `
@@ -15,12 +14,7 @@ const mockTemplate = {
                 </div>`,
 };
 
-const localVue = createLocalVue();
-localVue.directive('r-content', RContent);
-
-const wrapper = shallowMount(mockTemplate, {
-    localVue,
-});
+const wrapper = shallowMount(mockTemplate);
 
 describe('r-content.js', () => {
     it('Should render the correct HTML structure', () => {

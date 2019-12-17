@@ -93,6 +93,12 @@
             </div>
             <span class="r-field-caption" v-if="helpText">{{helpText}}</span>
         </template>
+        <template v-if="type === 'datepicker'">
+            <v-date-picker
+                v-model="value"
+                is-inline
+            />
+        </template>
     </div>
 </template>
 
@@ -111,46 +117,79 @@
             rIcon, rCalendarManager, rSelect,
         },
         props: {
+            /**
+             * TBD
+             */
             availableDates: {
                 type: Object,
                 required: false,
                 default: null,
             },
+            /**
+             * TBD
+             */
             label: {
                 type: String,
                 default: null,
             },
+            /**
+             * TBD
+             */
             disabled: {
                 type: Boolean,
                 default: false,
             },
+            /**
+             * TBD
+             */
             placeholder: {
                 type: String,
                 default: null,
             },
+            /**
+             * TBD
+             */
             helpText: {
                 type: String,
                 default: null,
             },
+            /**
+             * TBD
+             */
             stack: {
                 type: String,
                 default: null,
             },
+            /**
+             * TBD
+             */
             type: {
                 type: String,
                 default: 'date',
             },
+            /**
+             * TBD
+             */
             name: {
                 type: String,
                 default: () => shortid.generate(),
             },
+            /**
+             * TBD
+             */
             value: {
                 type: Object,
             },
+            /**
+             * TBD
+             */
             validate: {
                 type: Object,
                 default: null,
             },
+            /**
+             * TBD
+             */
             noFlex: {
                 type: Boolean,
                 required: false,

@@ -43,11 +43,11 @@
         </p>
       </div>
       <r-img
-        src="https://www.rebilly.com/wp-content/uploads/2019/01/new_features@2x-319x150.png"
-        alt="Lazy loading image"
         :lazy="true"
         :width="319"
         :height="150"
+        src="https://www.rebilly.com/wp-content/uploads/2019/01/new_features@2x-319x150.png"
+        alt="Lazy loading image"
       ></r-img>
     </template>
     <template v-slot:secondary> </template>

@@ -19,10 +19,16 @@
         name: 'RBadge',
         components: {rIcon},
         props: {
+            /**
+             * Changes background color
+             */
             type: {
                 type: String,
                 default: 'default',
             },
+            /**
+             * Show optional close button
+             */
             close: {
                 type: Boolean,
                 default: false,

@@ -1,0 +1,5 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`r-toggle.vue should render Wrapper and match snapshot 1`] = `<div role="checkbox" class="r-toggle" id="id1234"><label for="snapshot" class="r-toggle-body"><input type="checkbox" id="snapshot" class="r-toggle-switch"> <span class="r-toggle-switch-handle"></span></label> <label for="snapshot" class="r-toggle-label">Custom label</label></div>`;
+
+exports[`r-toggle.vue should render via SSR and match snapshot 1`] = `<div role="checkbox" id="id1234" class="r-toggle"><label for="snapshot" class="r-toggle-body"><input type="checkbox" id="snapshot" value="on" class="r-toggle-switch"> <span class="r-toggle-switch-handle"></span></label> <label for="snapshot" class="r-toggle-label">Custom label</label></div>`;

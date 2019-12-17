@@ -1,7 +1,6 @@
 import {createLocalVue, mount} from '@vue/test-utils';
 
 import RButton from '../../components/r-button/r-button.vue';
-import RTooltip from './r-tooltip';
 
 const directiveValue = `tooltip-text-${new Date().getTime()}`;
 
@@ -12,10 +11,9 @@ const mockTemplate = {
 const localVue = createLocalVue();
 
 localVue.component('r-button', RButton);
-localVue.directive('tooltip', RTooltip);
 
 describe('r-tooltip.js', () => {
-    it('Shouldn render the tooltip', () => {
+    it('Should render the tooltip', () => {
         const wrapper = mount(mockTemplate, {
             localVue,
             attachToDocument: true,

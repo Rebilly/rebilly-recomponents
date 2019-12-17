@@ -19,9 +19,9 @@
       <div class="PaymentRow">
         <r-select
           v-model="country"
-          placeholder="Country"
           :multiple="false"
           :options="['USA', 'Russia', 'Canada', 'Ukraine']"
+          placeholder="Country"
         />
       </div>
       <div class="PaymentRow">

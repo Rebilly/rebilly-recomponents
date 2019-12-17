@@ -1,6 +1,7 @@
-import Vue from 'vue';
-
-const directive = {
+/**
+ * Simple directive to add lazy image loading
+ */
+export default {
     inserted: (el) => {
         const loadImage = (observer) => {
             if (el) {
@@ -42,5 +43,3 @@ const directive = {
         }
     },
 };
-
-Vue.directive('lazy', directive);

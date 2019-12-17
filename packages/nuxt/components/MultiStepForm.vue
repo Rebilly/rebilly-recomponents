@@ -5,8 +5,8 @@
       <r-modal
         v-if="index === activeStep"
         :title="step.name"
-        size="large"
         @close="activeStep = null"
+        size="large"
       >
         <template v-slot:content>
           <div>
