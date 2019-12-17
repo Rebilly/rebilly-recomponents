@@ -22,7 +22,6 @@ module.exports = function({ config }) {
                 loader: 'sass-loader',
                 options: {
                     prependData: `
-                        @import "src/styles/variables.scss";
                         @import "src/styles/theme.scss";
                         @import "src/styles/mixins.scss";
                     `,
