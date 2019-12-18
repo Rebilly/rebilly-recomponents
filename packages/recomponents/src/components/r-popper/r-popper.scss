@@ -8,21 +8,7 @@
 }
 
 .r-popper .divider {
-    margin: $space-rem-m 0;
-}
-
-.r-popper {
-    box-sizing: border-box;
-    display: inline-block;
-    position: absolute;
-    border-radius: var(--popover-border-radius);
-    z-index: var(--z-index-90);
-    box-shadow: var(--popover-box-shadow);
-    background: var(--popover-background);
-    //min-width: var(--popover-min-width);
-    -ms-filter: "progid:DXImageTransform.Microsoft.Alpha(Opacity=0)";
-    filter: alpha(opacity=0);
-    transition: var(--popover-transition);
+    margin: var(--space-m) 0;
 }
 
 .r-popper.is-visible {
