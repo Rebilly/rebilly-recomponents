@@ -24,40 +24,43 @@
         },
         props: {
             /**
-             * TBD
+             * Input the source URL
              */
             src: {
                 type: String,
                 required: true,
             },
             /**
-             * TBD
+             * Input the alternative text for the image
              */
             alt: {
                 type: String,
-                default: 'Recomponents image',
+                default: 'Image',
             },
             /**
-             * TBD
+             * Make the image lazy loaded
              */
             lazy: {
                 type: Boolean,
                 default: false,
             },
             /**
-             * TBD
+             * Specify image width
              */
             width: {
                 type: String,
                 default: 'auto',
             },
             /**
-             * TBD
+             * Specify image height
              */
             height: {
                 type: String,
                 default: 'auto',
             },
+            /**
+             * Specify image aspect ratio (e.g. '9/16')
+             */
             aspectRatio: {
                 type: String,
             },
