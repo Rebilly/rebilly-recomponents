@@ -39,5 +39,6 @@ We have 2 variables with custom options per component (delay or custom allowed d
 ## Run images generation/tests
 ``` 
 cd packages/recomponents
+yarn build-storybook
 docker-compose -f ./.image-snapshots/docker-compose.yml up --build
 ```

@@ -32,4 +32,4 @@ COPY /packages/recomponents/ /home/pptruser/rebilly/rebilly-recomponents/package
 
 RUN cd /home/pptruser/rebilly/rebilly-recomponents/packages/recomponents/
 
-CMD ["yarn",  "run", "test:image-snapshots"]
+CMD ["yarn",  "run", "build-image-snapshots"]
