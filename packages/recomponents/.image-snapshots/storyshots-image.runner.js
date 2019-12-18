@@ -31,6 +31,7 @@ const componentsWithAsyncData = [
     // TODO
     ['components-select--async-data', 2000],
     ['demo--lazy-loading', 2000],
+    ['components-image--image-with-aspect-ratio', 2000],
 ];
 
 /**

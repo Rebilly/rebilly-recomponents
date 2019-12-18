@@ -2,9 +2,11 @@ module.exports = {
     presets: [
         '@vue/app',
     ],
+    plugins: ['@babel/plugin-proposal-class-properties'],
     env: {
         test: {
             presets: [
+                '@vue/app',
                 [
                     '@babel/preset-env',
                     {
@@ -14,7 +16,9 @@ module.exports = {
                     },
                 ],
             ],
-            plugins: ['babel-plugin-require-context-hook'],
+            plugins: [
+                'babel-plugin-require-context-hook',
+            ],
         },
     },
 };

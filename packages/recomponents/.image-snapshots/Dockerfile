@@ -21,23 +21,12 @@ RUN apt-get install -yq ca-certificates fonts-liberation libappindicator1 libnss
 RUN mkdir -p /home/pptruser/rebilly/rebilly-recomponents/packages/recomponents/node_modules \
     && mkdir -p /home/pptruser/rebilly/rebilly-recomponents/docs
 
-# problem with core-js@2
-RUN yarn global add core-js@2
-
 WORKDIR /home/pptruser/rebilly/rebilly-recomponents/packages/recomponents
 
 COPY /packages/recomponents/package.json /home/pptruser/rebilly/rebilly-recomponents/packages/recomponents/
 COPY /packages/recomponents/yarn.lock /home/pptruser/rebilly/rebilly-recomponents/packages/recomponents/
 
 RUN yarn install
-
-# problem with core-js@2
-RUN yarn add airbnb-js-shims
-
-# problem with core-js@2
-RUN wget -P /home/pptruser/rebilly/rebilly-recomponents/packages/recomponents/node_modules/core-js/modules/ \
-    https://raw.githubusercontent.com/zloirock/core-js/v2/modules/web.dom.iterable.js \
-    https://raw.githubusercontent.com/zloirock/core-js/v2/modules/es6.array.iterator.js
 
 COPY /packages/recomponents/ /home/pptruser/rebilly/rebilly-recomponents/packages/recomponents/
 

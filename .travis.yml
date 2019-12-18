@@ -32,13 +32,11 @@ jobs:
       name: 'Eslint checks and unit tests'
       before_script:
         - cd packages/recomponents
-      after_script:
-        # run image-snapshot tests in the docker
-        - yarn build-storybook
-        - docker-compose -f ./.image-snapshots/docker-compose.yml up --build
       script:
         - yarn lint
         - yarn test
+        # run image-snapshot tests in the docker
+        - docker-compose -f ./.image-snapshots/docker-compose.yml up --build
     - stage: deploy
       name: 'Release recomponents to NPM'
       before_script:
