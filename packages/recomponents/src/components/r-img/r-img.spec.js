@@ -34,7 +34,7 @@ describe('r-img.vue', () => {
         wrapper.vm.onerror();
 
         expect(wrapper.emitted().onload).toBeTruthy();
-        expect(wrapper.emitted().error).toBeTruthy();
+        expect(wrapper.emitted().onerror).toBeTruthy();
     });
 
     it('shouldn render data-url attribute if lazy is true', async () => {
