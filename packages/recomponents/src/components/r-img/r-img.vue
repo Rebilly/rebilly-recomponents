@@ -49,14 +49,12 @@
              */
             width: {
                 type: String,
-                default: 'auto',
             },
             /**
              * Specify image height
              */
             height: {
                 type: String,
-                default: 'auto',
             },
             /**
              * Specify image aspect ratio (e.g. '9/16')
