@@ -1,11 +1,14 @@
 <template>
-    <figure class="r-component r-img" :style="{minHeight: height + 'px', minWidth: width + 'px'}" role="img">
+    <figure class="r-component r-img" :style="wrapperStyle" role="img">
         <template v-if="lazy">
-            <img v-lazy :data-url="src" :alt="alt"/>
+            <img v-lazy :data-url="src" :alt="alt" :style="imgStyle" @load="onload" @error="onerror"/>
         </template>
         <template v-else>
-            <img :src="src" :alt="alt"/>
+            <img :src="src" :alt="alt" :style="imgStyle" @load="onload" @error="onerror"/>
         </template>
+        <slot name="loading">
+            <div v-show="loading" class="r-img-spinner"/>
+        </slot>
     </figure>
 </template>
 
@@ -14,7 +17,11 @@
 
     export default {
         name: 'RImg',
-
+        data() {
+            return {
+                loading: true,
+            };
+        },
         props: {
             /**
              * TBD
@@ -41,24 +48,42 @@
              * TBD
              */
             width: {
-                type: Number,
-                default: 0,
+                type: String,
+                default: 'auto',
             },
             /**
              * TBD
              */
             height: {
-                type: Number,
-                default: 0,
+                type: String,
+                default: 'auto',
+            },
+            aspectRatio: {
+                type: String,
             },
         },
+        computed: {
+            imgStyle() {
+                return {height: this.height, width: this.width};
+            },
+            wrapperStyle() {
+                if (this.aspectRatio) {
+                    return {
+                        '--img-aspect-ratio': `calc(${this.aspectRatio} * 100%)`,
+                    };
+                }
 
+                return {height: this.height, width: this.width};
+            },
+        },
         methods: {
             onload() {
+                this.loading = false;
                 this.$emit('onload');
             },
             onerror() {
-                this.$emit('error');
+                this.loading = false;
+                this.$emit('onerror');
             },
         },
     };
