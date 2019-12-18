@@ -11,6 +11,10 @@
     width: 100%;
 }
 
+.r-img[style*="--img-aspect-ratio"] > img {
+    max-width: 100%;
+}
+
 .r-img-spinner {
     display: block;
 }
