@@ -34,6 +34,7 @@ jobs:
         - cd packages/recomponents
       after_script:
         # run image-snapshot tests in the docker
+        - yarn build-storybook
         - docker-compose -f ./.image-snapshots/docker-compose.yml up --build
       script:
         - yarn lint
