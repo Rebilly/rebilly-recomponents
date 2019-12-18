@@ -26,8 +26,8 @@ RUN yarn global add core-js@2
 
 WORKDIR /home/pptruser/rebilly/rebilly-recomponents/packages/recomponents
 
-COPY package.json /home/pptruser/rebilly/rebilly-recomponents/packages/recomponents/
-COPY yarn.lock /home/pptruser/rebilly/rebilly-recomponents/packages/recomponents/
+COPY /packages/recomponents/package.json /home/pptruser/rebilly/rebilly-recomponents/packages/recomponents/
+COPY /packages/recomponents/yarn.lock /home/pptruser/rebilly/rebilly-recomponents/packages/recomponents/
 
 RUN yarn install
 
@@ -39,7 +39,8 @@ RUN wget -P /home/pptruser/rebilly/rebilly-recomponents/packages/recomponents/no
     https://raw.githubusercontent.com/zloirock/core-js/v2/modules/web.dom.iterable.js \
     https://raw.githubusercontent.com/zloirock/core-js/v2/modules/es6.array.iterator.js
 
-COPY . /home/pptruser/rebilly/rebilly-recomponents/packages/recomponents/
+COPY /packages/recomponents/ /home/pptruser/rebilly/rebilly-recomponents/packages/recomponents/
 
+RUN cd /home/pptruser/rebilly/rebilly-recomponents/packages/recomponents/
 
 CMD ["yarn",  "run", "test:image-snapshots"]

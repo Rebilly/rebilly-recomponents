@@ -4,14 +4,14 @@ services:
   recomponents-docker-tests:
     container_name: recomponents-docker-tests
     build:
-      context: ./../
-      dockerfile: .image-snapshots/Dockerfile
+      context: ../../../
+      dockerfile: ./packages/recomponents/.image-snapshots/Dockerfile
     environment:
       NODE_ENV: development
       PUPPETEER_EXECUTABLE_PATH: google-chrome-unstable
     volumes:
       - ./:/home/pptruser/rebilly/rebilly-recomponents/packages/recomponents/.image-snapshots
-      - ../../../docs/docs:/home/pptruser/rebilly/rebilly-recomponents/docs
+      - ../../../docs:/home/pptruser/rebilly/rebilly-recomponents/docs
       - ../.storybook:/home/pptruser/rebilly/rebilly-recomponents/packages/recomponents/.storybook
       - ../node_modules:/home/pptruser/rebilly/rebilly-recomponents/packages/recomponents/node_modules
     command: "yarn run build-image-snapshots"
