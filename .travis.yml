@@ -10,6 +10,9 @@ cache:
 branches:
   only:
     - "master"
+# setup image-snapshot tests in the docker
+services:
+  - docker
 notifications:
   email: true
 node_js:
@@ -29,6 +32,9 @@ jobs:
       name: 'Eslint checks and unit tests'
       before_script:
         - cd packages/recomponents
+      after_script:
+        # run image-snapshot tests in the docker
+        - docker-compose -f ./.image-snapshots/docker-compose.yml up --build
       script:
         - yarn lint
         - yarn test
