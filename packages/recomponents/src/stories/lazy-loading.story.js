@@ -19,8 +19,7 @@ storiesOf('Demo', module)
                         src="https://www.rebilly.com/wp-content/uploads/2019/01/new_features@2x-319x150.png"
                         alt="Lazy loading image" 
                         :lazy="true"
-                        width="319px" 
-                        height="150px"></r-img>
+                        width="100%"></r-img>
                 </template>
             </r-tile>
         </div>`,
