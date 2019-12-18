@@ -81,7 +81,7 @@ const getCustomBrowser = async () => {
             '--disable-dev-shm-usage',
         ],
         defaultViewport: {width: 400, height: 300},
-        executablePath: undefined,
+        executablePath: process.env.PUPPETEER_EXECUTABLE_PATH || undefined,
     });
     return BROWSER;
 };
