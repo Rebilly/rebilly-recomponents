@@ -7,20 +7,6 @@
     >
       <h1>{{ tab.name }}</h1>
       <p>
-        Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod
-        tempor incididunt ut labore et dolore magna aliqua. Sed risus pretium
-        quam vulputate. Lacus sed viverra tellus in. Venenatis cras sed felis
-        eget velit aliquet. Viverra nam libero justo laoreet sit amet cursus.
-        Porta nibh venenatis cras sed felis eget velit aliquet sagittis.
-        Elementum sagittis vitae et leo duis. Egestas sed sed risus pretium
-        quam. Imperdiet nulla malesuada pellentesque elit. Volutpat consequat
-        mauris nunc congue nisi. Tincidunt id aliquet risus feugiat in.
-        Convallis a cras semper auctor neque vitae tempus quam pellentesque.
-        Semper auctor neque vitae tempus quam pellentesque nec nam aliquam.
-        Velit scelerisque in dictum non consectetur a erat. Molestie ac feugiat
-        sed lectus vestibulum mattis ullamcorper velit.
-      </p>
-      <p>
         Sodales ut eu sem integer vitae justo. Mi sit amet mauris commodo quis.
         Vestibulum rhoncus est pellentesque elit. Suspendisse potenti nullam ac
         tortor vitae purus faucibus. Tristique nulla aliquet enim tortor at
@@ -91,6 +77,20 @@
         <template v-slot:secondary></template>
         <template v-slot:actions></template>
       </r-tile>
+    </r-tab>
+    <r-tab
+      key="deeplink-1"
+      :to="{ name: 'tabs-id', params: { id: 'deeplink-1' } }"
+      name="Deeplink 1"
+    >
+      <h1>I'm deeplink tab #1</h1>
+    </r-tab>
+    <r-tab
+      key="deeplink-2"
+      :to="{ name: 'tabs-id', params: { id: 'deeplink-2' } }"
+      name="Deeplink 2"
+    >
+      <h1>I'm deeplink tab #2</h1>
     </r-tab>
   </r-tabs>
 </template>

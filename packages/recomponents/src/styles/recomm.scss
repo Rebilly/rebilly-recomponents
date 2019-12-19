@@ -615,7 +615,7 @@ body, .article {
 
     --modal-overlay-background-color: rgba(80, 90, 111, .4);
     --modal-overlay-z-index: 800;
-    --modal-overlay-padding: calc(var(--space-l) + 56) 0 var(--space-l) 0;
+    --modal-overlay-padding: 88px 0 32px 0;
     --modal-control-background-color: #FFFFFF;
     --modal-control-z-index: 2001;
     --modal-control-box-shadow: 0 0 0 1px rgba(107, 115, 132, 0.09), 0 25px 45px -8px rgba(80, 90, 111, 0.30), 0 3px 6px 0 rgba(80, 90, 111, 0.07);
@@ -625,13 +625,16 @@ body, .article {
     --modal-padding: var(--space-default);
     --modal-content-background-color: var(--background-color-light);
     --modal-content-scrollable-max-height: 400px;
-    --modal-icon-color: #6B7384;
+    --modal-icon-color: #4a4a4b;
     --modal-loader-background-color: var(--primary-color);
 
     // Pagination
     // -----------------------------------------------------
 
     --pagination-buttons-margin: 0 var(--space-xxs);
+
+    // Image
+    --image-spinner-color: var(--primary-color);
 }
 
 // Media Breakpoints
@@ -811,7 +814,7 @@ h1, .h1 {
     line-height: var(--font-line-height-h1);
     margin-top: 4.0rem;
     margin-bottom: 2.0rem;
-    letter-spacing: -0.6rem;
+    letter-spacing: -0.06rem;
     font-family: var(--secondary-font-stack);
 }
 

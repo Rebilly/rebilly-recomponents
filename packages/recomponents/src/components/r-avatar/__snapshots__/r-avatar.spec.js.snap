@@ -33,7 +33,9 @@ exports[`r-avatar.vue should render image 1`] = `
     <!---->
     <!---->
     <div class="r-avatar-image">
-      <figure role="img" class="r-component r-img" style="min-height: 0px; min-width: 0px;"><img src="https://www.meme-arsenal.com/memes/86b1de6ff6981be012d40bf26c6992ab.jpg" alt="Recomponents image"></figure>
+      <figure role="img" class="r-component r-img"><img src="https://www.meme-arsenal.com/memes/86b1de6ff6981be012d40bf26c6992ab.jpg" alt="Image">
+        <div class="r-img-spinner"></div>
+      </figure>
     </div>
   </div>
   <div class="r-avatar-info">
