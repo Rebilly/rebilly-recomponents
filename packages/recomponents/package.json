@@ -43,7 +43,6 @@
     "yarn": ">= 1.10.1"
   },
   "dependencies": {
-    "@babel/plugin-proposal-class-properties": "^7.7.4",
     "css-vars-ponyfill": "^2.1.2",
     "intersection-observer": "^0.7.0",
     "lodash.clonedeep": "^4.5.0",
@@ -56,6 +55,7 @@
   "devDependencies": {
     "@babel/core": "^7.5.5",
     "@babel/preset-env": "^7.5.5",
+    "@babel/plugin-proposal-class-properties": "^7.7.4",
     "@semantic-release/changelog": "^3.0.4",
     "@semantic-release/commit-analyzer": "^6.3.0",
     "@semantic-release/git": "^7.0.16",
