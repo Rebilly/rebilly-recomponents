@@ -176,50 +176,6 @@
 }
 
 /**
-* Groups
-*/
-.r-button-group {
-    display: flex;
-}
-
-@media screen and (max-width: 767px) {
-    .r-button-group > .r-button {
-        flex: 1 0;
-    }
-}
-
-.r-button-group .r-button {
-    margin-left: -1px;
-    margin-left: -0.1rem;
-}
-
-.r-button-group .r-button:not(:first-child):not(:last-child),
-.r-button-group .popper:not(:first-child):not(:last-child) .r-button {
-    border-radius: 0;
-}
-
-.r-button-group .r-button:first-child,
-.r-button-group .popper:first-child .r-button {
-    border-radius: 4px 0 0 4px;
-}
-
-.r-button-group .r-button:last-child,
-.r-button-group .popper:last-child .r-button {
-    border-radius: 0 4px 4px 0;
-}
-
-.r-button-group.r-button-group-fluid > .r-button {
-    flex: 1 0;
-}
-
-.r-button-group .r-button.r-is-active {
-    background: #0044D4;
-    background: linear-gradient(to bottom, #0044D4 0%, #2600d4 100%);
-    color: #FFFFFF;
-    box-shadow: 0 1px 2px 0 rgba(161, 178, 193, 0.8);
-}
-
-/**
 * Icons
 */
 .r-button {
