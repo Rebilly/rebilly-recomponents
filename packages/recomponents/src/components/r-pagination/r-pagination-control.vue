@@ -18,7 +18,7 @@
                                   :key="index"
                                   @click="override.page(item)"
                                   class="r-pagination-control-button"
-                                  :class="{'r-button--type-primary': isActive(item)}">
+                                  :class="{'r-button-type-primary': isActive(item)}">
                             {{ item }}
                         </r-button>
                     </template>
