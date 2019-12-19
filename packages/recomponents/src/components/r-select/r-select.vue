@@ -5,10 +5,10 @@
                class="r-field-label">{{label}}
         </label>
         <div :tabindex="searchable ? -1 : tabindex"
-             :class="{ 'r-select--active': isOpen,
-                       'r-select--disabled': disabled,
-                       'r-select--above': isAbove,
-                       'r-select--allow-empty': allowEmpty}"
+             :class="{ 'r-select-is-active': isOpen,
+                       'r-select-is-disabled': disabled,
+                       'r-select-is-above': isAbove,
+                       'r-select-is-allow-empty': allowEmpty}"
              @focus="activate()"
              @blur="searchable ? false : deactivate()"
              @keydown.self.down.prevent="pointerForward()"
@@ -19,17 +19,17 @@
              role="combobox"
              :aria-owns="'listbox-'+id">
             <slot name="caret" :toggle="toggle">
-                <div @mousedown.prevent.stop="toggle()" class="r-select__select"></div>
+                <div @mousedown.prevent.stop="toggle()" class="r-select-caret"></div>
             </slot>
             <slot name="clear" :search="search"></slot>
-            <div ref="tags" class="r-select__tags">
+            <div ref="tags" class="r-select-tags">
                 <slot name="selection"
                       v-if="!loading"
                       :search="search"
                       :remove="removeElement"
                       :values="computedValue"
                       :is-open="isOpen">
-                    <div class="r-select__tags-wrap"
+                    <div class="r-select-tags-wrap"
                          v-show="visibleValues.length > 0"
                          @mousedown.prevent>
                         <template v-for="(option, index) of computedValue"
@@ -39,12 +39,12 @@
                                   :search="search"
                                   :remove="removeElement">
                                 <template>
-                                    <r-badge class="r-select__tag"
+                                    <r-badge class="r-select-tag"
                                              type="tag"
                                              :close="true"
                                              @close="removeElement(option)">
                                         <template>
-                                            <span class="r-select__tag-text"
+                                            <span class="r-select-tag-text"
                                                   @mousedown.prevent="toggle()">
                                                 {{ getOptionLabel(option) }}
                                             </span>
@@ -56,14 +56,14 @@
                     </div>
                     <template v-if="internalValue && internalValue.length > limit">
                         <slot name="limit">
-                            <strong class="r-select__strong"
+                            <strong class="r-select-limit"
                                     v-text="limitText(internalValue.length - limit)"/>
                         </slot>
                     </template>
                 </slot>
-                <transition name="r-select__loading">
+                <transition name="r-select-loading">
                     <slot name="loading">
-                        <div v-show="loading" class="r-select__spinner"/>
+                        <div v-show="loading" class="r-select-loading-spinner"/>
                     </slot>
                 </transition>
                 <input ref="search"
@@ -86,18 +86,18 @@
                        @keydown.up.prevent="pointerBackward()"
                        @keypress.enter.prevent.stop.self="addPointerElement($event)"
                        @keydown.delete.stop="removeLastElement()"
-                       class="r-select__input"
+                       class="r-select-input"
                        :aria-controls="'listbox-'+id"
                 />
                 <span v-if="isSingleLabelVisible && !loading"
-                      class="r-select__single"
+                      class="r-select-single"
                       @mousedown.prevent="toggle">
                     <slot name="singleLabel" :option="singleValue">
                         <template>{{ currentOptionLabel }}</template>
                     </slot>
                 </span>
                 <span v-if="isPlaceholderVisible || loading"
-                      class="r-select__placeholder"
+                      class="r-select-placeholder"
                       @mousedown.prevent="toggle">
                     <slot name="placeholder">
                         {{ placeholder }}
@@ -105,25 +105,25 @@
                 </span>
             </div>
             <transition name="r-select">
-                <div class="r-select__content-wrapper"
+                <div class="r-select-content-wrapper"
                      v-show="isOpen"
                      @focus="activate"
                      tabindex="-1"
                      @mousedown.prevent
                      :style="{ maxHeight: optimizedHeight + 'px' }"
                      ref="list">
-                    <ul class="r-select__content"
+                    <ul class="r-select-content"
                         :style="contentStyle"
                         role="listbox"
                         :id="'listbox-'+id">
                         <slot name="beforeList">
                             <template v-if="computedIsLoading">
-                                <span class="r-select__option">
+                                <span class="r-select-content-element-option">
                                     {{ messages['loading'] }}
                                 </span>
                             </template>
                             <template v-if="computedAsyncHasPrevOptions">
-                                <li class="r-select__option align-center r-select__option-load r-select__option-load-prev">
+                                <li class="r-select-content-element-option r-align-center r-select-content-element-option-load r-select-content-element-option-load-prev">
                                     <r-icon-button
                                             type="default"
                                             size="small"
@@ -137,13 +137,13 @@
                             </template>
                         </slot>
                         <li v-if="multiple && max === internalValue.length">
-                            <span class="r-select__option">
+                            <span class="r-select-content-element-option">
                                 <slot name="maxElements">
                                     {{ messages.max(max) }}
                                 </slot>
                             </span>
                         </li>
-                        <li class="r-select__element"
+                        <li class="r-select-content-element"
                             v-for="(option, index) of filteredOptions"
                             :key="index"
                             v-bind:id="id + '-' + index"
@@ -151,7 +151,7 @@
                             <span :class="optionHighlight(index, option)"
                                   @click.stop="select(option)"
                                   @mouseenter.self="pointerSet(index)"
-                                  class="r-select__option">
+                                  class="r-select-content-element-option">
                                 <slot name="option"
                                       :option="option"
                                       :search="search">
@@ -159,23 +159,23 @@
                                 </slot>
                             </span>
                         </li>
-                        <li class="r-select__element"
+                        <li class="r-select-content-element"
                             v-show="showNoResults && (filteredOptions.length === 0 && search && !loading)">
-                            <span class="r-select__option">
+                            <span class="r-select-content-element-option">
                                 <slot name="noResult"
                                       :search="search">{{messages['noResult']}}
                                 </slot>
                             </span>
                         </li>
-                        <li class="r-select__element"
+                        <li class="r-select-content-element"
                             v-show="showNoOptions && (computedOptions.length === 0 && !search && !loading)">
-                            <span class="r-select__option">
+                            <span class="r-select-content-element-option">
                                 <slot name="noOptions">{{messages['noOptions']}}</slot>
                             </span>
                         </li>
                         <slot name="afterList">
                             <template v-if="computedAsyncHasNextOptions">
-                                <li class="r-select__option align-center r-select__option-load r-select__option-load-next">
+                                <li class="r-select-content-element-option r-align-center r-select-content-element-option-load r-select-content-element-option-load-next">
                                     <r-icon-button
                                             type="default"
                                             size="small"
@@ -640,7 +640,7 @@
                 return (this.label || '').trim() !== '';
             },
             classes() {
-                return this.isInvalid ? 'is-error' : '';
+                return this.isInvalid ? 'r-is-error' : '';
             },
             isInvalid() {
                 if (this.validate) {
@@ -837,8 +837,8 @@
             },
             optionHighlight(index, option) {
                 return {
-                    'r-select__option--highlight': index === this.pointer && this.showPointer,
-                    'r-select__option--selected': this.isSelected(option),
+                    'r-select-option-is-highlight': index === this.pointer && this.showPointer,
+                    'r-select-option-is-selected': this.isSelected(option),
                 };
             },
             pointerAdjust() {

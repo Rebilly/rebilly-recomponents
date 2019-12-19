@@ -2,7 +2,7 @@
     <div>
         <slot name="override" :override="override">
             <div class="r-pagination-control">
-                <div class="r-pagination-control-wrapper">
+                <div class="r-pagination-control-buttons-wrapper">
                     <r-button class="r-pagination-control-button" @click="override.previous"
                               :disabled="!override.hasPrevious">
                         <r-icon icon="arrow-left"/>
@@ -18,7 +18,7 @@
                                   :key="index"
                                   @click="override.page(item)"
                                   class="r-pagination-control-button"
-                                  :class="{'r-button--type-primary': isActive(item)}">
+                                  :class="{'r-button-type-primary': isActive(item)}">
                             {{ item }}
                         </r-button>
                     </template>

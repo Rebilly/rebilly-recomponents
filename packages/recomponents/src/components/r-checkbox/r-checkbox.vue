@@ -1,18 +1,24 @@
 <template>
-    <div class="r-checkbox" :class="{'is-error': isInvalid}" role="checkbox" :aria-checked="isChecked">
-        <label class="r-field-label r-field-label-toggle" :class="{'is-disabled': disabled}" :for="id">
+    <div class="r-checkbox"
+         :class="{'r-is-error': isInvalid}"
+         role="checkbox"
+         :aria-checked="isChecked">
+        <label class="r-field-label r-field-label-toggle"
+               :class="{'r-is-disabled': disabled}"
+               :for="id">
             <slot name="label">{{ label }}</slot>
         </label>
         <input type="checkbox"
-                class="r-field-checkbox"
-                :disabled="disabled"
-                :id="id"
-                :value="value"
-                :checked="isChecked" @change="change"/>
+               class="r-field-checkbox"
+               :disabled="disabled"
+               :id="id"
+               :value="value"
+               :checked="isChecked" @change="change"/>
         <span class="r-field-checkbox-style">
-                <r-icon :icon="checkIcon"></r-icon>
+            <r-icon :icon="checkIcon"></r-icon>
         </span>
-        <span class="r-field-caption r-field-caption-toggle" v-if="caption">{{caption}}</span>
+        <span v-if="caption"
+              class="r-field-caption r-field-caption-toggle">{{caption}}</span>
     </div>
 </template>
 
@@ -20,7 +26,7 @@
     import shortId from 'shortid';
     import RIcon from '../r-icon/r-icon.vue';
 
-    // TODO: prefixes of simple classes `r-is-error, is-disabled`
+    // TODO: prefixes of simple classes `r-is-error, r-is-disabled`
     export default {
         name: 'RCheckbox',
         components: {RIcon},

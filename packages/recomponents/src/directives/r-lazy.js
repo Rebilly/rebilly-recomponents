@@ -6,7 +6,7 @@ export default {
         const loadImage = (observer) => {
             if (el) {
                 el.addEventListener('load', () => {
-                    el.classList.add('loaded');
+                    el.classList.add('r-is-loaded');
                     observer.unobserve(el);
                 });
 

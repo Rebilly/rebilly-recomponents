@@ -1,8 +1,8 @@
 import {storiesOf} from '@storybook/vue';
 import {boolean, text} from '@storybook/addon-knobs';
+import {action} from '@storybook/addon-actions';
 import markdown from './r-img.md';
 import RImg from './r-img.vue';
-import {action} from '@storybook/addon-actions';
 
 storiesOf('Components.Image', module)
     .addParameters({component: RImg})

@@ -2,7 +2,7 @@
     <button
         v-on="$listeners"
         class="r-button"
-        :class="styles"
+        :class="classes"
         :disabled="disabled"
         v-tooltip="{text: tooltip}">
         <slot name="left-icon"></slot>
@@ -69,22 +69,22 @@
             },
         },
         computed: {
-            styles() {
+            classes() {
                 const style = {};
-                style[`r-button--type-${this.type}`] = !!this.type;
-                style[`r-button--size-${this.size}`] = !!this.size;
-                style['r-button--fluid'] = !!this.fluid;
+                style[`r-button-type-${this.type}`] = !!this.type;
+                style[`r-button-size-${this.size}`] = !!this.size;
+                style['r-button-fluid'] = !!this.fluid;
                 style['r-button-fitted'] = !!this.fitted;
                 // check if the slot is present to add the class
                 // it requires
                 if (this.$slots['left-icon']) {
-                    style['has-icon-left'] = true;
+                    style['r-has-icon-left'] = true;
                 }
                 if (this.$slots['right-icon']) {
-                    style['has-icon-right'] = true;
+                    style['r-has-icon-right'] = true;
                 }
                 if (!this.$slots['right-icon'] && !this.$slots['left-icon']) {
-                    style['has-icon'] = true;
+                    style['r-has-icon'] = true;
                 }
                 return style;
             },

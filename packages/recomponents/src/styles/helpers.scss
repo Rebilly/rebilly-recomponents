@@ -1,34 +1,55 @@
 /**
-* Flex Helpers
-*/
-.no-flex {
+ * Flex Helpers
+ */
+.r-no-flex {
     width: auto;
     flex: 0 0 auto !important;
 }
 
-.stack-xs {
+.r-stack-xs {
     margin: 0 0 4px 0 !important;
 }
 
-.align-items-center {
+.r-align-items-center {
     align-items: center !important;
 }
 
-.inline-s {
+.r-inline-s {
     margin: 0 8px 0 0 !important;
     margin: 0 0.8rem 0 0 !important;
 }
 
 /**
-* Text color
-*/
-.text-muted {
+ * Text color
+ */
+.r-text-muted {
     color: var(--mono-color-800) !important;
 }
 
 /**
-* Cursor Type
-*/
-.cursor-pointer {
+ * Cursor Type
+ */
+.r-cursor-pointer {
     cursor: pointer !important;
+}
+
+/**
+ * Prevent scroll
+ */
+.r-no-scroll {
+    overflow: hidden !important;
+}
+
+/**
+ * Position relative
+ */
+.r-position-relative {
+    position: relative !important;
+}
+
+/**
+ * Position absolute
+ */
+.r-position-absolute {
+    position: absolute !important;
 }

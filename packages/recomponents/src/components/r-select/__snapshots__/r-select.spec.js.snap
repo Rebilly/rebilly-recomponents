@@ -3,26 +3,26 @@
 exports[`r-select.vue should render Wrapper and match snapshot 1`] = `
 <div class="fs-block">
   <!---->
-  <div tabindex="-1" role="combobox" aria-owns="listbox-id" class="r-select r-field r-select--allow-empty">
-    <div class="r-select__select"></div>
-    <div class="r-select__tags">
-      <div class="r-select__tags-wrap" style="display: none;"></div>
+  <div tabindex="-1" role="combobox" aria-owns="listbox-id" class="r-select r-field r-select-is-allow-empty">
+    <div class="r-select-caret"></div>
+    <div class="r-select-tags">
+      <div class="r-select-tags-wrap" style="display: none;"></div>
       <!---->
-      <div class="r-select__spinner" style="display: none;" name="r-select__loading"></div> <input name="" id="id" type="text" autocomplete="off" spellcheck="false" placeholder="Select option" tabindex="0" aria-controls="listbox-id" class="r-select__input" style="width: 0px; position: absolute; padding: 0px;">
-      <!----> <span class="r-select__placeholder">
+      <div class="r-select-loading-spinner" style="display: none;" name="r-select-loading"></div> <input name="" id="id" type="text" autocomplete="off" spellcheck="false" placeholder="Select option" tabindex="0" aria-controls="listbox-id" class="r-select-input" style="width: 0px; position: absolute; padding: 0px;">
+      <!----> <span class="r-select-placeholder">
                     Select option
                 </span>
     </div>
-    <div tabindex="-1" class="r-select__content-wrapper" style="max-height: 300px; display: none;" name="r-select">
-      <ul role="listbox" id="listbox-id" class="r-select__content" style="display: inline-block; min-width: 100%;">
+    <div tabindex="-1" class="r-select-content-wrapper" style="max-height: 300px; display: none;" name="r-select">
+      <ul role="listbox" id="listbox-id" class="r-select-content" style="display: inline-block; min-width: 100%;">
         <!---->
         <!---->
         <!---->
-        <li id="id-0" role="[object Object]" class="r-select__element"><span class="r-select__option r-select__option--highlight"><span>1</span></span></li>
-        <li id="id-1" role="[object Object]" class="r-select__element"><span class="r-select__option"><span>2</span></span></li>
-        <li class="r-select__element" style="display: none;"><span class="r-select__option">No elements found. Consider changing the search query.
+        <li id="id-0" role="[object Object]" class="r-select-content-element"><span class="r-select-content-element-option r-select-option-is-highlight"><span>1</span></span></li>
+        <li id="id-1" role="[object Object]" class="r-select-content-element"><span class="r-select-content-element-option"><span>2</span></span></li>
+        <li class="r-select-content-element" style="display: none;"><span class="r-select-content-element-option">No elements found. Consider changing the search query.
                             </span></li>
-        <li class="r-select__element" style="display: none;"><span class="r-select__option">List is empty.</span></li>
+        <li class="r-select-content-element" style="display: none;"><span class="r-select-content-element-option">List is empty.</span></li>
         <!---->
       </ul>
     </div>
@@ -34,26 +34,26 @@ exports[`r-select.vue should render Wrapper and match snapshot 1`] = `
 exports[`r-select.vue should render via SSR and match snapshot 1`] = `
 <div>
   <!---->
-  <div tabindex="-1" role="combobox" aria-owns="listbox-id" class="r-select r-field r-select--allow-empty">
-    <div class="r-select__select"></div>
-    <div class="r-select__tags">
-      <div class="r-select__tags-wrap" style="display:none;"></div>
+  <div tabindex="-1" role="combobox" aria-owns="listbox-id" class="r-select r-field r-select-is-allow-empty">
+    <div class="r-select-caret"></div>
+    <div class="r-select-tags">
+      <div class="r-select-tags-wrap" style="display:none;"></div>
       <!---->
-      <div name="r-select__loading" class="r-select__spinner" style="display:none;"></div> <input name="" id="id" type="text" autocomplete="off" spellcheck="false" placeholder="Select option" tabindex="0" aria-controls="listbox-id" value="" class="r-select__input" style="width:0;position:absolute;padding:0;">
-      <!----> <span class="r-select__placeholder">
+      <div name="r-select-loading" class="r-select-loading-spinner" style="display:none;"></div> <input name="" id="id" type="text" autocomplete="off" spellcheck="false" placeholder="Select option" tabindex="0" aria-controls="listbox-id" value="" class="r-select-input" style="width:0;position:absolute;padding:0;">
+      <!----> <span class="r-select-placeholder">
                     Select option
                 </span>
     </div>
-    <div tabindex="-1" name="r-select" class="r-select__content-wrapper" style="max-height:300px;display:none;">
-      <ul role="listbox" id="listbox-id" class="r-select__content" style="display:inline-block;min-width:100%;">
+    <div tabindex="-1" name="r-select" class="r-select-content-wrapper" style="max-height:300px;display:none;">
+      <ul role="listbox" id="listbox-id" class="r-select-content" style="display:inline-block;min-width:100%;">
         <!---->
         <!---->
         <!---->
-        <li id="id-0" role="[object Object]" class="r-select__element"><span class="r-select__option r-select__option--highlight"><span>1</span></span></li>
-        <li id="id-1" role="[object Object]" class="r-select__element"><span class="r-select__option"><span>2</span></span></li>
-        <li class="r-select__element" style="display:none;"><span class="r-select__option">No elements found. Consider changing the search query.
+        <li id="id-0" role="[object Object]" class="r-select-content-element"><span class="r-select-content-element-option r-select-option-is-highlight"><span>1</span></span></li>
+        <li id="id-1" role="[object Object]" class="r-select-content-element"><span class="r-select-content-element-option"><span>2</span></span></li>
+        <li class="r-select-content-element" style="display:none;"><span class="r-select-content-element-option">No elements found. Consider changing the search query.
                             </span></li>
-        <li class="r-select__element" style="display:none;"><span class="r-select__option">List is empty.</span></li>
+        <li class="r-select-content-element" style="display:none;"><span class="r-select-content-element-option">List is empty.</span></li>
         <!---->
       </ul>
     </div>
