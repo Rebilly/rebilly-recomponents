@@ -312,15 +312,7 @@ fieldset[disabled] .r-select {
 }
 
 // // TODO where is usage
-.r-select-is-disabled .r-select__current,
 .r-select-is-disabled .r-select-caret {
-    background: transparent;
-    color: var(--select-disabled-color);
-}
-
-.r-select-content-element-option--disabled {
-    cursor: text;
-    pointer-events: none;
     background: transparent;
     color: var(--select-disabled-color);
 }
@@ -340,39 +332,6 @@ fieldset[disabled] .r-select {
     line-height: 20px;
     display: inline-block;
     vertical-align: top;
-}
-
-*[dir='rtl'] .r-select {
-    text-align: right;
-}
-
-*[dir='rtl'] .r-select-caret {
-    right: auto;
-    left: 1px;
-}
-
-*[dir='rtl'] .r-select-tags {
-    padding: 8px 8px 0 40px;
-}
-
-*[dir='rtl'] .r-select-content {
-    text-align: right;
-}
-
-*[dir='rtl'] .r-select-content-element-option:after {
-    right: auto;
-    left: 0;
-}
-
-// TODO where is usage
-*[dir='rtl'] .r-select__clear {
-    right: auto;
-    left: 12px;
-}
-
-*[dir='rtl'] .r-select-loading-spinner {
-    right: auto;
-    left: 1px;
 }
 
 @keyframes spinning {
@@ -411,7 +370,7 @@ fieldset[disabled] .r-select {
 //    background: url('/static/icons/close-s.svg') center no-repeat var(--select-background-color);
 //}
 
-.r-select--fixed .r-select-content-wrapper {
+.r-select-fixed .r-select-content-wrapper {
     position: relative;
     top: 4px;
     max-height: 230px !important;
