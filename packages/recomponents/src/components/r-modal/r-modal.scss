@@ -77,6 +77,11 @@
     padding: var(--modal-padding);
 }
 
+.r-modal-content-inner {
+    border-bottom: none;
+    margin: -20px;
+}
+
 .r-modal-header h2 {
     margin: 0;
     text-transform: capitalize;
