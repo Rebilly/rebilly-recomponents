@@ -7,7 +7,7 @@
             <img :src="src" :alt="alt" :style="imgStyle" @load="onload" @error="onerror"/>
         </template>
         <slot name="loading">
-            <div v-show="loading" class="r-img-spinner"/>
+            <div v-show="loading" class="r-img-loading-spinner"/>
         </slot>
     </figure>
 </template>

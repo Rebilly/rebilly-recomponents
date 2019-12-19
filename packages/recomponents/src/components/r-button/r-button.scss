@@ -22,19 +22,19 @@
         text-decoration: none;
     }
 
-    &--size-small {
+    &-size-small {
         padding: var(--button-size-s);
     }
 
-    &--size-regular {
+    &-size-regular {
         padding: var(--button-size-m);
     }
 
-    &--size-large {
+    &-size-large {
         padding: var(--button-size-l);
     }
 
-    &--type-default {
+    &-type-default {
         background: var(--button-default-background);
         color: var(--button-default-color);
         box-shadow: var(--button-default-box-shadow);
@@ -72,7 +72,7 @@
         }
     }
 
-    &--type-primary {
+    &-type-primary {
         background: var(--button-primary-background);
         color: var(--button-primary-color);
         box-shadow: var(--button-primary-box-shadow);
@@ -110,7 +110,7 @@
         }
     }
 
-    &--type-danger {
+    &-type-danger {
         background: var(--button-danger-background);
         color: var(--button-danger-color);
         box-shadow: var(--button-danger-box-shadow);
@@ -148,7 +148,7 @@
         }
     }
 
-    &--type-link {
+    &-type-link {
         color: #0044D4;
         vertical-align: baseline;
         padding: 0;
@@ -170,7 +170,7 @@
         }
     }
 
-    &--fluid {
+    &-fluid {
         width: 100%;
     }
 }
@@ -212,7 +212,7 @@
     flex: 1 0;
 }
 
-.r-button-group .r-button.is-active {
+.r-button-group .r-button.r-is-active {
     background: #0044D4;
     background: linear-gradient(to bottom, #0044D4 0%, #2600d4 100%);
     color: #FFFFFF;
@@ -223,39 +223,39 @@
 * Icons
 */
 .r-button {
-    &--size-small.has-icon {
+    &-size-small.r-has-icon {
         padding: var(--button-icon-size-s);
     }
 
-    &--size-regular.has-icon {
+    &-size-regular.r-has-icon {
         padding: var(--button-icon-size-m);
     }
 
-    &--size-large.has-icon {
+    &-size-large.r-has-icon {
         padding: var(--button-icon-size-l);
     }
 
-    &.has-icon-left .r-icon {
+    &.r-has-icon-left .r-icon {
         margin-right: var(--button-icon-left-margin);
     }
 
-    &.has-icon-right .r-icon {
+    &.r-has-icon-right .r-icon {
         margin-left: var(--button-icon-right-margin);
     }
 
-    &.has-icon.r-button-fitted {
+    &.r-has-icon.r-button-fitted {
         padding: 0;
     }
 
-    &--type-default .r-icon {
+    &-type-default .r-icon {
         fill: var(--button-icon-default-color);
     }
 
-    &--type-primary .r-icon {
+    &-type-primary .r-icon {
         fill: var(--button-icon-primary-color);
     }
 
-    &--type-danger .r-icon {
+    &-type-danger .r-icon {
         fill: var(--button-icon-danger-color);
     }
 }

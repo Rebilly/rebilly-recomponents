@@ -19,7 +19,7 @@
     justify-content: center;
 }
 
-.r-modal-overlay.is-scrollable {
+.r-modal-overlay.r-is-scrollable {
     justify-content: flex-start;
 }
 
@@ -68,7 +68,7 @@
     background: var(--modal-content-background-color);
 }
 
-.r-modal-content.is-scrollable {
+.r-modal-content.r-is-scrollable {
     max-height: var(--modal-content-scrollable-max-height);
     overflow-y: scroll;
 }
@@ -86,10 +86,11 @@
     fill: var(--modal-icon-color);
 }
 
-.r-modal-loader.loader.is-loading {
+.r-modal-loader.loader.r-is-loading {
     opacity: .6;
 }
 
+// TODO where usage wrapper
 .r-modal-loader .wrapper {
     background-color: var(--modal-loader-background-color);
 }

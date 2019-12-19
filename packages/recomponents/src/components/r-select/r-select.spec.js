@@ -77,8 +77,8 @@ describe('r-select.vue', () => {
             },
         });
         expect(wrapper.vm.internalValue).toEqual(['1', '2']);
-        expect(wrapper.findAll('.r-select__tag').at(0)).not.toEqual(undefined);
-        expect(wrapper.findAll('.r-select__tag').at(1)).not.toEqual(undefined);
+        expect(wrapper.findAll('.r-select-tag').at(0)).not.toEqual(undefined);
+        expect(wrapper.findAll('.r-select-tag').at(1)).not.toEqual(undefined);
     });
 
     it('should preselect passed simple value', () => {
@@ -89,7 +89,7 @@ describe('r-select.vue', () => {
             },
         });
         expect(wrapper.vm.internalValue).toEqual(['1']);
-        expect(wrapper.find('.r-select__single').text()).toContainEqual('1');
+        expect(wrapper.find('.r-select-single').text()).toContainEqual('1');
     });
 
     it('should do nothing when DISABLED == true', () => {

@@ -1,20 +1,20 @@
 /**
 * Flex Helpers
 */
-.no-flex {
+.r-no-flex {
     width: auto;
     flex: 0 0 auto !important;
 }
 
-.stack-xs {
+.r-stack-xs {
     margin: 0 0 4px 0 !important;
 }
 
-.align-items-center {
+.r-align-items-center {
     align-items: center !important;
 }
 
-.inline-s {
+.r-inline-s {
     margin: 0 8px 0 0 !important;
     margin: 0 0.8rem 0 0 !important;
 }
@@ -22,13 +22,13 @@
 /**
 * Text color
 */
-.text-muted {
+.r-text-muted {
     color: var(--mono-color-800) !important;
 }
 
 /**
 * Cursor Type
 */
-.cursor-pointer {
+.r-cursor-pointer {
     cursor: pointer !important;
 }

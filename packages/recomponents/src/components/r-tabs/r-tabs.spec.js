@@ -56,8 +56,8 @@ describe('r-tabs.vue', () => {
         });
 
         const links = wrapper.findAll('.r-tab-link');
-        expect(links.at(0).classes().includes('is-active')).toBeFalsy();
-        expect(links.at(1).classes().includes('is-active')).toBeTruthy();
+        expect(links.at(0).classes().includes('r-is-active')).toBeFalsy();
+        expect(links.at(1).classes().includes('r-is-active')).toBeTruthy();
     });
 
     it('should switch tab on click', async () => {
@@ -83,9 +83,9 @@ describe('r-tabs.vue', () => {
         });
 
         const links = wrapper.findAll('.r-tab-link');
-        expect(links.at(0).classes().includes('is-active')).toBeTruthy();
+        expect(links.at(0).classes().includes('r-is-active')).toBeTruthy();
         links.at(1).trigger('click');
-        expect(links.at(0).classes().includes('is-active')).toBeFalsy();
+        expect(links.at(0).classes().includes('r-is-active')).toBeFalsy();
     });
 
     it('should open current route tab', async () => {

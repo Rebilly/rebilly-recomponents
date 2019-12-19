@@ -11,7 +11,7 @@
     transition: opacity 0.3s ease-out;
     border-radius: var(--loader-border-radius);
 
-    .r-loader-wrapper {
+    .r-loader-icon-wrapper {
         display: block;
         position: relative;
         width: 36px;
@@ -55,8 +55,8 @@
         }
     }
 
-    &.is-loading {
-        .r-loader-wrapper {
+    &.r-is-loading {
+        .r-loader-icon-wrapper {
             .r-mr-re {
                 height: 0px;
                 animation: r-mr-re-animation 1s infinite;
@@ -74,7 +74,7 @@
         }
     }
 
-    &.is-fullscreen {
+    &.r-is-fullscreen {
         position: fixed;
         opacity: 1;
         z-index: var(--loader-z-index-fullscreen);
