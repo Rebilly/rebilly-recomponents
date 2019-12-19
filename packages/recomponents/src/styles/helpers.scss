@@ -1,6 +1,6 @@
 /**
-* Flex Helpers
-*/
+ * Flex Helpers
+ */
 .r-no-flex {
     width: auto;
     flex: 0 0 auto !important;
@@ -20,15 +20,22 @@
 }
 
 /**
-* Text color
-*/
+ * Text color
+ */
 .r-text-muted {
     color: var(--mono-color-800) !important;
 }
 
 /**
-* Cursor Type
-*/
+ * Cursor Type
+ */
 .r-cursor-pointer {
     cursor: pointer !important;
+}
+
+/**
+ * Prevent scroll
+ */
+.r-no-scroll {
+    overflow: hidden !important;
 }
