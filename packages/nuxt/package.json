@@ -24,7 +24,7 @@
   "dependencies": {
     "@nuxtjs/axios": "^5.3.6",
     "@nuxtjs/pwa": "^3.0.0-0",
-    "@rebilly/recomponents": "^1.0.2",
+    "@rebilly/recomponents": "^1.14.1",
     "nuxt": "^2.0.0"
   },
   "devDependencies": {
