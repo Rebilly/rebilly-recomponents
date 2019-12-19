@@ -2,12 +2,12 @@
 
 exports[`r-img.vue renders props.msg when passed 1`] = `
 <figure role="img" class="r-component r-img"><img src="https://www.rebilly.com/wp-content/uploads/2019/01/new_features@2x-319x150.png" alt="Image">
-  <div class="r-img-spinner"></div>
+  <div class="r-img-loading-spinner"></div>
 </figure>
 `;
 
 exports[`r-img.vue should render via SSR and match snapshot 1`] = `
 <figure role="img" class="r-component r-img"><img src="https://www.rebilly.com/wp-content/uploads/2019/01/new_features@2x-319x150.png" alt="Image">
-  <div class="r-img-spinner"></div>
+  <div class="r-img-loading-spinner"></div>
 </figure>
 `;
