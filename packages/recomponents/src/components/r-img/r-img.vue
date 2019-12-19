@@ -1,10 +1,10 @@
 <template>
     <figure class="r-component r-img" :style="wrapperStyle" role="img">
         <template v-if="lazy">
-            <img v-lazy :data-url="src" :alt="alt" :style="imgStyle" @load="onload" @error="onerror"/>
+            <img class="r-img-image" v-lazy :data-url="src" :alt="alt" :style="imgStyle" @load="onload" @error="onerror"/>
         </template>
         <template v-else>
-            <img :src="src" :alt="alt" :style="imgStyle" @load="onload" @error="onerror"/>
+            <img class="r-img-image" :src="src" :alt="alt" :style="imgStyle" @load="onload" @error="onerror"/>
         </template>
         <slot name="loading">
             <div v-show="loading" class="r-img-loading-spinner"/>

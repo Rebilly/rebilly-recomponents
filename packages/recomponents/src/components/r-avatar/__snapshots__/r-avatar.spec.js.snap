@@ -3,7 +3,7 @@
 exports[`r-avatar.vue should render Wrapper and match snapshot 1`] = `
 <div class="r-avatar r-avatar-description">
   <div class="r-avatar-main fs-block">
-    <div class="r-avatar-initials r-avatar-initials-accent"><span>RB</span></div>
+    <div class="r-avatar-initials r-avatar-initials-accent"><span class="r-avatar-initials-value">RB</span></div>
     <!---->
     <!---->
   </div>
@@ -16,7 +16,7 @@ exports[`r-avatar.vue should render icon 1`] = `
 <div class="r-avatar r-avatar-description">
   <div class="r-avatar-main fs-block">
     <!---->
-    <div class="r-avatar-icon"><svg class="r-icon r-icon-20">
+    <div class="r-avatar-icon-wrapper"><svg class="r-icon r-icon-20 r-avatar-icon">
         <use xlink:href="#icon-heart" xmlns:xlink="http://www.w3.org/1999/xlink"></use>
       </svg></div>
     <!---->
@@ -32,8 +32,8 @@ exports[`r-avatar.vue should render image 1`] = `
   <div class="r-avatar-main fs-block">
     <!---->
     <!---->
-    <div class="r-avatar-image">
-      <figure role="img" class="r-component r-img"><img src="https://www.meme-arsenal.com/memes/86b1de6ff6981be012d40bf26c6992ab.jpg" alt="Image">
+    <div class="r-avatar-image-wrapper">
+      <figure role="img" class="r-component r-img r-avatar-image"><img src="https://www.meme-arsenal.com/memes/86b1de6ff6981be012d40bf26c6992ab.jpg" alt="Image" class="r-img-image">
         <div class="r-img-loading-spinner"></div>
       </figure>
     </div>
@@ -47,7 +47,7 @@ exports[`r-avatar.vue should render image 1`] = `
 exports[`r-avatar.vue should render via SSR and match snapshot 1`] = `
 <div class="r-avatar r-avatar-description">
   <div class="r-avatar-main">
-    <div class="r-avatar-initials r-avatar-initials-yellow"><span>VP</span></div>
+    <div class="r-avatar-initials r-avatar-initials-yellow"><span class="r-avatar-initials-value">VP</span></div>
     <!---->
     <!---->
   </div>
@@ -59,7 +59,7 @@ exports[`r-avatar.vue should render via SSR and match snapshot 1`] = `
 exports[`r-avatar.vue should trigger validation warning 1`] = `
 <div class="r-avatar r-avatar-description">
   <div class="r-avatar-main fs-block">
-    <div class="r-avatar-initials r-avatar-initials-green"><span>Rebilly</span></div>
+    <div class="r-avatar-initials r-avatar-initials-green"><span class="r-avatar-initials-value">Rebilly</span></div>
     <!---->
     <!---->
   </div>
