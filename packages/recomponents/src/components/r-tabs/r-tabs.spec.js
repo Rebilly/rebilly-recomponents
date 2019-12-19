@@ -55,7 +55,7 @@ describe('r-tabs.vue', () => {
             },
         });
 
-        const links = wrapper.findAll('.r-tab-link');
+        const links = wrapper.findAll('.r-tab-item-link');
         expect(links.at(0).classes().includes('r-is-active')).toBeFalsy();
         expect(links.at(1).classes().includes('r-is-active')).toBeTruthy();
     });
@@ -82,7 +82,7 @@ describe('r-tabs.vue', () => {
             },
         });
 
-        const links = wrapper.findAll('.r-tab-link');
+        const links = wrapper.findAll('.r-tab-item-link');
         expect(links.at(0).classes().includes('r-is-active')).toBeTruthy();
         links.at(1).trigger('click');
         expect(links.at(0).classes().includes('r-is-active')).toBeFalsy();
@@ -159,7 +159,7 @@ describe('r-tabs.vue', () => {
                 },
             });
 
-            const tab = wrapper.findAll('.r-tab-link').at(0);
+            const tab = wrapper.findAll('.r-tab-item-link').at(0);
             const tabPanel = wrapper.find('.r-tab-content > div');
 
             expect(tab.attributes('id')).toBe(tabA11yId);
@@ -184,7 +184,7 @@ describe('r-tabs.vue', () => {
                 },
             });
 
-            const tab = wrapper.findAll('.r-tab-link').at(0);
+            const tab = wrapper.findAll('.r-tab-item-link').at(0);
             const tabPanel = wrapper.find('.r-tab-content > div');
 
             const generatedShortId = tab.attributes('id').replace('tab-', '');
