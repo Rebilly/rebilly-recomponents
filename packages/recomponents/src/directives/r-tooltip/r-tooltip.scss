@@ -4,7 +4,7 @@
 
 /* Base styles for the element that has a tooltip */
 
-.tooltip {
+.r-tooltip {
     padding: var(--tooltip-padding);
     background-color: var(--tooltip-background-color);
     color: var(--tooltip-color);
@@ -22,7 +22,7 @@
     opacity: 0;
 }
 
-.tooltip-arrow {
+.r-tooltip-arrow {
     top: 100%;
     left: 50%;
     border: solid transparent;
@@ -37,26 +37,26 @@
     margin-top: -4px;
 }
 
-.tooltip.tooltip-out-right .tooltip-arrow {
+.r-tooltip.r-tooltip-out-right .r-tooltip-arrow {
     left: 80%;
 }
 
-.tooltip.tooltip-out-left .tooltip-arrow {
+.r-tooltip.r-tooltip-out-left .r-tooltip-arrow {
     left: 20%;
 }
 
-.tooltip.tooltip-out-top .tooltip-arrow,
-.tooltip.tooltip-bottom .tooltip-arrow {
+.r-tooltip.r-tooltip-out-top .r-tooltip-arrow,
+.r-tooltip.r-tooltip-bottom .r-tooltip-arrow {
     top: 0;
 }
 
-.tooltip.tooltip-left .tooltip-arrow {
+.r-tooltip.r-tooltip-left .r-tooltip-arrow {
     left: 100%;
     margin-left: -4px;
     top: 50%;
 }
 
-.tooltip.tooltip-right .tooltip-arrow {
+.r-tooltip.r-tooltip-right .r-tooltip-arrow {
     left: 0;
     margin-left: -4px;
     top: 50%;
