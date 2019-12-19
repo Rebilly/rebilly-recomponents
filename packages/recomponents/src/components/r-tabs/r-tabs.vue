@@ -75,10 +75,29 @@
             };
         },
         methods: {
-            selectTab({name, value}, index = null) {
-                this.tabs.forEach((tab, i) => {
-                    tab.isActive = (index === i);
-                });
+            selectTab({name, value, to}, index = null) {
+                /**
+                 * Trigger router update for tabs with route
+                 */
+                if (to && this.$router.resolve(to).href !== this.$route.fullPath) {
+                    this.$router.push(to);
+                    return;
+                }
+                if (index) {
+                    /**
+                     * Apply change by index for regular tabs
+                     */
+                    this.tabs.forEach((tab, i) => {
+                        tab.isActive = (index === i);
+                    });
+                } else {
+                    /**
+                     * Apply change by name for route tabs
+                     */
+                    this.tabs.forEach((tab) => {
+                        tab.isActive = tab.name === name;
+                    });
+                }
                 if (index !== null) {
                     this.$emit('tab-selected', {name, value, index});
                 }
