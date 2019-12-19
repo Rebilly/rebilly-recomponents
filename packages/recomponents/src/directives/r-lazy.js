@@ -5,11 +5,8 @@ export default {
     inserted: (el) => {
         const loadImage = (observer) => {
             if (el) {
-                el.style.opacity = 0;
-
                 el.addEventListener('load', () => {
-                    el.classList.add('loaded');
-                    el.style.opacity = 1;
+                    el.classList.add('r-is-loaded');
                     observer.unobserve(el);
                 });
 

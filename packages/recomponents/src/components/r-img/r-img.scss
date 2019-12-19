@@ -1,3 +1,62 @@
-.r-img img.loaded {
+.r-img {
+    margin-inline-start: 0;
+    margin-inline-end: 0;
+    position: relative;
+}
+
+.r-img img.r-is-loaded {
     transition: opacity .25s ease-in-out;
+    height: auto;
+    max-width: 100%;
+    width: 100%;
+}
+
+.r-img[style*="--img-aspect-ratio"] > img {
+    max-width: 100%;
+}
+
+.r-img-loading-spinner {
+    display: block;
+}
+
+.r-img-loading-spinner:before,
+.r-img-loading-spinner:after {
+    position: absolute;
+    content: '';
+    top: 50%;
+    left: 50%;
+    margin: -8px 0 0 -8px;
+    width: 16px;
+    height: 16px;
+    border-radius: 100%;
+    border-style: solid;
+    border-width: 2px;
+    border-color: var(--image-spinner-color) transparent transparent;
+}
+
+.r-img-loading-spinner:before {
+    animation: spinning 2.4s cubic-bezier(0.41, 0.26, 0.2, 0.62);
+    animation-iteration-count: infinite;
+}
+
+.r-img-loading-spinner:after {
+    animation: spinning 2.4s cubic-bezier(0.51, 0.09, 0.21, 0.8);
+    animation-iteration-count: infinite;
+}
+
+@supports (--custom:property) {
+    .r-img[style*="--img-aspect-ratio"] {
+        position: relative;
+    }
+    .r-img[style*="--img-aspect-ratio"]::before {
+        content: "";
+        display: block;
+        padding-bottom: var(--img-aspect-ratio);
+    }
+    .r-img[style*="--img-aspect-ratio"] > :first-child {
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+    }
 }

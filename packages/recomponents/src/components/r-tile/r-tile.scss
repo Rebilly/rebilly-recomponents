@@ -5,7 +5,7 @@
     border-radius: var(--tile-border-radius);
 }
 
-.r-tile__title {
+.r-tile-title {
     display: flex;
     padding: var(--tile-title-padding);
 
@@ -23,19 +23,20 @@
     }
 }
 
-.r-tile__subtitle {
+// TODO where is usage
+.r-tile-subtitle {
     display: flex;
     padding-bottom: var(--tile-subtitle-padding-bottom);
 }
 
-.r-tile__title > *,
-.r-tile__subtitle > * {
+.r-tile-title > *,
+.r-tile-subtitle > * {
     margin: 0;
     flex: 1 0 50%;
     min-width: 0;
 }
 
-.r-tile__content {
+.r-tile-content {
     & p, & ul, & ol, & pre, & table, & blockquote, & h1, & h2, & h3, & h4, & h5, & h6 {
         margin: 0;
 
@@ -50,19 +51,19 @@
     }
 }
 
-.r-tile__content--primary {
+.r-tile-content-is-primary {
     padding: var(--tile-content-padding);
     border-bottom: var(--tile-content-divider);
     background: var(--tile-content-background);
 }
 
-.r-tile__content--secondary {
+.r-tile-content-is-secondary {
     padding: var(--tile-content-padding);
     border-bottom: var(--tile-content-divider);
     background: var(--tile-content-secondary-background);
 }
 
-.r-tile__actions {
+.r-tile-actions {
     border-top: var(--tile-content-divider);
     padding: var(--tile-actions-padding);
     text-align: right;

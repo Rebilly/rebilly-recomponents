@@ -1,8 +1,18 @@
 <template>
     <transition name="r-modal" @appear="appear" @enter="enter" @leave="leave">
-        <div @mousedown="close" tabindex="0" ref="container" @keyup.esc="close" @keyup.enter="submit" role="dialog" :aria-label="title">
-            <div v-if="$slots.content || $slots.contents" class="r-modal-overlay" :class="{'is-scrollable': scroll}">
-                <div class="r-modal-control" :class="styles" @mousedown="$event.stopPropagation()">
+        <div @mousedown="close"
+             tabindex="0"
+             ref="container"
+             @keyup.esc="close"
+             @keyup.enter="submit"
+             role="dialog"
+             :aria-label="title">
+            <div v-if="$slots.content || $slots.contents"
+                 class="r-modal-overlay"
+                 :class="{'r-is-scrollable': scroll}">
+                <div class="r-modal-control"
+                     :class="classes"
+                     @mousedown="$event.stopPropagation()">
                     <div v-if="title" class="r-modal-header">
                         <h2>{{title}}</h2>
                         <r-button type="link" class="r-modal-btn-close" @click="$emit('close')" aria-label="close">
@@ -10,7 +20,7 @@
                         </r-button>
                     </div>
                     <slot name="contents">
-                        <div class="r-modal-content" :class="{'is-scrollable': scrollContent}">
+                        <div class="r-modal-content" :class="{'r-is-scrollable': scrollContent}">
                             <slot name="content"/>
                         </div>
                     </slot>
@@ -20,7 +30,9 @@
                         </div>
                         <div class="r-modal-actions--right equal-widths-elements-mobile">
                             <slot name="right-actions">
-                                <r-button :class="{'inline-s': $slots['actions']}" @click="close" aria-label="close">
+                                <r-button
+                                        :class="{'r-inline-s': $slots['actions']}"
+                                        @click="close" aria-label="close">
                                     {{cancelLabel}}
                                 </r-button>
                                 <slot name="actions"/>
@@ -30,7 +42,7 @@
                 </div>
             </div>
             <div v-else class="r-modal-overlay">
-                <r-loader class="r-modal-loader is-loading" :show="true" :loading="true"/>
+                <r-loader class="r-modal-loader r-is-loading" :show="true" :loading="true"/>
             </div>
         </div>
     </transition>
@@ -42,7 +54,7 @@
     import RButton from '../r-button/r-button.vue';
     import RLoader from '../r-loader/r-loader.vue';
 
-    // TODO: class prefix equal-widths-elements-mobile, is-loading
+    // TODO: class prefix equal-widths-elements-mobile, r-is-loading
     export default {
         name: 'r-modal',
         components: {
@@ -89,7 +101,7 @@
             },
         },
         computed: {
-            styles() {
+            classes() {
                 const style = {};
                 if (this.size) {
                     let key;
@@ -124,7 +136,8 @@
                 const elContainer = this.$refs.container;
                 const currentElFocus = document.activeElement;
 
-                document.body.classList.add('no-scroll');
+                // TODO styles no-scroll
+                document.body.classList.add('r-no-scroll');
 
                 if (elContainer !== currentElFocus
                     && !elContainer.contains(currentElFocus)) {
@@ -142,7 +155,8 @@
                 this.$emit('appear');
             },
             leave() {
-                document.body.classList.remove('no-scroll');
+                // TODO styles no-scroll
+                document.body.classList.remove('r-no-scroll');
                 this.$emit('leave');
             },
         },

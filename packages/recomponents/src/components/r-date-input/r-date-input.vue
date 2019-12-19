@@ -1,7 +1,7 @@
 <template>
-    <div :class="{'no-flex': noFlex}">
+    <div :class="{'r-no-flex': noFlex}">
         <template v-if="type === 'date'">
-            <div class="r-field" :class="{'is-error': isInvalid}">
+            <div class="r-field" :class="{'r-is-error': isInvalid}">
                 <label v-if="label" class="r-field-label">{{label}}</label>
                 <r-calendar-manager
                     class="r-date-input"
@@ -15,9 +15,9 @@
             </div>
         </template>
         <template v-if="type === 'datetime'">
-            <p v-if="label" class="stack-xs">{{label}}</p>
-            <div class="r-grid-fitted grid-unstackable align-items-center" :class="{'is-error': isInvalid}">
-                <div class="r-grid-item inline-s">
+            <p v-if="label" class="r-stack-xs">{{label}}</p>
+            <div class="r-grid-fitted r-grid-unstackable r-align-items-center" :class="{'r-is-error': isInvalid}">
+                <div class="r-grid-item r-inline-s">
                     <r-calendar-manager
                         class="r-date-input"
                         type="calendar"
@@ -27,25 +27,25 @@
                         :available-dates="availableDates"
                     />
                 </div>
-                <div class="r-grid-item no-flex">
+                <div class="r-grid-item r-no-flex">
                     <r-select
                         :options="timeOptions.hours"
                         :value="selectedTime.hours"
                         placeholder=""
                         :disabled="disabled"
                         @input="updateHours"
-                        class="no-flex r-date-time-input"/>
+                        class="r-no-flex r-date-time-input"/>
                 </div>
-                <div class="r-grid-item no-flex">
+                <div class="r-grid-item r-no-flex">
                     <span class="r-date-time-divider">:</span>
                 </div>
-                <div class="r-grid-item no-flex">
+                <div class="r-grid-item r-no-flex">
                     <r-select
                         :options="timeOptions.minutes"
                         placeholder=""
                         :disabled="disabled"
                         :value="selectedTime.minutes"
-                        class="no-flex r-date-time-input"
+                        class="r-no-flex r-date-time-input"
                         @input="updateMinutes"
                     />
                 </div>
@@ -53,9 +53,9 @@
             <span class="r-field-caption" v-if="helpText">{{helpText}}</span>
         </template>
         <template v-if="type === 'time'">
-            <p v-if="label" class="stack-xs">{{label}}</p>
-            <div class="r-grid-fitted grid-unstackable align-items-center">
-                <div class="r-grid-item no-flex">
+            <p v-if="label" class="r-stack-xs">{{label}}</p>
+            <div class="r-grid-fitted grid-unstackable r-align-items-center">
+                <div class="r-grid-item r-no-flex">
                     <slot
                         :options="timeOptions.hours"
                         :value="selectedTime.hours"
@@ -68,13 +68,13 @@
                             placeholder=""
                             :disabled="disabled"
                             @input="updateHours"
-                            class="no-flex r-date-time-input"/>
+                            class="r-no-flex r-date-time-input"/>
                     </slot>
                 </div>
-                <div class="r-grid-item no-flex">
+                <div class="r-grid-item r-no-flex">
                     <span class="r-date-time-divider">:</span>
                 </div>
-                <div class="r-grid-item no-flex">
+                <div class="r-grid-item r-no-flex">
                     <slot
                         :options="timeOptions.minutes"
                         :value="selectedTime.minutes"
@@ -86,7 +86,7 @@
                             placeholder=""
                             :disabled="disabled"
                             :value="selectedTime.minutes"
-                            class="no-flex r-date-time-input"
+                            class="r-no-flex r-date-time-input"
                             @input="updateMinutes"/>
                     </slot>
                 </div>
@@ -94,10 +94,7 @@
             <span class="r-field-caption" v-if="helpText">{{helpText}}</span>
         </template>
         <template v-if="type === 'datepicker'">
-            <v-date-picker
-                v-model="value"
-                is-inline
-            />
+            <v-date-picker v-model="value" is-inline/>
         </template>
     </div>
 </template>
@@ -109,7 +106,7 @@
     import rIcon from '../r-icon/r-icon.vue';
     import rSelect from '../r-select/r-select.vue';
 
-    // TODO: prefixes simple classes `stack-xs, is-error, etc`
+    // TODO: prefixes simple classes `r-stack-xs, r-is-error, etc`
     // TODO: detailed description of props
     export default {
         name: 'RDateInput',

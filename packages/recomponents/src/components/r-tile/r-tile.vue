@@ -1,21 +1,21 @@
 <template>
     <div class="r-component r-tile">
-        <div class="r-tile__title" v-if="$slots.title">
+        <div class="r-tile-title" v-if="$slots.title">
             <slot name="title"/>
-            <div class="r-tile__title--actions no-flex" v-if="$slots.titleActions">
+            <div class="r-tile-title--actions r-no-flex" v-if="$slots.titleActions">
                 <slot name="titleActions"/>
             </div>
         </div>
-        <div class="r-tile__content" v-if="$slots.contents">
+        <div class="r-tile-content" v-if="$slots.contents">
             <slot name="contents"/>
         </div>
-        <div class="r-tile__content r-tile__content--primary" v-if="$slots.primary">
+        <div class="r-tile-content r-tile-content-is-primary" v-if="$slots.primary">
             <slot name="primary"/>
         </div>
-        <div class="r-tile__content r-tile__content--secondary" v-if="$slots.secondary">
+        <div class="r-tile-content r-tile-content-is-secondary" v-if="$slots.secondary">
             <slot name="secondary"/>
         </div>
-        <div class="r-tile__actions" v-if="$slots.actions">
+        <div class="r-tile-actions" v-if="$slots.actions">
             <slot name="actions"/>
         </div>
     </div>

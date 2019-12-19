@@ -21,8 +21,8 @@ describe('r-tooltip.js', () => {
 
         expect(document.body.querySelector('.tooltip')).toBe(null);
         wrapper.find('button').trigger('mouseenter');
-        expect(document.body.querySelector('.tooltip').outerHTML)
-            .toBe('<div class="tooltip tooltip-out-top" style="left: 0px; top: 8px; opacity: 1;"><div class="tooltip-arrow" style="left: 0px;"></div></div>');
+        expect(document.body.querySelector('.r-tooltip').outerHTML)
+            .toBe('<div class="r-tooltip r-tooltip-out-top" style="left: 0px; top: 8px; opacity: 1;"><div class="r-tooltip-arrow" style="left: 0px;"></div></div>');
         wrapper.destroy();
     });
 });

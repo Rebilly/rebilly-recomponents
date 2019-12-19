@@ -5,7 +5,7 @@ import Recomponents from '../src/index';
 import { addDecorator, addParameters, configure } from '@storybook/vue';
 import { withA11y } from '@storybook/addon-a11y';
 import { withKnobs } from '@storybook/addon-knobs';
-import { withContexts } from '@storybook/addon-contexts/vue';
+// import { withContexts } from '@storybook/addon-contexts/vue';
 import { withCssResources } from '@storybook/addon-cssresources';
 import theme from './theme';
 
@@ -36,8 +36,7 @@ const topLevelContexts = [
 ];
 
 import '../public/story.css';
-import '../src/styles/typography.scss';
-import '../src/styles/theme.scss';
+import '../src/styles/recomm.scss';
 
 const req = require.context('../src/', true, /\.story\.js$/);
 
@@ -47,7 +46,7 @@ function loadStories() {
 
 addDecorator(withA11y)
 addDecorator(withKnobs);
-addDecorator(withContexts(topLevelContexts));
+// addDecorator(withContexts(topLevelContexts));
 addDecorator(withCssResources)
 addParameters({
     options: {

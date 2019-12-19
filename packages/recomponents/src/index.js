@@ -1,8 +1,6 @@
 import './polyfill';
 
-import './styles/typography.scss';
 import './styles/helpers.scss';
-import './styles/theme.scss';
 
 import kebabCase from './common/helpers/kebab-case';
 

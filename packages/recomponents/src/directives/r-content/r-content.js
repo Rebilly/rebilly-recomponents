@@ -4,7 +4,7 @@
 export default {
     inserted: (el, {modifiers}) => {
         const parentClass = el.parentElement.className;
-        const particle = modifiers.secondary ? '--secondary' : '--primary';
+        const particle = modifiers.secondary ? '-is-secondary' : '-is-primary';
         el.classList.add(`${parentClass}${particle}`);
     },
     unbind: (el) => {

@@ -1,14 +1,17 @@
 <template>
     <div class="r-avatar r-avatar-description">
         <div class="r-avatar-main" v-fs-block>
-            <div class="r-avatar-initials" :class="['r-avatar-initials-' + initialsColor]" v-if="initials">
-                <span>{{initials}}</span>
+            <div v-if="initials"
+                 class="r-avatar-initials"
+                 :class="['r-avatar-initials-' + initialsColor]"
+            >
+                <span class="r-avatar-initials-value">{{initials}}</span>
             </div>
-            <div class="r-avatar-icon" v-if="icon">
-                <r-icon :icon="icon"/>
+            <div class="r-avatar-icon-wrapper" v-if="icon">
+                <r-icon :icon="icon" class="r-avatar-icon"/>
             </div>
-            <div class="r-avatar-image" v-if="image">
-                <r-img :src="image"/>
+            <div class="r-avatar-image-wrapper" v-if="image">
+                <r-img :src="image" class="r-avatar-image"/>
             </div>
         </div>
         <div class="r-avatar-info">

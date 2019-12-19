@@ -3,8 +3,8 @@
 exports[`r-loader.vue should not render if show property is false 1`] = ``;
 
 exports[`r-loader.vue should render via SSR and match snapshot 1`] = `
-<div role="alert" aria-busy="true" class="r-component r-loader is-loading is-fullscreen">
-  <div class="r-loader-wrapper">
+<div role="alert" aria-busy="true" class="r-component r-loader r-is-loading r-is-fullscreen">
+  <div class="r-loader-icon-wrapper">
     <div class="r-mr-re"></div>
     <div class="r-mr-bil"></div>
     <div class="r-mr-ly"></div>
