@@ -1,6 +1,10 @@
 <template>
-    <div class="r-component r-loader" role="alert" aria-busy="true" v-if="show" :class="classes">
-        <div class="r-loader-wrapper">
+    <div v-if="show"
+         class="r-component r-loader"
+         role="alert"
+         aria-busy="true"
+         :class="classes">
+        <div class="r-loader-icon-wrapper">
             <div class="r-mr-re"></div>
             <div class="r-mr-bil"></div>
             <div class="r-mr-ly"></div>
@@ -39,8 +43,8 @@
         computed: {
             classes() {
                 return {
-                    'is-loading': !!this.loading,
-                    'is-fullscreen': !!this.fullscreen,
+                    'r-is-loading': !!this.loading,
+                    'r-is-fullscreen': !!this.fullscreen,
                 };
             },
         },

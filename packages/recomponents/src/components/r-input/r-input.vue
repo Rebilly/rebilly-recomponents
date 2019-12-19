@@ -1,65 +1,10 @@
 <template>
-    <div class="r-field" :class="{'is-error': isInvalid}">
+    <div class="r-field" :class="{'r-is-error': isInvalid}">
         <label v-if="label" class="r-field-label">{{label}}</label>
         <template v-if="!isGroupedInput">
             <input
-                ref="input"
-                v-if="!multiline"
-                class="r-field-input"
-                v-fs-block
-                :value="value"
-                @input="update"
-                :placeholder="placeholder"
-                :disabled="disabled"
-                :type="type"
-                @keyup.enter="keySubmit"
-                @keyup="keyPress"
-                @keydown="keyDown"
-                @focus="focus"
-                @blur="blur"
-                @click="click"
-                :name="name"
-                :maxlength="maxLength"
-                :autocomplete="autocompleteFlag"/>
-            <textarea
-                ref="textarea"
-                v-else-if="multiline && submitOnEnter"
-                class="r-field-input"
-                v-fs-block
-                :value="value"
-                @input="update"
-                @keydown.enter.exact.prevent="keySubmit"
-                @keyup="keyPress"
-                @keydown="keyDown"
-                :maxlength="maxLength"
-                :placeholder="placeholder"
-                :disabled="disabled"
-                :rows="rows"
-                :name="name">
-            </textarea>
-            <textarea
-                ref="textarea"
-                v-else="multiline && !submitOnEnter"
-                class="r-field-input"
-                v-fs-block
-                :value="value"
-                @input="update"
-                @keydown.enter="keySubmit"
-                @keyup="keyPress"
-                @keydown="keyDown"
-                :maxlength="maxLength"
-                :placeholder="placeholder"
-                :disabled="disabled"
-                :rows="rows"
-                :name="name">
-            </textarea>
-        </template>
-        <div class="r-field-group" v-if="isGroupedInput">
-            <div class="r-field-addon no-flex text-muted" v-if="leftLabel">{{leftLabel}}</div>
-            <div class="r-field-control" :class="fieldStyles">
-                <r-icon :icon="leftIcon" v-if="leftIcon" :class="{'cursor-pointer': leftIconClickPointer, 'is-spinning': leftIconSpinning}" @click.stop="$emit('left-icon-click')"></r-icon>
-                <input
                     ref="input"
+                    v-if="!multiline"
                     class="r-field-input"
                     v-fs-block
                     :value="value"
@@ -76,10 +21,73 @@
                     :name="name"
                     :maxlength="maxLength"
                     :autocomplete="autocompleteFlag"/>
-                <r-icon :icon="rightIcon" v-if="rightIcon" :class="{'cursor-pointer': rightIconClickPointer, 'is-spinning': rightIconSpinning}" @click.stop="$emit('right-icon-click')"></r-icon>
+            <textarea
+                    ref="textarea"
+                    v-else-if="multiline && submitOnEnter"
+                    class="r-field-input"
+                    v-fs-block
+                    :value="value"
+                    @input="update"
+                    @keydown.enter.exact.prevent="keySubmit"
+                    @keyup="keyPress"
+                    @keydown="keyDown"
+                    :maxlength="maxLength"
+                    :placeholder="placeholder"
+                    :disabled="disabled"
+                    :rows="rows"
+                    :name="name">
+            </textarea>
+            <textarea
+                    ref="textarea"
+                    v-else="multiline && !submitOnEnter"
+                    class="r-field-input"
+                    v-fs-block
+                    :value="value"
+                    @input="update"
+                    @keydown.enter="keySubmit"
+                    @keyup="keyPress"
+                    @keydown="keyDown"
+                    :maxlength="maxLength"
+                    :placeholder="placeholder"
+                    :disabled="disabled"
+                    :rows="rows"
+                    :name="name">
+            </textarea>
+        </template>
+        <div class="r-field-group" v-if="isGroupedInput">
+            <div class="r-field-addon r-no-flex r-text-muted" v-if="leftLabel">{{leftLabel}}</div>
+            <div class="r-field-control" :class="fieldStyles">
+                <r-icon
+                        v-if="leftIcon"
+                        :icon="leftIcon"
+                        :class="{'r-cursor-pointer': leftIconClickPointer, 'r-is-spinning': leftIconSpinning}"
+                        @click.stop="$emit('left-icon-click')"></r-icon>
+                <input
+                        ref="input"
+                        class="r-field-input"
+                        v-fs-block
+                        :value="value"
+                        @input="update"
+                        :placeholder="placeholder"
+                        :disabled="disabled"
+                        :type="type"
+                        @keyup.enter="keySubmit"
+                        @keyup="keyPress"
+                        @keydown="keyDown"
+                        @focus="focus"
+                        @blur="blur"
+                        @click="click"
+                        :name="name"
+                        :maxlength="maxLength"
+                        :autocomplete="autocompleteFlag"/>
+                <r-icon
+                        v-if="rightIcon"
+                        :icon="rightIcon"
+                        :class="{'r-cursor-pointer': rightIconClickPointer, 'r-is-spinning': rightIconSpinning}"
+                        @click.stop="$emit('right-icon-click')"></r-icon>
             </div>
             <slot name="right-button"/>
-            <div class="r-field-addon no-flex text-muted" v-if="rightLabel">{{rightLabel}}</div>
+            <div class="r-field-addon r-no-flex r-text-muted" v-if="rightLabel">{{rightLabel}}</div>
         </div>
         <span class="r-field-caption" v-if="helpText || maxLength">{{helpText}} <span v-if="maxLength">{{charactersLeft}}</span></span>
     </div>
@@ -90,7 +98,7 @@
     import rIcon from '../r-icon/r-icon.vue';
     import '../../directives/r-fs-block';
 
-    // TODO classes prefix is-error, no-flex, etc.
+    // TODO classes prefix r-is-error, r-no-flex, etc.
     export default {
         name: 'RInput',
         components: {rIcon},
@@ -292,10 +300,10 @@
             fieldStyles() {
                 const style = {};
                 if (this.leftIcon) {
-                    style['has-icon-left'] = true;
+                    style['r-has-icon-left'] = true;
                 }
                 if (this.rightIcon) {
-                    style['has-icon-right'] = true;
+                    style['r-has-icon-right'] = true;
                 }
                 return style;
             },

@@ -60,7 +60,7 @@ describe('r-checkbox.vue', () => {
                 disabled: true,
             },
         });
-        expect(wrapper.find('label').classes('is-disabled')).toBe(true);
+        expect(wrapper.find('label').classes('r-is-disabled')).toBe(true);
         expect(wrapper.find('input').attributes('disabled')).not.toBe(undefined);
     });
 

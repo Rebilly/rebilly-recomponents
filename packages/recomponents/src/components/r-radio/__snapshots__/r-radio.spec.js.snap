@@ -1,7 +1,7 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`r-radio.vue should render Wrapper and match snapshot 1`] = `
-<div role="radio" aria-checked="true" class="r-field"><label for="id1234" class="r-field-label r-field-label-toggle is-checked">
+<div role="radio" aria-checked="true" class="r-field"><label for="id1234" class="r-field-label r-field-label-toggle r-is-checked">
     Checkbox
   </label> <input type="radio" id="id1234" name="radio-group" class="r-field-radio" value="value"> <span class="r-field-radio-style"><r-icon-stub icon="radio-checkmark"></r-icon-stub></span>
   <!---->
@@ -9,7 +9,7 @@ exports[`r-radio.vue should render Wrapper and match snapshot 1`] = `
 `;
 
 exports[`r-radio.vue should render via SSR and match snapshot 1`] = `
-<div role="radio" aria-checked="true" class="r-field"><label for="id1234" class="r-field-label r-field-label-toggle is-checked">
+<div role="radio" aria-checked="true" class="r-field"><label for="id1234" class="r-field-label r-field-label-toggle r-is-checked">
     Checkbox
   </label> <input type="radio" id="id1234" name="radio-group" value="value" checked="checked" class="r-field-radio"> <span class="r-field-radio-style"><svg class="r-icon r-icon-20"><use xlink:href="#icon-radio-checkmark" xmlns:xlink="http://www.w3.org/1999/xlink"></use></svg></span>
   <!---->

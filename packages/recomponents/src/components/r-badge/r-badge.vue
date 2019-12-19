@@ -1,14 +1,13 @@
 <template>
     <span class="r-component r-badge" :class="classes">
         <slot>Badge</slot>
-        <r-icon
-            v-if="close"
-            aria-hidden="true"
-            class="r-icon-gray r-badge-icon"
-            @click="$emit('close')"
-            @keypress.enter.prevent="$emit('close')"
-            @mousedown.prevent="$emit('close')"
-            icon="close-s"/>
+        <r-icon v-if="close"
+                aria-hidden="true"
+                class="r-icon-gray r-badge-icon"
+                @click="$emit('close')"
+                @keypress.enter.prevent="$emit('close')"
+                @mousedown.prevent="$emit('close')"
+                icon="close-s"/>
     </span>
 </template>
 

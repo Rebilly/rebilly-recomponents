@@ -1,5 +1,8 @@
 <template>
-    <div class="r-popper" :class="{'r-popper-fluid': fluid}" v-click-outside="autoHidePopover" @keydown.esc="escapePopper">
+    <div class="r-popper"
+         :class="{'r-popper-fluid': fluid}"
+         v-click-outside="autoHidePopover"
+         @keydown.esc="escapePopper">
         <slot name="trigger" :popper="popper"/>
         <div class="r-popper-content-wrapper" ref="popper-content-ref">
             <transition :name="slideFrom" v-if="isPopperVisible">
@@ -186,10 +189,10 @@
                 if (this.contentEl && this.contentEl.hasChildNodes()) {
                     if (this.contentEl.firstChild.classList) {
                         if (visible) {
-                            this.contentEl.firstChild.classList.add('is-visible');
+                            this.contentEl.firstChild.classList.add('r-is-visible');
                             this.positionContent();
                         } else {
-                            this.contentEl.firstChild.classList.remove('is-visible');
+                            this.contentEl.firstChild.classList.remove('r-is-visible');
                         }
                     }
                 }

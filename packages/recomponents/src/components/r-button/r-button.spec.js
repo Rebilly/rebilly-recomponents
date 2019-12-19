@@ -33,14 +33,14 @@ describe('r-button.vue', () => {
         const wrapper = shallowMount(RButton, {
             propsData: {},
         });
-        expect(wrapper.classes('r-button--size-regular')).toBe(true);
+        expect(wrapper.classes('r-button-size-regular')).toBe(true);
     });
 
     it('renders default type by default', () => {
         const wrapper = shallowMount(RButton, {
             propsData: {},
         });
-        expect(wrapper.classes('r-button--type-default')).toBe(true);
+        expect(wrapper.classes('r-button-type-default')).toBe(true);
     });
 
     it('renders disabled button correctly', () => {
@@ -100,7 +100,7 @@ describe('r-button.vue', () => {
             },
         });
 
-        expect(wrapper.classes()).toContain('r-button--type-danger');
+        expect(wrapper.classes()).toContain('r-button-type-danger');
     });
 
     it('should render component with size, fluid or disabled prop', () => {
@@ -115,8 +115,8 @@ describe('r-button.vue', () => {
             },
         });
 
-        expect(wrapper.classes()).toContain('r-button--size-small');
-        expect(wrapper.classes()).toContain('r-button--fluid');
+        expect(wrapper.classes()).toContain('r-button-size-small');
+        expect(wrapper.classes()).toContain('r-button-fluid');
         expect(wrapper.attributes().disabled).not.toBe(undefined);
     });
 });

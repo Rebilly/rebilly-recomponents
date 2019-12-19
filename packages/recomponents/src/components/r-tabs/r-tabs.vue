@@ -7,9 +7,9 @@
                         role="tab"
                         :id="tab.tabId"
                         :aria-controls="tab.tabPanelId"
-                        class="r-tab-link"
+                        class="r-tab-item-link"
                         @click="selectTab(tab, index)"
-                        :class="{'is-active': tab.isActive}"
+                        :class="{'r-is-active': tab.isActive}"
                 >
                     {{tab.name}}
                 </button>
@@ -18,8 +18,8 @@
                         role="tab"
                         :id="tab.tabId"
                         :aria-controls="tab.tabPanelId"
-                        class="r-tab-link"
-                        :class="{'is-active': tab.isActive}"
+                        class="r-tab-item-link"
+                        :class="{'r-is-active': tab.isActive}"
                 >
                     {{tab.name}}
                 </button>
