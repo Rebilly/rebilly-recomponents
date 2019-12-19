@@ -4,8 +4,8 @@ exports[`r-grid.vue should render Wrapper and match snapshot 1`] = `
 <div class="tile grid">
   <div class="tile-content grid-body">
     <div class="table-control flex-center grid-repeater">
-      <div role="alert" aria-busy="true" class="r-component r-loader is-loading is-fullscreen">
-        <div class="r-loader-wrapper">
+      <div role="alert" aria-busy="true" class="r-component r-loader r-is-loading r-is-fullscreen">
+        <div class="r-loader-icon-wrapper">
           <div class="r-mr-re"></div>
           <div class="r-mr-bil"></div>
           <div class="r-mr-ly"></div>
@@ -20,8 +20,8 @@ exports[`r-grid.vue should render via SSR and match snapshot 1`] = `
 <div class="tile grid">
   <div class="tile-content grid-body">
     <div class="table-control flex-center grid-repeater">
-      <div role="alert" aria-busy="true" class="r-component r-loader is-loading is-fullscreen">
-        <div class="r-loader-wrapper">
+      <div role="alert" aria-busy="true" class="r-component r-loader r-is-loading r-is-fullscreen">
+        <div class="r-loader-icon-wrapper">
           <div class="r-mr-re"></div>
           <div class="r-mr-bil"></div>
           <div class="r-mr-ly"></div>
