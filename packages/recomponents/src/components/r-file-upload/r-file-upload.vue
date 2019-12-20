@@ -15,8 +15,17 @@
     export default {
         name: 'RFileUpload',
         props: {
+            /**
+             * Allow to submit multiple files
+             */
             multiple: Boolean,
+            /**
+             * Limit allowed file extensions
+             */
             accept: String,
+            /**
+             * Similar to native disabled property
+             */
             disabled: {
                 type: Boolean,
                 default: false,
@@ -24,49 +33,41 @@
         },
         data() {
             return {
-                isPickerOpen: false,
+                open: false,
             };
         },
         methods: {
-            resetFileValue() {
-                this.$refs.inputFile.value = '';
-            },
             /**
-             * openFileBrowser opens the picker file modal
-             * Important: This function is passed as slot props so child
-             * trigger component MUST called using scoped slots in order
-             * to open de modal.
+             * Open picker with files
+             * This function is passed as slot props so child called using scoped slots in order to work.
              */
             openFileBrowser() {
-                this.isPickerOpen = true;
+                this.open = true;
                 this.$refs.inputFile.click();
             },
             /**
-             * setFocus allows to determine if the file picker was close
-             * and emit 'close' and 'cancel' event if no file was selected.
-             * This is a workaround since 'cancel' and 'close' events for
-             * file picker are not explicit emitted.
-             * Important: This function is passed as slot props so child
-             * input components MUST called using scoped slots in order to work.
+             * Workaround since 'cancel' and 'close' events for file picker are not explicit emitted.
+             * This function is passed as slot props so child called using scoped slots in order to work.
              */
             setFocus() {
-                if (this.isPickerOpen) {
-                    this.isPickerOpen = false;
-                    // Wait for the input event (focus happens first)
-                    // and emit cancel if no file selected
-                    const inputFileUpdateDelay = 100; // ms;
-                    setTimeout(() => {
+                if (this.open) {
+                    this.open = false;
+                    /**
+                     * Wait for the input event and emit cancel if no file selected
+                     */
+                    this.$nextTick(() => {
                         if (!this.$refs.inputFile || !this.$refs.inputFile.files.length) {
-                            // The dialog was open and no file was selected
-                            // we assume cancel button was clicked.
+                            /**
+                             * The dialog was open and no file was selected
+                             */
                             this.$emit('cancel');
                             this.$emit('close');
                         }
-                    }, inputFileUpdateDelay);
+                    });
                 }
             },
             input($event) {
-                this.isPickerOpen = false;
+                this.open = false;
                 this.$emit('input', $event.target.files);
                 this.$emit('close');
             },
