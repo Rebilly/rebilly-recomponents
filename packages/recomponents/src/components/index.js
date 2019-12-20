@@ -18,6 +18,8 @@ import RTabs from './r-tabs/r-tabs.vue';
 import RSelect from './r-select/r-select.vue';
 import RTile from './r-tile/r-tile.vue';
 import RToggle from './r-toggle/r-toggle.vue';
+import RRepeater from './r-repeater/r-repeater.vue';
+import RGrid from './r-grid/r-grid.vue';
 
 export {
     RAvatar,
@@ -40,4 +42,6 @@ export {
     RTabs,
     RTile,
     RToggle,
+    RRepeater,
+    RGrid,
 };

@@ -43,6 +43,7 @@
     "yarn": ">= 1.10.1"
   },
   "dependencies": {
+    "approximate-number": "^2.0.0",
     "css-vars-ponyfill": "^2.1.2",
     "intersection-observer": "^0.7.0",
     "lodash.clonedeep": "^4.5.0",
