@@ -4,12 +4,11 @@ import markdown from './r-grid.md';
 storiesOf('Components/Grid', module)
     .add('Grid', () => ({
         template: `
-        <div>
             <r-pagination :provider="provider" :limit="limit" :total="total">
                 <template #pagination="{pagination}">
                     <r-grid :provider="pagination.provider" :columns="columns" :key="pagination.offset">
                         <header slot="header">
-                            <h2>Numbers</h2>
+                            <h1 class="r-mb-l">Numbers</h1>
                         </header>
                         <section slot="empty">
                             <p>No numbers found.</p>
@@ -20,7 +19,6 @@ storiesOf('Components/Grid', module)
                     </r-grid>
                 </template>
             </r-pagination>
-        </div>
         `,
         data() {
             return {
@@ -45,6 +43,10 @@ storiesOf('Components/Grid', module)
                                 type: 'negative',
                             },
                         },
+                        {
+                            name: 'updatedAt',
+                            renderAs: 'date',
+                        },
                     ],
                 },
                 limit: 3,
@@ -55,23 +57,23 @@ storiesOf('Components/Grid', module)
             async provider(page) {
                 if (page === 1) {
                     return [
-                        {id: 1, name: 'One', type: 'Odd'},
-                        {id: 2, name: 'Two', type: ['Even', 'Prime']},
-                        {id: 3, name: 'Three', type: ['Odd', 'Prime']},
+                        {id: 1, name: 'One', type: 'Odd', updatedAt: '12/25/2019'},
+                        {id: 2, name: 'Two', type: ['Even', 'Prime'], updatedAt: '12/25/2019'},
+                        {id: 3, name: 'Three', type: ['Odd', 'Prime'], updatedAt: '12/25/2019'},
                     ];
                 }
                 if (page === 2) {
                     return [
-                        {id: 4, name: 'Four', type: 'Even'},
-                        {id: 5, name: 'Five', type: ['Odd', 'Prime']},
-                        {id: 6, name: 'Six', type: 'Even'},
+                        {id: 4, name: 'Four', type: 'Even', updatedAt: '12/25/2019'},
+                        {id: 5, name: 'Five', type: ['Odd', 'Prime'], updatedAt: '12/25/2019'},
+                        {id: 6, name: 'Six', type: 'Even', updatedAt: '12/25/2019'},
                     ];
                 }
                 if (page === 3) {
                     return [
-                        {id: 7, name: 'Seven', type: ['Odd', 'Prime']},
-                        {id: 8, name: 'Eight', type: 'Even'},
-                        {id: 9, name: 'Nine', type: 'Odd'},
+                        {id: 7, name: 'Seven', type: ['Odd', 'Prime'], updatedAt: '12/25/2019'},
+                        {id: 8, name: 'Eight', type: 'Even', updatedAt: '12/25/2019'},
+                        {id: 9, name: 'Nine', type: 'Odd', updatedAt: '12/25/2019'},
                     ];
                 }
 

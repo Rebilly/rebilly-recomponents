@@ -164,7 +164,7 @@
             if (this.$slots.header) {
                 componentStack.push(
                     createElement('div', {
-                        class: 'r-tile-content r-grid-header',
+                        class: 'r-grid-header',
                     }, [this.$slots.header]),
                 );
             }
@@ -172,7 +172,7 @@
             // render grid body
             componentStack.push(
                 createElement('div', {
-                    class: 'r-tile-content r-grid-body',
+                    class: 'r-grid-body',
                 }, [this.renderRepeater(createElement)]),
             );
 
@@ -180,14 +180,14 @@
             if (this.$slots.footer) {
                 componentStack.push(
                     createElement('div', {
-                        class: 'r-tile-content r-grid-footer',
+                        class: 'r-grid-footer',
                     }, [this.$slots.footer]),
                 );
             }
 
             // create grid
             return createElement('div', {
-                class: 'r-tile r-grid',
+                class: 'r-grid',
             }, componentStack);
         },
     };
