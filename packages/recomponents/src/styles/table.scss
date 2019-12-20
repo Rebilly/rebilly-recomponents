@@ -1,0 +1,189 @@
+// -----------------------------------------------------------------------------
+// This file contains all styles related to the r-table component.
+// -----------------------------------------------------------------------------
+
+.r-table-control {
+    width: 10px;
+    max-width: 100%;
+    min-width: 100%;
+    overflow-x: auto;
+    -webkit-overflow-scrolling: touch;
+}
+
+.r-table {
+    width: 100%;
+    border-collapse: separate;
+    border-spacing: 0;
+    margin: 0;
+}
+
+.r-table th {
+    font-weight: var(--font-weight-medium);
+    text-align: left;
+    text-transform: capitalize;
+}
+
+.r-table td,
+.r-table th {
+    padding: var(--space-s) var(--space-s);
+    border-bottom: 1px solid var(--gray-color-light);
+}
+
+.r-table td:first-of-type,
+.r-table th:first-of-type {
+    padding-left: var(--space-m);
+}
+
+.r-table td:last-of-type,
+.r-table th:last-of-type {
+    padding-right: var(--space-m);
+}
+
+.r-table > tbody > tr:last-child > td {
+    border-bottom: none;
+}
+
+/**
+* States
+*/
+
+//Negative
+.r-table tr.is-negative td,
+.r-table tr td.is-negative {
+    color: var(--negative-color-dark);
+}
+
+//Positive
+.r-table tr.is-positive td,
+.r-table tr td.is-positive {
+    color: var(--positive-color);
+}
+
+//Numeric
+.r-table td.is-numeric,
+.r-table td .is-numeric {
+    font-family: var(--code-font-stack);
+    text-align: right;
+}
+
+//Button
+.r-table td .is-button {
+    text-align: right;
+}
+
+/**
+* Types
+*/
+
+//Hover
+.r-table.r-table-hoverable tr:hover > td {
+    background: var(--background-color);
+}
+
+//Dark
+.r-table.r-table-dark td,
+.r-table.r-table-dark th {
+    background: var(--background-color);
+}
+
+//Compact
+.r-table.r-table-compact td {
+    padding: var(--space-xs) var(--space-s);
+}
+
+//Collapsing
+.r-table.r-table-collapsed {
+    width: auto;
+}
+
+//Sorr-table
+.r-table th:hover.is-sorr-table {
+    color: var(--primary-color);
+    cursor: pointer;
+}
+
+.r-table th.is-sorr-table .icon {
+    margin-left: var(--space-s);
+}
+
+//Definition
+.r-table.r-table-definition th {
+    border-bottom: none;
+    padding-left: 0;
+    padding-right: 0;
+    background: var(--background);
+}
+
+.r-table.r-table-definition th:first-child {
+    width: 20px;
+}
+
+.r-table.r-table-definition tr td {
+    padding: var(--space-xs) 0;
+}
+
+.r-table.r-table-definition tr:first-child td {
+    padding-top: 0;
+}
+
+.r-table.r-table-definition tr:last-child td {
+    padding-bottom: 0;
+}
+
+.r-table.r-table-definition tr td {
+    border-bottom: none;
+}
+
+.r-table.r-table-definition.r-table-compact tr > td,
+.r-table.r-table-definition.r-table-compact tr:first-child td,
+.r-table.r-table-definition.r-table-compact tr:last-child td {
+    padding: 0;
+}
+
+.r-table.r-table-definition tr td:first-child,
+.r-table.r-table-definition.r-table-compact tr td:first-child  {
+    color: var(--text-muted);
+    padding-right: var(--space-m);
+}
+
+//External
+.r-table td .is-external .icon {
+    transition: all .1s ease;
+    margin-left: var(--space-s);
+    opacity: 0;
+    cursor: pointer;
+}
+
+.r-table tr:hover td .is-external .icon {
+    visibility: visible;
+    opacity: 1;
+}
+
+.r-table tr td:hover .is-external .icon {
+    fill: var(--primary-color);
+}
+
+/**
+* Alignment
+*/
+.r-table.r-table-v-alignment-top > tr > td,
+.r-table.r-table-v-alignment-top > tbody > tr > td,
+.r-table.r-table-v-alignment-top > tr > th,
+.r-table.r-table-v-alignment-top > thead> tr > th {
+    vertical-align: top;
+}
+
+.r-table.r-table-v-alignment-bottom > tr > td,
+.r-table.r-table-v-alignment-bottom > tbody > tr > td,
+.r-table.r-table-v-alignment-bottom > tr > th,
+.r-table.r-table-v-alignment-bottom > thead > tr > th {
+    vertical-align: bottom;
+}
+
+/**
+* Table layout
+*/
+
+.r-table.r-table-layout-fixed {
+    r-table-layout: fixed;
+}

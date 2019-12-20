@@ -7,7 +7,18 @@ import kebabCase from './common/helpers/kebab-case';
 import * as components from './components';
 import * as directives from './directives';
 
-function install(Vue) {
+function install(Vue, options = {}) {
+    /**
+     * Set global settings
+     */
+
+    Vue.$recomponents = {};
+
+    Vue.$recomponents.settings = {
+        timezone: 'America/Montreal',
+        ...options,
+    };
+
     /**
      * Injecting all components according to their filenames
      */
