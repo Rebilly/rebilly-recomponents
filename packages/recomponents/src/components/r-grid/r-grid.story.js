@@ -1,7 +1,9 @@
 import {storiesOf} from '@storybook/vue';
 import markdown from './r-grid.md';
+import RGrid from './r-grid.vue';
 
 storiesOf('Components/Grid', module)
+    .addParameters({component: RGrid})
     .add('Grid', () => ({
         template: `
             <r-pagination :provider="provider" :limit="limit" :total="total">
@@ -57,23 +59,41 @@ storiesOf('Components/Grid', module)
             async provider(page) {
                 if (page === 1) {
                     return [
-                        {id: 1, name: 'One', type: 'Odd', updatedAt: '12/25/2019'},
-                        {id: 2, name: 'Two', type: ['Even', 'Prime'], updatedAt: '12/25/2019'},
-                        {id: 3, name: 'Three', type: ['Odd', 'Prime'], updatedAt: '12/25/2019'},
+                        {
+                            id: 1, name: 'One', type: 'Odd', updatedAt: '12/25/2019',
+                        },
+                        {
+                            id: 2, name: 'Two', type: ['Even', 'Prime'], updatedAt: '12/25/2019',
+                        },
+                        {
+                            id: 3, name: 'Three', type: ['Odd', 'Prime'], updatedAt: '12/25/2019',
+                        },
                     ];
                 }
                 if (page === 2) {
                     return [
-                        {id: 4, name: 'Four', type: 'Even', updatedAt: '12/25/2019'},
-                        {id: 5, name: 'Five', type: ['Odd', 'Prime'], updatedAt: '12/25/2019'},
-                        {id: 6, name: 'Six', type: 'Even', updatedAt: '12/25/2019'},
+                        {
+                            id: 4, name: 'Four', type: 'Even', updatedAt: '12/25/2019',
+                        },
+                        {
+                            id: 5, name: 'Five', type: ['Odd', 'Prime'], updatedAt: '12/25/2019',
+                        },
+                        {
+                            id: 6, name: 'Six', type: 'Even', updatedAt: '12/25/2019',
+                        },
                     ];
                 }
                 if (page === 3) {
                     return [
-                        {id: 7, name: 'Seven', type: ['Odd', 'Prime'], updatedAt: '12/25/2019'},
-                        {id: 8, name: 'Eight', type: 'Even', updatedAt: '12/25/2019'},
-                        {id: 9, name: 'Nine', type: 'Odd', updatedAt: '12/25/2019'},
+                        {
+                            id: 7, name: 'Seven', type: ['Odd', 'Prime'], updatedAt: '12/25/2019',
+                        },
+                        {
+                            id: 8, name: 'Eight', type: 'Even', updatedAt: '12/25/2019',
+                        },
+                        {
+                            id: 9, name: 'Nine', type: 'Odd', updatedAt: '12/25/2019',
+                        },
                     ];
                 }
 

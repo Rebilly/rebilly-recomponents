@@ -1,7 +1,9 @@
 import {storiesOf} from '@storybook/vue';
 import markdown from './r-repeater.md';
+import RRepeater from './r-repeater.vue';
 
 storiesOf('Components.Grid', module)
+    .addParameters({component: RRepeater})
     .add('Repeater', () => ({
         template: `
         <div>
