@@ -1,8 +1,8 @@
 // -----------------------------------------------------------------------------
-// This file contains all styles related to the table component.
+// This file contains all styles related to the r-table component.
 // -----------------------------------------------------------------------------
 
-.table-control {
+.r-table-control {
     width: 10px;
     max-width: 100%;
     min-width: 100%;
@@ -10,36 +10,36 @@
     -webkit-overflow-scrolling: touch;
 }
 
-.table {
+.r-table {
     width: 100%;
     border-collapse: separate;
     border-spacing: 0;
     margin: 0;
 }
 
-.table th {
+.r-table th {
     font-weight: var(--font-weight-medium);
     text-align: left;
     text-transform: capitalize;
 }
 
-.table td,
-.table th {
+.r-table td,
+.r-table th {
     padding: var(--space-s) var(--space-s);
     border-bottom: 1px solid var(--gray-color-light);
 }
 
-.table td:first-of-type,
-.table th:first-of-type {
+.r-table td:first-of-type,
+.r-table th:first-of-type {
     padding-left: var(--space-m);
 }
 
-.table td:last-of-type,
-.table th:last-of-type {
+.r-table td:last-of-type,
+.r-table th:last-of-type {
     padding-right: var(--space-m);
 }
 
-.table > tbody > tr:last-child > td {
+.r-table > tbody > tr:last-child > td {
     border-bottom: none;
 }
 
@@ -48,26 +48,26 @@
 */
 
 //Negative
-.table tr.is-negative td,
-.table tr td.is-negative {
+.r-table tr.is-negative td,
+.r-table tr td.is-negative {
     color: var(--negative-color-dark);
 }
 
 //Positive
-.table tr.is-positive td,
-.table tr td.is-positive {
+.r-table tr.is-positive td,
+.r-table tr td.is-positive {
     color: var(--positive-color);
 }
 
 //Numeric
-.table td.is-numeric,
-.table td .is-numeric {
+.r-table td.is-numeric,
+.r-table td .is-numeric {
     font-family: var(--code-font-stack);
     text-align: right;
 }
 
 //Button
-.table td .is-button {
+.r-table td .is-button {
     text-align: right;
 }
 
@@ -76,107 +76,107 @@
 */
 
 //Hover
-.table.table-hoverable tr:hover > td {
+.r-table.r-table-hoverable tr:hover > td {
     background: var(--background-color);
 }
 
 //Dark
-.table.table-dark td,
-.table.table-dark th {
+.r-table.r-table-dark td,
+.r-table.r-table-dark th {
     background: var(--background-color);
 }
 
 //Compact
-.table.table-compact td {
+.r-table.r-table-compact td {
     padding: var(--space-xs) var(--space-s);
 }
 
 //Collapsing
-.table.table-collapsed {
+.r-table.r-table-collapsed {
     width: auto;
 }
 
-//Sortable
-.table th:hover.is-sortable {
+//Sorr-table
+.r-table th:hover.is-sorr-table {
     color: var(--primary-color);
     cursor: pointer;
 }
 
-.table th.is-sortable .icon {
+.r-table th.is-sorr-table .icon {
     margin-left: var(--space-s);
 }
 
 //Definition
-.table.table-definition th {
+.r-table.r-table-definition th {
     border-bottom: none;
     padding-left: 0;
     padding-right: 0;
     background: var(--background);
 }
 
-.table.table-definition th:first-child {
+.r-table.r-table-definition th:first-child {
     width: 20px;
 }
 
-.table.table-definition tr td {
+.r-table.r-table-definition tr td {
     padding: var(--space-xs) 0;
 }
 
-.table.table-definition tr:first-child td {
+.r-table.r-table-definition tr:first-child td {
     padding-top: 0;
 }
 
-.table.table-definition tr:last-child td {
+.r-table.r-table-definition tr:last-child td {
     padding-bottom: 0;
 }
 
-.table.table-definition tr td {
+.r-table.r-table-definition tr td {
     border-bottom: none;
 }
 
-.table.table-definition.table-compact tr > td,
-.table.table-definition.table-compact tr:first-child td,
-.table.table-definition.table-compact tr:last-child td {
+.r-table.r-table-definition.r-table-compact tr > td,
+.r-table.r-table-definition.r-table-compact tr:first-child td,
+.r-table.r-table-definition.r-table-compact tr:last-child td {
     padding: 0;
 }
 
-.table.table-definition tr td:first-child,
-.table.table-definition.table-compact tr td:first-child  {
+.r-table.r-table-definition tr td:first-child,
+.r-table.r-table-definition.r-table-compact tr td:first-child  {
     color: var(--text-muted);
     padding-right: var(--space-m);
 }
 
 //External
-.table td .is-external .icon {
+.r-table td .is-external .icon {
     transition: all .1s ease;
     margin-left: var(--space-s);
     opacity: 0;
     cursor: pointer;
 }
 
-.table tr:hover td .is-external .icon {
+.r-table tr:hover td .is-external .icon {
     visibility: visible;
     opacity: 1;
 }
 
-.table tr td:hover .is-external .icon {
+.r-table tr td:hover .is-external .icon {
     fill: var(--primary-color);
 }
 
 /**
 * Alignment
 */
-.table.table-v-alignment-top > tr > td,
-.table.table-v-alignment-top > tbody > tr > td,
-.table.table-v-alignment-top > tr > th,
-.table.table-v-alignment-top > thead> tr > th {
+.r-table.r-table-v-alignment-top > tr > td,
+.r-table.r-table-v-alignment-top > tbody > tr > td,
+.r-table.r-table-v-alignment-top > tr > th,
+.r-table.r-table-v-alignment-top > thead> tr > th {
     vertical-align: top;
 }
 
-.table.table-v-alignment-bottom > tr > td,
-.table.table-v-alignment-bottom > tbody > tr > td,
-.table.table-v-alignment-bottom > tr > th,
-.table.table-v-alignment-bottom > thead > tr > th {
+.r-table.r-table-v-alignment-bottom > tr > td,
+.r-table.r-table-v-alignment-bottom > tbody > tr > td,
+.r-table.r-table-v-alignment-bottom > tr > th,
+.r-table.r-table-v-alignment-bottom > thead > tr > th {
     vertical-align: bottom;
 }
 
@@ -184,6 +184,6 @@
 * Table layout
 */
 
-.table.table-layout-fixed {
-    table-layout: fixed;
+.r-table.r-table-layout-fixed {
+    r-table-layout: fixed;
 }

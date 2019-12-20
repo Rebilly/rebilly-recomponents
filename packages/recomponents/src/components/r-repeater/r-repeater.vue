@@ -1,8 +1,8 @@
 <template>
-    <div class="table-control flex-center">
+    <div class="r-table-control flex-center">
         <r-loader v-if="isLoading"/>
         <template v-else>
-            <table class="table" v-if="hasRows">
+            <table class="r-table" v-if="hasRows">
                 <slot name="colgroup"/>
                 <slot name="thead">
                     <thead>

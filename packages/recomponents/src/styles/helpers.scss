@@ -44,11 +44,11 @@ $directions: (
 );
 
 /**
-* Generate margin helper classes like mt-xl, mr-xxs, etc.
+* Generate margin helper classes like r-mt-xl, r-mr-xxs, etc.
 */
 @each $scale in $spacing-scale {
     @each $shortcut, $direction in $directions {
-        .m#{$shortcut}-#{$scale} {
+        .r-m#{$shortcut}-#{$scale} {
             margin-#{$direction}: var(--space-#{$scale});
         }
     }

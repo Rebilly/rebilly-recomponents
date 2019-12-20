@@ -143,7 +143,7 @@
             },
             renderRepeater(createElement) {
                 return createElement(Repeater, {
-                    class: 'grid-repeater',
+                    class: 'r-grid-repeater',
                     props: {
                         provider: this.computedProvider,
                     },
@@ -164,7 +164,7 @@
             if (this.$slots.header) {
                 componentStack.push(
                     createElement('div', {
-                        class: 'tile-content grid-header',
+                        class: 'r-tile-content r-grid-header',
                     }, [this.$slots.header]),
                 );
             }
@@ -172,7 +172,7 @@
             // render grid body
             componentStack.push(
                 createElement('div', {
-                    class: 'tile-content grid-body',
+                    class: 'r-tile-content r-grid-body',
                 }, [this.renderRepeater(createElement)]),
             );
 
@@ -180,14 +180,14 @@
             if (this.$slots.footer) {
                 componentStack.push(
                     createElement('div', {
-                        class: 'tile-content grid-footer',
+                        class: 'r-tile-content r-grid-footer',
                     }, [this.$slots.footer]),
                 );
             }
 
             // create grid
             return createElement('div', {
-                class: 'tile grid',
+                class: 'r-tile r-grid',
             }, componentStack);
         },
     };

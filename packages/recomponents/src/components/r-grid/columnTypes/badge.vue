@@ -1,12 +1,12 @@
 <template>
     <div>
         <template v-if="Array.isArray(value)">
-            <r-badge v-for="(data, index) in value" :key="index" :type="badgeType" class="mr-s">
+            <r-badge v-for="(data, index) in value" :key="index" :type="badgeType" class="r-mr-s">
                 {{data}}
             </r-badge>
         </template>
         <template v-else>
-            <r-badge :type="badgeType" class="mr-s">
+            <r-badge :type="badgeType" class="r-mr-s">
                 {{value}}
             </r-badge>
         </template>
