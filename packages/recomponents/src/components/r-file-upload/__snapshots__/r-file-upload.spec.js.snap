@@ -3,9 +3,3 @@
 exports[`r-file-upload.vue should render Wrapper and match snapshot 1`] = `<div class="r-file-upload fs-block"><input type="file" multiple="multiple" class="r-file-upload-input"> </div>`;
 
 exports[`r-file-upload.vue should render via SSR and match snapshot 1`] = `<div class="r-file-upload"><input type="file" class="r-file-upload-input"> </div>`;
-
-exports[`r-img.vue should handle input event 1`] = `<div class="r-file-upload fs-block"><input type="file" multiple="multiple" class="r-file-upload-input"> </div>`;
-
-exports[`r-img.vue should render Wrapper and match snapshot 1`] = `<div class="r-file-upload fs-block"><input type="file" multiple="multiple" class="r-file-upload-input"> </div>`;
-
-exports[`r-img.vue should render via SSR and match snapshot 1`] = `<div class="r-file-upload"><input type="file" class="r-file-upload-input"> </div>`;
