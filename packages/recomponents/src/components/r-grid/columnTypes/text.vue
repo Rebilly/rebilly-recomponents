@@ -9,5 +9,5 @@
      */
     export default {
         name: 'RTextColumn',
-    }
+    };
 </script>

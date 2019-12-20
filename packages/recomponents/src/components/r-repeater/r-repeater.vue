@@ -24,9 +24,10 @@
 
 <script>
     import RLoader from '../r-loader/r-loader.vue';
+
     export default {
         components: {
-          RLoader,
+            RLoader,
         },
         props: {
             provider: {
