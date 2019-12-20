@@ -72,7 +72,7 @@
                 this.$emit('close');
             },
         },
-    }
+    };
 </script>
 
 <style lang="scss">
