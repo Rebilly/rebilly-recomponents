@@ -64,5 +64,5 @@
 </script>
 
 <style lang="scss">
-    @import '../../styles/table.scss';
+    @import '@/styles/table.scss';
 </style>

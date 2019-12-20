@@ -4,8 +4,9 @@ import {number} from '@storybook/addon-knobs';
 import markdown from './r-pagination.md';
 import RPagination from './r-pagination.vue';
 
-storiesOf('Components/Grid', module)
-    .add('Pagination', () => ({
+storiesOf('Components.Pagination', module)
+    .addParameters({component: RPagination})
+    .add('Component', () => ({
         template: `
             <div class="storybook-center">
                 <r-pagination
