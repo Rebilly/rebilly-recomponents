@@ -13,10 +13,11 @@ import RModal from './r-modal/r-modal.vue';
 import RPagination from './r-pagination/r-pagination.vue';
 import RPopper from './r-popper/r-popper.vue';
 import RRadio from './r-radio/r-radio.vue';
+import RSelect from './r-select/r-select.vue';
 import RTab from './r-tabs/r-tab.vue';
 import RTabs from './r-tabs/r-tabs.vue';
-import RSelect from './r-select/r-select.vue';
 import RTile from './r-tile/r-tile.vue';
+import RToast from './r-toast/r-toast.vue';
 import RToggle from './r-toggle/r-toggle.vue';
 
 export {
@@ -39,5 +40,6 @@ export {
     RTab,
     RTabs,
     RTile,
+    RToast,
     RToggle,
 };
