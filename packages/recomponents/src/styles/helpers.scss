@@ -33,6 +33,27 @@
     cursor: pointer !important;
 }
 
+
+$spacing-scale: (default, xxs, xs, s, m, l, xl);
+
+$directions: (
+    t: top,
+    b: bottom,
+    l: left,
+    r: right,
+);
+
+/**
+* Generate margin helper classes like r-mt-xl, r-mr-xxs, etc.
+*/
+@each $scale in $spacing-scale {
+    @each $shortcut, $direction in $directions {
+        .r-m#{$shortcut}-#{$scale} {
+            margin-#{$direction}: var(--space-#{$scale});
+        }
+    }
+}
+
 /**
  * Prevent scroll
  */

@@ -1,10 +1,14 @@
 <template>
-    <r-pagination-control :pagination="pagination"/>
+    <div>
+        <slot name="pagination" :pagination="pagination">
+            <r-pagination-control :pagination="pagination"/>
+        </slot>
+    </div>
 </template>
 
 <script>
     import Vue from 'vue';
-    import PaginationControl from './r-pagination-control.vue';
+    import PaginationControl from '../r-pagination-control/r-pagination-control.vue';
 
     Vue.component('r-pagination-control', PaginationControl);
 
