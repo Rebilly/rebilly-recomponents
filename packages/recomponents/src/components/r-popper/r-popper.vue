@@ -114,12 +114,19 @@
                 validator: position => ['bottomStart', 'bottomEnd', 'topStart', 'topEnd'].includes(position),
             },
             /**
-             * TBD
+             * transition options:  'fade', 'top', 'bottom', 'left', 'right'
              */
             slideFrom: {
                 type: String,
                 default: 'fade',
                 validator: slide => ['fade', 'top', 'bottom', 'left', 'right'].includes(slide),
+            },
+            /**
+             * transition duration
+             */
+            duration: {
+                type: Number,
+                default: 0.2,
             },
         },
         watch: {
@@ -186,6 +193,12 @@
                 }
                 this.isPopperVisible = visible;
                 await this.$nextTick(); // await for contentEl to be visible before trying to access it
+                if (this.contentEl && this.contentEl.hasChildNodes()) {
+                    this.contentEl.firstChild.style = `transition-duration: ${this.duration}s`;
+                    if (visible) {
+                        this.positionContent();
+                    }
+                }
                 this.$emit('toggle', visible !== this.isPopperVisible);
                 this.$emit(visible ? 'toggle-on' : 'toggle-off');
             },
