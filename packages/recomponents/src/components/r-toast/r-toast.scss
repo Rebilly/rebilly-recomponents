@@ -1,9 +1,11 @@
-//.r-toast-holder {
-//    position: fixed;
-//    top: 52px + $space-default - $space-m;
-//    right: $space-l;
-//    z-index: 1000;
-//}
+.r-toast-container {
+    position: fixed;
+    top: var(--toast-container-top);
+    right: var(--toast-container-right);
+    z-index: var(--toast-container-z-index);
+    min-width: 200px;
+    overflow-y: scroll;
+}
 
 .r-toast {
     position: relative;
@@ -43,16 +45,16 @@
     display: inline-block;
     font-size: var(--toast-title-font-size);
     margin: 0;
+    max-width: calc(100% - 8px);
+    overflow: hidden;
+    text-overflow: ellipsis;
 }
 
 .r-toast-close {
     position: absolute;
     top: var(--toast-padding);
     right: var(--toast-padding);
-    //
-    //& .icon {
-    //    fill: var(--toast-close-button-color) !important;
-    //}
+    cursor: pointer;
 }
 
 .r-toast-message {

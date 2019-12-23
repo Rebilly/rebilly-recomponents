@@ -1,14 +1,19 @@
 <template>
-    <div class="r-component r-toast"
+    <div v-if="isVisible"
+         class="r-component r-toast"
          :class="classes"
          @mouseenter="disableAutoHide"
          @mouseleave="setupAutoHide">
-        <h2 class="r-toast-title stack-m" v-if="!!title">{{title}}</h2>
-        <r-icon v-if="allowClose"
-                aria-hidden="true"
-                class="r-icon-gray r-toast-close"
-                @click="hide"
-                icon="close-s"/>
+        <div class="r-toast-title" v-if="!!title">
+            <span>{{title}}</span>
+        </div>
+        <div class="r-toast-close">
+            <r-icon v-if="allowClose"
+                    @click="hide"
+                    aria-hidden="true"
+                    color="text"
+                    icon="close-s"/>
+        </div>
         <span class="r-toast-message" data-cy="Toast Message" v-if="message">{{message}}</span>
     </div>
 </template>
@@ -47,7 +52,7 @@
              */
             visible: {
                 type: Boolean,
-                default: false,
+                default: true,
             },
             /**
              * Specify does the toast hide
@@ -63,16 +68,23 @@
                 type: Number,
                 default: 5000,
             },
+            container: {
+                type: [Object, Function, HTMLElement],
+                default: null,
+            },
         },
         data() {
             return {
-                isVisible: false,
+                isVisible: true,
                 timerHandle: null,
+                parent: null,
             };
         },
-        created() {
-            this.isVisible = this.visible;
-            this.setupAutoHide();
+        beforeMount() {
+            this.setupContainer();
+        },
+        mounted() {
+            this.show();
         },
         watch: {
             visible(newValue) {
@@ -89,6 +101,17 @@
             },
         },
         methods: {
+            setupContainer() {
+                this.parent = document.querySelector('.r-toast-container');
+                // No need to create them, they already exists
+                if (this.parent) {
+                    return;
+                }
+                this.parent = document.createElement('div');
+                this.parent.className = 'r-toast-container';
+                const container = this.container || document.body;
+                container.appendChild(this.parent);
+            },
             setupAutoHide() {
                 if (this.autoHide) {
                     this.timerHandle = setTimeout(() => this.hide(), this.hideDelay);
@@ -101,11 +124,16 @@
                 clearTimeout(this.timerHandle);
                 this.timerHandle = null;
             },
+            show() {
+                this.parent.appendChild(this.$el);
+                this.isVisible = true;
+                this.setupAutoHide();
+            },
             hide() {
                 this.disableAutoHide();
                 this.isVisible = false;
                 this.$emit('hide');
-            }
+            },
         },
     };
 </script>

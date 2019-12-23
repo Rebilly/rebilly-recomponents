@@ -1,0 +1,20 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`r-toast.vue should render Wrapper and match snapshot 1`] = `
+<div class="r-component r-toast is-visible r-toast-undefined">
+  <!---->
+  <div class="r-toast-close">
+    <!---->
+  </div>
+  <!---->
+</div>
+`;
+
+exports[`r-toast.vue should render via SSR and match snapshot 1`] = `
+<div class="r-component r-toast is-visible r-toast-test">
+  <!---->
+  <div class="r-toast-close">
+    <!---->
+  </div> <span data-cy="Toast Message" class="r-toast-message">test toast</span>
+</div>
+`;

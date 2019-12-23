@@ -3,6 +3,7 @@ import './polyfill';
 import './styles/helpers.scss';
 
 import kebabCase from './common/helpers/kebab-case';
+import RToast from '../src/components/r-toast';
 
 import * as components from './components';
 import * as directives from './directives';
@@ -18,6 +19,8 @@ function install(Vue, options = {}) {
         timezone: 'America/Montreal',
         ...options,
     };
+
+    Vue.use(RToast);
 
     /**
      * Injecting all components according to their filenames

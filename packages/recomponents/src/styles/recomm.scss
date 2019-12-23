@@ -647,6 +647,7 @@ body, .article {
     --toast-text-color: var(--secondary-color);
     --toast-transition: all 0.4s;
     --toast-close-padding: 16px 32px 16px 16px;
+    --toast-close-icon-color: var(--secondary-color);
     --toast-title-font-size: var(--font-size-h2);
     --toast-positive-background-color: var(--positive-color-light);
     --toast-positive-box-shadow: 0 0 0 1px rgba(0, 102, 11, .09), 0 20px 40px -8px rgba(80, 90, 111, .18), 0 3px 6px 0 rgba(80, 90, 111, .07);
@@ -655,7 +656,10 @@ body, .article {
     --toast-info-background-color: var(--accent-color-light);
     --toast-info-box-shadow: 0 0 0 1px rgba(0, 82, 78, .09), 0 20px 40px -8px rgba(80, 90, 111, .18), 0 3px 6px 0 rgba(80, 90, 111, .07);
     --toast-warning-background-color: var(--warning-color-light);
-    --toast-warning-box-shadow: 0 0 0 1px rgba(96, 78, 0, .09), 0 20px 04px -8px rgba(80, 90, 111, 0.18), 0 3px 6px 0 rgba(80, 90, 111, 0.07);
+    --toast-warning-box-shadow:0 0 0 1px rgba(96, 78, 0, .09), 0 20px 40px -8px rgba(80, 90, 111, .18), 0 3px 6px 0 rgba(80, 90, 111, .07);
+    --toast-container-top: 88px;
+    --toast-container-right: 32px;
+    --toast-container-z-index: var(--z-index-1000);
 }
 
 // Media Breakpoints
