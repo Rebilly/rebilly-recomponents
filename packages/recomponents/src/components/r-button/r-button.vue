@@ -48,7 +48,7 @@
                 validator: val => ['default', 'primary', 'danger', 'link'].includes(val),
             },
             /**
-             * Disabed state just like for regulat html button
+             * Disabled state just like for regular html button
              */
             disabled: {
                 type: Boolean,
