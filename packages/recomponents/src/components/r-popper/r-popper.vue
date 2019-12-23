@@ -5,8 +5,8 @@
          @keydown.esc="escapePopper">
         <slot name="trigger" :popper="popper"/>
         <div class="r-popper-content-wrapper" ref="popper-content-ref">
-            <transition :name="slideFrom" v-if="isPopperVisible">
-                <slot name="content" :popper="popper"/>
+            <transition :name="slideFrom">
+                <slot name="content" v-if="isPopperVisible" :popper="popper"/>
             </transition>
         </div>
     </div>
@@ -186,16 +186,6 @@
                 }
                 this.isPopperVisible = visible;
                 await this.$nextTick(); // await for contentEl to be visible before trying to access it
-                if (this.contentEl && this.contentEl.hasChildNodes()) {
-                    if (this.contentEl.firstChild.classList) {
-                        if (visible) {
-                            this.contentEl.firstChild.classList.add('r-is-visible');
-                            this.positionContent();
-                        } else {
-                            this.contentEl.firstChild.classList.remove('r-is-visible');
-                        }
-                    }
-                }
                 this.$emit('toggle', visible !== this.isPopperVisible);
                 this.$emit(visible ? 'toggle-on' : 'toggle-off');
             },
@@ -303,5 +293,6 @@
 </script>
 
 <style lang="scss">
+    @import '../../styles/animate.scss';
     @import './r-popper.scss';
 </style>
