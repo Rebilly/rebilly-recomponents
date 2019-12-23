@@ -28,6 +28,15 @@ storiesOf('Components.Modal', module)
             },
             scroll: boolean('Scroll', true),
             scrollContent: boolean('Scroll content', false),
+            duration: {
+                default: select('Duration', {
+                    ' 0.2': 0.2,
+                    ' 0.5': 0.5,
+                    '1.0': 1,
+                    '2.0': 2,
+                    '3.0': 3,
+                }, 0.2),
+            },
         },
         methods: {
             close: action('close'),
@@ -44,7 +53,8 @@ storiesOf('Components.Modal', module)
                         :size="size"
                         :scroll="scroll"
                         :scrollContent="scrollContent"
-                        @submit="submit"
+                         :duration="duration"
+                         @submit="submit"
                         @enter="enter"
                         @leave="leave"
                         @close="close(); isModalOpen = false;">
