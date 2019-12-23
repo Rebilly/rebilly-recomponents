@@ -1,4 +1,4 @@
-export const RToastTypes = {
+export default {
     Positive: 'positive',
     Negative: 'negative',
     Warning: 'warning',

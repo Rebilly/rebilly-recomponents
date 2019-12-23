@@ -656,7 +656,7 @@ body, .article {
     --toast-info-background-color: var(--accent-color-light);
     --toast-info-box-shadow: 0 0 0 1px rgba(0, 82, 78, .09), 0 20px 40px -8px rgba(80, 90, 111, .18), 0 3px 6px 0 rgba(80, 90, 111, .07);
     --toast-warning-background-color: var(--warning-color-light);
-    --toast-warning-box-shadow:0 0 0 1px rgba(96, 78, 0, .09), 0 20px 40px -8px rgba(80, 90, 111, .18), 0 3px 6px 0 rgba(80, 90, 111, .07);
+    --toast-warning-box-shadow: 0 0 0 1px rgba(96, 78, 0, .09), 0 20px 40px -8px rgba(80, 90, 111, .18), 0 3px 6px 0 rgba(80, 90, 111, .07);
     --toast-container-top: 88px;
     --toast-container-right: 32px;
     --toast-container-z-index: var(--z-index-1000);
@@ -665,11 +665,11 @@ body, .article {
 // Media Breakpoints
 // ------------------------------------------------
 $breakpoints: (
-        'phone': 576px,
-        'tablet': 768px,
-        'small-desktop': 994px,
-        'desktop': 1100px,
-        'large-desktop': 1200px,
+    'phone': 576px,
+    'tablet': 768px,
+    'small-desktop': 994px,
+    'desktop': 1100px,
+    'large-desktop': 1200px,
 ) !default;
 
 // -----------------------------------------------------------------------------
@@ -681,9 +681,9 @@ $breakpoints: (
     font-family: 'Roboto';
     src: url('/static/fonts/Roboto-Bold.eot');
     src: url('/static/fonts/Roboto-Bold.eot?#iefix') format('embedded-opentype'),
-    url('/static/fonts/Roboto-Bold.woff2') format('woff2'),
-    url('/static/fonts/Roboto-Bold.woff') format('woff'),
-    url('/static/fonts/Roboto-Bold.ttf') format('truetype');
+        url('/static/fonts/Roboto-Bold.woff2') format('woff2'),
+        url('/static/fonts/Roboto-Bold.woff') format('woff'),
+        url('/static/fonts/Roboto-Bold.ttf') format('truetype');
     font-weight: bold;
     font-style: normal;
 }
@@ -692,9 +692,9 @@ $breakpoints: (
     font-family: 'Roboto';
     src: url('/static/fonts/Roboto-BoldItalic.eot');
     src: url('/static/fonts/Roboto-BoldItalic.eot?#iefix') format('embedded-opentype'),
-    url('/static/fonts/Roboto-BoldItalic.woff2') format('woff2'),
-    url('/static/fonts/Roboto-BoldItalic.woff') format('woff'),
-    url('/static/fonts/Roboto-BoldItalic.ttf') format('truetype');
+        url('/static/fonts/Roboto-BoldItalic.woff2') format('woff2'),
+        url('/static/fonts/Roboto-BoldItalic.woff') format('woff'),
+        url('/static/fonts/Roboto-BoldItalic.ttf') format('truetype');
     font-weight: bold;
     font-style: italic;
 }
@@ -703,9 +703,9 @@ $breakpoints: (
     font-family: 'Roboto';
     src: url('/static/fonts/Roboto-Italic.eot');
     src: url('/static/fonts/Roboto-Italic.eot?#iefix') format('embedded-opentype'),
-    url('/static/fonts/Roboto-Italic.woff2') format('woff2'),
-    url('/static/fonts/Roboto-Italic.woff') format('woff'),
-    url('/static/fonts/Roboto-Italic.ttf') format('truetype');
+        url('/static/fonts/Roboto-Italic.woff2') format('woff2'),
+        url('/static/fonts/Roboto-Italic.woff') format('woff'),
+        url('/static/fonts/Roboto-Italic.ttf') format('truetype');
     font-weight: normal;
     font-style: italic;
 }
@@ -714,9 +714,9 @@ $breakpoints: (
     font-family: 'Roboto';
     src: url('/static/fonts/Roboto-Medium.eot');
     src: url('/static/fonts/Roboto-Medium.eot?#iefix') format('embedded-opentype'),
-    url('/static/fonts/Roboto-Medium.woff2') format('woff2'),
-    url('/static/fonts/Roboto-Medium.woff') format('woff'),
-    url('/static/fonts/Roboto-Medium.ttf') format('truetype');
+        url('/static/fonts/Roboto-Medium.woff2') format('woff2'),
+        url('/static/fonts/Roboto-Medium.woff') format('woff'),
+        url('/static/fonts/Roboto-Medium.ttf') format('truetype');
     font-weight: 500;
     font-style: normal;
 }
@@ -725,9 +725,9 @@ $breakpoints: (
     font-family: 'Roboto';
     src: url('/static/fonts/Roboto-MediumItalic.eot');
     src: url('/static/fonts/Roboto-MediumItalic.eot?#iefix') format('embedded-opentype'),
-    url('/static/fonts/Roboto-MediumItalic.woff2') format('woff2'),
-    url('/static/fonts/Roboto-MediumItalic.woff') format('woff'),
-    url('/static/fonts/Roboto-MediumItalic.ttf') format('truetype');
+        url('/static/fonts/Roboto-MediumItalic.woff2') format('woff2'),
+        url('/static/fonts/Roboto-MediumItalic.woff') format('woff'),
+        url('/static/fonts/Roboto-MediumItalic.ttf') format('truetype');
     font-weight: 500;
     font-style: italic;
 }
@@ -736,9 +736,9 @@ $breakpoints: (
     font-family: 'Roboto';
     src: url('/static/fonts/Roboto-Regular.eot');
     src: url('/static/fonts/Roboto-Regular.eot?#iefix') format('embedded-opentype'),
-    url('/static/fonts/Roboto-Regular.woff2') format('woff2'),
-    url('/static/fonts/Roboto-Regular.woff') format('woff'),
-    url('/static/fonts/Roboto-Regular.ttf') format('truetype');
+        url('/static/fonts/Roboto-Regular.woff2') format('woff2'),
+        url('/static/fonts/Roboto-Regular.woff') format('woff'),
+        url('/static/fonts/Roboto-Regular.ttf') format('truetype');
     font-weight: normal;
     font-style: normal;
 }
@@ -748,9 +748,9 @@ $breakpoints: (
     font-family: 'Montserrat';
     src: url('/static/fonts/Montserrat-Light.eot');
     src: url('/static/fonts/Montserrat-Light.eot?#iefix') format('embedded-opentype'),
-    url('/static/fonts/Montserrat-Light.woff2') format('woff2'),
-    url('/static/fonts/Montserrat-Light.woff') format('woff'),
-    url('/static/fonts/Montserrat-Light.ttf') format('truetype');
+        url('/static/fonts/Montserrat-Light.woff2') format('woff2'),
+        url('/static/fonts/Montserrat-Light.woff') format('woff'),
+        url('/static/fonts/Montserrat-Light.ttf') format('truetype');
     font-weight: 300;
     font-style: normal;
 }
@@ -759,9 +759,9 @@ $breakpoints: (
     font-family: 'Montserrat';
     src: url('/static/fonts/Montserrat-Regular.eot');
     src: url('/static/fonts/Montserrat-Regular.eot?#iefix') format('embedded-opentype'),
-    url('/static/fonts/Montserrat-Regular.woff2') format('woff2'),
-    url('/static/fonts/Montserrat-Regular.woff') format('woff'),
-    url('/static/fonts/Montserrat-Regular.ttf') format('truetype');
+        url('/static/fonts/Montserrat-Regular.woff2') format('woff2'),
+        url('/static/fonts/Montserrat-Regular.woff') format('woff'),
+        url('/static/fonts/Montserrat-Regular.ttf') format('truetype');
     font-weight: normal;
     font-style: normal;
 }
@@ -770,9 +770,9 @@ $breakpoints: (
     font-family: 'Montserrat';
     src: url('/static/fonts/Montserrat-Medium.eot');
     src: url('/static/fonts/Montserrat-Medium.eot?#iefix') format('embedded-opentype'),
-    url('/static/fonts/Montserrat-Medium.woff2') format('woff2'),
-    url('/static/fonts/Montserrat-Medium.woff') format('woff'),
-    url('/static/fonts/Montserrat-Medium.ttf') format('truetype');
+        url('/static/fonts/Montserrat-Medium.woff2') format('woff2'),
+        url('/static/fonts/Montserrat-Medium.woff') format('woff'),
+        url('/static/fonts/Montserrat-Medium.ttf') format('truetype');
     font-weight: 500;
     font-style: normal;
 }
@@ -781,9 +781,9 @@ $breakpoints: (
     font-family: 'Montserrat';
     src: url('/static/fonts/Montserrat-SemiBold.eot');
     src: url('/static/fonts/Montserrat-SemiBold.eot?#iefix') format('embedded-opentype'),
-    url('/static/fonts/Montserrat-SemiBold.woff2') format('woff2'),
-    url('/static/fonts/Montserrat-SemiBold.woff') format('woff'),
-    url('/static/fonts/Montserrat-SemiBold.ttf') format('truetype');
+        url('/static/fonts/Montserrat-SemiBold.woff2') format('woff2'),
+        url('/static/fonts/Montserrat-SemiBold.woff') format('woff'),
+        url('/static/fonts/Montserrat-SemiBold.ttf') format('truetype');
     font-weight: 600;
     font-style: normal;
 }
@@ -792,9 +792,9 @@ $breakpoints: (
     font-family: 'Montserrat';
     src: url('/static/fonts/Montserrat-Bold.eot');
     src: url('/static/fonts/Montserrat-Bold.eot?#iefix') format('embedded-opentype'),
-    url('/static/fonts/Montserrat-Bold.woff2') format('woff2'),
-    url('/static/fonts/Montserrat-Bold.woff') format('woff'),
-    url('/static/fonts/Montserrat-Bold.ttf') format('truetype');
+        url('/static/fonts/Montserrat-Bold.woff2') format('woff2'),
+        url('/static/fonts/Montserrat-Bold.woff') format('woff'),
+        url('/static/fonts/Montserrat-Bold.ttf') format('truetype');
     font-weight: bold;
     font-style: normal;
 }
@@ -804,9 +804,9 @@ $breakpoints: (
     font-family: 'Roboto Mono';
     src: url('/static/fonts/RobotoMono-Bold.eot');
     src: url('/static/fonts/RobotoMono-Bold.eot?#iefix') format('embedded-opentype'),
-    url('/static/fonts/RobotoMono-Bold.woff2') format('woff2'),
-    url('/static/fonts/RobotoMono-Bold.woff') format('woff'),
-    url('/static/fonts/RobotoMono-Bold.ttf') format('truetype');
+        url('/static/fonts/RobotoMono-Bold.woff2') format('woff2'),
+        url('/static/fonts/RobotoMono-Bold.woff') format('woff'),
+        url('/static/fonts/RobotoMono-Bold.ttf') format('truetype');
     font-weight: bold;
     font-style: normal;
 }
@@ -815,9 +815,9 @@ $breakpoints: (
     font-family: 'Roboto Mono';
     src: url('/static/fonts/RobotoMono-Medium.eot');
     src: url('/static/fonts/RobotoMono-Medium.eot?#iefix') format('embedded-opentype'),
-    url('/static/fonts/RobotoMono-Medium.woff2') format('woff2'),
-    url('/static/fonts/RobotoMono-Medium.woff') format('woff'),
-    url('/static/fonts/RobotoMono-Medium.ttf') format('truetype');
+        url('/static/fonts/RobotoMono-Medium.woff2') format('woff2'),
+        url('/static/fonts/RobotoMono-Medium.woff') format('woff'),
+        url('/static/fonts/RobotoMono-Medium.ttf') format('truetype');
     font-weight: 500;
     font-style: normal;
 }
@@ -826,9 +826,9 @@ $breakpoints: (
     font-family: 'Roboto Mono';
     src: url('/static/fonts/RobotoMono-Regular.eot');
     src: url('/static/fonts/RobotoMono-Regular.eot?#iefix') format('embedded-opentype'),
-    url('/static/fonts/RobotoMono-Regular.woff2') format('woff2'),
-    url('/static/fonts/RobotoMono-Regular.woff') format('woff'),
-    url('/static/fonts/RobotoMono-Regular.ttf') format('truetype');
+        url('/static/fonts/RobotoMono-Regular.woff2') format('woff2'),
+        url('/static/fonts/RobotoMono-Regular.woff') format('woff'),
+        url('/static/fonts/RobotoMono-Regular.ttf') format('truetype');
     font-weight: normal;
     font-style: normal;
 }

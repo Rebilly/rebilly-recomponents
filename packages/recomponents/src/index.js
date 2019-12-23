@@ -3,7 +3,7 @@ import './polyfill';
 import './styles/helpers.scss';
 
 import kebabCase from './common/helpers/kebab-case';
-import RToast from '../src/components/r-toast';
+import RToastManager from './plugins/r-toast-manager';
 
 import * as components from './components';
 import * as directives from './directives';
@@ -20,7 +20,7 @@ function install(Vue, options = {}) {
         ...options,
     };
 
-    Vue.use(RToast);
+    Vue.use(RToastManager);
 
     /**
      * Injecting all components according to their filenames

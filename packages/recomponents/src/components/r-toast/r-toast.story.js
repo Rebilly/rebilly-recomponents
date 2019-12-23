@@ -89,7 +89,7 @@ storiesOf('Components.Toast', module)
         props: {},
         methods: {
             addToast(type) {
-                this.$toast[type](`Test ${type} toast :)`)
+                this.$toast[type](`Test ${type} toast :)`);
             },
             hide: action('hide'),
         },
