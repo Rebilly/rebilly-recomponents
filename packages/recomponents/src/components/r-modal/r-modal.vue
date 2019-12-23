@@ -6,11 +6,13 @@
              @keyup.esc="close"
              @keyup.enter="submit"
              role="dialog"
+             :style="transitionDuration"
              :aria-label="title">
             <div v-if="$slots.content || $slots.contents"
                  class="r-modal-overlay"
                  :class="{'r-is-scrollable': scroll}">
                 <div class="r-modal-control"
+                     :style="transitionDuration"
                      :class="classes"
                      @mousedown="$event.stopPropagation()">
                     <div v-if="title" class="r-modal-header">
@@ -99,8 +101,20 @@
                 type: Boolean,
                 default: false,
             },
+            /**
+             * transition duration
+             */
+            duration: {
+                type: Number,
+                default: 0.2,
+            },
         },
         computed: {
+            transitionDuration() {
+                return {
+                    'transition-duration': `${this.duration}s`,
+                };
+            },
             classes() {
                 const style = {};
                 if (this.size) {

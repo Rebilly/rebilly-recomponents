@@ -5,8 +5,8 @@
          @keydown.esc="escapePopper">
         <slot name="trigger" :popper="popper"/>
         <div class="r-popper-content-wrapper" ref="popper-content-ref">
-            <transition :name="slideFrom" v-if="isPopperVisible">
-                <slot name="content" :popper="popper"/>
+            <transition :name="slideFrom">
+                <slot name="content" v-if="isPopperVisible" :popper="popper"/>
             </transition>
         </div>
     </div>
@@ -114,12 +114,19 @@
                 validator: position => ['bottomStart', 'bottomEnd', 'topStart', 'topEnd'].includes(position),
             },
             /**
-             * TBD
+             * transition options:  'fade', 'top', 'bottom', 'left', 'right'
              */
             slideFrom: {
                 type: String,
                 default: 'fade',
                 validator: slide => ['fade', 'top', 'bottom', 'left', 'right'].includes(slide),
+            },
+            /**
+             * transition duration
+             */
+            duration: {
+                type: Number,
+                default: 0.2,
             },
         },
         watch: {
@@ -187,14 +194,8 @@
                 this.isPopperVisible = visible;
                 await this.$nextTick(); // await for contentEl to be visible before trying to access it
                 if (this.contentEl && this.contentEl.hasChildNodes()) {
-                    if (this.contentEl.firstChild.classList) {
-                        if (visible) {
-                            this.contentEl.firstChild.classList.add('r-is-visible');
-                            this.positionContent();
-                        } else {
-                            this.contentEl.firstChild.classList.remove('r-is-visible');
-                        }
-                    }
+                    this.contentEl.firstChild.style = `transition-duration: ${this.duration}s`;
+                    this.positionContent();
                 }
                 this.$emit('toggle', visible !== this.isPopperVisible);
                 this.$emit(visible ? 'toggle-on' : 'toggle-off');
@@ -303,5 +304,6 @@
 </script>
 
 <style lang="scss">
+    @import '../../styles/animate.scss';
     @import './r-popper.scss';
 </style>

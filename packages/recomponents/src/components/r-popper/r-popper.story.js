@@ -37,6 +37,15 @@ storiesOf('Components.Popper', module)
                     Right: 'right',
                 }, 'fade'),
             },
+            duration: {
+                default: select('Duration', {
+                    ' 0.2': 0.2,
+                    ' 0.5': 0.5,
+                    '1.0': 1,
+                    '2.0': 2,
+                    '3.0': 3,
+                }, 0.2),
+            },
         },
         methods: {
             toggle: action('toggle'),
@@ -57,6 +66,7 @@ storiesOf('Components.Popper', module)
                     :direction="direction"
                     :position="position"
                     :slideFrom="slideFrom"
+                    :duration="duration"
                     @input="input"
                     @setActivePopper="setActivePopper"
                     @toggle="toggle"
@@ -118,6 +128,15 @@ storiesOf('Components.Popper', module)
                     Right: 'right',
                 }, 'fade'),
             },
+            duration: {
+                default: select('Duration', {
+                    ' 0.2': 0.2,
+                    ' 0.5': 0.5,
+                    '1.0': 1,
+                    '2.0': 2,
+                    '3.0': 3,
+                }, 0.2),
+            },
         },
         methods: {
             toggle: action('toggle'),
@@ -138,6 +157,7 @@ storiesOf('Components.Popper', module)
                     :direction="direction"
                     :position="position"
                     :slideFrom="slideFrom"
+                    :duration="duration"
                     @input="input"
                     @setActivePopper="setActivePopper"
                     @toggle="toggle"
