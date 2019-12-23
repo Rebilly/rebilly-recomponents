@@ -31,10 +31,10 @@ storiesOf('Components.Toast', module)
                 default: text('Title', 'Title'),
             },
             allowClose: {
-                default: boolean('Allow close', true),
+                default: boolean('Allow close', false),
             },
             autoHide: {
-                default: boolean('Auto Hide', false),
+                default: boolean('Auto Hide', true),
             },
             message: {
                 default: text('Message', 'This is the toast message'),

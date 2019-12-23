@@ -90,6 +90,9 @@
             visible(newValue) {
                 this.isVisible = newValue;
             },
+            allowHide() {
+                this.setupAutoHide();
+            },
         },
         computed: {
             classes() {
@@ -115,6 +118,8 @@
             setupAutoHide() {
                 if (this.autoHide) {
                     this.timerHandle = setTimeout(() => this.hide(), this.hideDelay);
+                } else {
+                    this.disableAutoHide();
                 }
             },
             disableAutoHide() {
