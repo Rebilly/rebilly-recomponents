@@ -76,8 +76,6 @@
                 this.open = false;
                 this.$emit('input', event.target.files);
                 this.$emit('close');
-
-                console.log(event.target.files)
             },
         },
     };
