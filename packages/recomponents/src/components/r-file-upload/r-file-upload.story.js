@@ -73,24 +73,28 @@ storiesOf('Components.File Upload', module)
                             </r-file-upload>
                         </section>
                         <section v-content.secondary>
-                            <r-img :src="image"/>
+                            <div v-for="(image, index) in images" @click="remove(index)" :key="image" title="Click to remove">
+                                <r-img :src="image"/>
+                            </div>
                         </section>
                     </template>
                 </r-tile>
             </div>
         `,
         data: () => ({
-            image: 'https://placehold.co/37',
+            images: ['https://placehold.co/37'],
         }),
         methods: {
-            input(files) {
-                const [image = false] = files;
-                if (image) {
+            input(images) {
+                if (images.length) {
                     this.$nextTick(() => {
-                        this.image = URL.createObjectURL(image);
-                        action('input', image);
+                        this.images = Array.from(images).map(image => URL.createObjectURL(image));
+                        action('input', images);
                     });
                 }
+            },
+            remove(id) {
+                this.images = this.images.filter((image, index) => index !== id);
             },
         },
         props: {

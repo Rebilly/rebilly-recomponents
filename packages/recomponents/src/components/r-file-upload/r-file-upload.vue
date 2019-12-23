@@ -18,11 +18,17 @@
             /**
              * Allow to submit multiple files
              */
-            multiple: Boolean,
+            multiple: {
+                type: Boolean,
+                default: false,
+            },
             /**
              * Limit allowed file extensions
              */
-            accept: String,
+            accept: {
+                type: String,
+                default: null,
+            },
             /**
              * Similar to native disabled property
              */
@@ -66,10 +72,12 @@
                     });
                 }
             },
-            input($event) {
+            input(event) {
                 this.open = false;
-                this.$emit('input', $event.target.files);
+                this.$emit('input', event.target.files);
                 this.$emit('close');
+
+                console.log(event.target.files)
             },
         },
     };
