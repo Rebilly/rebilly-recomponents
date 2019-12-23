@@ -73,7 +73,7 @@ storiesOf('Components.File Upload', module)
                             </r-file-upload>
                         </section>
                         <section v-content.secondary>
-                            <div v-for="(image, index) in images" @click="remove(index)" :key="image" title="Click to remove">
+                            <div v-for="(image, index) in images" @click="remove(index)" :key="image" title="Click to remove" style="max-width: 400px">
                                 <r-img :src="image"/>
                             </div>
                         </section>
