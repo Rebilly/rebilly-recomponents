@@ -635,6 +635,31 @@ body, .article {
 
     // Image
     --image-spinner-color: var(--primary-color);
+
+    // Toast
+    --toast-margin-top: 16px;
+    --toast-padding: 16px;
+    --toast-max-width: 300px;
+    --toast-min-width: 100px;
+    --toast-border-radius: var(--border-radius);
+    --toast-font-family: var(--primary-font-stack);
+    --toast-font-weight: var(--font-weight-regular);
+    --toast-text-color: var(--secondary-color);
+    --toast-transition: all 0.4s;
+    --toast-close-padding: 16px 32px 16px 16px;
+    --toast-close-icon-color: var(--secondary-color);
+    --toast-title-font-size: var(--font-size-h2);
+    --toast-positive-background-color: var(--positive-color-light);
+    --toast-positive-box-shadow: 0 0 0 1px rgba(0, 102, 11, .09), 0 20px 40px -8px rgba(80, 90, 111, .18), 0 3px 6px 0 rgba(80, 90, 111, .07);
+    --toast-negative-background-color: var(--negative-color-light);
+    --toast-negative-box-shadow: 0 0 0 1px rgba(229, 57, 53, .09), 0 20px 40px -8px rgba(80, 90, 111, .18), 0 3px 6px 0 rgba(80, 90, 111, .07);
+    --toast-info-background-color: var(--accent-color-light);
+    --toast-info-box-shadow: 0 0 0 1px rgba(0, 82, 78, .09), 0 20px 40px -8px rgba(80, 90, 111, .18), 0 3px 6px 0 rgba(80, 90, 111, .07);
+    --toast-warning-background-color: var(--warning-color-light);
+    --toast-warning-box-shadow: 0 0 0 1px rgba(96, 78, 0, .09), 0 20px 40px -8px rgba(80, 90, 111, .18), 0 3px 6px 0 rgba(80, 90, 111, .07);
+    --toast-container-top: 88px;
+    --toast-container-right: 32px;
+    --toast-container-z-index: var(--z-index-1000);
 }
 
 // Media Breakpoints
@@ -944,10 +969,12 @@ sub {
 
 address {
     font-style: normal;
+
     p {
         margin: 0;
     }
+
     button {
-        text-transform: inherit!important;
+        text-transform: inherit !important;
     }
 }
