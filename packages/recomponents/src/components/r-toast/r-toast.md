@@ -1,0 +1,2 @@
+`RToast` component is used to show quick messages to user.  Appears temporarily in the top right zone of the screen.
+To manage multiple toasters at the same time using RToasterManager plugin that is installed by default with Recomponents bundle.
