@@ -194,8 +194,10 @@
                 this.isPopperVisible = visible;
                 await this.$nextTick(); // await for contentEl to be visible before trying to access it
                 if (this.contentEl && this.contentEl.hasChildNodes()) {
-                    this.contentEl.firstChild.style = `transition-duration: ${this.duration}s`;
-                    this.positionContent();
+                    if (this.contentEl.firstChild.classList) {
+                        this.contentEl.firstChild.style.transitionDuration = `${this.duration}s`;
+                        this.positionContent();
+                    }
                 }
                 this.$emit('toggle', visible !== this.isPopperVisible);
                 this.$emit(visible ? 'toggle-on' : 'toggle-off');
