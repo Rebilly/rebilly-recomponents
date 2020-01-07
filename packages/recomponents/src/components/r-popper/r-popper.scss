@@ -1,3 +1,8 @@
+.r-popper-content-wrapper > *:only-child {
+    visibility: visible !important;
+    opacity: 1 !important;
+}
+
 .r-popper {
     display: inline-block;
     position: relative;
