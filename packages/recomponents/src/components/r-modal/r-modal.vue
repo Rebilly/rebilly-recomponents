@@ -35,7 +35,7 @@
                                 <r-button
                                         :class="{'r-inline-s': $slots['actions']}"
                                         @click="close" aria-label="close">
-                                    {{cancelLabel}}Q
+                                    {{cancelLabel}}
                                 </r-button>
                                 <slot name="actions"/>
                             </slot>
