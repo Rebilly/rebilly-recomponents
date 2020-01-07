@@ -1,5 +1,5 @@
 <template>
-    <transition name="r-modal" @appear="appear" @enter="enter" @leave="leave">
+    <transition name="r-modal" @enter="enter" @leave="leave">
         <div @mousedown="close"
              tabindex="0"
              ref="container"
@@ -163,10 +163,6 @@
             enter() {
                 this.focus();
                 this.$emit('enter');
-            },
-            appear() {
-                this.focus();
-                this.$emit('appear');
             },
             leave() {
                 // TODO styles no-scroll
