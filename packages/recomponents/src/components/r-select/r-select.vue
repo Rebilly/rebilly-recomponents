@@ -19,7 +19,7 @@
              role="combobox"
              :aria-owns="'listbox-'+id">
             <slot name="caret" :toggle="toggle">
-                <div @mousedown.prevent.stop="toggle()" class="r-select-caret"></div>
+                <r-icon icon="caret-down" class="r-select-caret" @mousedown.prevent.stop="toggle()"/>
             </slot>
             <slot name="clear" :search="search"></slot>
             <div ref="tags" class="r-select-tags">

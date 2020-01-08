@@ -196,7 +196,7 @@ fieldset[disabled] .r-select {
     display: block;
     position: absolute;
     box-sizing: border-box;
-    width: 40px;
+    width: 34px;
     height: 36px;
     right: 1px;
     top: 1px;
@@ -206,7 +206,6 @@ fieldset[disabled] .r-select {
     text-align: center;
     cursor: pointer;
     transition: var(--select-transition);
-    background: var(--select-caret) center no-repeat;
 }
 
 .r-select-placeholder {
