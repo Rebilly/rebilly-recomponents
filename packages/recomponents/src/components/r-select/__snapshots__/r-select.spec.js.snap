@@ -4,7 +4,7 @@ exports[`r-select.vue should render Wrapper and match snapshot 1`] = `
 <div class="fs-block">
   <!---->
   <div tabindex="-1" role="combobox" aria-owns="listbox-id" class="r-select r-field r-select-is-allow-empty">
-    <div class="r-select-caret"></div>
+    <r-icon-stub icon="caret-down" class="r-select-caret"></r-icon-stub>
     <div class="r-select-tags">
       <div class="r-select-tags-wrap" style="display: none;"></div>
       <!---->
@@ -34,8 +34,9 @@ exports[`r-select.vue should render Wrapper and match snapshot 1`] = `
 exports[`r-select.vue should render via SSR and match snapshot 1`] = `
 <div>
   <!---->
-  <div tabindex="-1" role="combobox" aria-owns="listbox-id" class="r-select r-field r-select-is-allow-empty">
-    <div class="r-select-caret"></div>
+  <div tabindex="-1" role="combobox" aria-owns="listbox-id" class="r-select r-field r-select-is-allow-empty"><svg class="r-icon r-icon-20 r-select-caret">
+      <use xlink:href="#icon-caret-down" xmlns:xlink="http://www.w3.org/1999/xlink"></use>
+    </svg>
     <div class="r-select-tags">
       <div class="r-select-tags-wrap" style="display:none;"></div>
       <!---->
