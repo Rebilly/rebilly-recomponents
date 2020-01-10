@@ -1,6 +1,6 @@
 .r-popper-content-wrapper > *:only-child {
-    visibility: visible !important;
-    opacity: 1 !important;
+    visibility: visible;
+    opacity: 1;
 }
 
 .r-popper {
@@ -99,6 +99,7 @@
     box-shadow: var(--popover-box-shadow);
     border-radius: var(--popover-border-radius);
     z-index: var(--popover-z-index);
+    transition: var(--popover-transition);
 }
 
 .r-popover.r-popover-centered {
