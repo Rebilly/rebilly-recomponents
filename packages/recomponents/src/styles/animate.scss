@@ -7,25 +7,25 @@
 }
 
 .fade-enter, .fade-leave-to {
-    opacity: 0;
+    opacity: 0 !important;
 }
 
 .left-enter, .left-leave-to {
-    opacity: 0;
+    opacity: 0 !important;
     transform: translateX(-12px);
 }
 
 .right-enter, .right-leave-to {
-    opacity: 0;
+    opacity: 0 !important;
     transform: translateX(12px);
 }
 
 .bottom-enter, .bottom-leave-to {
-    opacity: 0;
+    opacity: 0 !important;
     transform: translateY(12px);
 }
 
 .top-enter, .top-leave-to {
-    opacity: 0;
+    opacity: 0 !important;
     transform: translateY(-12px);
 }
