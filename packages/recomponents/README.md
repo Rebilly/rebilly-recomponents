@@ -53,6 +53,28 @@ Or bundled with webpack:
 
 We prefer [Storybook](https://storybook.js.org/) to plain-old documentation. [Check it out](https://recomponents.rebilly.com/) to see all of our components on display, with a comprehensive description and the ability to tweak properties and slots.
 
+## Building storybook
+Building (will generate bundled version in ../../docs folder):
+
+```bash
+npm run build-storybook
+yarn build-storybook
+```
+
+### Serving built storybook (from docs folder)
+
+If you want to serve the built version you can install [http-server](https://www.npmjs.com/package/http-server):
+
+```bash
+    yarn global add http-server
+    npm install http-server -g
+```
+
+and run: 
+```bash
+    yarn serve-built-storybook
+    npm run serve-built-storybook
+```
 ## Licence
 
 Recomponents are open source and released under the MIT Licence.

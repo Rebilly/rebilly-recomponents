@@ -18,8 +18,9 @@
     "build:lib": "vue-cli-service build --target lib --name recomponents 'src/index.js' --no-clean",
     "build:theme": "node-sass src/styles/recomm.scss dist/recomm.css",
     "clean:dist": "rimraf ./dist/**/*",
-    "storybook": "start-storybook -p 9001  -s public",
-    "build-storybook": "build-storybook -c .storybook -o ../../docs",
+    "storybook": "start-storybook -p 9001  -s ./public",
+    "build-storybook": "build-storybook -c .storybook -o ../../docs -s ./public",
+    "serve-built-storybook": "http-server ../../docs",
     "build-image-snapshots": "cross-env NODE_ENV=test jest --projects=./.image-snapshots",
     "semantic-release": "semantic-release"
   },
