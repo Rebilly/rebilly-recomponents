@@ -22,7 +22,7 @@
     opacity: 0;
     transition: var(--toast-transition);
     color: var(--toast-text-color);
-    animation: 'r-toaster-animation 0.4s ease-out';
+    animation: r-toaster-animation 0.4s ease-out;
 }
 
 .r-toast.is-closable {
