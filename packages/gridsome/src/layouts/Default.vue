@@ -17,6 +17,7 @@
 <script>
 import Vue from 'vue'
 import '@rebilly/recomponents/dist/recomponents.css'
+import '@/styles/gridsome.css'
 import Recomponents from '@rebilly/recomponents'
 
 Vue.use(Recomponents)
