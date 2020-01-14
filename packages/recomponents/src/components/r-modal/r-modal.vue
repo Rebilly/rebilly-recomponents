@@ -1,5 +1,5 @@
 <template>
-    <transition name="r-modal" @enter="enter" @leave="leave">
+    <transition name="r-modal" @appear="appear" @enter="enter" @leave="leave">
         <div @mousedown="close"
              tabindex="0"
              ref="container"
@@ -151,7 +151,9 @@
                 const currentElFocus = document.activeElement;
 
                 // TODO styles no-scroll
-                document.body.classList.add('r-no-scroll');
+                if (elContainer.style.display !== 'none') {
+                    document.body.classList.add('r-no-scroll');
+                }
 
                 if (elContainer !== currentElFocus
                     && !elContainer.contains(currentElFocus)) {
@@ -163,6 +165,10 @@
             enter() {
                 this.focus();
                 this.$emit('enter');
+            },
+            appear() {
+                this.focus();
+                this.$emit('appear');
             },
             leave() {
                 // TODO styles no-scroll
