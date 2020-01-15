@@ -7,6 +7,7 @@
        :disabled="disabled || loading"
        :target="$attrs.href ? '_target' : $attrs.target || ''"
     >
+        <!-- @slot Text content inside button  -->
         <slot>Link</slot>
     </a>
     <button v-else

@@ -24,8 +24,8 @@
   "dependencies": {
     "@nuxtjs/axios": "^5.3.6",
     "@nuxtjs/pwa": "^3.0.0-0",
-    "@rebilly/recomponents": "^1.14.1",
-    "nuxt": "^2.0.0"
+    "@rebilly/recomponents": "^1.17.4",
+    "nuxt": "^2.11.0"
   },
   "devDependencies": {
     "@nuxtjs/eslint-config": "^1.0.1",
