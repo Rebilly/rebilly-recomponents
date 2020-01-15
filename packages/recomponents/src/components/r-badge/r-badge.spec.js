@@ -80,4 +80,15 @@ describe('r-badge.vue', () => {
         wrapper.find(RIcon).trigger('click');
         expect(wrapper.emitted('close')).not.toBe(undefined);
     });
+
+    it('should emit event click on click', () => {
+        const wrapper = mount(RBadge, {
+            propsData: {
+                close: true,
+            },
+        });
+
+        wrapper.trigger('click');
+        expect(wrapper.emitted('click')).not.toBe(undefined);
+    });
 });
