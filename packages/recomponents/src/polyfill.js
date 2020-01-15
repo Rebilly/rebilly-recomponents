@@ -1,4 +1,11 @@
 /**
+ * Injecting SSR polyfills
+ */
+if (typeof global === 'object') {
+    global.HTMLElement = typeof window === 'undefined' ? Object : window.HTMLElement;
+}
+
+/**
  * see https://stackoverflow.com/questions/19999388/check-if-user-is-using-ie
  * detect IEEdge
  * returns version of IE/Edge or false, if browser is not a Microsoft browser
