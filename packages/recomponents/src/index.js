@@ -1,6 +1,7 @@
 import './polyfill';
 
 import './styles/helpers.scss';
+import './styles/theme.scss';
 
 import kebabCase from './common/helpers/kebab-case';
 import RToastManager from './plugins/r-toast-manager';
