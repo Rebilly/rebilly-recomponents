@@ -177,23 +177,6 @@ body, .article {
     --button-icon-primary-color: var(--mono-color-0);
     --button-icon-danger-color: var(--mono-color-0);
 
-    // Checkboxes
-    // ------------------------------------------------
-    --checkbox-transition: box-shadow var(--timing-100) var(--animation-ease);
-    --checkbox-background: var(--mono-color-0);
-    --checkbox-border-radius: var(--border-radius-xxs);
-    --checkbox-box-shadow: 0 0 0 1px var(--gray-color) inset, 0 1px 2px 0 var(--mono-color-300) inset;
-    --checkbox-border: none;
-    --checkbox-checked-background: var(--mono-color-0);
-    --checkbox-checked-box-shadow: 0 0 0 1px var(--primary-color) inset, 0 1px 2px 0 var(--mono-color-300) inset, 0 0 0 1px var(--primary-color);
-    --checkbox-checked-border: none;
-    --checkbox-checked-icon-color: var(--primary-color);
-    --checkbox-focus-background: var(--mono-color-0);
-    --checkbox-focus-box-shadow: 0 0 0 1px var(--primary-color) inset, 0 1px 2px 0 var(--mono-color-300) inset, 0 0 0 1px var(--primary-color);
-    --checkbox-focus-border: none;
-    --checkbox-disabled-background: var(--mono-color-100);
-    --checkbox-disabled-box-shadow: 0 0 0 1px var(--gray-color) inset;
-
     // Radios
     // ------------------------------------------------
     --radio-transition: box-shadow var(--timing-100) var(--animation-ease);
