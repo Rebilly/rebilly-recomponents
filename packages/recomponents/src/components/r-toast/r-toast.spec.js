@@ -55,4 +55,17 @@ describe('r-toast.vue', () => {
 
         expect(managerToasts).toHaveLength(4);
     });
+
+    it('should create toasts from errors via toast-manager', async () => {
+        const error = new Error();
+        const toastMessage = 'Custom error text';
+        localVue.$toast.fromError(error, toastMessage);
+        const hasToastAppeared = [...document.getElementsByClassName(`r-toast`)]
+            /* eslint-disable no-underscore-dangle */
+            .map(toast => toast.__vue__)
+            .some(toast => toast._props && toast._props.message === toastMessage);
+            /* eslint-enable no-underscore-dangle */
+
+        expect(hasToastAppeared).toBe(true);
+    });
 });
