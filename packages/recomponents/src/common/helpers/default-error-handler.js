@@ -19,7 +19,7 @@ class DefaultErrorHandler {
                     }
                     break;
                 case 500:
-                    errorMessages.push(`Something went wrong on our server, please contact support.`);
+                    errorMessages.push(`Something went wrong on our servers, please contact support.`);
                     break;
                 default:
                     errorMessages.push(defaultMessage);
