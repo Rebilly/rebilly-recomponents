@@ -12,6 +12,7 @@ describe('r-toast.vue', () => {
     };
     const localVue = createLocalVue();
     localVue.use(RToastPlugin);
+    const createToastFromError = (...args) => localVue.$toast.fromError(...args);
 
     it('should render Wrapper and match snapshot', async () => {
         // const wrapper = localVue.$toast.positive(props.message, {autoHide: false});
@@ -59,7 +60,7 @@ describe('r-toast.vue', () => {
     it('should create toasts from errors via toast-manager', async () => {
         const error = new Error();
         const toastMessage = 'Custom error text';
-        localVue.$toast.fromError(error, toastMessage);
+        createToastFromError(error, toastMessage);
         const hasToastAppeared = [...document.getElementsByClassName(`r-toast`)]
             /* eslint-disable no-underscore-dangle */
             .map(toast => toast.__vue__)
@@ -72,7 +73,7 @@ describe('r-toast.vue', () => {
     describe('r-toast-manager default error handling', () => {
         it('should handle errors without a supplied default message', async () => {
             const error = new Error();
-            localVue.$toast.fromError(error);
+            createToastFromError(error);
             const hasToastAppeared = [...document.getElementsByClassName(`r-toast`)]
                 /* eslint-disable no-underscore-dangle */
                 .map(toast => toast.__vue__)
@@ -87,7 +88,7 @@ describe('r-toast.vue', () => {
             const error = new Error();
             error.status = 404;
             error.message = errorMessage;
-            localVue.$toast.fromError(error);
+            createToastFromError(error);
             const hasToastAppeared = [...document.getElementsByClassName(`r-toast`)]
                 /* eslint-disable no-underscore-dangle */
                 .map(toast => toast.__vue__)
@@ -102,7 +103,7 @@ describe('r-toast.vue', () => {
             const error = new Error();
             error.status = 422;
             error.details = [errorDetails];
-            localVue.$toast.fromError(error);
+            createToastFromError(error);
             const hasToastAppeared = [...document.getElementsByClassName(`r-toast`)]
                 /* eslint-disable no-underscore-dangle */
                 .map(toast => toast.__vue__)
@@ -115,7 +116,7 @@ describe('r-toast.vue', () => {
         it('should handle errors with a 500 status', async () => {
             const error = new Error();
             error.status = 500;
-            localVue.$toast.fromError(error);
+            createToastFromError(error);
             const hasToastAppeared = [...document.getElementsByClassName(`r-toast`)]
                 /* eslint-disable no-underscore-dangle */
                 .map(toast => toast.__vue__)
@@ -130,7 +131,7 @@ describe('r-toast.vue', () => {
             const error = new Error();
             error.name = 'RebillyConflictError';
             error.message = errorMessage;
-            localVue.$toast.fromError(error);
+            createToastFromError(error);
             const hasToastAppeared = [...document.getElementsByClassName(`r-toast`)]
                 /* eslint-disable no-underscore-dangle */
                 .map(toast => toast.__vue__)
@@ -143,7 +144,7 @@ describe('r-toast.vue', () => {
         it('should ignore RebillyCanceledErrors', async () => {
             const error = new Error();
             error.name = 'RebillyCanceledError';
-            localVue.$toast.fromError(error);
+            createToastFromError(error);
             const hasToastAppeared = [...document.getElementsByClassName(`r-toast`)]
                 /* eslint-disable no-underscore-dangle */
                 .map(toast => toast.__vue__)
