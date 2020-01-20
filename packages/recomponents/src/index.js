@@ -10,10 +10,11 @@ import * as components from './components';
 import * as directives from './directives';
 
 function install(Vue, options = {}) {
+    const {ErrorHandler} = options;
+
     /**
      * Set global settings
      */
-
     Vue.$recomponents = {};
 
     Vue.$recomponents.settings = {
@@ -21,7 +22,7 @@ function install(Vue, options = {}) {
         ...options,
     };
 
-    Vue.use(RToastManager);
+    Vue.use(RToastManager, {ErrorHandler});
 
     /**
      * Injecting all components according to their filenames
