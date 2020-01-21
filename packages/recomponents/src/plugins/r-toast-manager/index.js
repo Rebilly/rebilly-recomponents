@@ -9,4 +9,5 @@ const RToastPlugin = (Vue, options = {}) => {
 
 RToast.install = RToastPlugin;
 
+export {RToastManager};
 export default RToast;
