@@ -7,6 +7,7 @@ import { withA11y } from '@storybook/addon-a11y';
 import { withKnobs } from '@storybook/addon-knobs';
 // import { withContexts } from '@storybook/addon-contexts/vue';
 import { withCssResources } from '@storybook/addon-cssresources';
+import withCentered from '@storybook/addon-centered/vue';
 import theme from './theme';
 
 
@@ -48,6 +49,7 @@ addDecorator(withA11y)
 addDecorator(withKnobs);
 // addDecorator(withContexts(topLevelContexts));
 addDecorator(withCssResources)
+addDecorator(withCentered);
 addParameters({
     options: {
         theme,
