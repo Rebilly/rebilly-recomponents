@@ -4,12 +4,17 @@ import {action} from '@storybook/addon-actions';
 import markdown from './r-toast.md';
 import RToast from './r-toast.vue';
 
+function destroyToastManuallyWhenTheUserNavigatesToAnotherStory(className) {
+    document.querySelectorAll(className).forEach(el => el && el.remove());
+}
+
 storiesOf('Components.Toast', module)
     .addParameters({component: RToast})
     .add('Component', () => ({
         template: `
-            <div class="storybook-center">           
-                <r-toast :visible="true"
+            <div class="storybook-center">
+                <r-toast class="componentStory"
+                         :visible="true"
                          :type="type"
                          :title="title"
                          :auto-hide="autoHide"
@@ -34,7 +39,7 @@ storiesOf('Components.Toast', module)
                 default: boolean('Allow close', false),
             },
             autoHide: {
-                default: boolean('Auto Hide', true),
+                default: boolean('Auto Hide', false),
             },
             message: {
                 default: text('Message', 'This is the toast message'),
@@ -42,6 +47,9 @@ storiesOf('Components.Toast', module)
         },
         methods: {
             hide: action('hide'),
+        },
+        destroyed() {
+            destroyToastManuallyWhenTheUserNavigatesToAnotherStory('.componentStory');
         },
     }), {
         notes: {markdown},
@@ -51,6 +59,7 @@ storiesOf('Components.Toast', module)
             <div class="storybook-center">
                 <div class="storybook-item" v-for="type in types">
                     <r-toast
+                        class="allTypesStory"
                         :visible="true"
                         :type="type"
                         :title="type">
@@ -68,6 +77,10 @@ storiesOf('Components.Toast', module)
                 ],
             },
         },
+        destroyed() {
+            // Manually destroy toast when the user navigates to another story
+            destroyToastManuallyWhenTheUserNavigatesToAnotherStory('.allTypesStory');
+        },
     }), {
         notes: {markdown},
     })
@@ -82,7 +95,7 @@ storiesOf('Components.Toast', module)
                             <r-button type="default" @click="addToast('warning')">Warning</r-button>
                             <r-button type="default" @click="addToast('info')">Info</r-button>
                         </div>
-                    </div>     
+                    </div>
                 </div>
             </div>
         `,
