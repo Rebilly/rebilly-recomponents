@@ -94,7 +94,13 @@
             <span class="r-field-caption" v-if="helpText">{{helpText}}</span>
         </template>
         <template v-if="type === 'datepicker'">
-            <v-date-picker v-model="value" is-inline/>
+            <v-date-picker v-model="selectedDate"
+                           @input="$emit('input', selectedDate)" is-inline/>
+        </template>
+        <template v-if="type === 'range'">
+            <r-calendar-manager type="range"
+                                :value="value"
+                                @input="$emit('input', $event)"></r-calendar-manager>
         </template>
     </div>
 </template>

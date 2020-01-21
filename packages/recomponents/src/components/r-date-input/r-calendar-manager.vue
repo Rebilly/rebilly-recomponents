@@ -85,12 +85,16 @@
                 return this.type === 'range';
             },
             internalPeriod() {
-                const start = this.value.start.clone();
-                const end = this.value.end.clone();
-                return {
-                    start: start.tz(moment.tz.guess(), true).toDate(),
-                    end: end.tz(moment.tz.guess(), true).toDate(),
-                };
+                if (this.value !== null) {
+                    const start = this.value.start.clone();
+                    const end = this.value.end.clone();
+                    return {
+                        start: start.tz(moment.tz.guess(), true).toDate(),
+                        end: end.tz(moment.tz.guess(), true).toDate(),
+                    };
+                }
+
+                return {start: null, end: null};
             },
             internalDate() {
                 if (!this.value) {
