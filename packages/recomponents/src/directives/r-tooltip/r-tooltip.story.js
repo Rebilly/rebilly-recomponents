@@ -16,10 +16,8 @@ storiesOf('Directives', module)
                 <div>
                     <r-button type="primary" v-tooltip="{text: text}">With button</r-button>
                     <r-badge type="info" v-tooltip="{text: text}">With badge</r-badge>
-                    <!-- TODO tooltip usage -->
-                    <r-radio label="With radio"/>
-                    <!-- TODO tooltip usage -->
-                    <r-checkbox label="With checkbox"/>
+                    <r-radio label="With radio" v-tooltip="{text: text}"/>
+                    <r-checkbox label="With checkbox" v-tooltip="{text: text}"/>
                 </div>
                 <div>
                     <r-img src="https://www.rebilly.com/wp-content/uploads/2019/01/new_features@2x-319x150.png" v-tooltip="{text: text}"/>

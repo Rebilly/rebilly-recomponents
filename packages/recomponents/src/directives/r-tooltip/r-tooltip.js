@@ -20,7 +20,7 @@ export default {
                 const out = {};
                 out.top = tooltip.style.top.replace('px', '') < boundaryTop;
                 out.left = tooltip.style.left.replace('px', '') < boundaryLeft;
-                out.right = (elToCheck.right + (tooltipEl.width / 2))
+                out.right = (parseFloat(tooltip.style.left.replace('px', '')) + tooltipEl.width)
                     > (window.innerWidth || document.documentElement.clientWidth);
                 return out;
             };

@@ -12,6 +12,7 @@ describe('r-toast.vue', () => {
     };
     const localVue = createLocalVue();
     localVue.use(RToastPlugin);
+    const createToastFromError = (...args) => localVue.$toast.fromError(...args);
 
     it('should render Wrapper and match snapshot', async () => {
         // const wrapper = localVue.$toast.positive(props.message, {autoHide: false});
@@ -55,4 +56,103 @@ describe('r-toast.vue', () => {
 
         expect(managerToasts).toHaveLength(4);
     });
+
+    it('should create toasts from errors via toast-manager', async () => {
+        const error = new Error();
+        const toastMessage = 'Custom error text';
+        createToastFromError(error, toastMessage);
+        const hasToastAppeared = [...document.getElementsByClassName(`r-toast`)]
+            /* eslint-disable no-underscore-dangle */
+            .map(toast => toast.__vue__)
+            .some(toast => toast._props && toast._props.message === toastMessage);
+            /* eslint-enable no-underscore-dangle */
+
+        expect(hasToastAppeared).toBe(true);
+    });
+
+    describe('r-toast-manager default error handling', () => {
+        it('should handle errors without a supplied default message', async () => {
+            const error = new Error();
+            createToastFromError(error);
+            const hasToastAppeared = [...document.getElementsByClassName(`r-toast`)]
+                /* eslint-disable no-underscore-dangle */
+                .map(toast => toast.__vue__)
+                .some(toast => toast._props && toast._props.message === 'Something went wrong, please try again or contact support');
+                /* eslint-enable no-underscore-dangle */
+
+            expect(hasToastAppeared).toBe(true);
+        });
+
+        it('should handle errors with a status property', async () => {
+            const errorMessage = 'Not found';
+            const error = new Error();
+            error.status = 404;
+            error.message = errorMessage;
+            createToastFromError(error);
+            const hasToastAppeared = [...document.getElementsByClassName(`r-toast`)]
+                /* eslint-disable no-underscore-dangle */
+                .map(toast => toast.__vue__)
+                .some(toast => toast._props && toast._props.message === errorMessage);
+                /* eslint-enable no-underscore-dangle */
+
+            expect(hasToastAppeared).toBe(true);
+        });
+
+        it('should handle errors with a 422 status', async () => {
+            const errorDetails = 'Details why the entity was unprocessable';
+            const error = new Error();
+            error.status = 422;
+            error.details = [errorDetails];
+            createToastFromError(error);
+            const hasToastAppeared = [...document.getElementsByClassName(`r-toast`)]
+                /* eslint-disable no-underscore-dangle */
+                .map(toast => toast.__vue__)
+                .some(toast => toast._props && toast._props.message === errorDetails);
+                /* eslint-enable no-underscore-dangle */
+
+            expect(hasToastAppeared).toBe(true);
+        });
+
+        it('should handle errors with a 500 status', async () => {
+            const error = new Error();
+            error.status = 500;
+            createToastFromError(error);
+            const hasToastAppeared = [...document.getElementsByClassName(`r-toast`)]
+                /* eslint-disable no-underscore-dangle */
+                .map(toast => toast.__vue__)
+                .some(toast => toast._props && toast._props.message === 'Something went wrong on our servers, please contact support.');
+                /* eslint-enable no-underscore-dangle */
+
+            expect(hasToastAppeared).toBe(true);
+        });
+
+        it('should handle RebillyConflictErrors', async () => {
+            const errorMessage = 'Useful error message';
+            const error = new Error();
+            error.name = 'RebillyConflictError';
+            error.message = errorMessage;
+            createToastFromError(error);
+            const hasToastAppeared = [...document.getElementsByClassName(`r-toast`)]
+                /* eslint-disable no-underscore-dangle */
+                .map(toast => toast.__vue__)
+                .some(toast => toast._props && toast._props.message === errorMessage);
+                /* eslint-enable no-underscore-dangle */
+
+            expect(hasToastAppeared).toBe(true);
+        });
+
+        it('should ignore RebillyCanceledErrors', async () => {
+            const error = new Error();
+            error.name = 'RebillyCanceledError';
+            createToastFromError(error);
+            const hasToastAppeared = [...document.getElementsByClassName(`r-toast`)]
+                /* eslint-disable no-underscore-dangle */
+                .map(toast => toast.__vue__)
+                .some(toast => toast._props && toast._props.message === 'Something went wrong, please try again or contact support');
+                /* eslint-enable no-underscore-dangle */
+
+            expect(hasToastAppeared).toBe(true);
+        });
+    });
+
 });
