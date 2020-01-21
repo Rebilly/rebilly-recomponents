@@ -1,5 +1,6 @@
 import RToast from '../../components/r-toast/r-toast.vue';
 import RToastTypes from './r-toast-types';
+import DefaultErrorHandler from '../../common/helpers/default-error-handler';
 
 const ToastContainer = (Vue, globalOptions = {}) => ({
     show(options) {
@@ -42,6 +43,12 @@ const ToastContainer = (Vue, globalOptions = {}) => ({
             message,
             type: RToastTypes.Warning,
         }, options));
+    },
+    fromError(error, defaultMsg, params = {}) {
+        const errorHandler = globalOptions.ErrorHandler
+            ? globalOptions.ErrorHandler : DefaultErrorHandler;
+        const errors = errorHandler.parseError(error, defaultMsg);
+        errors.forEach(err => this.negative(err, params));
     },
 });
 
