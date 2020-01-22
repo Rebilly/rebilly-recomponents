@@ -31,7 +31,7 @@
                 required: true,
             },
             /**
-             * Number of items processed by single page
+             * Number of items displayed on a single page
              */
             limit: {
                 type: Number,
