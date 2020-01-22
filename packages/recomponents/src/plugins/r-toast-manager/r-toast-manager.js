@@ -2,7 +2,7 @@ import RToast from '../../components/r-toast/r-toast.vue';
 import RToastTypes from './r-toast-types';
 import DefaultErrorHandler from '../../common/helpers/default-error-handler';
 
-const ToastManager = (Vue, globalOptions = {}) => ({
+const RToastManager = (Vue, globalOptions = {}) => ({
     show(options) {
         let message;
         if (typeof options === 'string') {
@@ -52,4 +52,4 @@ const ToastManager = (Vue, globalOptions = {}) => ({
     },
 });
 
-export default ToastManager;
+export default RToastManager;
