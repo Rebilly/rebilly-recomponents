@@ -13,7 +13,7 @@ storiesOf('Components.Toast', module)
     .add('Component', () => ({
         template: `
             <div class="storybook-center">
-                <r-toast class="componentStory"
+                <r-toast class="component-story"
                          :visible="true"
                          :type="type"
                          :title="title"
@@ -49,7 +49,7 @@ storiesOf('Components.Toast', module)
             hide: action('hide'),
         },
         destroyed() {
-            destroyToastManuallyWhenTheUserNavigatesToAnotherStory('.componentStory');
+            destroyToastManuallyWhenTheUserNavigatesToAnotherStory('.component-story');
         },
     }), {
         notes: {markdown},
@@ -59,7 +59,7 @@ storiesOf('Components.Toast', module)
             <div class="storybook-center">
                 <div class="storybook-item" v-for="type in types">
                     <r-toast
-                        class="allTypesStory"
+                        class="all-types-story"
                         :visible="true"
                         :type="type"
                         :title="type">
@@ -79,7 +79,7 @@ storiesOf('Components.Toast', module)
         },
         destroyed() {
             // Manually destroy toast when the user navigates to another story
-            destroyToastManuallyWhenTheUserNavigatesToAnotherStory('.allTypesStory');
+            destroyToastManuallyWhenTheUserNavigatesToAnotherStory('.all-types-story');
         },
     }), {
         notes: {markdown},
