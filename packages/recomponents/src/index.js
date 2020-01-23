@@ -4,7 +4,7 @@ import './styles/helpers.scss';
 import './styles/theme.scss';
 
 import kebabCase from './common/helpers/kebab-case';
-import RToastManager from './plugins/r-toast-manager';
+import RToastPlugin, {RToastManager} from './plugins/r-toast-manager';
 
 import * as components from './components';
 import * as directives from './directives';
@@ -22,7 +22,7 @@ function install(Vue, options = {}) {
         ...options,
     };
 
-    Vue.use(RToastManager, {ErrorHandler});
+    Vue.use(RToastPlugin, {ErrorHandler});
 
     /**
      * Injecting all components according to their filenames
@@ -46,4 +46,5 @@ export default {
     install,
     ...directives,
     ...components,
+    RToastManager,
 };
