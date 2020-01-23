@@ -1,5 +1,6 @@
 <template>
     <div>
+        <!-- @slot Pagination component  -->
         <slot name="pagination" :pagination="pagination">
             <r-pagination-control :pagination="pagination"/>
         </slot>
@@ -16,38 +17,48 @@
         name: 'r-pagination',
         props: {
             /**
-             * TBD
+             * Wrapper for async pagination data provider
              */
             provider: {
                 type: Function,
                 required: true,
             },
             /**
-             * TBD
+             * Number of items handled by pagination in total
              */
             total: {
                 type: Number,
                 required: true,
             },
             /**
-             * TBD
+             * Number of items displayed on a single page
              */
             limit: {
                 type: Number,
                 required: true,
             },
             /**
-             * TBD
+             * Maximum number of displayed pages on screen, other pages will be hidden by …
              */
             totalVisible: {
                 type: [Number, Boolean],
             },
+            /**
+             * Number of current active page
+             */
+            page: {
+                type: [Number],
+                default: 1,
+            },
+        },
+        model: {
+            prop: 'page',
+            event: 'navigate',
         },
         data() {
             return {
                 data: [],
                 // TODO probably page as props value, to able to start with page from url query (or etc)
-                page: 1,
             };
         },
         methods: {
@@ -60,12 +71,11 @@
                 this.navigate(page < 1 ? 1 : page);
             },
             navigate(number) {
-                this.page = number;
                 /**
-                 * Emits when it is navigated to next, previous or another page
+                 * Page change by element click or from parent component
                  * @type {Event}
                  */
-                this.$emit('navigate', this.page);
+                this.$emit('navigate', number);
             },
             range(start, end) {
                 const range = [];

@@ -5,7 +5,7 @@ import './styles/theme.scss';
 
 import NoSSR from 'vue-no-ssr';
 import kebabCase from './common/helpers/kebab-case';
-import RToastManager from './plugins/r-toast-manager';
+import RToastPlugin, {RToastManager} from './plugins/r-toast-manager';
 
 import * as components from './components';
 import * as directives from './directives';
@@ -23,7 +23,7 @@ function install(Vue, options = {}) {
         ...options,
     };
 
-    Vue.use(RToastManager, {ErrorHandler});
+    Vue.use(RToastPlugin, {ErrorHandler});
 
     Vue.component('no-ssr', NoSSR);
 
@@ -49,4 +49,5 @@ export default {
     install,
     ...directives,
     ...components,
+    RToastManager,
 };
