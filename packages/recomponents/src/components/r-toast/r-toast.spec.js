@@ -154,5 +154,4 @@ describe('r-toast.vue', () => {
             expect(hasToastAppeared).toBe(true);
         });
     });
-
 });
