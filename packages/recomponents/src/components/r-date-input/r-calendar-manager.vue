@@ -1,37 +1,37 @@
 <template>
     <div class="calendar">
         <r-input
-            :disabled="disabled"
-            right-icon="calendar"
-            v-show="disabled" />
+                :disabled="disabled"
+                right-icon="calendar"
+                v-show="disabled"/>
         <no-ssr>
             <v-date-picker
-                v-show="!disabled"
-                v-if="isDateRange"
-                mode="range"
-                is-double-paned
-                is-inline
-                show-caps
-                :show-popover="false"
-                :theme-styles="themeStyles"
-                :tint-color="tintColor"
-                :max-date="maxDate"
-                :available-dates="availableDates"
-                @input="periodInput"
-                :disabled-attribute="disabledAttribute"
-                :value="internalPeriod">
+                    v-show="!disabled"
+                    v-if="isDateRange"
+                    mode="range"
+                    is-double-paned
+                    is-inline
+                    show-caps
+                    :show-popover="false"
+                    :theme-styles="themeStyles"
+                    :tint-color="tintColor"
+                    :max-date="maxDate"
+                    :available-dates="availableDates"
+                    @input="periodInput"
+                    :disabled-attribute="disabledAttribute"
+                    :value="internalPeriod">
             </v-date-picker>
             <v-date-picker
-                v-show="!disabled"
-                v-if="!isDateRange"
-                mode="single"
-                popover-visibility="focus"
-                :popover-content-offset="4"
-                :theme-styles="themeStyles"
-                :tint-color="tintColor"
-                :available-dates="availableDates"
-                @input="dateInput"
-                :value="internalDate">
+                    v-show="!disabled"
+                    v-if="!isDateRange"
+                    mode="single"
+                    popover-visibility="focus"
+                    :popover-content-offset="4"
+                    :theme-styles="themeStyles"
+                    :tint-color="tintColor"
+                    :available-dates="availableDates"
+                    @input="dateInput"
+                    :value="internalDate">
             </v-date-picker>
         </no-ssr>
     </div>
@@ -85,7 +85,7 @@
                 return this.type === 'range';
             },
             internalPeriod() {
-                if (this.value !== null) {
+                if (this.value && this.value.start && this.value.end) {
                     const start = this.value.start.clone();
                     const end = this.value.end.clone();
                     return {

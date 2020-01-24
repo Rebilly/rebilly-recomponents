@@ -121,7 +121,7 @@
         },
         props: {
             /**
-             * TBD
+             * Specify available dates list
              */
             availableDates: {
                 type: Object,
@@ -129,69 +129,62 @@
                 default: null,
             },
             /**
-             * TBD
+             * Set the label
              */
             label: {
                 type: String,
                 default: null,
             },
             /**
-             * TBD
+             * Disabled state of date picker
              */
             disabled: {
                 type: Boolean,
                 default: false,
             },
             /**
-             * TBD
+             * Set the placeholder
              */
             placeholder: {
                 type: String,
                 default: null,
             },
             /**
-             * TBD
+             * Set the help text
              */
             helpText: {
                 type: String,
                 default: null,
             },
             /**
-             * TBD
-             */
-            stack: {
-                type: String,
-                default: null,
-            },
-            /**
-             * TBD
+             * Specify type of the date picker
              */
             type: {
                 type: String,
                 default: 'date',
             },
             /**
-             * TBD
+             * Change the name of date picker
              */
             name: {
                 type: String,
                 default: () => shortid.generate(),
             },
             /**
-             * TBD
+             * Used to specify what dates are selected
              */
             value: {
                 type: Object,
             },
             /**
-             * TBD
+             * Specify how to validate
              */
             validate: {
                 type: Object,
                 default: null,
             },
             /**
-             * TBD
+             * Styles the view of date picker
              */
             noFlex: {
                 type: Boolean,
