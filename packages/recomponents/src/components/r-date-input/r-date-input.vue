@@ -56,6 +56,7 @@
             <p v-if="label" class="r-stack-xs">{{label}}</p>
             <div class="r-grid-fitted grid-unstackable r-align-items-center">
                 <div class="r-grid-item r-no-flex">
+                    <!-- @slot Override default hours input component  -->
                     <slot
                         :options="timeOptions.hours"
                         :value="selectedTime.hours"
@@ -75,6 +76,7 @@
                     <span class="r-date-time-divider">:</span>
                 </div>
                 <div class="r-grid-item r-no-flex">
+                    <!-- @slot Override default minutes input component  -->
                     <slot
                         :options="timeOptions.minutes"
                         :value="selectedTime.minutes"
@@ -225,6 +227,10 @@
                     this.selectedDate.hours(this.value.hours());
                     this.selectedDate.minutes(this.value.minutes());
                 }
+                /**
+                 * Date change by element click or from parent component
+                 * @type {Event}
+                 */
                 this.$emit('input', this.selectedDate);
             },
             // TODO 00 hours/time
