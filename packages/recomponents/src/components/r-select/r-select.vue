@@ -18,11 +18,14 @@
              class="r-select r-field"
              role="combobox"
              :aria-owns="'listbox-'+id">
+            <!-- @slot Override default caret component -->
             <slot name="caret" :toggle="toggle">
                 <r-icon icon="caret-down" class="r-select-caret" @mousedown.prevent.stop="toggle()"/>
             </slot>
+            <!-- @slot Add an icon to clear the input -->
             <slot name="clear" :search="search"></slot>
             <div ref="tags" class="r-select-tags">
+                <!-- @slot Override default selection component -->
                 <slot name="selection"
                       v-if="!loading"
                       :search="search"
@@ -34,6 +37,7 @@
                          @mousedown.prevent>
                         <template v-for="(option, index) of computedValue"
                                   @mousedown.prevent>
+                            <!-- @slot Override default tag component -->
                             <slot name="tag"
                                   :option="option"
                                   :search="search"
@@ -55,6 +59,7 @@
                         </template>
                     </div>
                     <template v-if="internalValue && internalValue.length > limit">
+                        <!-- @slot Override default limit message component -->
                         <slot name="limit">
                             <strong class="r-select-limit"
                                     v-text="limitText(internalValue.length - limit)"/>
@@ -62,6 +67,7 @@
                     </template>
                 </slot>
                 <transition name="r-select-loading">
+                    <!-- @slot Override default loading spinner component -->
                     <slot name="loading">
                         <div v-show="loading" class="r-select-loading-spinner"/>
                     </slot>
@@ -92,6 +98,7 @@
                 <span v-if="isSingleLabelVisible && !loading"
                       class="r-select-single"
                       @mousedown.prevent="toggle">
+                    <!-- @slot Override default single value component -->
                     <slot name="singleLabel" :option="singleValue">
                         <template>{{ currentOptionLabel }}</template>
                     </slot>
@@ -99,6 +106,7 @@
                 <span v-if="isPlaceholderVisible || loading"
                       class="r-select-placeholder"
                       @mousedown.prevent="toggle">
+                    <!-- @slot Override default placeholder component -->
                     <slot name="placeholder">
                         {{ placeholder }}
                     </slot>
@@ -116,6 +124,7 @@
                         :style="contentStyle"
                         role="listbox"
                         :id="'listbox-'+id">
+                        <!-- @slot Override default before list option component -->
                         <slot name="beforeList">
                             <template v-if="computedIsLoading">
                                 <span class="r-select-content-element-option">
@@ -138,6 +147,7 @@
                         </slot>
                         <li v-if="multiple && max === internalValue.length">
                             <span class="r-select-content-element-option">
+                                <!-- @slot Override default max elements message component -->
                                 <slot name="maxElements">
                                     {{ messages.max(max) }}
                                 </slot>
@@ -152,6 +162,7 @@
                                   @click.stop="select(option)"
                                   @mouseenter.self="pointerSet(index)"
                                   class="r-select-content-element-option">
+                                <!-- @slot Override default option component -->
                                 <slot name="option"
                                       :option="option"
                                       :search="search">
@@ -162,6 +173,7 @@
                         <li class="r-select-content-element"
                             v-show="showNoResults && (filteredOptions.length === 0 && search && !loading)">
                             <span class="r-select-content-element-option">
+                                <!-- @slot Override default no result component -->
                                 <slot name="noResult"
                                       :search="search">{{messages['noResult']}}
                                 </slot>
@@ -170,9 +182,11 @@
                         <li class="r-select-content-element"
                             v-show="showNoOptions && (computedOptions.length === 0 && !search && !loading)">
                             <span class="r-select-content-element-option">
+                                <!-- @slot Override default no options component -->
                                 <slot name="noOptions">{{messages['noOptions']}}</slot>
                             </span>
                         </li>
+                        <!-- @slot Override default after list component -->
                         <slot name="afterList">
                             <template v-if="computedAsyncHasNextOptions">
                                 <li class="r-select-content-element-option r-align-center r-select-content-element-option-load r-select-content-element-option-load-next">
@@ -268,7 +282,7 @@
         components: {RIcon, RIconButton, RBadge},
         props: {
             /**
-             * TBD
+             * Specify if no option can be selected
              */
             allowEmpty: {
                 type: Boolean,
@@ -284,21 +298,21 @@
                 },
             },
             /**
-             * TBD
+             * Specify if on select the search input should be cleaned up
              */
             clearOnSelect: {
                 type: Boolean,
                 default: true,
             },
             /**
-             * TBD
+             * Specify if the popper should be closed after selection
              */
             closeOnSelect: {
                 type: Boolean,
                 default: true,
             },
             /**
-             * TBD
+             * If the option is an object specify what property should be used as a label, by default 'label'
              */
             customLabel: {
                 type: Function,
@@ -311,61 +325,61 @@
                 },
             },
             /**
-             * TBD
+             * Specify how to validate the select field
              */
             validate: {
                 type: Object,
                 default: null,
             },
             /**
-             * TBD
+             * Disable the select field
              */
             disabled: {
                 type: Boolean,
                 default: false,
             },
             /**
-             * TBD
+             * Change the help text
              */
             helpText: {
                 type: String,
             },
             /**
-             * TBD
+             * Specify if selected options should be hidden
              */
             hideSelected: {
                 type: Boolean,
                 default: false,
             },
             /**
-             * TBD
+             * ID of select field
              */
             id: {
                 type: String,
                 default: () => shortid.generate(),
             },
             /**
-             * TBD
+             * Specify is the internal search enabled
              */
             internalSearch: {
                 type: Boolean,
                 default: true,
             },
             /**
-             * TBD
+             * Change the label of the select field
              */
             label: {
                 type: String,
             },
             /**
-             * TBD
+             * Specify the limit quantity of shown selected options
              */
             limit: {
                 type: Number,
                 default: 99999,
             },
             /**
-             * TBD
+             * Set the text which is shown when there are not shown options by limit
              */
             limitText: {
                 type: Function,
@@ -374,159 +388,166 @@
                 },
             },
             /**
-             * TBD
+             * Set the loading state
              */
             loading: {
                 type: Boolean,
                 default: false,
             },
             /**
-             * TBD
+             * Specify maximum for selected options
              */
             max: {
                 type: [Number, Boolean],
                 default: false,
             },
             /**
-             * TBD
+             * Specify max height of the popper
              */
             maxHeight: {
                 type: Number,
                 default: 300,
             },
             /**
-             * TBD
+             * Specify is multiple mode is enabled
              */
             multiple: {
                 type: Boolean,
                 default: false,
             },
             /**
-             * TBD
+             * Change the name of select
              */
             name: {
                 type: String,
                 default: '',
             },
             /**
-             * TBD
+             * Specify direction of shown popper
              */
             openDirection: {
                 type: String,
                 default: '',
             },
             /**
-             * TBD
+             * Set the options of select field
              */
             options: {
                 type: Array,
                 default: () => [],
             },
             /**
-             * TBD
+             * Specify height of options in the popper
              */
             optionHeight: {
                 type: Number,
                 default: 40,
             },
             /**
-             * TBD
+             * If the option is an object specify what property should be used as a value, by default 'value'
              */
             optionKey: {
                 type: String,
             },
             /**
-             * TBD
+             * If the option is an object specify what property should be used as a label, by default 'label'
              */
             optionLabel: {
                 type: String,
             },
             /**
-             * TBD
+             * Set the limit of available shown options
              */
             optionsLimit: {
                 type: Number,
                 default: 1000,
             },
             /**
-             * TBD
+             * Specify if the first option should be preselected
              */
             preselectFirst: {
                 type: Boolean,
                 default: false,
             },
             /**
-             * TBD
+             * Specify if the search should be preserved
              */
             preserveSearch: {
                 type: Boolean,
                 default: false,
             },
             /**
-             * TBD
+             * Change the placeholder
              */
             placeholder: {
                 type: String,
                 default: 'Select option',
             },
             /**
-             * TBD
+             * Specify if the selection should be reset
              */
             resetAfter: {
                 type: Boolean,
                 default: false,
             },
             /**
-             * TBD
+             * Specify if the field searchable
              */
             searchable: {
                 type: Boolean,
                 default: true,
             },
             /**
-             * TBD
+             * Specify if the no option label should be shown
              */
             showNoOptions: {
                 type: Boolean,
                 default: true,
             },
             /**
-             * TBD
+             * Specify if the no results label should be shown
              */
             showNoResults: {
                 type: Boolean,
                 default: true,
             },
             /**
-             * TBD
+             * Specify should the pointer be shown
              */
             showPointer: {
                 type: Boolean,
                 default: true,
             },
             /**
-             * TBD
+             * Specify tab index
              */
             tabindex: {
                 type: Number,
                 default: 0,
             },
             /**
-             * TBD
+             * Specify should the user create his own options - tags
              */
             taggable: {
                 type: Boolean,
                 default: false,
             },
             /**
-             * TBD
+             * Specify tag position
              */
             tagPosition: {
                 type: String,
                 default: 'top',
             },
             /**
-             * TBD
+             * Specify how the tag is validating
+             */
+            tagValidator: {
+                type: Function,
+                default: (tag) => true,
+            },
+            /**
+             * The array of selected options
              */
             value: {
                 type: null,
@@ -554,6 +575,10 @@
                 }
             },
             search() {
+                /**
+                 * Search text change
+                 * @type {Event}
+                 */
                 this.$emit('search-change', this.search, this.id);
             },
             loading() {
@@ -746,6 +771,10 @@
                 } else {
                     this.$el.focus();
                 }
+                /**
+                 * The select popper open
+                 * @type {Event}
+                 */
                 this.$emit('open', this.id);
             },
             addPointerElement({key} = 'Enter') {
@@ -785,6 +814,10 @@
                 if (!this.preserveSearch) {
                     this.search = '';
                 }
+                /**
+                 * The select popper close
+                 * @type {Event}
+                 */
                 this.$emit('close', this.getValue(), this.id);
             },
             getOptionLabel(option) {
@@ -906,9 +939,17 @@
                     : this.valueKeys.indexOf(option);
 
 
+                /**
+                 * The selected option remove
+                 * @type {Event}
+                 */
                 this.$emit('remove', option, this.id);
                 if (this.multiple) {
                     const newValue = this.primitiveValue.slice(0, index).concat(this.primitiveValue.slice(index + 1));
+                    /**
+                     * The option select
+                     * @type {Event}
+                     */
                     this.$emit('input', newValue, this.id);
                 } else {
                     this.$emit('input', null, this.id);
@@ -943,6 +984,10 @@
                     return;
                 }
                 if (option.isTag) {
+                    /**
+                     * The option tag
+                     * @type {Event}
+                     */
                     this.$emit('tag', option.label, this.id);
                     this.select(option.label);
                     this.search = '';
@@ -963,6 +1008,10 @@
                     if (this.max && this.multiple && this.internalValue.length === this.max) {
                         return;
                     }
+                    /**
+                     * The option select
+                     * @type {Event}
+                     */
                     this.$emit('select', option, this.id);
 
                     if (this.multiple) {
