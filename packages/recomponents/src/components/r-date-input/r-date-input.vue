@@ -56,6 +56,7 @@
             <p v-if="label" class="r-stack-xs">{{label}}</p>
             <div class="r-grid-fitted grid-unstackable r-align-items-center">
                 <div class="r-grid-item r-no-flex">
+                    <!-- @slot Override default hours input component  -->
                     <slot
                         :options="timeOptions.hours"
                         :value="selectedTime.hours"
@@ -75,6 +76,7 @@
                     <span class="r-date-time-divider">:</span>
                 </div>
                 <div class="r-grid-item r-no-flex">
+                    <!-- @slot Override default minutes input component  -->
                     <slot
                         :options="timeOptions.minutes"
                         :value="selectedTime.minutes"
@@ -94,7 +96,13 @@
             <span class="r-field-caption" v-if="helpText">{{helpText}}</span>
         </template>
         <template v-if="type === 'datepicker'">
-            <v-date-picker v-model="value" is-inline/>
+            <v-date-picker v-model="selectedDate"
+                           @input="$emit('input', selectedDate)" is-inline/>
+        </template>
+        <template v-if="type === 'range'">
+            <r-calendar-manager type="range"
+                                :value="value"
+                                @input="$emit('input', $event)"></r-calendar-manager>
         </template>
     </div>
 </template>
@@ -115,7 +123,7 @@
         },
         props: {
             /**
-             * TBD
+             * Specify available dates list
              */
             availableDates: {
                 type: Object,
@@ -123,69 +131,62 @@
                 default: null,
             },
             /**
-             * TBD
+             * Set the label
              */
             label: {
                 type: String,
                 default: null,
             },
             /**
-             * TBD
+             * Disabled state of date picker
              */
             disabled: {
                 type: Boolean,
                 default: false,
             },
             /**
-             * TBD
+             * Set the placeholder
              */
             placeholder: {
                 type: String,
                 default: null,
             },
             /**
-             * TBD
+             * Set the help text
              */
             helpText: {
                 type: String,
                 default: null,
             },
             /**
-             * TBD
-             */
-            stack: {
-                type: String,
-                default: null,
-            },
-            /**
-             * TBD
+             * Specify type of the date picker
              */
             type: {
                 type: String,
                 default: 'date',
             },
             /**
-             * TBD
+             * Change the name of date picker
              */
             name: {
                 type: String,
                 default: () => shortid.generate(),
             },
             /**
-             * TBD
+             * Used to specify what dates are selected
              */
             value: {
                 type: Object,
             },
             /**
-             * TBD
+             * Specify how to validate
              */
             validate: {
                 type: Object,
                 default: null,
             },
             /**
-             * TBD
+             * Styles the view of date picker
              */
             noFlex: {
                 type: Boolean,
@@ -226,6 +227,10 @@
                     this.selectedDate.hours(this.value.hours());
                     this.selectedDate.minutes(this.value.minutes());
                 }
+                /**
+                 * Date change by element click or from parent component
+                 * @type {Event}
+                 */
                 this.$emit('input', this.selectedDate);
             },
             // TODO 00 hours/time

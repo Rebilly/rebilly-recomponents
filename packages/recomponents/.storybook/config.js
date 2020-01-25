@@ -1,5 +1,4 @@
 import Vue from 'vue';
-import NoSSR from 'vue-no-ssr';
 import VueRouter from 'vue-router';
 import Recomponents from '../src/index';
 import { addDecorator, addParameters, configure } from '@storybook/vue';
@@ -13,7 +12,6 @@ import theme from './theme';
 
 Vue.use(VueRouter);
 Vue.use(Recomponents);
-Vue.component('no-ssr', NoSSR);
 
 const localeContext = {
     name: 'I18NProvider',
