@@ -665,11 +665,13 @@
                 return (this.label || '').trim() !== '';
             },
             classes() {
-                return this.isInvalid ? 'r-is-error' : '';
+                return {
+                    'r-is-error': this.isInvalid,
+                };
             },
             isInvalid() {
                 if (this.validate) {
-                    return this.validate.$invalid && this.validate.$dirty;
+                    return this.validate.$invalid && this.value.length !== 0;
                 }
                 return false;
             },
@@ -984,15 +986,18 @@
                     return;
                 }
                 if (option.isTag) {
-                    /**
-                     * The option tag
-                     * @type {Event}
-                     */
-                    this.$emit('tag', option.label, this.id);
-                    this.select(option.label);
-                    this.search = '';
-                    if (this.closeOnSelect && !this.multiple) {
-                        this.deactivate();
+                    const tagIsValid = this.tagValidator(option);
+                    if (tagIsValid) {
+                        /**
+                         * The option tag
+                         * @type {Event}
+                         */
+                        this.$emit('tag', option.label, this.id);
+                        this.select(option.label);
+                        this.search = '';
+                        if (this.closeOnSelect && !this.multiple) {
+                            this.deactivate();
+                        }
                     }
                 } else {
                     const isSelected = this.isSelected(option);
