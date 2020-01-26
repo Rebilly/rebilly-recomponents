@@ -544,7 +544,7 @@
              */
             tagValidator: {
                 type: Function,
-                default: (tag) => true,
+                default: () => true,
             },
             /**
              * The array of selected options
