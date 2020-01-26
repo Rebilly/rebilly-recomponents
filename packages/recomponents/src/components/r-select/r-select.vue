@@ -114,7 +114,7 @@
             </div>
             <transition name="r-select">
                 <div class="r-select-content-wrapper"
-                     v-show="isOpen"
+                     v-show="isOpen && hasContent"
                      @focus="activate"
                      tabindex="-1"
                      @mousedown.prevent
@@ -660,6 +660,10 @@
                     }
                 }
                 return options.slice(0, this.optionsLimit);
+            },
+            hasContent() {
+                return (this.options.length !== 0 || this.showNoOptions)
+                    && (this.showNoResults || this.filteredOptions.length !== 0 || !this.search);
             },
             hasLabel() {
                 return (this.label || '').trim() !== '';
