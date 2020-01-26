@@ -10,5 +10,6 @@ exports[`r-date-input.vue should render Wrapper and match snapshot 1`] = `
   <!---->
   <!---->
   <!---->
+  <!---->
 </div>
 `;

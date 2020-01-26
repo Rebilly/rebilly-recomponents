@@ -44,6 +44,7 @@ storiesOf('Components.Date Input', module)
                         datetime: 'datetime',
                         time: 'time',
                         datepicker: 'datepicker',
+                        range: 'range',
                     },
                     'date',
                 ),
