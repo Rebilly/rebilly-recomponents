@@ -132,7 +132,7 @@ storiesOf('Components.Select', module)
         },
         template: `
             <div class="storybook-center">
-                <div style="width: 50%;">
+                <div style="width: 300px;">
                     <p>Selected: {{ value }}</p>
                     <r-select
                         v-model="value"
@@ -308,7 +308,7 @@ storiesOf('Components.Select', module)
         },
         template: `
             <div class="storybook-center">
-                <div style="width: 50%;">
+                <div style="width: 300px;">
                     <p>Selected: {{ value }}</p>
                     <r-select
                         v-model="value"
@@ -472,7 +472,7 @@ storiesOf('Components.Select', module)
         },
         template: `
             <div class="storybook-center">
-                <div style="width: 50%;">
+                <div style="width: 300px;">
                     <p>Selected: {{ value }}</p>
                     <r-select
                         v-model="value"
