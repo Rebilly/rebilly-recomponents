@@ -539,9 +539,6 @@ storiesOf('Components.Select', module)
             };
         },
         props: {
-            multiple: {
-                default: boolean('Multiple', true),
-            },
             tagPlaceholder: {
                 default: text('Tag placeholder', 'Press enter to create a tag'),
             },
