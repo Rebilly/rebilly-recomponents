@@ -289,7 +289,7 @@
                 default: true,
             },
             /**
-             * List of keys where default behaviou will be ignored
+             * List of keys where default behaviour will be ignored
              */
             blockKeys: {
                 type: Array,
