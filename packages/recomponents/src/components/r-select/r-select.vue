@@ -675,7 +675,7 @@
             },
             isInvalid() {
                 if (this.validate) {
-                    return this.validate.$invalid && this.value.length !== 0;
+                    return this.validate.$error;
                 }
                 return false;
             },
@@ -981,6 +981,10 @@
                 }
             },
             select(option, key) {
+                if (this.validate) {
+                    this.validate.$touch();
+                }
+
                 if (this.blockKeys.indexOf(key) !== -1
                     || this.disabled
                     || option.$isDisabled) {
