@@ -1,6 +1,8 @@
 import {storiesOf} from '@storybook/vue';
 import {action} from '@storybook/addon-actions';
 import {text, select, boolean} from '@storybook/addon-knobs';
+import {validationMixin} from 'vuelidate';
+import {required} from 'vuelidate/lib/validators';
 import markdown from './r-input.md';
 import RInput from './r-input.vue';
 
@@ -145,6 +147,39 @@ storiesOf('Components.Input', module)
         },
         data: () => ({
             model: 'value here',
+        }),
+    }), {
+        notes: {markdown},
+    })
+    .add('Validation', () => ({
+        template: `
+            <div class="storybook-center">
+                <r-input
+                    v-model="model"
+                    :label="label"
+                    placeholder="Placeholder"
+                    :validate="$v.model"
+                    @input="input"
+                    />
+            </div>
+        `,
+        methods: {
+            input() {
+                action('input');
+            },
+        },
+        mixins: [validationMixin],
+        validations: {
+            model: {required},
+        },
+        computed: {
+            label() {
+                return `This field is required: ${this.$v.$invalid ? 'invalid' : 'valid'}`;
+            },
+        },
+        data: () => ({
+            model: 'Edit me',
+
         }),
     }), {
         notes: {markdown},
