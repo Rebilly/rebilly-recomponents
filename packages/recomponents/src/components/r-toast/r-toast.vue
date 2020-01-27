@@ -14,7 +14,10 @@
                     color="text"
                     icon="close-s"/>
         </div>
-        <span class="r-toast-message" data-cy="Toast Message" v-if="message">{{message}}</span>
+        <div class="r-toast-message" data-cy="Toast Message">
+            <component v-if="markup" :is="markup"/>
+            <span class="r-toast-message" data-cy="Toast Message" v-else-if="message">{{message}}</span>
+        </div>
     </div>
 </template>
 <script>
@@ -38,7 +41,7 @@
              * Change the toast message
              */
             message: {
-                type: String,
+                type: [String, Function],
             },
             /**
              * Specify if the user is allowed to close the toast
@@ -101,6 +104,16 @@
                     'is-visible': this.isVisible,
                     [`r-toast-${this.type}`]: true,
                 };
+            },
+            markup() {
+                if (typeof this.message === 'function') {
+                    return {
+                        render: this.message,
+                        props: this.$options.props
+                    }
+                }
+
+                return null;
             },
         },
         methods: {
