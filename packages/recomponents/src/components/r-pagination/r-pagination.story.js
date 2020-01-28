@@ -55,7 +55,7 @@ storiesOf('Components.Pagination', module)
                 <h2>Page #5</h2>
                 <r-pagination
                     :provider="provider"
-                    :total="100"
+                    :total="10"
                     :totalVisible="1"
                     :limit="1"
                     v-model="pagination2"
@@ -63,7 +63,7 @@ storiesOf('Components.Pagination', module)
                 <h2>Page #10</h2>
                 <r-pagination
                     :provider="provider"
-                    :total="100"
+                    :total="10"
                     :totalVisible="1"
                     :limit="1"
                     v-model="pagination3"

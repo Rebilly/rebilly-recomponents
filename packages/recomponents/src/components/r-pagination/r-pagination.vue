@@ -171,11 +171,17 @@
             pagination() {
                 return {
                     hasPagination: this.hasPagination,
-                    provider: this.provider(this.page),
+                    provider: () => this.provider(this.page),
                     offset: this.page,
                     items: this.items,
                 };
             },
+        },
+        mounted() {
+            this.provider(this.page);
+        },
+        created() {
+            this.$on('navigate', page => this.provider(page));
         },
     };
 </script>
