@@ -6,7 +6,9 @@ exports[`r-toast.vue should render Wrapper and match snapshot 1`] = `
   <div class="r-toast-close">
     <!---->
   </div>
-  <!---->
+  <div data-cy="Toast Message" class="r-toast-message">
+    <!---->
+  </div>
 </div>
 `;
 
@@ -15,6 +17,7 @@ exports[`r-toast.vue should render via SSR and match snapshot 1`] = `
   <!---->
   <div class="r-toast-close">
     <!---->
-  </div> <span data-cy="Toast Message" class="r-toast-message">test toast</span>
+  </div>
+  <div data-cy="Toast Message" class="r-toast-message"><span data-cy="Toast Message" class="r-toast-message">test toast</span></div>
 </div>
 `;
