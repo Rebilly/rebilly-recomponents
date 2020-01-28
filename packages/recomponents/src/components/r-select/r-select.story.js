@@ -4,6 +4,8 @@ import {
     array, boolean, number, select, text,
 } from '@storybook/addon-knobs';
 import axios from 'axios';
+import {validationMixin} from 'vuelidate';
+import {required, helpers} from 'vuelidate/lib/validators';
 import markdown from './r-select.md';
 import RSelect from './r-select.vue';
 
@@ -509,6 +511,70 @@ storiesOf('Components.Select', module)
                         @open="open"
                         @remove="remove"
                         @search-change="searchChange"
+                        @select="select"
+                        @tag="tag"/>
+                </div>
+            </div>
+        `,
+    }), {
+        notes: {markdown},
+    })
+    .add('Validation', () => ({
+        data() {
+            return {
+                value: [],
+                options: [{
+                    label: 'Cat',
+                    value: 'cat',
+                }, {
+                    label: 'Doge',
+                    value: 'doge',
+                }, {
+                    label: 'Hamster',
+                    value: 'hamster',
+                }, {
+                    label: 'Chair',
+                    value: 'chair',
+                }],
+            };
+        },
+        props: {
+            tagPlaceholder: {
+                default: text('Tag placeholder', 'Press enter to create a tag'),
+            },
+            tagPosition: {
+                default: select('Tag position', {top: 'top', bottom: 'bottom'}, 'top'),
+            },
+            taggable: {
+                default: boolean('Taggable', true),
+            },
+        },
+        methods: {
+            select: action('select'),
+            tag: action('tag'),
+        },
+        computed: {
+            label() {
+                return `Select only pets: ${this.$v.$invalid ? 'invalid' : 'valid'}`;
+            },
+        },
+        mixins: [validationMixin],
+        validations: {
+            value: {
+                required,
+                pet: helpers.regex('alpha', /(cat|hamster|doge)/),
+            },
+        },
+        template: `
+            <div class="storybook-center">
+                <div style="width: 300px;">
+                    <p>Selected: {{ value }}</p>
+                    <r-select
+                        v-model="value"
+                        :label="label"
+                        :taggable="true"
+                        :options="options"
+                        :validate="$v.value"
                         @select="select"
                         @tag="tag"/>
                 </div>
