@@ -5,6 +5,7 @@ import {validationMixin} from 'vuelidate';
 import {required} from 'vuelidate/lib/validators';
 import markdown from './r-input.md';
 import RInput from './r-input.vue';
+import {validate} from '../../../.storybook/knobs';
 
 storiesOf('Components.Input', module)
     .addParameters({component: RInput})
@@ -62,23 +63,7 @@ storiesOf('Components.Input', module)
                 default: boolean('disabled', false, 'State'),
             },
             validate: {
-                default: select('validate', {
-                    valid: {
-                        $dirty: false,
-                        $invalid: false,
-                    },
-                    dirty: {
-                        $dirty: true,
-                        $invalid: false,
-                    },
-                    invalid: {
-                        $dirty: true,
-                        $invalid: true,
-                    },
-                }, {
-                    $dirty: false,
-                    $invalid: false,
-                }, 'State'),
+                default: select('validate', validate, null, 'State'),
             },
             placeholder: {
                 default: text('placeholder', 'Please input value here', 'Text'),

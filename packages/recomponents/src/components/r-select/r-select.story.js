@@ -8,6 +8,7 @@ import {validationMixin} from 'vuelidate';
 import {required, helpers} from 'vuelidate/lib/validators';
 import markdown from './r-select.md';
 import RSelect from './r-select.vue';
+import {validate} from '../../../.storybook/knobs';
 
 storiesOf('Components.Select', module)
     .addParameters({component: RSelect})
@@ -31,23 +32,7 @@ storiesOf('Components.Select', module)
                 default: boolean('Disabled', false, 'State'),
             },
             validate: {
-                default: select('validate', {
-                    valid: {
-                        $dirty: false,
-                        $invalid: false,
-                    },
-                    dirty: {
-                        $dirty: true,
-                        $invalid: false,
-                    },
-                    invalid: {
-                        $dirty: true,
-                        $invalid: true,
-                    },
-                }, {
-                    $dirty: false,
-                    $invalid: false,
-                }, 'State'),
+                default: select('validate', validate, null, 'State'),
             },
             helpText: {
                 default: text('Help Text', 'Help text for select', 'Text'),
@@ -195,23 +180,7 @@ storiesOf('Components.Select', module)
                 default: boolean('Close on select', true),
             },
             validate: {
-                default: select('validate', {
-                    valid: {
-                        $dirty: false,
-                        $invalid: false,
-                    },
-                    dirty: {
-                        $dirty: true,
-                        $invalid: false,
-                    },
-                    invalid: {
-                        $dirty: true,
-                        $invalid: true,
-                    },
-                }, {
-                    $dirty: false,
-                    $invalid: false,
-                }),
+                default: select('validate', validate, null, 'State'),
             },
             disabled: {
                 default: boolean('Disabled', false),
