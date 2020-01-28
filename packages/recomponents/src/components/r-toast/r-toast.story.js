@@ -108,4 +108,24 @@ storiesOf('Components.Toast', module)
         },
     }), {
         notes: {markdown},
+    })
+    .add('Render function', () => ({
+        template: `
+            <div>
+                <div class="storybook-center">
+                    <div class="r-grid">
+                        <div class="r-grid-item">
+                            <r-button type="default" @click="renderFunction">Render function</r-button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        `,
+        methods: {
+            renderFunction() {
+                this.$toast.warning(createElement => createElement('h1', 'H1 Toast Content'));
+            },
+        },
+    }), {
+        notes: {markdown},
     });
