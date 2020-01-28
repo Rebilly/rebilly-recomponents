@@ -109,8 +109,8 @@
                 if (typeof this.message === 'function') {
                     return {
                         render: this.message,
-                        props: this.$options.props
-                    }
+                        props: this.$options.props,
+                    };
                 }
 
                 return null;
