@@ -110,3 +110,24 @@ export const colors = {
     'text': 'text',
     'yellow': 'yellow',
 };
+
+/**
+ * Validation wrapper for stories without Vuelidate
+ */
+export const validate = {
+    valid: {
+        $dirty: false,
+        $invalid: false,
+        $touch: () => {}
+    },
+    dirty: {
+        $dirty: true,
+        $invalid: false,
+        $touch: () => {}
+    },
+    invalid: {
+        $dirty: true,
+        $invalid: true,
+        $touch: () => {}
+    },
+}
