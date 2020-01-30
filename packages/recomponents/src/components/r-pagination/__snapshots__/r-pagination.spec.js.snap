@@ -15,9 +15,7 @@ exports[`r-pagination.vue should render via SSR and match snapshot 1`] = `
             <use xlink:href="#icon-arrow-left" xmlns:xlink="http://www.w3.org/1999/xlink"></use>
           </svg>
           Prev
-        </button> <span class="r-pagination-control-button">
-                        ...
-                    </span> <button role="button" title="" class="r-button r-pagination-control-button r-button-size-regular r-button-type-default">
+        </button> <button role="button" title="" class="r-button r-pagination-control-button r-button-size-regular r-button-type-default">
           <!---->
           Next
           <svg class="r-icon r-icon-20">

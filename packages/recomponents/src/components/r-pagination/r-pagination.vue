@@ -93,32 +93,24 @@
         },
         computed: {
             items() {
-                let items = {};
+                const items = {};
+                const setPageItem = (index) => {
+                    const page = {
+                        content: index + 1,
+                        selected: index === (this.page - 1),
+                    };
+                    items[index] = page;
+                };
+
                 if (this.pages <= this.totalVisible) {
-                    for (let index = 0; index < this.pages; index++) {
-                        let page = {
-                            index: index,
-                            content: index + 1,
-                            selected: index === (this.page - 1),
-                        };
-                        items[index] = page;
+                    for (let index = 0; index < this.pages; index += 1) {
+                        setPageItem(index);
                     }
                 } else {
                     const half = Math.floor(this.totalVisible / 2);
 
-                    const setPageItem = index => {
-                        let page = {
-                            index: index,
-                            content: index + 1,
-                            selected: index === (this.page - 1),
-                        };
-                        items[index] = page;
-                    };
-                    const setBreakView = index => {
-                        let breakView = {
-                            disabled: true,
-                            breakView: true,
-                        };
+                    const setBreakView = (index) => {
+                        const breakView = {breakView: true};
                         items[index] = breakView;
                     };
 
@@ -133,16 +125,20 @@
                         left = right - this.totalVisible + 1;
                     }
 
-                    for (let i = left; i <= right && i <= this.pages - 1; i++) {
+                    for (let i = left; i <= right && i <= this.pages - 1; i += 1) {
                         setPageItem(i);
                     }
-                    if (left > 0) {
-                        setBreakView(left - 1);
+
+                    if (this.totalVisible > 0) {
+                        if (left > 0) {
+                            setBreakView(left - 1);
+                        }
+                        if (right + 1 < this.pages) {
+                            setBreakView(right + 1);
+                        }
                     }
-                    if (right + 1 < this.pages) {
-                        setBreakView(right + 1);
-                    }
-                    for (let i = this.pages - 1; i >= this.pages; i--) {
+
+                    for (let i = this.pages - 1; i >= this.pages; i -= 1) {
                         setPageItem(i);
                     }
                 }
