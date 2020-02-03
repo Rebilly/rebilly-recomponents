@@ -11,15 +11,15 @@
                     <template v-for="(item, index) in override.items">
                         <span class="r-pagination-control-button"
                               :key="index"
-                              v-if="isNaN(item)">
-                            {{ item }}
+                              v-if="item.breakView">
+                            ...
                         </span>
                         <r-button v-else
                                   :key="index"
-                                  @click="override.page(item)"
+                                  @click="override.page(item.content)"
                                   class="r-pagination-control-button"
-                                  :class="{'r-button-type-primary': isActive(item)}">
-                            {{ item }}
+                                  :class="{'r-button-type-primary': item.selected}">
+                            {{ item.content }}
                         </r-button>
                     </template>
                     <r-button class="r-pagination-control-button" @click="override.next" :disabled="!override.hasNext">
@@ -81,11 +81,6 @@
                     hasNext: this.hasNext,
                     hasPrevious: this.hasPrevious,
                 };
-            },
-        },
-        methods: {
-            isActive(page) {
-                return this.offset === page;
             },
         },
     };
