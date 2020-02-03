@@ -1,6 +1,6 @@
 {
   "name": "@rebilly/recomponents",
-  "version": "0.0.1",
+  "version": "1.21.3",
   "description": "Official Rebilly front-end components library",
   "main": "dist/recomponents.common.js",
   "unpkg": "dist/recomponents.umd.js",
