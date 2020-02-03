@@ -146,7 +146,7 @@
             },
             pages() {
                 let pages = Math.ceil(this.total / this.limit);
-                if (pages < 0) {
+                if (pages < 0 || pages === Infinity) {
                     pages = 0;
                 }
                 return pages;
