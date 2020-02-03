@@ -5,6 +5,9 @@
   "author": "Rebilly SRL",
   "license": "MIT",
   "private": true,
+  "workspaces": [
+    "packages/*"
+  ],
   "repository": {
     "type": "git",
     "url": "https://github.com/Rebilly/rebilly-recomponents.git"
