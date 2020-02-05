@@ -1,12 +1,12 @@
 language: node_js
-# cache:
-#   yarn: true
-#   directories:
-#     - ~/.npm
-#     - node_modules
-#     - packages/nuxt/node_modules
-#     - packages/gridsome/node_modules
-#     - packages/recomponents/node_modules
+cache:
+  yarn: true
+  directories:
+    - ~/.npm
+    - node_modules
+    - packages/nuxt/node_modules
+    - packages/gridsome/node_modules
+    - packages/recomponents/node_modules
 branches:
   only:
     - "master"

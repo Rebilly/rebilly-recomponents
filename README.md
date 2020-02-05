@@ -26,6 +26,14 @@ As the number of Web Apps developed at Rebilly grows larger, it has become appar
 
 We use [Yarn Workspaces](https://classic.yarnpkg.com/en/docs/workspaces/) to make development easier and efficient. Workspaces allow developer to check how latest local build of Recomponents work with application created with Gridsome or Nuxt to avoid issues that are not covered by unit tests with SSR support. If you would like to setup similar workflow with your own project [Yarn Links](https://classic.yarnpkg.com/en/docs/cli/link/) could provide same functionality.
 
+With workspaces you can run any npm script inside of packages/recomponents folder like:
+
+* `yarn build`
+
+Or from project root:
+
+* `yarn workspace @rebilly/recomponents build`
+
 With workspaces there is no need to install dependencies inside of each folder - single run of `yarn` inside of project root is enough.
 
 ## Browser support
