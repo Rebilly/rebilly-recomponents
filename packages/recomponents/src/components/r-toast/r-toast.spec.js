@@ -23,7 +23,7 @@ describe('r-toast.vue', () => {
     });
 
     it('should render via SSR and match snapshot', async () => {
-        const wrapper = renderToString(RToast, {
+        const wrapper = await renderToString(RToast, {
             propsData: {
                 ...props,
             },

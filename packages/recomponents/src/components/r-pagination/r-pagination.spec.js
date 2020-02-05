@@ -17,7 +17,7 @@ describe('r-pagination.vue', () => {
     });
 
     it('should render via SSR and match snapshot', async () => {
-        const wrapper = renderToString(RPagination, {
+        const wrapper = await renderToString(RPagination, {
             propsData: {
                 provider: () => {
                 },

@@ -9,7 +9,7 @@ describe('r-popper.vue', () => {
     });
 
     it('should render via SSR and match snapshot', async () => {
-        const wrapper = renderToString(RPopper, {
+        const wrapper = await renderToString(RPopper, {
             propsData: {
                 escToHide: true,
                 autoHide: true,

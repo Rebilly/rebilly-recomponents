@@ -4,7 +4,7 @@ import RLoader from './r-loader.vue';
 
 describe('r-loader.vue', () => {
     it('should render via SSR and match snapshot', async () => {
-        const wrapper = renderToString(RLoader, {
+        const wrapper = await renderToString(RLoader, {
             propsData: {
                 show: true,
             },

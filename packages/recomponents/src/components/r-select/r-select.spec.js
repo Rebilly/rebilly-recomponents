@@ -17,7 +17,7 @@ describe('r-select.vue', () => {
     });
 
     it('should render via SSR and match snapshot', async () => {
-        const wrapper = renderToString(RSelect, {
+        const wrapper = await renderToString(RSelect, {
             propsData: {
                 value: null,
                 id: 'id',
@@ -245,8 +245,8 @@ describe('r-select.vue', () => {
         expect(wrapper.vm.pointer).toBe(2);
     });
 
-    it('should call @search-change event callback whenever search value changes', () => {
-        const wrapper = shallowMount(RSelect, {
+    it('should call @search-change event callback whenever search value changes', async () => {
+        const wrapper = await shallowMount(RSelect, {
             propsData: {
                 value: null,
                 options: [{id: '1'}, {id: '2'}, {id: '3'}],

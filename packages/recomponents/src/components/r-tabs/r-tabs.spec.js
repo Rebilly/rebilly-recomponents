@@ -11,7 +11,7 @@ describe('r-tabs.vue', () => {
     });
 
     it('should render via SSR and match snapshot', async () => {
-        const wrapper = renderToString(RTabs);
+        const wrapper = await renderToString(RTabs);
 
         expect(wrapper).toMatchSnapshot();
     });
@@ -24,7 +24,7 @@ describe('r-tabs.vue', () => {
                 contentClass: 'test',
             },
             slots: {
-                default: renderToString(RTab, {props: {name: 'test1'}, slots: {default: '<p>Test 1</p>'}}),
+                default: await renderToString(RTab, {props: {name: 'test1'}, slots: {default: '<p>Test 1</p>'}}),
             },
         });
 
@@ -83,13 +83,14 @@ describe('r-tabs.vue', () => {
         });
 
         const links = wrapper.findAll('.r-tab-item-link');
+        console.log(wrapper);
         expect(links.at(0).classes().includes('r-is-active')).toBeTruthy();
         links.at(1).trigger('click');
         expect(links.at(0).classes().includes('r-is-active')).toBeFalsy();
     });
 
     it('should open current route tab', async () => {
-        const wrapper = mount({
+        const wrapper = await mount({
             render(h) {
                 return h(RTabs, {}, [
                     h(RTab, {
@@ -138,64 +139,62 @@ describe('r-tabs.vue', () => {
         expect(contentClass.type).toBe(String);
     });
 
-    describe('r-tabs accessibility', () => {
-        it('should set the correct IDs when panelId is provided', () => {
-            const customId1 = 'custom-id-1';
-            const tabA11yId = `tab-${customId1}`;
-            const tabPanelA11yId = `tabpanel-${customId1}`;
+    it('should set the correct IDs when panelId is provided', async () => {
+        const customId1 = 'custom-id-1';
+        const tabA11yId = `tab-${customId1}`;
+        const tabPanelA11yId = `tabpanel-${customId1}`;
 
-            const wrapper = mount(RTabs, {
-                render(h) {
-                    return h(RTabs, {}, [
-                        h(RTab, {
-                            props: {
-                                name: 'Tab 1',
-                                panelId: customId1,
-                            },
-                        }, [
-                            h('p', 'Lorem ipsum'),
-                        ]),
-                    ]);
-                },
-            });
-
-            const tab = wrapper.findAll('.r-tab-item-link').at(0);
-            const tabPanel = wrapper.find('.r-tab-content > div');
-
-            expect(tab.attributes('id')).toBe(tabA11yId);
-            expect(tab.attributes('aria-controls')).toBe(tabPanelA11yId);
-
-            expect(tabPanel.attributes('id')).toBe(tabPanelA11yId);
-            expect(tabPanel.attributes('aria-labelledby')).toBe(tabA11yId);
+        const wrapper = await mount(RTabs, {
+            render(h) {
+                return h(RTabs, {}, [
+                    h(RTab, {
+                        props: {
+                            name: 'Tab 1',
+                            panelId: customId1,
+                        },
+                    }, [
+                        h('p', 'Lorem ipsum'),
+                    ]),
+                ]);
+            },
         });
 
-        it('should generate IDs when panelId is not provided', () => {
-            const wrapper = mount(RTabs, {
-                render(h) {
-                    return h(RTabs, {}, [
-                        h(RTab, {
-                            props: {
-                                name: 'Tab 1',
-                            },
-                        }, [
-                            h('p', 'Lorem ipsum'),
-                        ]),
-                    ]);
-                },
-            });
+        const tab = wrapper.findAll('.r-tab-item-link').at(0);
+        const tabPanel = wrapper.find('.r-tab-content > div');
 
-            const tab = wrapper.findAll('.r-tab-item-link').at(0);
-            const tabPanel = wrapper.find('.r-tab-content > div');
+        expect(tab.attributes('id')).toBe(tabA11yId);
+        expect(tab.attributes('aria-controls')).toBe(tabPanelA11yId);
 
-            const generatedShortId = tab.attributes('id').replace('tab-', '');
-            const tabA11yId = `tab-${generatedShortId}`;
-            const tabPanelA11yId = `tabpanel-${generatedShortId}`;
+        expect(tabPanel.attributes('id')).toBe(tabPanelA11yId);
+        expect(tabPanel.attributes('aria-labelledby')).toBe(tabA11yId);
+    });
 
-            expect(tab.attributes('id')).toBe(tabA11yId);
-            expect(tab.attributes('aria-controls')).toBe(tabPanelA11yId);
-
-            expect(tabPanel.attributes('id')).toBe(tabPanelA11yId);
-            expect(tabPanel.attributes('aria-labelledby')).toBe(tabA11yId);
+    it('should generate IDs when panelId is not provided', () => {
+        const wrapper = mount(RTabs, {
+            render(h) {
+                return h(RTabs, {}, [
+                    h(RTab, {
+                        props: {
+                            name: 'Tab 1',
+                        },
+                    }, [
+                        h('p', 'Lorem ipsum'),
+                    ]),
+                ]);
+            },
         });
+
+        const tab = wrapper.findAll('.r-tab-item-link').at(0);
+        const tabPanel = wrapper.find('.r-tab-content > div');
+
+        const generatedShortId = tab.attributes('id').replace('tab-', '');
+        const tabA11yId = `tab-${generatedShortId}`;
+        const tabPanelA11yId = `tabpanel-${generatedShortId}`;
+
+        expect(tab.attributes('id')).toBe(tabA11yId);
+        expect(tab.attributes('aria-controls')).toBe(tabPanelA11yId);
+
+        expect(tabPanel.attributes('id')).toBe(tabPanelA11yId);
+        expect(tabPanel.attributes('aria-labelledby')).toBe(tabA11yId);
     });
 });

@@ -15,7 +15,7 @@ describe('r-modal.vue', () => {
     });
 
     it('should render via SSR and match snapshot', async () => {
-        const wrapper = renderToString(RModal, {
+        const wrapper = await renderToString(RModal, {
             propsData: {
                 size: 'extra-large',
             },

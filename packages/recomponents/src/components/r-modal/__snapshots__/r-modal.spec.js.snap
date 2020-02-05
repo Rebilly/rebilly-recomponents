@@ -1,15 +1,17 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`r-modal.vue should render Wrapper and match snapshot 1`] = `
-<div tabindex="0" role="dialog" style="transition-duration: 0.2s;" name="r-modal">
-  <div class="r-modal-overlay">
-    <r-loader-stub show="true" loading="true" fullscreen="true" class="r-modal-loader r-is-loading"></r-loader-stub>
+<transition-stub name="r-modal">
+  <div tabindex="0" role="dialog" style="transition-duration: 0.2s;">
+    <div class="r-modal-overlay">
+      <r-loader-stub show="true" loading="true" fullscreen="true" class="r-modal-loader r-is-loading"></r-loader-stub>
+    </div>
   </div>
-</div>
+</transition-stub>
 `;
 
 exports[`r-modal.vue should render via SSR and match snapshot 1`] = `
-<div tabindex="0" role="dialog" name="r-modal" style="transition-duration:0.2s;">
+<div tabindex="0" role="dialog" style="transition-duration:0.2s;">
   <div class="r-modal-overlay">
     <div role="alert" aria-busy="true" class="r-component r-loader r-modal-loader r-is-loading r-is-loading r-is-fullscreen">
       <div class="r-loader-icon-wrapper">

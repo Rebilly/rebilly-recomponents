@@ -27,7 +27,7 @@ describe('r-avatar.vue', () => {
     });
 
     it('should render via SSR and match snapshot', async () => {
-        const wrapper = renderToString(RAvatar, {
+        const wrapper = await renderToString(RAvatar, {
             localVue,
             propsData: {
                 initials: 'VP',

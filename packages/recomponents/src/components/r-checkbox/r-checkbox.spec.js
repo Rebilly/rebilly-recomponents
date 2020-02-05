@@ -33,7 +33,7 @@ describe('r-checkbox.vue', () => {
     });
 
     it('should render via SSR and match snapshot', async () => {
-        const wrapper = renderToString(RCheckbox, {
+        const wrapper = await renderToString(RCheckbox, {
             propsData: {
                 name: 'snapshot',
                 label: 'Custom label',
