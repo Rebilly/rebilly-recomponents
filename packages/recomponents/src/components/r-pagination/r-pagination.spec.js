@@ -92,7 +92,7 @@ describe('r-pagination.vue', () => {
         });
 
         expect(wrapper.vm.hasNext).toEqual(true);
-        wrapper.setData({page: 3});
+        wrapper.setProps({page: 3});
         expect(wrapper.vm.hasNext).toEqual(false);
     });
 
@@ -107,7 +107,7 @@ describe('r-pagination.vue', () => {
         });
 
         expect(wrapper.vm.hasPrevious).toEqual(false);
-        wrapper.setData({page: 3});
+        wrapper.setProps({page: 3});
         expect(wrapper.vm.hasPrevious).toEqual(true);
     });
 
@@ -124,11 +124,11 @@ describe('r-pagination.vue', () => {
 
         const getVisible = items => Object.values(items).map(({content}) => content);
         expect(getVisible(wrapper.vm.items)).toEqual([1, 2, 3, 4, 5, undefined]);
-        wrapper.setData({page: 5});
+        wrapper.setProps({page: 5});
         expect(getVisible(wrapper.vm.items)).toEqual([undefined, 3, 4, 5, 6, 7, undefined]);
-        wrapper.setData({page: 10});
+        wrapper.setProps({page: 10});
         expect(getVisible(wrapper.vm.items)).toEqual([undefined, 6, 7, 8, 9, 10]);
-        wrapper.setData({totalVisible: 0});
+        wrapper.setProps({totalVisible: 0});
         expect(getVisible(wrapper.vm.items)).toEqual([]);
     });
 });
