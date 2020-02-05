@@ -23,8 +23,8 @@ jobs:
     - stage: compile
       name: Build Recomponents and Storybook
       before_script:
-        - cd packages/recomponents
         - yarn
+        - cd packages/recomponents
       script:
         - yarn build-storybook
         - yarn build
