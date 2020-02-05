@@ -27,10 +27,8 @@ jobs:
         - yarn workspace @rebilly/recomponents build-storybook
     - stage: test
       name: 'Eslint checks and unit tests'
-      before_script:
-        - cd packages/recomponents
-        - yarn run build-storybook
       script:
+        - yarn workspace @rebilly/recomponents build-storybook
         - yarn workspace @rebilly/recomponents lint
         - yarn workspace @rebilly/recomponents test
         # run image-snapshot tests in the docker
@@ -38,9 +36,7 @@ jobs:
         # - docker-compose -f ./.image-snapshots/docker-compose.yml up --build
     - stage: deploy
       name: 'Release recomponents to NPM'
-      before_script:
-        - cd packages/recomponents
       if: branch = master
       script:
-        - yarn build
-        - yarn semantic-release
+        - yarn workspace @rebilly/recomponents build
+        - yarn workspace @rebilly/recomponents semantic-release
