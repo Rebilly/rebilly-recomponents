@@ -22,23 +22,20 @@ jobs:
   include:
     - stage: compile
       name: Build Recomponents and Storybook
-      before_script:
-        - yarn
-        - cd packages/recomponents
       script:
-        - yarn build-storybook
-        - yarn build
+        - yarn workspace @rebilly/recomponents build
+        - yarn workspace @rebilly/recomponents build-storybook
     - stage: test
       name: 'Eslint checks and unit tests'
       before_script:
         - cd packages/recomponents
         - yarn run build-storybook
       script:
-        - yarn lint
-        - yarn test
+        - yarn workspace @rebilly/recomponents lint
+        - yarn workspace @rebilly/recomponents test
         # run image-snapshot tests in the docker
-        - yarn build-storybook
-        - docker-compose -f ./.image-snapshots/docker-compose.yml up --build
+        # - yarn build-storybook
+        # - docker-compose -f ./.image-snapshots/docker-compose.yml up --build
     - stage: deploy
       name: 'Release recomponents to NPM'
       before_script:
