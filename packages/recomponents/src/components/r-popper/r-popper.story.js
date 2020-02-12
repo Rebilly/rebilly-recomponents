@@ -14,6 +14,7 @@ storiesOf('Components.Popper', module)
             openOnMount: {default: boolean('Open on mount', false)},
             disabled: {default: boolean('Disabled', false)},
             offset: {default: number('Offset', 4)},
+            quantityOfOptions: {default: number('Quantity of options', 2)},
             direction: {
                 default: select('Direction', {
                     Horizontal: 'horizontal',
@@ -81,11 +82,8 @@ storiesOf('Components.Popper', module)
                         <div class="r-popover">
                             <div class="r-popover-control">
                                 <div class="r-popover-content r-popover-menu">
-                                    <a class="r-popover-menu-item">
-                                        Edit
-                                    </a>
-                                    <a class="r-popover-menu-item r-popover-menu-item-negative">
-                                        Remove
+                                    <a class="r-popover-menu-item" v-for="i in quantityOfOptions">
+                                        Option #{{ i }}
                                     </a>
                                 </div>
                             </div>
