@@ -163,9 +163,13 @@
     background: var(--popover-content-secondary);
 }
 
+.r-popover-content.r-popover-menu::-webkit-scrollbar {
+    display: none;
+}
+
 .r-popover-content.r-popover-menu {
     padding: var(--popover-content-menu-padding);
-    overflow: scroll;
+    overflow-y: scroll;
     max-height: inherit;
     background: var(--popover-background);
     min-width: var(--popover-min-width);
@@ -173,6 +177,8 @@
     box-shadow: var(--popover-box-shadow);
     border-radius: var(--popover-border-radius);
     transition: var(--popover-transition);
+    scrollbar-width: none;
+    -ms-overflow-style: none;
 }
 
 .r-popover-action-menu-item,
