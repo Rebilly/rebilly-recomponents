@@ -4,6 +4,7 @@ import RButton from './r-button/r-button.vue';
 import RButtonGroup from './r-button-group/r-button-group.vue';
 import RCheckbox from './r-checkbox/r-checkbox.vue';
 import RDateInput from './r-date-input/r-date-input.vue';
+import RDateRange from './r-date-range/r-date-range.vue';
 import RIcon from './r-icon/r-icon.vue';
 import RIconButton from './r-icon-button/r-icon-button.vue';
 import RImg from './r-img/r-img.vue';
@@ -30,6 +31,7 @@ export {
     RButtonGroup,
     RCheckbox,
     RDateInput,
+    RDateRange,
     RIcon,
     RIconButton,
     RImg,
