@@ -45,6 +45,7 @@
                                 type="range"
                                 :disabled="disabled"
                                 :max-date="maxDate"
+                                :min-date="minDate"
                                 :value="selectedDate"
                                 @input="dateChange($event)"/>
                     </div>
@@ -102,6 +103,13 @@
              * Specify the max available date
              */
             maxDate: {
+                type: Date,
+                default: null,
+            },
+            /**
+             * Specify the max available date
+             */
+            minDate: {
                 type: Date,
                 default: null,
             },

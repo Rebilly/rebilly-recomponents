@@ -5,6 +5,8 @@ import RDateRange from './r-date-range.vue';
 import DateTimeFormats from '../../common/datetime-formats';
 import calendarPresets, {getCalendarPresetPeriods} from './calendar-presets';
 
+const minDate = new Date();
+
 storiesOf('Components.Date Range', module)
     .addParameters({component: RDateRange})
     .add('Component', () => ({
@@ -17,10 +19,18 @@ storiesOf('Components.Date Range', module)
             },
             maxDate: {
                 default: select(
-                    'Max Date',
-                    {
+                    'Max Date', {
                         'no restrictions': null,
                         'only past dates': new Date(),
+                    }, null,
+                ),
+            },
+            minDate: {
+                default: select(
+                    'Min Date', {
+                        'no restrictions': null,
+                        'only past dates': new Date(),
+                        [`allow since ${minDate}`]: minDate,
                     }, null,
                 ),
             },
@@ -48,6 +58,7 @@ storiesOf('Components.Date Range', module)
                 <div>
                     <r-date-range :timezone-handler="$tz"
                                   :period="period"
+                                  :min-date="minDate"
                                   :show-presets="showPresets"
                                   :max-date="maxDate"
                                   :disabled="disabled"

@@ -4,6 +4,8 @@ import {boolean, select, text} from '@storybook/addon-knobs';
 import markdown from './r-date-input.md';
 import RDateInput from './r-date-input.vue';
 
+const date = new Date();
+
 storiesOf('Components.Date Input', module)
     .addParameters({component: RDateInput})
     .add('Component', () => ({
@@ -27,6 +29,15 @@ storiesOf('Components.Date Input', module)
                     {
                         'no restrictions': null,
                         'only past dates': new Date(),
+                    }, null,
+                ),
+            },
+            minDate: {
+                default: select(
+                    'min date',
+                    {
+                        'no restrictions': null,
+                        [`allow since ${date}`]: date,
                     }, null,
                 ),
             },
@@ -81,6 +92,7 @@ storiesOf('Components.Date Input', module)
                         :helpText="helpText"
                         :stack="stack"
                         :type="type"
+                        :min-date="minDate"
                         :max-date="maxDate"
                         :validate="validate"
                         :noFlex="noFlex"

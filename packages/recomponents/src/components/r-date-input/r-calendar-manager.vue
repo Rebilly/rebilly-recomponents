@@ -12,6 +12,7 @@
                     is-double-paned
                     is-inline
                     show-caps
+                    :min-date="minDate"
                     :select-attribute="dragSelectAttributes"
                     :drag-attribute="dragSelectAttributes"
                     :theme-styles="themeStyles"
@@ -28,6 +29,7 @@
                     mode="single"
                     popover-visibility="focus"
                     :popover-content-offset="4"
+                    :min-date="minDate"
                     :max-date="maxDate"
                     :theme-styles="themeStyles"
                     :tint-color="tintColor"
@@ -80,6 +82,9 @@
                         visibility: 'hidden',
                     },
                 }),
+            },
+            minDate: {
+                type: Date,
             },
             maxDate: {
                 type: Date,

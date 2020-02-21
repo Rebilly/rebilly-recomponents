@@ -6,6 +6,7 @@
                 <r-calendar-manager class="r-date-input"
                                     type="calendar"
                                     :value="value"
+                                    :min-date="minDate"
                                     :max-date="maxDate"
                                     :drag-select-attributes="dragSelectAttributes"
                                     :disabled="disabled"
@@ -22,6 +23,7 @@
                     <r-calendar-manager class="r-date-input"
                                         type="calendar"
                                         :value="value"
+                                        :min-date="minDate"
                                         :max-date="maxDate"
                                         :drag-select-attributes="dragSelectAttributes"
                                         :disabled="disabled"
@@ -94,6 +96,7 @@
         </template>
         <template v-if="type === 'datepicker'">
             <v-date-picker v-model="selectedDate"
+                           :min-date="minDate"
                            :max-date="maxDate"
                            :select-attributes="dragSelectAttributes"
                            :drag-attributes="dragSelectAttributes"
@@ -103,6 +106,7 @@
         </template>
         <template v-if="type === 'range'">
             <r-calendar-manager type="range"
+                                :min-date="minDate"
                                 :max-date="maxDate"
                                 :drag-select-attributes="dragSelectAttributes"
                                 :value="value"
@@ -208,6 +212,12 @@
              * Specify the max date of available for selection dates
              */
             maxDate: {
+                type: Date,
+            },
+            /**
+             * Specify the min date of available for selection dates
+             */
+            minDate: {
                 type: Date,
             },
         },
