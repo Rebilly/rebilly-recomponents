@@ -6,7 +6,7 @@ describe('r-date-input.vue', () => {
     it('should render Wrapper and match snapshot', () => {
         const wrapper = shallowMount(RDateInput, {
             propsData: {
-                maxDate: new Date(2020, 1, 1),
+                maxDate: '2020-01-01',
             },
             stubs: ['no-ssr'],
         });

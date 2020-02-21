@@ -2,7 +2,6 @@ import moment from 'moment';
 import {mount, shallowMount} from '@vue/test-utils';
 import {renderToString} from '@vue/server-test-utils';
 import RDateRange from './r-date-range.vue';
-import RPopper from '../r-popper/r-popper.vue';
 import DateTimeFormats from '../../common/datetime-formats';
 
 const start = '2020-01-01T00:00:00.000Z';
@@ -34,11 +33,11 @@ class TimezoneMock {
 describe('r-date-range.vue', () => {
     it('renders props when passed', () => {
         const wrapper = shallowMount(RDateRange, {
-            components: {RPopper},
             propsData: {
                 period,
                 timezoneHandler: () => new TimezoneMock(),
             },
+            stubs: ['no-ssr'],
         });
 
         expect(wrapper).toMatchSnapshot();
@@ -46,11 +45,11 @@ describe('r-date-range.vue', () => {
 
     it('should render via SSR and match snapshot', async () => {
         const wrapper = renderToString(RDateRange, {
-            components: {RPopper},
             propsData: {
-                period,
+                period: `2020-01-01..2020-05-01`,
                 timezoneHandler: () => new TimezoneMock(),
             },
+            stubs: ['no-ssr'],
         });
 
         expect(wrapper).toMatchSnapshot();
@@ -58,11 +57,11 @@ describe('r-date-range.vue', () => {
 
     it('should emit on selecting range in the calendar', async () => {
         const wrapper = mount(RDateRange, {
-            components: {RPopper},
             propsData: {
                 period,
                 timezoneHandler: () => new TimezoneMock(),
             },
+            stubs: ['no-ssr'],
         });
 
         expect(wrapper.find('.r-date-range').exists()).toBeTruthy();
@@ -71,7 +70,6 @@ describe('r-date-range.vue', () => {
             start: moment(start).utc(),
             end: moment(end).utc(),
         };
-
 
         wrapper.vm.dateChange(selected);
         expect(wrapper.emitted().input[0][0].start.format(DateTimeFormats.datetime))
@@ -82,11 +80,11 @@ describe('r-date-range.vue', () => {
 
     it('should toggle the poppers', async () => {
         const wrapper = mount(RDateRange, {
-            components: {RPopper},
             propsData: {
                 period,
                 timezoneHandler: () => new TimezoneMock(),
             },
+            stubs: ['no-ssr'],
         });
 
         wrapper.vm.$refs.presets.popper.toggle = jest.fn();
@@ -99,11 +97,11 @@ describe('r-date-range.vue', () => {
 
     it('should have presets available', async () => {
         const wrapper = mount(RDateRange, {
-            components: {RPopper},
             propsData: {
                 period,
                 timezoneHandler: () => new TimezoneMock(),
             },
+            stubs: ['no-ssr'],
         });
 
         const preset = 'today';
@@ -120,32 +118,33 @@ describe('r-date-range.vue', () => {
 
     it('should show selected date range properly', async () => {
         const wrapper = mount(RDateRange, {
-            components: {RPopper},
             propsData: {
                 period,
                 timezoneHandler: () => new TimezoneMock(),
             },
+            stubs: ['no-ssr'],
         });
 
         const selected = {
-            start: moment(start).utc().format(DateTimeFormats.datetime),
-            end: moment(end).utc().format(DateTimeFormats.datetime),
+            start: moment(start).utc(),
+            end: moment(end).utc(),
         };
 
         expect(wrapper.vm.selectedPeriod.start.utc().format(DateTimeFormats.datetime))
-            .toEqual(selected.start);
+            .toEqual(selected.start.format(DateTimeFormats.datetime));
         expect(wrapper.vm.selectedPeriod.end.utc().format(DateTimeFormats.datetime))
-            .toEqual(selected.end);
-        expect(wrapper.vm.selectedDateLabel).toEqual('Jan 1, 2020 - Jan 2, 2020');
+            .toEqual(selected.end.format(DateTimeFormats.datetime));
+        expect(wrapper.vm.selectedDateLabel)
+            .toEqual(`${moment(start).format(DateTimeFormats.shortDate)} - ${moment(end).format(DateTimeFormats.shortDate)}`);
     });
 
     it('should check is the period valid', async () => {
         const wrapper = mount(RDateRange, {
-            components: {RPopper},
             propsData: {
                 period: `01-01..01-10`,
                 timezoneHandler: () => new TimezoneMock(),
             },
+            stubs: ['no-ssr'],
         });
 
         expect(wrapper.vm.isValidDatesPeriod).toBeFalsy();
