@@ -3,13 +3,14 @@
         <template v-if="type === 'date'">
             <div class="r-field" :class="{'r-is-error': isInvalid}">
                 <label v-if="label" class="r-field-label">{{label}}</label>
-                <r-calendar-manager
-                    class="r-date-input"
-                    type="calendar"
-                    @input="dateChange"
-                    :value="value"
-                    :disabled="disabled"
-                    :available-dates="availableDates"
+                <r-calendar-manager class="r-date-input"
+                                    type="calendar"
+                                    :value="value"
+                                    :max-date="maxDate"
+                                    :drag-select-attributes="dragSelectAttributes"
+                                    :disabled="disabled"
+                                    :available-dates="availableDates"
+                                    @input="dateChange"
                 />
                 <span class="r-field-caption" v-if="helpText">{{helpText}}</span>
             </div>
@@ -18,35 +19,35 @@
             <p v-if="label" class="r-stack-xs">{{label}}</p>
             <div class="r-grid-fitted r-grid-unstackable r-align-items-center" :class="{'r-is-error': isInvalid}">
                 <div class="r-grid-item r-inline-s">
-                    <r-calendar-manager
-                        class="r-date-input"
-                        type="calendar"
-                        @input="dateChange"
-                        :value="value"
-                        :disabled="disabled"
-                        :available-dates="availableDates"
+                    <r-calendar-manager class="r-date-input"
+                                        type="calendar"
+                                        :value="value"
+                                        :max-date="maxDate"
+                                        :drag-select-attributes="dragSelectAttributes"
+                                        :disabled="disabled"
+                                        :available-dates="availableDates"
+                                        @input="dateChange"
                     />
                 </div>
                 <div class="r-grid-item r-no-flex">
-                    <r-select
-                        :options="timeOptions.hours"
-                        :value="selectedTime.hours"
-                        placeholder=""
-                        :disabled="disabled"
-                        @input="updateHours"
-                        class="r-no-flex r-date-time-input"/>
+                    <r-select :options="timeOptions.hours"
+                              :value="selectedTime.hours"
+                              placeholder=""
+                              :disabled="disabled"
+                              class="r-no-flex r-date-time-input"
+                              @input="updateHours"
+                    />
                 </div>
                 <div class="r-grid-item r-no-flex">
                     <span class="r-date-time-divider">:</span>
                 </div>
                 <div class="r-grid-item r-no-flex">
-                    <r-select
-                        :options="timeOptions.minutes"
-                        placeholder=""
-                        :disabled="disabled"
-                        :value="selectedTime.minutes"
-                        class="r-no-flex r-date-time-input"
-                        @input="updateMinutes"
+                    <r-select :options="timeOptions.minutes"
+                              placeholder=""
+                              :disabled="disabled"
+                              :value="selectedTime.minutes"
+                              class="r-no-flex r-date-time-input"
+                              @input="updateMinutes"
                     />
                 </div>
             </div>
@@ -57,19 +58,17 @@
             <div class="r-grid-fitted grid-unstackable r-align-items-center">
                 <div class="r-grid-item r-no-flex">
                     <!-- @slot Override default hours input component  -->
-                    <slot
-                        :options="timeOptions.hours"
-                        :value="selectedTime.hours"
-                        :disabled="disabled"
-                        :input="updateHours"
-                        name="hours-input">
-                        <r-select
-                            :options="timeOptions.hours"
-                            :value="selectedTime.hours"
-                            placeholder=""
-                            :disabled="disabled"
-                            @input="updateHours"
-                            class="r-no-flex r-date-time-input"/>
+                    <slot :options="timeOptions.hours"
+                          :value="selectedTime.hours"
+                          :disabled="disabled"
+                          :input="updateHours"
+                          name="hours-input">
+                        <r-select :options="timeOptions.hours"
+                                  :value="selectedTime.hours"
+                                  placeholder=""
+                                  :disabled="disabled"
+                                  @input="updateHours"
+                                  class="r-no-flex r-date-time-input"/>
                     </slot>
                 </div>
                 <div class="r-grid-item r-no-flex">
@@ -77,19 +76,17 @@
                 </div>
                 <div class="r-grid-item r-no-flex">
                     <!-- @slot Override default minutes input component  -->
-                    <slot
-                        :options="timeOptions.minutes"
-                        :value="selectedTime.minutes"
-                        :disabled="disabled"
-                        :input="updateMinutes"
-                        name="minutes-input">
-                        <r-select
-                            :options="timeOptions.minutes"
-                            placeholder=""
-                            :disabled="disabled"
-                            :value="selectedTime.minutes"
-                            class="r-no-flex r-date-time-input"
-                            @input="updateMinutes"/>
+                    <slot :options="timeOptions.minutes"
+                          :value="selectedTime.minutes"
+                          :disabled="disabled"
+                          :input="updateMinutes"
+                          name="minutes-input">
+                        <r-select :options="timeOptions.minutes"
+                                  placeholder=""
+                                  :disabled="disabled"
+                                  :value="selectedTime.minutes"
+                                  class="r-no-flex r-date-time-input"
+                                  @input="updateMinutes"/>
                     </slot>
                 </div>
             </div>
@@ -97,12 +94,20 @@
         </template>
         <template v-if="type === 'datepicker'">
             <v-date-picker v-model="selectedDate"
-                           @input="$emit('input', selectedDate)" is-inline/>
+                           :max-date="maxDate"
+                           :select-attributes="dragSelectAttributes"
+                           :drag-attributes="dragSelectAttributes"
+                           is-inline
+                           @input="$emit('input', selectedDate)"
+            />
         </template>
         <template v-if="type === 'range'">
             <r-calendar-manager type="range"
+                                :max-date="maxDate"
+                                :drag-select-attributes="dragSelectAttributes"
                                 :value="value"
-                                @input="$emit('input', $event)"></r-calendar-manager>
+                                @input="$emit('input', $event)"
+            ></r-calendar-manager>
         </template>
     </div>
 </template>
@@ -192,6 +197,18 @@
                 type: Boolean,
                 required: false,
                 default: false,
+            },
+            /**
+             * Configure the view of date picker details (popover etc.)
+             */
+            dragSelectAttributes: {
+                type: Object,
+            },
+            /**
+             * Specify the max date of available for selection dates
+             */
+            maxDate: {
+                type: Date,
             },
         },
         data() {

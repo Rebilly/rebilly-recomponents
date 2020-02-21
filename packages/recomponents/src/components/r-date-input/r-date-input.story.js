@@ -10,7 +10,7 @@ storiesOf('Components.Date Input', module)
         props: {
             availableDates: {
                 default: select(
-                    'availableDates',
+                    'available dates',
                     {
                         null: null,
                         'start from today': {
@@ -19,6 +19,15 @@ storiesOf('Components.Date Input', module)
                         },
                     },
                     null,
+                ),
+            },
+            maxDate: {
+                default: select(
+                    'max date',
+                    {
+                        'no restrictions': null,
+                        'only past dates': new Date(),
+                    }, null,
                 ),
             },
             label: {
@@ -65,17 +74,18 @@ storiesOf('Components.Date Input', module)
         template: `
             <div class="storybook-center">
                 <r-date-input
-                    :available-dates="availableDates"
-                    :label="label"
-                    :disabled="disabled"
-                    :placeholder="placeholder"
-                    :helpText="helpText"
-                    :stack="stack"
-                    :type="type"
-                    :validate="validate"
-                    :noFlex="noFlex"
-                    v-model="date"
-                    @input="input"/>
+                        :available-dates="availableDates"
+                        :label="label"
+                        :disabled="disabled"
+                        :placeholder="placeholder"
+                        :helpText="helpText"
+                        :stack="stack"
+                        :type="type"
+                        :max-date="maxDate"
+                        :validate="validate"
+                        :noFlex="noFlex"
+                        v-model="date"
+                        @input="input"/>
             </div>
         `,
     }), {

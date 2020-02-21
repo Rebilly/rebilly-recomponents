@@ -1,4 +1,4 @@
-import {boolean} from '@storybook/addon-knobs';
+import {boolean, select} from '@storybook/addon-knobs';
 import {storiesOf} from '@storybook/vue';
 import markdown from './r-date-range.md';
 import RDateRange from './r-date-range.vue';
@@ -9,8 +9,20 @@ storiesOf('Components.Date Range', module)
     .addParameters({component: RDateRange})
     .add('Component', () => ({
         props: {
+            showPresets: {
+                default: boolean('Show Presets', true),
+            },
             disabled: {
                 default: boolean('Disabled', false),
+            },
+            maxDate: {
+                default: select(
+                    'Max Date',
+                    {
+                        'no restrictions': null,
+                        'only past dates': new Date(),
+                    }, null,
+                ),
             },
         },
         data() {
@@ -36,6 +48,8 @@ storiesOf('Components.Date Range', module)
                 <div>
                     <r-date-range :timezone-handler="$tz"
                                   :period="period"
+                                  :show-presets="showPresets"
+                                  :max-date="maxDate"
                                   :disabled="disabled"
                                   @input="updatePeriod"></r-date-range>
                 </div>

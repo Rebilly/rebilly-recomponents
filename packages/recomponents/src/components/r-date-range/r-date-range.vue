@@ -1,14 +1,18 @@
 <template>
     <r-popper position="bottomEnd" class="r-date-range" ref="calendar" :disabled="false">
         <template #trigger="calendar">
-            <r-button-group>
+            <r-button-group :class="{'r-button-group-single': !showPresets}">
                 <r-icon-button :disabled="disabled" @click="toggle('calendar')">
                     <span class="r-date-range-label" :title="profileTimezoneTitle">
                         {{ selectedDateLabel }}
                     </span>
                     <r-icon class="r-date-range-calendar-icon" slot="left-icon" icon="calendar"/>
                 </r-icon-button>
-                <r-popper class="r-date-range-preset-picker" position="bottomEnd" ref="presets" :disabled="disabled">
+                <r-popper v-if="showPresets"
+                          class="r-date-range-preset-picker"
+                          position="bottomEnd"
+                          ref="presets"
+                          :disabled="disabled">
                     <template #trigger="optionsList">
                         <r-icon-button :disabled="disabled" @click="toggle('presets')">
                             <r-icon icon="actions"/>
@@ -17,12 +21,12 @@
                     <template #content="optionsList">
                         <div class="r-popover">
                             <div class="r-popover-control">
-                                <div class="r-popover-content r-popover-menu text-left ">
+                                <div class="r-popover-content r-popover-menu">
                                     <a class="r-popover-menu-item r-range-picker-item"
                                        v-for="presetName of calendarPresets"
                                        @click="relativeFilterChange(presetName)">
                                         <strong>{{getPresetLabel(presetName)}}&nbsp;</strong>
-                                        <span class="text-muted c-range-picker-item-date-placeholder">
+                                        <span class="r-text-muted">
                                             {{getFormattedPresetPeriod(presetName)}}
                                         </span>
                                     </a>
@@ -40,6 +44,7 @@
                         <r-date-input
                                 type="range"
                                 :disabled="disabled"
+                                :max-date="maxDate"
                                 :value="selectedDate"
                                 @input="dateChange($event)"/>
                     </div>
@@ -52,15 +57,26 @@
 <script>
     import _ from '../../common/helpers';
     import calendarPresets, {
-        oneValuePresetsList,
         calendarPresetsLabels,
         getCalendarPresetPeriods,
+        oneValuePresetsList,
     } from './calendar-presets';
     import DateTimeFormats from '../../common/datetime-formats';
+    import RButtonGroup from '../r-button-group/r-button-group.vue';
+    import RDateInput from '../r-date-input/r-date-input.vue';
+    import RIcon from '../r-icon/r-icon.vue';
+    import RIconButton from '../r-icon-button/r-icon-button.vue';
+    import RPopper from '../r-popper/r-popper.vue';
 
     export default {
         name: 'RDateRange',
-        components: {},
+        components: {
+            RButtonGroup,
+            RDateInput,
+            RIcon,
+            RIconButton,
+            RPopper,
+        },
         props: {
             /**
              * Specify the selected period
@@ -81,6 +97,20 @@
             disabled: {
                 type: Boolean,
                 default: false,
+            },
+            /**
+             * Specify the max available date
+             */
+            maxDate: {
+                type: Date,
+                default: null,
+            },
+            /**
+             * Specify if there are presets shown
+             */
+            showPresets: {
+                type: Boolean,
+                default: true,
             },
         },
         data() {
@@ -229,11 +259,16 @@
                     this.$refs.calendar.popper.close();
                 } else {
                     this.$refs.calendar.popper.toggle();
-                    this.$refs.presets.popper.close();
+                    if (this.$refs.presets) {
+                        this.$refs.presets.popper.close();
+                    }
                 }
             },
             close() {
-                this.$refs.presets.popper.close();
+                if (this.$refs.presets) {
+                    this.$refs.presets.popper.close();
+                }
+
                 this.$refs.calendar.popper.close();
             },
             relativeFilterChange(presetName) {
