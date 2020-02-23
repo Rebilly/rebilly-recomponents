@@ -29,7 +29,6 @@ storiesOf('Components.Date Range', module)
                 default: select(
                     'Min Date', {
                         'no restrictions': null,
-                        'only past dates': new Date(),
                         [`allow since ${minDate}`]: minDate,
                     }, null,
                 ),
