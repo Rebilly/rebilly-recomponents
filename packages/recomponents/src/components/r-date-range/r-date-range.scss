@@ -1,0 +1,20 @@
+.r-date-range-label {
+    margin-right: 3.2rem;
+}
+
+.r-date-range-calendar.r-popover {
+    min-width: 513px;
+}
+
+.r-date-range-preset-picker .r-popover {
+    min-width: 150px;
+}
+
+.r-date-range-preset-picker .r-button-size-regular.r-has-icon {
+    padding: var(--inset-s) var(--inset-xs);
+    border-radius: 0 var(--border-radius) var(--border-radius) 0;
+}
+
+.r-date-range .r-button-type-default:focus {
+    box-shadow: var(--button-default-box-shadow);
+}

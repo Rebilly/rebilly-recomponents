@@ -1,8 +1,12 @@
+import moment from 'moment';
 import {storiesOf} from '@storybook/vue';
 import {action} from '@storybook/addon-actions';
 import {boolean, select, text} from '@storybook/addon-knobs';
 import markdown from './r-date-input.md';
+import DateTimeFormats from '../../common/datetime-formats';
 import RDateInput from './r-date-input.vue';
+
+const minDate = new Date();
 
 storiesOf('Components.Date Input', module)
     .addParameters({component: RDateInput})
@@ -10,7 +14,7 @@ storiesOf('Components.Date Input', module)
         props: {
             availableDates: {
                 default: select(
-                    'availableDates',
+                    'available dates',
                     {
                         null: null,
                         'start from today': {
@@ -19,6 +23,24 @@ storiesOf('Components.Date Input', module)
                         },
                     },
                     null,
+                ),
+            },
+            maxDate: {
+                default: select(
+                    'max date',
+                    {
+                        'no restrictions': null,
+                        'only past dates': new Date(),
+                    }, null,
+                ),
+            },
+            minDate: {
+                default: select(
+                    'min date',
+                    {
+                        'no restrictions': null,
+                        [`allow since ${moment(minDate).format(DateTimeFormats.shortDate)}`]: minDate,
+                    }, null,
                 ),
             },
             label: {
@@ -65,17 +87,19 @@ storiesOf('Components.Date Input', module)
         template: `
             <div class="storybook-center">
                 <r-date-input
-                    :available-dates="availableDates"
-                    :label="label"
-                    :disabled="disabled"
-                    :placeholder="placeholder"
-                    :helpText="helpText"
-                    :stack="stack"
-                    :type="type"
-                    :validate="validate"
-                    :noFlex="noFlex"
-                    v-model="date"
-                    @input="input"/>
+                        :available-dates="availableDates"
+                        :label="label"
+                        :disabled="disabled"
+                        :placeholder="placeholder"
+                        :helpText="helpText"
+                        :stack="stack"
+                        :type="type"
+                        :min-date="minDate"
+                        :max-date="maxDate"
+                        :validate="validate"
+                        :noFlex="noFlex"
+                        v-model="date"
+                        @input="input"/>
             </div>
         `,
     }), {
