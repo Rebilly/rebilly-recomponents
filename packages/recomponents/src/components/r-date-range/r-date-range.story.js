@@ -1,3 +1,4 @@
+import moment from 'moment';
 import {boolean, select} from '@storybook/addon-knobs';
 import {storiesOf} from '@storybook/vue';
 import markdown from './r-date-range.md';
@@ -29,7 +30,7 @@ storiesOf('Components.Date Range', module)
                 default: select(
                     'Min Date', {
                         'no restrictions': null,
-                        [`allow since ${minDate}`]: minDate,
+                        [`allow since ${moment(minDate).format(DateTimeFormats.shortDate)}`]: minDate,
                     }, null,
                 ),
             },

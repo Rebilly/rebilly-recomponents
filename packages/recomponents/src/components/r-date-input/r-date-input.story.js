@@ -1,10 +1,12 @@
+import moment from 'moment';
 import {storiesOf} from '@storybook/vue';
 import {action} from '@storybook/addon-actions';
 import {boolean, select, text} from '@storybook/addon-knobs';
 import markdown from './r-date-input.md';
+import DateTimeFormats from '../../common/datetime-formats';
 import RDateInput from './r-date-input.vue';
 
-const date = new Date();
+const minDate = new Date();
 
 storiesOf('Components.Date Input', module)
     .addParameters({component: RDateInput})
@@ -37,7 +39,7 @@ storiesOf('Components.Date Input', module)
                     'min date',
                     {
                         'no restrictions': null,
-                        [`allow since ${date}`]: date,
+                        [`allow since ${moment(minDate).format(DateTimeFormats.shortDate)}`]: minDate,
                     }, null,
                 ),
             },
