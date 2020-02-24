@@ -227,13 +227,13 @@
                         // returns "Today / Date"
                         return [
                             selected.presetLabel,
-                            _.date(selected.start, DateTimeFormats.orderDate),
+                            _.formatDate(selected.start, DateTimeFormats.orderDate),
                         ].join(' / ');
                     }
                     // returns "Today / yy-mm-dd - yy-mm-dd"
                     return `${selected.presetLabel} / ${[
-                        _.date(selected.start, DateTimeFormats.shortDate),
-                        _.date(selected.end, DateTimeFormats.shortDate),
+                        _.formatDate(selected.start, DateTimeFormats.shortDate),
+                        _.formatDate(selected.end, DateTimeFormats.shortDate),
                     ].join(' - ')}`;
                 }
                 if (this.isRelative) {
@@ -244,8 +244,8 @@
                 }
                 // returns real dates in DateTimeFormats.shortDate string format
                 return [
-                    _.date(selected.start, DateTimeFormats.shortDate),
-                    _.date(selected.end, DateTimeFormats.shortDate),
+                    _.formatDate(selected.start, DateTimeFormats.shortDate),
+                    _.formatDate(selected.end, DateTimeFormats.shortDate),
                 ].join(' - ');
             },
         },
@@ -256,9 +256,9 @@
             getFormattedPresetPeriod(presetName) {
                 const period = this.calendarPresetsPeriods[presetName];
                 if (oneValuePresetsList.includes(presetName)) {
-                    return _.date(period.start, DateTimeFormats.orderDate);
+                    return _.formatDate(period.start, DateTimeFormats.orderDate);
                 }
-                const formatter = value => _.date(value, DateTimeFormats.shortDate);
+                const formatter = value => _.formatDate(value, DateTimeFormats.shortDate);
                 return `${formatter(period.start)} — ${formatter(period.end)}`;
             },
             toggle(name) {
