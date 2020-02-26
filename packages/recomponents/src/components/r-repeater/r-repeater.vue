@@ -1,6 +1,6 @@
 <template>
     <div class="r-table-control flex-center">
-        <r-loader v-if="isLoading"/>
+        <r-loader v-if="isLoading" :fullscreen="isLoaderFullscreen"></r-loader>
         <template v-else>
             <table class="r-table" v-if="hasRows">
                 <slot name="colgroup"/>
@@ -34,6 +34,11 @@
                 type: Function,
                 required: true,
             },
+            isLoaderFullscreen: {
+                type: Boolean,
+                default: true,
+            },
+            watcher: {},
         },
         data() {
             return {
@@ -60,6 +65,11 @@
         },
         created() {
             this.fetchData();
+        },
+        watch: {
+            watcher() {
+                this.fetchData();
+            },
         },
     };
 </script>

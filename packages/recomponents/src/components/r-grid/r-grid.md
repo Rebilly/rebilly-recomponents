@@ -5,10 +5,11 @@ The `r-grid` component is designed to power the rendering of any tabular data an
 ### Props
 
 
-| prop         | type             | default value | description                                                             |
-|--------------|------------------|---------------|-------------------------------------------------------------------------|
-| columns*     | `Object`         |               | Enumerates columns to be rendered with type specific configuration info |
-| provider*    | `Function`       |               | Returns some data to be rendered by the default scopped slot            |
+| prop               | type               | default value   | description                                                               |
+|--------------------|--------------------|-----------------| --------------------------------------------------------------------------|
+| columns*           | `Object`           |                 | Enumerates columns to be rendered with type specific configuration info   |
+| provider*          | `Function`         |                 | Returns some data to be rendered by the default scopped slot              |
+| isLoaderFullscreen | `boolean`          | `true`          | Defines if the loading state is fullscreen                                |
 
 ### Slots
 

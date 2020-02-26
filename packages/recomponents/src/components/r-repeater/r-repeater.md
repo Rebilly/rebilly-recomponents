@@ -5,9 +5,10 @@ This is an abstract component to help you render tabular data. It is notably use
 ### Props
 
 
-| prop         | type             | default value | description                                                  |
-|--------------|------------------|---------------|--------------------------------------------------------------|
-| provider*    | function         |               | Returns some data to be rendered by the default scopped slot |
+| prop               | type               | default value   | description                                                    |
+|---------------     | ------------------ | --------------- | ---------------------------------------------------------------|
+| provider*          | function           |                 | Returns some data to be rendered by the default scopped slot   |
+| isLoaderFullscreen | boolean            | `true`          | Defines if the loading state is fullscreen                     |
 
 ### Slots
 

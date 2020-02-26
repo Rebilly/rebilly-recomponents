@@ -11,9 +11,14 @@
                 type: Object,
                 required: true,
             },
+            watcher: {},
             provider: {
                 type: [Function, Array, Promise],
                 required: true,
+            },
+            isLoaderFullscreen: {
+                type: Boolean,
+                default: true,
             },
         },
         computed: {
@@ -146,6 +151,8 @@
                     class: 'r-grid-repeater',
                     props: {
                         provider: this.computedProvider,
+                        watcher: {},
+                        isLoaderFullscreen: this.isLoaderFullscreen,
                     },
                     scopedSlots: {
                         default: prop => this.renderRepeaterRow(createElement, prop),
