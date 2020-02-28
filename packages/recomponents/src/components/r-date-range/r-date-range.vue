@@ -83,7 +83,7 @@
              * Specify the selected period
              */
             period: {
-                type: String,
+                type: [String, Object],
                 required: true,
             },
             /**
@@ -158,7 +158,7 @@
                     return null;
                 }
                 const preset = this.calendarPresetsPeriodsList
-                    .find(([, {relativeFilterValue}]) => relativeFilterValue === this.period);
+                    .find(([, {relativeFilterValue}]) => relativeFilterValue === this.period.relativeFilterValue);
                 if (preset) {
                     // the period value is one of default relative presets
                     const [presetName, presetParams] = preset;
@@ -168,12 +168,8 @@
                         ...presetParams,
                     };
                 }
-                // the props period value is relative but not default preset
-                const [start, end] = this.period.split('..');
-                // this is the relative value but not value from the preset
-                // so the value could be like "5 years ago..now"
-                // see https://help.rebilly.com/en/articles/3296639-relative-time-filters
-                return {start, end};
+
+                return this.parsePeriod(this.period);
             },
             isRelativePreset() {
                 // returns true if the props period is relative date and one of default presets
@@ -188,7 +184,7 @@
                         end: relative.end,
                     };
                 }
-                const [start, end] = this.period.split('..');
+                const {start, end} = this.parsePeriod(this.period);
                 if (this.isValidDatesPeriod) {
                     // the start and end values are ISO strings
                     // convert to profile timezone
@@ -278,6 +274,13 @@
                 }
 
                 this.$refs.calendar.popper.close();
+            },
+            parsePeriod(period) {
+                if (typeof this.period === 'string') {
+                    const [start, end] = this.period.split('..');
+                    return {start, end};
+                }
+                return period;
             },
             relativeFilterChange(presetName) {
                 const period = this.calendarPresetsPeriods[presetName];

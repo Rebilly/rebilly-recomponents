@@ -7,13 +7,30 @@
             Repeater,
         },
         props: {
+            /**
+             * Specify the columns
+             */
             columns: {
                 type: Object,
                 required: true,
             },
+            /**
+             * Defines the property, which changes will trigger the fetching of data
+             */
+            watcher: {},
+            /**
+             * Returns some data to be rendered by the default scoped slot
+             */
             provider: {
                 type: [Function, Array, Promise],
                 required: true,
+            },
+            /**
+             * Defines if the loading state is fullscreen
+             */
+            isLoaderFullscreen: {
+                type: Boolean,
+                default: true,
             },
         },
         computed: {
@@ -146,6 +163,8 @@
                     class: 'r-grid-repeater',
                     props: {
                         provider: this.computedProvider,
+                        watcher: {},
+                        isLoaderFullscreen: this.isLoaderFullscreen,
                     },
                     scopedSlots: {
                         default: prop => this.renderRepeaterRow(createElement, prop),
