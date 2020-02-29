@@ -86,7 +86,7 @@ storiesOf('Components.Popper', module)
                                         Option #{{ i }}
                                     </a>
                                 </div>
-                                <div class="r-popover-content r-popper-content-padded">
+                                <div class="r-popover-content r-popover-content-padded">
                                     <r-button size="small"
                                               :fluid="true"
                                               class="stack-s">
