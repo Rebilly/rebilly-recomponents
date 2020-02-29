@@ -175,7 +175,9 @@
     cursor: var(--popover-content-menu-item-cursor);
 }
 
-.r-popover-action-menu-item:hover, .r-popover-action-menu-item:focus, .r-popover-action-menu-item:active,
+.r-popover-action-menu-item:hover,
+.r-popover-action-menu-item:focus,
+.r-popover-action-menu-item:active,
 .r-popover-menu-item:hover,
 .r-popover-menu-item:focus,
 .r-popover-menu-item:active {
@@ -184,7 +186,15 @@
     color: var(--popover-content-menu-item-hover-color);
 }
 
-.r-popover-action-menu-item.r-popover-menu-item-negative:hover, .r-popover-action-menu-item.r-popover-menu-item-negative:focus, .r-popover-action-menu-item.r-popover-menu-item-negative:active,
+.r-popover-menu-item:hover .r-text-muted,
+.r-popover-menu-item:focus .r-text-muted,
+.r-popover-menu-item:active .r-text-muted {
+    color: var(--popover-dark-content-text-muted) !important;
+}
+
+.r-popover-action-menu-item.r-popover-menu-item-negative:hover,
+.r-popover-action-menu-item.r-popover-menu-item-negative:focus,
+.r-popover-action-menu-item.r-popover-menu-item-negative:active,
 .r-popover-menu-item.r-popover-menu-item-negative:hover,
 .r-popover-menu-item.r-popover-menu-item-negative:focus,
 .r-popover-menu-item.r-popover-menu-item-negative:active {
