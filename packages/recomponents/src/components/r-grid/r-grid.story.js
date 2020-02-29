@@ -6,9 +6,9 @@ storiesOf('Components/Grid', module)
     .addParameters({component: RGrid})
     .add('Grid', () => ({
         template: `
-            <r-pagination :provider="provider" :limit="limit" :total="total">
+            <r-pagination :provider="provider" :limit="limit" :total="total" @navigate="setPage" :page="page">
                 <template #pagination="{pagination}">
-                    <r-grid :provider="pagination.provider" :columns="columns" :key="pagination.offset">
+                    <r-grid :provider="provider(pagination.offset)" :columns="columns" :key="pagination.offset">
                         <header slot="header">
                             <h1 class="r-mb-l">Numbers</h1>
                         </header>
@@ -53,6 +53,7 @@ storiesOf('Components/Grid', module)
                 },
                 limit: 3,
                 total: 9,
+                page: 1,
             };
         },
         methods: {
@@ -98,6 +99,9 @@ storiesOf('Components/Grid', module)
                 }
 
                 return [];
+            },
+            setPage(page) {
+                this.page = page;
             },
         },
     }), {

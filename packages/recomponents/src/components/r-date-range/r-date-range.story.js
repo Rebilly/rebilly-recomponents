@@ -47,10 +47,14 @@ storiesOf('Components.Date Range', module)
         },
         methods: {
             convertDate(date) {
-                return this.$tz().fromDate(date).format(DateTimeFormats.datePickerDate);
+                return this.$tz().fromDate(date).format(DateTimeFormats.shortDate);
             },
             updatePeriod(period) {
-                this.period = `${this.convertDate(period.start)}..${this.convertDate(period.end)}`;
+                this.period = {
+                    ...period,
+                    start: this.convertDate(period.start),
+                    end: this.convertDate(period.end),
+                };
             },
         },
         template: `
