@@ -37,7 +37,10 @@ storiesOf('Components.Date Range', module)
         },
         data() {
             return {
-                period: undefined,
+                period: {
+                    start: '2020-01-01',
+                    end: '2020-02-01',
+                },
             };
         },
         created() {
