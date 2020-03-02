@@ -26,6 +26,7 @@
             </div>
         </div>
         <div class="r-tab-content" :class="contentClass">
+            <!-- @slot Tab content -->
             <slot></slot>
         </div>
     </div>
@@ -36,25 +37,32 @@
         name: 'r-tabs',
         props: {
             /**
-             * TBD
+             * Define style of the tabs, are them divided or not
              */
             divided: {
                 type: Boolean,
                 default: false,
             },
             /**
-             * TBD
+             * Specify classes of the tabs
              */
             menuClass: {
                 type: String,
                 default: '',
             },
             /**
-             * TBDs
+             * Specify classes of the content
              */
             contentClass: {
                 type: String,
                 default: '',
+            },
+            /**
+             * Define preselected tab
+             */
+            preselectedTab: {
+                type: Number,
+                default: 0,
             },
         },
         watch: {
@@ -99,6 +107,10 @@
                     });
                 }
                 if (index !== null) {
+                    /**
+                     * When the tab is selected
+                     * @type {Event}
+                     */
                     this.$emit('tab-selected', {name, value, index});
                 }
             },
@@ -136,7 +148,7 @@
                 }
 
                 // set first tab as active
-                this.tabs[0].isActive = true;
+                this.tabs[this.preselectedTab].isActive = true;
             },
         },
         mounted() {
