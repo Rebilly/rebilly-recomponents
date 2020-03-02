@@ -147,8 +147,8 @@
                     return;
                 }
 
-                // set first tab as active
-                this.tabs[this.preselectedTab].isActive = true;
+                // set first or preselected tab as active
+                this.selectTab(this.tabs[this.preselectedTab]);
             },
         },
         mounted() {
