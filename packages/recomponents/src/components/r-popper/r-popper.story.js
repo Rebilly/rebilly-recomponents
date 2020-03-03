@@ -58,21 +58,21 @@ storiesOf('Components.Popper', module)
         template: `
             <div class="storybook-center">
                 <r-popper
-                    :escToHide="escToHide"
-                    :autoHide="autoHide"
-                    :globalAutoHide="globalAutoHide"
-                    :openOnMount="openOnMount"
-                    :disabled="disabled"
-                    :offset="offset"
-                    :direction="direction"
-                    :position="position"
-                    :slideFrom="slideFrom"
-                    :duration="duration"
-                    @input="input"
-                    @setActivePopper="setActivePopper"
-                    @toggle="toggle"
-                    @toggle-on="toggleOn"
-                    @toggle-off="toggleOff">
+                        :escToHide="escToHide"
+                        :autoHide="autoHide"
+                        :globalAutoHide="globalAutoHide"
+                        :openOnMount="openOnMount"
+                        :disabled="disabled"
+                        :offset="offset"
+                        :direction="direction"
+                        :position="position"
+                        :slideFrom="slideFrom"
+                        :duration="duration"
+                        @input="input"
+                        @setActivePopper="setActivePopper"
+                        @toggle="toggle"
+                        @toggle-on="toggleOn"
+                        @toggle-off="toggleOff">
                     <template #trigger="scope">
                         <r-icon-button :disabled="disabled" @click="scope.popper.toggle">
                             <r-icon icon="actions"/>
@@ -81,10 +81,17 @@ storiesOf('Components.Popper', module)
                     <template #content>
                         <div class="r-popover">
                             <div class="r-popover-control">
-                                <div class="r-popover-content r-popover-menu">
+                                <div class="r-popover-content r-popover-menu r-is-scrollable">
                                     <a class="r-popover-menu-item" v-for="i in numberOfOptions">
                                         Option #{{ i }}
                                     </a>
+                                </div>
+                                <div class="r-popover-content r-popover-content-padded">
+                                    <r-button size="small"
+                                              :fluid="true"
+                                              class="stack-s">
+                                        Action
+                                    </r-button>
                                 </div>
                             </div>
                         </div>
@@ -146,21 +153,21 @@ storiesOf('Components.Popper', module)
         template: `
             <div class="storybook-center">
                 <r-popper
-                    :escToHide="escToHide"
-                    :autoHide="autoHide"
-                    :globalAutoHide="globalAutoHide"
-                    :openOnMount="openOnMount"
-                    :disabled="disabled"
-                    :offset="offset"
-                    :direction="direction"
-                    :position="position"
-                    :slideFrom="slideFrom"
-                    :duration="duration"
-                    @input="input"
-                    @setActivePopper="setActivePopper"
-                    @toggle="toggle"
-                    @toggle-on="toggleOn"
-                    @toggle-off="toggleOff">
+                        :escToHide="escToHide"
+                        :autoHide="autoHide"
+                        :globalAutoHide="globalAutoHide"
+                        :openOnMount="openOnMount"
+                        :disabled="disabled"
+                        :offset="offset"
+                        :direction="direction"
+                        :position="position"
+                        :slideFrom="slideFrom"
+                        :duration="duration"
+                        @input="input"
+                        @setActivePopper="setActivePopper"
+                        @toggle="toggle"
+                        @toggle-on="toggleOn"
+                        @toggle-off="toggleOff">
                     <template #trigger="scope">
                         <r-button :disabled="disabled" type="primary" @click="scope.popper.toggle">
                             Click me

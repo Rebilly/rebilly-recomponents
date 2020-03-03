@@ -37,7 +37,10 @@ storiesOf('Components.Date Range', module)
         },
         data() {
             return {
-                period: undefined,
+                period: {
+                    start: '2020-01-01',
+                    end: '2020-02-01',
+                },
             };
         },
         created() {
@@ -50,11 +53,7 @@ storiesOf('Components.Date Range', module)
                 return this.$tz().fromDate(date).format(DateTimeFormats.shortDate);
             },
             updatePeriod(period) {
-                this.period = {
-                    ...period,
-                    start: this.convertDate(period.start),
-                    end: this.convertDate(period.end),
-                };
+                this.period = period;
             },
         },
         template: `

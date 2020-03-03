@@ -1,4 +1,4 @@
-import moment from 'moment';
+import moment from 'moment-timezone';
 import {mount, shallowMount} from '@vue/test-utils';
 import {renderToString} from '@vue/server-test-utils';
 import RDateRange from './r-date-range.vue';
@@ -25,8 +25,8 @@ class TimezoneMock {
     }
 
     // eslint-disable-next-line class-methods-use-this
-    readLocalDate(date) {
-        return moment(date).utc(true);
+    getRaw(date) {
+        return moment.tz(date, this.tz()).utc();
     }
 }
 

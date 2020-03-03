@@ -21,7 +21,7 @@
                     <template #content="optionsList">
                         <div class="r-popover">
                             <div class="r-popover-control">
-                                <div class="r-popover-content r-popover-menu">
+                                <div class="r-popover-content r-popover-menu r-is-scrollable">
                                     <a class="r-popover-menu-item r-range-picker-item"
                                        v-for="presetName of calendarPresets"
                                        @click="relativeFilterChange(presetName)">
@@ -56,6 +56,7 @@
 </template>
 
 <script>
+    import moment from 'moment';
     import _ from '../../common/helpers';
     import calendarPresets, {
         calendarPresetsLabels,
@@ -143,7 +144,8 @@
                 return Object.entries(this.calendarPresetsPeriods);
             },
             isValidDatesPeriod() {
-                return /[0-9]{4}-[0-9]{2}-[0-9]{2}/.test(this.period); // has year value
+                return this.validateDatesPeriod(this.period)
+                    || (this.validateDatesPeriod(this.period.start) && this.validateDatesPeriod(this.period.end));
             },
             isRelative() {
                 // the props value period is relative period but could be custom period
@@ -257,6 +259,9 @@
                 const formatter = value => _.formatDate(value, DateTimeFormats.shortDate);
                 return `${formatter(period.start)} — ${formatter(period.end)}`;
             },
+            validateDatesPeriod(period) {
+                return /[0-9]{4}-[0-9]{2}-[0-9]{2}/.test(period); // has year value
+            },
             toggle(name) {
                 if (name === 'presets') {
                     this.$refs.presets.popper.toggle();
@@ -303,8 +308,8 @@
                 // so we have to convert
                 // the problem details: if your browser timezone is +3 then you will have .toISOString as 21:00
                 // and user profile timezone will never change that value
-                const start = this.timezoneHandler().readLocalDate(date.start.format(DateTimeFormats.datePickerDate)).startOf('day');
-                const end = this.timezoneHandler().readLocalDate(date.end.format(DateTimeFormats.datePickerDate)).endOf('day');
+                const start = this.timezoneHandler().getRaw(moment(date.start).startOf('day'));
+                const end = this.timezoneHandler().getRaw(moment(date.end).endOf('day'));
                 this.$emit('input', {
                     isRelative: false,
                     start,
