@@ -21,7 +21,7 @@
                     <template #content="optionsList">
                         <div class="r-popover">
                             <div class="r-popover-control">
-                                <div class="r-popover-content r-popover-menu">
+                                <div class="r-popover-content r-popover-menu r-is-scrollable">
                                     <a class="r-popover-menu-item r-range-picker-item"
                                        v-for="presetName of calendarPresets"
                                        @click="relativeFilterChange(presetName)">
