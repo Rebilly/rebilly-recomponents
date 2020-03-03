@@ -11,6 +11,8 @@
 .r-button-group .r-button {
     margin-left: -1px;
     margin-left: -0.1rem;
+    margin-right: -1px;
+    margin-right: -0.1rem;
 }
 
 .r-button-group .r-button:not(:first-child):not(:last-child),
@@ -37,4 +39,8 @@
     background: linear-gradient(to bottom, #0044D4 0%, #2600d4 100%);
     color: #FFFFFF;
     box-shadow: 0 1px 2px 0 rgba(161, 178, 193, 0.8);
+}
+
+.r-button-group.r-button-group-single .r-button {
+    border-radius: var(--button-border-radius);
 }

@@ -5,6 +5,9 @@ import RDateInput from './r-date-input.vue';
 describe('r-date-input.vue', () => {
     it('should render Wrapper and match snapshot', () => {
         const wrapper = shallowMount(RDateInput, {
+            propsData: {
+                maxDate: '2020-01-01',
+            },
             stubs: ['no-ssr'],
         });
         expect(wrapper).toMatchSnapshot();

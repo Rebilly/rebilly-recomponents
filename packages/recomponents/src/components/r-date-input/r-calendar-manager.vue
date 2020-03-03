@@ -12,14 +12,16 @@
                     is-double-paned
                     is-inline
                     show-caps
-                    :show-popover="false"
+                    :min-date="minDate"
+                    :select-attribute="dragSelectAttributes"
+                    :drag-attribute="dragSelectAttributes"
                     :theme-styles="themeStyles"
                     :tint-color="tintColor"
                     :max-date="maxDate"
                     :available-dates="availableDates"
-                    @input="periodInput"
                     :disabled-attribute="disabledAttribute"
-                    :value="internalPeriod">
+                    :value="internalPeriod"
+                    @input="periodInput">
             </v-date-picker>
             <v-date-picker
                     v-show="!disabled"
@@ -27,6 +29,8 @@
                     mode="single"
                     popover-visibility="focus"
                     :popover-content-offset="4"
+                    :min-date="minDate"
+                    :max-date="maxDate"
                     :theme-styles="themeStyles"
                     :tint-color="tintColor"
                     :available-dates="availableDates"
@@ -63,6 +67,29 @@
         name: 'RCalendarManager',
         components: {rInput},
         props: {
+            availableDates: {
+                type: Object,
+                default: null,
+            },
+            disabled: {
+                type: Boolean,
+                default: false,
+            },
+            dragSelectAttributes: {
+                type: Object,
+                default: () => ({
+                    popover: {
+                        visibility: 'hidden',
+                    },
+                }),
+            },
+            minDate: {
+                type: Date,
+            },
+            maxDate: {
+                type: Date,
+                default: () => new Date(),
+            },
             type: {
                 type: String,
                 default: 'calendar',
@@ -70,14 +97,6 @@
             },
             value: {
                 type: [Object, String],
-            },
-            disabled: {
-                type: Boolean,
-                default: false,
-            },
-            availableDates: {
-                type: Object,
-                default: null,
             },
         },
         computed: {
@@ -107,7 +126,6 @@
         data() {
             return {
                 initialDate: this.value,
-                maxDate: new Date(),
                 themeStyles: {
                     wrapper: {
                         background: '#FFFFFF',
