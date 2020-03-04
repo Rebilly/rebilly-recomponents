@@ -37,6 +37,12 @@ storiesOf('Components/Grid', module)
                                 textAlign: 'center',
                             },
                             renderAs: 'text',
+                        }, {
+                            name: 'money',
+                            renderAs: 'numeric',
+                            renderOptions: {
+                                currency: 'USD',
+                            },
                         },
                         {
                             name: 'type',
@@ -61,13 +67,13 @@ storiesOf('Components/Grid', module)
                 if (page === 1) {
                     return [
                         {
-                            id: 1, name: 'One', type: 'Odd', updatedAt: '12/25/2019',
+                            id: 1, name: 'One', type: 'Odd', money: 4734, updatedAt: '12/25/2019',
                         },
                         {
-                            id: 2, name: 'Two', type: ['Even', 'Prime'], updatedAt: '12/25/2019',
+                            id: 2, name: 'Two', type: ['Even', 'Prime'], money: 23, updatedAt: '12/25/2019',
                         },
                         {
-                            id: 3, name: 'Three', type: ['Odd', 'Prime'], updatedAt: '12/25/2019',
+                            id: 3, name: 'Three', type: ['Odd', 'Prime'], money: 436478326, updatedAt: '12/25/2019',
                         },
                     ];
                 }
