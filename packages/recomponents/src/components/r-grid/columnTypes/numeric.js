@@ -21,6 +21,7 @@ export default ({createElement, props}) => {
                 currency,
                 percentage,
                 digits,
+                internationalFormat,
             } = {},
         },
     } = props;
@@ -32,11 +33,16 @@ export default ({createElement, props}) => {
             hasDigits = true;
         }
 
+        const intl = global.Intl;
+
         if (approximate) {
             displayValue = approximateNumber(value);
+        } else if (internationalFormat) {
+            displayValue = intl ? new intl.NumberFormat().format(value) : value;
         } else if (currency) {
-            const intl = global.Intl || {NumberFormat: () => ({})};
-            displayValue = new intl.NumberFormat('en-US', {style: 'currency', currency}).format(value);
+            displayValue = intl
+                ? new intl.NumberFormat(undefined, {style: 'currency', currency}).format(value)
+                : `${value} ${currency}`;
         } else if (percentage) {
             if (percentage === true) {
                 if (hasDigits) {
