@@ -36,11 +36,11 @@ export default ({createElement, props}) => {
         if (approximate) {
             displayValue = approximateNumber(value);
         } else if (internationalFormat) {
-            displayValue = typeof Intl === 'undefined' ? value : new Intl.NumberFormat().format(value);
+            displayValue = typeof Intl !== 'undefined' ? new Intl.NumberFormat().format(value) : value;
         } else if (currency) {
-            displayValue = typeof Intl === 'undefined'
-                ? `${value} ${currency}`
-                : new Intl.NumberFormat(undefined, {style: 'currency', currency}).format(value);
+            displayValue = typeof Intl !== 'undefined'
+                ? new Intl.NumberFormat(undefined, {style: 'currency', currency}).format(value)
+                : `${value} ${currency}`;
         } else if (percentage) {
             if (percentage === true) {
                 if (hasDigits) {
