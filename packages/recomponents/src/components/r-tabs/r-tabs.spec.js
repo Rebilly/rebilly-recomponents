@@ -1,3 +1,4 @@
+import Vue from 'vue';
 import {shallowMount, mount} from '@vue/test-utils';
 import {renderToString} from '@vue/server-test-utils';
 import RTabs from './r-tabs.vue';
@@ -33,7 +34,7 @@ describe('r-tabs.vue', () => {
     });
 
     it('should use plain active tab if specified', async () => {
-        const wrapper = mount(RTabs, {
+        const wrapper = await mount(RTabs, {
             render(h) {
                 return h(RTabs, {}, [
                     h(RTab, {
@@ -61,7 +62,7 @@ describe('r-tabs.vue', () => {
     });
 
     it('should switch tab on click', async () => {
-        const wrapper = mount(RTabs, {
+        const wrapper = await mount(RTabs, {
             render(h) {
                 return h(RTabs, {}, [
                     h(RTab, {
@@ -83,9 +84,11 @@ describe('r-tabs.vue', () => {
         });
 
         const links = wrapper.findAll('.r-tab-item-link');
-        console.log(wrapper);
         expect(links.at(0).classes().includes('r-is-active')).toBeTruthy();
         links.at(1).trigger('click');
+
+        await Vue.nextTick();
+
         expect(links.at(0).classes().includes('r-is-active')).toBeFalsy();
     });
 
@@ -169,8 +172,8 @@ describe('r-tabs.vue', () => {
         expect(tabPanel.attributes('aria-labelledby')).toBe(tabA11yId);
     });
 
-    it('should generate IDs when panelId is not provided', () => {
-        const wrapper = mount(RTabs, {
+    it('should generate IDs when panelId is not provided', async () => {
+        const wrapper = await mount(RTabs, {
             render(h) {
                 return h(RTabs, {}, [
                     h(RTab, {
