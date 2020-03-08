@@ -56,7 +56,7 @@ export default {
      ** You can extend webpack config here
      */
     extend(config, { isDev, isClient }) {
-      // do not resolve symlinks
+      // Do not resolve symlinks
       if (isDev) config.resolve.symlinks = false
     },
 
@@ -65,7 +65,6 @@ export default {
         return [
           [
             require.resolve('@nuxt/babel-preset-app'),
-            // require.resolve('@nuxt/babel-preset-app-edge'), // For nuxt-edge users
             {
               buildTarget: isServer ? 'server' : 'client',
               corejs: { version: 3 }

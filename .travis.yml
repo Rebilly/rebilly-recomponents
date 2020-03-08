@@ -34,8 +34,8 @@ jobs:
         - yarn workspace @rebilly/recomponents lint
         - yarn workspace @rebilly/recomponents test
         # run image-snapshot tests in the docker
-        # - yarn build-storybook
-        # - docker-compose -f ./.image-snapshots/docker-compose.yml up --build
+        - yarn workspace @rebilly/recomponents build-storybook
+        - docker-compose -f ./packages/recomponents/.image-snapshots/docker-compose.yml up --build
     - stage: deploy
       name: 'Release recomponents to NPM'
       if: branch = master
