@@ -18,7 +18,7 @@ notifications:
 node_js:
   - '12'
 before_install:
-  - export TZ=Etc/GMT+9
+  - export TZ=Asia/Tokyo
 install: yarn
 jobs:
   include:
