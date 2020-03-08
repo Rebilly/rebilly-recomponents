@@ -1,3 +1,4 @@
+import Vue from 'vue';
 import {mount, shallowMount} from '@vue/test-utils';
 import {renderToString} from '@vue/server-test-utils';
 import RPopper from './r-popper.vue';
@@ -68,12 +69,12 @@ describe('r-popper.vue', () => {
         expect(wrapper.html()).toMatch(slot);
     });
 
-    it('should render slot content', () => {
+    it('should render slot content', async () => {
         const content = `<span>content-${new Date().getTime()}</span>`;
         const trigger = `<span>trigger-${new Date().getTime()}</span>`;
         const slot = `<div>${content}</div>`;
 
-        const wrapper = mount(RPopper, {
+        const wrapper = await mount(RPopper, {
             propsData: {},
             slots: {
                 trigger,
@@ -82,7 +83,11 @@ describe('r-popper.vue', () => {
         });
 
         expect(wrapper.html()).not.toMatch(content);
+
         wrapper.vm.setPopperVisible(true);
+
+        await Vue.nextTick();
+
         expect(wrapper.html()).toMatch(content);
     });
 });
