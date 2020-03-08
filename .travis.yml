@@ -17,6 +17,8 @@ notifications:
   email: true
 node_js:
   - '12'
+before_install:
+  - export TZ=America/Montreal
 install: yarn
 jobs:
   include:
