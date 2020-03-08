@@ -32,7 +32,7 @@ class TimezoneMock {
 
 describe('r-date-range.vue', () => {
     it('renders props when passed', () => {
-        const wrapper = shallowMount(RDateRange, {
+        const wrapper = mount(RDateRange, {
             propsData: {
                 period,
                 timezoneHandler: () => new TimezoneMock(),
