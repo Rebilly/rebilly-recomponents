@@ -1,3 +1,4 @@
+import Vue from 'vue';
 import {shallowMount} from '@vue/test-utils';
 import {renderToString} from '@vue/server-test-utils';
 import RSelect from './r-select.vue';
@@ -257,6 +258,9 @@ describe('r-select.vue', () => {
             },
         });
         wrapper.setData({search: 'test'});
+
+        await Vue.nextTick();
+
         expect(wrapper.emitted()['search-change']).toEqual([['test', 'id']]);
     });
     it('should set isOpen value to true', () => {
