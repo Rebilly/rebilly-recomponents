@@ -28,11 +28,13 @@ We use [Yarn Workspaces](https://classic.yarnpkg.com/en/docs/workspaces/) to mak
 
 With workspaces you can run any npm script inside of packages/recomponents folder like:
 
-* `yarn build`
+* `yarn dev`
 
 Or from project root:
 
-* `yarn workspace @rebilly/recomponents build`
+* `yarn workspace @rebilly/recomponents dev`
+
+In developer mode each update of component trigger rebuild of Recomponents and this update should be catched by end application to trigger one more rebuild. In result you can check update in your application immideatly.
 
 With workspaces there is no need to install dependencies inside of each folder - single run of `yarn` inside of project root is enough.
 
