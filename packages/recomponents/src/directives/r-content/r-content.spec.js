@@ -19,18 +19,18 @@ const wrapper = shallowMount(mockTemplate);
 
 describe('r-content.js', () => {
     it('Should render the correct HTML structure', () => {
-        expect(wrapper.html().replace(/[\n\s]/g, '')).toBe(`
+        expect(wrapper).toMatchInlineSnapshot(`
             <div>
-                <div class="r-component-content">
-                    <section class="r-component-content-is-primary">
-                        <p>Text</p>
-                    </section>
-                    <section class="r-component-content-is-secondary">
-                        <p>Text</p>
-                    </section>
-                </div>
+              <div class="r-component-content">
+                <section class="r-component-content-is-primary">
+                  <p>Text</p>
+                </section>
+                <section class="r-component-content-is-secondary">
+                  <p>Text</p>
+                </section>
+              </div>
             </div>
-        `.replace(/[\n\s]/g, ''));
+        `);
     });
 
     it('Should generate the correct primary class', () => {
