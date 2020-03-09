@@ -11,16 +11,16 @@ export default {
             const offset = value.offset || 8;
             const boundaryLeft = value.boundaryLeft || 0;
             const boundaryTop = value.boundaryTop || 0;
-            tooltip.classList.add('tooltip');
-            tooltipArrow.classList.add('tooltip-arrow');
+            tooltip.classList.add('r-tooltip');
+            tooltipArrow.classList.add('r-tooltip-arrow');
             tooltip.innerText = value.text;
-            el.classList.add('position-relative');
+            el.classList.add('r-position-relative');
 
             const tooltipOutOfViewPort = (elToCheck, tooltipEl) => {
                 const out = {};
                 out.top = tooltip.style.top.replace('px', '') < boundaryTop;
                 out.left = tooltip.style.left.replace('px', '') < boundaryLeft;
-                out.right = (elToCheck.right + (tooltipEl.width / 2))
+                out.right = (parseFloat(tooltip.style.left.replace('px', '')) + tooltipEl.width)
                     > (window.innerWidth || document.documentElement.clientWidth);
                 return out;
             };
@@ -46,39 +46,39 @@ export default {
                 // will be useful with checkboxes/labels/etc.
                 switch (value.position) {
                     case 'left':
-                        tooltip.classList.add('tooltip-left');
+                        tooltip.classList.add('r-tooltip-left');
                         tooltip.style.left = `${elRect.left - tooltipRect.width - offset}px`;
                         tooltip.style.top = `${(elRectTopScroll) - ((tooltipRect.height / 2) - (elRect.height / 2))}px`;
                         break;
                     case 'right':
-                        tooltip.classList.add('tooltip-right');
+                        tooltip.classList.add('r-tooltip-right');
                         tooltip.style.left = `${(elRect.right + offset)}px`;
                         tooltip.style.top = `${(elRectTopScroll) - ((tooltipRect.height / 2) - (elRect.height / 2))}px`;
                         break;
                     case 'bottom':
-                        tooltip.classList.add('tooltip-bottom');
+                        tooltip.classList.add('r-tooltip-bottom');
                         tooltip.style.top = `${elRectTopScroll + tooltipRect.height + offset}px`;
                         break;
                     case undefined:
                         if (isOut.right) {
                             tooltip.style.left = `${(elRect.left + elRect.width) - (tooltipRect.width)}px`;
-                            tooltip.classList.add('tooltip-out-right');
+                            tooltip.classList.add('r-tooltip-out-right');
                         } else if (isOut.left) {
                             tooltip.style.left = `${elRect.left}px`;
-                            tooltip.classList.add('tooltip-out-left');
+                            tooltip.classList.add('r-tooltip-out-left');
                         }
                         // Checking if tooltip is outside viewport (top)
                         if (isOut.top) {
                             tooltip.style.top = `${elRectTopScroll + tooltipRect.height + offset}px`;
-                            tooltip.classList.add('tooltip-out-top');
+                            tooltip.classList.add('r-tooltip-out-top');
                         }
                         /*
                         Position the tooltip arrow in the center of the parent element if
                         tooltip is outside viewport
                         */
-                        if (tooltip.classList.contains('tooltip-out-right')) {
+                        if (tooltip.classList.contains('r-tooltip-out-right')) {
                             tooltipArrow.style.left = `${tooltipRect.width - (elRect.width / 2)}px`;
-                        } else if (tooltip.classList.contains('tooltip-out-left')) {
+                        } else if (tooltip.classList.contains('r-tooltip-out-left')) {
                             tooltipArrow.style.left = `${elRect.width / 2}px`;
                         } else {
                             tooltipArrow.style.left = `${tooltipRect.width / 2}px`;
@@ -94,7 +94,7 @@ export default {
                 tooltip.style.opacity = '0';
                 tooltip.style.left = '0';
                 tooltip.style.top = '0';
-                tooltip.className = 'tooltip';
+                tooltip.className = 'r-tooltip';
                 tooltip.remove();
             };
 
@@ -103,7 +103,7 @@ export default {
         }
     },
     unbind(el) {
-        const tooltip = document.querySelector('.tooltip');
+        const tooltip = document.querySelector('.r-tooltip');
         if (tooltip) {
             tooltip.remove();
         }

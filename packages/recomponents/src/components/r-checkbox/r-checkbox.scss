@@ -2,7 +2,7 @@
     position: relative;
 }
 
-input.r-field-checkbox[type=checkbox] {
+.r-field-checkbox {
     opacity: 0;
     position: absolute;
     left: 0;
@@ -14,41 +14,41 @@ input.r-field-checkbox[type=checkbox] {
     cursor: pointer;
 
     &:checked ~ .r-field-checkbox-style {
-        background: var(--checkbox-checked-background);
-        box-shadow: var(--checkbox-checked-box-shadow);
-        border: var(--checkbox-checked-border);
+        background: var(--mono-color-0);
+        box-shadow: 0 0 0 1px var(--primary-color) inset, 0 1px 2px 0 var(--mono-color-300) inset, 0 0 0 1px var(--primary-color);
+        border: none;
     }
 
     &:focus ~ .r-field-checkbox-style {
-        background: var(--checkbox-focus-background);
-        box-shadow: var(--checkbox-focus-box-shadow);
-        border: var(--checkbox-focus-border);
+        background: var(--mono-color-0);
+        box-shadow: 0 0 0 1px var(--primary-color) inset, 0 1px 2px 0 var(--mono-color-300) inset, 0 0 0 1px var(--primary-color);
+        border: none;
     }
 
     &:checked ~ .r-field-checkbox-style .r-icon {
-        fill: var(--checkbox-checked-icon-color);
+        fill: var(--primary-color);
         opacity: 1;
     }
 
     &[disabled] ~ .r-field-checkbox-style {
-        background: var(--checkbox-disabled-background);
-        box-shadow: var(--checkbox-disabled-box-shadow);
+        background: var(--mono-color-100);
+        box-shadow: 0 0 0 1px var(--gray-color) inset;
     }
 }
 
 .r-field-checkbox-style {
     cursor: pointer;
     box-sizing: border-box;
-    background: var(--checkbox-background);
+    background: var(---mono-color-0);
     height: var(--space-m);
     width: var(--space-m);
     position: absolute;
     top: var(--space-xxs);
     left: var(--space-xxs);
-    border-radius: var(--checkbox-border-radius);
-    box-shadow: var(--checkbox-box-shadow);
-    transition: var(--checkbox-transition);
-    border: var(--checkbox-border);
+    border-radius: var(--border-radius-xxs);
+    box-shadow: 0 0 0 1px var(--gray-color) inset, 0 1px 2px 0 var(--mono-color-300) inset;
+    transition: box-shadow var(--timing-100) var(--animation-ease);
+    border: none;
 }
 
 .r-field-checkbox-style .r-icon {

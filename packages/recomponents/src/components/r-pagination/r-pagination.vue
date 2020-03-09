@@ -1,10 +1,15 @@
 <template>
-    <r-pagination-control :pagination="pagination"/>
+    <div>
+        <!-- @slot Pagination component  -->
+        <slot name="pagination" :pagination="pagination">
+            <r-pagination-control :pagination="pagination"/>
+        </slot>
+    </div>
 </template>
 
 <script>
     import Vue from 'vue';
-    import PaginationControl from './r-pagination-control.vue';
+    import PaginationControl from '../r-pagination-control/r-pagination-control.vue';
 
     Vue.component('r-pagination-control', PaginationControl);
 
@@ -12,38 +17,48 @@
         name: 'r-pagination',
         props: {
             /**
-             * TBD
+             * Wrapper for async pagination data provider
              */
             provider: {
                 type: Function,
                 required: true,
             },
             /**
-             * TBD
+             * Number of items handled by pagination in total
              */
             total: {
                 type: Number,
                 required: true,
             },
             /**
-             * TBD
+             * Number of items displayed on a single page
              */
             limit: {
                 type: Number,
                 required: true,
             },
             /**
-             * TBD
+             * Maximum number of displayed pages on screen, other pages will be hidden by …
              */
             totalVisible: {
                 type: [Number, Boolean],
             },
+            /**
+             * Number of current active page
+             */
+            page: {
+                type: [Number],
+                default: 1,
+            },
+        },
+        model: {
+            prop: 'page',
+            event: 'navigate',
         },
         data() {
             return {
                 data: [],
                 // TODO probably page as props value, to able to start with page from url query (or etc)
-                page: 1,
             };
         },
         methods: {
@@ -56,22 +71,11 @@
                 this.navigate(page < 1 ? 1 : page);
             },
             navigate(number) {
-                this.page = number;
                 /**
-                 * Emits when it is navigated to next, previous or another page
+                 * Page change by element click or from parent component
                  * @type {Event}
                  */
-                this.$emit('navigate', this.page);
-            },
-            range(start, end) {
-                const range = [];
-
-                start = start > 0 ? start : 1;
-                for (let i = start; i <= end; i += 1) {
-                    range.push(i);
-                }
-
-                return range;
+                this.$emit('navigate', number);
             },
         },
         provide() {
@@ -89,58 +93,60 @@
         },
         computed: {
             items() {
-                const {totalVisible} = this;
+                const items = {};
+                const setPageItem = (index) => {
+                    const page = {
+                        content: index + 1,
+                        selected: index === (this.page - 1),
+                    };
+                    items[index] = page;
+                };
 
-                if (!totalVisible) {
-                    return null;
-                }
+                if (this.pages <= this.totalVisible) {
+                    for (let index = 0; index < this.pages; index += 1) {
+                        setPageItem(index);
+                    }
+                } else {
+                    const half = Math.floor(this.totalVisible / 2);
 
-                if (this.pages <= totalVisible || totalVisible < 1) {
-                    return this.range(1, this.pages);
-                }
+                    const setBreakView = (index) => {
+                        const breakView = {breakView: true};
+                        items[index] = breakView;
+                    };
 
-                const even = totalVisible % 2 === 0 ? 1 : 0;
-                const left = Math.floor(totalVisible / 2);
-                const right = this.pages - left + 1 + even;
-
-                if (this.page > left && this.page < right) {
-                    const start = this.page - left + 1;
-                    const end = this.page + left - 1 - even;
-
-                    if (totalVisible === 1 || totalVisible === 2) {
-                        const items = [];
-                        if (totalVisible === 2) {
-                            items.push(1);
-                        }
-                        if (this.page !== 1 && (this.page !== 2 && totalVisible === 2)) {
-                            items.push('...');
-                        }
-                        items.push(this.page);
-                        if (this.page !== this.pages) {
-                            items.push('...');
-                        }
-                        return items;
+                    let left = 0;
+                    if (this.page - half > 0) {
+                        left = this.page - 1 - half;
                     }
 
-                    return [1, '...', ...this.range(start, end), '...', this.pages];
+                    let right = left + this.totalVisible - 1;
+                    if (right >= this.pages) {
+                        right = this.pages - 1;
+                        left = right - this.totalVisible + 1;
+                    }
+
+                    for (let i = left; i <= right && i <= this.pages - 1; i += 1) {
+                        setPageItem(i);
+                    }
+
+                    if (this.totalVisible > 0) {
+                        if (left > 0) {
+                            setBreakView(left - 1);
+                        }
+                        if (right + 1 < this.pages) {
+                            setBreakView(right + 1);
+                        }
+                    }
+
+                    for (let i = this.pages - 1; i >= this.pages; i -= 1) {
+                        setPageItem(i);
+                    }
                 }
-                if (this.page === left) {
-                    const end = this.page + left - 1 - even;
-                    return end < 1 ? [...this.range(1, this.page), '...'] : [...this.range(1, end), '...', this.pages];
-                }
-                if (this.page === right) {
-                    const start = this.page - left + 1;
-                    return [1, '...', ...this.range(start, this.pages)];
-                }
-                return [
-                    ...this.range(1, left),
-                    '...',
-                    ...this.range(right, this.pages),
-                ];
+                return items;
             },
             pages() {
                 let pages = Math.ceil(this.total / this.limit);
-                if (pages < 0) {
+                if (pages < 0 || pages === Infinity) {
                     pages = 0;
                 }
                 return pages;
@@ -157,11 +163,17 @@
             pagination() {
                 return {
                     hasPagination: this.hasPagination,
-                    provider: this.provider(this.page),
+                    provider: () => this.provider(this.page),
                     offset: this.page,
                     items: this.items,
                 };
             },
+        },
+        mounted() {
+            this.provider(this.page);
+        },
+        created() {
+            this.$on('navigate', page => this.provider(page));
         },
     };
 </script>

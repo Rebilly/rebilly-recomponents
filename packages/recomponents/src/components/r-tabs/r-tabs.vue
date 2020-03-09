@@ -7,9 +7,9 @@
                         role="tab"
                         :id="tab.tabId"
                         :aria-controls="tab.tabPanelId"
-                        class="r-tab-link"
+                        class="r-tab-item-link"
                         @click="selectTab(tab, index)"
-                        :class="{'is-active': tab.isActive}"
+                        :class="{'r-is-active': tab.isActive}"
                 >
                     {{tab.name}}
                 </button>
@@ -18,14 +18,15 @@
                         role="tab"
                         :id="tab.tabId"
                         :aria-controls="tab.tabPanelId"
-                        class="r-tab-link"
-                        :class="{'is-active': tab.isActive}"
+                        class="r-tab-item-link"
+                        :class="{'r-is-active': tab.isActive}"
                 >
                     {{tab.name}}
                 </button>
             </div>
         </div>
         <div class="r-tab-content" :class="contentClass">
+            <!-- @slot Tab content -->
             <slot></slot>
         </div>
     </div>
@@ -36,25 +37,32 @@
         name: 'r-tabs',
         props: {
             /**
-             * TBD
+             * Define style of the tabs, are them divided or not
              */
             divided: {
                 type: Boolean,
                 default: false,
             },
             /**
-             * TBD
+             * Specify classes of the tabs
              */
             menuClass: {
                 type: String,
                 default: '',
             },
             /**
-             * TBDs
+             * Specify classes of the content
              */
             contentClass: {
                 type: String,
                 default: '',
+            },
+            /**
+             * Define preselected tab
+             */
+            preselectedTab: {
+                type: Number,
+                default: 0,
             },
         },
         watch: {
@@ -75,11 +83,34 @@
             };
         },
         methods: {
-            selectTab({name, value}, index = null) {
-                this.tabs.forEach((tab, i) => {
-                    tab.isActive = (index === i);
-                });
+            selectTab({name, value, to}, index = null) {
+                /**
+                 * Trigger router update for tabs with route
+                 */
+                if (to && this.$router.resolve(to).href !== this.$route.fullPath) {
+                    this.$router.push(to);
+                    return;
+                }
+                if (index) {
+                    /**
+                     * Apply change by index for regular tabs
+                     */
+                    this.tabs.forEach((tab, i) => {
+                        tab.isActive = (index === i);
+                    });
+                } else {
+                    /**
+                     * Apply change by name for route tabs
+                     */
+                    this.tabs.forEach((tab) => {
+                        tab.isActive = tab.name === name;
+                    });
+                }
                 if (index !== null) {
+                    /**
+                     * When the tab is selected
+                     * @type {Event}
+                     */
                     this.$emit('tab-selected', {name, value, index});
                 }
             },
@@ -116,8 +147,8 @@
                     return;
                 }
 
-                // set first tab as active
-                this.tabs[0].isActive = true;
+                // set first or preselected tab as active
+                this.selectTab(this.tabs[this.preselectedTab]);
             },
         },
         mounted() {

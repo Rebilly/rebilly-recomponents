@@ -4,8 +4,11 @@ import {
     array, boolean, number, select, text,
 } from '@storybook/addon-knobs';
 import axios from 'axios';
+import {validationMixin} from 'vuelidate';
+import {required, helpers} from 'vuelidate/lib/validators';
 import markdown from './r-select.md';
 import RSelect from './r-select.vue';
+import {validate} from '../../../.storybook/knobs';
 
 storiesOf('Components.Select', module)
     .addParameters({component: RSelect})
@@ -29,23 +32,7 @@ storiesOf('Components.Select', module)
                 default: boolean('Disabled', false, 'State'),
             },
             validate: {
-                default: select('validate', {
-                    valid: {
-                        $dirty: false,
-                        $invalid: false,
-                    },
-                    dirty: {
-                        $dirty: true,
-                        $invalid: false,
-                    },
-                    invalid: {
-                        $dirty: true,
-                        $invalid: true,
-                    },
-                }, {
-                    $dirty: false,
-                    $invalid: false,
-                }, 'State'),
+                default: select('validate', validate, null, 'State'),
             },
             helpText: {
                 default: text('Help Text', 'Help text for select', 'Text'),
@@ -132,7 +119,7 @@ storiesOf('Components.Select', module)
         },
         template: `
             <div class="storybook-center">
-                <div style="width: 50%;">
+                <div style="width: 300px;">
                     <p>Selected: {{ value }}</p>
                     <r-select
                         v-model="value"
@@ -193,23 +180,7 @@ storiesOf('Components.Select', module)
                 default: boolean('Close on select', true),
             },
             validate: {
-                default: select('validate', {
-                    valid: {
-                        $dirty: false,
-                        $invalid: false,
-                    },
-                    dirty: {
-                        $dirty: true,
-                        $invalid: false,
-                    },
-                    invalid: {
-                        $dirty: true,
-                        $invalid: true,
-                    },
-                }, {
-                    $dirty: false,
-                    $invalid: false,
-                }),
+                default: select('validate', validate, null, 'State'),
             },
             disabled: {
                 default: boolean('Disabled', false),
@@ -308,7 +279,7 @@ storiesOf('Components.Select', module)
         },
         template: `
             <div class="storybook-center">
-                <div style="width: 50%;">
+                <div style="width: 300px;">
                     <p>Selected: {{ value }}</p>
                     <r-select
                         v-model="value"
@@ -472,7 +443,7 @@ storiesOf('Components.Select', module)
         },
         template: `
             <div class="storybook-center">
-                <div style="width: 50%;">
+                <div style="width: 300px;">
                     <p>Selected: {{ value }}</p>
                     <r-select
                         v-model="value"
@@ -509,6 +480,70 @@ storiesOf('Components.Select', module)
                         @open="open"
                         @remove="remove"
                         @search-change="searchChange"
+                        @select="select"
+                        @tag="tag"/>
+                </div>
+            </div>
+        `,
+    }), {
+        notes: {markdown},
+    })
+    .add('Validation', () => ({
+        data() {
+            return {
+                value: [],
+                options: [{
+                    label: 'Cat',
+                    value: 'cat',
+                }, {
+                    label: 'Doge',
+                    value: 'doge',
+                }, {
+                    label: 'Hamster',
+                    value: 'hamster',
+                }, {
+                    label: 'Chair',
+                    value: 'chair',
+                }],
+            };
+        },
+        props: {
+            tagPlaceholder: {
+                default: text('Tag placeholder', 'Press enter to create a tag'),
+            },
+            tagPosition: {
+                default: select('Tag position', {top: 'top', bottom: 'bottom'}, 'top'),
+            },
+            taggable: {
+                default: boolean('Taggable', true),
+            },
+        },
+        methods: {
+            select: action('select'),
+            tag: action('tag'),
+        },
+        computed: {
+            label() {
+                return `Select only pets: ${this.$v.$invalid ? 'invalid' : 'valid'}`;
+            },
+        },
+        mixins: [validationMixin],
+        validations: {
+            value: {
+                required,
+                pet: helpers.regex('alpha', /(cat|hamster|doge)/),
+            },
+        },
+        template: `
+            <div class="storybook-center">
+                <div style="width: 300px;">
+                    <p>Selected: {{ value }}</p>
+                    <r-select
+                        v-model="value"
+                        :label="label"
+                        :taggable="true"
+                        :options="options"
+                        :validate="$v.value"
                         @select="select"
                         @tag="tag"/>
                 </div>

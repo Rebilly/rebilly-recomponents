@@ -108,8 +108,8 @@
     box-shadow: -16px 0 16px -8px #FFFFFF;
 }
 
-.is-error > .calendar > .popover-container::after {
-    background-color: rgba(var(--input-is-error-background), 0.3);
+.r-is-error > .calendar > .popover-container::after {
+    background-color: rgba(var(--input-r-is-error-background), 0.3);
     box-shadow: none;
 }
 
@@ -121,12 +121,12 @@
     display: none !important;
 }
 
-.is-error .calendar input {
+.r-is-error .calendar input {
     box-shadow: 0 0 0 1px var(--negative-color-dark) inset;
-    background: rgba(var(--input-is-error-background), 0.6);
+    background: rgba(var(--input-r-is-error-background), 0.6);
 }
 
-.is-error .calendar > .popover-container::after {
+.r-is-error .calendar > .popover-container::after {
     background-color: transparent;
     box-shadow: none;
 }

@@ -70,7 +70,7 @@ describe('r-badge.vue', () => {
         expect(wrapper.contains(RIcon)).toBe(true);
     });
 
-    it('should emit event click on close icon', () => {
+    it('should emit close event when clicking on close icon', () => {
         const wrapper = mount(RBadge, {
             propsData: {
                 close: true,
@@ -79,5 +79,27 @@ describe('r-badge.vue', () => {
 
         wrapper.find(RIcon).trigger('click');
         expect(wrapper.emitted('close')).not.toBe(undefined);
+    });
+
+    it('should not emit click event when clicking on close icon', () => {
+        const wrapper = mount(RBadge, {
+            propsData: {
+                close: true,
+            },
+        });
+
+        wrapper.find(RIcon).trigger('click');
+        expect(wrapper.emitted('click')).toBe(undefined);
+    });
+
+    it('should emit click event when clicking on badge', () => {
+        const wrapper = mount(RBadge, {
+            propsData: {
+                close: true,
+            },
+        });
+
+        wrapper.trigger('click');
+        expect(wrapper.emitted('click')).not.toBe(undefined);
     });
 });

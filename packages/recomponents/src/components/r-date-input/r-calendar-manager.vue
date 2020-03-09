@@ -1,37 +1,41 @@
 <template>
     <div class="calendar">
         <r-input
-            :disabled="disabled"
-            right-icon="calendar"
-            v-show="disabled" />
+                :disabled="disabled"
+                right-icon="calendar"
+                v-show="disabled"/>
         <no-ssr>
             <v-date-picker
-                v-show="!disabled"
-                v-if="isDateRange"
-                mode="range"
-                is-double-paned
-                is-inline
-                show-caps
-                :show-popover="false"
-                :theme-styles="themeStyles"
-                :tint-color="tintColor"
-                :max-date="maxDate"
-                :available-dates="availableDates"
-                @input="periodInput"
-                :disabled-attribute="disabledAttribute"
-                :value="internalPeriod">
+                    v-show="!disabled"
+                    v-if="isDateRange"
+                    mode="range"
+                    is-double-paned
+                    is-inline
+                    show-caps
+                    :min-date="minDate"
+                    :select-attribute="dragSelectAttributes"
+                    :drag-attribute="dragSelectAttributes"
+                    :theme-styles="themeStyles"
+                    :tint-color="tintColor"
+                    :max-date="maxDate"
+                    :available-dates="availableDates"
+                    :disabled-attribute="disabledAttribute"
+                    :value="internalPeriod"
+                    @input="periodInput">
             </v-date-picker>
             <v-date-picker
-                v-show="!disabled"
-                v-if="!isDateRange"
-                mode="single"
-                popover-visibility="focus"
-                :popover-content-offset="4"
-                :theme-styles="themeStyles"
-                :tint-color="tintColor"
-                :available-dates="availableDates"
-                @input="dateInput"
-                :value="internalDate">
+                    v-show="!disabled"
+                    v-if="!isDateRange"
+                    mode="single"
+                    popover-visibility="focus"
+                    :popover-content-offset="4"
+                    :min-date="minDate"
+                    :max-date="maxDate"
+                    :theme-styles="themeStyles"
+                    :tint-color="tintColor"
+                    :available-dates="availableDates"
+                    @input="dateInput"
+                    :value="internalDate">
             </v-date-picker>
         </no-ssr>
     </div>
@@ -41,7 +45,7 @@
     import Vue from 'vue';
     import moment from 'moment-timezone';
     import vCalendar from 'v-calendar';
-    import {DateTimeFormats} from '../../common/datetime-formats';
+    import DateTimeFormats from '../../common/datetime-formats';
     import rInput from '../r-input/r-input.vue';
 
     Vue.use(vCalendar, {
@@ -63,6 +67,29 @@
         name: 'RCalendarManager',
         components: {rInput},
         props: {
+            availableDates: {
+                type: Object,
+                default: null,
+            },
+            disabled: {
+                type: Boolean,
+                default: false,
+            },
+            dragSelectAttributes: {
+                type: Object,
+                default: () => ({
+                    popover: {
+                        visibility: 'hidden',
+                    },
+                }),
+            },
+            minDate: {
+                type: Date,
+            },
+            maxDate: {
+                type: Date,
+                default: () => new Date(),
+            },
             type: {
                 type: String,
                 default: 'calendar',
@@ -71,26 +98,22 @@
             value: {
                 type: [Object, String],
             },
-            disabled: {
-                type: Boolean,
-                default: false,
-            },
-            availableDates: {
-                type: Object,
-                default: null,
-            },
         },
         computed: {
             isDateRange() {
                 return this.type === 'range';
             },
             internalPeriod() {
-                const start = this.value.start.clone();
-                const end = this.value.end.clone();
-                return {
-                    start: start.tz(moment.tz.guess(), true).toDate(),
-                    end: end.tz(moment.tz.guess(), true).toDate(),
-                };
+                if (this.value && this.value.start && this.value.end) {
+                    const start = this.value.start.clone();
+                    const end = this.value.end.clone();
+                    return {
+                        start: start.tz(moment.tz.guess(), true).toDate(),
+                        end: end.tz(moment.tz.guess(), true).toDate(),
+                    };
+                }
+
+                return {start: null, end: null};
             },
             internalDate() {
                 if (!this.value) {
@@ -103,7 +126,6 @@
         data() {
             return {
                 initialDate: this.value,
-                maxDate: new Date(),
                 themeStyles: {
                     wrapper: {
                         background: '#FFFFFF',

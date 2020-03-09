@@ -1,0 +1,88 @@
+.r-toast-container {
+    position: fixed;
+    top: var(--toast-container-top);
+    right: var(--toast-container-right);
+    z-index: var(--toast-container-z-index);
+}
+
+.r-toast {
+    position: relative;
+    margin-top: var(--toast-margin-top);
+    padding: var(--toast-padding);
+    max-width: var(--toast-max-width);
+    min-width: var(--toast-min-width);
+    box-sizing: border-box;
+    border-radius: var(--toast-border-radius);
+    border: none;
+    font-family: var(--toast-font-family);
+    font-weight: var(--toast-font-weight);
+    box-shadow: 0 20px 40px -8px rgba(80, 90, 111, 0.18), 0 3px 6px 0 rgba(80, 90, 111, 0.07);
+    opacity: 0;
+    transition: var(--toast-transition);
+    color: var(--toast-text-color);
+    animation: r-toaster-animation 0.4s ease-out;
+}
+
+.r-toast.is-closable {
+    padding: var(--toast-close-padding);
+}
+
+@keyframes r-toaster-animation {
+    0% {
+        right: -300px;
+    }
+    70% {
+        right: 10px;
+    }
+    100% {
+        right: 0;
+    }
+}
+
+.r-toast-title {
+    display: inline-block;
+    font-size: var(--toast-title-font-size);
+    margin: 0;
+    max-width: calc(100% - 8px);
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+.r-toast-close {
+    position: absolute;
+    top: var(--toast-padding);
+    right: var(--toast-padding);
+    cursor: pointer;
+}
+
+.r-toast-message {
+    display: block;
+}
+
+.r-toast.is-closable .r-toast-message {
+    padding-right: var(--toast-padding)
+}
+
+.r-toast.is-visible {
+    opacity: 1;
+}
+
+.r-toast-positive {
+    background: var(--toast-positive-background-color);
+    box-shadow: var(--toast-positive-box-shadow);
+}
+
+.r-toast-negative {
+    background: var(--toast-negative-background-color);
+    box-shadow: var(--toast-negative-box-shadow);
+}
+
+.r-toast-info {
+    background: var(--toast-info-background-color);
+    box-shadow: var(--toast-info-box-shadow);
+}
+
+.r-toast-warning {
+    background: var(--toast-warning-background-color);
+    box-shadow: var(--toast-warning-box-shadow);
+}

@@ -1,6 +1,6 @@
 <template>
-    <div class="r-field" :class="styles" role="radio" :aria-checked="isChecked">
-        <label class="r-field-label r-field-label-toggle" :class="labelStyles" :for="id">
+    <div class="r-field" :class="classes" role="radio" :aria-checked="isChecked">
+        <label class="r-field-label r-field-label-toggle" :class="labelClasses" :for="id">
             <template v-if="label">
                 {{label}}
             </template>
@@ -89,15 +89,15 @@
             },
         },
         computed: {
-            styles() {
+            classes() {
                 return {
-                    'is-error': this.isInvalid,
+                    'r-is-error': this.isInvalid,
                 };
             },
-            labelStyles() {
+            labelClasses() {
                 return {
-                    'is-disabled': this.disabled,
-                    'is-checked': this.isChecked,
+                    'r-is-disabled': this.disabled,
+                    'r-is-checked': this.isChecked,
                 };
             },
             isInvalid() {

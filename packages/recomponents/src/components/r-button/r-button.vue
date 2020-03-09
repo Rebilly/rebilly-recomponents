@@ -7,6 +7,7 @@
        :disabled="disabled || loading"
        :target="$attrs.href ? '_target' : $attrs.target || ''"
     >
+        <!-- @slot Text content inside button  -->
         <slot>Link</slot>
     </a>
     <button v-else
@@ -17,7 +18,7 @@
             v-on="$listeners"
             :title="title"
     >
-        <r-icon v-if="loading" icon="loading" class="is-spinning icon-light-gray inline-s"/>
+        <r-icon v-if="loading" icon="loading" class="r-is-spinning r-icon-light-gray r-inline-s"/>
         <slot>Apply</slot>
     </button>
 </template>
@@ -26,7 +27,7 @@
     import RIcon from '../r-icon/r-icon.vue';
 
     // TODO: button type link disabled property doesn't work (hide target, hide link, fix css)
-    // TODO prefixes icon classes "is-spinning icon-light-gray inline-s"
+    // TODO prefixes icon classes "r-is-spinning icon-light-gray r-inline-s"
     export default {
         name: 'RButton',
         components: {RIcon},
@@ -48,7 +49,7 @@
                 validator: val => ['default', 'primary', 'danger', 'link'].includes(val),
             },
             /**
-             * Disabed state just like for regulat html button
+             * Disabled state just like for regular html button
              */
             disabled: {
                 type: Boolean,
@@ -82,10 +83,10 @@
             },
             classes() {
                 return {
-                    [`r-button--size-${this.size}`]: !!this.size,
-                    [`r-button--type-${this.type}`]: !!this.type,
-                    'r-button--fluid': !!this.fluid,
-                    'is-active': !!this.active,
+                    [`r-button-size-${this.size}`]: !!this.size,
+                    [`r-button-type-${this.type}`]: !!this.type,
+                    'r-button-fluid': !!this.fluid,
+                    'r-is-active': !!this.active,
                 };
             },
             title() {

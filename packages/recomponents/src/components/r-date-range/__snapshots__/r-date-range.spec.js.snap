@@ -1,0 +1,24 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`r-date-range.vue renders props when passed 1`] = `<r-popper-stub esctohide="true" autohide="true" globalautohide="true" offset="4" direction="horizontal" position="bottomEnd" slidefrom="fade" duration="0.2" class="r-date-range"></r-popper-stub>`;
+
+exports[`r-date-range.vue should render via SSR and match snapshot 1`] = `
+<div class="r-popper r-date-range">
+  <div role="group" class="r-button-group"><button class="r-button r-button-type-default r-button-size-regular r-has-icon-left"><svg class="r-icon r-icon-20 r-date-range-calendar-icon">
+        <use xlink:href="#icon-calendar" xmlns:xlink="http://www.w3.org/1999/xlink"></use>
+      </svg> <span title="America/Montreal" class="r-date-range-label">
+                    Jan 1, 2020 - May 1, 2020
+                </span> </button>
+    <div class="r-popper r-date-range-preset-picker"><button class="r-button r-button-type-default r-button-size-regular r-has-icon"> <svg class="r-icon r-icon-20">
+          <use xlink:href="#icon-actions" xmlns:xlink="http://www.w3.org/1999/xlink"></use>
+        </svg> </button>
+      <div class="r-popper-content-wrapper">
+        <!---->
+      </div>
+    </div>
+  </div>
+  <div class="r-popper-content-wrapper">
+    <!---->
+  </div>
+</div>
+`;

@@ -5,10 +5,10 @@
                class="r-field-label">{{label}}
         </label>
         <div :tabindex="searchable ? -1 : tabindex"
-             :class="{ 'r-select--active': isOpen,
-                       'r-select--disabled': disabled,
-                       'r-select--above': isAbove,
-                       'r-select--allow-empty': allowEmpty}"
+             :class="{ 'r-select-is-active': isOpen,
+                       'r-select-is-disabled': disabled,
+                       'r-select-is-above': isAbove,
+                       'r-select-is-allow-empty': allowEmpty}"
              @focus="activate()"
              @blur="searchable ? false : deactivate()"
              @keydown.self.down.prevent="pointerForward()"
@@ -18,33 +18,37 @@
              class="r-select r-field"
              role="combobox"
              :aria-owns="'listbox-'+id">
+            <!-- @slot Override default caret component -->
             <slot name="caret" :toggle="toggle">
-                <div @mousedown.prevent.stop="toggle()" class="r-select__select"></div>
+                <r-icon icon="caret-down" class="r-select-caret" @mousedown.prevent.stop="toggle()"/>
             </slot>
+            <!-- @slot Add an icon to clear the input -->
             <slot name="clear" :search="search"></slot>
-            <div ref="tags" class="r-select__tags">
+            <div ref="tags" class="r-select-tags">
+                <!-- @slot Override default selection component -->
                 <slot name="selection"
                       v-if="!loading"
                       :search="search"
                       :remove="removeElement"
                       :values="computedValue"
                       :is-open="isOpen">
-                    <div class="r-select__tags-wrap"
+                    <div class="r-select-tags-wrap"
                          v-show="visibleValues.length > 0"
                          @mousedown.prevent>
                         <template v-for="(option, index) of computedValue"
                                   @mousedown.prevent>
+                            <!-- @slot Override default tag component -->
                             <slot name="tag"
                                   :option="option"
                                   :search="search"
                                   :remove="removeElement">
                                 <template>
-                                    <r-badge class="r-select__tag"
+                                    <r-badge class="r-select-tag"
                                              type="tag"
                                              :close="true"
                                              @close="removeElement(option)">
                                         <template>
-                                            <span class="r-select__tag-text"
+                                            <span class="r-select-tag-text"
                                                   @mousedown.prevent="toggle()">
                                                 {{ getOptionLabel(option) }}
                                             </span>
@@ -55,15 +59,17 @@
                         </template>
                     </div>
                     <template v-if="internalValue && internalValue.length > limit">
+                        <!-- @slot Override default limit message component -->
                         <slot name="limit">
-                            <strong class="r-select__strong"
+                            <strong class="r-select-limit"
                                     v-text="limitText(internalValue.length - limit)"/>
                         </slot>
                     </template>
                 </slot>
-                <transition name="r-select__loading">
+                <transition name="r-select-loading">
+                    <!-- @slot Override default loading spinner component -->
                     <slot name="loading">
-                        <div v-show="loading" class="r-select__spinner"/>
+                        <div v-show="loading" class="r-select-loading-spinner"/>
                     </slot>
                 </transition>
                 <input ref="search"
@@ -86,44 +92,47 @@
                        @keydown.up.prevent="pointerBackward()"
                        @keypress.enter.prevent.stop.self="addPointerElement($event)"
                        @keydown.delete.stop="removeLastElement()"
-                       class="r-select__input"
+                       class="r-select-input"
                        :aria-controls="'listbox-'+id"
                 />
                 <span v-if="isSingleLabelVisible && !loading"
-                      class="r-select__single"
+                      class="r-select-single"
                       @mousedown.prevent="toggle">
+                    <!-- @slot Override default single value component -->
                     <slot name="singleLabel" :option="singleValue">
                         <template>{{ currentOptionLabel }}</template>
                     </slot>
                 </span>
                 <span v-if="isPlaceholderVisible || loading"
-                      class="r-select__placeholder"
+                      class="r-select-placeholder"
                       @mousedown.prevent="toggle">
+                    <!-- @slot Override default placeholder component -->
                     <slot name="placeholder">
                         {{ placeholder }}
                     </slot>
                 </span>
             </div>
             <transition name="r-select">
-                <div class="r-select__content-wrapper"
-                     v-show="isOpen"
+                <div class="r-select-content-wrapper"
+                     v-show="isOpen && hasContent"
                      @focus="activate"
                      tabindex="-1"
                      @mousedown.prevent
                      :style="{ maxHeight: optimizedHeight + 'px' }"
                      ref="list">
-                    <ul class="r-select__content"
+                    <ul class="r-select-content"
                         :style="contentStyle"
                         role="listbox"
                         :id="'listbox-'+id">
+                        <!-- @slot Override default before list option component -->
                         <slot name="beforeList">
                             <template v-if="computedIsLoading">
-                                <span class="r-select__option">
+                                <span class="r-select-content-element-option">
                                     {{ messages['loading'] }}
                                 </span>
                             </template>
                             <template v-if="computedAsyncHasPrevOptions">
-                                <li class="r-select__option align-center r-select__option-load r-select__option-load-prev">
+                                <li class="r-select-content-element-option r-align-center r-select-content-element-option-load r-select-content-element-option-load-prev">
                                     <r-icon-button
                                             type="default"
                                             size="small"
@@ -137,13 +146,14 @@
                             </template>
                         </slot>
                         <li v-if="multiple && max === internalValue.length">
-                            <span class="r-select__option">
+                            <span class="r-select-content-element-option">
+                                <!-- @slot Override default max elements message component -->
                                 <slot name="maxElements">
                                     {{ messages.max(max) }}
                                 </slot>
                             </span>
                         </li>
-                        <li class="r-select__element"
+                        <li class="r-select-content-element"
                             v-for="(option, index) of filteredOptions"
                             :key="index"
                             v-bind:id="id + '-' + index"
@@ -151,7 +161,8 @@
                             <span :class="optionHighlight(index, option)"
                                   @click.stop="select(option)"
                                   @mouseenter.self="pointerSet(index)"
-                                  class="r-select__option">
+                                  class="r-select-content-element-option">
+                                <!-- @slot Override default option component -->
                                 <slot name="option"
                                       :option="option"
                                       :search="search">
@@ -159,23 +170,26 @@
                                 </slot>
                             </span>
                         </li>
-                        <li class="r-select__element"
+                        <li class="r-select-content-element"
                             v-show="showNoResults && (filteredOptions.length === 0 && search && !loading)">
-                            <span class="r-select__option">
+                            <span class="r-select-content-element-option">
+                                <!-- @slot Override default no result component -->
                                 <slot name="noResult"
                                       :search="search">{{messages['noResult']}}
                                 </slot>
                             </span>
                         </li>
-                        <li class="r-select__element"
+                        <li class="r-select-content-element"
                             v-show="showNoOptions && (computedOptions.length === 0 && !search && !loading)">
-                            <span class="r-select__option">
+                            <span class="r-select-content-element-option">
+                                <!-- @slot Override default no options component -->
                                 <slot name="noOptions">{{messages['noOptions']}}</slot>
                             </span>
                         </li>
+                        <!-- @slot Override default after list component -->
                         <slot name="afterList">
                             <template v-if="computedAsyncHasNextOptions">
-                                <li class="r-select__option align-center r-select__option-load r-select__option-load-next">
+                                <li class="r-select-content-element-option r-align-center r-select-content-element-option-load r-select-content-element-option-load-next">
                                     <r-icon-button
                                             type="default"
                                             size="small"
@@ -268,14 +282,14 @@
         components: {RIcon, RIconButton, RBadge},
         props: {
             /**
-             * TBD
+             * Specify if no option can be selected
              */
             allowEmpty: {
                 type: Boolean,
                 default: true,
             },
             /**
-             * TBD
+             * List of keys where default behaviour will be ignored
              */
             blockKeys: {
                 type: Array,
@@ -284,21 +298,21 @@
                 },
             },
             /**
-             * TBD
+             * Specify if on select the search input should be cleaned up
              */
             clearOnSelect: {
                 type: Boolean,
                 default: true,
             },
             /**
-             * TBD
+             * Specify if the popper should be closed after selection
              */
             closeOnSelect: {
                 type: Boolean,
                 default: true,
             },
             /**
-             * TBD
+             * If the option is an object specify what property should be used as a label, by default 'label'
              */
             customLabel: {
                 type: Function,
@@ -311,61 +325,61 @@
                 },
             },
             /**
-             * TBD
+             * Specify how to validate the select field
              */
             validate: {
                 type: Object,
                 default: null,
             },
             /**
-             * TBD
+             * Disable the select field
              */
             disabled: {
                 type: Boolean,
                 default: false,
             },
             /**
-             * TBD
+             * Change the help text
              */
             helpText: {
                 type: String,
             },
             /**
-             * TBD
+             * Specify if selected options should be hidden
              */
             hideSelected: {
                 type: Boolean,
                 default: false,
             },
             /**
-             * TBD
+             * ID of select field
              */
             id: {
                 type: String,
                 default: () => shortid.generate(),
             },
             /**
-             * TBD
+             * Specify is the internal search enabled
              */
             internalSearch: {
                 type: Boolean,
                 default: true,
             },
             /**
-             * TBD
+             * Change the label of the select field
              */
             label: {
                 type: String,
             },
             /**
-             * TBD
+             * Specify the limit quantity of shown selected options
              */
             limit: {
                 type: Number,
                 default: 99999,
             },
             /**
-             * TBD
+             * Set the text which is shown when there are not shown options by limit
              */
             limitText: {
                 type: Function,
@@ -374,159 +388,166 @@
                 },
             },
             /**
-             * TBD
+             * Set the loading state
              */
             loading: {
                 type: Boolean,
                 default: false,
             },
             /**
-             * TBD
+             * Specify maximum for selected options
              */
             max: {
                 type: [Number, Boolean],
                 default: false,
             },
             /**
-             * TBD
+             * Specify max height of the popper
              */
             maxHeight: {
                 type: Number,
                 default: 300,
             },
             /**
-             * TBD
+             * Specify is multiple mode is enabled
              */
             multiple: {
                 type: Boolean,
                 default: false,
             },
             /**
-             * TBD
+             * Change the name of select
              */
             name: {
                 type: String,
                 default: '',
             },
             /**
-             * TBD
+             * Specify direction of shown popper
              */
             openDirection: {
                 type: String,
                 default: '',
             },
             /**
-             * TBD
+             * Set the options of select field
              */
             options: {
                 type: Array,
                 default: () => [],
             },
             /**
-             * TBD
+             * Specify height of options in the popper
              */
             optionHeight: {
                 type: Number,
                 default: 40,
             },
             /**
-             * TBD
+             * If the option is an object specify what property should be used as a value, by default 'value'
              */
             optionKey: {
                 type: String,
             },
             /**
-             * TBD
+             * If the option is an object specify what property should be used as a label, by default 'label'
              */
             optionLabel: {
                 type: String,
             },
             /**
-             * TBD
+             * Set the limit of available shown options
              */
             optionsLimit: {
                 type: Number,
                 default: 1000,
             },
             /**
-             * TBD
+             * Specify if the first option should be preselected
              */
             preselectFirst: {
                 type: Boolean,
                 default: false,
             },
             /**
-             * TBD
+             * Specify if the search should be preserved
              */
             preserveSearch: {
                 type: Boolean,
                 default: false,
             },
             /**
-             * TBD
+             * Change the placeholder
              */
             placeholder: {
                 type: String,
                 default: 'Select option',
             },
             /**
-             * TBD
+             * Specify if the selection should be reset
              */
             resetAfter: {
                 type: Boolean,
                 default: false,
             },
             /**
-             * TBD
+             * Specify if the field searchable
              */
             searchable: {
                 type: Boolean,
                 default: true,
             },
             /**
-             * TBD
+             * Specify if the no option label should be shown
              */
             showNoOptions: {
                 type: Boolean,
                 default: true,
             },
             /**
-             * TBD
+             * Specify if the no results label should be shown
              */
             showNoResults: {
                 type: Boolean,
                 default: true,
             },
             /**
-             * TBD
+             * Specify should the pointer be shown
              */
             showPointer: {
                 type: Boolean,
                 default: true,
             },
             /**
-             * TBD
+             * Specify tab index
              */
             tabindex: {
                 type: Number,
                 default: 0,
             },
             /**
-             * TBD
+             * Specify should the user create his own options - tags
              */
             taggable: {
                 type: Boolean,
                 default: false,
             },
             /**
-             * TBD
+             * Specify tag position
              */
             tagPosition: {
                 type: String,
                 default: 'top',
             },
             /**
-             * TBD
+             * Specify how the tag is validating
+             */
+            tagValidator: {
+                type: Function,
+                default: () => true,
+            },
+            /**
+             * The array of selected options
              */
             value: {
                 type: null,
@@ -554,6 +575,10 @@
                 }
             },
             search() {
+                /**
+                 * Search text change
+                 * @type {Event}
+                 */
                 this.$emit('search-change', this.search, this.id);
             },
             loading() {
@@ -636,15 +661,21 @@
                 }
                 return options.slice(0, this.optionsLimit);
             },
+            hasContent() {
+                return (this.options.length !== 0 || this.showNoOptions)
+                    && (this.showNoResults || this.filteredOptions.length !== 0 || !this.search);
+            },
             hasLabel() {
                 return (this.label || '').trim() !== '';
             },
             classes() {
-                return this.isInvalid ? 'is-error' : '';
+                return {
+                    'r-is-error': this.isInvalid,
+                };
             },
             isInvalid() {
                 if (this.validate) {
-                    return this.validate.$invalid && this.validate.$dirty;
+                    return this.validate.$error;
                 }
                 return false;
             },
@@ -746,6 +777,10 @@
                 } else {
                     this.$el.focus();
                 }
+                /**
+                 * The select popper open
+                 * @type {Event}
+                 */
                 this.$emit('open', this.id);
             },
             addPointerElement({key} = 'Enter') {
@@ -785,6 +820,10 @@
                 if (!this.preserveSearch) {
                     this.search = '';
                 }
+                /**
+                 * The select popper close
+                 * @type {Event}
+                 */
                 this.$emit('close', this.getValue(), this.id);
             },
             getOptionLabel(option) {
@@ -837,8 +876,8 @@
             },
             optionHighlight(index, option) {
                 return {
-                    'r-select__option--highlight': index === this.pointer && this.showPointer,
-                    'r-select__option--selected': this.isSelected(option),
+                    'r-select-option-is-highlight': index === this.pointer && this.showPointer,
+                    'r-select-option-is-selected': this.isSelected(option),
                 };
             },
             pointerAdjust() {
@@ -906,9 +945,17 @@
                     : this.valueKeys.indexOf(option);
 
 
+                /**
+                 * The selected option remove
+                 * @type {Event}
+                 */
                 this.$emit('remove', option, this.id);
                 if (this.multiple) {
                     const newValue = this.primitiveValue.slice(0, index).concat(this.primitiveValue.slice(index + 1));
+                    /**
+                     * The option select
+                     * @type {Event}
+                     */
                     this.$emit('input', newValue, this.id);
                 } else {
                     this.$emit('input', null, this.id);
@@ -934,6 +981,10 @@
                 }
             },
             select(option, key) {
+                if (this.validate) {
+                    this.validate.$touch();
+                }
+
                 if (this.blockKeys.indexOf(key) !== -1
                     || this.disabled
                     || option.$isDisabled) {
@@ -943,11 +994,18 @@
                     return;
                 }
                 if (option.isTag) {
-                    this.$emit('tag', option.label, this.id);
-                    this.select(option.label);
-                    this.search = '';
-                    if (this.closeOnSelect && !this.multiple) {
-                        this.deactivate();
+                    const tagIsValid = this.tagValidator(option);
+                    if (tagIsValid) {
+                        /**
+                         * The option tag
+                         * @type {Event}
+                         */
+                        this.$emit('tag', option.label, this.id);
+                        this.select(option.label);
+                        this.search = '';
+                        if (this.closeOnSelect && !this.multiple) {
+                            this.deactivate();
+                        }
                     }
                 } else {
                     const isSelected = this.isSelected(option);
@@ -963,6 +1021,10 @@
                     if (this.max && this.multiple && this.internalValue.length === this.max) {
                         return;
                     }
+                    /**
+                     * The option select
+                     * @type {Event}
+                     */
                     this.$emit('select', option, this.id);
 
                     if (this.multiple) {

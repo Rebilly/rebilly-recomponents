@@ -2,15 +2,6 @@ const path = require('path');
 
 module.exports = function({ config }) {
     /**
-     * Add info addon loader
-     */
-    config.module.rules.push({
-        test: /\.vue$/,
-        loader: 'storybook-addon-vue-info/loader',
-        enforce: 'post'
-    })
-
-    /**
      * Add sass loader
      */
     config.module.rules.push({
@@ -22,7 +13,6 @@ module.exports = function({ config }) {
                 loader: 'sass-loader',
                 options: {
                     prependData: `
-                        @import "src/styles/variables.scss";
                         @import "src/styles/mixins.scss";
                     `,
                 }

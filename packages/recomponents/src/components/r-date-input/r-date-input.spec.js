@@ -5,6 +5,9 @@ import RDateInput from './r-date-input.vue';
 describe('r-date-input.vue', () => {
     it('should render Wrapper and match snapshot', () => {
         const wrapper = shallowMount(RDateInput, {
+            propsData: {
+                maxDate: '2020-01-01',
+            },
             stubs: ['no-ssr'],
         });
         expect(wrapper).toMatchSnapshot();
@@ -23,7 +26,7 @@ describe('r-date-input.vue', () => {
         // no help text
         expect(wrapper.contains('.r-field-caption')).toBe(false);
         // no error
-        expect(wrapper.contains('.is-error')).toBe(false);
+        expect(wrapper.contains('.r-is-error')).toBe(false);
         // empty value by default
         expect(wrapper.vm.selectedDate).toBe(undefined);
     });

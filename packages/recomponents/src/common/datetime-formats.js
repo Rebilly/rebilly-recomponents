@@ -6,7 +6,7 @@
  * for example "datetime", "month", "date month", not "timelineTime".
  */
 
-export const DateTimeFormats = {
+export default {
     datePickerDate: 'YYYY-MM-DD',
     datetime: 'MMM Do, YYYY [at] h:mm a',
     date: 'MMM Do, YYYY',
@@ -23,5 +23,3 @@ export const DateTimeFormats = {
     orderDatetime: 'MMM Do, YYYY h:mm a',
     orderDate: 'MMM Do',
 };
-
-export default {DateTimeFormats};

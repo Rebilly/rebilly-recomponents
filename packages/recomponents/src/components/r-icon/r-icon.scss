@@ -100,11 +100,11 @@
 /**
 * Animations
 */
-.r-icon.is-spinning {
+.r-icon.r-is-spinning {
     animation: spinning 0.7s linear infinite;
 }
 
-.r-icon.is-ringing {
+.r-icon.r-is-ringing {
     transform-origin: 50% 4px;
     animation: ringing 4s linear infinite;
 }
@@ -193,6 +193,6 @@
     }
 }
 
-.r-icon.is-rotating-right {
+.r-icon.r-is-rotating-right {
     transform: rotate(90deg);
 }

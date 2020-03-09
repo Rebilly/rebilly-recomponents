@@ -1,15 +1,32 @@
 import './polyfill';
 
-import './styles/typography.scss';
 import './styles/helpers.scss';
 import './styles/theme.scss';
 
+import NoSSR from 'vue-no-ssr';
 import kebabCase from './common/helpers/kebab-case';
+import RToastPlugin, {RToastManager} from './plugins/r-toast-manager';
 
 import * as components from './components';
 import * as directives from './directives';
 
-function install(Vue) {
+function install(Vue, options = {}) {
+    const {ErrorHandler} = options;
+
+    /**
+     * Set global settings
+     */
+    Vue.$recomponents = {};
+
+    Vue.$recomponents.settings = {
+        timezone: 'America/Montreal',
+        ...options,
+    };
+
+    Vue.use(RToastPlugin, {ErrorHandler});
+
+    Vue.component('no-ssr', NoSSR);
+
     /**
      * Injecting all components according to their filenames
      */
@@ -32,4 +49,5 @@ export default {
     install,
     ...directives,
     ...components,
+    RToastManager,
 };
