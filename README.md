@@ -30,7 +30,7 @@ With workspaces you can run any npm script inside of packages/recomponents folde
 
 * `yarn dev`
 
-Or from project root:
+Or run this below from project root:
 
 * `yarn workspace @rebilly/recomponents dev`
 
