@@ -28,6 +28,7 @@
 </template>
 
 <script>
+    import isEqual from 'lodash.isequal';
     import RLoader from '../r-loader/r-loader.vue';
 
     export default {
@@ -77,12 +78,14 @@
                 }
             },
         },
-        created() {
+        mounted() {
             this.fetchData();
         },
         watch: {
-            watcher() {
-                this.fetchData();
+            watcher(newValue, oldValue) {
+                if (isEqual(newValue, oldValue)) {
+                    this.fetchData();
+                }
             },
         },
     };
