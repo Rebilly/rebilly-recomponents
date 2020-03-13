@@ -1,6 +1,7 @@
 <template>
     <div :class="classes" v-fs-block>
         <label v-if="hasLabel"
+               :for="id"
                @click="activate"
                class="r-field-label">{{label}}
         </label>

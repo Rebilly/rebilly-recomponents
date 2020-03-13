@@ -1,9 +1,10 @@
 <template>
     <div class="r-field" :class="{'r-is-error': isInvalid}">
-        <label v-if="label" class="r-field-label">{{label}}</label>
+        <label v-if="label" :for="name" class="r-field-label">{{label}}</label>
         <template v-if="!isGroupedInput">
             <input
                     ref="input"
+                    :id="name"
                     v-if="!multiline"
                     class="r-field-input"
                     v-fs-block
@@ -23,6 +24,7 @@
                     :autocomplete="autocompleteFlag"/>
             <textarea
                     ref="textarea"
+                    :id="name"
                     v-else-if="multiline && submitOnEnter"
                     class="r-field-input"
                     v-fs-block
@@ -39,6 +41,7 @@
             </textarea>
             <textarea
                     ref="textarea"
+                    :id="name"
                     v-else="multiline && !submitOnEnter"
                     class="r-field-input"
                     v-fs-block
@@ -64,6 +67,7 @@
                         @click.stop="$emit('left-icon-click')"></r-icon>
                 <input
                         ref="input"
+                        :id="name"
                         class="r-field-input"
                         v-fs-block
                         :value="value"
