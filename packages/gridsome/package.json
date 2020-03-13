@@ -21,6 +21,6 @@
   "dependencies": {
     "@rebilly/recomponents": "^1.17.4",
     "core-js": "^2.6.5",
-    "gridsome": "^0.7.12"
+    "gridsome": "^0.7.13"
   }
 }

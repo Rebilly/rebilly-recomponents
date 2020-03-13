@@ -14,7 +14,7 @@ describe('r-img.vue', () => {
     });
 
     it('should render via SSR and match snapshot', async () => {
-        const wrapper = renderToString(RImg, {
+        const wrapper = await renderToString(RImg, {
             propsData: {
                 src: 'https://www.rebilly.com/wp-content/uploads/2019/01/new_features@2x-319x150.png',
             },

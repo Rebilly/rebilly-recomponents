@@ -1,3 +1,4 @@
+import Vue from 'vue';
 import {shallowMount} from '@vue/test-utils';
 import {renderToString} from '@vue/server-test-utils';
 import RSelect from './r-select.vue';
@@ -17,7 +18,7 @@ describe('r-select.vue', () => {
     });
 
     it('should render via SSR and match snapshot', async () => {
-        const wrapper = renderToString(RSelect, {
+        const wrapper = await renderToString(RSelect, {
             propsData: {
                 value: null,
                 id: 'id',
@@ -245,8 +246,8 @@ describe('r-select.vue', () => {
         expect(wrapper.vm.pointer).toBe(2);
     });
 
-    it('should call @search-change event callback whenever search value changes', () => {
-        const wrapper = shallowMount(RSelect, {
+    it('should call @search-change event callback whenever search value changes', async () => {
+        const wrapper = await shallowMount(RSelect, {
             propsData: {
                 value: null,
                 options: [{id: '1'}, {id: '2'}, {id: '3'}],
@@ -257,6 +258,9 @@ describe('r-select.vue', () => {
             },
         });
         wrapper.setData({search: 'test'});
+
+        await Vue.nextTick();
+
         expect(wrapper.emitted()['search-change']).toEqual([['test', 'id']]);
     });
     it('should set isOpen value to true', () => {

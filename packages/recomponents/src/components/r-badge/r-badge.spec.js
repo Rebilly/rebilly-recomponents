@@ -27,7 +27,7 @@ describe('r-badge.vue', () => {
     });
 
     it('should render via SSR and match snapshot', async () => {
-        const wrapper = renderToString(RBadge, {
+        const wrapper = await renderToString(RBadge, {
             slots: {
                 default: 'text',
             },

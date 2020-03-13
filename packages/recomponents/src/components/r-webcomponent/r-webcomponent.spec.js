@@ -15,7 +15,7 @@ describe('r-webcomponent.vue', () => {
     });
 
     it('should render via SSR and match snapshot', async () => {
-        const wrapper = renderToString(RWebcomponent, {
+        const wrapper = await renderToString(RWebcomponent, {
             slots: {
                 default: '<strong>default button</strong>',
             },
@@ -25,7 +25,7 @@ describe('r-webcomponent.vue', () => {
     });
 
     it('should render all specified components', async () => {
-        const wrapper = renderToString(RWebcomponent, {
+        const wrapper = await renderToString(RWebcomponent, {
             slots: {
                 default: [RButton],
             },

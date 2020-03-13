@@ -43,8 +43,8 @@ describe('r-grid.vue', () => {
         expect(wrapper).toMatchSnapshot();
     });
 
-    it('should render via SSR and match snapshot', () => {
-        const wrapper = renderToString(RGrid, {
+    it('should render via SSR and match snapshot', async () => {
+        const wrapper = await renderToString(RGrid, {
             propsData: {provider, columns},
         });
 
