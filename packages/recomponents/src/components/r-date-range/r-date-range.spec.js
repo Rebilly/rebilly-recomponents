@@ -1,5 +1,5 @@
 import moment from 'moment-timezone';
-import {mount, shallowMount} from '@vue/test-utils';
+import {mount} from '@vue/test-utils';
 import {renderToString} from '@vue/server-test-utils';
 import RDateRange from './r-date-range.vue';
 import DateTimeFormats from '../../common/datetime-formats';
@@ -32,7 +32,7 @@ class TimezoneMock {
 
 describe('r-date-range.vue', () => {
     it('renders props when passed', () => {
-        const wrapper = shallowMount(RDateRange, {
+        const wrapper = mount(RDateRange, {
             propsData: {
                 period,
                 timezoneHandler: () => new TimezoneMock(),

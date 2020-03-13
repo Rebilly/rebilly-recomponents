@@ -6,5 +6,8 @@
 
 module.exports = {
   siteName: 'Gridsome',
-  plugins: []
+  plugins: [],
+  chainWebpack: (config) => {
+    config.resolve.symlinks(false);
+  },
 }

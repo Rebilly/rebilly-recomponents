@@ -16,7 +16,7 @@ describe('r-toggle.vue', () => {
     });
 
     it('should render via SSR and match snapshot', async () => {
-        const wrapper = renderToString(RToggle, {
+        const wrapper = await renderToString(RToggle, {
             propsData: {
                 name: 'snapshot',
                 label: 'Custom label',

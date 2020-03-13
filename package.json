@@ -5,6 +5,9 @@
   "author": "Rebilly SRL",
   "license": "MIT",
   "private": true,
+  "workspaces": [
+    "packages/*"
+  ],
   "repository": {
     "type": "git",
     "url": "https://github.com/Rebilly/rebilly-recomponents.git"
@@ -15,8 +18,9 @@
     }
   },
   "devDependencies": {
-    "cz-conventional-changelog": "^3.0.2",
-    "semantic-release": "^15.13.24"
+    "@vue/cli-plugin-eslint": "^4.1.2",
+    "cz-conventional-changelog": "^3.1.0",
+    "semantic-release": "^16.0.4"
   },
   "scripts": {
     "semantic-release": "semantic-release"

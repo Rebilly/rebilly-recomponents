@@ -24,6 +24,33 @@ As the number of Web Apps developed at Rebilly grows larger, it has become appar
 * `packages/gridsome` Demo project with Gridsome
 * `packages/nuxt` Demo project with Nuxt
 
+
+We use [Yarn Workspaces](https://classic.yarnpkg.com/en/docs/workspaces/) to make development easier and efficient. Workspaces allow developers to check how the latest **local build** of Recomponents work within an application created with Gridsome or Nuxt **without needing to release that version**.
+Running your application (Gridsome/Nuxt/others) against a local version of recomponents allows manually detecting issues that are not covered by unit tests with SSR support before releasing. 
+If you would like to setup a similar workflow with your own project, [Yarn Link](https://classic.yarnpkg.com/en/docs/cli/link/) could provide same functionality.
+
+### Development workflow
+
+When you run Recomponents in developer mode, any update in Recomponents will automatically trigger the rebuild of Recomponents and that also will trigger the rebuild of the end client application. In result, **you can check local Recompomnent's updates in your application immediately**. 
+
+### Enabling workspaces
+
+First step is running yarn from `project's root` to enable workspaces
+
+* `yarn`
+
+Then, with workspaces you can choose running any npm script from inside of `packages/recomponents` or from the `project's root`.
+
+#### Running Recomponents in developer mode from `/packages/recomponents`
+
+* `yarn dev`
+
+#### Running Recomponents in developer mode from `project's root`:
+
+* `yarn workspace @rebilly/recomponents dev`
+
+With workspaces there is no need to install dependencies inside of each folder - single run of `yarn` inside of project root is enough.
+
 ## Browser support
 
 Currently we support all modern browsers.

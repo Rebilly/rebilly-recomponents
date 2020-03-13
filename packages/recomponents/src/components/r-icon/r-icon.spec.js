@@ -11,8 +11,8 @@ describe('r-icon.vue', () => {
         expect(wrapper).toMatchSnapshot();
     });
 
-    it('should render via SSR and match snapshot', () => {
-        const wrapper = renderToString(RIcon, {
+    it('should render via SSR and match snapshot', async () => {
+        const wrapper = await renderToString(RIcon, {
             propsData: {icon: 'user'},
         });
 
