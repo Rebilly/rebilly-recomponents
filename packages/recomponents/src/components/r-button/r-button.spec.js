@@ -81,9 +81,9 @@ describe('r-button.vue', () => {
         expect(wrapper.text()).toMatch(msg);
     });
 
-    it('should render via SSR and match snapshot', () => {
+    it('should render via SSR and match snapshot', async () => {
         const msg = 'Apply';
-        const wrapper = renderToString(RButton, {
+        const wrapper = await renderToString(RButton, {
             propsData: {msg},
         });
 

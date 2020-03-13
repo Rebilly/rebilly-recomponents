@@ -15,7 +15,7 @@ describe('r-file-upload.vue', () => {
     });
 
     it('should render via SSR and match snapshot', async () => {
-        const wrapper = renderToString(RFileUpload, {
+        const wrapper = await renderToString(RFileUpload, {
             propsData: {
                 multiple: false,
             },

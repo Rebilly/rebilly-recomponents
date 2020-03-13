@@ -10,7 +10,7 @@ describe('r-tile.vue', () => {
     });
 
     it('should render via SSR and match snapshot', async () => {
-        const wrapper = renderToString(RTile);
+        const wrapper = await renderToString(RTile);
 
         expect(wrapper).toMatchSnapshot();
     });

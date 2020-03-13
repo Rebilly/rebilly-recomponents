@@ -33,7 +33,7 @@ describe('r-pagination-control.vue', () => {
     });
 
     it('should render via SSR and match snapshot', async () => {
-        const wrapper = renderToString(RPaginationControl, {
+        const wrapper = await renderToString(RPaginationControl, {
             provide: {...makeProvide()},
         });
         expect(wrapper).toMatchSnapshot();
