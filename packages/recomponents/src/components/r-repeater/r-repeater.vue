@@ -77,12 +77,15 @@
                 }
             },
         },
-        created() {
+        mounted() {
             this.fetchData();
         },
         watch: {
-            watcher() {
-                this.fetchData();
+            watcher: {
+                handler() {
+                    this.fetchData();
+                },
+                deep: true,
             },
         },
     };
