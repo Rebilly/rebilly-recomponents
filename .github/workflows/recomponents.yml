@@ -6,6 +6,7 @@ on:
     types: [assigned, opened, synchronize, reopened]
 jobs:
   setup:
+    name: Install dependencies
     runs-on: ubuntu-latest
     strategy:
       matrix:
@@ -137,12 +138,12 @@ jobs:
     - name: Restore symlinks
       run: |
         yarn
-    - name: Download Recomponents artifact
+    - name: Download Recomponents build
       uses: actions/download-artifact@master
       with:
         name: Recomponents
         path: ./
-    - name: Uncompress directory
+    - name: Uncompress Recomponents build
       run: unzip recomponents.zip -d packages/recomponents/dist
     - name: Build Nuxt application
       run: |
