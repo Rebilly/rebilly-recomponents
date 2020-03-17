@@ -62,7 +62,7 @@ jobs:
       run: |
         yarn workspace @rebilly/recomponents build-storybook
     - name: Compress storybook directory
-      run: zip -j -r storybook.zip ./docs/
+      run: zip -r storybook.zip ./docs/
     - name: Upload artifact
       uses: actions/upload-artifact@v1
       with:
@@ -127,7 +127,7 @@ jobs:
     env:
       NODE_ENV: test
     steps:
-    - name: Download artifact
+    - name: Download Directory artifact
       uses: actions/download-artifact@master
       with:
         name: Directory
@@ -137,6 +137,13 @@ jobs:
     - name: Restore symlinks
       run: |
         yarn
+    - name: Download Recomponents artifact
+      uses: actions/download-artifact@master
+      with:
+        name: Recomponents
+        path: ./
+    - name: Uncompress directory
+      run: unzip recomponents.zip -d packages/recomponents/dist
     - name: Build Nuxt application
       run: |
         yarn workspace recomponents-demo-nuxt build
