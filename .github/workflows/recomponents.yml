@@ -1,4 +1,4 @@
-name: Check
+name: Pull Request
 on:
   push:
     branches: [master]
@@ -22,6 +22,13 @@ jobs:
       working-directory: packages/recomponents
       run: |
         yarn
+    - name: Compress directory
+      run: zip -r directory.zip .
+    - name: Upload artifact
+      uses: actions/upload-artifact@v1
+      with:
+        name: Directory
+        path: ./directory.zip
   compile:
     runs-on: ubuntu-latest
     needs: setup
@@ -31,14 +38,36 @@ jobs:
     env:
       NODE_ENV: test
     steps:
+    - name: Download artifact
+      uses: actions/download-artifact@master
+      with:
+        name: Directory
+        path: ./
+    - name: Uncompress directory
+      run: unzip directory.zip
+    - name: Restore symlinks
+      run: |
+        yarn
     - name: Build Recomponents
-      working-directory: packages/recomponents
       run: |
-        yarn build
+        yarn workspace @rebilly/recomponents build
+    - name: Compress build directory
+      run: zip -r recomponents.zip ./packages/recomponents/dist/
+    - name: Upload artifact
+      uses: actions/upload-artifact@v1
+      with:
+        name: Recomponents
+        path: ./recomponents.zip
     - name: Build Storybook
-      working-directory: packages/recomponents
       run: |
-        yarn build-storybook
+        yarn workspace @rebilly/recomponents build-storybook
+    - name: Compress storybook directory
+      run: zip -r storybook.zip ./docs/
+    - name: Upload artifact
+      uses: actions/upload-artifact@v1
+      with:
+        name: Storybook
+        path: ./storybook.zip
   test:
     runs-on: ubuntu-latest
     needs: setup
@@ -48,11 +77,95 @@ jobs:
     env:
       NODE_ENV: test
     steps:
-    - name: Run Linter
-      working-directory: packages/recomponents
+    - name: Download artifact
+      uses: actions/download-artifact@master
+      with:
+        name: Directory
+        path: ./
+    - name: Uncompress directory
+      run: unzip directory.zip
+    - name: Restore symlinks
       run: |
-        yarn lint
-    - name: Run Tests
-      working-directory: packages/recomponents
+        yarn
+    - name: Run code linter
       run: |
-        yarn test
+        yarn workspace @rebilly/recomponents lint
+    - name: Run unit tests
+      run: |
+        yarn workspace @rebilly/recomponents test
+  snapshot:
+    runs-on: ubuntu-latest
+    needs: [setup, compile]
+    strategy:
+      matrix:
+        node-version: [10.x]
+    env:
+      NODE_ENV: test
+    steps:
+    - name: Download artifact
+      uses: actions/download-artifact@master
+      with:
+        name: Directory
+        path: ./
+    - name: Uncompress directory
+      run: unzip directory.zip
+    - name: Restore symlinks
+      run: |
+        yarn
+    - name: Build Storybook
+      run: |
+        yarn workspace @rebilly/recomponents build-storybook
+    - name: Run snapshot tests
+      run: |
+        docker-compose -f ./packages/recomponents/.image-snapshots/docker-compose.yml up --build
+  ssr:
+    runs-on: ubuntu-latest
+    needs: [setup, compile]
+    strategy:
+      matrix:
+        node-version: [10.x]
+    env:
+      NODE_ENV: test
+    steps:
+    - name: Download artifact
+      uses: actions/download-artifact@master
+      with:
+        name: Directory
+        path: ./
+    - name: Uncompress directory
+      run: unzip directory.zip
+    - name: Restore symlinks
+      run: |
+        yarn
+    - name: Build Nuxt application
+      run: |
+        yarn workspace recomponents-demo-nuxt build
+    - name: Build Gridsome application
+      run: |
+        yarn workspace recomponents-demo-gridsome build
+  deploy:
+    runs-on: ubuntu-latest
+    needs: [setup, compile, test, snapshot, ssr]
+    strategy:
+      matrix:
+        node-version: [10.x]
+    env:
+      NODE_ENV: test
+    steps:
+    - name: Download artifact
+      uses: actions/download-artifact@master
+      with:
+        name: Directory
+        path: ./
+    - name: Uncompress directory
+      run: unzip directory.zip
+    - name: Restore symlinks
+      run: |
+        yarn
+    - name: Build recomponents
+      run: |
+        yarn workspace @rebilly/recomponents build
+    - name: Semantic release
+      run: |
+        yarn workspace @rebilly/recomponents semantic-release
+  
