@@ -52,7 +52,7 @@ jobs:
       run: |
         yarn workspace @rebilly/recomponents build
     - name: Compress build directory
-      run: zip -r recomponents.zip ./packages/recomponents/dist/
+      run: zip -j -r recomponents.zip ./packages/recomponents/dist/
     - name: Upload artifact
       uses: actions/upload-artifact@v1
       with:
@@ -62,7 +62,7 @@ jobs:
       run: |
         yarn workspace @rebilly/recomponents build-storybook
     - name: Compress storybook directory
-      run: zip -r storybook.zip ./docs/
+      run: zip -j -r storybook.zip ./docs/
     - name: Upload artifact
       uses: actions/upload-artifact@v1
       with:
