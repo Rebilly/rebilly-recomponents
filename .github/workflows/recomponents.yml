@@ -52,6 +52,10 @@ jobs:
     # - name: Build Recomponents 1
     #   run: |
     #     yarn workspace @rebilly/recomponents build
+    - name: Add install
+      working-directory: packages/recomponents
+      run: |
+        yarn add npm-run-all
     - name: Build Recomponents 2
       working-directory: packages/recomponents
       run: |
