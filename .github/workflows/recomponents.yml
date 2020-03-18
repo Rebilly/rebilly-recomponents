@@ -55,8 +55,7 @@ jobs:
     - name: Add install
       working-directory: packages/recomponents
       run: |
-        yarn policies set-version 1.18.0
-        yarn add npm-run-all
+        yarn global add npm-run-all
     - name: Build Recomponents 2
       working-directory: packages/recomponents
       run: |
