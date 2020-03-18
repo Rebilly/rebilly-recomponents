@@ -128,34 +128,32 @@ jobs:
     - name: Build Gridsome application
       run: |
         yarn workspace recomponents-demo-gridsome build
-  # release:
-  #   name: Semantic release
-  #   runs-on: ubuntu-latest
-  #   needs: [setup, compile, test, snapshot, ssr]
-  #   strategy:
-  #     matrix:
-  #       node-version: [10.x]
-  #   env:
-  #     NODE_ENV: test
-  #   steps:
-  #   - name: Download artifact
-  #     uses: actions/download-artifact@master
-  #     with:
-  #       name: Directory
-  #       path: ./
-  #   - name: Uncompress directory
-  #     run: unzip directory.zip
-  #   - name: Restore symlinks
-  #     run: |
-  #       yarn
-  #   - name: Download Recomponents build
-  #     uses: actions/download-artifact@master
-  #     with:
-  #       name: Recomponents
-  #       path: ./
-  #   - name: Uncompress Recomponents build
-  #     run: unzip recomponents.zip -d packages/recomponents/dist
-  #   - name: Semantic release
-  #     run: |
-  #       yarn workspace @rebilly/recomponents semantic-release
-  
+  release:
+    name: Semantic release
+    runs-on: ubuntu-latest
+    needs: [compile, test, snapshot, ssr]
+    strategy:
+      matrix:
+        node-version: [10.x]
+    env:
+      NODE_ENV: test
+    steps:
+    - name: Checkout
+      uses: actions/checkout@master
+    - name: Use Node.js
+      uses: actions/setup-node@v1
+      with:
+        node-version: ${{ matrix.node-version }}
+    - name: Install dependencies
+      run: |
+        yarn
+    - name: Download Recomponents build
+      uses: actions/download-artifact@master
+      with:
+        name: Recomponents
+        path: ./
+    - name: Uncompress Recomponents build
+      run: unzip recomponents.zip -d packages/recomponents/dist
+    - name: Semantic release
+      run: |
+        yarn workspace @rebilly/recomponents semantic-release
