@@ -49,9 +49,9 @@ jobs:
     # - name: Restore symlinks
     #   run: |
     #     yarn
-    - name: Build Recomponents 1
-      run: |
-        yarn workspace @rebilly/recomponents build
+    # - name: Build Recomponents 1
+    #   run: |
+    #     yarn workspace @rebilly/recomponents build
     - name: Build Recomponents 2
       working-directory: packages/recomponents
       run: |
