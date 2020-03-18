@@ -21,7 +21,13 @@ jobs:
         node-version: ${{ matrix.node-version }}
     - name: Install dependencies
       run: |
-        yarn --no-bin-links
+        yarn
+        cp -rL node_modules node_modules2
+        rm -rf node_modules
+        mv node_modules2 node_modules
+        cp -rL packages/recomponents/node_modules packages/recomponents/node_modules2
+        rm -rf packages/recomponents/node_modules
+        mv packages/recomponents/node_modules2 packages/recomponents/node_modules
     - name: Compress directory
       run: zip -r directory.zip .
     - name: Upload artifact
@@ -49,9 +55,9 @@ jobs:
       run: |
         ls node_modules
         ls packages/recomponents/node_modules
-    - name: Restore symlinks
-      run: |
-        yarn install --frozen-lockfile
+    # - name: Restore symlinks
+    #   run: |
+    #     yarn install --frozen-lockfile
     - name: Build Recomponents 1
       run: |
         yarn workspace @rebilly/recomponents build
