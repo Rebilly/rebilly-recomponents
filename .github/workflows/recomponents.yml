@@ -44,6 +44,7 @@ jobs:
         name: Storybook
         path: ./storybook.zip
   test:
+    name: 'Run tests'
     runs-on: ubuntu-latest
     strategy:
       matrix:
@@ -95,39 +96,38 @@ jobs:
     - name: Run snapshot tests
       run: |
         docker-compose -f ./packages/recomponents/.image-snapshots/docker-compose.yml up --build
-  # ssr:
-  #   name: Verify SSR
-  #   runs-on: ubuntu-latest
-  #   needs: [setup, compile]
-  #   strategy:
-  #     matrix:
-  #       node-version: [10.x]
-  #   env:
-  #     NODE_ENV: test
-  #   steps:
-  #   - name: Download Directory artifact
-  #     uses: actions/download-artifact@master
-  #     with:
-  #       name: Directory
-  #       path: ./
-  #   - name: Uncompress directory
-  #     run: unzip directory.zip
-  #   - name: Restore symlinks
-  #     run: |
-  #       yarn
-  #   - name: Download Recomponents build
-  #     uses: actions/download-artifact@master
-  #     with:
-  #       name: Recomponents
-  #       path: ./
-  #   - name: Uncompress Recomponents build
-  #     run: unzip recomponents.zip -d packages/recomponents/dist
-  #   - name: Build Nuxt application
-  #     run: |
-  #       yarn workspace recomponents-demo-nuxt build
-  #   - name: Build Gridsome application
-  #     run: |
-  #       yarn workspace recomponents-demo-gridsome build
+  ssr:
+    name: Verify SSR
+    runs-on: ubuntu-latest
+    needs: [compile]
+    strategy:
+      matrix:
+        node-version: [10.x]
+    env:
+      NODE_ENV: test
+    steps:
+    - name: Checkout
+      uses: actions/checkout@master
+    - name: Use Node.js
+      uses: actions/setup-node@v1
+      with:
+        node-version: ${{ matrix.node-version }}
+    - name: Install dependencies
+      run: |
+        yarn
+    - name: Download Recomponents build
+      uses: actions/download-artifact@master
+      with:
+        name: Recomponents
+        path: ./
+    - name: Uncompress Recomponents build
+      run: unzip recomponents.zip -d packages/recomponents/dist
+    - name: Build Nuxt application
+      run: |
+        yarn workspace recomponents-demo-nuxt build
+    - name: Build Gridsome application
+      run: |
+        yarn workspace recomponents-demo-gridsome build
   # release:
   #   name: Semantic release
   #   runs-on: ubuntu-latest
