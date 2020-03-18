@@ -20,7 +20,6 @@ jobs:
       with:
         node-version: ${{ matrix.node-version }}
     - name: Install dependencies
-      working-directory: packages/recomponents
       run: |
         yarn --no-bin-links
     - name: Compress directory
@@ -53,17 +52,17 @@ jobs:
     - name: Restore symlinks
       run: |
         yarn install --frozen-lockfile
-    # - name: Build Recomponents 1
-    #   run: |
-    #     yarn workspace @rebilly/recomponents build
+    - name: Build Recomponents 1
+      run: |
+        yarn workspace @rebilly/recomponents build
     # - name: Add install
     #   working-directory: packages/recomponents
     #   run: |
     #     yarn global add npm-run-all
-    - name: Build Recomponents 2
-      working-directory: packages/recomponents
-      run: |
-        yarn build
+    # - name: Build Recomponents 2
+    #   working-directory: packages/recomponents
+    #   run: |
+    #     yarn build
     - name: Compress build directory
       run: zip -j -r recomponents.zip ./packages/recomponents/dist/
     - name: Upload artifact
