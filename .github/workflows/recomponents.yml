@@ -22,7 +22,7 @@ jobs:
     - name: Install dependencies
       working-directory: packages/recomponents
       run: |
-        yarn --no-bin-links
+        yarn 
     - name: Compress directory
       run: zip -r directory.zip .
     - name: Upload artifact
