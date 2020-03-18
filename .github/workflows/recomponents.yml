@@ -95,6 +95,7 @@ jobs:
       run: |
         yarn workspace @rebilly/recomponents test
   snapshot:
+    name: Check snapshots
     runs-on: ubuntu-latest
     needs: [setup, compile]
     strategy:
