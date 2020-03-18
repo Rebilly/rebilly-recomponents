@@ -157,7 +157,8 @@ jobs:
     - name: Build Gridsome application
       run: |
         yarn workspace recomponents-demo-gridsome build
-  deploy:
+  release:
+    name: Semantic release
     runs-on: ubuntu-latest
     needs: [setup, compile, test, snapshot, ssr]
     strategy:
@@ -176,9 +177,13 @@ jobs:
     - name: Restore symlinks
       run: |
         yarn
-    - name: Build recomponents
-      run: |
-        yarn workspace @rebilly/recomponents build
+    - name: Download Recomponents build
+      uses: actions/download-artifact@master
+      with:
+        name: Recomponents
+        path: ./
+    - name: Uncompress Recomponents build
+      run: unzip recomponents.zip -d packages/recomponents/dist
     - name: Semantic release
       run: |
         yarn workspace @rebilly/recomponents semantic-release
