@@ -46,9 +46,12 @@ jobs:
         path: ./
     - name: Uncompress directory
       run: unzip directory.zip
-    # - name: Restore symlinks
-    #   run: |
-    #     yarn
+    - name: Kek
+      run: ls node_modules
+      run: ls packages/recomponents/node_modules
+    - name: Restore symlinks
+      run: |
+        yarn install --frozen-lockfile
     # - name: Build Recomponents 1
     #   run: |
     #     yarn workspace @rebilly/recomponents build
