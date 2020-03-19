@@ -121,7 +121,10 @@ jobs:
         name: Recomponents
         path: ./
     - name: Uncompress Recomponents build
-      run: unzip recomponents.zip -d packages/recomponents/dist
+      run: |
+        unzip recomponents.zip -d packages/nuxt/dist
+        unzip recomponents.zip -d packages/gridsome/dist
+        unzip recomponents.zip -d packages/recomponents/dist
     - name: Build Nuxt application
       run: |
         yarn workspace recomponents-demo-nuxt build
