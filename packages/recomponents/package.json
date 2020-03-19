@@ -13,7 +13,7 @@
     "lint": "run-p lint:js lint:styles",
     "lint:js": "vue-cli-service lint",
     "lint:styles": "stylelint **/*.scss",
-    "build": "run-p clean:dist build:wc build:lib build:theme",
+    "build": "run-s clean:dist build:wc build:lib build:theme",
     "build:wc": "vue-cli-service build --target wc-async --name recomponents 'src/**/*.vue' --no-clean",
     "build:lib": "vue-cli-service build --target lib --name recomponents 'src/index.js' --no-clean",
     "build:theme": "node-sass src/styles/recomm.scss dist/recomm.css",
