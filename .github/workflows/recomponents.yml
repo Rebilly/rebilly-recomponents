@@ -10,7 +10,7 @@ jobs:
     runs-on: ubuntu-latest
     strategy:
       matrix:
-        node-version: [10.x]
+        node-version: [12.x]
     env:
       NODE_ENV: test
     steps:
@@ -48,7 +48,7 @@ jobs:
     runs-on: ubuntu-latest
     strategy:
       matrix:
-        node-version: [10.x]
+        node-version: [12.x]
     env:
       NODE_ENV: test
     steps:
@@ -73,7 +73,7 @@ jobs:
     needs: [compile]
     strategy:
       matrix:
-        node-version: [10.x]
+        node-version: [12.x]
     env:
       NODE_ENV: test
     steps:
@@ -102,7 +102,7 @@ jobs:
     needs: [compile]
     strategy:
       matrix:
-        node-version: [10.x]
+        node-version: [12.x]
     env:
       NODE_ENV: test
     steps:
@@ -134,7 +134,7 @@ jobs:
     needs: [compile, test, snapshot, ssr]
     strategy:
       matrix:
-        node-version: [10.x]
+        node-version: [12.x]
     env:
       NODE_ENV: test
     steps:
