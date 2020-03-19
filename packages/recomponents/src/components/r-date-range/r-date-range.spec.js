@@ -4,14 +4,17 @@ import {renderToString} from '@vue/server-test-utils';
 import RDateRange from './r-date-range.vue';
 import DateTimeFormats from '../../common/datetime-formats';
 
+const timezone = 'America/Montreal';
 const start = '2020-01-01T00:00:00.000Z';
 const end = '2020-01-01T23:59:59.999Z';
 const period = `${start}..${end}`;
 
+moment.tz.setDefault(timezone);
+
 class TimezoneMock {
     // eslint-disable-next-line class-methods-use-this
     tz() {
-        return `America/Montreal`;
+        return timezone;
     }
 
     // eslint-disable-next-line class-methods-use-this
