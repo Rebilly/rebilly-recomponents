@@ -13,6 +13,7 @@ module.exports = {
         },
     },
     css: {
+        extract: true,
         loaderOptions: {
             sass: {
                 prependData: `
