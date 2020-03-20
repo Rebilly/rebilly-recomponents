@@ -1,5 +1,6 @@
 import Vue from 'vue';
-import {shallowMount, mount} from '@vue/test-utils';
+import VueRouter from 'vue-router';
+import {shallowMount, mount, createLocalVue} from '@vue/test-utils';
 import {renderToString} from '@vue/server-test-utils';
 import RTabs from './r-tabs.vue';
 import RTab from './r-tab.vue';
@@ -126,12 +127,39 @@ describe('r-tabs.vue', () => {
                     fullPath: 'test-route',
                 },
                 $router: {
-                    resolve: route => ({route}),
+                    resolve: route => ({...route, href: 'test-route'}),
                 },
             },
         });
 
         expect(wrapper).toMatchSnapshot();
+    });
+
+    it('should not try to go to the same route where we already are', async () => {
+        const localVue = createLocalVue();
+        localVue.use(VueRouter);
+        const route = {name: 'child', path: '/nested-route'};
+        const route1 = {name: 'child2', path: '/nested-route2'};
+        const router = new VueRouter({routes: [route, route1]});
+        router.push(route);
+        localVue.component('r-tab', RTab);
+        const routerPushSpy = jest.spyOn(router, 'push');
+
+        mount(RTabs, {
+            localVue,
+            router,
+            slots: {
+                default: `
+                    <r-tab
+                     name="testTab"
+                     :to="{name: 'child'}"
+                     >
+                        Test Tab
+                     </r-tab>`,
+            },
+        });
+
+        expect(routerPushSpy).not.toHaveBeenCalled();
     });
 
     it('should match all incoming props types', () => {
