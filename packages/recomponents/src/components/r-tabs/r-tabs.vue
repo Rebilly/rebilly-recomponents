@@ -87,7 +87,7 @@
                 /**
                  * Trigger router update for tabs with route
                  */
-                if (to && this.$router.resolve(to).href !== this.$route.fullPath) {
+                if (!this.goingToSameRoute(to)) {
                     this.$router.push(to);
                     return;
                 }
@@ -119,13 +119,13 @@
                 // get all tabs with route param
                 const routableTabs = this.tabs.filter(tab => tab.to);
 
-                // current route full path
-                const currentPath = this.$route && this.$route.fullPath;
+                return routableTabs.find(tab => this.goingToSameRoute(tab.to));
+            },
+            goingToSameRoute(to) {
+                if (!to || !this.$route || !this.$route) return true;
 
-                return routableTabs
-                    .find(tab => this.$router
-                        && this.$router.resolve(tab.to).route.fullPath
-                        && this.$router.resolve(tab.to).route.fullPath === currentPath);
+                // We use endWith cause we want to detect nested routes
+                return to && this.$route.fullPath.endsWith(this.$router.resolve(to).href.replace(/^#/, ''));
             },
             bootstrap() {
                 this.tabs = this.$children;
