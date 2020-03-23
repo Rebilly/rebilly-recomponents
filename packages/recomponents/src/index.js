@@ -11,7 +11,7 @@ import * as components from './components';
 import * as directives from './directives';
 
 function install(Vue, options = {}) {
-    const {ErrorHandler} = options;
+    const {ErrorHandler, allowClose} = options;
 
     /**
      * Set global settings
@@ -23,7 +23,7 @@ function install(Vue, options = {}) {
         ...options,
     };
 
-    Vue.use(RToastPlugin, {ErrorHandler});
+    Vue.use(RToastPlugin, {ErrorHandler, allowClose});
 
     Vue.component('no-ssr', NoSSR);
 
