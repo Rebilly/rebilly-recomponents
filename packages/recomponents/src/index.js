@@ -11,7 +11,7 @@ import * as components from './components';
 import * as directives from './directives';
 
 function install(Vue, options = {}) {
-    const {ErrorHandler, allowClose} = options;
+    const {ErrorHandler, allowToastCloseButton} = options;
 
     /**
      * Set global settings
@@ -23,7 +23,10 @@ function install(Vue, options = {}) {
         ...options,
     };
 
-    Vue.use(RToastPlugin, {ErrorHandler, allowClose});
+    Vue.use(RToastPlugin, {
+        ErrorHandler,
+        allowClose: allowToastCloseButton,
+    });
 
     Vue.component('no-ssr', NoSSR);
 

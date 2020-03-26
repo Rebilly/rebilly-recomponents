@@ -49,6 +49,15 @@ Or bundled with webpack:
 </script>
 ```
 
+During installation you can specify some options that could ovverride default behaviour of some components.
+
+<details>
+  <summary>List of available options</summary>
+
+  * `ErrorHandler` - [Handler](https://github.com/Rebilly/rebilly-recomponents/blob/master/packages/recomponents/src/common/helpers/default-error-handler.js) to convert any server / client error into user-friendly message that can be displayed via RToast
+  * `allowToastCloseButton` - Add ability to close all RToast messages by default
+</details>
+
 ## Documentation
 
 We prefer [Storybook](https://storybook.js.org/) to plain-old documentation. [Check it out](https://recomponents.rebilly.com/) to see all of our components on display, with a comprehensive description and the ability to tweak properties and slots.
