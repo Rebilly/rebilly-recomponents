@@ -90,10 +90,16 @@ storiesOf('Components.Toast', module)
                 <div class="storybook-center">
                     <div class="r-grid">
                         <div class="r-grid-item">
-                            <r-button type="default" @click="addToast('positive')">Positive</r-button>
-                            <r-button type="default" @click="addToast('negative')">Negative</r-button>
-                            <r-button type="default" @click="addToast('warning')">Warning</r-button>
-                            <r-button type="default" @click="addToast('info')">Info</r-button>
+                            <r-button type="default" @click="addDefaultToast('positive')">Default Positive</r-button>
+                            <r-button type="default" @click="addDefaultToast('negative')">Default Negative</r-button>
+                            <r-button type="default" @click="addDefaultToast('warning')">Default Warning</r-button>
+                            <r-button type="default" @click="addDefaultToast('info')">Default Info</r-button>
+                        </div>
+                        <div class="r-grid-item">
+                            <r-button type="default" @click="addClosableToast('positive')">Closable Positive</r-button>
+                            <r-button type="default" @click="addClosableToast('negative')">Closable Negative</r-button>
+                            <r-button type="default" @click="addClosableToast('warning')">Closable Warning</r-button>
+                            <r-button type="default" @click="addClosableToast('info')">Closable Info</r-button>
                         </div>
                     </div>
                 </div>
@@ -101,8 +107,11 @@ storiesOf('Components.Toast', module)
         `,
         props: {},
         methods: {
-            addToast(type) {
-                this.$toast[type](`Test ${type} toast :)`);
+            addDefaultToast(type) {
+                this.$toast[type](`Test ${type} toast`, {allowClose: false});
+            },
+            addClosableToast(type) {
+                this.$toast[type](`Close ${type} toast`, {allowClose: true});
             },
             hide: action('hide'),
         },
