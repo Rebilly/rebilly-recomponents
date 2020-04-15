@@ -110,6 +110,34 @@ body, .article {
     --button-default-disabled-background: linear-gradient(180deg, var(--mono-color-0) 0, var(--mono-color-100));
     --button-default-disabled-box-shadow: 0 0 0 1px var(--gray-color) inset, 0 1px 2px 0 var(--mono-color-200);
     --button-default-disabled-border: none;
+    
+    // Transparent
+    --button-transparent-color: var(--text-color);
+    --button-transparent-background: transparent;
+    --button-transparent-box-shadow: none;
+    --button-transparent-border: none;
+    // Transparent Hover
+    --button-transparent-hover-color: var(--text-color);
+    --button-transparent-hover-background: var(--mono-color-100);
+    --button-transparent-hover-box-shadow: none;
+    --button-transparent-hover-border: none;
+    // Transparent Focus
+    --button-transparent-focus-color: var(--text-color);
+    --button-transparent-focus-background: linear-gradient(180deg, var(--mono-color-0) 0, var(--mono-color-100));
+    --button-transparent-focus-box-shadow: none;
+    --button-transparent-focus-border: none;
+    // Transparent Active
+    --button-transparent-active-color: var(--text-color);
+    --button-transparent-active-background: var(--mono-color-100);
+    --button-transparent-active-box-shadow: none;
+    --button-transparent-active-border: none;
+    // Transparent Disabled
+    --button-transparent-disabled-opacity: 0.5;
+    --button-transparent-disabled-cursor: auto;
+    --button-transparent-disabled-color: var(--text-color);
+    --button-transparent-disabled-background: linear-gradient(180deg, var(--mono-color-0) 0, var(--mono-color-100));
+    --button-transparent-disabled-box-shadow: none;
+    --button-transparent-disabled-border: none;
 
     // Primary
     --button-primary-color: var(--text-color-light);
@@ -280,11 +308,12 @@ body, .article {
     --input-font-size: var(--font-size-p);
     --input-color: var(--text-color);
     --input-padding: var(--space-s) var(--space-m);
+    --input-background-color: var(--background-color);
     --input-border-radius: var(--border-radius);
     --input-border: none;
     --input-box-shadow: 0 0 0 1px var(--gray-color) inset, 0 1px 2px 0 var(--mono-color-300) inset, 0 0 0 0 var(--primary-color);
     --input-transition: box-shadow var(--timing-10) var(--animation-ease);
-    --input-focus-box-shadow: 0 0 0 1px var(--primary-color) inset, 0 0 0 0 var(--mono-color-300) inset, 0 0 0 1px var(--primary-color);
+    --input-focus-box-shadow: inset 0 0 0 2px var(--primary-color);
     --input-focus-border: none;
     --input-caption-color: var(--text-muted);
     --input-caption-margin-top: var(--space-xs);
@@ -327,7 +356,7 @@ body, .article {
     --tile-subtitle-padding-bottom: var(--space-default);
     --tile-content-padding: var(--space-default);
     --tile-content-divider: 1px solid var(--gray-color-light);
-    --tile-content-background: var(--mono-color-0);
+    --tile-content-background: transparent;
     --tile-content-secondary-background: var(--background-color-light);
     --tile-actions-padding: var(--space-default);
 
@@ -463,8 +492,8 @@ body, .article {
 
     // Pagination
     // -----------------------------------------------------
-
-    --pagination-buttons-margin: 0 var(--space-xxs);
+    --pagination-buttons-margin: 0 var(--space-s);
+    --pagination-input-width: 190px;
 
     // Image
     --image-spinner-color: var(--primary-color);
@@ -498,16 +527,16 @@ body, .article {
 // Media Breakpoints
 // ------------------------------------------------
 $breakpoints: (
-    'phone': 576px,
-    'tablet': 768px,
-    'small-desktop': 994px,
-    'desktop': 1100px,
-    'large-desktop': 1200px,
+        'phone': 576px,
+        'tablet': 768px,
+        'small-desktop': 994px,
+        'desktop': 1100px,
+        'large-desktop': 1200px,
 ) !default;
 
 h1, .h1 {
     font-size: var(--font-size-h1);
-    font-weight: var(--font-weight-medium);
+    font-weight: var(--font-weight-h1);
     line-height: var(--font-line-height-h1);
     margin-top: 4.0rem;
     margin-bottom: 2.0rem;
@@ -518,7 +547,7 @@ h1, .h1 {
 h2, .h2 {
     font-size: var(--font-size-h2);
     letter-spacing: 0.015rem;
-    font-weight: var(--font-weight-regular);
+    font-weight: var(--font-weight-h2);
     margin-top: 2.0rem;
     margin-bottom: 2.0rem;
     font-family: var(--primary-font-stack);
@@ -529,7 +558,7 @@ h3, .h3 {
     font-size: var(--font-size-h3);
     letter-spacing: 0.04rem;
     text-transform: uppercase;
-    font-weight: var(--font-weight-regular);
+    font-weight: var(--font-weight-h3);
     margin-top: 2.0rem;
     margin-bottom: 0;
     font-family: var(--primary-font-stack);
@@ -541,7 +570,7 @@ h4, .h4, h5, .h5, h6, .h6 {
     margin-top: 2.0rem;
     margin-bottom: 0;
     font-family: var(--primary-font-stack);
-    font-weight: var(--font-weight-regular);
+    font-weight: var(--font-weight-h4);
     line-height: var(--font-line-height-h4);
 }
 
