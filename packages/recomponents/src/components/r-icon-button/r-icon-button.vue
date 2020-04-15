@@ -22,7 +22,7 @@
             type: {
                 type: String,
                 default: 'default',
-                validator: val => ['default', 'primary', 'danger'].includes(val),
+                validator: val => ['default', 'primary', 'danger', 'transparent'].includes(val),
             },
             /**
              * TBD

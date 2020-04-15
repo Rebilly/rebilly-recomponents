@@ -13,6 +13,7 @@ storiesOf('Components.Icon Button', module)
                     default: 'default',
                     primary: 'primary',
                     danger: 'danger',
+                    transparent: 'transparent',
                 }, 'primary'),
             },
             size: {

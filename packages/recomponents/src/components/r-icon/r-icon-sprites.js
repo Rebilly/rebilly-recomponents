@@ -191,6 +191,22 @@ const sprites = `
                 </svg>
             </symbol>
         </svg>
+          <!-- Double Caret Left -->
+        <svg xmlns="http://www.w3.org/2000/svg">
+            <symbol id="icon-caret-double-left">
+                <svg viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+                    <path d="M10.707 5.707L6.414 10l4.293 4.293a1 1 0 01-1.414 1.414l-5-5a1 1 0 010-1.414l5-5a1 1 0 011.414 1.414zm5 0L11.414 10l4.293 4.293a1 1 0 01-1.414 1.414l-5-5a1 1 0 010-1.414l5-5a1 1 0 011.414 1.414z"/>
+                </svg>
+            </symbol>
+        </svg>
+        <!-- Double Caret Right -->
+        <svg xmlns="http://www.w3.org/2000/svg">
+            <symbol id="icon-caret-double-right">
+                <svg viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+                    <path d="M9.293 5.707a1 1 0 111.414-1.414l5 5a1 1 0 010 1.414l-5 5a1 1 0 11-1.414-1.414L13.586 10 9.293 5.707zm-5 0a1 1 0 111.414-1.414l5 5a1 1 0 010 1.414l-5 5a1 1 0 01-1.414-1.414L8.586 10 4.293 5.707z"/>
+                </svg>
+            </symbol>
+        </svg>
         <!-- Arrow Up -->
         <svg xmlns="http://www.w3.org/2000/svg">
             <symbol id="icon-arrow-up">
