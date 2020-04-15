@@ -1,0 +1,17 @@
+.r-pagination {
+    text-align: center;
+}
+
+.r-pagination-numbers {
+    margin: var(--pagination-buttons-margin);
+}
+
+.r-pagination-description {
+    margin-left: 0;
+}
+
+.r-pagination-input {
+    margin-right: 0;
+    display: flex;
+    width: var(--pagination-input-width)
+}

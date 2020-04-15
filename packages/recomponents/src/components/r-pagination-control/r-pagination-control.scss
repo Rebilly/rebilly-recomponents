@@ -3,6 +3,7 @@
     flex-flow: column;
     margin: 0 auto;
     width: fit-content;
+    text-align: center;
 }
 
 // fix the bugs on IE11
@@ -12,14 +13,20 @@
     }
 }
 
-.r-pagination-control-buttons-wrapper {
-    display: flex;
-    flex: 1 0;
+.r-pagination-numbers {
+    margin: var(--pagination-buttons-margin);
 }
 
-.r-pagination-control-button {
+.r-pagination-description {
+    margin-left: 0;
+}
+
+.r-pagination-input {
+    margin-right: 0;
     display: flex;
-    justify-content: space-between;
-    align-items: center;
-    margin: var(--pagination-buttons-margin);
+    width: var(--pagination-input-width)
+}
+
+.r-pagination-control .r-button-group .r-button-type-primary:focus {
+    box-shadow: none;
 }
