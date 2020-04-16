@@ -163,6 +163,7 @@
 
 .r-popover-content.r-popover-menu::-webkit-scrollbar {
     display: none;
+    padding: var(--popover-content-menu-padding);
 }
 
 .r-popover-action-menu-item,

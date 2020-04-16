@@ -8,7 +8,6 @@ storiesOf('Components/Grid', module)
             template: `
             <r-pagination :limit="limit" :total="total" @navigate="provider">
                 <template #pagination="{pagination}">
-                <pre>{{ pagination }}</pre>
                     <r-grid :provider="provider(pagination.offset)" :columns="columns" :key="pagination.offset">
                         <header slot="header">
                             <h1 class="r-mb-l">Numbers</h1>
@@ -57,6 +56,7 @@ storiesOf('Components/Grid', module)
                             },
                             {
                                 name: 'updatedAt',
+                                label: 'Updated at',
                                 renderAs: 'date',
                             },
                         ],
