@@ -2,7 +2,7 @@
     <div class="r-table-control flex-center">
         <r-loader v-if="isLoading"
                   :fullscreen="isLoaderFullscreen"
-                  :spinnerMode="spinnerMode"></r-loader>
+                  :spinner-mode="loaderSpinnerMode"></r-loader>
         <template v-else>
             <table class="r-table" v-if="hasRows">
                 <!-- @slot for colgroups - see HTML \<colgroup> -->
