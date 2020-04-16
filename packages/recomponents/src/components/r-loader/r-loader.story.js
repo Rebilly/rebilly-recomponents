@@ -16,8 +16,11 @@ storiesOf('Components.Loader', module)
             fullscreen: {
                 default: boolean('Fullscreen', true),
             },
+            spinnerMode: {
+                default: boolean('Spinner Mode', false),
+            },
         },
-        template: `<r-loader :show="show" :loading="loading" :fullscreen="fullscreen"/>`,
+        template: `<r-loader :show="show" :loading="loading" :fullscreen="fullscreen" :spinner-mode="spinnerMode"/>`,
     }), {
         notes: {markdown},
     })
@@ -32,11 +35,13 @@ storiesOf('Components.Loader', module)
             fullscreen: {
                 default: boolean('Fullscreen', false),
             },
-        },
+            spinnerMode: {
+                default: boolean('Spinner Mode', false),
+            }, },
         template: `
             <div class="storybook-center">
                 <div style="width: 250px; position: relative">
-                    <r-loader :show="show" :loading="loading" :fullscreen="fullscreen"/>
+                    <r-loader :show="show" :loading="loading" :fullscreen="fullscreen" :spinner-mode="spinnerMode"/>
                     <r-tile>
                         <template v-slot:title>
                             <h2>Make a payment</h2>

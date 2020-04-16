@@ -1,6 +1,8 @@
 <template>
     <div class="r-table-control flex-center">
-        <r-loader v-if="isLoading" :fullscreen="isLoaderFullscreen"></r-loader>
+        <r-loader v-if="isLoading"
+                  :fullscreen="isLoaderFullscreen"
+                  :spinnerMode="spinnerMode"></r-loader>
         <template v-else>
             <table class="r-table" v-if="hasRows">
                 <!-- @slot for colgroups - see HTML \<colgroup> -->
@@ -48,6 +50,13 @@
             isLoaderFullscreen: {
                 type: Boolean,
                 default: true,
+            },
+            /**
+             * Defines if the loader is a spinner
+             */
+            loaderSpinnerMode: {
+                type: Boolean,
+                default: false,
             },
             /**
              * Defines the property, which changes will trigger the fetching of data

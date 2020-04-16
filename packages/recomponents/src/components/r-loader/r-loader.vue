@@ -4,10 +4,13 @@
          role="alert"
          aria-busy="true"
          :class="classes">
-        <div class="r-loader-icon-wrapper">
+        <div class="r-loader-icon-wrapper" v-if="!spinnerMode">
             <div class="r-mr-re"></div>
             <div class="r-mr-bil"></div>
             <div class="r-mr-ly"></div>
+        </div>
+        <div class="r-loader-spinner-wrapper" v-else>
+            <r-icon icon="loading"/>
         </div>
     </div>
 </template>
@@ -37,6 +40,13 @@
             fullscreen: {
                 type: Boolean,
                 default: true,
+            },
+            /**
+             * Spinner mode
+             */
+            spinnerMode: {
+                type: Boolean,
+                default: false,
             },
         },
 

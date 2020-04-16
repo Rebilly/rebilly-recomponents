@@ -26,6 +26,13 @@
                 required: true,
             },
             /**
+             * Defines if the loader is a spinner
+             */
+            loaderSpinnerMode: {
+                type: Boolean,
+                default: false,
+            },
+            /**
              * Defines if the loading state is fullscreen
              */
             isLoaderFullscreen: {
@@ -165,6 +172,7 @@
                         provider: this.computedProvider,
                         watcher: {},
                         isLoaderFullscreen: this.isLoaderFullscreen,
+                        loaderSpinnerMode: this.loaderSpinnerMode,
                     },
                     scopedSlots: {
                         default: prop => this.renderRepeaterRow(createElement, prop),
