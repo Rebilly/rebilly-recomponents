@@ -4,7 +4,7 @@ exports[`r-date-input.vue should render Wrapper and match snapshot 1`] = `
 <div class="">
   <div class="r-field">
     <!---->
-    <r-calendar-manager-stub dragselectattributes="[object Object]" maxdate="2020-01-01" type="calendar" class="r-date-input"></r-calendar-manager-stub>
+    <r-calendar-manager-stub dragselectattributes="[object Object]" maxdate="Wed Jan 01 2020 07:00:00 GMT+0700 (GMT+07:00)" type="calendar" class="r-date-input"></r-calendar-manager-stub>
     <!---->
   </div>
   <!---->

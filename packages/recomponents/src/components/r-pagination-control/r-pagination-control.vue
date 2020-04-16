@@ -97,11 +97,20 @@
 </template>
 
 <script>
+    import RButtonGroup from '../r-button-group/r-button-group.vue';
+    import RIcon from '../r-icon/r-icon.vue';
+    import RIconButton from '../r-icon-button/r-icon-button.vue';
+
     const MAX_NAVIGABLE_PAGINATION = 1000;
     const MAX_NUMBER_PAGES = 50;
 
     export default {
         name: 'r-pagination-control',
+        components: {
+            RIcon,
+            RIconButton,
+            RButtonGroup,
+        },
         props: {
             /**
              * Number of items displayed on a single page
