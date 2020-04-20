@@ -37,7 +37,8 @@ storiesOf('Components.Loader', module)
             },
             spinnerMode: {
                 default: boolean('Spinner Mode', false),
-            }, },
+            },
+        },
         template: `
             <div class="storybook-center">
                 <div style="width: 250px; position: relative">
