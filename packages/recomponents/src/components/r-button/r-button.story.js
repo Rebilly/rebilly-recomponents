@@ -21,6 +21,7 @@ storiesOf('Components.Button', module)
                     Primary: 'primary',
                     Danger: 'danger',
                     Link: 'link',
+                    Transparent: 'transparent',
                 }, 'primary'),
             },
             text: {
