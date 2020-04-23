@@ -18,3 +18,9 @@
 .r-date-range .r-button-type-default:focus {
     box-shadow: var(--button-default-box-shadow);
 }
+
+.r-range-picker-item {
+    max-width: 500px;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+}
