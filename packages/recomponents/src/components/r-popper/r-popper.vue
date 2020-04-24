@@ -98,6 +98,13 @@
                 default: 4, // px
             },
             /**
+             * Additional offset ignoring popper direction
+             */
+            margin: {
+                type: Array,
+                default: () => [0, 0, 0, 0],
+            },
+            /**
              * TBD
              */
             direction: {
@@ -226,10 +233,10 @@
                 const trigger = this.triggerEl.childNodes[0];
                 const styles = window.getComputedStyle(trigger);
                 return {
-                    top: this.convertPixelsToNumber(styles.marginTop),
-                    left: this.convertPixelsToNumber(styles.marginLeft),
-                    right: this.convertPixelsToNumber(styles.marginRight),
-                    bottom: this.convertPixelsToNumber(styles.marginBottom),
+                    top: this.convertPixelsToNumber(styles.marginTop) + this.margin[0],
+                    right: this.convertPixelsToNumber(styles.marginRight) + this.margin[1],
+                    bottom: this.convertPixelsToNumber(styles.marginBottom) + this.margin[2],
+                    left: this.convertPixelsToNumber(styles.marginLeft) + this.margin[3],
                 };
             },
             convertPixelsToNumber(value) {

@@ -1,5 +1,5 @@
 <template>
-    <r-popper position="bottomEnd" class="r-date-range" ref="calendar" :disabled="false">
+    <r-popper position="bottomEnd" class="r-date-range" ref="calendar" :disabled="false" :offset="6" :margin="[0, 14, 0, 0]">
         <template #trigger="calendar">
             <r-button-group :class="{'r-button-group-single': !showPresets}">
                 <r-icon-button :disabled="disabled" @click="toggle('calendar')">
@@ -12,6 +12,7 @@
                           class="r-date-range-preset-picker"
                           position="bottomEnd"
                           ref="presets"
+                          :offset="6"
                           :disabled="disabled">
                     <template #trigger="optionsList">
                         <r-icon-button :disabled="disabled" @click="toggle('presets')">
