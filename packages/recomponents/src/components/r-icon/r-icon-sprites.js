@@ -725,6 +725,15 @@ const sprites = `
                     <circle cx="10" cy="10" r="4" fill-rule="evenodd"/>
                 </svg>
             </symbol>
+        </svg>       
+        <!-- Radio Report Match -->
+        <svg xmlns="http://www.w3.org/2000/svg">
+            <symbol id="icon-report-match">
+                <svg width="20" height="20" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg">
+                    <path d="M17 6.94a1 1 0 00-.05-.26v-.09a1 1 0 00-.2-.29l-4-4a1 1 0 00-.29-.19h-.1a1 1 0 00-.25 0H4A1 1 0 003 3v14a1 1 0 001 1h12a1 1 0 001-1V7v-.06zM15 16H5V4h6v3a1 1 0 001 1h3v8z"/>
+                    <path d="M11.29 9.29L9 11.59l-.29-.29a1 1 0 00-1.41 1.41l1 1a1 1 0 001.41 0l3-3a1 1 0 00-1.42-1.42z"/>
+                </svg>
+            </symbol>
         </svg>
 `;
 
