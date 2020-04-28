@@ -66,6 +66,7 @@ export const icons = {
     'orders': 'orders',
     'plus': 'plus',
     'product': 'product',
+    'report-match': 'report-match',
     'reset': 'reset',
     'resize-columns': 'resize-columns',
     'rules': 'rules',
