@@ -1,6 +1,8 @@
 import {storiesOf} from '@storybook/vue';
 import {action} from '@storybook/addon-actions';
-import {boolean, number, select} from '@storybook/addon-knobs';
+import {
+    boolean, number, select, object,
+} from '@storybook/addon-knobs';
 import markdown from './r-popper.md';
 import RPopper from './r-popper.vue';
 
@@ -14,6 +16,7 @@ storiesOf('Components.Popper', module)
             openOnMount: {default: boolean('Open on mount', false)},
             disabled: {default: boolean('Disabled', false)},
             offset: {default: number('Offset', 4)},
+            margin: {default: object('Margin', [0, 0, 0, 0])},
             numberOfOptions: {default: number('Number of options', 2)},
             direction: {
                 default: select('Direction', {
@@ -64,6 +67,7 @@ storiesOf('Components.Popper', module)
                         :openOnMount="openOnMount"
                         :disabled="disabled"
                         :offset="offset"
+                        :margin="margin"
                         :direction="direction"
                         :position="position"
                         :slideFrom="slideFrom"
@@ -182,6 +186,37 @@ storiesOf('Components.Popper', module)
                                     </a>
                                     <a class="r-popover-menu-item">
                                         Reset to Default Order
+                                    </a>
+                                </div>
+                            </div>
+                        </div>
+                    </template>
+                </r-popper>
+            </div>
+        `,
+    }), {
+        notes: {markdown},
+    })
+    .add('With independent margin', () => ({
+        template: `
+            <div class="storybook-center">
+                <r-popper
+                    :openOnMount="true"
+                    :margin="[0, 10, 0, 0]"
+                    direction="horizontal"
+                    position="bottomEnd"
+                >
+                    <template #trigger="scope">
+                        <r-button :disabled="disabled" type="primary" @click="scope.popper.toggle">
+                            Click me
+                        </r-button>
+                    </template>
+                    <template #content>
+                        <div class="r-popover">
+                            <div class="r-popover-control">
+                                <div class="r-popover-content r-popover-menu">
+                                    <a class="r-popover-menu-item">
+                                        Popper Content
                                     </a>
                                 </div>
                             </div>
