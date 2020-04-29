@@ -23,6 +23,20 @@ const sprites = `
                 </svg>
             </symbol>
         </svg>
+        <!-- Rebilly Logo fixed -->
+        <svg xmlns="http://www.w3.org/2000/svg">
+            <symbol id="icon-rebilly-logo">
+                <svg id="Layer_1" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 393 150">
+                    <path id="XMLID_53_" class="st0" d="M193 68c-9.4 0-17 7.6-17 17s7.6 17 17 17 17-7.6 17-17-7.6-17-17-17zm-17 41v9h-18V20h18v41s6.4-10 22-10c16.5 0 30 15.3 30 34s-13.5 34-30 34c-15.3 0-22-10-22-10z"/>
+                    <path id="XMLID_52_" class="st0" d="M348.2 114.1L322 52h18.7l16.8 42 16.8-42H393l-40.8 98h-18.6z"/>
+                    <path id="XMLID_49_" class="st0" d="M29 67h18c8.3 0 15-6.7 15-15s-6.7-15-15-15H29v30zm6.5 17H29v34H10V20h40c17.6 0 32 14.4 32 32 0 14.8-10.1 27.6-24.5 31.1l-1.4.3 24.3 34.5H57.5L35.5 84z"/>
+                    <path id="XMLID_46_" class="st0" d="M116 66c-12.6 0-15.6 12-15.6 12h31.1c.1 0-2.9-12-15.5-12zM82 85c0-20 14-34 34-34s34 14 34 34c0 1.7-.1 3.4-.3 5H100v1c0 7.2 7.2 13 16 13 6 0 12.3-2.7 15.6-6.7l13.5 9c-6.4 8.2-16.7 12.7-29.1 12.7-20 0-34-14-34-34z"/>
+                    <path id="XMLID_45_" class="st0" d="M236 52h18v66h-18z"/>
+                    <path id="XMLID_44_" class="st0" d="M266 36h18v82h-18z"/>
+                    <path id="XMLID_32_" class="st0" d="M296 20h18v98h-18z"/>
+                </svg>
+            </symbol>
+        </svg>
         <!-- Dashboard -->
         <svg xmlns="http://www.w3.org/2000/svg">
             <symbol id="icon-dashboard">
@@ -709,7 +723,7 @@ const sprites = `
                     <circle cx="10" cy="10" r="4" fill-rule="evenodd"/>
                 </svg>
             </symbol>
-        </svg>       
+        </svg>
         <!-- Radio Report Match -->
         <svg xmlns="http://www.w3.org/2000/svg">
             <symbol id="icon-report-match">
