@@ -20,10 +20,10 @@
                         <div class="margin-left-auto inline-s">
                             <slot name="header-actions"/>
                         </div>
-                        <r-button 
-                            type="link" 
+                        <r-button
+                            type="link"
                             class="r-modal-btn-close"
-                            @click="$emit('close')" 
+                            @click="$emit('close')"
                             aria-label="close">
                             <r-icon icon="close"/>
                         </r-button>
