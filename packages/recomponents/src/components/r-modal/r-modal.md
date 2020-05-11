@@ -6,6 +6,7 @@
 | `left-actions`    | left action buttons                          |
 | `right-actions`   | right action buttons                         |
 | `actions`         | action buttons after default cancel button   |
+| `header-actions`  | action buttons before close button in header |
 
 
 ### Events
