@@ -17,7 +17,7 @@
                      @mousedown="$event.stopPropagation()">
                     <div v-if="title" class="r-modal-header">
                         <h2>{{title}}</h2>
-                        <div class="margin-left-auto inline-s">
+                        <div class="r-ml-auto r-inline-s">
                             <slot name="header-actions"/>
                         </div>
                         <r-button
