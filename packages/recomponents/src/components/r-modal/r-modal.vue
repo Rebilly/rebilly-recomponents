@@ -19,7 +19,9 @@
                         <h2 class="r-inline-s">
                             {{title}}
                         </h2>
-                        <div class="r-ml-auto r-inline-s">
+                        <div
+                            v-if="$slots['header-actions']"
+                            class="r-ml-auto r-inline-s">
                             <slot name="header-actions"/>
                         </div>
                         <r-button
