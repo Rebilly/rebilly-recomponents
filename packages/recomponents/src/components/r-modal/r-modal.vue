@@ -17,7 +17,13 @@
                      @mousedown="$event.stopPropagation()">
                     <div v-if="title" class="r-modal-header">
                         <h2>{{title}}</h2>
-                        <r-button type="link" class="r-modal-btn-close" @click="$emit('close')" aria-label="close">
+                        <slot name="header-actions"/>
+                        <r-button 
+                            type="link" 
+                            class="r-modal-btn-close"
+                            :class="{'r-ml-s': $slots['header-actions']}"
+                            @click="$emit('close')" 
+                            aria-label="close">
                             <r-icon icon="close"/>
                         </r-button>
                     </div>
