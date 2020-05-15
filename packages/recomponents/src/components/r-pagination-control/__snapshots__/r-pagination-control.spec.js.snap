@@ -1,0 +1,34 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`r-pagination-control.vue should render Wrapper and match snapshot 1`] = `
+<div>
+  <div class="r-pagination-control">
+    <div class="r-pagination-control-buttons-wrapper">
+      <r-button-stub size="regular" type="default" disabled="true" class="r-pagination-control-button">
+        <r-icon-stub icon="arrow-left"></r-icon-stub>
+        Prev
+      </r-button-stub>
+      <r-button-stub size="regular" type="default" disabled="true" class="r-pagination-control-button">
+        Next
+        <r-icon-stub icon="arrow-right"></r-icon-stub>
+      </r-button-stub>
+    </div>
+  </div>
+</div>
+`;
+
+exports[`r-pagination-control.vue should render via SSR and match snapshot 1`] = `
+<div>
+  <div class="r-pagination-control">
+    <div class="r-pagination-control-buttons-wrapper"><button role="button" disabled="disabled" title="Action is disabled" class="r-button r-pagination-control-button r-button-size-regular r-button-type-default">
+        <!----> <svg class="r-icon r-icon-20">
+          <use xlink:href="#icon-arrow-left" xmlns:xlink="http://www.w3.org/1999/xlink"></use>
+        </svg>
+        Prev
+      </button> <button role="button" disabled="disabled" title="Action is disabled" class="r-button r-pagination-control-button r-button-size-regular r-button-type-default">
+        <!----> Next<svg class="r-icon r-icon-20">
+          <use xlink:href="#icon-arrow-right" xmlns:xlink="http://www.w3.org/1999/xlink"></use>
+        </svg></button></div>
+  </div>
+</div>
+`;
