@@ -217,7 +217,6 @@ describe('r-input.vue', () => {
         const wrapper = mount(RInput, {
             propsData: {
                 autoFocus: true,
-                attachToDocument: true,
             },
         });
 
