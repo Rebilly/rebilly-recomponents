@@ -119,4 +119,14 @@ describe('r-button.vue', () => {
         expect(wrapper.classes()).toContain('r-button-fluid');
         expect(wrapper.attributes().disabled).not.toBe(undefined);
     });
+
+    it('should render component with capitalizing the first letter', () => {
+        const wrapper = shallowMount(RButton, {
+            slots: {
+                default: 'click me',
+            },
+        });
+
+        expect(wrapper.text()).toMatch('Click me');
+    });
 });
