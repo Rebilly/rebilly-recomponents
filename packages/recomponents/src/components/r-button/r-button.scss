@@ -2,7 +2,6 @@
     display: inline-block;
     height: auto;
     box-sizing: border-box;
-    text-transform: capitalize;
     text-decoration: none;
     text-align: center;
     vertical-align: baseline;
@@ -17,6 +16,13 @@
     cursor: pointer;
     outline: none;
     transition: var(--button-transition);
+
+    .capitalize-the-first-letter {
+        display: inline-block;
+        &:first-letter {
+            text-transform: uppercase;
+        }
+    }
 
     &:hover {
         text-decoration: none;
