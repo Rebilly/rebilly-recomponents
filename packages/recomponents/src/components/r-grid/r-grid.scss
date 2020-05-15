@@ -1,4 +1,24 @@
 .r-grid {
     display: block;
     margin: 0;
+    background-color: var(--grid-background-color);
 }
+
+.r-repeater-with-frozen-column {
+    overflow-x: scroll;
+    margin-left: 225px !important;
+
+    th {
+        height: 60px;
+    }
+
+    td.r-repeater-cell-frozen,
+    th.r-repeater-cell-frozen {
+        position: absolute;
+        width: 225px;
+        background-color: var(--grid-background-color);
+        left: 20px;
+        top: auto;
+    }
+}
+

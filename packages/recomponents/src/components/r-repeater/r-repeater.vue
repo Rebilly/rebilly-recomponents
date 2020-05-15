@@ -39,7 +39,7 @@
              * Returns some data to be rendered by the default scoped slot
              */
             provider: {
-                type: Function,
+                type: [Function, Promise, Array],
                 required: true,
             },
             /**
