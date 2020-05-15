@@ -7,7 +7,7 @@ storiesOf('Components.Button Group', module)
     .addParameters({component: RButtonGroup})
     .add('Component', () => ({
         data: () => ({
-            list: ['One', 'Two', 'Three', 'Four', 'Five'],
+            list: ['one', 'two', 'three', 'four', 'five'],
             current: 0,
         }),
         props: {

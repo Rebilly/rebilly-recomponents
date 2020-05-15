@@ -24,7 +24,7 @@ storiesOf('Components.Button', module)
                 }, 'primary'),
             },
             text: {
-                default: text('Text', 'Click me'),
+                default: text('Text', 'click me'),
             },
             disabled: {
                 default: boolean('Disabled', false),

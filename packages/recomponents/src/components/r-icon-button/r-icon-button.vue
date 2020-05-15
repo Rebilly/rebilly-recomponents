@@ -12,9 +12,11 @@
 </template>
 
 <script>
+    import CapitalizeTheFirstLetterInSlotMixin from '../mixins/capitalize-the-first-letter-in-slot-mixin';
 
     export default {
         name: 'RIconButton',
+        mixins: [CapitalizeTheFirstLetterInSlotMixin],
         props: {
             /**
              * TBD

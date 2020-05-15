@@ -24,12 +24,14 @@
 </template>
 
 <script>
+    import CapitalizeTheFirstLetterInSlotMixin from '../mixins/capitalize-the-first-letter-in-slot-mixin';
     import RIcon from '../r-icon/r-icon.vue';
 
     // TODO: button type link disabled property doesn't work (hide target, hide link, fix css)
     // TODO prefixes icon classes "r-is-spinning icon-light-gray r-inline-s"
     export default {
         name: 'RButton',
+        mixins: [CapitalizeTheFirstLetterInSlotMixin],
         components: {RIcon},
         props: {
             /**
@@ -107,7 +109,6 @@
                 },
             };
         },
-        methods: {},
     };
 </script>
 

@@ -58,7 +58,7 @@ storiesOf('Components.Icon Button', module)
                     @blur="blur"
                 >
                     <r-icon slot="left-icon" icon="heart"/>
-                    Icon button
+                    icon button
                     <r-icon slot="right-icon" icon="heart"/>
                 </r-icon-button>
             </div>
