@@ -129,7 +129,7 @@
                             row.push(
                                 createElement('td', {
                                     style: column.style || null,
-                                    class: column.class || null,
+                                    class: {...column.class, [`r-repeater-cell-${column.renderAs}`]: true},
                                 }, [
                                     component({
                                         createElement,
@@ -149,7 +149,7 @@
                             row.push(
                                 createElement('td', {
                                     style: column.style || null,
-                                    class: column.class || null,
+                                    class: {...column.class, [`r-repeater-cell-${column.renderAs}`]: true},
                                 }, [
                                     createElement(component, {
                                         props: {
@@ -178,8 +178,8 @@
             },
             renderRepeater(createElement) {
                 return createElement(Repeater, {
-                    class: 'r-grid-repeater',
-                    classes: {
+                    class: {
+                        'r-grid-repeater': true,
                         'r-repeater-with-frozen-column': this.hasFrozenColumn,
                     },
                     props: {
