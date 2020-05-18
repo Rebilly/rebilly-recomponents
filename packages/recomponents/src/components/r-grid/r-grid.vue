@@ -15,6 +15,13 @@
                 required: true,
             },
             /**
+             * Specify if the grid has frozen (fixed) left column
+             */
+            hasFrozenColumn: {
+                type: Boolean,
+                default: false,
+            },
+            /**
              * Defines the property, which changes will trigger the fetching of data
              */
             watcher: {},
@@ -35,7 +42,18 @@
         },
         computed: {
             computedColumns() {
-                return this.columns.columns;
+                return this.columns.columns.map((column, index) => {
+                    if (this.hasFrozenColumn) {
+                        return {
+                            ...column,
+                            class: Object.assign({}, column.class || {}, {
+                                'r-repeater-cell-frozen': index === 0,
+                            }),
+                        };
+                    }
+
+                    return column;
+                });
             },
             computedProvider() {
                 return async () => {
@@ -111,7 +129,7 @@
                             row.push(
                                 createElement('td', {
                                     style: column.style || null,
-                                    class: column.class || null,
+                                    class: {...column.class, [`r-repeater-cell-${column.renderAs}`]: true},
                                 }, [
                                     component({
                                         createElement,
@@ -131,7 +149,7 @@
                             row.push(
                                 createElement('td', {
                                     style: column.style || null,
-                                    class: column.class || null,
+                                    class: {...column.class, [`r-repeater-cell-${column.renderAs}`]: true},
                                 }, [
                                     createElement(component, {
                                         props: {
@@ -160,7 +178,10 @@
             },
             renderRepeater(createElement) {
                 return createElement(Repeater, {
-                    class: 'r-grid-repeater',
+                    class: {
+                        'r-grid-repeater': true,
+                        'r-repeater-with-frozen-column': this.hasFrozenColumn,
+                    },
                     props: {
                         provider: this.computedProvider,
                         watcher: {},
