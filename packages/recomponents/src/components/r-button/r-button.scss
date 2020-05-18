@@ -17,13 +17,6 @@
     outline: none;
     transition: var(--button-transition);
 
-    .capitalize-the-first-letter {
-        display: inline-block;
-        &:first-letter {
-            text-transform: uppercase;
-        }
-    }
-
     &:hover {
         text-decoration: none;
     }

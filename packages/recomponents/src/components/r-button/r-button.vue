@@ -8,7 +8,7 @@
        :target="$attrs.href ? '_target' : $attrs.target || ''"
     >
         <!-- @slot Text content inside button  -->
-        <div class="capitalize-the-first-letter">
+        <div class="capitalize-first-letter">
             <slot>Link</slot>
         </div>
     </a>
@@ -21,7 +21,7 @@
             :title="title"
     >
         <r-icon v-if="loading" icon="loading" class="r-is-spinning r-icon-light-gray r-inline-s"/>
-        <div class="capitalize-the-first-letter">
+        <div class="capitalize-first-letter">
             <slot>Apply</slot>
         </div>
     </button>

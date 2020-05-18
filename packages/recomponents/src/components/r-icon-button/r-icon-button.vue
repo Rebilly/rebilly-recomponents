@@ -6,7 +6,7 @@
         :disabled="disabled"
         v-tooltip="{text: tooltip}">
         <slot name="left-icon"></slot>
-        <div class="capitalize-the-first-letter">
+        <div class="capitalize-first-letter">
             <slot/>
         </div>
         <slot name="right-icon"></slot>
