@@ -1,30 +1,49 @@
 import {storiesOf} from '@storybook/vue';
+import {boolean, number} from '@storybook/addon-knobs';
 import markdown from './r-grid.md';
 import RGrid from './r-grid.vue';
 
 storiesOf('Components/Grid', module)
     .addParameters({component: RGrid})
     .add('Grid', () => ({
+        props: {
+            hasFrozenColumn: {default: boolean('With frozen column', false)},
+            isLoaderFullscreen: {default: boolean('With fullscreen loader', false)},
+            paidColumnDigits: {default: number('Paid column digits', 0)},
+        },
         template: `
-            <r-pagination :provider="provider" :limit="limit" :total="total" @navigate="setPage" :page="page">
-                <template #pagination="{pagination}">
-                    <r-grid :provider="provider(pagination.offset)" :columns="columns" :key="pagination.offset">
-                        <header slot="header">
-                            <h1 class="r-mb-l">Numbers</h1>
-                        </header>
-                        <section slot="empty">
-                            <p>No numbers found.</p>
-                        </section>
-                        <footer slot="footer" v-if="pagination.hasPagination">
-                            <r-pagination-control/>
-                        </footer>
-                    </r-grid>
-                </template>
-            </r-pagination>
+            <div class="storybook-center r-position-relative">
+                <r-pagination :provider="provider" :limit="limit" :total="total" @navigate="setPage" :page="page">
+                    <template #pagination="{pagination}">
+                        <r-grid :provider="provider(pagination.offset)"
+                                :has-frozen-column="hasFrozenColumn" 
+                                :is-loader-fullscreen="isLoaderFullscreen" 
+                                :columns="columns" 
+                                :key="pagination.offset">
+                            <header slot="header">
+                                <h1 class="r-mb-l">Numbers</h1>
+                            </header>
+                            <section slot="empty">
+                                <p>No numbers found.</p>
+                            </section>
+                            <footer slot="footer" v-if="pagination.hasPagination">
+                                <r-pagination-control/>
+                            </footer>
+                        </r-grid>
+                    </template>
+                </r-pagination>
+            </div>
         `,
         data() {
             return {
-                columns: {
+                limit: 3,
+                total: 9,
+                page: 1,
+            };
+        },
+        computed: {
+            columns() {
+                return {
                     columns: [
                         {
                             name: 'id',
@@ -33,7 +52,7 @@ storiesOf('Components/Grid', module)
                         {
                             name: 'name',
                             style: {
-                                minWidth: '300px',
+                                minWidth: '150px',
                                 textAlign: 'center',
                             },
                             renderAs: 'text',
@@ -43,8 +62,14 @@ storiesOf('Components/Grid', module)
                             renderOptions: {
                                 currency: 'USD',
                             },
-                        },
-                        {
+                        }, {
+                            name: 'paid',
+                            renderAs: 'numeric',
+                            renderOptions: {
+                                currency: 'USD',
+                                currencyDigits: this.paidColumnDigits,
+                            },
+                        }, {
                             name: 'type',
                             renderAs: 'badge',
                             renderOptions: {
@@ -56,24 +81,31 @@ storiesOf('Components/Grid', module)
                             renderAs: 'date',
                         },
                     ],
-                },
-                limit: 3,
-                total: 9,
-                page: 1,
-            };
+                };
+            },
         },
         methods: {
             async provider(page) {
                 if (page === 1) {
                     return [
                         {
-                            id: 1, name: 'One', type: 'Odd', money: 4734, updatedAt: '12/25/2019',
+                            id: 1, name: 'One', type: 'Odd', money: 4734, paid: 453.453, updatedAt: '12/25/2019',
                         },
                         {
-                            id: 2, name: 'Two', type: ['Even', 'Prime'], money: 23, updatedAt: '12/25/2019',
+                            id: 2,
+                            name: 'Two',
+                            type: ['Even', 'Prime'],
+                            money: 23,
+                            paid: 453.4534354534,
+                            updatedAt: '12/25/2019',
                         },
                         {
-                            id: 3, name: 'Three', type: ['Odd', 'Prime'], money: 436478326, updatedAt: '12/25/2019',
+                            id: 3,
+                            name: 'Three',
+                            type: ['Odd', 'Prime'],
+                            money: 436478326,
+                            paid: 123.23123,
+                            updatedAt: '12/25/2019',
                         },
                     ];
                 }

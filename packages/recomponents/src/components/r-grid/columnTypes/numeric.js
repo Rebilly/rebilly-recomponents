@@ -19,6 +19,7 @@ export default ({createElement, props}) => {
             renderOptions: {
                 approximate,
                 currency,
+                currencyDigits,
                 percentage,
                 digits,
                 internationalFormat,
@@ -38,9 +39,16 @@ export default ({createElement, props}) => {
         } else if (internationalFormat) {
             displayValue = typeof Intl !== 'undefined' ? new Intl.NumberFormat().format(value) : value;
         } else if (currency) {
+            const options = {style: 'currency', currency};
+
+            if ((currencyDigits || currencyDigits === 0) && !isNaN(currencyDigits)) {
+                options.minimumFractionDigits = currencyDigits;
+                options.maximumFractionDigits = currencyDigits;
+            }
+
             displayValue = typeof Intl !== 'undefined'
-                ? new Intl.NumberFormat(undefined, {style: 'currency', currency}).format(value)
-                : `${value} ${currency}`;
+                ? new Intl.NumberFormat(undefined, options).format(value)
+                : `${currencyDigits ? (+value).toFixed(currencyDigits) : value} ${currency}`;
         } else if (percentage) {
             if (percentage === true) {
                 if (hasDigits) {
