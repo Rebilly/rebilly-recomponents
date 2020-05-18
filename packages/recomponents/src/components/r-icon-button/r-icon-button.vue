@@ -6,9 +6,10 @@
         :disabled="disabled"
         v-tooltip="{text: tooltip}">
         <slot name="left-icon"></slot>
-        <div class="capitalize-first-letter">
-            <slot/>
+        <div v-if="capitalizeFirstLetter" class="r-capitalize-first-letter">
+            <slot>Apply</slot>
         </div>
+        <slot v-else>Apply</slot>
         <slot name="right-icon"></slot>
     </button>
 </template>
@@ -68,6 +69,13 @@
             tooltipRightEdge: {
                 type: Boolean,
                 default: false,
+            },
+            /**
+             * Capitalize the first letter
+             */
+            capitalizeFirstLetter: {
+                type: Boolean,
+                default: true,
             },
         },
         computed: {
