@@ -82,3 +82,10 @@ $directions: (
 .r-position-absolute {
     position: absolute !important;
 }
+
+.r-capitalize-first-letter {
+    display: inline-block;
+    &:first-letter {
+        text-transform: uppercase;
+    }
+}

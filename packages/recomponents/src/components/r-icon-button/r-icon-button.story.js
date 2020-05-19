@@ -37,6 +37,9 @@ storiesOf('Components.Icon Button', module)
             tooltipRightEdge: {
                 default: boolean('tooltipRightEdge', false),
             },
+            capitalizeFirstLetter: {
+                default: boolean('CapitalizeFirstLetter', true),
+            },
         },
         methods: {
             click: action('click'),
@@ -53,12 +56,13 @@ storiesOf('Components.Icon Button', module)
                     :tooltip="tooltip"
                     :fitted="fitted"
                     :tooltipRightEdge="tooltipRightEdge"
+                    :capitalizeFirstLetter="capitalizeFirstLetter"
                     @click="click"
                     @focus="focus"
                     @blur="blur"
                 >
                     <r-icon slot="left-icon" icon="heart"/>
-                    Icon button
+                    icon button
                     <r-icon slot="right-icon" icon="heart"/>
                 </r-icon-button>
             </div>
