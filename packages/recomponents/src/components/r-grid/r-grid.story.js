@@ -12,7 +12,7 @@ storiesOf('Components/Grid', module)
             paidColumnDigits: {default: number('Paid column digits', 0)},
         },
         template: `
-            <div class="storybook-center r-position-relative">
+            <div class="storybook-center r-position-relative" style="background-color: white;">
                 <r-pagination :provider="provider" :limit="limit" :total="total" @navigate="setPage" :page="page">
                     <template #pagination="{pagination}">
                         <r-grid :provider="provider(pagination.offset)"
