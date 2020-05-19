@@ -8,7 +8,10 @@
        :target="$attrs.href ? '_target' : $attrs.target || ''"
     >
         <!-- @slot Text content inside button  -->
-        <slot>Link</slot>
+        <div v-if="capitalizeFirstLetter" class="r-capitalize-first-letter">
+            <slot>Link</slot>
+        </div>
+        <slot v-else>Apply</slot>
     </a>
     <button v-else
             role="button"
@@ -19,7 +22,10 @@
             :title="title"
     >
         <r-icon v-if="loading" icon="loading" class="r-is-spinning r-icon-light-gray r-inline-s"/>
-        <slot>Apply</slot>
+        <div v-if="capitalizeFirstLetter" class="r-capitalize-first-letter">
+            <slot>Apply</slot>
+        </div>
+        <slot v-else>Apply</slot>
     </button>
 </template>
 
@@ -75,6 +81,13 @@
             loading: {
                 type: Boolean,
                 default: false,
+            },
+            /**
+             * Capitalize the first letter
+             */
+            capitalizeFirstLetter: {
+                type: Boolean,
+                default: true,
             },
         },
         computed: {

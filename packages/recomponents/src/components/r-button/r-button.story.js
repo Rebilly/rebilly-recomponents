@@ -24,7 +24,7 @@ storiesOf('Components.Button', module)
                 }, 'primary'),
             },
             text: {
-                default: text('Text', 'Click me'),
+                default: text('Text', 'click me'),
             },
             disabled: {
                 default: boolean('Disabled', false),
@@ -34,6 +34,9 @@ storiesOf('Components.Button', module)
             },
             fluid: {
                 default: boolean('Fluid', false),
+            },
+            capitalizeFirstLetter: {
+                default: boolean('CapitalizeFirstLetter', true),
             },
             href: {
                 default: text('href', 'https://google.com/'),
@@ -52,6 +55,7 @@ storiesOf('Components.Button', module)
                     :fluid="fluid"
                     :disabled="disabled"
                     :loading="loading"
+                    :capitalizeFirstLetter="capitalizeFirstLetter"
                     :href="href"
                     @click="click"
                     @focus="focus"
