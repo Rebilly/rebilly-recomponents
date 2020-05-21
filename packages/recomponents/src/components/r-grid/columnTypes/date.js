@@ -30,6 +30,6 @@ export default ({createElement, props}) => {
                 title: `Time zone ${timezone.tz()}`,
             },
         },
-        timezone.readUTC(props.value).format(dateFormat),
+        timezone.fromDate(props.value).format(dateFormat),
     );
 };
