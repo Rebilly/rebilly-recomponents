@@ -5,12 +5,12 @@ exports[`r-date-range.vue renders props when passed 1`] = `
   <div role="group" class="r-button-group"><button class="r-button r-button-type-default r-button-size-regular r-has-icon-left"><svg class="r-icon r-icon-20 r-date-range-calendar-icon">
         <use xlink:href="#icon-calendar" xmlns:xlink="http://www.w3.org/1999/xlink"></use>
       </svg>
-      <div class="r-capitalize-first-letter"><span title="America/Montreal" class="r-date-range-label">
+      <div role="button" class="r-capitalize-first-letter button"><span title="America/Montreal" class="r-date-range-label">
                     Dec 31, 2019 - Jan 1, 2020
                 </span> </div>
     </button>
     <div class="r-popper r-date-range-preset-picker"><button class="r-button r-button-type-default r-button-size-regular r-has-icon">
-        <div class="r-capitalize-first-letter"><svg class="r-icon r-icon-20">
+        <div role="button" class="r-capitalize-first-letter button"><svg class="r-icon r-icon-20">
             <use xlink:href="#icon-actions" xmlns:xlink="http://www.w3.org/1999/xlink"></use>
           </svg></div>
       </button>
