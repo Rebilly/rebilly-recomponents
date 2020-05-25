@@ -223,6 +223,17 @@ describe('r-input.vue', () => {
         expect(wrapper.find('input').element).toBe(document.activeElement);
     });
 
+    it('renders data attributes if one is provided', () => {
+        const wrapper = shallowMount(RInput, {
+            propsData: {
+                'data-test': 'testValue',
+            },
+        });
+
+        expect(wrapper.find('input').attributes()).toHaveProperty('data-test');
+        expect(wrapper.find('input').attributes('data-test')).toBe('testValue');
+    });
+
     it('should trigger all events', () => {
         const wrapper = mount(RInput, {
             propsData: {},

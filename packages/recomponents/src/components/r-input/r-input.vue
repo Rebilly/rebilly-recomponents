@@ -21,7 +21,9 @@
                     @click="click"
                     :name="name"
                     :maxlength="maxLength"
-                    :autocomplete="autocompleteFlag"/>
+                    :autocomplete="autocompleteFlag"
+                    v-bind="$attrs"
+            />
             <textarea
                     ref="textarea"
                     :id="name"
@@ -37,7 +39,9 @@
                     :placeholder="placeholder"
                     :disabled="disabled"
                     :rows="rows"
-                    :name="name">
+                    :name="name"
+                    v-bind="$attrs"
+            >
             </textarea>
             <textarea
                     ref="textarea"
@@ -54,7 +58,9 @@
                     :placeholder="placeholder"
                     :disabled="disabled"
                     :rows="rows"
-                    :name="name">
+                    :name="name"
+                    v-bind="$attrs"
+            >
             </textarea>
         </template>
         <div class="r-field-group" v-if="isGroupedInput">
@@ -83,7 +89,9 @@
                         @click="click"
                         :name="name"
                         :maxlength="maxLength"
-                        :autocomplete="autocompleteFlag"/>
+                        :autocomplete="autocompleteFlag"
+                        v-bind="$attrs"
+                />
                 <r-icon
                         v-if="rightIcon"
                         :icon="rightIcon"
