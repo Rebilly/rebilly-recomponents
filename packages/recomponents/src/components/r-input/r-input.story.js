@@ -44,6 +44,7 @@ storiesOf('Components.Input', module)
                     @key-submit="keySubmit"
                     @key-press="keyPress"
                     @key-down="keyDown"
+                    data-custom="value"
                     />
             </div>
         `,
