@@ -129,7 +129,11 @@
                             row.push(
                                 createElement('td', {
                                     style: column.style || null,
-                                    class: {...column.class, [`r-repeater-cell-${column.renderAs}`]: true},
+                                    class: {
+                                        ...column.class,
+                                        [`r-repeater-cell-${column.renderAs}`]: true,
+                                        'r-repeater-cell-highlighted': column.highlight && column.highlight(prop.item[column.name]),
+                                    },
                                 }, [
                                     component({
                                         createElement,

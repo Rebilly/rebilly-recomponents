@@ -12,6 +12,11 @@
     padding: var(--space-xs) !important;
 }
 
+.r-repeater-cell-highlighted {
+    background-color: var(--primary-color);
+    color: var(--mono-color-0);
+}
+
 .r-repeater-with-frozen-column {
     overflow-x: scroll;
     min-width: 400px;
