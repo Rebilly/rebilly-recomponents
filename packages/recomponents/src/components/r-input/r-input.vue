@@ -113,6 +113,7 @@
     // TODO classes prefix r-is-error, r-no-flex, etc.
     export default {
         name: 'RInput',
+        inheritAttrs: false,
         components: {rIcon},
         props: {
             /**
