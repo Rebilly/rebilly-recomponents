@@ -1,6 +1,7 @@
 <script>
     import Repeater from '../r-repeater/r-repeater.vue';
     import ColumnTypes from './columnTypes';
+    import getColorFromIndex from './helpers/color-generator';
 
     export default {
         components: {
@@ -128,12 +129,8 @@
                         if (typeof component === 'function') {
                             row.push(
                                 createElement('td', {
-                                    style: column.style || null,
-                                    class: {
-                                        ...column.class,
-                                        [`r-repeater-cell-${column.renderAs}`]: true,
-                                        'r-repeater-cell-highlighted': column.highlight && column.highlight(prop.item[column.name]),
-                                    },
+                                    style: Object.assign({}, column.style, column.highlight && getColorFromIndex(prop.item[column.name])),
+                                    class: {...column.class, [`r-repeater-cell-${column.renderAs}`]: true},
                                 }, [
                                     component({
                                         createElement,
