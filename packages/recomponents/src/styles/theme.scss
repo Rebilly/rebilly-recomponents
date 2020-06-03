@@ -498,16 +498,36 @@ body, .article {
     --toast-container-top: 88px;
     --toast-container-right: 32px;
     --toast-container-z-index: var(--z-index-1000);
+
+    // Month Picker
+    --month-picker-box-shadow: var(--popover-box-shadow);
+    --month-picker-year-font-size: var(--font-size-h2);
+    --month-picker-year-font-weight: var(--font-weight-medium);
+    --month-picker-year-margin-bottom: var(--space-s);
+    --month-picker-month-selected: var(--button-color);
+    --month-picker-month-background: var(--button-default-background);
+    --month-picker-month-color: var(--button-default-color);
+    --month-picker-month-box-shadow: var(--button-default-box-shadow);
+    --month-picker-month-border: var(--button-default-border);
+    --month-picker-month-hover-border: var(--button-primary-hover-border);
+    --month-picker-month-hover-box-shadow: var(--button-primary-hover-box-shadow);
+    --month-picker-month-hover-background: var(--button-primary-hover-background);
+    --month-picker-month-hover-color: var(--button-primary-hover-color);
+    --month-picker-month-selected-border: var(--button-primary-active-border);
+    --month-picker-month-selected-box-shadow: var(--button-primary-active-box-shadow);
+    --month-picker-month-selected-background: var(--button-primary-active-background);
+    --month-picker-month-selected-color: var(--button-primary-active-color);
 }
+
 
 // Media Breakpoints
 // ------------------------------------------------
 $breakpoints: (
-    'phone': 576px,
-    'tablet': 768px,
-    'small-desktop': 994px,
-    'desktop': 1100px,
-    'large-desktop': 1200px,
+        'phone': 576px,
+        'tablet': 768px,
+        'small-desktop': 994px,
+        'desktop': 1100px,
+        'large-desktop': 1200px,
 ) !default;
 
 h1, .h1 {

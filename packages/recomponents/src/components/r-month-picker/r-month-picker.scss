@@ -1,0 +1,46 @@
+.r-month-picker-container {
+    min-width: 245px;
+    padding: var(--space-s) var(--space-s) var(--space-s) 18px;
+}
+
+.r-month-picker {
+    box-sizing: border-box;
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    overflow: hidden;
+}
+
+.r-month-picker-year {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: calc(100% - 10px);
+    font-weight: var(--month-picker-year-font-weight);
+    font-size: var(--month-picker-year-font-size);
+    margin-bottom: var(--month-picker-year-margin-bottom);
+}
+
+.r-month-picker-month {
+    flex-basis: calc(33.333% - 10px);
+    padding: 0.75em 0.25em;
+    cursor: pointer;
+    text-align: center;
+    color: var(--month-picker-month-color);
+    border: var(--month-picker-month-border);
+    box-shadow: var(--month-picker-month-box-shadow);
+    background: var(--month-picker-month-background);
+}
+
+.r-month-picker-month.r-month-picker-month-selected {
+    background: var(--month-picker-month-selected-background);
+    color: var(--month-picker-month-selected-color);
+    box-shadow: var(--month-picker-month-selected-box-shadow)
+}
+
+.r-month-picker .r-month-picker-month:hover {
+    border: var(--month-picker-month-hover-border);
+    box-shadow: var(--month-picker-month-hover-box-shadow);
+    color: var(--month-picker-month-hover-color);
+    background: var(--month-picker-month-hover-background);
+}
