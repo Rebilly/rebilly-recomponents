@@ -58,11 +58,7 @@ export default ({createElement, props}) => {
                 }
             } else {
                 const calculatedPercentage = (value / percentage) * 100;
-                if (hasDigits) {
-                    displayValue = `${calculatedPercentage.toFixed(digits)}%`;
-                } else {
-                    displayValue = `${calculatedPercentage}%`;
-                }
+                displayValue = `${calculatedPercentage.toFixed(hasDigits ? digits : 2)}%`;
             }
         } else if (value < 0) {
             if (hasDigits) {
