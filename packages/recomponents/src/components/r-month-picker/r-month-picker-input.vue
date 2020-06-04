@@ -17,7 +17,6 @@
                                 @change="populateInput"
                                 @clear="onClear"
                                 :default-value="date || defaultValue"
-                                :months="months"
                                 :clearable="clearable">
                         </r-month-picker>
                     </div>
@@ -29,10 +28,15 @@
 
 <script>
     import MonthPickerMixin from './month-picker-mixin';
+    import RIconButton from '../r-icon-button/r-icon-button';
+    import RIcon from '../r-icon/r-icon';
+    import RPopper from '../r-popper/r-popper';
+    import RMonthPicker from './r-month-picker';
 
     export default {
         name: 'r-month-picker-input',
         mixins: [MonthPickerMixin],
+        components: {RIcon, RIconButton, RPopper, RMonthPicker},
         data() {
             return {
                 selectedDate: null,

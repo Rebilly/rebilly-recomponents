@@ -27,9 +27,12 @@
 
 <script>
     import MonthPickerMixin from './month-picker-mixin';
+    import RIconButton from '../r-icon-button/r-icon-button';
+    import RIcon from '../r-icon/r-icon';
 
     export default {
         name: 'r-month-picker',
+        components: {RIconButton, RIcon},
         mixins: [MonthPickerMixin],
         computed: {
             currentMonth() {

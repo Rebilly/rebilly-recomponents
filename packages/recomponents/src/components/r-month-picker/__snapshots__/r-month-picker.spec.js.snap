@@ -1,0 +1,107 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`r-month-picker.vue should render Wrapper and match snapshot 1`] = `
+<div class="r-month-picker-container">
+  <div class="r-month-picker-year">
+    <r-icon-button-stub type="default" size="small" capitalizefirstletter="true">
+      <r-icon-stub icon="caret-left"></r-icon-stub>
+    </r-icon-button-stub>
+    <div>2020</div>
+    <r-icon-button-stub type="default" size="small" capitalizefirstletter="true">
+      <r-icon-stub icon="caret-right"></r-icon-stub>
+    </r-icon-button-stub>
+  </div>
+  <div class="r-month-picker">
+    <div class="r-month-picker-month">
+      January
+    </div>
+    <div class="r-month-picker-month">
+      February
+    </div>
+    <div class="r-month-picker-month">
+      March
+    </div>
+    <div class="r-month-picker-month">
+      April
+    </div>
+    <div class="r-month-picker-month">
+      May
+    </div>
+    <div class="r-month-picker-month">
+      June
+    </div>
+    <div class="r-month-picker-month">
+      July
+    </div>
+    <div class="r-month-picker-month">
+      August
+    </div>
+    <div class="r-month-picker-month">
+      September
+    </div>
+    <div class="r-month-picker-month">
+      October
+    </div>
+    <div class="r-month-picker-month">
+      November
+    </div>
+    <div class="r-month-picker-month">
+      December
+    </div>
+  </div>
+</div>
+`;
+
+exports[`r-month-picker.vue should render via SSR and match snapshot 1`] = `
+<div class="r-month-picker-container">
+  <div class="r-month-picker-year"><button class="r-button r-button-type-default r-button-size-small r-has-icon">
+      <div role="button" class="r-capitalize-first-letter button"><svg class="r-icon r-icon-20">
+          <use xlink:href="#icon-caret-left" xmlns:xlink="http://www.w3.org/1999/xlink"></use>
+        </svg></div>
+    </button>
+    <div>2020</div> <button class="r-button r-button-type-default r-button-size-small r-has-icon">
+      <div role="button" class="r-capitalize-first-letter button"><svg class="r-icon r-icon-20">
+          <use xlink:href="#icon-caret-right" xmlns:xlink="http://www.w3.org/1999/xlink"></use>
+        </svg></div>
+    </button>
+  </div>
+  <div class="r-month-picker">
+    <div class="r-month-picker-month">
+      January
+    </div>
+    <div class="r-month-picker-month">
+      February
+    </div>
+    <div class="r-month-picker-month">
+      March
+    </div>
+    <div class="r-month-picker-month">
+      April
+    </div>
+    <div class="r-month-picker-month">
+      May
+    </div>
+    <div class="r-month-picker-month">
+      June
+    </div>
+    <div class="r-month-picker-month">
+      July
+    </div>
+    <div class="r-month-picker-month">
+      August
+    </div>
+    <div class="r-month-picker-month">
+      September
+    </div>
+    <div class="r-month-picker-month">
+      October
+    </div>
+    <div class="r-month-picker-month">
+      November
+    </div>
+    <div class="r-month-picker-month">
+      December
+    </div>
+  </div>
+</div>
+`;
