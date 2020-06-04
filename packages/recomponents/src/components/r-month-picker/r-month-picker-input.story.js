@@ -1,8 +1,8 @@
 import {storiesOf} from '@storybook/vue';
 import {action} from '@storybook/addon-actions';
+import {boolean, number, select} from '@storybook/addon-knobs';
 import markdown from './r-month-picker.md';
 import RMonthPickerInput from './r-month-picker-input.vue';
-import {boolean, number, select} from '@storybook/addon-knobs';
 import months from './months';
 
 storiesOf('Components.Month Picker', module)

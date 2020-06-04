@@ -27,8 +27,8 @@
 
 <script>
     import MonthPickerMixin from './month-picker-mixin';
-    import RIconButton from '../r-icon-button/r-icon-button';
-    import RIcon from '../r-icon/r-icon';
+    import RIconButton from '../r-icon-button/r-icon-button.vue';
+    import RIcon from '../r-icon/r-icon.vue';
 
     export default {
         name: 'r-month-picker',
@@ -39,6 +39,7 @@
                 if (this.currentMonthIndex !== null) {
                     return this.months[this.currentMonthIndex];
                 }
+                return null;
             },
             date() {
                 const monthIndex = this.months.indexOf(this.currentMonth);
@@ -55,8 +56,8 @@
         },
         methods: {
             onChange() {
-                if (!Number.parseInt(this.year)) {
-                    this.year = this.defaultValue && this.defaultValue.year || new Date().getFullYear();
+                if (!Number.parseInt(this.year, 10)) {
+                    this.year = (this.defaultValue && this.defaultValue.year) || new Date().getFullYear();
                 }
 
                 /**

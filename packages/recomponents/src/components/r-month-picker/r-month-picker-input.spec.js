@@ -48,6 +48,5 @@ describe('r-month-picker-input.vue', () => {
         expect(wrapper.find('.r-month-picker-month-selected').text()).toEqual('December');
         await wrapper.find('.r-month-picker-month-selected').trigger('click');
         expect(wrapper.find('.r-month-picker-input').text()).toEqual('No month selected');
-
     });
 });

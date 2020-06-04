@@ -28,15 +28,17 @@
 
 <script>
     import MonthPickerMixin from './month-picker-mixin';
-    import RIconButton from '../r-icon-button/r-icon-button';
-    import RIcon from '../r-icon/r-icon';
-    import RPopper from '../r-popper/r-popper';
-    import RMonthPicker from './r-month-picker';
+    import RIconButton from '../r-icon-button/r-icon-button.vue';
+    import RIcon from '../r-icon/r-icon.vue';
+    import RPopper from '../r-popper/r-popper.vue';
+    import RMonthPicker from './r-month-picker.vue';
 
     export default {
         name: 'r-month-picker-input',
         mixins: [MonthPickerMixin],
-        components: {RIcon, RIconButton, RPopper, RMonthPicker},
+        components: {
+            RIcon, RIconButton, RPopper, RMonthPicker,
+        },
         data() {
             return {
                 selectedDate: null,
