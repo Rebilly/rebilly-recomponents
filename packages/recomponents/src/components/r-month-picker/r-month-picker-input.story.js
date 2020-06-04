@@ -1,19 +1,19 @@
 import {storiesOf} from '@storybook/vue';
 import {action} from '@storybook/addon-actions';
 import markdown from './r-month-picker.md';
-import RMonthPicker from './r-month-picker.vue';
+import RMonthPickerInput from './r-month-picker-input.vue';
 import {boolean, number, select} from '@storybook/addon-knobs';
 import months from './months';
 
 storiesOf('Components.Month Picker', module)
-    .addParameters({component: RMonthPicker})
-    .add('Month Picker', () => ({
+    .addParameters({component: RMonthPickerInput})
+    .add('Month Picker Input', () => ({
         props: {
             defaultMonth: {
                 default: select(
                     'Default Month',
                     months,
-                    'June',
+                    'February',
                 ),
             },
             defaultYear: {default: number('Default Year', 2020)},
@@ -21,9 +21,6 @@ storiesOf('Components.Month Picker', module)
         },
         methods: {
             input: action('input'),
-            clear: action('clear'),
-            change: action('change'),
-            changeYear: action('change-year'),
         },
         computed: {
             defaultValue() {
@@ -35,13 +32,12 @@ storiesOf('Components.Month Picker', module)
         },
         template: `
             <div class="storybook-center">
-                <r-month-picker
+                <r-month-picker-input
                         :default-value="defaultValue"
+                        :default-month="2"
                         :clearable="clearable"
-                        @input="input"
-                        @clear="clear"
-                        @change="change"
-                        @change-year="changeYear"/>
+                        :default-year="2020"
+                        @input="input"/>
             </div>
 `,
     }), {

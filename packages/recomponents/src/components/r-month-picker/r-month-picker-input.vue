@@ -3,7 +3,8 @@
         <template #trigger="monthPicker">
             <r-icon-button class="r-month-picker-input"
                            @click="$refs['monthPicker'].popper.toggle()">
-                {{ selectedDate }}
+                <span v-if="selectedDate">{{ selectedDate }}</span>
+                <span v-else class="r-text-muted">{{ placeholder }}</span>
                 <r-icon class="r-date-range-calendar-icon" slot="left-icon" icon="calendar"/>
             </r-icon-button>
         </template>
@@ -12,9 +13,10 @@
                 <div class="r-popover-control">
                     <div class="r-popover-content r-popover-menu" width="300px">
                         <r-month-picker
+                                @input="$refs['monthPicker'].popper.close()"
                                 @change="populateInput"
-                                :lang="lang"
-                                :default-value="defaultValue"
+                                @clear="onClear"
+                                :default-value="date || defaultValue"
                                 :months="months"
                                 :clearable="clearable">
                         </r-month-picker>
@@ -33,22 +35,42 @@
         mixins: [MonthPickerMixin],
         data() {
             return {
-                monthPickerVisible: false,
                 selectedDate: null,
+                date: null,
             };
         },
-        mounted() {
-            if (this.defaultValue) {
-                const month = this.defaultValue.month ? this.defaultValue.month - 1 : 0;
-                const year = this.defaultValue.year ? this.defaultValue.year : new Date().getFullYear();
-                this.populateInput({month: this.monthsByLang[month], year});
-            }
+        props: {
+            /**
+             * Placeholder of the input if no month is selected
+             */
+            placeholder: {
+                type: String,
+                default: 'Select month',
+            },
         },
         methods: {
             populateInput(date) {
                 this.selectedDate = `${date.month}, ${date.year}`;
-                this.monthPickerVisible = false;
+                this.date = date;
+                /**
+                 * The month selected
+                 * @type {Event}
+                 */
                 this.$emit('input', date);
+            },
+            onClear() {
+                this.selectedDate = null;
+                this.date = null;
+                /**
+                 * The month picker is clear
+                 * @type {Event}
+                 */
+                this.$emit('clear');
+            },
+        },
+        watch: {
+            currentMonthIndex() {
+                this.populateInput({month: this.months[this.currentMonthIndex], year: this.year});
             },
         },
     };

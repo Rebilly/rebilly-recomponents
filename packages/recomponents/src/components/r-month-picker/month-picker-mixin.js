@@ -1,36 +1,14 @@
-import languages from './languages';
+import months from './months';
 
 export default {
     props: {
-        /**
-         * Language
-         */
-        lang: {
-            type: String,
-            default: 'en',
-            validator: function (value) {
-                return Object.keys(languages).some(l => Object.is(l, value));
-            },
-            required: false,
-        },
-        /**
-         * List of months
-         */
-        months: {
-            type: Array,
-            default: null,
-            validator: function (value) {
-                return value.length === 12;
-            },
-            required: false,
-        },
         /**
          * Preselected month and year
          */
         defaultValue: {
             type: Object,
             default: () => ({
-                month: new Date().getMonth(),
+                monthIndex: new Date().getMonth(),
                 year: new Date().getFullYear(),
             }),
             required: false,
@@ -52,13 +30,34 @@ export default {
             required: false,
         },
     },
-    computed: {
-        monthsByLang: function () {
-            if (this.months !== null &&
-                this.months.length === 12) {
-                return this.months;
+    data() {
+        return {
+            currentMonthIndex: null,
+            year: new Date().getFullYear(),
+            months,
+        };
+    },
+    mounted() {
+        if (this.defaultValue) {
+            this.setDefaults(this.defaultValue);
+        }
+    },
+    methods: {
+        setDefaults(value) {
+            if (value.monthIndex) {
+                this.currentMonthIndex = value.monthIndex;
             }
-            return languages[this.lang];
+            if (value.month) {
+                this.currentMonthIndex = this.months.indexOf(value.month);
+            }
+            if (value.year) {
+                this.year = value.year;
+            }
+        },
+    },
+    watch: {
+        defaultValue(newVal) {
+            this.setDefaults(newVal);
         },
     },
 };

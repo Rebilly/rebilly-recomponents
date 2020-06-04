@@ -14,7 +14,7 @@
             </r-icon-button>
         </div>
         <div class="r-month-picker">
-            <div v-for="(month, i) in monthsByLang"
+            <div v-for="(month, i) in months"
                  :key="month"
                  :class="{'r-month-picker-month-selected': currentMonth === month}"
                  class="r-month-picker-month"
@@ -31,47 +31,24 @@
     export default {
         name: 'r-month-picker',
         mixins: [MonthPickerMixin],
-        data() {
-            return {
-                currentMonthIndex: null,
-                year: new Date().getFullYear(),
-            };
-        },
         computed: {
             currentMonth() {
                 if (this.currentMonthIndex !== null) {
-                    return this.monthsByLang[this.currentMonthIndex];
+                    return this.months[this.currentMonthIndex];
                 }
             },
             date() {
-                const month = this.monthsByLang.indexOf(this.currentMonth) + 1;
-                const date = new Date(`${this.year}/${month}/01`);
+                const monthIndex = this.months.indexOf(this.currentMonth);
+                const date = new Date(`${this.year}/${monthIndex + 1}/01`);
                 const year = date.getFullYear();
                 return {
                     from: date,
-                    to: new Date(year, month, 1),
-                    month: this.monthsByLang[month - 1],
-                    monthIndex: month,
-                    year: year,
+                    to: new Date(year, monthIndex + 1, 1),
+                    month: this.months[monthIndex],
+                    monthIndex,
+                    year,
                 };
             },
-        },
-        watch: {
-            defaultValue(newVal) {
-                if (newVal.month) {
-                    this.currentMonthIndex = newVal.month;
-                }
-                if (newVal.year) {
-                    this.year = newVal.year;
-                }
-            },
-        },
-        mounted() {
-            if (this.defaultValue && this.defaultValue.year) {
-                this.year = this.defaultValue.year;
-            }
-
-            this.selectMonth(this.defaultValue && this.defaultValue.month ? this.defaultValue.month - 1 : 0);
         },
         methods: {
             onChange() {
@@ -79,6 +56,10 @@
                     this.year = this.defaultValue && this.defaultValue.year || new Date().getFullYear();
                 }
 
+                /**
+                 * The month/year were changed
+                 * @type {Event}
+                 */
                 this.$emit('change', this.date);
             },
             selectMonth(index, input = false) {
@@ -86,6 +67,10 @@
 
                 if (this.clearable && isAlreadySelected) {
                     this.currentMonthIndex = null;
+                    /**
+                     * Already selected month was clicked when the month picker is clearable
+                     * @type {Event}
+                     */
                     this.$emit('clear');
                     return;
                 }
@@ -98,12 +83,20 @@
                 this.onChange();
 
                 if (input) {
+                    /**
+                     * The month selected
+                     * @type {Event}
+                     */
                     this.$emit('input', this.date);
                 }
             },
             changeYear(value) {
                 this.year += value;
                 this.onChange();
+                /**
+                 * The year changed
+                 * @type {Event}
+                 */
                 this.$emit('change-year', this.year);
             },
         },
