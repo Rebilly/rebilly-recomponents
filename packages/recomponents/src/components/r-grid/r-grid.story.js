@@ -71,6 +71,12 @@ storiesOf('Components/Grid', module)
                             highlight: true,
 
                         }, {
+                            name: 'duration',
+                            renderAs: 'numeric',
+                            renderOptions: {
+                                duration: 'seconds',
+                            },
+                        }, {
                             name: 'paid',
                             renderAs: 'numeric',
                             renderOptions: {
@@ -102,6 +108,7 @@ storiesOf('Components/Grid', module)
                             type: 'Odd',
                             money: 4734,
                             paid: 453.453,
+                            duration: 9989709,
                             rating: 1.00,
                             updatedAt: '12/25/2019',
                         },
@@ -111,6 +118,7 @@ storiesOf('Components/Grid', module)
                             type: ['Even', 'Prime'],
                             money: 23,
                             paid: 453.4534354534,
+                            duration: 1232345,
                             rating: 0.12,
                             updatedAt: '12/25/2019',
                         },
@@ -119,6 +127,7 @@ storiesOf('Components/Grid', module)
                             name: 'Three',
                             type: ['Odd', 'Prime'],
                             money: 436478326,
+                            duration: 2345345,
                             rating: 0.74,
                             paid: 123.23123,
                             updatedAt: '12/25/2019',
@@ -132,6 +141,7 @@ storiesOf('Components/Grid', module)
                             name: 'Four',
                             type: 'Even',
                             money: 436478326,
+                            duration: 123,
                             rating: 0.97,
                             paid: 123.23123,
                             updatedAt: '12/25/2019',
@@ -141,6 +151,7 @@ storiesOf('Components/Grid', module)
                             name: 'Five',
                             type: ['Odd', 'Prime'],
                             money: 436478326,
+                            duration: 360,
                             rating: 0.01,
                             paid: 123.23123,
                             updatedAt: '12/25/2019',
@@ -152,6 +163,7 @@ storiesOf('Components/Grid', module)
                             money: 436478326,
                             rating: 1.74,
                             paid: 123.23123,
+                            duration: 34534,
                             updatedAt: '12/25/2019',
                         },
                     ];
@@ -164,6 +176,7 @@ storiesOf('Components/Grid', module)
                             type: ['Odd', 'Prime'],
                             money: 436478326,
                             rating: 0.80,
+                            duration: 45456373763657356735673567,
                             paid: 123.23123,
                             updatedAt: '12/25/2019',
                         },
@@ -174,6 +187,7 @@ storiesOf('Components/Grid', module)
                             money: 436478326,
                             rating: 0.23,
                             paid: 123.23123,
+                            duration: 5435345435354,
                             updatedAt: '12/25/2019',
                         },
                         {
@@ -182,6 +196,7 @@ storiesOf('Components/Grid', module)
                             type: 'Odd',
                             money: 436478326,
                             rating: 0.55,
+                            duration: 453,
                             paid: 123.23123,
                             updatedAt: '12/25/2019',
                         },

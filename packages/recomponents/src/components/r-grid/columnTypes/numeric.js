@@ -1,4 +1,5 @@
 import approximateNumber from 'approximate-number';
+import moment from 'moment';
 
 /**
  * renderOptions:
@@ -23,6 +24,7 @@ export default ({createElement, props}) => {
                 percentage,
                 digits,
                 internationalFormat,
+                duration,
             } = {},
         },
     } = props;
@@ -30,7 +32,7 @@ export default ({createElement, props}) => {
     let hasDigits = false;
 
     if (value || !isNaN(value)) {
-        if (digits && !isNaN(digits)) {
+        if (digits !== undefined && !isNaN(digits)) {
             hasDigits = true;
         }
 
@@ -60,6 +62,9 @@ export default ({createElement, props}) => {
                 const calculatedPercentage = (value / percentage) * 100;
                 displayValue = `${calculatedPercentage.toFixed(hasDigits ? digits : 2)}%`;
             }
+        } else if (duration) {
+            const unit = duration === true ? 'seconds' : duration;
+            displayValue = moment.duration(value, unit).humanize();
         } else if (value < 0) {
             if (hasDigits) {
                 displayValue = `-${Math.abs(value).toFixed(digits)}`;
