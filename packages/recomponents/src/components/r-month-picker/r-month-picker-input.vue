@@ -76,7 +76,11 @@
         },
         watch: {
             currentMonthIndex() {
-                this.populateInput({month: this.months[this.currentMonthIndex], year: this.year});
+                this.populateInput({
+                    month: this.months[this.currentMonthIndex],
+                    year: this.year,
+                    monthIndex: this.currentMonthIndex,
+                });
             },
         },
     };
