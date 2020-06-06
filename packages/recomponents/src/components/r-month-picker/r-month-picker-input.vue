@@ -13,8 +13,7 @@
                 <div class="r-popover-control">
                     <div class="r-popover-content r-popover-menu" width="300px">
                         <r-month-picker
-                                @input="$refs['monthPicker'].popper.close()"
-                                @change="populateInput"
+                                @input="populateInput"
                                 @clear="onClear"
                                 v-model="selectedDate"
                                 :clearable="clearable">
@@ -41,7 +40,6 @@
         },
         mounted() {
             this.selectedDate = this.value;
-
             if (!this.selectedDate.year || !Number.parseInt(this.selectedDate.year, 10)) {
                 this.selectedDate.year = new Date().getFullYear();
             }
@@ -58,14 +56,17 @@
         methods: {
             populateInput(date) {
                 this.selectedDate = date;
+                this.$refs.monthPicker.popper.close();
                 /**
                  * The month selected
                  * @type {Event}
                  */
-                this.$emit('input', date);
+                this.$emit('input', this.selectedDate);
             },
             onClear() {
                 this.selectedDate = null;
+                this.$emit('input', this.selectedDate);
+
                 /**
                  * The month picker is clear
                  * @type {Event}

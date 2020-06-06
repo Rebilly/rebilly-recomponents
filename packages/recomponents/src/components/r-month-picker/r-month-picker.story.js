@@ -13,7 +13,7 @@ storiesOf('Components.Month Picker', module)
                 default: select(
                     'Default Month',
                     months,
-                    'June',
+                    'August',
                 ),
             },
             defaultYear: {default: number('Default Year', 2020)},
@@ -36,13 +36,12 @@ storiesOf('Components.Month Picker', module)
         template: `
             <div class="storybook-center">
                 <r-month-picker
-                        v-model="defaultValue"
+                        :value="defaultValue"
                         :clearable="clearable"
                         @input="input"
-                        @clear="clear"
-                        @change="change"/>
+                        @clear="clear"/>
             </div>
-`,
+        `,
     }), {
         notes: {markdown},
     });

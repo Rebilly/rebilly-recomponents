@@ -14,7 +14,7 @@ describe('r-month-picker.vue', () => {
     it('should select month and year if default values are set', async () => {
         const wrapper = await shallowMount(RMonthPicker, {
             propsData: {
-                defaultValue: {month: 'December', year: 2021},
+                value: {monthIndex: 11, year: 2021},
             },
         });
         expect(wrapper.find('.r-month-picker-month-selected').exists()).toBeTruthy();
@@ -24,7 +24,7 @@ describe('r-month-picker.vue', () => {
     it('should clear if clicked selected value and month picker is clearable', async () => {
         const wrapper = await shallowMount(RMonthPicker, {
             propsData: {
-                defaultValue: {month: 'December', year: 2021},
+                value: {monthIndex: 11, year: 2021},
                 clearable: true,
             },
         });

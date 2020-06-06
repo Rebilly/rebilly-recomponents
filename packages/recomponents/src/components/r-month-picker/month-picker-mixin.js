@@ -6,7 +6,6 @@ export default {
          * Selected month and year
          */
         value: {
-            type: Object,
             default: () => ({
                 monthIndex: new Date().getMonth(),
                 year: new Date().getFullYear(),
@@ -25,7 +24,7 @@ export default {
     computed: {
         selectedDateLabel() {
             return `${months[this.value.monthIndex]}, ${this.value.year}`;
-s        },
+        },
     },
     data() {
         return {

@@ -14,7 +14,7 @@ describe('r-month-picker-input.vue', () => {
     it('should select month and year if default values are set', async () => {
         const wrapper = await shallowMount(RMonthPickerInput, {
             propsData: {
-                defaultValue: {month: 'December', year: 2021},
+                value: {monthIndex: 11, year: 2021},
             },
         });
 
@@ -24,21 +24,24 @@ describe('r-month-picker-input.vue', () => {
     it('should show month picker on click', async () => {
         const wrapper = await mount(RMonthPickerInput, {
             propsData: {
-                defaultValue: {month: 'December', year: 2021},
+                value: {monthIndex: 11, year: 2021},
             },
         });
 
         await wrapper.find('.r-month-picker-input').trigger('click');
         expect(wrapper.find('.r-month-picker-month-selected').exists()).toBeTruthy();
         expect(wrapper.find('.r-month-picker-month-selected').text()).toEqual('December');
-        await wrapper.findAll('.r-month-picker-month').at(0).trigger('click');
-        expect(wrapper.find('.r-month-picker-input').text()).toEqual('January, 2021');
+        wrapper.findAll('.r-month-picker-month').at(0).trigger('click');
+        wrapper.vm.$nextTick(() => {
+            expect(wrapper.find('.r-month-picker-input').text()).toEqual('January, 2021');
+        });
     });
     it('should show placeholder if no month is selected', async () => {
+        const placeholder = 'No month selected';
         const wrapper = await mount(RMonthPickerInput, {
             propsData: {
-                defaultValue: {month: 'December', year: 2021},
-                placeholder: 'No month selected',
+                value: {monthIndex: 11, year: 2021},
+                placeholder,
                 clearable: true,
             },
         });
@@ -46,7 +49,10 @@ describe('r-month-picker-input.vue', () => {
         await wrapper.find('.r-month-picker-input').trigger('click');
         expect(wrapper.find('.r-month-picker-month-selected').exists()).toBeTruthy();
         expect(wrapper.find('.r-month-picker-month-selected').text()).toEqual('December');
-        await wrapper.find('.r-month-picker-month-selected').trigger('click');
-        expect(wrapper.find('.r-month-picker-input').text()).toEqual('No month selected');
+        wrapper.find('.r-month-picker-month-selected').trigger('click');
+        expect(wrapper.emitted().clear).toBeTruthy();
+        wrapper.vm.$nextTick(() => {
+            expect(wrapper.find('.r-month-picker-input').text()).toEqual(placeholder);
+        });
     });
 });
