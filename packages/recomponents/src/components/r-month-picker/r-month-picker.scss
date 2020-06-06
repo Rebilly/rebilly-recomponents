@@ -1,6 +1,6 @@
 .r-month-picker-container {
     min-width: 245px;
-    padding: var(--space-s) var(--space-s) var(--space-s) 18px;
+    padding: var(--space-s);
 }
 
 .r-month-picker {
@@ -15,14 +15,14 @@
     display: flex;
     justify-content: space-between;
     align-items: center;
-    width: calc(100% - 10px);
+    width: 100%;
     font-weight: var(--month-picker-year-font-weight);
     font-size: var(--month-picker-year-font-size);
     margin-bottom: var(--month-picker-year-margin-bottom);
 }
 
 .r-month-picker-month {
-    flex-basis: calc(33.333% - 10px);
+    flex-basis: calc(33.333333% - 7px);
     padding: 0.75em 0.25em;
     cursor: pointer;
     text-align: center;

@@ -28,7 +28,7 @@ storiesOf('Components.Month Picker', module)
         computed: {
             defaultValue() {
                 return {
-                    month: this.defaultMonth,
+                    monthIndex: months.findIndex(month => month === this.defaultMonth),
                     year: this.defaultYear,
                 };
             },
@@ -36,12 +36,11 @@ storiesOf('Components.Month Picker', module)
         template: `
             <div class="storybook-center">
                 <r-month-picker
-                        :default-value="defaultValue"
+                        v-model="defaultValue"
                         :clearable="clearable"
                         @input="input"
                         @clear="clear"
-                        @change="change"
-                        @change-year="changeYear"/>
+                        @change="change"/>
             </div>
 `,
     }), {

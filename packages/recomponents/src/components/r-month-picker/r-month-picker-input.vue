@@ -3,7 +3,7 @@
         <template #trigger="monthPicker">
             <r-icon-button class="r-month-picker-input"
                            @click="$refs['monthPicker'].popper.toggle()">
-                <span v-if="selectedDate">{{ selectedDate }}</span>
+                <span v-if="value">{{ selectedDateLabel }}</span>
                 <span v-else class="r-text-muted">{{ placeholder }}</span>
                 <r-icon class="r-date-range-calendar-icon" slot="left-icon" icon="calendar"/>
             </r-icon-button>
@@ -16,7 +16,7 @@
                                 @input="$refs['monthPicker'].popper.close()"
                                 @change="populateInput"
                                 @clear="onClear"
-                                :default-value="date || defaultValue"
+                                v-model="selectedDate"
                                 :clearable="clearable">
                         </r-month-picker>
                     </div>
@@ -39,11 +39,12 @@
         components: {
             RIcon, RIconButton, RPopper, RMonthPicker,
         },
-        data() {
-            return {
-                selectedDate: null,
-                date: null,
-            };
+        mounted() {
+            this.selectedDate = this.value;
+
+            if (!this.selectedDate.year || !Number.parseInt(this.selectedDate.year, 10)) {
+                this.selectedDate.year = new Date().getFullYear();
+            }
         },
         props: {
             /**
@@ -56,8 +57,7 @@
         },
         methods: {
             populateInput(date) {
-                this.selectedDate = `${date.month}, ${date.year}`;
-                this.date = date;
+                this.selectedDate = date;
                 /**
                  * The month selected
                  * @type {Event}
@@ -66,21 +66,11 @@
             },
             onClear() {
                 this.selectedDate = null;
-                this.date = null;
                 /**
                  * The month picker is clear
                  * @type {Event}
                  */
                 this.$emit('clear');
-            },
-        },
-        watch: {
-            currentMonthIndex() {
-                this.populateInput({
-                    month: this.months[this.currentMonthIndex],
-                    year: this.year,
-                    monthIndex: this.currentMonthIndex,
-                });
             },
         },
     };

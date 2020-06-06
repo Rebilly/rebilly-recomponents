@@ -3,23 +3,15 @@ import months from './months';
 export default {
     props: {
         /**
-         * Preselected month and year
+         * Selected month and year
          */
-        defaultValue: {
+        value: {
             type: Object,
             default: () => ({
                 monthIndex: new Date().getMonth(),
                 year: new Date().getFullYear(),
             }),
-            required: false,
-        },
-        /**
-         * Default year
-         */
-        defaultYear: {
-            type: Number,
-            default: null,
-            required: false,
+            required: true,
         },
         /**
          * Defines if month picker is clearable
@@ -30,34 +22,15 @@ export default {
             required: false,
         },
     },
+    computed: {
+        selectedDateLabel() {
+            return `${months[this.value.monthIndex]}, ${this.value.year}`;
+s        },
+    },
     data() {
         return {
-            currentMonthIndex: null,
-            year: new Date().getFullYear(),
             months,
+            selectedDate: {},
         };
-    },
-    mounted() {
-        if (this.defaultValue) {
-            this.setDefaults(this.defaultValue);
-        }
-    },
-    methods: {
-        setDefaults(value) {
-            if (value.monthIndex) {
-                this.currentMonthIndex = value.monthIndex;
-            }
-            if (value.month) {
-                this.currentMonthIndex = this.months.indexOf(value.month);
-            }
-            if (value.year) {
-                this.year = value.year;
-            }
-        },
-    },
-    watch: {
-        defaultValue(newVal) {
-            this.setDefaults(newVal);
-        },
     },
 };

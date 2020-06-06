@@ -6,7 +6,7 @@
                            size="small">
                 <r-icon icon="caret-left"/>
             </r-icon-button>
-            <div>{{ year }}</div>
+            <div>{{ selectedDate.year }}</div>
             <r-icon-button @click="changeYear(+1)"
                            type="default"
                            size="small">
@@ -16,7 +16,7 @@
         <div class="r-month-picker">
             <div v-for="(month, i) in months"
                  :key="month"
-                 :class="{'r-month-picker-month-selected': currentMonth === month}"
+                 :class="{'r-month-picker-month-selected': selectedDate.monthIndex === i}"
                  class="r-month-picker-month"
                  @click="selectMonth(i, true)">
                 {{ month }}
@@ -34,43 +34,19 @@
         name: 'r-month-picker',
         components: {RIconButton, RIcon},
         mixins: [MonthPickerMixin],
-        computed: {
-            currentMonth() {
-                if (this.currentMonthIndex !== null) {
-                    return this.months[this.currentMonthIndex];
-                }
-                return null;
-            },
-            date() {
-                const monthIndex = this.months.indexOf(this.currentMonth);
-                const date = new Date(`${this.year}/${monthIndex + 1}/01`);
-                const year = date.getFullYear();
-                return {
-                    from: date,
-                    to: new Date(year, monthIndex + 1, 1),
-                    month: this.months[monthIndex],
-                    monthIndex,
-                    year,
-                };
-            },
-        },
         methods: {
             onChange() {
-                if (!Number.parseInt(this.year, 10)) {
-                    this.year = (this.defaultValue && this.defaultValue.year) || new Date().getFullYear();
-                }
-
                 /**
                  * The month/year were changed
                  * @type {Event}
                  */
-                this.$emit('change', this.date);
+                this.$emit('change', this.selectedDate);
             },
             selectMonth(index, input = false) {
-                const isAlreadySelected = this.currentMonthIndex === index;
+                const isAlreadySelected = this.value.monthIndex === index;
 
                 if (this.clearable && isAlreadySelected) {
-                    this.currentMonthIndex = null;
+                    this.selectedDate.monthIndex = null;
                     /**
                      * Already selected month was clicked when the month picker is clearable
                      * @type {Event}
@@ -83,7 +59,7 @@
                     return;
                 }
 
-                this.currentMonthIndex = index;
+                this.selectedDate.monthIndex = index;
                 this.onChange();
 
                 if (input) {
@@ -91,17 +67,12 @@
                      * The month selected
                      * @type {Event}
                      */
-                    this.$emit('input', this.date);
+                    this.$emit('input', this.selectedDate);
                 }
             },
             changeYear(value) {
-                this.year += value;
+                this.selectedDate.year += value;
                 this.onChange();
-                /**
-                 * The year changed
-                 * @type {Event}
-                 */
-                this.$emit('change-year', this.year);
             },
         },
     };
