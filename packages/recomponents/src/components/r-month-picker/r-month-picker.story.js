@@ -22,8 +22,8 @@ storiesOf('Components.Month Picker', module)
         methods: {
             input: action('input'),
             clear: action('clear'),
-            change: action('change'),
-            changeYear: action('change-year'),
+            yearChange: action('year-change'),
+            monthChange: action('month-change'),
         },
         computed: {
             defaultValue() {
@@ -39,7 +39,9 @@ storiesOf('Components.Month Picker', module)
                         :value="defaultValue"
                         :clearable="clearable"
                         @input="input"
-                        @clear="clear"/>
+                        @clear="clear"
+                        @month-change="monthChange"
+                        @year-change="yearChange"/>
             </div>
         `,
     }), {

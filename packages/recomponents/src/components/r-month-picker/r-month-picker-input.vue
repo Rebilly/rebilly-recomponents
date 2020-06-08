@@ -14,6 +14,7 @@
                     <div class="r-popover-content r-popover-menu" width="300px">
                         <r-month-picker
                                 @input="populateInput"
+                                @month-change="$refs['monthPicker'].popper.close()"
                                 @clear="onClear"
                                 v-model="selectedDate"
                                 :clearable="clearable">
@@ -56,7 +57,6 @@
         methods: {
             populateInput(date) {
                 this.selectedDate = date;
-                this.$refs.monthPicker.popper.close();
                 /**
                  * The month selected
                  * @type {Event}

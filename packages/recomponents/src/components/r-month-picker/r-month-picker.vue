@@ -60,6 +60,12 @@
 
                 this.selectedDate = {...this.selectedDate, monthIndex};
                 /**
+                 * The year is changed
+                 * @type {Event}
+                 */
+                this.$emit('month-change', monthIndex);
+
+                /**
                  * The month selected
                  * @type {Event}
                  */
@@ -68,6 +74,11 @@
             changeYear(value) {
                 this.selectedDate.year += value;
                 this.$emit('input', this.selectedDate);
+                /**
+                 * The year is changed
+                 * @type {Event}
+                 */
+                this.$emit('year-change', this.selectedDate.year);
             },
         },
     };
