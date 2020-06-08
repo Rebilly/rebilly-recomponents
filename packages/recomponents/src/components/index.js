@@ -12,6 +12,8 @@ import RInput from './r-input/r-input.vue';
 import RFileUpload from './r-file-upload/r-file-upload.vue';
 import RLoader from './r-loader/r-loader.vue';
 import RModal from './r-modal/r-modal.vue';
+import RMonthPicker from './r-month-picker/r-month-picker.vue';
+import RMonthPickerInput from './r-month-picker/r-month-picker-input.vue';
 import RPagination from './r-pagination/r-pagination.vue';
 import RPopper from './r-popper/r-popper.vue';
 import RRadio from './r-radio/r-radio.vue';
@@ -39,6 +41,8 @@ export {
     RFileUpload,
     RLoader,
     RModal,
+    RMonthPicker,
+    RMonthPickerInput,
     RPagination,
     RPopper,
     RRadio,

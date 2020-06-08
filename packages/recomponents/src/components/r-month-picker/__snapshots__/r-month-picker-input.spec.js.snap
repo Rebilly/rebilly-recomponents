@@ -1,0 +1,28 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`r-month-picker-input.vue should render Wrapper and match snapshot 1`] = `
+<r-popper-stub esctohide="true" autohide="true" globalautohide="true" offset="4" margin="0,0,0,0" direction="horizontal" position="bottomEnd" slidefrom="fade" duration="0.2">
+  <r-icon-button-stub type="default" size="regular" capitalizefirstletter="true" class="r-month-picker-input"><span>June, 2020</span>
+    <r-icon-stub icon="calendar" class="r-date-range-calendar-icon"></r-icon-stub>
+  </r-icon-button-stub>
+  <div class="r-popover r-month-picker-input-container">
+    <div class="r-popover-control">
+      <div width="300px" class="r-popover-content r-popover-menu">
+        <r-month-picker-stub value="[object Object]"></r-month-picker-stub>
+      </div>
+    </div>
+  </div>
+</r-popper-stub>
+`;
+
+exports[`r-month-picker-input.vue should render via SSR and match snapshot 1`] = `
+<div class="r-popper"><button class="r-button r-month-picker-input r-button-type-default r-button-size-regular r-has-icon-left"><svg class="r-icon r-icon-20 r-date-range-calendar-icon">
+      <use xlink:href="#icon-calendar" xmlns:xlink="http://www.w3.org/1999/xlink"></use>
+    </svg>
+    <div role="button" class="r-capitalize-first-letter button"><span>June, 2020</span> </div>
+  </button>
+  <div class="r-popper-content-wrapper">
+    <!---->
+  </div>
+</div>
+`;
