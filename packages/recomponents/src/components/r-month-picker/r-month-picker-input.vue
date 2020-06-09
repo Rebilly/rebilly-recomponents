@@ -1,5 +1,5 @@
 <template>
-    <r-popper position="bottomEnd" ref="monthPicker">
+    <r-popper :position="position" ref="monthPicker">
         <template #trigger="monthPicker">
             <r-icon-button class="r-month-picker-input"
                            @click="$refs['monthPicker'].popper.toggle()">
@@ -52,6 +52,14 @@
             placeholder: {
                 type: String,
                 default: 'Select month',
+            },
+            /**
+             * Position of popover control
+             */
+            position: {
+                type: String,
+                default: 'bottomEnd',
+                validator: position => ['bottomStart', 'bottomEnd', 'topStart', 'topEnd'].includes(position),
             },
         },
         methods: {
