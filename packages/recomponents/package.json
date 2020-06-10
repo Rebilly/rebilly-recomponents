@@ -50,13 +50,14 @@
     "intersection-observer": "^0.7.0",
     "lodash.clonedeep": "^4.5.0",
     "lodash.kebabcase": "^4.1.1",
+    "lowlight": "^1.13.1",
     "moment": "^2.22.2",
     "moment-timezone": "^0.5.23",
     "shortid": "^2.2.14",
     "v-calendar": "^0.9.7"
   },
   "devDependencies": {
-    "@babel/core": "^7.5.5",
+    "@babel/core": "^7.10.2",
     "@babel/plugin-proposal-class-properties": "^7.7.4",
     "@babel/preset-env": "^7.5.5",
     "@semantic-release/changelog": "^3.0.4",
@@ -98,6 +99,7 @@
     "babel7-jest": "^1.0.1",
     "core-js": "^3.4.3",
     "cross-env": "^6.0.3",
+    "cz-conventional-changelog": "^3.1.0",
     "eslint": "^5.16.0",
     "eslint-plugin-vue": "^5.0.0",
     "jest": "^24.8.0",

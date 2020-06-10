@@ -22,7 +22,9 @@ exports[`r-month-picker-input.vue should render via SSR and match snapshot 1`] =
     <div role="button" class="r-capitalize-first-letter button"><span>June, 2020</span> </div>
   </button>
   <div class="r-popper-content-wrapper">
-    <!---->
+    <transition-stub name="fade">
+      <!---->
+    </transition-stub>
   </div>
 </div>
 `;

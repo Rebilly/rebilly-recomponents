@@ -11,15 +11,17 @@ exports[`r-modal.vue should render Wrapper and match snapshot 1`] = `
 `;
 
 exports[`r-modal.vue should render via SSR and match snapshot 1`] = `
-<div tabindex="0" role="dialog" style="transition-duration:0.2s;">
-  <div class="r-modal-overlay">
-    <div role="alert" aria-busy="true" class="r-component r-loader r-modal-loader r-is-loading r-is-loading r-is-fullscreen">
-      <div class="r-loader-icon-wrapper">
-        <div class="r-mr-re"></div>
-        <div class="r-mr-bil"></div>
-        <div class="r-mr-ly"></div>
+<transition-stub name="r-modal">
+  <div tabindex="0" role="dialog" style="transition-duration:0.2s;">
+    <div class="r-modal-overlay">
+      <div role="alert" aria-busy="true" class="r-component r-loader r-modal-loader r-is-loading r-is-loading r-is-fullscreen">
+        <div class="r-loader-icon-wrapper">
+          <div class="r-mr-re"></div>
+          <div class="r-mr-bil"></div>
+          <div class="r-mr-ly"></div>
+        </div>
       </div>
     </div>
   </div>
-</div>
+</transition-stub>
 `;
