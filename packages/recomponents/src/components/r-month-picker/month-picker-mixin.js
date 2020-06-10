@@ -1,15 +1,17 @@
 import months from './months';
 
+const defaultValue = {
+    monthIndex: new Date().getMonth(),
+    year: new Date().getFullYear(),
+};
+
 export default {
     props: {
         /**
          * Selected month and year
          */
         value: {
-            default: () => ({
-                monthIndex: new Date().getMonth(),
-                year: new Date().getFullYear(),
-            }),
+            default: () => defaultValue,
             required: true,
         },
         /**
@@ -21,15 +23,15 @@ export default {
             required: false,
         },
     },
-    computed: {
-        selectedDateLabel() {
-            return `${months[this.value.monthIndex]}, ${this.value.year}`;
-        },
-    },
     data() {
         return {
             months,
-            selectedDate: {},
+            selectedDate: defaultValue,
         };
+    },
+    computed: {
+        selectedDateLabel() {
+            return `${months[this.selectedDate.monthIndex]}, ${this.selectedDate.year}`;
+        },
     },
 };
