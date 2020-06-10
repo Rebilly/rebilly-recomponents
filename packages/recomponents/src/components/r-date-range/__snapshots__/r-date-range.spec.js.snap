@@ -15,12 +15,16 @@ exports[`r-date-range.vue renders props when passed 1`] = `
           </svg></div>
       </button>
       <div class="r-popper-content-wrapper">
-        <!---->
+        <transition-stub name="fade">
+          <!---->
+        </transition-stub>
       </div>
     </div>
   </div>
   <div class="r-popper-content-wrapper">
-    <!---->
+    <transition-stub name="fade">
+      <!---->
+    </transition-stub>
   </div>
 </div>
 `;
