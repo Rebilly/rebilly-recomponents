@@ -47,6 +47,7 @@
   "dependencies": {
     "approximate-number": "^2.0.0",
     "css-vars-ponyfill": "^2.1.2",
+    "cz-conventional-changelog": "^3.1.0",
     "intersection-observer": "^0.7.0",
     "lodash.clonedeep": "^4.5.0",
     "lodash.kebabcase": "^4.1.1",
@@ -56,7 +57,7 @@
     "v-calendar": "^0.9.7"
   },
   "devDependencies": {
-    "@babel/core": "^7.5.5",
+    "@babel/core": "^7.10.2",
     "@babel/plugin-proposal-class-properties": "^7.7.4",
     "@babel/preset-env": "^7.5.5",
     "@semantic-release/changelog": "^3.0.4",
