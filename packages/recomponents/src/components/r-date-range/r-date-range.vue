@@ -1,8 +1,15 @@
 <template>
-    <r-popper position="bottomEnd" class="r-date-range" ref="calendar" :disabled="false" :offset="6" :margin="[0, 14, 0, 0]">
+    <r-popper position="bottomEnd"
+              class="r-date-range"
+              ref="calendar"
+              :disabled="false"
+              :offset="6"
+              :margin="[0, 14, 0, 0]">
         <template #trigger="calendar">
             <r-button-group :class="{'r-button-group-single': !showPresets}">
-                <r-icon-button :disabled="disabled" @click="toggle('calendar')">
+                <r-icon-button :disabled="disabled"
+                               :class="{'r-date-range-button': showPresets}"
+                               @click="toggle('calendar')">
                     <span class="r-date-range-label" :title="profileTimezoneTitle">
                         {{ selectedDateLabel }}
                     </span>
@@ -39,7 +46,8 @@
             </r-button-group>
         </template>
         <template #content="calendar">
-            <div class="r-popover r-date-range-calendar">
+            <div class="r-popover r-date-range-calendar"
+                 :style="{minWidth: isMobile ? `140px` : `513px`}">
                 <div class="r-popover-control">
                     <div class="r-popover-content r-popover-menu">
                         <r-date-input
@@ -47,6 +55,7 @@
                                 :disabled="disabled"
                                 :max-date="maxDate"
                                 :min-date="minDate"
+                                :columns="isMobile ? 1 : 2"
                                 :value="selectedDate"
                                 @input="dateChange($event)"/>
                     </div>
@@ -147,6 +156,9 @@
             isValidDatesPeriod() {
                 return this.validateDatesPeriod(this.period)
                     || (this.validateDatesPeriod(this.period.start) && this.validateDatesPeriod(this.period.end));
+            },
+            isMobile() {
+                return window.innerWidth < 600;
             },
             isRelative() {
                 // the props value period is relative period but could be custom period
