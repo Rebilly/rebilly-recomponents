@@ -1,8 +1,8 @@
 import {mount, shallowMount} from '@vue/test-utils';
 import {renderToString} from '@vue/server-test-utils';
+import Vue from 'vue';
 import RMonthPickerInput from './r-month-picker-input.vue';
 import RMonthPicker from './r-month-picker.vue';
-import Vue from 'vue';
 
 describe('r-month-picker-input.vue', () => {
     it('should render Wrapper and match snapshot', () => {
