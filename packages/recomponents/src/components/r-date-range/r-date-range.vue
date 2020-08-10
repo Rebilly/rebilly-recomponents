@@ -231,27 +231,29 @@
                 // that means profile timezone !== browser timezone
                 // so we could have some problems with time understanding
                 const selected = this.selectedPeriod;
-                if (this.isRelative && this.isRelativePreset) {
-                    // props period is relative and one of default preset
-                    if (oneValuePresetsList.includes(selected.presetName)) {
-                        // props period is relative and one-day values like today/yesterday
-                        // returns "Today / Date"
-                        return [
-                            selected.presetLabel,
-                            _.formatDate(selected.start, DateTimeFormats.orderDate),
-                        ].join(' / ');
+                if (!this.isMobile) {
+                    if (this.isRelative && this.isRelativePreset) {
+                        // props period is relative and one of default preset
+                        if (oneValuePresetsList.includes(selected.presetName)) {
+                            // props period is relative and one-day values like today/yesterday
+                            // returns "Today / Date"
+                            return [
+                                selected.presetLabel,
+                                _.formatDate(selected.start, DateTimeFormats.orderDate),
+                            ].join(' / ');
+                        }
+                        // returns "Today / yy-mm-dd - yy-mm-dd"
+                        return `${selected.presetLabel} / ${[
+                            _.formatDate(selected.start, DateTimeFormats.shortDate),
+                            _.formatDate(selected.end, DateTimeFormats.shortDate),
+                        ].join(' - ')}`;
                     }
-                    // returns "Today / yy-mm-dd - yy-mm-dd"
-                    return `${selected.presetLabel} / ${[
-                        _.formatDate(selected.start, DateTimeFormats.shortDate),
-                        _.formatDate(selected.end, DateTimeFormats.shortDate),
-                    ].join(' - ')}`;
-                }
-                if (this.isRelative) {
-                    // custom relative
-                    // returns some custom relative values
-                    // like 7 Years Ago..2 Years Ago
-                    return [selected.start, selected.end].join(' - ');
+                    if (this.isRelative) {
+                        // custom relative
+                        // returns some custom relative values
+                        // like 7 Years Ago..2 Years Ago
+                        return [selected.start, selected.end].join(' - ');
+                    }
                 }
                 // returns real dates in DateTimeFormats.shortDate string format
                 return [
