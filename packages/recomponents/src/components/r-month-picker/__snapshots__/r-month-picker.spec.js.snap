@@ -27,13 +27,13 @@ exports[`r-month-picker.vue should render Wrapper and match snapshot 1`] = `
     <div class="r-month-picker-month">
       May
     </div>
-    <div class="r-month-picker-month r-month-picker-month-selected">
+    <div class="r-month-picker-month">
       June
     </div>
     <div class="r-month-picker-month">
       July
     </div>
-    <div class="r-month-picker-month">
+    <div class="r-month-picker-month r-month-picker-month-selected">
       August
     </div>
     <div class="r-month-picker-month">
@@ -81,13 +81,13 @@ exports[`r-month-picker.vue should render via SSR and match snapshot 1`] = `
     <div class="r-month-picker-month">
       May
     </div>
-    <div class="r-month-picker-month r-month-picker-month-selected">
+    <div class="r-month-picker-month">
       June
     </div>
     <div class="r-month-picker-month">
       July
     </div>
-    <div class="r-month-picker-month">
+    <div class="r-month-picker-month r-month-picker-month-selected">
       August
     </div>
     <div class="r-month-picker-month">

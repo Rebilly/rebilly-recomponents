@@ -1,8 +1,15 @@
 <template>
-    <r-popper position="bottomEnd" class="r-date-range" ref="calendar" :disabled="false" :offset="6" :margin="[0, 14, 0, 0]">
+    <r-popper position="bottomEnd"
+              class="r-date-range"
+              ref="calendar"
+              :disabled="false"
+              :offset="6"
+              :margin="[0, 14, 0, 0]">
         <template #trigger="calendar">
             <r-button-group :class="{'r-button-group-single': !showPresets}">
-                <r-icon-button :disabled="disabled" @click="toggle('calendar')">
+                <r-icon-button :disabled="disabled"
+                               :class="{'r-date-range-button': showPresets}"
+                               @click="toggle('calendar')">
                     <span class="r-date-range-label" :title="profileTimezoneTitle">
                         {{ selectedDateLabel }}
                     </span>
@@ -39,7 +46,8 @@
             </r-button-group>
         </template>
         <template #content="calendar">
-            <div class="r-popover r-date-range-calendar">
+            <div class="r-popover r-date-range-calendar"
+                 :style="{minWidth: isMobile ? `140px` : `513px`}">
                 <div class="r-popover-control">
                     <div class="r-popover-content r-popover-menu">
                         <r-date-input
@@ -47,6 +55,7 @@
                                 :disabled="disabled"
                                 :max-date="maxDate"
                                 :min-date="minDate"
+                                :columns="isMobile ? 1 : 2"
                                 :value="selectedDate"
                                 @input="dateChange($event)"/>
                     </div>
@@ -148,6 +157,9 @@
                 return this.validateDatesPeriod(this.period)
                     || (this.validateDatesPeriod(this.period.start) && this.validateDatesPeriod(this.period.end));
             },
+            isMobile() {
+                return window.innerWidth < 600;
+            },
             isRelative() {
                 // the props value period is relative period but could be custom period
                 // so it could be something like '5 years ago..now'
@@ -219,27 +231,29 @@
                 // that means profile timezone !== browser timezone
                 // so we could have some problems with time understanding
                 const selected = this.selectedPeriod;
-                if (this.isRelative && this.isRelativePreset) {
-                    // props period is relative and one of default preset
-                    if (oneValuePresetsList.includes(selected.presetName)) {
-                        // props period is relative and one-day values like today/yesterday
-                        // returns "Today / Date"
-                        return [
-                            selected.presetLabel,
-                            _.formatDate(selected.start, DateTimeFormats.orderDate),
-                        ].join(' / ');
+                if (!this.isMobile) {
+                    if (this.isRelative && this.isRelativePreset) {
+                        // props period is relative and one of default preset
+                        if (oneValuePresetsList.includes(selected.presetName)) {
+                            // props period is relative and one-day values like today/yesterday
+                            // returns "Today / Date"
+                            return [
+                                selected.presetLabel,
+                                _.formatDate(selected.start, DateTimeFormats.orderDate),
+                            ].join(' / ');
+                        }
+                        // returns "Today / yy-mm-dd - yy-mm-dd"
+                        return `${selected.presetLabel} / ${[
+                            _.formatDate(selected.start, DateTimeFormats.shortDate),
+                            _.formatDate(selected.end, DateTimeFormats.shortDate),
+                        ].join(' - ')}`;
                     }
-                    // returns "Today / yy-mm-dd - yy-mm-dd"
-                    return `${selected.presetLabel} / ${[
-                        _.formatDate(selected.start, DateTimeFormats.shortDate),
-                        _.formatDate(selected.end, DateTimeFormats.shortDate),
-                    ].join(' - ')}`;
-                }
-                if (this.isRelative) {
-                    // custom relative
-                    // returns some custom relative values
-                    // like 7 Years Ago..2 Years Ago
-                    return [selected.start, selected.end].join(' - ');
+                    if (this.isRelative) {
+                        // custom relative
+                        // returns some custom relative values
+                        // like 7 Years Ago..2 Years Ago
+                        return [selected.start, selected.end].join(' - ');
+                    }
                 }
                 // returns real dates in DateTimeFormats.shortDate string format
                 return [

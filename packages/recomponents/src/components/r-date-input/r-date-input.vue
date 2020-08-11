@@ -108,6 +108,7 @@
             <r-calendar-manager type="range"
                                 :min-date="minDate"
                                 :max-date="maxDate"
+                                :columns="columns"
                                 :drag-select-attributes="dragSelectAttributes"
                                 :value="value"
                                 @input="$emit('input', $event)"
@@ -144,6 +145,13 @@
              */
             label: {
                 type: String,
+                default: null,
+            },
+            /**
+             * Define number of calendars (inline)
+             */
+            columns: {
+                type: Number,
                 default: null,
             },
             /**
