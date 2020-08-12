@@ -141,6 +141,46 @@ describe('r-date-range.vue', () => {
             .toEqual(`${moment(start).format(DateTimeFormats.shortDate)} - ${moment(end).format(DateTimeFormats.shortDate)}`);
     });
 
+    it('should not show relative preset text if it is mobile version', async () => {
+        const lastYear = {
+            start: moment().subtract(1, 'year').startOf('year'),
+            end: moment().subtract(1, 'year').endOf('year'),
+        };
+
+        const selectedPeriod = {
+            isRelative: true,
+            relativeFilterValue: 'first day of January last year midnight..last day of December last year 23:59:59',
+            start: lastYear.start,
+            end: lastYear.end,
+        };
+
+        const wrapper = mount(RDateRange, {
+            propsData: {
+                period: selectedPeriod,
+                timezoneHandler: () => new TimezoneMock(),
+            },
+            stubs: ['no-ssr'],
+        });
+
+        expect(wrapper.vm.selectedDateLabel)
+            .toEqual(`Last year / ${moment(lastYear.start).format(DateTimeFormats.shortDate)} - ${moment(lastYear.end).format(DateTimeFormats.shortDate)}`);
+
+        window.innerWidth = 560;
+        window.dispatchEvent(new Event('resize'));
+
+        const mobileWrapper = mount(RDateRange, {
+            propsData: {
+                period: selectedPeriod,
+                timezoneHandler: () => new TimezoneMock(),
+            },
+            stubs: ['no-ssr'],
+        });
+
+        expect(mobileWrapper.vm.isMobile).toBe(true);
+        expect(mobileWrapper.vm.selectedDateLabel)
+            .toEqual(`${moment(lastYear.start).format(DateTimeFormats.shortDate)} - ${moment(lastYear.end).format(DateTimeFormats.shortDate)}`);
+    });
+
     it('should check is the period valid', async () => {
         const wrapper = mount(RDateRange, {
             propsData: {
