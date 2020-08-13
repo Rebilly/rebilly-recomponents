@@ -3,11 +3,11 @@
 exports[`r-month-picker.vue should render Wrapper and match snapshot 1`] = `
 <div class="r-month-picker-container">
   <div class="r-month-picker-year">
-    <r-icon-button-stub type="default" size="small" capitalizefirstletter="true">
+    <r-icon-button-stub type="default" size="small" capitalizefirstletter="true" class="r-month-picker-year-left">
       <r-icon-stub icon="caret-left"></r-icon-stub>
     </r-icon-button-stub>
     <div>2020</div>
-    <r-icon-button-stub type="default" size="small" capitalizefirstletter="true">
+    <r-icon-button-stub type="default" size="small" capitalizefirstletter="true" class="r-month-picker-year-right">
       <r-icon-stub icon="caret-right"></r-icon-stub>
     </r-icon-button-stub>
   </div>
@@ -54,12 +54,12 @@ exports[`r-month-picker.vue should render Wrapper and match snapshot 1`] = `
 
 exports[`r-month-picker.vue should render via SSR and match snapshot 1`] = `
 <div class="r-month-picker-container">
-  <div class="r-month-picker-year"><button class="r-button r-button-type-default r-button-size-small r-has-icon">
+  <div class="r-month-picker-year"><button class="r-button r-month-picker-year-left r-button-type-default r-button-size-small r-has-icon">
       <div role="button" class="r-capitalize-first-letter button"><svg class="r-icon r-icon-20">
           <use xlink:href="#icon-caret-left" xmlns:xlink="http://www.w3.org/1999/xlink"></use>
         </svg></div>
     </button>
-    <div>2020</div> <button class="r-button r-button-type-default r-button-size-small r-has-icon">
+    <div>2020</div> <button class="r-button r-month-picker-year-right r-button-type-default r-button-size-small r-has-icon">
       <div role="button" class="r-capitalize-first-letter button"><svg class="r-icon r-icon-20">
           <use xlink:href="#icon-caret-right" xmlns:xlink="http://www.w3.org/1999/xlink"></use>
         </svg></div>
