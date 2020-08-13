@@ -163,7 +163,7 @@
             isRelative() {
                 // the props value period is relative period but could be custom period
                 // so it could be something like '5 years ago..now'
-                return !this.isValidDatesPeriod;
+                return this.period.isRelative || !this.isValidDatesPeriod;
             },
             selectedRelativeParams() {
                 // returns {start, end, presetName: (optional), presetLabel: (optional)}
@@ -304,6 +304,9 @@
             },
             relativeFilterChange(presetName) {
                 const period = this.calendarPresetsPeriods[presetName];
+                const start = this.timezoneHandler().getRaw(period.start);
+                const end = this.timezoneHandler().getRaw(period.end);
+
                 /**
                  * The date range selected
                  * @type {Event}
@@ -311,6 +314,8 @@
                 this.$emit('input', {
                     isRelative: true,
                     ...period,
+                    start,
+                    end,
                 });
                 this.$nextTick(() => {
                     this.close();
