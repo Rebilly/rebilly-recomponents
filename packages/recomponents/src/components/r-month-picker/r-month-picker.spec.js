@@ -1,6 +1,7 @@
-import {shallowMount} from '@vue/test-utils';
+import {mount, shallowMount} from '@vue/test-utils';
 import {renderToString} from '@vue/server-test-utils';
 import RMonthPicker from './r-month-picker.vue';
+import RIconButton from '../r-icon-button/r-icon-button.vue';
 
 describe('r-month-picker.vue', () => {
     it('should render Wrapper and match snapshot', () => {
@@ -36,5 +37,18 @@ describe('r-month-picker.vue', () => {
         } finally {
             expect(wrapper.find('.r-month-picker-month-selected').exists()).toBeFalsy();
         }
+    });
+    it('should emit when year changes', async () => {
+        const year = 2021;
+        const wrapper = await mount(RMonthPicker, {
+            propsData: {
+                value: {monthIndex: 11, year},
+            },
+            components: {RIconButton},
+        });
+        await wrapper.find('.r-month-picker-year-left').trigger('click');
+        expect(wrapper.emitted('input')).toBeTruthy();
+        expect(wrapper.emitted('year-change')).toBeTruthy();
+        expect(wrapper.emitted('year-change')).toEqual([[year - 1]]);
     });
 });

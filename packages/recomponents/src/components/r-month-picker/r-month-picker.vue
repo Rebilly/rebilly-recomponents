@@ -1,13 +1,15 @@
 <template>
     <div class="r-month-picker-container">
         <div class="r-month-picker-year">
-            <r-icon-button @click="changeYear(-1)"
+            <r-icon-button class="r-month-picker-year-left"
+                           @click="changeYear(-1)"
                            type="default"
                            size="small">
                 <r-icon icon="caret-left"/>
             </r-icon-button>
             <div>{{ selectedDate && selectedDate.year }}</div>
-            <r-icon-button @click="changeYear(+1)"
+            <r-icon-button class="r-month-picker-year-right"
+                           @click="changeYear(+1)"
                            type="default"
                            size="small">
                 <r-icon icon="caret-right"/>
