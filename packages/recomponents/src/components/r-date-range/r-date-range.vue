@@ -346,7 +346,7 @@
                 });
             },
             checkDatesAreSame(date1, date2) {
-                return moment(date1).format(DateTimeFormats.datePickerDate) === moment(date2).format(DateTimeFormats.datePickerDate);
+                return moment(date1).isSame(date2, 'day');
             },
         },
     };
