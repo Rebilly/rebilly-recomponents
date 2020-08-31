@@ -328,8 +328,14 @@
                 // so we have to convert
                 // the problem details: if your browser timezone is +3 then you will have .toISOString as 21:00
                 // and user profile timezone will never change that value
-                const start = this.timezoneHandler().getRaw(moment(date.start).startOf('day'));
-                const end = this.timezoneHandler().getRaw(moment(date.end).endOf('day'));
+                const start = this.minDate && this.checkDatesAreSame(this.minDate, date.start)
+                    ? this.timezoneHandler().getRaw(this.minDate)
+                    : this.timezoneHandler().getRaw(moment(date.start).startOf('day'));
+
+                const end = this.maxDate && this.checkDatesAreSame(this.maxDate, date.end)
+                    ? this.timezoneHandler().getRaw(this.maxDate)
+                    : this.timezoneHandler().getRaw(moment(date.end).endOf('day'));
+
                 this.$emit('input', {
                     isRelative: false,
                     start,
@@ -338,6 +344,9 @@
                 this.$nextTick(() => {
                     this.close();
                 });
+            },
+            checkDatesAreSame(date1, date2) {
+                return moment(date1).isSame(date2, 'day');
             },
         },
     };
