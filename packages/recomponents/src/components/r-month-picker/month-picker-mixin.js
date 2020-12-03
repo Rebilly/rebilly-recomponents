@@ -11,7 +11,7 @@ export default {
          * Selected month and year
          */
         value: {
-            default: () => defaultValue,
+            defaultValue: () => defaultValue,
             required: true,
         },
         /**
@@ -26,7 +26,7 @@ export default {
     data() {
         return {
             months,
-            selectedDate: defaultValue,
+            selectedDate: null,
         };
     },
     computed: {

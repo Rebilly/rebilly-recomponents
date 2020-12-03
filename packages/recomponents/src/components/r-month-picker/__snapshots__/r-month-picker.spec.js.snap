@@ -59,7 +59,7 @@ exports[`r-month-picker.vue should render via SSR and match snapshot 1`] = `
           <use xlink:href="#icon-caret-left" xmlns:xlink="http://www.w3.org/1999/xlink"></use>
         </svg></div>
     </button>
-    <div>2020</div> <button class="r-button r-month-picker-year-right r-button-type-default r-button-size-small r-has-icon">
+    <div></div> <button class="r-button r-month-picker-year-right r-button-type-default r-button-size-small r-has-icon">
       <div role="button" class="r-capitalize-first-letter button"><svg class="r-icon r-icon-20">
           <use xlink:href="#icon-caret-right" xmlns:xlink="http://www.w3.org/1999/xlink"></use>
         </svg></div>
@@ -87,7 +87,7 @@ exports[`r-month-picker.vue should render via SSR and match snapshot 1`] = `
     <div class="r-month-picker-month">
       July
     </div>
-    <div class="r-month-picker-month r-month-picker-month-selected">
+    <div class="r-month-picker-month">
       August
     </div>
     <div class="r-month-picker-month">

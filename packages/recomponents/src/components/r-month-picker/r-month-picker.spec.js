@@ -4,8 +4,12 @@ import RMonthPicker from './r-month-picker.vue';
 import RIconButton from '../r-icon-button/r-icon-button.vue';
 
 describe('r-month-picker.vue', () => {
-    it('should render Wrapper and match snapshot', () => {
-        const wrapper = shallowMount(RMonthPicker, {});
+    it('should render Wrapper and match snapshot', async () => {
+        const wrapper = await shallowMount(RMonthPicker, {
+            propsData: {
+                value: {monthIndex: 7, year: 2020},
+            },
+        });
         expect(wrapper).toMatchSnapshot();
     });
     it('should render via SSR and match snapshot', async () => {
