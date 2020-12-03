@@ -304,8 +304,8 @@
             },
             relativeFilterChange(presetName) {
                 const period = this.calendarPresetsPeriods[presetName];
-                const start = this.timezoneHandler().getRaw(period.start);
-                const end = this.timezoneHandler().getRaw(period.end);
+                const start = period.start.format();
+                const end = period.end.format();
 
                 /**
                  * The date range selected
@@ -329,12 +329,12 @@
                 // the problem details: if your browser timezone is +3 then you will have .toISOString as 21:00
                 // and user profile timezone will never change that value
                 const start = this.minDate && this.checkDatesAreSame(this.minDate, date.start)
-                    ? this.timezoneHandler().getRaw(this.minDate)
-                    : this.timezoneHandler().getRaw(moment(date.start).startOf('day'));
+                    ? this.timezoneHandler().fromDate(this.minDate).format()
+                    : this.timezoneHandler().fromDate(moment(date.start).startOf('day')).format();
 
                 const end = this.maxDate && this.checkDatesAreSame(this.maxDate, date.end)
-                    ? this.timezoneHandler().getRaw(this.maxDate)
-                    : this.timezoneHandler().getRaw(moment(date.end).endOf('day'));
+                    ? this.timezoneHandler().fromDate(this.maxDate).format()
+                    : this.timezoneHandler().fromDate(moment(date.end).endOf('day')).format();
 
                 this.$emit('input', {
                     isRelative: false,
