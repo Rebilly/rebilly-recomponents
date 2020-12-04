@@ -11,7 +11,7 @@ export default {
          * Selected month and year
          */
         value: {
-            defaultValue: () => defaultValue,
+            default: () => defaultValue,
             required: true,
         },
         /**
