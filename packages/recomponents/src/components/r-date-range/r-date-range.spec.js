@@ -28,6 +28,11 @@ class TimezoneMock {
     }
 
     // eslint-disable-next-line class-methods-use-this
+    readLocalDate(date) {
+        return moment(date);
+    }
+
+    // eslint-disable-next-line class-methods-use-this
     getRaw(date) {
         return moment.tz(date, this.tz()).utc();
     }

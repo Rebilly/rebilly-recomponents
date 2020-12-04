@@ -202,10 +202,10 @@
                 const {start, end} = this.parsePeriod(this.period);
                 if (this.isValidDatesPeriod) {
                     // the start and end values are ISO strings
-                    // convert to profile timezone
+                    // read dates in profile selected timezone
                     return {
-                        start: this.timezoneHandler().fromDate(start),
-                        end: this.timezoneHandler().fromDate(end),
+                        start: this.timezoneHandler().readLocalDate(start),
+                        end: this.timezoneHandler().readLocalDate(end),
                     };
                 }
                 return {
