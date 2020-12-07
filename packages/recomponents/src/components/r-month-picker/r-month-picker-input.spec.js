@@ -5,8 +5,12 @@ import RMonthPickerInput from './r-month-picker-input.vue';
 import RMonthPicker from './r-month-picker.vue';
 
 describe('r-month-picker-input.vue', () => {
-    it('should render Wrapper and match snapshot', () => {
-        const wrapper = shallowMount(RMonthPickerInput, {});
+    it('should render Wrapper and match snapshot', async () => {
+        const wrapper = await shallowMount(RMonthPickerInput, {
+            propsData: {
+                value: {monthIndex: 7, year: 2020},
+            },
+        });
         expect(wrapper).toMatchSnapshot();
     });
     it('should render via SSR and match snapshot', async () => {

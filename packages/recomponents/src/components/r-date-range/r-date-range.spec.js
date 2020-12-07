@@ -28,6 +28,11 @@ class TimezoneMock {
     }
 
     // eslint-disable-next-line class-methods-use-this
+    readLocalDate(date) {
+        return moment(date);
+    }
+
+    // eslint-disable-next-line class-methods-use-this
     getRaw(date) {
         return moment.tz(date, this.tz()).utc();
     }
@@ -75,10 +80,10 @@ describe('r-date-range.vue', () => {
         };
 
         wrapper.vm.dateChange(selected);
-        expect(wrapper.emitted().input[0][0].start.format(DateTimeFormats.datetime))
-            .toEqual(selected.start.format(DateTimeFormats.datetime));
-        expect(wrapper.emitted().input[0][0].end.format(DateTimeFormats.datetime))
-            .toEqual(selected.end.format(DateTimeFormats.datetime));
+        expect(wrapper.emitted().input[0][0].start)
+            .toEqual(selected.start.format());
+        expect(wrapper.emitted().input[0][0].end)
+            .toEqual(selected.end.format());
     });
 
     it('should toggle the poppers', async () => {
@@ -113,10 +118,10 @@ describe('r-date-range.vue', () => {
         expect(wrapper.vm.getFormattedPresetPeriod(preset))
             .toEqual(moment().format(DateTimeFormats.orderDate));
         wrapper.vm.relativeFilterChange(preset);
-        expect(wrapper.emitted().input[0][0].start.format(DateTimeFormats.datetime))
-            .toEqual(moment().startOf('day').format(DateTimeFormats.datetime));
-        expect(wrapper.emitted().input[0][0].end.format(DateTimeFormats.datetime))
-            .toEqual(moment().endOf('day').format(DateTimeFormats.datetime));
+        expect(wrapper.emitted().input[0][0].start)
+            .toEqual(moment().startOf('day').utc(true).format());
+        expect(wrapper.emitted().input[0][0].end)
+            .toEqual(moment().endOf('day').utc(true).format());
     });
 
     it('should show selected date range properly', async () => {
