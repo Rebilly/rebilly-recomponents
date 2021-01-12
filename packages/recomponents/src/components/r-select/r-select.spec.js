@@ -517,4 +517,24 @@ describe('r-select.vue', () => {
         wrapper.vm.removeLastElement();
         expect(wrapper.emitted().input).toEqual([[['1'], 'id']]);
     });
+
+    it('should search asynchronous based on keyword', async () => {
+        const asyncFind = () => [1, 2, 3];
+        const wrapper = shallowMount(RSelect, {
+            propsData: {
+                id: 'id',
+                value: [],
+                asyncFind,
+                asyncGetInitValue: () => [],
+            },
+        });
+        const spy = jest.spyOn(wrapper.vm, 'handleAsyncFind');
+
+        await Vue.nextTick();
+        expect(wrapper.vm.filteredOptions.length).toBe(3);
+
+        await wrapper.setData({search: 'acme'});
+        expect(wrapper.vm.handleAsyncFind).toHaveBeenCalledTimes(1)
+
+    });
 });

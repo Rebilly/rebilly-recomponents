@@ -326,15 +326,10 @@ storiesOf('Components.Select', module)
     .add('Async data', () => ({
         data() {
             return {
-                loading: false,
-                options: [],
-                value: [1, 4, 7],
+                value: null,
             };
         },
         props: {
-            async: {
-                default: text('GET Request URL', 'https://jsonplaceholder.typicode.com/todos'),
-            },
             allowEmpty: {
                 default: boolean('Allow empty', true),
             },
@@ -369,7 +364,7 @@ storiesOf('Components.Select', module)
                 default: number('Max height', 500),
             },
             multiple: {
-                default: boolean('Multiple', true),
+                default: boolean('Multiple', false),
             },
             openDirection: {
                 default: select('Direction', {
@@ -395,10 +390,10 @@ storiesOf('Components.Select', module)
 
             },
             optionLabel: {
-                default: text('Property to display', 'title'),
+                default: text('Property to display', 'label'),
             },
             optionKey: {
-                default: text('Property to save', 'id'),
+                default: text('Property to save', 'value'),
             },
             resetAfter: {
                 default: boolean('Reset after', false),
@@ -419,7 +414,7 @@ storiesOf('Components.Select', module)
                 default: select('Tag position', {top: 'top', bottom: 'bottom'}, 'top'),
             },
             taggable: {
-                default: boolean('Taggable', true),
+                default: boolean('Taggable', false),
             },
         },
         methods: {
@@ -430,16 +425,14 @@ storiesOf('Components.Select', module)
             searchChange: action('searchChange'),
             select: action('select'),
             tag: action('tag'),
-        },
-        mounted() {
-            this.loading = true;
-            axios.get(this.async)
-                .then((response) => {
-                    setTimeout(() => {
-                        this.options = response.data;
-                        this.loading = false;
-                    }, 2000);
-                });
+            async asyncFind(search = '') {
+                await axios.get(`https://www.thecocktaildb.com/api/json/v1/1/search.php?s=${search}&limit=1`)
+                await new Promise(res => setTimeout(res, 1000));
+                return ['John', 'Adam', 'Sarah'];
+            },
+            asyncGetInitValue() {
+                return [];
+            }
         },
         template: `
             <div class="storybook-center">
@@ -447,6 +440,8 @@ storiesOf('Components.Select', module)
                     <p>Selected: {{ value }}</p>
                     <r-select
                         v-model="value"
+                        :asyncFind="asyncFind"
+                        :asyncGetInitValue="asyncGetInitValue"
                         :allowEmpty="allowEmpty"
                         :clearOnSelect="clearOnSelect"
                         :closeOnSelect="closeOnSelect"
@@ -456,12 +451,10 @@ storiesOf('Components.Select', module)
                         :internalSearch="internalSearch"
                         :label="label"
                         :limit="limit"
-                        :loading="loading"
                         :max="max"
                         :maxHeight="maxHeight"
                         :multiple="multiple"
                         :openDirection="openDirection"
-                        :options="options"
                         :optionsLimit="optionsLimit"
                         :optionLabel="optionLabel"
                         :optionKey="optionKey"
