@@ -326,6 +326,7 @@ storiesOf('Components.Select', module)
     .add('Async data', () => ({
         data() {
             return {
+                options: [],
                 value: null,
             };
         },
@@ -357,6 +358,9 @@ storiesOf('Components.Select', module)
             limit: {
                 default: number('Limit', 4),
             },
+            loading: {
+                default: boolean('Loading', true),
+            },
             max: {
                 default: number('Max', 8),
             },
@@ -383,7 +387,6 @@ storiesOf('Components.Select', module)
             },
             preselectFirst: {
                 default: boolean('Preselect first', true),
-
             },
             preserveSearch: {
                 default: boolean('Preserve search', false),
@@ -451,10 +454,12 @@ storiesOf('Components.Select', module)
                         :internalSearch="internalSearch"
                         :label="label"
                         :limit="limit"
+                        :loading="loading"
                         :max="max"
                         :maxHeight="maxHeight"
                         :multiple="multiple"
                         :openDirection="openDirection"
+                        :options="options"
                         :optionsLimit="optionsLimit"
                         :optionLabel="optionLabel"
                         :optionKey="optionKey"

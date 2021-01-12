@@ -575,7 +575,7 @@
                     this.$refs.search.setAttribute('aria-activedescendant', `${this.id}-${this.pointer.toString()}`);
                 }
             },
-            search() {
+            async search() {
                 /**
                  * Search text change
                  * @type {Event}
@@ -583,7 +583,7 @@
                 this.$emit('search-change', this.search, this.id);
 
                 if (this.computedIsAsync) {
-                    this.handleAsyncFind(this.search);
+                    await this.handleAsyncFind(this.search);
                 }
             },
             loading() {
