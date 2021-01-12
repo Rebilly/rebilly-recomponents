@@ -426,13 +426,13 @@ storiesOf('Components.Select', module)
             select: action('select'),
             tag: action('tag'),
             async asyncFind(search = '') {
-                await axios.get(`https://www.thecocktaildb.com/api/json/v1/1/search.php?s=${search}&limit=1`)
+                await axios.get(`https://www.thecocktaildb.com/api/json/v1/1/search.php?s=${search}&limit=1`);
                 await new Promise(res => setTimeout(res, 1000));
                 return ['John', 'Adam', 'Sarah'];
             },
             asyncGetInitValue() {
                 return [];
-            }
+            },
         },
         template: `
             <div class="storybook-center">
