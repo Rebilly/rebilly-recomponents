@@ -78,7 +78,7 @@
                        :name="name"
                        :id="id"
                        type="text"
-                       autocomplete="off"
+                       :autocomplete="autocomplete"
                        spellcheck="false"
                        :placeholder="placeholder"
                        :style="inputStyle"
@@ -288,6 +288,13 @@
             allowEmpty: {
                 type: Boolean,
                 default: true,
+            },
+            /**
+             * Specify autocomplete value
+             */
+            autocomplete: {
+                type: String,
+                default: 'off',
             },
             /**
              * List of keys where default behaviour will be ignored
