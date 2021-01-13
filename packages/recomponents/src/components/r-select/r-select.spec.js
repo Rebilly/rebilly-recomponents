@@ -82,6 +82,19 @@ describe('r-select.vue', () => {
         expect(wrapper.findAll('.r-select-tag').at(1)).not.toEqual(undefined);
     });
 
+    it('should change autocomplete value', () => {
+        const wrapper = shallowMount(RSelect, {
+            propsData: {
+                autocomplete: 'none',
+                value: ['1', '2'],
+                options: ['1', '2', '3'],
+                multiple: true,
+            },
+        });
+        const autocomplete = wrapper.find('input.r-select-input').attributes('autocomplete');
+        expect(autocomplete).toEqual('none');
+    });
+
     it('should preselect passed simple value', () => {
         const wrapper = shallowMount(RSelect, {
             propsData: {
