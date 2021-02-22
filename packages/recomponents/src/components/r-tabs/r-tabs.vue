@@ -1,7 +1,7 @@
 <template>
     <div>
         <div class="r-tab" :class="[{'r-tab-divided': divided}, menuClass]" role="tablist">
-            <div v-for="(tab, index) in tabs" class="r-tab-item" :key="index">
+            <div v-for="(tab, index) in tabs" class="r-tab-item" :key="index" v-if="!tab.hidden">
                 <button v-if="tab.to"
                         :to="tab.to"
                         role="tab"
