@@ -28,6 +28,10 @@
                 required: false,
                 default: undefined,
             },
+            hidden: {
+                type: Boolean,
+                default: false,
+            },
         },
         data() {
             return {
