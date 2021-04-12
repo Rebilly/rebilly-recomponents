@@ -36,7 +36,7 @@
                     <div class="r-select-tags-wrap"
                          v-show="visibleValues.length > 0"
                          @mousedown.prevent>
-                        <template v-for="(option, index) of computedValue"
+                        <template v-for="option of computedValue"
                                   @mousedown.prevent>
                             <!-- @slot Override default tag component -->
                             <slot name="tag"
@@ -78,7 +78,7 @@
                        :name="name"
                        :id="id"
                        type="text"
-                       autocomplete="off"
+                       :autocomplete="autocomplete"
                        spellcheck="false"
                        :placeholder="placeholder"
                        :style="inputStyle"
@@ -172,7 +172,7 @@
                             </span>
                         </li>
                         <li class="r-select-content-element"
-                            v-show="showNoResults && (filteredOptions.length === 0 && search && !loading)">
+                            v-show="showNoResults && (filteredOptions.length === 0 && search && !loading && !computedIsLoading)">
                             <span class="r-select-content-element-option">
                                 <!-- @slot Override default no result component -->
                                 <slot name="noResult"
@@ -181,7 +181,7 @@
                             </span>
                         </li>
                         <li class="r-select-content-element"
-                            v-show="showNoOptions && (computedOptions.length === 0 && !search && !loading)">
+                            v-show="showNoOptions && (computedOptions.length === 0 && !search && !loading && !computedIsLoading)">
                             <span class="r-select-content-element-option">
                                 <!-- @slot Override default no options component -->
                                 <slot name="noOptions">{{messages['noOptions']}}</slot>
@@ -288,6 +288,13 @@
             allowEmpty: {
                 type: Boolean,
                 default: true,
+            },
+            /**
+             * Specify autocomplete value
+             */
+            autocomplete: {
+                type: String,
+                default: 'off',
             },
             /**
              * List of keys where default behaviour will be ignored
@@ -575,12 +582,16 @@
                     this.$refs.search.setAttribute('aria-activedescendant', `${this.id}-${this.pointer.toString()}`);
                 }
             },
-            search() {
+            async search() {
                 /**
                  * Search text change
                  * @type {Event}
                  */
                 this.$emit('search-change', this.search, this.id);
+
+                if (this.computedIsAsync) {
+                    await this.handleAsyncFind(this.search);
+                }
             },
             loading() {
                 this.preselect();

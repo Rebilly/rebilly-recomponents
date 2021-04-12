@@ -82,6 +82,19 @@ describe('r-select.vue', () => {
         expect(wrapper.findAll('.r-select-tag').at(1)).not.toEqual(undefined);
     });
 
+    it('should change autocomplete value', () => {
+        const wrapper = shallowMount(RSelect, {
+            propsData: {
+                autocomplete: 'none',
+                value: ['1', '2'],
+                options: ['1', '2', '3'],
+                multiple: true,
+            },
+        });
+        const autocomplete = wrapper.find('input.r-select-input').attributes('autocomplete');
+        expect(autocomplete).toEqual('none');
+    });
+
     it('should preselect passed simple value', () => {
         const wrapper = shallowMount(RSelect, {
             propsData: {
@@ -516,5 +529,25 @@ describe('r-select.vue', () => {
 
         wrapper.vm.removeLastElement();
         expect(wrapper.emitted().input).toEqual([[['1'], 'id']]);
+    });
+
+    it('should search asynchronous based on keyword', async () => {
+        const asyncFind = () => [1, 2, 3];
+        const asyncGetInitValue = () => [];
+        const wrapper = shallowMount(RSelect, {
+            propsData: {
+                id: 'id',
+                value: [],
+                asyncFind,
+                asyncGetInitValue,
+            },
+        });
+        jest.spyOn(wrapper.vm, 'handleAsyncFind');
+
+        await Vue.nextTick();
+        expect(wrapper.vm.filteredOptions.length).toBe(3);
+
+        await wrapper.setData({search: 'acme'});
+        expect(wrapper.vm.handleAsyncFind).toHaveBeenCalledTimes(1);
     });
 });
