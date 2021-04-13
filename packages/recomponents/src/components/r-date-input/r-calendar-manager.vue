@@ -1,44 +1,50 @@
 <template>
-    <div class="calendar">
-        <r-input
-                :disabled="disabled"
-                right-icon="calendar"
-                v-show="disabled"/>
-        <no-ssr>
-            <v-date-picker
-                    v-show="!disabled"
-                    v-if="isDateRange"
-                    mode="range"
-                    is-double-paned
-                    is-inline
-                    show-caps
-                    :min-date="minDate"
-                    :select-attribute="dragSelectAttributes"
-                    :drag-attribute="dragSelectAttributes"
-                    :theme-styles="themeStyles"
-                    :tint-color="tintColor"
-                    :max-date="maxDate"
-                    :available-dates="availableDates"
-                    :disabled-attribute="disabledAttribute"
-                    :value="internalPeriod"
-                    @input="periodInput">
-            </v-date-picker>
-            <v-date-picker
-                    v-show="!disabled"
-                    v-if="!isDateRange"
-                    mode="single"
-                    popover-visibility="focus"
-                    :popover-content-offset="4"
-                    :min-date="minDate"
-                    :max-date="maxDate"
-                    :theme-styles="themeStyles"
-                    :tint-color="tintColor"
-                    :available-dates="availableDates"
-                    @input="dateInput"
-                    :value="internalDate">
-            </v-date-picker>
-        </no-ssr>
-    </div>
+<div class="calendar">
+    <r-input
+            :disabled="disabled"
+            right-icon="calendar"
+            v-show="disabled"/>
+    <no-ssr>
+        <v-date-picker v-if="!isDateRange"
+                       v-show="!disabled"
+                       :value="internalDate"
+                       @input="dateInput"
+                       :mode="mode"
+                       popover-visibility="focus"
+                       :popover-content-offset="4"
+                       :min-date="minDate"
+                       :max-date="maxDate"
+                       color="blue"
+                       :theme-styles="themeStyles"
+                       :available-dates="availableDates">
+            <template v-slot="{ inputValue, inputEvents }">
+                <r-input :value="inputValue"
+                         :input-events="inputEvents"
+                         :disabled="disabled"
+                         :placeholder="placeholder"
+                         right-icon="calendar"/>
+            </template>
+        </v-date-picker>
+        <v-date-picker v-else
+                       :mode="mode"
+                       :masks="masks"
+                       :value="internalPeriod"
+                       @input="periodInput"
+                       :theme-styles="themeStyles"
+                       show-caps
+                       :min-date="minDate"
+                       :max-date="maxDate"
+                       :select-attribute="dragSelectAttributes"
+                       :drag-attribute="dragSelectAttributes"
+                       color="blue"
+                       :available-dates="availableDates"
+                       :disabled-attribute="disabledAttribute"
+                       is-range
+                       :columns="2"
+        >
+        </v-date-picker>
+    </no-ssr>
+</div>
 </template>
 
 <script>
@@ -47,7 +53,6 @@
     import vCalendar from 'v-calendar';
     import DateTimeFormats from '../../common/datetime-formats';
     import rInput from '../r-input/r-input.vue';
-
     Vue.use(vCalendar, {
         formats: {
             title: 'MMMM YYYY',
@@ -61,7 +66,6 @@
             dayPopover: 'L',
         },
     });
-
     // TODO disabled state + active value (no-editable date value)
     export default {
         name: 'RCalendarManager',
@@ -83,6 +87,14 @@
                     },
                 }),
             },
+            datePicker: {
+                type: Boolean,
+                default: true,
+            },
+            timePicker: {
+                type: Boolean,
+                default: false,
+            },
             minDate: {
                 type: Date,
             },
@@ -98,8 +110,16 @@
             value: {
                 type: [Object, String],
             },
+            placeholder: {
+                type: String,
+            },
         },
         computed: {
+            mode() {
+                let mode = this.datePicker ? 'date' : '';
+                mode += this.timePicker && 'Time';
+                return mode;
+            },
             isDateRange() {
                 return this.type === 'range';
             },
@@ -112,20 +132,22 @@
                         end: end.tz(moment.tz.guess(), true).toDate(),
                     };
                 }
-
                 return {start: null, end: null};
             },
             internalDate() {
                 if (!this.value) {
                     return null;
                 }
-                const date = this.value.clone();
+                const date = moment(this.value).clone();
                 return date.tz(moment.tz.guess(), true).toDate();
             },
         },
         data() {
             return {
                 initialDate: this.value,
+                masks: {
+                    input: 'YYYY-MM-DD h:mm A',
+                },
                 themeStyles: {
                     wrapper: {
                         background: '#FFFFFF',
@@ -169,8 +191,8 @@
                     bars: {
                         backgroundColor: 'red',
                     },
+                    tintColor: '#DCE7FE',
                 },
-                tintColor: '#DCE7FE',
                 disabledAttribute: {
                     contentStyle: {
                         color: '#C4CED8',
@@ -184,17 +206,16 @@
                 // convert `v-calendar` Date objects to Moment instances
                 // in the user's preferred time zone
                 const mutablePeriod = {
-                    start: moment(start).startOf('day'),
-                    end: moment(end).endOf('day'),
+                    start: moment(start),
+                    end: moment(end),
                 };
                 this.$emit('input', mutablePeriod);
             },
             dateInput(date) {
-                // v-date-picker will return null if the selected date is the same as the currently selected date.
                 if (!date) {
                     return;
                 }
-                this.$emit('input', moment(date).startOf('day'));
+                this.$emit('input', date);
             },
         },
     };

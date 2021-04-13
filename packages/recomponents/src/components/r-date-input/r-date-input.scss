@@ -3,7 +3,7 @@
 // This file contains all styles related to the v-calendar plugin.
 // -----------------------------------------------------------------------------
 
-.c-nav {
+.vc-nav {
     background: #FFFFFF !important;
     height: 100% !important;
     padding: 0 !important;
@@ -11,13 +11,13 @@
     border-radius: var(--border-radius) !important;
 }
 
-.c-nav .c-header {
+.vc-nav .vc-header {
     background: #FFFFFF !important;
     padding: 8px 4px !important;
     border-radius: var(--border-radius) var(--border-radius) 0 0 !important;
 }
 
-.c-nav .c-header .c-title {
+.vc-nav .vc-header .vc-title {
     font-family: var(--secondary-font-stack) !important;
     font-size: var(--font-size-h3) !important;
     text-transform: uppercase !important;
@@ -25,7 +25,7 @@
     line-height: var(--input-line-height) !important;
 }
 
-.c-nav .c-table {
+.vc-nav .vc-table {
     margin-bottom: 0 !important;
     background: transparent !important;
 
@@ -52,7 +52,7 @@
     }
 }
 
-.c-nav .c-table-cell {
+.vc-nav .vc-table-cell {
     font-family: var(--primary-font-stack) !important;
     font-size: 14px !important;
     padding: 0px !important;
@@ -63,30 +63,36 @@
     }
 }
 
-.c-nav .c-active {
+.vc-nav .vc-active {
     background: var(--gray-color-light) !important;
     box-shadow: none !important;
 }
 
-.c-arrow {
+.vc-arrow {
     width: 20px !important;
     height: 20px !important;
 }
 
-.c-day-background {
+.vc-day-background {
     height: 32px !important;
     border: none !important;
     border-radius: 0 !important;
 }
 
-.c-day-content {
+.vc-day-content {
     color: var(--text-color) !important;
+    font-weight: normal !important;
     transition: all 0.05s ease !important;
 }
 
-.c-day-slide-right-translate-enter .c-day-background,
-.c-day-slide-left-translate-enter .c-day-background,
-.c-day-scale-enter .c-day-background {
+.vc-day-content.is-disabled {
+    color: #C4CED8 !important;
+    cursor: not-allowed;
+}
+
+.vc-day-slide-right-translate-enter .vc-day-background,
+.vc-day-slide-left-translate-enter .vc-day-background,
+.vc-day-scale-enter .vc-day-background {
     width: 32px !important;
     background: #DCE7FE !important;
     border-radius: 50% !important;
@@ -113,7 +119,7 @@
     box-shadow: none;
 }
 
-.calendar .popover-container .c-pane-container {
+.calendar .popover-container .vc-pane-container {
     box-shadow: 0 0 0 1px rgba(var(--text-muted), 0.09), 0 7px 14px 0 rgba(var(--text-muted), 0.15), 0 3px 6px 0 rgba(var(--text-muted), 0.07);
 }
 
@@ -160,6 +166,16 @@
 
 .popover-origin ~ input {
     box-shadow: 0 0 0 1px var(--primary-color) inset, 0 0 0 0 rgba(#A1B2C1, 0.5) inset, 0 0 0 1px var(--primary-color);
+}
+
+.vc-container.vc-blue {
+    --blue-200: #DCE7FE !important;
+    --blue-600: #DCE7FE !important;
+    --blue-700: #0044D4 !important;
+}
+
+.vc-time-container {
+    --accent-600: #0044D4 !important;
 }
 
 /* style from _v-date-input.scss*/

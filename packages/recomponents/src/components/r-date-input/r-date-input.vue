@@ -2,7 +2,7 @@
     <div :class="{'r-no-flex': noFlex}">
         <template v-if="type === 'date'">
             <div class="r-field" :class="{'r-is-error': isInvalid}">
-                <label v-if="label" class="r-field-label">{{label}}</label>
+                <label v-if="label" class="r-field-label">{{ label }}</label>
                 <r-calendar-manager class="r-date-input"
                                     type="calendar"
                                     :value="value"
@@ -10,107 +10,54 @@
                                     :max-date="maxDate"
                                     :drag-select-attributes="dragSelectAttributes"
                                     :disabled="disabled"
+                                    :placeholder="placeholder"
                                     :available-dates="availableDates"
-                                    @input="dateChange"
-                />
-                <span class="r-field-caption" v-if="helpText">{{helpText}}</span>
+                                    @input="dateChange"/>
+                <span class="r-field-caption" v-if="helpText">{{ helpText }}</span>
             </div>
         </template>
         <template v-if="type === 'datetime'">
-            <p v-if="label" class="r-stack-xs">{{label}}</p>
-            <div class="r-grid-fitted r-grid-unstackable r-align-items-center" :class="{'r-is-error': isInvalid}">
-                <div class="r-grid-item r-inline-s">
-                    <r-calendar-manager class="r-date-input"
-                                        type="calendar"
-                                        :value="value"
-                                        :min-date="minDate"
-                                        :max-date="maxDate"
-                                        :drag-select-attributes="dragSelectAttributes"
-                                        :disabled="disabled"
-                                        :available-dates="availableDates"
-                                        @input="dateChange"
-                    />
-                </div>
-                <div class="r-grid-item r-no-flex">
-                    <r-select :options="timeOptions.hours"
-                              :value="selectedTime.hours"
-                              placeholder=""
-                              :disabled="disabled"
-                              class="r-no-flex r-date-time-input"
-                              @input="updateHours"
-                    />
-                </div>
-                <div class="r-grid-item r-no-flex">
-                    <span class="r-date-time-divider">:</span>
-                </div>
-                <div class="r-grid-item r-no-flex">
-                    <r-select :options="timeOptions.minutes"
-                              placeholder=""
-                              :disabled="disabled"
-                              :value="selectedTime.minutes"
-                              class="r-no-flex r-date-time-input"
-                              @input="updateMinutes"
-                    />
-                </div>
-            </div>
-            <span class="r-field-caption" v-if="helpText">{{helpText}}</span>
+            <p v-if="label" class="r-stack-xs">{{ label }}</p>
+            <r-calendar-manager class="r-date-input"
+                                type="calendar"
+                                :time-picker="true"
+                                :value="value"
+                                :min-date="minDate"
+                                :max-date="maxDate"
+                                :drag-select-attributes="dragSelectAttributes"
+                                :disabled="disabled"
+                                :placeholder="placeholder"
+                                :available-dates="availableDates"
+                                @input="dateChange"
+            />
+            <span class="r-field-caption" v-if="helpText">{{ helpText }}</span>
         </template>
         <template v-if="type === 'time'">
-            <p v-if="label" class="r-stack-xs">{{label}}</p>
-            <div class="r-grid-fitted grid-unstackable r-align-items-center">
-                <div class="r-grid-item r-no-flex">
-                    <!-- @slot Override default hours input component  -->
-                    <slot :options="timeOptions.hours"
-                          :value="selectedTime.hours"
-                          :disabled="disabled"
-                          :input="updateHours"
-                          name="hours-input">
-                        <r-select :options="timeOptions.hours"
-                                  :value="selectedTime.hours"
-                                  placeholder=""
-                                  :disabled="disabled"
-                                  @input="updateHours"
-                                  class="r-no-flex r-date-time-input"/>
-                    </slot>
-                </div>
-                <div class="r-grid-item r-no-flex">
-                    <span class="r-date-time-divider">:</span>
-                </div>
-                <div class="r-grid-item r-no-flex">
-                    <!-- @slot Override default minutes input component  -->
-                    <slot :options="timeOptions.minutes"
-                          :value="selectedTime.minutes"
-                          :disabled="disabled"
-                          :input="updateMinutes"
-                          name="minutes-input">
-                        <r-select :options="timeOptions.minutes"
-                                  placeholder=""
-                                  :disabled="disabled"
-                                  :value="selectedTime.minutes"
-                                  class="r-no-flex r-date-time-input"
-                                  @input="updateMinutes"/>
-                    </slot>
-                </div>
-            </div>
-            <span class="r-field-caption" v-if="helpText">{{helpText}}</span>
-        </template>
-        <template v-if="type === 'datepicker'">
-            <v-date-picker v-model="selectedDate"
-                           :min-date="minDate"
-                           :max-date="maxDate"
-                           :select-attributes="dragSelectAttributes"
-                           :drag-attributes="dragSelectAttributes"
-                           is-inline
-                           @input="$emit('input', selectedDate)"
+            <p v-if="label" class="r-stack-xs">{{ label }}</p>
+            <r-calendar-manager class="r-date-input"
+                                type="calendar"
+                                :date-picker="false"
+                                :time-picker="true"
+                                :value="value"
+                                :min-date="minDate"
+                                :max-date="maxDate"
+                                :drag-select-attributes="dragSelectAttributes"
+                                :disabled="disabled"
+                                :placeholder="placeholder"
+                                :available-dates="availableDates"
+                                @input="updateTime"
             />
+            <span class="r-field-caption" v-if="helpText">{{ helpText }}</span>
         </template>
-        <template v-if="type === 'range'">
+        <template v-if="isDateRange">
             <r-calendar-manager type="range"
+                                :time-picker="type === 'datetime-range'"
                                 :min-date="minDate"
                                 :max-date="maxDate"
                                 :columns="columns"
                                 :drag-select-attributes="dragSelectAttributes"
                                 :value="value"
+                                :placeholder="placeholder"
                                 @input="$emit('input', $event)"
             ></r-calendar-manager>
         </template>
@@ -118,12 +65,10 @@
 </template>
 
 <script>
-    import moment from 'moment';
     import shortid from 'shortid';
     import rCalendarManager from './r-calendar-manager.vue';
     import rIcon from '../r-icon/r-icon.vue';
     import rSelect from '../r-select/r-select.vue';
-
     // TODO: prefixes simple classes `r-stack-xs, r-is-error, etc`
     // TODO: detailed description of props
     export default {
@@ -194,6 +139,7 @@
              */
             value: {
                 type: Object,
+                default: () => new Date(),
             },
             /**
              * Specify how to validate
@@ -251,8 +197,8 @@
                     minutes,
                 };
             },
-            selectedTime() {
-                return this.restoreTime(this.value);
+            isDateRange() {
+                return ['date-range', 'datetime-range'].includes(this.type);
             },
         },
         methods: {
@@ -268,64 +214,8 @@
                  */
                 this.$emit('input', this.selectedDate);
             },
-            // TODO 00 hours/time
-            updateTime(type, value) {
-                // set empty value
-                if (!value) {
-                    this.selectedTime.hours = '';
-                    this.selectedTime.minutes = '';
-                    this.$emit('input', null);
-                    return;
-                }
-                /**
-                 * If datepicker would be initialized with null value
-                 * this.value is moment, but invalid time.
-                 * And, after value changed to null or empty - it's invalid date too.
-                 * We should fix that, so, need check value
-                 */
-                const data = {
-                    hours: this.selectedTime.hours || '00',
-                    minutes: this.selectedTime.minutes || '00',
-                    [type]: value,
-                };
-
-                const datetime = this.value && this.value.isValid()
-                    ? this.value.clone()
-                    : moment().startOf('day');
-
-                this.selectedTime.hours = data.hours;
-                this.selectedTime.minutes = data.minutes;
-
-                datetime
-                    .hours(parseInt(this.selectedTime.hours, 10))
-                    .minutes(parseInt(this.selectedTime.minutes, 10));
-
-                this.$emit('input', datetime);
-            },
-            updateHours(hours) {
-                this.updateTime('hours', hours);
-            },
-            updateMinutes(minutes) {
-                this.updateTime('minutes', minutes);
-            },
-            restoreTime(date) {
-                if (!date) {
-                    return {
-                        hours: '',
-                        minutes: '',
-                    };
-                }
-                // TODO how about {hours: '', minutes:''} value
-                if (date !== null && moment.isMoment(date)) {
-                    return {
-                        hours: date.format('HH'),
-                        minutes: date.format('mm'),
-                    };
-                }
-                return {
-                    hours: '00',
-                    minutes: '00',
-                };
+            updateTime(value) {
+                this.$emit('input', value);
             },
         },
     };
