@@ -25,7 +25,9 @@
                 />
             </div>
             <div class="PaymentRow">
+              <ClientOnly>
                 <r-date-input v-model="date" type="date"/>
+              </ClientOnly>
             </div>
             <div class="PaymentRow">
                 <r-button-group :fluid="true">
