@@ -314,10 +314,10 @@
             isGroupedInput() {
                 return !this.multiline
                     && (this.leftIcon
-                        || this.rightIcon
-                        || this.leftLabel
-                        || this.rightLabel
-                        || this.$slots['right-button']);
+                    || this.rightIcon
+                    || this.leftLabel
+                    || this.rightLabel
+                    || this.$slots['right-button']);
             },
             fieldStyles() {
                 const style = {};

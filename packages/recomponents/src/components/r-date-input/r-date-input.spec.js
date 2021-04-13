@@ -3,10 +3,13 @@ import RCalendarManager from './r-calendar-manager.vue';
 import RDateInput from './r-date-input.vue';
 
 describe('r-date-input.vue', () => {
+    const date = '2019-01-01';
+
     it('should render Wrapper and match snapshot', () => {
         const wrapper = shallowMount(RDateInput, {
             propsData: {
                 maxDate: '2020-01-01',
+                value: date,
             },
             stubs: ['no-ssr'],
         });
@@ -16,6 +19,7 @@ describe('r-date-input.vue', () => {
     it('renders default type date correctly', () => {
         const wrapper = shallowMount(RDateInput, {
             propsData: {
+                value: date,
                 stubs: ['no-ssr'],
             },
         });
@@ -27,8 +31,8 @@ describe('r-date-input.vue', () => {
         expect(wrapper.contains('.r-field-caption')).toBe(false);
         // no error
         expect(wrapper.contains('.r-is-error')).toBe(false);
-        // empty value by default
-        expect(wrapper.vm.selectedDate).toBe(undefined);
+        // propagated value as a selected
+        expect(wrapper.vm.selectedDate).toBe(date);
     });
 
     it('should renders label and helpText type date', () => {
@@ -87,26 +91,6 @@ describe('r-date-input.vue', () => {
             stubs: ['no-ssr'],
         });
         expect(wrapper.classes()).not.toContain('r-date-time-divider');
-    });
-
-    it('should renders hours/minutes picker type datetime', () => {
-        const wrapper = shallowMount(RDateInput, {
-            propsData: {
-                type: 'datetime',
-            },
-            stubs: ['no-ssr'],
-        });
-        expect(wrapper.contains('.r-date-time-divider')).toEqual(true);
-    });
-
-    it('shouldn\'t renders datepicker type time', () => {
-        const wrapper = shallowMount(RDateInput, {
-            propsData: {
-                type: 'time',
-            },
-            stubs: ['no-ssr'],
-        });
-        expect(wrapper.contains(RCalendarManager)).toBe(false);
     });
 
     it('shouldn emit event input on dateChange callback', () => {

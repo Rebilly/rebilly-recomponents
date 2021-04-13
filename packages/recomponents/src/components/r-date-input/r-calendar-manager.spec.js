@@ -24,4 +24,17 @@ describe('r-calendar-manager.vue', () => {
         expect(wrapper.contains(RInput)).toBe(true);
         expect(wrapper.find(RInput).attributes('style')).toBe(undefined);
     });
+
+    it('should render date and time range picker correctly', () => {
+        const wrapper = shallowMount(RCalendarManager, {
+            propsData: {
+                type: 'range',
+                datePicker: true,
+                timePicker: true,
+            },
+            stubs: ['no-ssr'],
+        });
+
+        expect(wrapper.vm.mode).toEqual('dateTime');
+    });
 });

@@ -53,6 +53,7 @@
     import vCalendar from 'v-calendar';
     import DateTimeFormats from '../../common/datetime-formats';
     import rInput from '../r-input/r-input.vue';
+
     Vue.use(vCalendar, {
         formats: {
             title: 'MMMM YYYY',

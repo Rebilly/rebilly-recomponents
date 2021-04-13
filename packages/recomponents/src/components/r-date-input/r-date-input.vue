@@ -65,10 +65,12 @@
 </template>
 
 <script>
+    import moment from 'moment';
     import shortid from 'shortid';
     import rCalendarManager from './r-calendar-manager.vue';
     import rIcon from '../r-icon/r-icon.vue';
     import rSelect from '../r-select/r-select.vue';
+
     // TODO: prefixes simple classes `r-stack-xs, r-is-error, etc`
     // TODO: detailed description of props
     export default {
@@ -203,10 +205,11 @@
         },
         methods: {
             dateChange(date) {
-                this.selectedDate = date;
+                this.selectedDate = moment(date);
                 if (this.value) {
-                    this.selectedDate.hours(this.value.hours());
-                    this.selectedDate.minutes(this.value.minutes());
+                    const value = moment(this.value);
+                    this.selectedDate.hours(value.hours());
+                    this.selectedDate.minutes(value.minutes());
                 }
                 /**
                  * Date change by element click or from parent component
