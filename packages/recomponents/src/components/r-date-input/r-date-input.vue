@@ -78,9 +78,9 @@
         components: {
             rIcon,
             rSelect,
-            rCalendarManager: () => import ('r-calendar-manager')
-                  .then(m => m.rCalendarManager)
-                  .catch(),
+            rCalendarManager: () => import ('../')
+                  .then(m => m.RCalendarManager)
+                  .catch(console.log),
         },
         props: {
             /**
