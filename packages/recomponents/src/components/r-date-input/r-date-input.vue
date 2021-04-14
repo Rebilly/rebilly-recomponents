@@ -67,7 +67,7 @@
 <script>
     import moment from 'moment';
     import shortid from 'shortid';
-    import rCalendarManager from './r-calendar-manager.vue';
+    // import rCalendarManager from './r-calendar-manager.vue';
     import rIcon from '../r-icon/r-icon.vue';
     import rSelect from '../r-select/r-select.vue';
 
@@ -76,7 +76,11 @@
     export default {
         name: 'RDateInput',
         components: {
-            rIcon, rCalendarManager, rSelect,
+            rIcon,
+            rSelect,
+            rCalendarManager: () => import ('r-calendar-manager')
+                  .then(m => m.rCalendarManager)
+                  .catch(),
         },
         props: {
             /**
