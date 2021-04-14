@@ -50,23 +50,9 @@
 <script>
     import Vue from 'vue';
     import moment from 'moment-timezone';
-    import vCalendar from 'v-calendar';
     import DateTimeFormats from '../../common/datetime-formats';
     import rInput from '../r-input/r-input.vue';
 
-    Vue.use(vCalendar, {
-        formats: {
-            title: 'MMMM YYYY',
-            weekdays: 'W',
-            navMonths: 'MMM',
-            input: [
-                DateTimeFormats.datePickerDate,
-                'YYYY-MM-DD',
-                'YYYY/MM/DD',
-            ],
-            dayPopover: 'L',
-        },
-    });
     // TODO disabled state + active value (no-editable date value)
     export default {
         name: 'RCalendarManager',
@@ -218,6 +204,24 @@
                 }
                 this.$emit('input', date);
             },
+        },
+        mounted() {
+            // import vCalendar from 'v-calendar';
+            // eslint-disable-next-line global-require
+            const vCalendar = require('v-calendar');
+            Vue.use(vCalendar, {
+                formats: {
+                    title: 'MMMM YYYY',
+                    weekdays: 'W',
+                    navMonths: 'MMM',
+                    input: [
+                        DateTimeFormats.datePickerDate,
+                        'YYYY-MM-DD',
+                        'YYYY/MM/DD',
+                    ],
+                    dayPopover: 'L',
+                },
+            });
         },
     };
 </script>
