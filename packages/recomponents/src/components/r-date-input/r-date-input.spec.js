@@ -1,9 +1,9 @@
 import {mount, shallowMount} from '@vue/test-utils';
-import RCalendarManager from './r-calendar-manager.vue';
 import RDateInput from './r-date-input.vue';
 
 describe('r-date-input.vue', () => {
     const date = '2019-01-01';
+    const rCalendarManager = `<r-calendar-manager-stub></r-calendar-manager-stub>`;
 
     it('should render Wrapper and match snapshot', () => {
         const wrapper = shallowMount(RDateInput, {
@@ -11,7 +11,7 @@ describe('r-date-input.vue', () => {
                 maxDate: '2020-01-01',
                 value: date,
             },
-            stubs: ['no-ssr'],
+            stubs: {'no-ssr': true, 'r-calendar-manager': rCalendarManager},
         });
         expect(wrapper).toMatchSnapshot();
     });
@@ -23,8 +23,6 @@ describe('r-date-input.vue', () => {
                 stubs: ['no-ssr'],
             },
         });
-        // has calendar manager
-        expect(wrapper.contains(RCalendarManager)).toBe(true);
         // no-label
         expect(wrapper.contains('label')).toBe(false);
         // no help text

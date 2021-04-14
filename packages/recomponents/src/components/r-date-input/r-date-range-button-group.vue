@@ -1,68 +1,42 @@
 <template>
-    <r-popper position="bottomEnd"
-              class="r-date-range"
-              ref="calendar"
-              :disabled="false"
-              :offset="6"
-              :margin="[0, 14, 0, 0]">
-        <template #trigger="calendar">
-            <r-button-group :class="{'r-button-group-single': !showPresets}">
-                <r-icon-button :disabled="disabled"
-                               :class="{'r-date-range-button': showPresets}"
-                               @click="toggle('calendar')">
+  <r-button-group :class="{'r-button-group-single': !showPresets}">
+    <r-icon-button :disabled="disabled"
+                   :class="{'r-date-range-button': showPresets}"
+                    @click="calendarToggle()">
                     <span class="r-date-range-label" :title="profileTimezoneTitle">
                         {{ selectedDateLabel }}
                     </span>
-                    <r-icon class="r-date-range-calendar-icon" slot="left-icon" icon="calendar"/>
-                </r-icon-button>
-                <r-popper v-if="showPresets"
-                          class="r-date-range-preset-picker"
-                          position="bottomEnd"
-                          ref="presets"
-                          :offset="6"
-                          :disabled="disabled">
-                    <template #trigger="optionsList">
-                        <r-icon-button :disabled="disabled" @click="toggle('presets')">
-                            <r-icon icon="actions"/>
-                        </r-icon-button>
-                    </template>
-                    <template #content="optionsList">
-                        <div class="r-popover">
-                            <div class="r-popover-control">
-                                <div class="r-popover-content r-popover-menu r-is-scrollable">
-                                    <a class="r-popover-menu-item r-range-picker-item"
-                                       v-for="presetName of calendarPresets"
-                                       @click="relativeFilterChange(presetName)">
-                                        <strong>{{getPresetLabel(presetName)}}&nbsp;</strong>
-                                        <span class="r-text-muted">
-                                            {{getFormattedPresetPeriod(presetName)}}
+      <r-icon class="r-date-range-calendar-icon" slot="left-icon" icon="calendar"/>
+    </r-icon-button>
+    <r-popper v-if="showPresets"
+              class="r-date-range-preset-picker"
+              position="bottomEnd"
+              ref="presets"
+              :offset="6"
+              :disabled="disabled">
+      <template #trigger="optionsList">
+        <r-icon-button :disabled="disabled" @click="toggle('presets')">
+          <r-icon icon="actions"/>
+        </r-icon-button>
+      </template>
+      <template #content="optionsList">
+        <div class="r-popover">
+          <div class="r-popover-control">
+            <div class="r-popover-content r-popover-menu r-is-scrollable">
+              <a class="r-popover-menu-item r-range-picker-item"
+                 v-for="presetName of calendarPresets"
+                 @click="relativeFilterChange(presetName)">
+                <strong>{{ getPresetLabel(presetName) }}&nbsp;</strong>
+                <span class="r-text-muted">
+                                            {{ getFormattedPresetPeriod(presetName) }}
                                         </span>
-                                    </a>
-                                </div>
-                            </div>
-                        </div>
-                    </template>
-                </r-popper>
-            </r-button-group>
-        </template>
-        <template #content="calendar">
-            <div class="r-popover r-date-range-calendar"
-                 :style="{minWidth: isMobile ? `140px` : `513px`}">
-                <div class="r-popover-control">
-                    <div class="r-popover-content r-popover-menu">
-                        <r-date-input
-                                type="range"
-                                :disabled="disabled"
-                                :max-date="maxDate"
-                                :min-date="minDate"
-                                :columns="isMobile ? 1 : 2"
-                                :value="selectedDate"
-                                @input="dateChange($event)"/>
-                    </div>
-                </div>
+              </a>
             </div>
-        </template>
+          </div>
+        </div>
+      </template>
     </r-popper>
+  </r-button-group>
 </template>
 
 <script>
@@ -75,13 +49,13 @@
     } from './calendar-presets';
     import DateTimeFormats from '../../common/datetime-formats';
     import RButtonGroup from '../r-button-group/r-button-group.vue';
-    import RDateInput from '../r-date-input/r-date-input.vue';
+    import RDateInput from './r-date-input.vue';
     import RIcon from '../r-icon/r-icon.vue';
     import RIconButton from '../r-icon-button/r-icon-button.vue';
     import RPopper from '../r-popper/r-popper.vue';
 
     export default {
-        name: 'RDateRange',
+        name: 'RDateRangeButtonGroup',
         components: {
             RButtonGroup,
             RDateInput,
@@ -90,18 +64,19 @@
             RPopper,
         },
         props: {
-            /**
-             * Specify the selected period
-             */
-            period: {
-                type: [String, Object],
-                required: true,
+            inputValue: {
+                type: Object,
+            },
+            calendarToggle: {
+                type: Function,
+                default: () => {},
             },
             /**
              * Specify the timezone handler
              */
             timezoneHandler: {
                 type: Function,
+                required: true,
             },
             /**
              * Specify if the date range picker is disabled
@@ -111,31 +86,12 @@
                 default: false,
             },
             /**
-             * Specify the max available date
-             */
-            maxDate: {
-                type: Date,
-                default: null,
-            },
-            /**
-             * Specify the max available date
-             */
-            minDate: {
-                type: Date,
-                default: null,
-            },
-            /**
              * Specify if there are presets shown
              */
             showPresets: {
                 type: Boolean,
                 default: true,
             },
-        },
-        data() {
-            return {
-                value: {},
-            };
         },
         computed: {
             calendarPresets() {
@@ -154,16 +110,13 @@
                 return Object.entries(this.calendarPresetsPeriods);
             },
             isValidDatesPeriod() {
-                return this.validateDatesPeriod(this.period)
-                    || (this.validateDatesPeriod(this.period.start) && this.validateDatesPeriod(this.period.end));
-            },
-            isMobile() {
-                return window.innerWidth < 600;
+                return this.validateDatesPeriod(this.inputValue)
+                    || (this.validateDatesPeriod(this.inputValue.start) && this.validateDatesPeriod(this.inputValue.end));
             },
             isRelative() {
                 // the props value period is relative period but could be custom period
                 // so it could be something like '5 years ago..now'
-                return this.period.isRelative || !this.isValidDatesPeriod;
+                return this.inputValue.isRelative || !this.isValidDatesPeriod;
             },
             selectedRelativeParams() {
                 // returns {start, end, presetName: (optional), presetLabel: (optional)}
@@ -173,7 +126,7 @@
                     return null;
                 }
                 const preset = this.calendarPresetsPeriodsList
-                    .find(([, {relativeFilterValue}]) => relativeFilterValue === this.period.relativeFilterValue);
+                    .find(([, {relativeFilterValue}]) => relativeFilterValue === this.inputValue.relativeFilterValue);
                 if (preset) {
                     // the period value is one of default relative presets
                     const [presetName, presetParams] = preset;
@@ -184,7 +137,7 @@
                     };
                 }
 
-                return this.parsePeriod(this.period);
+                return this.parsePeriod(this.inputValue);
             },
             isRelativePreset() {
                 // returns true if the props period is relative date and one of default presets
@@ -199,7 +152,7 @@
                         end: relative.end,
                     };
                 }
-                const {start, end} = this.parsePeriod(this.period);
+                const {start, end} = this.parsePeriod(this.inputValue);
                 if (this.isValidDatesPeriod) {
                     // the start and end values are ISO strings
                     // read dates in profile selected timezone
@@ -230,7 +183,7 @@
             selectedDateLabel() {
                 // that means profile timezone !== browser timezone
                 // so we could have some problems with time understanding
-                const selected = this.selectedPeriod;
+                const selected = this.inputValue;
                 if (!this.isMobile) {
                     if (this.isRelative && this.isRelativePreset) {
                         // props period is relative and one of default preset
@@ -278,26 +231,14 @@
                 return /[0-9]{4}-[0-9]{2}-[0-9]{2}/.test(period); // has year value
             },
             toggle(name) {
-                if (name === 'presets') {
-                    this.$refs.presets.popper.toggle();
-                    this.$refs.calendar.popper.close();
-                } else {
-                    this.$refs.calendar.popper.toggle();
-                    if (this.$refs.presets) {
-                        this.$refs.presets.popper.close();
-                    }
-                }
+                this.$refs[name].popper.toggle();
             },
             close() {
-                if (this.$refs.presets) {
-                    this.$refs.presets.popper.close();
-                }
-
-                this.$refs.calendar.popper.close();
+                this.$refs.presets.popper.close();
             },
             parsePeriod(period) {
-                if (typeof this.period === 'string') {
-                    const [start, end] = this.period.split('..');
+                if (typeof this.inputValue === 'string') {
+                    const [start, end] = this.inputValue.split('..');
                     return {start, end};
                 }
                 return period;
@@ -353,5 +294,5 @@
 </script>
 
 <style lang="scss">
-    @import './r-date-range.scss';
+@import 'r-date-range-button-group';
 </style>
