@@ -2,7 +2,6 @@ import RAvatar from './r-avatar/r-avatar.vue';
 import RBadge from './r-badge/r-badge.vue';
 import RButton from './r-button/r-button.vue';
 import RButtonGroup from './r-button-group/r-button-group.vue';
-import RCalendarManager from './r-date-input/r-calendar-manager.vue';
 import RCheckbox from './r-checkbox/r-checkbox.vue';
 import RDateInput from './r-date-input/r-date-input.vue';
 import RIcon from './r-icon/r-icon.vue';
@@ -31,7 +30,6 @@ export {
     RBadge,
     RButton,
     RButtonGroup,
-    RCalendarManager,
     RCheckbox,
     RDateInput,
     RIcon,

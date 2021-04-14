@@ -153,11 +153,17 @@
         methods: {
             onInput(date) {
                 let value;
-                if (this.isDateRange) {
+                if (this.type === DateInputType.dateTimeRange) {
                     value = {
                         ...date,
                         start: moment(date.start).utc(true),
-                        end: moment(date.start).utc(true),
+                        end: moment(date.end).utc(true),
+                    };
+                } else if (this.type === DateInputType.dateRange) {
+                    value = {
+                        ...date,
+                        start: moment(date.start).startOf('day').utc(true),
+                        end: moment(date.end).endOf('day').utc(true),
                     };
                 } else {
                     value = moment(date).utc(true);

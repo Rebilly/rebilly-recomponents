@@ -82,10 +82,7 @@ storiesOf('Components.Date Input', module)
             date: null,
         }),
         methods: {
-            input(value) {
-                console.log(value);
-                this.date = value;
-            },
+            input: action('input'),
         },
         template: `
             <div class="storybook-center">
@@ -103,8 +100,6 @@ storiesOf('Components.Date Input', module)
                         :noFlex="noFlex"
                         v-model="date"
                         @input="input"/>
-            
-                <pre>Selected value: {{ date }}</pre>
             </div>
         `,
     }), {
