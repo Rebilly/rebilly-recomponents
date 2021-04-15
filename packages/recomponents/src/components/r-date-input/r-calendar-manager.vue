@@ -57,30 +57,17 @@
 </template>
 
 <script>
-    import Vue from 'vue';
-    import vCalendar from 'v-calendar';
-    import DateTimeFormats from '../../common/datetime-formats';
     import rInput from '../r-input/r-input.vue';
     import rDateRangeButtonGroup from './r-date-range-button-group.vue';
-
-    Vue.use(vCalendar, {
-        formats: {
-            title: 'MMMM YYYY',
-            weekdays: 'W',
-            navMonths: 'MMM',
-            input: [
-                DateTimeFormats.datePickerDate,
-                'YYYY-MM-DD',
-                'YYYY/MM/DD',
-            ],
-            dayPopover: 'L',
-        },
-    });
 
     // TODO disabled state + active value (no-editable date value)
     export default {
         name: 'RCalendarManager',
-        components: {rInput, rDateRangeButtonGroup},
+        components: {
+            rInput,
+            rDateRangeButtonGroup,
+            vDatePicker: () => import('v-calendar/lib/components/date-picker.umd'),
+        },
         props: {
             availableDates: {
                 type: Object,
