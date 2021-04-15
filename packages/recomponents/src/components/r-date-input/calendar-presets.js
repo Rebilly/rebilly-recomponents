@@ -55,8 +55,6 @@ export const getCalendarPresetPeriods = {
         const end = moment().subtract(1, 'week').endOf('week');
         const diffStart = moment().diff(start, 'days');
         const diffEnd = moment().diff(end, 'days');
-
-        console.log(start, end);
         return {
             relativeFilterValue: `${diffStart} days ago midnight..${diffEnd} days ago midnight`,
             start,

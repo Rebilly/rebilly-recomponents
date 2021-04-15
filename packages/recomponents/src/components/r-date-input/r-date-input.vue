@@ -24,7 +24,6 @@
     import shortid from 'shortid';
     import rIcon from '../r-icon/r-icon.vue';
     import rSelect from '../r-select/r-select.vue';
-    import rCalendarManager from './r-calendar-manager.vue';
     import {DateInputType, CalendarOptions} from './shared';
 
     // TODO: prefixes simple classes `r-stack-xs, r-is-error, etc`
@@ -33,7 +32,7 @@
         components: {
             rIcon,
             rSelect,
-            rCalendarManager,
+            rCalendarManager: () => import('./r-calendar-manager'),
         },
         props: {
             /**
