@@ -66,7 +66,6 @@
         components: {
             rInput,
             rDateRangeButtonGroup,
-            vDatePicker: () => import('v-calendar/lib/components/date-picker.umd'),
         },
         props: {
             availableDates: {
