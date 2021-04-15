@@ -1,41 +1,44 @@
 <template>
+  <div>
+    <pre>{{ value }}</pre>
     <r-button-group :class="{'r-button-group-single': !showPresets}">
-        <r-icon-button :disabled="disabled"
-                       :class="{'r-date-range-button': showPresets}"
-                       @click="calendarToggle()">
-            <span class="r-date-range-label" v-if="selectedDateLabel">{{ selectedDateLabel }}</span>
-            <span class="r-date-range-label r-text-muted" v-else>{{ placeholder }}</span>
-            <r-icon class="r-date-range-calendar-icon" slot="left-icon" icon="calendar"/>
-        </r-icon-button>
-        <r-popper v-if="showPresets"
-                  class="r-date-range-preset-picker"
-                  position="bottomEnd"
-                  ref="presets"
-                  :offset="6"
-                  :disabled="disabled">
-            <template #trigger="optionsList">
-                <r-icon-button :disabled="disabled" @click="toggle('presets')">
-                    <r-icon icon="actions"/>
-                </r-icon-button>
-            </template>
-            <template #content="optionsList">
-                <div class="r-popover">
-                    <div class="r-popover-control">
-                        <div class="r-popover-content r-popover-menu r-is-scrollable">
-                            <a class="r-popover-menu-item r-range-picker-item"
-                               v-for="presetName of calendarPresets"
-                               @click="relativeFilterChange(presetName)">
-                                <strong>{{ getPresetLabel(presetName) }}&nbsp;</strong>
-                                <span class="r-text-muted">
+      <r-icon-button :disabled="disabled"
+                     :class="{'r-date-range-button': showPresets}"
+                     @click="calendarToggle()">
+        <span class="r-date-range-label" v-if="selectedDateLabel">{{ selectedDateLabel }}</span>
+        <span class="r-date-range-label r-text-muted" v-else>{{ placeholder }}</span>
+        <r-icon class="r-date-range-calendar-icon" slot="left-icon" icon="calendar"/>
+      </r-icon-button>
+      <r-popper v-if="showPresets"
+                class="r-date-range-preset-picker"
+                position="bottomEnd"
+                ref="presets"
+                :offset="6"
+                :disabled="disabled">
+        <template #trigger="optionsList">
+          <r-icon-button :disabled="disabled" @click="toggle('presets')">
+            <r-icon icon="actions"/>
+          </r-icon-button>
+        </template>
+        <template #content="optionsList">
+          <div class="r-popover">
+            <div class="r-popover-control">
+              <div class="r-popover-content r-popover-menu r-is-scrollable">
+                <a class="r-popover-menu-item r-range-picker-item"
+                   v-for="presetName of calendarPresets"
+                   @click="relativeFilterChange(presetName)">
+                  <strong>{{ getPresetLabel(presetName) }}&nbsp;</strong>
+                  <span class="r-text-muted">
                   {{ getFormattedPresetPeriod(presetName) }}
                 </span>
-                            </a>
-                        </div>
-                    </div>
-                </div>
-            </template>
-        </r-popper>
+                </a>
+              </div>
+            </div>
+          </div>
+        </template>
+      </r-popper>
     </r-button-group>
+  </div>
 </template>
 
 <script>
@@ -61,7 +64,7 @@
         },
         props: {
             value: {
-                type: Object,
+                type: [String, Object],
             },
             calendarToggle: {
                 type: Function,
@@ -188,11 +191,12 @@
                             _.formatDate(selected.end, DateTimeFormats.shortDate),
                         ].join(' - ')}`;
                     }
+
                     if (this.isRelative) {
-                        // custom relative
-                        // returns some custom relative values
-                        // like 7 Years Ago..2 Years Ago
-                        return [selected.start, selected.end].join(' - ');
+                        return `${[
+                            _.formatDate(selected.start, DateTimeFormats.shortDate),
+                            _.formatDate(selected.end, DateTimeFormats.shortDate),
+                        ].join(' - ')}`;
                     }
                 }
                 // returns real dates in DateTimeFormats.shortDate string format
@@ -215,10 +219,11 @@
                 return `${formatter(period.start)} — ${formatter(period.end)}`;
             },
             validateDatesPeriod(period) {
-                return /[0-9]{4}-[0-9]{2}-[0-9]{2}/.test(period); // has year value
+                const date = _.formatDate(period, DateTimeFormats.datePickerDate);
+                return date && /[0-9]{4}-[0-9]{2}-[0-9]{2}/.test(date); // has year value
             },
             toggle(name) {
-                if (this.$refs[name]) {
+                if (this.$refs[name] && this.$refs[name].popper) {
                     this.$refs[name].popper.toggle();
                 }
             },
@@ -256,5 +261,5 @@
 </script>
 
 <style lang="scss">
-    @import 'r-date-range-button-group';
+@import 'r-date-range-button-group';
 </style>
