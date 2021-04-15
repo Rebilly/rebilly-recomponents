@@ -1,6 +1,4 @@
 <template>
-  <div>
-    <pre>{{ value }}</pre>
     <r-button-group :class="{'r-button-group-single': !showPresets}">
       <r-icon-button :disabled="disabled"
                      :class="{'r-date-range-button': showPresets}"
@@ -38,7 +36,6 @@
         </template>
       </r-popper>
     </r-button-group>
-  </div>
 </template>
 
 <script>
@@ -75,6 +72,10 @@
              * Specify if the date range picker is disabled
              */
             disabled: {
+                type: Boolean,
+                default: false,
+            },
+            timePicker: {
                 type: Boolean,
                 default: false,
             },
@@ -174,6 +175,7 @@
                     return null;
                 }
 
+                const format = this.timePicker ? DateTimeFormats.shortDateTime : DateTimeFormats.shortDate;
                 if (!this.isMobile) {
                     if (this.isRelative && this.isRelativePreset) {
                         // props period is relative and one of default preset
@@ -185,24 +187,25 @@
                                 _.formatDate(selected.start, DateTimeFormats.orderDate),
                             ].join(' / ');
                         }
+
                         // returns "Today / yy-mm-dd - yy-mm-dd"
                         return `${selected.presetLabel} / ${[
-                            _.formatDate(selected.start, DateTimeFormats.shortDate),
-                            _.formatDate(selected.end, DateTimeFormats.shortDate),
+                            _.formatDate(selected.start, format),
+                            _.formatDate(selected.end, format),
                         ].join(' - ')}`;
                     }
 
                     if (this.isRelative) {
                         return `${[
-                            _.formatDate(selected.start, DateTimeFormats.shortDate),
-                            _.formatDate(selected.end, DateTimeFormats.shortDate),
+                            _.formatDate(selected.start, format),
+                            _.formatDate(selected.end, format),
                         ].join(' - ')}`;
                     }
                 }
                 // returns real dates in DateTimeFormats.shortDate string format
                 return [
-                    _.formatDate(selected.start, DateTimeFormats.shortDate),
-                    _.formatDate(selected.end, DateTimeFormats.shortDate),
+                    _.formatDate(selected.start, format),
+                    _.formatDate(selected.end, format),
                 ].join(' - ');
             },
         },
@@ -232,6 +235,11 @@
                     return null;
                 }
                 if (typeof period === 'string') {
+                    const relative = Object.values(this.calendarPresetsPeriods)
+                        .find(per => per.relativeFilterValue === period);
+                    if (relative) {
+                        return relative;
+                    }
                     const [start, end] = period.split('..');
                     return {start, end};
                 }

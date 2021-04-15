@@ -11,6 +11,7 @@ export default {
     datetime: 'MMM Do, YYYY [at] h:mm a',
     date: 'MMM Do, YYYY',
     shortDate: 'MMM D, YYYY',
+    shortDateTime: 'MMM D, YYYY h:mm a',
     time: 'HH:mm:ssZ',
     shortTime: 'hh:mm a',
     timeApiFormat: 'HH:mm:ssZ',

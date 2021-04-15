@@ -25,6 +25,7 @@
     import rIcon from '../r-icon/r-icon.vue';
     import rSelect from '../r-select/r-select.vue';
     import {DateInputType, CalendarOptions} from './shared';
+    import rCalendarManager from './r-calendar-manager.vue';
 
     // TODO: prefixes simple classes `r-stack-xs, r-is-error, etc`
     export default {
@@ -32,7 +33,7 @@
         components: {
             rIcon,
             rSelect,
-            rCalendarManager: () => import('./r-calendar-manager'),
+            rCalendarManager,
         },
         props: {
             /**
@@ -96,7 +97,7 @@
              * Used to specify what dates are selected
              */
             value: {
-                type: Object,
+                type: [Object, String],
                 default: () => new Date(),
             },
             /**

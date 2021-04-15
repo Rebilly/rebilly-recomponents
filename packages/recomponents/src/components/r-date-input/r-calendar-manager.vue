@@ -47,6 +47,7 @@
           <r-date-range-button-group :value="value"
                                      :calendar-toggle="togglePopover"
                                      :disabled="disabled"
+                                     :time-picker="timePicker"
                                      :placeholder="placeholder"
                                      @input="periodInput"/>
         </template>
