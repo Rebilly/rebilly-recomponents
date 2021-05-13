@@ -19,6 +19,7 @@ storiesOf('Components.Button', module)
                 default: select('Type', {
                     Default: 'default',
                     Primary: 'primary',
+                    Positive: 'positive',
                     Danger: 'danger',
                     Link: 'link',
                 }, 'primary'),
@@ -75,6 +76,7 @@ storiesOf('Components.Button', module)
                     <div class="r-grid-item">
                         <r-button type="default">Default</r-button>
                         <r-button type="primary">Primary</r-button>
+                        <r-button type="positive">Positive</r-button>
                         <r-button type="danger">Danger</r-button>
                         <r-button type="link">Link</r-button>
                     </div>

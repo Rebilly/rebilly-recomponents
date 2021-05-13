@@ -167,6 +167,34 @@ body, .article {
     --button-danger-disabled-box-shadow: none;
     --button-danger-disabled-border: none;
 
+    // Positive
+    --button-positive-color: var(--text-color-light);
+    --button-positive-background: linear-gradient(180deg, var(--positive-color) 0, var(--positive-color-dark));
+    --button-positive-box-shadow: 0 1px 2px 0 var(--mono-color-200);
+    --button-positive-border: none;
+    // positive Hover
+    --button-positive-hover-color: var(--text-color-light);
+    --button-positive-hover-background: var(--positive-color-dark);
+    --button-positive-hover-box-shadow: 0 1px 2px 0 var(--mono-color-200);
+    --button-positive-hover-border: none;
+    // positive Focus
+    --button-positive-focus-color: var(--text-color-light);
+    --button-positive-focus-background: linear-gradient(180deg, var(--positive-color) 0, var(--positive-color-dark));
+    --button-positive-focus-box-shadow: 0 0 0 1px var(--positive-color-dark) inset, 0 0 0 1px var(--positive-color-dark);
+    --button-positive-focus-border: none;
+    // positive Active
+    --button-positive-active-color: var(--text-color-light);
+    --button-positive-active-background: var(--positive-color-dark);
+    --button-positive-active-box-shadow: 0 1px 3px 1px var(--positive-color-dark) inset;
+    --button-positive-active-border: none;
+    // positive Disabled
+    --button-positive-disabled-opacity: 0.5;
+    --button-positive-disabled-cursor: auto;
+    --button-positive-disabled-color: var(--text-color-light);
+    --button-positive-disabled-background: linear-gradient(180deg, var(--positive-color) 0, var(--positive-color-dark));
+    --button-positive-disabled-box-shadow: none;
+    --button-positive-disabled-border: none;
+
     // Buttons Icons
     --button-icon-size-s: var(--space-xs);
     --button-icon-size-m: var(--space-s);

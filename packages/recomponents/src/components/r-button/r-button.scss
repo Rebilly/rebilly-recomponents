@@ -147,6 +147,44 @@
         }
     }
 
+    &-type-positive {
+        background: var(--button-positive-background);
+        color: var(--button-positive-color);
+        box-shadow: var(--button-positive-box-shadow);
+        border: var(--button-positive-border);
+
+        &:hover {
+            background: var(--button-positive-hover-background);
+            color: var(--button-positive-hover-color);
+            box-shadow: var(--button-positive-hover-box-shadow);
+            border: var(--button-positive-hover-border);
+        }
+
+        &:focus {
+            background: var(--button-positive-focus-background);
+            color: var(--button-positive-focus-color);
+            box-shadow: var(--button-positive-focus-box-shadow);
+            border: var(--button-positive-focus-border);
+        }
+
+        &:active {
+            background: var(--button-positive-active-background);
+            color: var(--button-positive-active-color);
+            box-shadow: var(--button-positive-active-box-shadow);
+            border: var(--button-positive-active-border);
+        }
+
+        &[disabled] {
+            opacity: var(--button-positive-disabled-opacity);
+            cursor: var(--button-positive-disabled-cursor);
+            pointer-events: none;
+            background: var(--button-positive-disabled-background);
+            color: var(--button-positive-disabled-color);
+            box-shadow: var(--button-positive-disabled-box-shadow);
+            border: var(--button-positive-disabled-border);
+        }
+    }
+
     &-type-link {
         color: #0044D4;
         vertical-align: baseline;

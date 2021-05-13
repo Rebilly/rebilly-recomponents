@@ -52,7 +52,7 @@
             type: {
                 type: String,
                 default: 'default',
-                validator: val => ['default', 'primary', 'danger', 'link'].includes(val),
+                validator: val => ['default', 'primary', 'danger', 'positive', 'link'].includes(val),
             },
             /**
              * Disabled state just like for regular html button
