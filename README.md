@@ -21,7 +21,6 @@ As the number of Web Apps developed at Rebilly grows larger, it has become appar
 ## Repository structure
 
 * `packages/recomponents` Recomponents project
-* `packages/gridsome` Demo project with Gridsome
 * `packages/nuxt` Demo project with Nuxt
 
 

@@ -15,7 +15,6 @@ yarn-error.log
 .vscode
 .idea
 
-packages/gridsome
 packages/nuxt
 packages/recomponents/node_modules
 packages/recomponents/coverage

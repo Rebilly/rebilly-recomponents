@@ -1,9 +1,0 @@
-# Ignore runtime Gridsome folders
-.temp
-.cache
-
-# Ignore static build of Gridsome
-dist
-
-# Ignore npm lock file
-package-lock.json

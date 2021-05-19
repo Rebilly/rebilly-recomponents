@@ -123,13 +123,9 @@ jobs:
     - name: Uncompress Recomponents build
       run: |
         unzip -o recomponents.zip -d packages/nuxt/node_modules/@rebilly/recomponents/dist
-        unzip -o recomponents.zip -d packages/gridsome/node_modules/@rebilly/recomponents/dist
     - name: Build Nuxt application
       run: |
         yarn workspace recomponents-demo-nuxt build
-    - name: Build Gridsome application
-      run: |
-        yarn workspace recomponents-demo-gridsome build
   release:
     name: Semantic release
     runs-on: ubuntu-latest
