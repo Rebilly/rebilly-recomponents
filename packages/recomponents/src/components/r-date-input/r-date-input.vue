@@ -7,6 +7,7 @@
                           :time-picker="CalendarOptions[type].timePicker"
                           :date-picker="CalendarOptions[type].datePicker"
                           :value="value"
+                          :timezone="timezone"
                           :min-date="minDate"
                           :max-date="maxDate"
                           :drag-select-attributes="dragSelectAttributes"
@@ -97,7 +98,7 @@
              * Used to specify what dates are selected
              */
             value: {
-                type: [Object, String],
+                type: [Object, String, Date],
                 default: () => new Date(),
             },
             /**
@@ -133,6 +134,13 @@
             minDate: {
                 type: Date,
             },
+            /**
+             * Specify the timezone
+             */
+            timezone: {
+                type: String,
+                default: 'UTC',
+            },
         },
         data() {
             return {
@@ -156,17 +164,17 @@
                 if (this.type === DateInputType.dateTimeRange) {
                     value = {
                         ...date,
-                        start: moment(date.start).utc(true),
-                        end: moment(date.end).utc(true),
+                        start: moment(date.start).tz(this.timezone),
+                        end: moment(date.end).tz(this.timezone),
                     };
                 } else if (this.type === DateInputType.dateRange) {
                     value = {
                         ...date,
-                        start: moment(date.start).startOf('day').utc(true),
-                        end: moment(date.end).endOf('day').utc(true),
+                        start: moment(date.start).tz(this.timezone).startOf('day'),
+                        end: moment(date.end).tz(this.timezone).endOf('day'),
                     };
                 } else {
-                    value = moment(date).utc(true);
+                    value = moment(date).tz(this.timezone);
                 }
                 /**
                  * Date change by element click or from parent component

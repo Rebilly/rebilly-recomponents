@@ -61,7 +61,7 @@
         },
         props: {
             value: {
-                type: [String, Object],
+                type: [String, Object, Date],
             },
             calendarToggle: {
                 type: Function,
@@ -89,6 +89,13 @@
             placeholder: {
                 type: String,
             },
+            /**
+             * Specify the timezone
+             */
+            timezone: {
+                type: String,
+                default: 'UTC',
+            },
         },
         computed: {
             calendarPresets() {
@@ -101,7 +108,7 @@
                 // the getCalendarPresetPeriods returns
                 // {today: {relativeFilterValue: String, start: MomentDate, end: MomentDate}}
                 // {last30Days: {relativeFilterValue: String, start: MomentDate, end: MomentDate}}
-                return getCalendarPresetPeriods;
+                return getCalendarPresetPeriods(this.timezone);
             },
             calendarPresetsPeriodsList() {
                 return Object.entries(this.calendarPresetsPeriods);
@@ -184,28 +191,28 @@
                             // returns "Today / Date"
                             return [
                                 selected.presetLabel,
-                                _.formatDate(selected.start, DateTimeFormats.orderDate),
+                                _.formatDate(selected.start, DateTimeFormats.orderDate, this.timezone),
                             ].join(' / ');
                         }
 
                         // returns "Today / yy-mm-dd - yy-mm-dd"
                         return `${selected.presetLabel} / ${[
-                            _.formatDate(selected.start, format),
-                            _.formatDate(selected.end, format),
+                            _.formatDate(selected.start, format, this.timezone),
+                            _.formatDate(selected.end, format, this.timezone),
                         ].join(' - ')}`;
                     }
 
                     if (this.isRelative) {
                         return `${[
-                            _.formatDate(selected.start, format),
-                            _.formatDate(selected.end, format),
+                            _.formatDate(selected.start, format, this.timezone),
+                            _.formatDate(selected.end, format, this.timezone),
                         ].join(' - ')}`;
                     }
                 }
                 // returns real dates in DateTimeFormats.shortDate string format
                 return [
-                    _.formatDate(selected.start, format),
-                    _.formatDate(selected.end, format),
+                    _.formatDate(selected.start, format, this.timezone),
+                    _.formatDate(selected.end, format, this.timezone),
                 ].join(' - ');
             },
         },
@@ -216,13 +223,13 @@
             getFormattedPresetPeriod(presetName) {
                 const period = this.calendarPresetsPeriods[presetName];
                 if (oneValuePresetsList.includes(presetName)) {
-                    return _.formatDate(period.start, DateTimeFormats.orderDate);
+                    return _.formatDate(period.start, DateTimeFormats.orderDate, this.timezone);
                 }
-                const formatter = value => _.formatDate(value, DateTimeFormats.shortDate);
+                const formatter = value => _.formatDate(value, DateTimeFormats.shortDate, this.timezone);
                 return `${formatter(period.start)} — ${formatter(period.end)}`;
             },
             validateDatesPeriod(period) {
-                const date = _.formatDate(period, DateTimeFormats.datePickerDate);
+                const date = _.formatDate(period, DateTimeFormats.datePickerDate, this.timezone);
                 return date && /[0-9]{4}-[0-9]{2}-[0-9]{2}/.test(date); // has year value
             },
             toggle(name) {

@@ -17,6 +17,7 @@
                      :columns="columns"
                      color="blue"
                      :theme-styles="themeStyles"
+                     :timezone="timezone"
                      :available-dates="availableDates">
         <template v-slot="{ inputValue, inputEvents }">
           <r-input :value="inputValue"
@@ -30,7 +31,7 @@
                      :mode="mode"
                      @input="periodInput"
                      is-range
-                     :value="value"
+                     :value="prepValue"
                      :masks="masks"
                      :theme-styles="themeStyles"
                      show-caps
@@ -39,6 +40,7 @@
                      :select-attribute="dragSelectAttributes"
                      :drag-attribute="dragSelectAttributes"
                      color="blue"
+                     :timezone="timezone"
                      :available-dates="availableDates"
                      :disabled-attribute="disabledAttribute"
                      :columns="columns"
@@ -48,6 +50,7 @@
                                      :calendar-toggle="togglePopover"
                                      :disabled="disabled"
                                      :time-picker="timePicker"
+                                     :timezone="timezone"
                                      :placeholder="placeholder"
                                      @input="periodInput"/>
         </template>
@@ -109,10 +112,14 @@
                 validator: type => ['calendar', 'range'].includes(type),
             },
             value: {
-                type: [Object, String],
+                type: [Object, String, Date],
             },
             placeholder: {
                 type: String,
+            },
+            timezone: {
+                type: String,
+                default: 'UTC',
             },
         },
         computed: {
@@ -123,6 +130,18 @@
             },
             isDateRange() {
                 return this.type === 'range';
+            },
+            prepValue() {
+                if (!this.value) {
+                    return null;
+                }
+
+                const {start, end} = this.value;
+                return {
+                    ...this.value,
+                    start: start.format ? start.format() : start,
+                    end: end.format ? end.format() : end,
+                };
             },
         },
         data() {
