@@ -1,3 +1,5 @@
+import moment from 'moment';
+
 const calendarPresets = {
     today: 'today',
     yesterday: 'yesterday',
@@ -28,31 +30,31 @@ export const calendarPresetsLabels = {
     [calendarPresets.lastYear]: 'Last year',
 };
 
-export const getCalendarPresetPeriods = tz => ({
+export const getCalendarPresetPeriods = {
     [calendarPresets.today]: {
         relativeFilterValue: 'today..tomorrow',
-        start: tz.now().startOf('day'),
-        end: tz.now().endOf('day'),
+        start: moment().startOf('day'),
+        end: moment().endOf('day'),
     },
     [calendarPresets.yesterday]: {
         relativeFilterValue: 'yesterday..midnight',
-        start: tz.now().subtract(1, 'day').startOf('day'),
-        end: tz.now().subtract(1, 'day').endOf('day'),
+        start: moment().subtract(1, 'day').startOf('day'),
+        end: moment().subtract(1, 'day').endOf('day'),
     },
     [calendarPresets.thisWeek]: (() => {
-        const start = tz.now().startOf('week');
-        const diff = tz.now().diff(start, 'days');
+        const start = moment().startOf('week');
+        const diff = moment().diff(start, 'days');
         return {
             relativeFilterValue: `${diff} days ago midnight..now`,
             start,
-            end: tz.now().endOf('day'),
+            end: moment().endOf('day'),
         };
     })(),
     [calendarPresets.lastWeek]: (() => {
-        const start = tz.now().subtract(1, 'week').startOf('week');
-        const end = tz.now().subtract(1, 'week').endOf('week');
-        const diffStart = tz.now().diff(start, 'days');
-        const diffEnd = tz.now().diff(end, 'days');
+        const start = moment().subtract(1, 'week').startOf('week');
+        const end = moment().subtract(1, 'week').endOf('week');
+        const diffStart = moment().diff(start, 'days');
+        const diffEnd = moment().diff(end, 'days');
         return {
             relativeFilterValue: `${diffStart} days ago midnight..${diffEnd} days ago midnight`,
             start,
@@ -61,39 +63,39 @@ export const getCalendarPresetPeriods = tz => ({
     })(),
     [calendarPresets.last30Days]: {
         relativeFilterValue: '30 days ago midnight..now',
-        start: tz.now().startOf('day').subtract(30, 'days'),
-        end: tz.now().endOf('day'),
+        start: moment().startOf('day').subtract(30, 'days'),
+        end: moment().endOf('day'),
     },
     [calendarPresets.thisMonth]: {
         relativeFilterValue: 'first day of this month midnight..now',
-        start: tz.now().startOf('month'),
-        end: tz.now().endOf('day'),
+        start: moment().startOf('month'),
+        end: moment().endOf('day'),
     },
     [calendarPresets.lastMonth]: {
         relativeFilterValue: 'first day of last month midnight..last day of last month 23:59:59',
-        start: tz.now().subtract(1, 'month').startOf('month'),
-        end: tz.now().subtract(1, 'month').endOf('month'),
+        start: moment().subtract(1, 'month').startOf('month'),
+        end: moment().subtract(1, 'month').endOf('month'),
     },
     [calendarPresets.last3Months]: {
         relativeFilterValue: 'first day of 3 month ago midnight..now',
-        start: tz.now().subtract(3, 'month').startOf('month'),
-        end: tz.now().subtract(1, 'month').endOf('month'),
+        start: moment().subtract(3, 'month').startOf('month'),
+        end: moment().subtract(1, 'month').endOf('month'),
     },
     [calendarPresets.last6Months]: {
         relativeFilterValue: 'first day of 6 month ago midnight..now',
-        start: tz.now().subtract(6, 'month').startOf('month'),
-        end: tz.now().subtract(1, 'month').endOf('month'),
+        start: moment().subtract(6, 'month').startOf('month'),
+        end: moment().subtract(1, 'month').endOf('month'),
     },
     [calendarPresets.thisYear]: {
         relativeFilterValue: 'first day of January midnight..now 23:59:59',
-        start: tz.now().startOf('year'),
-        end: tz.now().endOf('day'),
+        start: moment().startOf('year'),
+        end: moment().endOf('day'),
     },
     [calendarPresets.lastYear]: {
         relativeFilterValue: 'first day of January last year midnight..last day of December last year 23:59:59',
-        start: tz.now().subtract(1, 'year').startOf('year'),
-        end: tz.now().subtract(1, 'year').endOf('year'),
+        start: moment().subtract(1, 'year').startOf('year'),
+        end: moment().subtract(1, 'year').endOf('year'),
     },
-});
+};
 
 export default calendarPresets;

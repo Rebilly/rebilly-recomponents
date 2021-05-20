@@ -4,6 +4,7 @@ import './styles/helpers.scss';
 import './styles/theme.scss';
 
 import NoSSR from 'vue-no-ssr';
+import vDatePicker from 'v-calendar/lib/components/date-picker.umd';
 import kebabCase from './common/helpers/kebab-case';
 import RToastPlugin, {RToastManager} from './plugins/r-toast-manager';
 
@@ -27,7 +28,7 @@ function install(Vue, options = {}) {
         ErrorHandler,
         allowClose: allowToastCloseButton,
     });
-
+    Vue.component('v-date-picker', vDatePicker);
     Vue.component('no-ssr', NoSSR);
 
     /**

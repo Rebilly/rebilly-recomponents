@@ -19,6 +19,7 @@
                     @focus="focus"
                     @blur="$emit('blur')"
                     @click="click"
+                    v-on="inputEvents"
                     :name="name"
                     :maxlength="maxLength"
                     :autocomplete="autocompleteFlag"
@@ -35,6 +36,7 @@
                     @keydown.enter.exact.prevent="keySubmit"
                     @keyup="keyPress"
                     @keydown="keyDown"
+                    v-on="inputEvents"
                     :maxlength="maxLength"
                     :placeholder="placeholder"
                     :disabled="disabled"
@@ -87,6 +89,7 @@
                         @focus="focus"
                         @blur="$emit('blur')"
                         @click="click"
+                        v-on="inputEvents"
                         :name="name"
                         :maxlength="maxLength"
                         :autocomplete="autocompleteFlag"
@@ -109,7 +112,6 @@
     import shortid from 'shortid';
     import rIcon from '../r-icon/r-icon.vue';
     import '../../directives/r-fs-block';
-
     // TODO classes prefix r-is-error, r-no-flex, etc.
     export default {
         name: 'RInput',
@@ -171,6 +173,13 @@
             submitOnEnter: {
                 type: Boolean,
                 default: false,
+            },
+            /**
+             * Define input events
+             */
+            inputEvents: {
+                type: Object,
+                default: () => ({}),
             },
             /**
              * TBD

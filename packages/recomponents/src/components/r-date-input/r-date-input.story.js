@@ -44,16 +44,16 @@ storiesOf('Components.Date Input', module)
                 ),
             },
             label: {
-                default: text('label', ''),
+                default: text('label', 'Date picker'),
             },
             disabled: {
                 default: boolean('disabled', false),
             },
             placeholder: {
-                default: text('placeholder', ''),
+                default: text('placeholder', 'Date'),
             },
             helpText: {
-                default: text('helpText', ''),
+                default: text('helpText', 'Please click on the input to select a date'),
             },
             stack: {
                 default: text('stack', ''),
@@ -65,8 +65,8 @@ storiesOf('Components.Date Input', module)
                         date: 'date',
                         datetime: 'datetime',
                         time: 'time',
-                        datepicker: 'datepicker',
-                        range: 'range',
+                        dateRange: 'date-range',
+                        dateTimeRange: 'datetime-range',
                     },
                     'date',
                 ),
