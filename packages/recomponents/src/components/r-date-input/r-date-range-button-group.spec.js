@@ -4,8 +4,8 @@ import RButtonGroup from '../r-button-group/r-button-group.vue';
 
 describe('r-calendar-manager.vue', () => {
     const period = {
-        start: '2019-01-01',
-        end: '2020-01-01',
+        start: '2019-01-01T00:00:00Z',
+        end: '2020-01-01T23:59:59Z',
     };
 
     it('renders the group button', () => {
