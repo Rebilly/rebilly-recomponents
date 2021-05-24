@@ -173,6 +173,8 @@
                         start: moment(date.start).tz(this.timezone).startOf('day'),
                         end: moment(date.end).tz(this.timezone).endOf('day'),
                     };
+                } else if (this.type === DateInputType.date) {
+                    value = moment(date).tz(this.timezone).startOf('day');
                 } else {
                     value = moment(date).tz(this.timezone);
                 }
