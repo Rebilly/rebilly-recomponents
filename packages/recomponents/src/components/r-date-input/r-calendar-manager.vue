@@ -12,6 +12,7 @@
                      :mode="mode"
                      popover-visibility="focus"
                      :popover-content-offset="4"
+                     :popover="popoverConfigs"
                      :min-date="minDate"
                      :max-date="maxDate"
                      :columns="columns"
@@ -40,6 +41,7 @@
                      :select-attribute="dragSelectAttributes"
                      :drag-attribute="dragSelectAttributes"
                      color="blue"
+                     :popover="popoverConfigs"
                      :timezone="timezone"
                      :available-dates="availableDates"
                      :disabled-attribute="disabledAttribute"
@@ -149,6 +151,18 @@
                 initialDate: this.value,
                 masks: {
                     input: 'YYYY-MM-DD h:mm A',
+                },
+                popoverConfigs: {
+                    placement: 'bottom',
+                    modifiers: [
+                        {
+                            name: 'flip',
+                            options: {
+                                allowedAutoPlacements: ['bottom'],
+                                fallbackPlacements: ['bottom'],
+                            },
+                        },
+                    ],
                 },
                 themeStyles: {
                     wrapper: {
