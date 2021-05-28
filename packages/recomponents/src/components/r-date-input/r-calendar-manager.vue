@@ -19,6 +19,7 @@
                      color="blue"
                      :theme-styles="themeStyles"
                      :timezone="timezone"
+                     :model-config="modelConfig"
                      :available-dates="availableDates">
         <template v-slot="{ inputValue, inputEvents }">
           <r-input :value="inputValue"
@@ -38,6 +39,7 @@
                      show-caps
                      :min-date="minDate"
                      :max-date="maxDate"
+                     :model-config="modelConfig"
                      :select-attribute="dragSelectAttributes"
                      :drag-attribute="dragSelectAttributes"
                      color="blue"
@@ -129,6 +131,18 @@
                 let mode = this.datePicker ? 'date' : '';
                 mode += this.timePicker && 'Time';
                 return mode;
+            },
+            modelConfig() {
+                if (!this.isDateRange) {
+                    return this.timePicker ? {timeAdjust: '00:00:00'} : {
+                        type: 'string', mask: 'YYYY-MM-DD',
+                    };
+                }
+
+                return {
+                    start: {timeAdjust: '00:00:00'},
+                    end: {timeAdjust: '23:59:59'},
+                };
             },
             isDateRange() {
                 return this.type === 'range';
