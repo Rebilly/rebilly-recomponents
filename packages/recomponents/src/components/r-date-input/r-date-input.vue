@@ -161,20 +161,12 @@
         methods: {
             onInput(date) {
                 let value;
-                if (this.type === DateInputType.dateTimeRange) {
+                if ([DateInputType.dateTimeRange, DateInputType.dateRange].includes(this.type)) {
                     value = {
                         ...date,
                         start: moment(date.start).tz(this.timezone),
                         end: moment(date.end).tz(this.timezone),
                     };
-                } else if (this.type === DateInputType.dateRange) {
-                    value = {
-                        ...date,
-                        start: moment(date.start).tz(this.timezone).startOf('day'),
-                        end: moment(date.end).tz(this.timezone).endOf('day'),
-                    };
-                } else if (this.type === DateInputType.date) {
-                    value = moment(date).tz(this.timezone).startOf('day');
                 } else {
                     value = moment(date).tz(this.timezone);
                 }
