@@ -68,7 +68,22 @@ storiesOf('Components.Date Input', module)
                         dateRange: 'date-range',
                         dateTimeRange: 'datetime-range',
                     },
-                    'date',
+                    'datetime-range',
+                ),
+            },
+            timezone: {
+                default: select(
+                    'timezone',
+                    [
+                        'Australia/Sydney',
+                        'America/Montreal',
+                        'Europe/Prague',
+                        'Asia/Aqtau',
+                        'Asia/Krasnoyarsk',
+                        'Asia/Vladivostok',
+                        'America/Los_Angeles',
+                    ],
+                    'America/Montreal',
                 ),
             },
             validate: {
@@ -99,6 +114,7 @@ storiesOf('Components.Date Input', module)
                         :validate="validate"
                         :noFlex="noFlex"
                         v-model="date"
+                        :timezone="timezone"
                         @input="input"/>
             </div>
         `,

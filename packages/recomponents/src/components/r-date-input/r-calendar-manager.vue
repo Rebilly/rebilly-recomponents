@@ -12,11 +12,14 @@
                      :mode="mode"
                      popover-visibility="focus"
                      :popover-content-offset="4"
+                     :popover="popoverConfigs"
                      :min-date="minDate"
                      :max-date="maxDate"
                      :columns="columns"
                      color="blue"
                      :theme-styles="themeStyles"
+                     :timezone="timezone"
+                     :model-config="modelConfig"
                      :available-dates="availableDates">
         <template v-slot="{ inputValue, inputEvents }">
           <r-input :value="inputValue"
@@ -30,15 +33,18 @@
                      :mode="mode"
                      @input="periodInput"
                      is-range
-                     :value="value"
+                     :value="prepValue"
                      :masks="masks"
                      :theme-styles="themeStyles"
                      show-caps
                      :min-date="minDate"
                      :max-date="maxDate"
+                     :model-config="modelConfig"
                      :select-attribute="dragSelectAttributes"
                      :drag-attribute="dragSelectAttributes"
                      color="blue"
+                     :popover="popoverConfigs"
+                     :timezone="timezone"
                      :available-dates="availableDates"
                      :disabled-attribute="disabledAttribute"
                      :columns="columns"
@@ -48,6 +54,7 @@
                                      :calendar-toggle="togglePopover"
                                      :disabled="disabled"
                                      :time-picker="timePicker"
+                                     :timezone="timezone"
                                      :placeholder="placeholder"
                                      @input="periodInput"/>
         </template>
@@ -109,10 +116,14 @@
                 validator: type => ['calendar', 'range'].includes(type),
             },
             value: {
-                type: [Object, String],
+                type: [Object, String, Date],
             },
             placeholder: {
                 type: String,
+            },
+            timezone: {
+                type: String,
+                default: 'UTC',
             },
         },
         computed: {
@@ -121,8 +132,32 @@
                 mode += this.timePicker && 'Time';
                 return mode;
             },
+            modelConfig() {
+                if (!this.isDateRange) {
+                    return this.timePicker ? {timeAdjust: '00:00:00'} : {
+                        type: 'string', mask: 'YYYY-MM-DD',
+                    };
+                }
+
+                return {
+                    start: {timeAdjust: '00:00:00'},
+                    end: {timeAdjust: '23:59:59'},
+                };
+            },
             isDateRange() {
                 return this.type === 'range';
+            },
+            prepValue() {
+                if (!this.value) {
+                    return null;
+                }
+
+                const {start, end} = this.value;
+                return {
+                    ...this.value,
+                    start: start.format ? start.format() : start,
+                    end: end.format ? end.format() : end,
+                };
             },
         },
         data() {
@@ -130,6 +165,18 @@
                 initialDate: this.value,
                 masks: {
                     input: 'YYYY-MM-DD h:mm A',
+                },
+                popoverConfigs: {
+                    placement: 'bottom',
+                    modifiers: [
+                        {
+                            name: 'flip',
+                            options: {
+                                allowedAutoPlacements: ['bottom'],
+                                fallbackPlacements: ['bottom'],
+                            },
+                        },
+                    ],
                 },
                 themeStyles: {
                     wrapper: {
