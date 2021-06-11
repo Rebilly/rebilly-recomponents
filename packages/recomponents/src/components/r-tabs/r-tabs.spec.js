@@ -1,231 +1,231 @@
 import Vue from 'vue';
 import VueRouter from 'vue-router';
-import {shallowMount, mount, createLocalVue} from '@vue/test-utils';
-import {renderToString} from '@vue/server-test-utils';
+import { shallowMount, mount, createLocalVue } from '@vue/test-utils';
+import { renderToString } from '@vue/server-test-utils';
 import RTabs from './r-tabs.vue';
 import RTab from './r-tab.vue';
 
 describe('r-tabs.vue', () => {
-    it('should render Wrapper and match snapshot', () => {
-        const wrapper = shallowMount(RTabs);
+  it('should render Wrapper and match snapshot', () => {
+    const wrapper = shallowMount(RTabs);
 
-        expect(wrapper).toMatchSnapshot();
+    expect(wrapper).toMatchSnapshot();
+  });
+
+  it('should render via SSR and match snapshot', async () => {
+    const wrapper = await renderToString(RTabs);
+
+    expect(wrapper).toMatchSnapshot();
+  });
+
+  it('should set a class if the props are set', async () => {
+    const wrapper = shallowMount(RTabs, {
+      components: { RTab },
+      props: {
+        menuClass: 'test',
+        contentClass: 'test',
+      },
+      slots: {
+        default: await renderToString(RTab, { props: { name: 'test1' }, slots: { default: '<p>Test 1</p>' } }),
+      },
     });
 
-    it('should render via SSR and match snapshot', async () => {
-        const wrapper = await renderToString(RTabs);
+    expect(wrapper.find('.tab.test')).not.toBe(undefined);
+    expect(wrapper.find('.tab-content.test')).not.toBe(undefined);
+  });
 
-        expect(wrapper).toMatchSnapshot();
-    });
-
-    it('should set a class if the props are set', async () => {
-        const wrapper = shallowMount(RTabs, {
-            components: {RTab},
+  it('should use plain active tab if specified', async () => {
+    const wrapper = await mount(RTabs, {
+      render(h) {
+        return h(RTabs, {}, [
+          h(RTab, {
             props: {
-                menuClass: 'test',
-                contentClass: 'test',
+              name: 'Tab 1',
             },
-            slots: {
-                default: await renderToString(RTab, {props: {name: 'test1'}, slots: {default: '<p>Test 1</p>'}}),
+          }, [
+            h('p', 'Lorem ipsum'),
+          ]),
+          h(RTab, {
+            props: {
+              name: 'Tab 2',
+              active: true,
             },
-        });
-
-        expect(wrapper.find('.tab.test')).not.toBe(undefined);
-        expect(wrapper.find('.tab-content.test')).not.toBe(undefined);
+          }, [
+            h('p', 'Domus anthem'),
+          ]),
+        ]);
+      },
     });
 
-    it('should use plain active tab if specified', async () => {
-        const wrapper = await mount(RTabs, {
-            render(h) {
-                return h(RTabs, {}, [
-                    h(RTab, {
-                        props: {
-                            name: 'Tab 1',
-                        },
-                    }, [
-                        h('p', 'Lorem ipsum'),
-                    ]),
-                    h(RTab, {
-                        props: {
-                            name: 'Tab 2',
-                            active: true,
-                        },
-                    }, [
-                        h('p', 'Domus anthem'),
-                    ]),
-                ]);
-            },
-        });
+    const links = wrapper.findAll('.r-tab-item-link');
+    expect(links.at(0).classes().includes('r-is-active')).toBeFalsy();
+    expect(links.at(1).classes().includes('r-is-active')).toBeTruthy();
+  });
 
-        const links = wrapper.findAll('.r-tab-item-link');
-        expect(links.at(0).classes().includes('r-is-active')).toBeFalsy();
-        expect(links.at(1).classes().includes('r-is-active')).toBeTruthy();
+  it('should switch tab on click', async () => {
+    const wrapper = await mount(RTabs, {
+      render(h) {
+        return h(RTabs, {}, [
+          h(RTab, {
+            props: {
+              name: 'Tab 1',
+            },
+          }, [
+            h('p', 'Lorem ipsum'),
+          ]),
+          h(RTab, {
+            props: {
+              name: 'Tab 2',
+            },
+          }, [
+            h('p', 'Domus anthem'),
+          ]),
+        ]);
+      },
     });
 
-    it('should switch tab on click', async () => {
-        const wrapper = await mount(RTabs, {
-            render(h) {
-                return h(RTabs, {}, [
-                    h(RTab, {
-                        props: {
-                            name: 'Tab 1',
-                        },
-                    }, [
-                        h('p', 'Lorem ipsum'),
-                    ]),
-                    h(RTab, {
-                        props: {
-                            name: 'Tab 2',
-                        },
-                    }, [
-                        h('p', 'Domus anthem'),
-                    ]),
-                ]);
+    const links = wrapper.findAll('.r-tab-item-link');
+    expect(links.at(0).classes().includes('r-is-active')).toBeTruthy();
+    links.at(1).trigger('click');
+
+    await Vue.nextTick();
+
+    expect(links.at(0).classes().includes('r-is-active')).toBeFalsy();
+  });
+
+  it('should open current route tab', async () => {
+    const wrapper = await mount({
+      render(h) {
+        return h(RTabs, {}, [
+          h(RTab, {
+            props: {
+              name: 'Tab 1',
+              to: {
+                fullPath: 'default-route',
+              },
+              panelId: 'custom-id-1',
             },
-        });
-
-        const links = wrapper.findAll('.r-tab-item-link');
-        expect(links.at(0).classes().includes('r-is-active')).toBeTruthy();
-        links.at(1).trigger('click');
-
-        await Vue.nextTick();
-
-        expect(links.at(0).classes().includes('r-is-active')).toBeFalsy();
+          }, [
+            h('p', 'Lorem ipsum'),
+          ]),
+          h(RTab, {
+            props: {
+              name: 'Tab 2',
+              to: {
+                fullPath: 'test-route',
+              },
+              panelId: 'custom-id-2',
+            },
+          }, [
+            h('p', 'Domus anthem'),
+          ]),
+        ]);
+      },
+    }, {
+      mocks: {
+        $route: {
+          fullPath: 'test-route',
+        },
+        $router: {
+          resolve: (route) => ({ ...route, href: 'test-route' }),
+        },
+      },
     });
 
-    it('should open current route tab', async () => {
-        const wrapper = await mount({
-            render(h) {
-                return h(RTabs, {}, [
-                    h(RTab, {
-                        props: {
-                            name: 'Tab 1',
-                            to: {
-                                fullPath: 'default-route',
-                            },
-                            panelId: 'custom-id-1',
-                        },
-                    }, [
-                        h('p', 'Lorem ipsum'),
-                    ]),
-                    h(RTab, {
-                        props: {
-                            name: 'Tab 2',
-                            to: {
-                                fullPath: 'test-route',
-                            },
-                            panelId: 'custom-id-2',
-                        },
-                    }, [
-                        h('p', 'Domus anthem'),
-                    ]),
-                ]);
-            },
-        }, {
-            mocks: {
-                $route: {
-                    fullPath: 'test-route',
-                },
-                $router: {
-                    resolve: route => ({...route, href: 'test-route'}),
-                },
-            },
-        });
+    expect(wrapper).toMatchSnapshot();
+  });
 
-        expect(wrapper).toMatchSnapshot();
-    });
+  it('should not try to go to the same route where we already are', async () => {
+    const localVue = createLocalVue();
+    localVue.use(VueRouter);
+    const route = { name: 'child', path: '/nested-route' };
+    const route1 = { name: 'child2', path: '/nested-route2' };
+    const router = new VueRouter({ routes: [route, route1] });
+    router.push(route);
+    localVue.component('r-tab', RTab);
+    const routerPushSpy = jest.spyOn(router, 'push');
 
-    it('should not try to go to the same route where we already are', async () => {
-        const localVue = createLocalVue();
-        localVue.use(VueRouter);
-        const route = {name: 'child', path: '/nested-route'};
-        const route1 = {name: 'child2', path: '/nested-route2'};
-        const router = new VueRouter({routes: [route, route1]});
-        router.push(route);
-        localVue.component('r-tab', RTab);
-        const routerPushSpy = jest.spyOn(router, 'push');
-
-        mount(RTabs, {
-            localVue,
-            router,
-            slots: {
-                default: `
+    mount(RTabs, {
+      localVue,
+      router,
+      slots: {
+        default: `
                     <r-tab
                      name="testTab"
                      :to="{name: 'child'}"
                      >
                         Test Tab
                      </r-tab>`,
+      },
+    });
+
+    expect(routerPushSpy).not.toHaveBeenCalled();
+  });
+
+  it('should match all incoming props types', () => {
+    const { divided, menuClass, contentClass } = RTabs.props;
+
+    expect(divided.type).toBe(Boolean);
+    expect(menuClass.type).toBe(String);
+    expect(contentClass.type).toBe(String);
+  });
+
+  it('should set the correct IDs when panelId is provided', async () => {
+    const customId1 = 'custom-id-1';
+    const tabA11yId = `tab-${customId1}`;
+    const tabPanelA11yId = `tabpanel-${customId1}`;
+
+    const wrapper = await mount(RTabs, {
+      render(h) {
+        return h(RTabs, {}, [
+          h(RTab, {
+            props: {
+              name: 'Tab 1',
+              panelId: customId1,
             },
-        });
-
-        expect(routerPushSpy).not.toHaveBeenCalled();
+          }, [
+            h('p', 'Lorem ipsum'),
+          ]),
+        ]);
+      },
     });
 
-    it('should match all incoming props types', () => {
-        const {divided, menuClass, contentClass} = RTabs.props;
+    const tab = wrapper.findAll('.r-tab-item-link').at(0);
+    const tabPanel = wrapper.find('.r-tab-content > div');
 
-        expect(divided.type).toBe(Boolean);
-        expect(menuClass.type).toBe(String);
-        expect(contentClass.type).toBe(String);
-    });
+    expect(tab.attributes('id')).toBe(tabA11yId);
+    expect(tab.attributes('aria-controls')).toBe(tabPanelA11yId);
 
-    it('should set the correct IDs when panelId is provided', async () => {
-        const customId1 = 'custom-id-1';
-        const tabA11yId = `tab-${customId1}`;
-        const tabPanelA11yId = `tabpanel-${customId1}`;
+    expect(tabPanel.attributes('id')).toBe(tabPanelA11yId);
+    expect(tabPanel.attributes('aria-labelledby')).toBe(tabA11yId);
+  });
 
-        const wrapper = await mount(RTabs, {
-            render(h) {
-                return h(RTabs, {}, [
-                    h(RTab, {
-                        props: {
-                            name: 'Tab 1',
-                            panelId: customId1,
-                        },
-                    }, [
-                        h('p', 'Lorem ipsum'),
-                    ]),
-                ]);
+  it('should generate IDs when panelId is not provided', async () => {
+    const wrapper = await mount(RTabs, {
+      render(h) {
+        return h(RTabs, {}, [
+          h(RTab, {
+            props: {
+              name: 'Tab 1',
             },
-        });
-
-        const tab = wrapper.findAll('.r-tab-item-link').at(0);
-        const tabPanel = wrapper.find('.r-tab-content > div');
-
-        expect(tab.attributes('id')).toBe(tabA11yId);
-        expect(tab.attributes('aria-controls')).toBe(tabPanelA11yId);
-
-        expect(tabPanel.attributes('id')).toBe(tabPanelA11yId);
-        expect(tabPanel.attributes('aria-labelledby')).toBe(tabA11yId);
+          }, [
+            h('p', 'Lorem ipsum'),
+          ]),
+        ]);
+      },
     });
 
-    it('should generate IDs when panelId is not provided', async () => {
-        const wrapper = await mount(RTabs, {
-            render(h) {
-                return h(RTabs, {}, [
-                    h(RTab, {
-                        props: {
-                            name: 'Tab 1',
-                        },
-                    }, [
-                        h('p', 'Lorem ipsum'),
-                    ]),
-                ]);
-            },
-        });
+    const tab = wrapper.findAll('.r-tab-item-link').at(0);
+    const tabPanel = wrapper.find('.r-tab-content > div');
 
-        const tab = wrapper.findAll('.r-tab-item-link').at(0);
-        const tabPanel = wrapper.find('.r-tab-content > div');
+    const generatedShortId = tab.attributes('id').replace('tab-', '');
+    const tabA11yId = `tab-${generatedShortId}`;
+    const tabPanelA11yId = `tabpanel-${generatedShortId}`;
 
-        const generatedShortId = tab.attributes('id').replace('tab-', '');
-        const tabA11yId = `tab-${generatedShortId}`;
-        const tabPanelA11yId = `tabpanel-${generatedShortId}`;
+    expect(tab.attributes('id')).toBe(tabA11yId);
+    expect(tab.attributes('aria-controls')).toBe(tabPanelA11yId);
 
-        expect(tab.attributes('id')).toBe(tabA11yId);
-        expect(tab.attributes('aria-controls')).toBe(tabPanelA11yId);
-
-        expect(tabPanel.attributes('id')).toBe(tabPanelA11yId);
-        expect(tabPanel.attributes('aria-labelledby')).toBe(tabA11yId);
-    });
+    expect(tabPanel.attributes('id')).toBe(tabPanelA11yId);
+    expect(tabPanel.attributes('aria-labelledby')).toBe(tabA11yId);
+  });
 });

@@ -28,62 +28,62 @@
 </template>
 
 <script>
-    import MonthPickerMixin from './month-picker-mixin';
-    import RIconButton from '../r-icon-button/r-icon-button.vue';
-    import RIcon from '../r-icon/r-icon.vue';
+import MonthPickerMixin from './month-picker-mixin';
+import RIconButton from '../r-icon-button/r-icon-button.vue';
+import RIcon from '../r-icon/r-icon.vue';
 
-    export default {
-        name: 'r-month-picker',
-        components: {RIconButton, RIcon},
-        mixins: [MonthPickerMixin],
-        mounted() {
-            this.selectedDate = {...this.value};
-            if (!this.selectedDate || !this.selectedDate.year || !Number.parseInt(this.selectedDate.year, 10)) {
-                this.selectedDate = {year: new Date().getFullYear()};
-            }
-        },
-        methods: {
-            selectMonth(monthIndex) {
-                const isAlreadySelected = this.selectedDate.monthIndex === monthIndex;
+export default {
+  name: 'r-month-picker',
+  components: { RIconButton, RIcon },
+  mixins: [MonthPickerMixin],
+  mounted() {
+    this.selectedDate = { ...this.value };
+    if (!this.selectedDate || !this.selectedDate.year || !Number.parseInt(this.selectedDate.year, 10)) {
+      this.selectedDate = { year: new Date().getFullYear() };
+    }
+  },
+  methods: {
+    selectMonth(monthIndex) {
+      const isAlreadySelected = this.selectedDate.monthIndex === monthIndex;
 
-                if (this.clearable && isAlreadySelected) {
-                    this.selectedDate.monthIndex = null;
-                    /**
+      if (this.clearable && isAlreadySelected) {
+        this.selectedDate.monthIndex = null;
+        /**
                      * Already selected month was clicked when the month picker is clearable
                      * @type {Event}
                      */
-                    this.$emit('clear');
-                    return;
-                }
+        this.$emit('clear');
+        return;
+      }
 
-                if (isAlreadySelected) {
-                    return;
-                }
+      if (isAlreadySelected) {
+        return;
+      }
 
-                this.selectedDate = {...this.selectedDate, monthIndex};
-                /**
+      this.selectedDate = { ...this.selectedDate, monthIndex };
+      /**
                  * The year is changed
                  * @type {Event}
                  */
-                this.$emit('month-change', monthIndex);
+      this.$emit('month-change', monthIndex);
 
-                /**
+      /**
                  * The month selected
                  * @type {Event}
                  */
-                this.$emit('input', this.selectedDate);
-            },
-            changeYear(value) {
-                this.selectedDate.year += value;
-                this.$emit('input', this.selectedDate);
-                /**
+      this.$emit('input', this.selectedDate);
+    },
+    changeYear(value) {
+      this.selectedDate.year += value;
+      this.$emit('input', this.selectedDate);
+      /**
                  * The year is changed
                  * @type {Event}
                  */
-                this.$emit('year-change', this.selectedDate.year);
-            },
-        },
-    };
+      this.$emit('year-change', this.selectedDate.year);
+    },
+  },
+};
 
 </script>
 <style lang="scss">

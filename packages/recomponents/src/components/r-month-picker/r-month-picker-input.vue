@@ -27,62 +27,62 @@
 </template>
 
 <script>
-    import MonthPickerMixin from './month-picker-mixin';
-    import RIconButton from '../r-icon-button/r-icon-button.vue';
-    import RIcon from '../r-icon/r-icon.vue';
-    import RPopper from '../r-popper/r-popper.vue';
-    import RMonthPicker from './r-month-picker.vue';
+import MonthPickerMixin from './month-picker-mixin';
+import RIconButton from '../r-icon-button/r-icon-button.vue';
+import RIcon from '../r-icon/r-icon.vue';
+import RPopper from '../r-popper/r-popper.vue';
+import RMonthPicker from './r-month-picker.vue';
 
-    export default {
-        name: 'r-month-picker-input',
-        mixins: [MonthPickerMixin],
-        components: {
-            RIcon, RIconButton, RPopper, RMonthPicker,
-        },
-        mounted() {
-            this.selectedDate = this.value;
-            if (!this.selectedDate.year || !Number.parseInt(this.selectedDate.year, 10)) {
-                this.selectedDate.year = new Date().getFullYear();
-            }
-        },
-        props: {
-            /**
+export default {
+  name: 'r-month-picker-input',
+  mixins: [MonthPickerMixin],
+  components: {
+    RIcon, RIconButton, RPopper, RMonthPicker,
+  },
+  mounted() {
+    this.selectedDate = this.value;
+    if (!this.selectedDate.year || !Number.parseInt(this.selectedDate.year, 10)) {
+      this.selectedDate.year = new Date().getFullYear();
+    }
+  },
+  props: {
+    /**
              * Placeholder of the input if no month is selected
              */
-            placeholder: {
-                type: String,
-                default: 'Select month',
-            },
-            /**
+    placeholder: {
+      type: String,
+      default: 'Select month',
+    },
+    /**
              * Position of popover control
              */
-            position: {
-                type: String,
-                default: 'bottomEnd',
-                validator: position => ['bottomStart', 'bottomEnd', 'topStart', 'topEnd'].includes(position),
-            },
-        },
-        methods: {
-            populateInput(date) {
-                this.selectedDate = date;
-                /**
+    position: {
+      type: String,
+      default: 'bottomEnd',
+      validator: (position) => ['bottomStart', 'bottomEnd', 'topStart', 'topEnd'].includes(position),
+    },
+  },
+  methods: {
+    populateInput(date) {
+      this.selectedDate = date;
+      /**
                  * The month selected
                  * @type {Event}
                  */
-                this.$emit('input', this.selectedDate);
-            },
-            onClear() {
-                this.selectedDate = null;
-                this.$emit('input', this.selectedDate);
+      this.$emit('input', this.selectedDate);
+    },
+    onClear() {
+      this.selectedDate = null;
+      this.$emit('input', this.selectedDate);
 
-                /**
+      /**
                  * The month picker is clear
                  * @type {Event}
                  */
-                this.$emit('clear');
-            },
-        },
-    };
+      this.$emit('clear');
+    },
+  },
+};
 </script>
 
 <style lang="scss">

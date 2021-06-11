@@ -1,5 +1,137 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`r-toggle.vue should render Wrapper and match snapshot 1`] = `<div role="checkbox" class="r-toggle" id="id1234"><label for="snapshot" class="r-toggle-body"><input type="checkbox" id="snapshot" class="r-toggle-switch"> <span class="r-toggle-switch-handle"></span></label> <label for="snapshot" class="r-toggle-label">Custom label</label></div>`;
+exports[`r-toggle.vue should render Wrapper and match snapshot 1`] = `
+VueWrapper {
+  "__app": Object {
+    "_component": Object {
+      "name": "VTU_ROOT",
+      "render": [Function],
+    },
+    "_container": <div
+      data-v-app=""
+    >
+      <div
+        aria-checked="false"
+        class="r-toggle"
+        id="id1234"
+        role="checkbox"
+      >
+        <label
+          class="r-toggle-body"
+          for="snapshot"
+        >
+          <input
+            class="r-toggle-switch"
+            id="snapshot"
+            type="checkbox"
+          />
+          <span
+            class="r-toggle-switch-handle"
+          />
+        </label>
+        <label
+          class="r-toggle-label"
+          for="snapshot"
+        >
+          Custom label
+        </label>
+      </div>
+    </div>,
+    "_context": Object {
+      "app": [Circular],
+      "components": Object {
+        "transition": Object {
+          "name": "transition",
+          "props": undefined,
+          "render": [Function],
+        },
+        "transition-group": Object {
+          "name": "transition-group",
+          "props": undefined,
+          "render": [Function],
+        },
+      },
+      "config": Object {
+        "compilerOptions": Object {},
+        "errorHandler": undefined,
+        "globalProperties": Object {},
+        "isNativeTag": [Function],
+        "optionMergeStrategies": Object {},
+        "performance": false,
+        "warnHandler": undefined,
+      },
+      "directives": Object {},
+      "emitsCache": WeakMap {},
+      "mixins": Array [
+        Object {
+          "beforeCreate": [Function],
+        },
+      ],
+      "optionsCache": WeakMap {},
+      "propsCache": WeakMap {},
+      "provides": Object {},
+      "reload": [Function],
+    },
+    "_props": null,
+    "_uid": 0,
+    "component": [Function],
+    "config": Object {
+      "compilerOptions": Object {},
+      "errorHandler": undefined,
+      "globalProperties": Object {},
+      "isNativeTag": [Function],
+      "optionMergeStrategies": Object {},
+      "performance": false,
+      "warnHandler": undefined,
+    },
+    "directive": [Function],
+    "mixin": [Function],
+    "mount": [Function],
+    "provide": [Function],
+    "unmount": [Function],
+    "use": [Function],
+    "version": "3.1.1",
+  },
+  "__setProps": [Function],
+  "componentVM": Object {
+    "change": [Function],
+    "checked": false,
+    "disabled": false,
+    "getModelValue": [Function],
+    "hasOwnProperty": [Function],
+    "isChecked": false,
+    "label": "Custom label",
+    "name": "snapshot",
+    "value": "on",
+  },
+  "rootVM": Object {},
+  "wrapperElement": <div
+    aria-checked="false"
+    class="r-toggle"
+    id="id1234"
+    role="checkbox"
+  >
+    <label
+      class="r-toggle-body"
+      for="snapshot"
+    >
+      <input
+        class="r-toggle-switch"
+        id="snapshot"
+        type="checkbox"
+      />
+      <span
+        class="r-toggle-switch-handle"
+      />
+    </label>
+    <label
+      class="r-toggle-label"
+      for="snapshot"
+    >
+      Custom label
+    </label>
+  </div>,
+}
+`;
 
 exports[`r-toggle.vue should render via SSR and match snapshot 1`] = `<div role="checkbox" id="id1234" class="r-toggle"><label for="snapshot" class="r-toggle-body"><input type="checkbox" id="snapshot" value="on" class="r-toggle-switch"> <span class="r-toggle-switch-handle"></span></label> <label for="snapshot" class="r-toggle-label">Custom label</label></div>`;

@@ -1,13 +1,13 @@
-import {storiesOf} from '@storybook/vue';
-import {text, select} from '@storybook/addon-knobs';
+import { storiesOf } from '@storybook/vue';
+import { text, select } from '@storybook/addon-knobs';
 import markdown from './r-avatar.md';
 import RAvatar from './r-avatar.vue';
-import {icons} from '../../../.storybook/knobs';
+import { icons } from '../../../.storybook/knobs';
 
 storiesOf('Components.Avatar', module)
-    .addParameters({component: RAvatar})
-    .add('Component', () => ({
-        template: `
+  .addParameters({ component: RAvatar })
+  .add('Component', () => ({
+    template: `
             <div class="storybook-center">
                 <r-avatar
                     :initials="initials"
@@ -21,43 +21,43 @@ storiesOf('Components.Avatar', module)
                 </r-avatar>
             </div>
         `,
-        props: {
-            initials: {
-                default: text('Initials', 'VP', 'Text'),
-            },
-            descriptionSlot: {
-                default: text('Description as slot', `<p>Some Text</p>\n<p class="r-avatar-info-muted-text">Some Text</p>`, 'Text'),
-            },
-            desciptionProp: {
-                default: text('Description as prop', '', 'Text'),
-            },
-            image: {
-                default: text('Image', 'https://www.meme-arsenal.com/memes/86b1de6ff6981be012d40bf26c6992ab.jpg'),
-            },
-            icon: {
-                default: select('Icon', icons, null),
-            },
-            color: {
-                default: select('Color', [
-                    'gray',
-                    'yellow',
-                    'green',
-                    'accent',
-                    'dark-background',
-                ], 'gray'),
-            },
-        },
-        slots: {
-            default: 'text',
-        },
-    }), {
-        notes: {markdown},
-        knobs: {
-            escapeHTML: false,
-        },
-    })
-    .add('All Colors', () => ({
-        template: `
+    props: {
+      initials: {
+        default: text('Initials', 'VP', 'Text'),
+      },
+      descriptionSlot: {
+        default: text('Description as slot', '<p>Some Text</p>\n<p class="r-avatar-info-muted-text">Some Text</p>', 'Text'),
+      },
+      desciptionProp: {
+        default: text('Description as prop', '', 'Text'),
+      },
+      image: {
+        default: text('Image', 'https://www.meme-arsenal.com/memes/86b1de6ff6981be012d40bf26c6992ab.jpg'),
+      },
+      icon: {
+        default: select('Icon', icons, null),
+      },
+      color: {
+        default: select('Color', [
+          'gray',
+          'yellow',
+          'green',
+          'accent',
+          'dark-background',
+        ], 'gray'),
+      },
+    },
+    slots: {
+      default: 'text',
+    },
+  }), {
+    notes: { markdown },
+    knobs: {
+      escapeHTML: false,
+    },
+  })
+  .add('All Colors', () => ({
+    template: `
             <div class="storybook-center">
                 <r-avatar
                     v-for="color in colors"
@@ -66,22 +66,22 @@ storiesOf('Components.Avatar', module)
                     :color="color"/>
             </div>
         `,
-        props: {
-            colors: {
-                default: [
-                    'gray',
-                    'yellow',
-                    'green',
-                    'accent',
-                    'dark-background',
-                ],
-            },
-        },
-    }), {
-        notes: {markdown},
-    })
-    .add('Variations', () => ({
-        template: `
+    props: {
+      colors: {
+        default: [
+          'gray',
+          'yellow',
+          'green',
+          'accent',
+          'dark-background',
+        ],
+      },
+    },
+  }), {
+    notes: { markdown },
+  })
+  .add('Variations', () => ({
+    template: `
             <div class="storybook-center">
                 <div class="r-grid">
                     <div class="r-grid-item">
@@ -96,6 +96,6 @@ storiesOf('Components.Avatar', module)
                 </div>
             </div>
         `,
-    }), {
-        notes: {markdown},
-    });
+  }), {
+    notes: { markdown },
+  });

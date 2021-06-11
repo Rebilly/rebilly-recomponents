@@ -9,27 +9,27 @@ import DateFormats from '../../../common/datetime-formats';
  * @param props {Object} contains value, column, and row data
  * @returns {VNode}
  */
-export default ({createElement, props}) => {
-    const {renderOptions} = props.column;
-    let dateFormat;
-    if (renderOptions && renderOptions.dateFormat) {
-        if (DateFormats[renderOptions.dateFormat]) {
-            dateFormat = DateFormats[renderOptions.dateFormat];
-        } else {
-            // eslint-disable-next-line prefer-destructuring
-            dateFormat = renderOptions.dateFormat;
-        }
+export default ({ createElement, props }) => {
+  const { renderOptions } = props.column;
+  let dateFormat;
+  if (renderOptions && renderOptions.dateFormat) {
+    if (DateFormats[renderOptions.dateFormat]) {
+      dateFormat = DateFormats[renderOptions.dateFormat];
     } else {
-        dateFormat = DateFormats.date;
+      // eslint-disable-next-line prefer-destructuring
+      dateFormat = renderOptions.dateFormat;
     }
+  } else {
+    dateFormat = DateFormats.date;
+  }
 
-    return createElement(
-        'span',
-        {
-            attr: {
-                title: `Time zone ${timezone.tz()}`,
-            },
-        },
-        timezone.fromDate(props.value).format(dateFormat),
-    );
+  return createElement(
+    'span',
+    {
+      attr: {
+        title: `Time zone ${timezone.tz()}`,
+      },
+    },
+    timezone.fromDate(props.value).format(dateFormat),
+  );
 };

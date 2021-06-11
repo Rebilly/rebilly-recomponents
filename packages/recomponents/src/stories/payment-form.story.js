@@ -1,19 +1,19 @@
-import {storiesOf} from '@storybook/vue';
-import {action} from '@storybook/addon-actions';
-import {text} from '@storybook/addon-knobs';
+import { storiesOf } from '@storybook/vue';
+import { action } from '@storybook/addon-actions';
+import { text } from '@storybook/addon-knobs';
 
 storiesOf('Demo', module)
-    .add('Payment Form', () => ({
-        props: {
-            width: {
-                default: text('Form width', '400px'),
-            },
-        },
-        methods: {
-            cancel: action('cancel'),
-            submit: action('submit'),
-        },
-        template: `
+  .add('Payment Form', () => ({
+    props: {
+      width: {
+        default: text('Form width', '400px'),
+      },
+    },
+    methods: {
+      cancel: action('cancel'),
+      submit: action('submit'),
+    },
+    template: `
             <r-tile :style="{width: width}">
                 <template v-slot:title>
                     <h2>Make a payment</h2>
@@ -51,6 +51,6 @@ storiesOf('Demo', module)
                 </template>
             </r-tile>
         `,
-    }), {
-        notes: 'Example of payment form with input and buttons components',
-    });
+  }), {
+    notes: 'Example of payment form with input and buttons components',
+  });

@@ -12,28 +12,28 @@
 // },
 
 export default function debounce(func, delay) {
-    let timeout;
-    let called = false;
+  let timeout;
+  let called = false;
 
-    return function wrapper(...args) {
-        const handler = () => {
-            called = true;
-            func.apply(this, [...args]);
-        };
-        const timer = () => {
-            timeout = null;
-            if (!called) {
-                handler();
-            }
-        };
-
-        // delayed or first run
-        if (!timeout) {
-            handler();
-        } else {
-            called = false;
-        }
-        clearTimeout(timeout);
-        timeout = setTimeout(timer, delay);
+  return function wrapper(...args) {
+    const handler = () => {
+      called = true;
+      func.apply(this, [...args]);
     };
+    const timer = () => {
+      timeout = null;
+      if (!called) {
+        handler();
+      }
+    };
+
+    // delayed or first run
+    if (!timeout) {
+      handler();
+    } else {
+      called = false;
+    }
+    clearTimeout(timeout);
+    timeout = setTimeout(timer, delay);
+  };
 }

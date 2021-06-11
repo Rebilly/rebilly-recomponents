@@ -3,11 +3,11 @@
 </template>
 
 <script>
-    /**
+/**
      * Available renderOptions
      *      class: provide a class to be applied to the span wrapping the text
      */
-    export default {
-        name: 'RTextColumn',
-    };
+export default {
+  name: 'RTextColumn',
+};
 </script>

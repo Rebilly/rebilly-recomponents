@@ -13,81 +13,81 @@
 </template>
 
 <script>
-    import '../../directives/r-lazy';
+import '../../directives/r-lazy';
 
-    export default {
-        name: 'RImg',
-        data() {
-            return {
-                loading: true,
-            };
-        },
-        props: {
-            /**
+export default {
+  name: 'RImg',
+  data() {
+    return {
+      loading: true,
+    };
+  },
+  props: {
+    /**
              * Input the source URL
              */
-            src: {
-                type: String,
-                required: true,
-            },
-            /**
+    src: {
+      type: String,
+      required: true,
+    },
+    /**
              * Input the alternative text for the image
              */
-            alt: {
-                type: String,
-                default: 'Image',
-            },
-            /**
+    alt: {
+      type: String,
+      default: 'Image',
+    },
+    /**
              * Make the image lazy loaded
              */
-            lazy: {
-                type: Boolean,
-                default: false,
-            },
-            /**
+    lazy: {
+      type: Boolean,
+      default: false,
+    },
+    /**
              * Specify image width
              */
-            width: {
-                type: String,
-            },
-            /**
+    width: {
+      type: String,
+    },
+    /**
              * Specify image height
              */
-            height: {
-                type: String,
-            },
-            /**
+    height: {
+      type: String,
+    },
+    /**
              * Specify image aspect ratio (e.g. '9/16')
              */
-            aspectRatio: {
-                type: String,
-            },
-        },
-        computed: {
-            imgStyle() {
-                return {height: this.height, width: this.width};
-            },
-            wrapperStyle() {
-                if (this.aspectRatio) {
-                    return {
-                        '--img-aspect-ratio': `calc(${this.aspectRatio} * 100%)`,
-                    };
-                }
+    aspectRatio: {
+      type: String,
+    },
+  },
+  computed: {
+    imgStyle() {
+      return { height: this.height, width: this.width };
+    },
+    wrapperStyle() {
+      if (this.aspectRatio) {
+        return {
+          '--img-aspect-ratio': `calc(${this.aspectRatio} * 100%)`,
+        };
+      }
 
-                return {height: this.height, width: this.width};
-            },
-        },
-        methods: {
-            onload() {
-                this.loading = false;
-                this.$emit('onload');
-            },
-            onerror() {
-                this.loading = false;
-                this.$emit('onerror');
-            },
-        },
-    };
+      return { height: this.height, width: this.width };
+    },
+  },
+  methods: {
+    onload() {
+      this.loading = false;
+      this.$emit('onload');
+    },
+    onerror() {
+      this.loading = false;
+      this.$emit('onerror');
+    },
+  },
+};
 </script>
 
 <style lang="scss">

@@ -1,8 +1,8 @@
-import {storiesOf} from '@storybook/vue';
+import { storiesOf } from '@storybook/vue';
 
 storiesOf('Demo', module)
-    .add('Typography', () => ({
-        template: `
+  .add('Typography', () => ({
+    template: `
             <main style="padding: 2rem">
                 <h1>h1. Heading 1</h1>
                 <h2>h2. Heading 2</h2>
@@ -30,6 +30,6 @@ storiesOf('Demo', module)
                 </pre>
             </main>
         `,
-    }), {
-        notes: 'Global styles for text elements, headings and body text',
-    });
+  }), {
+    notes: 'Global styles for text elements, headings and body text',
+  });

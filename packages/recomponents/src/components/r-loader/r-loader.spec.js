@@ -1,46 +1,46 @@
-import {shallowMount} from '@vue/test-utils';
-import {renderToString} from '@vue/server-test-utils';
+import { shallowMount } from '@vue/test-utils';
+import { renderToString } from '@vue/server-test-utils';
 import RLoader from './r-loader.vue';
 
 describe('r-loader.vue', () => {
-    it('should render via SSR and match snapshot', async () => {
-        const wrapper = await renderToString(RLoader, {
-            propsData: {
-                show: true,
-            },
-        });
-
-        expect(wrapper).toMatchSnapshot();
+  it('should render via SSR and match snapshot', async () => {
+    const wrapper = await renderToString(RLoader, {
+      propsData: {
+        show: true,
+      },
     });
 
-    it('should not render if show property is false', () => {
-        const wrapper = shallowMount(RLoader, {
-            propsData: {
-                show: false,
-            },
-        });
+    expect(wrapper).toMatchSnapshot();
+  });
 
-        expect(wrapper).toMatchSnapshot();
+  it('should not render if show property is false', () => {
+    const wrapper = shallowMount(RLoader, {
+      propsData: {
+        show: false,
+      },
     });
 
-    it('should render component with classes', () => {
-        const wrapper = shallowMount(RLoader, {
-            propsData: {
-                show: true,
-                loading: true,
-                fullscreen: true,
-            },
-        });
+    expect(wrapper).toMatchSnapshot();
+  });
 
-        expect(wrapper.classes()).toContain('r-is-loading');
-        expect(wrapper.classes()).toContain('r-is-fullscreen');
+  it('should render component with classes', () => {
+    const wrapper = shallowMount(RLoader, {
+      propsData: {
+        show: true,
+        loading: true,
+        fullscreen: true,
+      },
     });
 
-    it('should match all incoming props types', () => {
-        const {show, loading, fullscreen} = RLoader.props;
+    expect(wrapper.classes()).toContain('r-is-loading');
+    expect(wrapper.classes()).toContain('r-is-fullscreen');
+  });
 
-        expect(show.type).toBe(Boolean);
-        expect(loading.type).toBe(Boolean);
-        expect(fullscreen.type).toBe(Boolean);
-    });
+  it('should match all incoming props types', () => {
+    const { show, loading, fullscreen } = RLoader.props;
+
+    expect(show.type).toBe(Boolean);
+    expect(loading.type).toBe(Boolean);
+    expect(fullscreen.type).toBe(Boolean);
+  });
 });

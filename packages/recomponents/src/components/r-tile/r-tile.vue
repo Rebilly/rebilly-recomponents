@@ -22,11 +22,11 @@
 </template>
 
 <script>
-    import '../../directives/r-content/r-content';
+import '../../directives/r-content/r-content';
 
-    export default {
-        name: 'RTile',
-    };
+export default {
+  name: 'RTile',
+};
 </script>
 
 <style lang="scss">

@@ -4,8 +4,8 @@ import date from './date';
 import numeric from './numeric';
 
 export default {
-    badge,
-    text,
-    date,
-    numeric,
+  badge,
+  text,
+  date,
+  numeric,
 };

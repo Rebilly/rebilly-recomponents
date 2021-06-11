@@ -21,163 +21,163 @@
 </template>
 
 <script>
-    import moment from 'moment';
-    import shortid from 'shortid';
-    import rIcon from '../r-icon/r-icon.vue';
-    import rSelect from '../r-select/r-select.vue';
-    import {DateInputType, CalendarOptions} from './shared';
-    import rCalendarManager from './r-calendar-manager.vue';
+import moment from 'moment';
+import shortid from 'shortid';
+import rIcon from '../r-icon/r-icon.vue';
+import rSelect from '../r-select/r-select.vue';
+import { DateInputType, CalendarOptions } from './shared';
+import rCalendarManager from './r-calendar-manager.vue';
 
-    // TODO: prefixes simple classes `r-stack-xs, r-is-error, etc`
-    export default {
-        name: 'RDateInput',
-        components: {
-            rIcon,
-            rSelect,
-            rCalendarManager,
-        },
-        props: {
-            /**
+// TODO: prefixes simple classes `r-stack-xs, r-is-error, etc`
+export default {
+  name: 'RDateInput',
+  components: {
+    rIcon,
+    rSelect,
+    rCalendarManager,
+  },
+  props: {
+    /**
              * Specify available dates list
              */
-            availableDates: {
-                type: Object,
-                required: false,
-                default: null,
-            },
-            /**
+    availableDates: {
+      type: Object,
+      required: false,
+      default: null,
+    },
+    /**
              * Set the label
              */
-            label: {
-                type: String,
-                default: null,
-            },
-            /**
+    label: {
+      type: String,
+      default: null,
+    },
+    /**
              * Define number of calendars (inline)
              */
-            columns: {
-                type: Number,
-                default: 1,
-            },
-            /**
+    columns: {
+      type: Number,
+      default: 1,
+    },
+    /**
              * Disabled state of date picker
              */
-            disabled: {
-                type: Boolean,
-                default: false,
-            },
-            /**
+    disabled: {
+      type: Boolean,
+      default: false,
+    },
+    /**
              * Set the placeholder
              */
-            placeholder: {
-                type: String,
-                default: null,
-            },
-            /**
+    placeholder: {
+      type: String,
+      default: null,
+    },
+    /**
              * Set the help text
              */
-            helpText: {
-                type: String,
-                default: null,
-            },
-            /**
+    helpText: {
+      type: String,
+      default: null,
+    },
+    /**
              * Specify type of the date picker
              */
-            type: {
-                type: String,
-                default: 'date',
-            },
-            /**
+    type: {
+      type: String,
+      default: 'date',
+    },
+    /**
              * Change the name of date picker
              */
-            name: {
-                type: String,
-                default: () => shortid.generate(),
-            },
-            /**
+    name: {
+      type: String,
+      default: () => shortid.generate(),
+    },
+    /**
              * Used to specify what dates are selected
              */
-            value: {
-                type: [Object, String, Date],
-                default: () => new Date(),
-            },
-            /**
+    value: {
+      type: [Object, String, Date],
+      default: () => new Date(),
+    },
+    /**
              * Specify how to validate
              */
-            validate: {
-                type: Object,
-                default: null,
-            },
-            /**
+    validate: {
+      type: Object,
+      default: null,
+    },
+    /**
              * Styles the view of date picker
              */
-            noFlex: {
-                type: Boolean,
-                required: false,
-                default: false,
-            },
-            /**
+    noFlex: {
+      type: Boolean,
+      required: false,
+      default: false,
+    },
+    /**
              * Configure the view of date picker details (popover etc.)
              */
-            dragSelectAttributes: {
-                type: Object,
-            },
-            /**
+    dragSelectAttributes: {
+      type: Object,
+    },
+    /**
              * Specify the max date of available for selection dates
              */
-            maxDate: {
-                type: Date,
-            },
-            /**
+    maxDate: {
+      type: Date,
+    },
+    /**
              * Specify the min date of available for selection dates
              */
-            minDate: {
-                type: Date,
-            },
-            /**
+    minDate: {
+      type: Date,
+    },
+    /**
              * Specify the timezone
              */
-            timezone: {
-                type: String,
-                default: 'UTC',
-            },
-        },
-        data() {
-            return {
-                CalendarOptions,
-            };
-        },
-        computed: {
-            isInvalid() {
-                if (this.validate) {
-                    return this.validate.$invalid && this.validate.$dirty;
-                }
-                return false;
-            },
-            isDateRange() {
-                return [DateInputType.dateRange, DateInputType.dateTimeRange].includes(this.type);
-            },
-        },
-        methods: {
-            onInput(date) {
-                let value;
-                if ([DateInputType.dateTimeRange, DateInputType.dateRange].includes(this.type)) {
-                    value = {
-                        ...date,
-                        start: moment(date.start).tz(this.timezone),
-                        end: moment(date.end).tz(this.timezone),
-                    };
-                } else {
-                    value = moment(date).tz(this.timezone);
-                }
-                /**
+    timezone: {
+      type: String,
+      default: 'UTC',
+    },
+  },
+  data() {
+    return {
+      CalendarOptions,
+    };
+  },
+  computed: {
+    isInvalid() {
+      if (this.validate) {
+        return this.validate.$invalid && this.validate.$dirty;
+      }
+      return false;
+    },
+    isDateRange() {
+      return [DateInputType.dateRange, DateInputType.dateTimeRange].includes(this.type);
+    },
+  },
+  methods: {
+    onInput(date) {
+      let value;
+      if ([DateInputType.dateTimeRange, DateInputType.dateRange].includes(this.type)) {
+        value = {
+          ...date,
+          start: moment(date.start).tz(this.timezone),
+          end: moment(date.end).tz(this.timezone),
+        };
+      } else {
+        value = moment(date).tz(this.timezone);
+      }
+      /**
                  * Date change by element click or from parent component
                  * @type {Event}
                  */
-                this.$emit('input', value);
-            },
-        },
-    };
+      this.$emit('input', value);
+    },
+  },
+};
 </script>
 <style lang="scss">
 @import '../../styles/grid.scss';

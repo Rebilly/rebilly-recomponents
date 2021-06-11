@@ -1,40 +1,40 @@
-import {shallowMount} from '@vue/test-utils';
+import { shallowMount } from '@vue/test-utils';
 import RCalendarManager from './r-calendar-manager.vue';
 import RInput from '../r-input/r-input.vue';
 
 describe('r-calendar-manager.vue', () => {
-    it('renders default state correctly', () => {
-        const wrapper = shallowMount(RCalendarManager, {
-            propsData: {
-                maxDate: new Date(2020, 1, 1),
-            },
-            stubs: ['no-ssr'],
-        });
-        expect(wrapper.find(RInput).attributes('style')).toBe('display: none;');
+  it('renders default state correctly', () => {
+    const wrapper = shallowMount(RCalendarManager, {
+      propsData: {
+        maxDate: new Date(2020, 1, 1),
+      },
+      stubs: ['no-ssr'],
+    });
+    expect(wrapper.find(RInput).attributes('style')).toBe('display: none;');
+  });
+
+  it('renders disabled state correctly', () => {
+    const wrapper = shallowMount(RCalendarManager, {
+      propsData: {
+        disabled: true,
+        maxDate: new Date(2020, 1, 1),
+      },
+      stubs: ['no-ssr'],
+    });
+    expect(wrapper.contains(RInput)).toBe(true);
+    expect(wrapper.find(RInput).attributes('style')).toBe(undefined);
+  });
+
+  it('should render date and time range picker correctly', () => {
+    const wrapper = shallowMount(RCalendarManager, {
+      propsData: {
+        type: 'range',
+        datePicker: true,
+        timePicker: true,
+      },
+      stubs: ['no-ssr'],
     });
 
-    it('renders disabled state correctly', () => {
-        const wrapper = shallowMount(RCalendarManager, {
-            propsData: {
-                disabled: true,
-                maxDate: new Date(2020, 1, 1),
-            },
-            stubs: ['no-ssr'],
-        });
-        expect(wrapper.contains(RInput)).toBe(true);
-        expect(wrapper.find(RInput).attributes('style')).toBe(undefined);
-    });
-
-    it('should render date and time range picker correctly', () => {
-        const wrapper = shallowMount(RCalendarManager, {
-            propsData: {
-                type: 'range',
-                datePicker: true,
-                timePicker: true,
-            },
-            stubs: ['no-ssr'],
-        });
-
-        expect(wrapper.vm.mode).toEqual('dateTime');
-    });
+    expect(wrapper.vm.mode).toEqual('dateTime');
+  });
 });

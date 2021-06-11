@@ -1,17 +1,17 @@
-import {storiesOf} from '@storybook/vue';
-import {boolean, select, text} from '@storybook/addon-knobs';
-import {action} from '@storybook/addon-actions';
+import { storiesOf } from '@storybook/vue';
+import { boolean, select, text } from '@storybook/addon-knobs';
+import { action } from '@storybook/addon-actions';
 import markdown from './r-toast.md';
 import RToast from './r-toast.vue';
 
 function destroyToastManuallyWhenTheUserNavigatesToAnotherStory(className) {
-    document.querySelectorAll(className).forEach(el => el && el.remove());
+  document.querySelectorAll(className).forEach((el) => el && el.remove());
 }
 
 storiesOf('Components.Toast', module)
-    .addParameters({component: RToast})
-    .add('Component', () => ({
-        template: `
+  .addParameters({ component: RToast })
+  .add('Component', () => ({
+    template: `
             <div class="storybook-center">
                 <r-toast class="component-story"
                          :visible="true"
@@ -23,39 +23,39 @@ storiesOf('Components.Toast', module)
                          @hide="hide"></r-toast>
             </div>
         `,
-        props: {
-            type: {
-                default: select('Type', [
-                    'positive',
-                    'negative',
-                    'warning',
-                    'info',
-                ], 'positive'),
-            },
-            title: {
-                default: text('Title', 'Title'),
-            },
-            allowClose: {
-                default: boolean('Allow close', false),
-            },
-            autoHide: {
-                default: boolean('Auto Hide', false),
-            },
-            message: {
-                default: text('Message', 'This is the toast message'),
-            },
-        },
-        methods: {
-            hide: action('hide'),
-        },
-        destroyed() {
-            destroyToastManuallyWhenTheUserNavigatesToAnotherStory('.component-story');
-        },
-    }), {
-        notes: {markdown},
-    })
-    .add('All types', () => ({
-        template: `
+    props: {
+      type: {
+        default: select('Type', [
+          'positive',
+          'negative',
+          'warning',
+          'info',
+        ], 'positive'),
+      },
+      title: {
+        default: text('Title', 'Title'),
+      },
+      allowClose: {
+        default: boolean('Allow close', false),
+      },
+      autoHide: {
+        default: boolean('Auto Hide', false),
+      },
+      message: {
+        default: text('Message', 'This is the toast message'),
+      },
+    },
+    methods: {
+      hide: action('hide'),
+    },
+    destroyed() {
+      destroyToastManuallyWhenTheUserNavigatesToAnotherStory('.component-story');
+    },
+  }), {
+    notes: { markdown },
+  })
+  .add('All types', () => ({
+    template: `
             <div class="storybook-center">
                 <div class="storybook-item" v-for="type in types">
                     <r-toast
@@ -67,25 +67,25 @@ storiesOf('Components.Toast', module)
                 </div>
             </div>
         `,
-        props: {
-            types: {
-                default: [
-                    'positive',
-                    'negative',
-                    'warning',
-                    'info',
-                ],
-            },
-        },
-        destroyed() {
-            // Manually destroy toast when the user navigates to another story
-            destroyToastManuallyWhenTheUserNavigatesToAnotherStory('.all-types-story');
-        },
-    }), {
-        notes: {markdown},
-    })
-    .add('Manager', () => ({
-        template: `
+    props: {
+      types: {
+        default: [
+          'positive',
+          'negative',
+          'warning',
+          'info',
+        ],
+      },
+    },
+    destroyed() {
+      // Manually destroy toast when the user navigates to another story
+      destroyToastManuallyWhenTheUserNavigatesToAnotherStory('.all-types-story');
+    },
+  }), {
+    notes: { markdown },
+  })
+  .add('Manager', () => ({
+    template: `
             <div>
                 <div class="storybook-center">
                     <div class="r-grid">
@@ -105,21 +105,21 @@ storiesOf('Components.Toast', module)
                 </div>
             </div>
         `,
-        props: {},
-        methods: {
-            addDefaultToast(type) {
-                this.$toast[type](`Test ${type} toast`, {allowClose: false});
-            },
-            addClosableToast(type) {
-                this.$toast[type](`Close ${type} toast`, {allowClose: true});
-            },
-            hide: action('hide'),
-        },
-    }), {
-        notes: {markdown},
-    })
-    .add('Render function', () => ({
-        template: `
+    props: {},
+    methods: {
+      addDefaultToast(type) {
+        this.$toast[type](`Test ${type} toast`, { allowClose: false });
+      },
+      addClosableToast(type) {
+        this.$toast[type](`Close ${type} toast`, { allowClose: true });
+      },
+      hide: action('hide'),
+    },
+  }), {
+    notes: { markdown },
+  })
+  .add('Render function', () => ({
+    template: `
             <div>
                 <div class="storybook-center">
                     <div class="r-grid">
@@ -130,11 +130,11 @@ storiesOf('Components.Toast', module)
                 </div>
             </div>
         `,
-        methods: {
-            renderFunction() {
-                this.$toast.warning(createElement => createElement('h1', 'H1 Toast Content'));
-            },
-        },
-    }), {
-        notes: {markdown},
-    });
+    methods: {
+      renderFunction() {
+        this.$toast.warning((createElement) => createElement('h1', 'H1 Toast Content'));
+      },
+    },
+  }), {
+    notes: { markdown },
+  });

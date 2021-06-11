@@ -1,17 +1,17 @@
-import {storiesOf} from '@storybook/vue';
-import {text} from '@storybook/addon-knobs';
+import { storiesOf } from '@storybook/vue';
+import { text } from '@storybook/addon-knobs';
 import RButton from '../../components/r-button/r-button.vue';
 import markdown from './r-tooltip.md';
 
 storiesOf('Directives', module)
-    .add('Tooltip', () => ({
-        components: {RButton},
-        props: {
-            text: {
-                default: text('Tooltip text', 'Tooltip Directive'),
-            },
-        },
-        template: `
+  .add('Tooltip', () => ({
+    components: { RButton },
+    props: {
+      text: {
+        default: text('Tooltip text', 'Tooltip Directive'),
+      },
+    },
+    template: `
             <div>
                 <div>
                     <r-button type="primary" v-tooltip="{text: text}">With button</r-button>
@@ -24,6 +24,6 @@ storiesOf('Directives', module)
                 </div>
             </div>
         `,
-    }), {
-        notes: {markdown},
-    });
+  }), {
+    notes: { markdown },
+  });

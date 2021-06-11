@@ -28,67 +28,67 @@
 </template>
 
 <script>
-    import RLoader from '../r-loader/r-loader.vue';
+import RLoader from '../r-loader/r-loader.vue';
 
-    export default {
-        components: {
-            RLoader,
-        },
-        props: {
-            /**
+export default {
+  components: {
+    RLoader,
+  },
+  props: {
+    /**
              * Returns some data to be rendered by the default scoped slot
              */
-            provider: {
-                type: [Function, Promise, Array],
-                required: true,
-            },
-            /**
+    provider: {
+      type: [Function, Promise, Array],
+      required: true,
+    },
+    /**
              * Defines if the loading state is fullscreen
              */
-            isLoaderFullscreen: {
-                type: Boolean,
-                default: true,
-            },
-            /**
+    isLoaderFullscreen: {
+      type: Boolean,
+      default: true,
+    },
+    /**
              * Defines the property, which changes will trigger the fetching of data
              */
-            watcher: {},
-        },
-        data() {
-            return {
-                isLoading: false,
-                rows: [],
-            };
-        },
-        computed: {
-            hasRows() {
-                return this.rows.length > 0;
-            },
-        },
-        methods: {
-            async fetchData() {
-                this.isLoading = true;
-                try {
-                    this.rows = await this.provider();
-                } catch (error) {
-                    console.error(error);
-                } finally {
-                    this.isLoading = false;
-                }
-            },
-        },
-        mounted() {
-            this.fetchData();
-        },
-        watch: {
-            watcher: {
-                handler() {
-                    this.fetchData();
-                },
-                deep: true,
-            },
-        },
+    watcher: {},
+  },
+  data() {
+    return {
+      isLoading: false,
+      rows: [],
     };
+  },
+  computed: {
+    hasRows() {
+      return this.rows.length > 0;
+    },
+  },
+  methods: {
+    async fetchData() {
+      this.isLoading = true;
+      try {
+        this.rows = await this.provider();
+      } catch (error) {
+        console.error(error);
+      } finally {
+        this.isLoading = false;
+      }
+    },
+  },
+  mounted() {
+    this.fetchData();
+  },
+  watch: {
+    watcher: {
+      handler() {
+        this.fetchData();
+      },
+      deep: true,
+    },
+  },
+};
 </script>
 
 <style lang="scss">

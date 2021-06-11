@@ -33,57 +33,57 @@
 </template>
 
 <script>
-    import RButton from '../r-button/r-button.vue';
-    import RIcon from '../r-icon/r-icon.vue';
+import RButton from '../r-button/r-button.vue';
+import RIcon from '../r-icon/r-icon.vue';
 
-    export default {
-        name: 'r-pagination-control',
-        components: {RButton, RIcon},
-        inject: [
-            'paginationPage',
-            'paginationNext',
-            'paginationPrevious',
-            'paginationOffset',
-            'paginationTotal',
-            'paginationLimit',
-            'paginationItems',
-            'paginationHasNext',
-            'paginationHasPrevious',
-        ],
-        computed: {
-            offset() {
-                return this.paginationOffset();
-            },
-            total() {
-                return this.paginationTotal();
-            },
-            limit() {
-                return this.paginationLimit();
-            },
-            hasNext() {
-                return this.paginationHasNext();
-            },
-            hasPrevious() {
-                return this.paginationHasPrevious();
-            },
-            items() {
-                return this.paginationItems();
-            },
-            override() {
-                return {
-                    page: this.paginationPage,
-                    next: this.paginationNext,
-                    previous: this.paginationPrevious,
-                    offset: this.offset,
-                    total: this.total,
-                    limit: this.limit,
-                    items: this.items,
-                    hasNext: this.hasNext,
-                    hasPrevious: this.hasPrevious,
-                };
-            },
-        },
-    };
+export default {
+  name: 'r-pagination-control',
+  components: { RButton, RIcon },
+  inject: [
+    'paginationPage',
+    'paginationNext',
+    'paginationPrevious',
+    'paginationOffset',
+    'paginationTotal',
+    'paginationLimit',
+    'paginationItems',
+    'paginationHasNext',
+    'paginationHasPrevious',
+  ],
+  computed: {
+    offset() {
+      return this.paginationOffset();
+    },
+    total() {
+      return this.paginationTotal();
+    },
+    limit() {
+      return this.paginationLimit();
+    },
+    hasNext() {
+      return this.paginationHasNext();
+    },
+    hasPrevious() {
+      return this.paginationHasPrevious();
+    },
+    items() {
+      return this.paginationItems();
+    },
+    override() {
+      return {
+        page: this.paginationPage,
+        next: this.paginationNext,
+        previous: this.paginationPrevious,
+        offset: this.offset,
+        total: this.total,
+        limit: this.limit,
+        items: this.items,
+        hasNext: this.hasNext,
+        hasPrevious: this.hasPrevious,
+      };
+    },
+  },
+};
 </script>
 
 <style lang="scss">

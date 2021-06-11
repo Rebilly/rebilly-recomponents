@@ -5,80 +5,80 @@
 </template>
 
 <script>
-    import RIconSprites from './r-icon-sprites';
+import RIconSprites from './r-icon-sprites';
 
-    export default {
-        name: 'RIcon',
-        props: {
-            /**
+export default {
+  name: 'RIcon',
+  props: {
+    /**
              * Select any icon available in our svg sprite
              */
-            icon: {
-                type: String,
-                default: null,
-            },
-            /**
+    icon: {
+      type: String,
+      default: null,
+    },
+    /**
              * Choose any color available in our pallete
              */
-            color: {
-                type: String,
-                default: null,
-                validator: val => [
-                    'brand',
-                    'text',
-                    'muted',
-                    'gray',
-                    'light-gray',
-                    'faint-gray',
-                    'blue',
-                    'light-blue',
-                    'yellow',
-                    'light-yellow',
-                    'red',
-                    'light-red',
-                    'green',
-                    'light-green',
-                    'accent',
-                    'background',
-                    'light-background',
-                    'dark-background',
-                ].includes(val),
-            },
-            /**
+    color: {
+      type: String,
+      default: null,
+      validator: (val) => [
+        'brand',
+        'text',
+        'muted',
+        'gray',
+        'light-gray',
+        'faint-gray',
+        'blue',
+        'light-blue',
+        'yellow',
+        'light-yellow',
+        'red',
+        'light-red',
+        'green',
+        'light-green',
+        'accent',
+        'background',
+        'light-background',
+        'dark-background',
+      ].includes(val),
+    },
+    /**
              * Prevent native click events from capturing in parent components
              */
-            stopPropagation: {
-                type: Boolean,
-                default: false,
-            },
-        },
-        mounted() {
-            if (!document.getElementById('icon-heart')) {
-                const spritesDiv = document.createElement('div');
-                spritesDiv.style.display = 'none';
-                spritesDiv.innerHTML = RIconSprites;
-                document.body.appendChild(spritesDiv);
-            }
-        },
-        computed: {
-            iconName() {
-                return `#icon-${this.icon}`;
-            },
-            classes() {
-                return {
-                    [`r-icon-${this.color}`]: !!this.color,
-                };
-            },
-        },
-        methods: {
-            bubbleClick(evt) {
-                if (this.stopPropagation) {
-                    evt.stopPropagation();
-                }
-                this.$emit('click', evt);
-            },
-        },
-    };
+    stopPropagation: {
+      type: Boolean,
+      default: false,
+    },
+  },
+  mounted() {
+    if (!document.getElementById('icon-heart')) {
+      const spritesDiv = document.createElement('div');
+      spritesDiv.style.display = 'none';
+      spritesDiv.innerHTML = RIconSprites;
+      document.body.appendChild(spritesDiv);
+    }
+  },
+  computed: {
+    iconName() {
+      return `#icon-${this.icon}`;
+    },
+    classes() {
+      return {
+        [`r-icon-${this.color}`]: !!this.color,
+      };
+    },
+  },
+  methods: {
+    bubbleClick(evt) {
+      if (this.stopPropagation) {
+        evt.stopPropagation();
+      }
+      this.$emit('click', evt);
+    },
+  },
+};
 </script>
 
 <style lang="scss">

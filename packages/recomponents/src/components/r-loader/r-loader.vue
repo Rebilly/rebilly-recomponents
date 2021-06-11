@@ -13,42 +13,42 @@
 </template>
 
 <script>
-    export default {
-        name: 'RLoader',
+export default {
+  name: 'RLoader',
 
-        props: {
-            /**
+  props: {
+    /**
              * Boolean value to show or hide component
              */
-            show: {
-                type: Boolean,
-                default: true,
-            },
-            /**
+    show: {
+      type: Boolean,
+      default: true,
+    },
+    /**
              * Flag to start / stop animation
              */
-            loading: {
-                type: Boolean,
-                default: true,
-            },
-            /**
+    loading: {
+      type: Boolean,
+      default: true,
+    },
+    /**
              * Fill parent component or entire application
              */
-            fullscreen: {
-                type: Boolean,
-                default: true,
-            },
-        },
+    fullscreen: {
+      type: Boolean,
+      default: true,
+    },
+  },
 
-        computed: {
-            classes() {
-                return {
-                    'r-is-loading': !!this.loading,
-                    'r-is-fullscreen': !!this.fullscreen,
-                };
-            },
-        },
-    };
+  computed: {
+    classes() {
+      return {
+        'r-is-loading': !!this.loading,
+        'r-is-fullscreen': !!this.fullscreen,
+      };
+    },
+  },
+};
 </script>
 
 <style lang="scss">

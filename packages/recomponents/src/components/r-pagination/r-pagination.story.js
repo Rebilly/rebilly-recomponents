@@ -1,13 +1,13 @@
-import {storiesOf} from '@storybook/vue';
-import {action} from '@storybook/addon-actions';
-import {number} from '@storybook/addon-knobs';
+import { storiesOf } from '@storybook/vue';
+import { action } from '@storybook/addon-actions';
+import { number } from '@storybook/addon-knobs';
 import markdown from './r-pagination.md';
 import RPagination from './r-pagination.vue';
 
 storiesOf('Components.Pagination', module)
-    .addParameters({component: RPagination})
-    .add('Component', () => ({
-        template: `
+  .addParameters({ component: RPagination })
+  .add('Component', () => ({
+    template: `
             <div class="storybook-center">
                 <r-pagination
                     :provider="provider"
@@ -18,31 +18,31 @@ storiesOf('Components.Pagination', module)
                     @navigate="navigate"/>
             </div>
         `,
-        methods: {
-            navigate: action('navigate'),
-            provider() {},
-        },
-        data() {
-            return {
-                page: 1,
-            };
-        },
-        props: {
-            total: {
-                default: number('Total', 100),
-            },
-            limit: {
-                default: number('Limit', 10),
-            },
-            totalVisible: {
-                default: number('Total visible', 5),
-            },
-        },
-    }), {
-        notes: {markdown},
-    })
-    .add('Custom first page', () => ({
-        template: `
+    methods: {
+      navigate: action('navigate'),
+      provider() {},
+    },
+    data() {
+      return {
+        page: 1,
+      };
+    },
+    props: {
+      total: {
+        default: number('Total', 100),
+      },
+      limit: {
+        default: number('Limit', 10),
+      },
+      totalVisible: {
+        default: number('Total visible', 5),
+      },
+    },
+  }), {
+    notes: { markdown },
+  })
+  .add('Custom first page', () => ({
+    template: `
             <div class="storybook-center">
                 <h2>Page #1</h2>
                 <r-pagination
@@ -70,22 +70,22 @@ storiesOf('Components.Pagination', module)
                     @navigate="navigate"/>
             </div>
         `,
-        data() {
-            return {
-                pagination1: 1,
-                pagination2: 5,
-                pagination3: 10,
-            };
-        },
-        methods: {
-            navigate: action('navigate'),
-            provider() {},
-        },
-    }), {
-        notes: {markdown},
-    })
-    .add('Update from parent', () => ({
-        template: `
+    data() {
+      return {
+        pagination1: 1,
+        pagination2: 5,
+        pagination3: 10,
+      };
+    },
+    methods: {
+      navigate: action('navigate'),
+      provider() {},
+    },
+  }), {
+    notes: { markdown },
+  })
+  .add('Update from parent', () => ({
+    template: `
             <div class="storybook-center">
                 <r-input
                     numeric
@@ -104,18 +104,18 @@ storiesOf('Components.Pagination', module)
                     @navigate="navigate"/>
             </div>
         `,
-        data() {
-            return {
-                page: 1,
-            };
-        },
-        methods: {
-            navigate: action('navigate'),
-            provider() {},
-            input(value) {
-                this.page = parseInt(value, 10);
-            },
-        },
-    }), {
-        notes: {markdown},
-    });
+    data() {
+      return {
+        page: 1,
+      };
+    },
+    methods: {
+      navigate: action('navigate'),
+      provider() {},
+      input(value) {
+        this.page = parseInt(value, 10);
+      },
+    },
+  }), {
+    notes: { markdown },
+  });

@@ -14,41 +14,41 @@
 </template>
 
 <script>
-    import rIcon from '../r-icon/r-icon.vue';
+import rIcon from '../r-icon/r-icon.vue';
 
-    export default {
-        name: 'RBadge',
-        components: {rIcon},
-        props: {
-            /**
+export default {
+  name: 'RBadge',
+  components: { rIcon },
+  props: {
+    /**
              * Changes background color
              */
-            type: {
-                type: String,
-                default: 'default',
-            },
-            /**
+    type: {
+      type: String,
+      default: 'default',
+    },
+    /**
              * Show optional close button
              */
-            close: {
-                type: Boolean,
-                default: false,
-            },
-        },
-        computed: {
-            classes() {
-                const classes = {
-                    'r-badge-has-icon-close': !!this.close,
-                };
-                if (this.type) {
-                    classes[`r-badge-${this.type}`] = true;
-                } else {
-                    classes['r-badge-default'] = true;
-                }
-                return classes;
-            },
-        },
-    };
+    close: {
+      type: Boolean,
+      default: false,
+    },
+  },
+  computed: {
+    classes() {
+      const classes = {
+        'r-badge-has-icon-close': !!this.close,
+      };
+      if (this.type) {
+        classes[`r-badge-${this.type}`] = true;
+      } else {
+        classes['r-badge-default'] = true;
+      }
+      return classes;
+    },
+  },
+};
 </script>
 
 <style lang="scss">

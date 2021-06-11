@@ -1,7 +1,7 @@
-import {shallowMount} from '@vue/test-utils';
+import { shallowMount } from '@vue/test-utils';
 
 const mockTemplate = {
-    template: `
+  template: `
         <div>
             <div class="r-component-content">
                 <section v-content>
@@ -18,8 +18,8 @@ const mockTemplate = {
 const wrapper = shallowMount(mockTemplate);
 
 describe('r-content.js', () => {
-    it('Should render the correct HTML structure', () => {
-        expect(wrapper).toMatchInlineSnapshot(`
+  it('Should render the correct HTML structure', () => {
+    expect(wrapper).toMatchInlineSnapshot(`
             <div>
               <div class="r-component-content">
                 <section class="r-component-content-is-primary">
@@ -31,13 +31,13 @@ describe('r-content.js', () => {
               </div>
             </div>
         `);
-    });
+  });
 
-    it('Should generate the correct primary class', () => {
-        expect(wrapper.contains('.r-component-content-is-primary')).toBe(true);
-    });
+  it('Should generate the correct primary class', () => {
+    expect(wrapper.contains('.r-component-content-is-primary')).toBe(true);
+  });
 
-    it('Should generate the correct secondary class', () => {
-        expect(wrapper.contains('.r-component-content-is-secondary')).toBe(true);
-    });
+  it('Should generate the correct secondary class', () => {
+    expect(wrapper.contains('.r-component-content-is-secondary')).toBe(true);
+  });
 });

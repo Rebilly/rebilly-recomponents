@@ -1,50 +1,50 @@
-import {storiesOf} from '@storybook/vue';
-import {boolean, select, text} from '@storybook/addon-knobs';
-import {action} from '@storybook/addon-actions';
+import { storiesOf } from '@storybook/vue';
+import { boolean, select, text } from '@storybook/addon-knobs';
+import { action } from '@storybook/addon-actions';
 import markdown from './r-modal.md';
 import RModal from './r-modal.vue';
 
 storiesOf('Components.Modal', module)
-    .addParameters({component: RModal})
-    .add('Component', () => ({
-        data() {
-            return {
-                isModalOpen: false,
-            };
-        },
-        props: {
-            title: {
-                default: text('Title', 'Modal'),
-            },
-            cancelLabel: {
-                default: text('Cancel button label', 'Close'),
-            },
-            size: {
-                default: select('Size', {
-                    Large: 'large',
-                    'Extra Large': 'extra-large',
-                    Fluid: 'fluid',
-                }, 'large'),
-            },
-            scroll: boolean('Scroll', true),
-            scrollContent: boolean('Scroll content', false),
-            duration: {
-                default: select('Duration', {
-                    ' 0.2': 0.2,
-                    ' 0.5': 0.5,
-                    '1.0': 1,
-                    '2.0': 2,
-                    '3.0': 3,
-                }, 0.2),
-            },
-        },
-        methods: {
-            close: action('close'),
-            submit: action('submit'),
-            leave: action('leave'),
-            enter: action('enter'),
-        },
-        template: `
+  .addParameters({ component: RModal })
+  .add('Component', () => ({
+    data() {
+      return {
+        isModalOpen: false,
+      };
+    },
+    props: {
+      title: {
+        default: text('Title', 'Modal'),
+      },
+      cancelLabel: {
+        default: text('Cancel button label', 'Close'),
+      },
+      size: {
+        default: select('Size', {
+          Large: 'large',
+          'Extra Large': 'extra-large',
+          Fluid: 'fluid',
+        }, 'large'),
+      },
+      scroll: boolean('Scroll', true),
+      scrollContent: boolean('Scroll content', false),
+      duration: {
+        default: select('Duration', {
+          ' 0.2': 0.2,
+          ' 0.5': 0.5,
+          '1.0': 1,
+          '2.0': 2,
+          '3.0': 3,
+        }, 0.2),
+      },
+    },
+    methods: {
+      close: action('close'),
+      submit: action('submit'),
+      leave: action('leave'),
+      enter: action('enter'),
+    },
+    template: `
             <div class="storybook-center">
                 <r-button @click="isModalOpen = true;">Open</r-button>
                 <r-modal v-if="isModalOpen"
@@ -68,38 +68,38 @@ storiesOf('Components.Modal', module)
                 </r-modal>
             </div>
         `,
-    }), {
-        notes: {markdown},
-    })
-    .add('Multi-step Form', () => ({
-        data() {
-            return {
-                activeStep: null,
-                steps: [{name: 'Step 1'}, {name: 'Step 2'}, {name: 'Step 3'}],
-            };
-        },
-        props: {
-            cancelLabel: {
-                default: text('Cancel button label', 'Close'),
-            },
-            size: {
-                default: select('Size', {
-                    Large: 'large',
-                    'Extra Large': 'extra-large',
-                    Fluid: 'fluid',
-                }, 'large'),
-            },
-            scroll: boolean('Scroll', true),
-            scrollContent: boolean('Scroll content', false),
-        },
-        methods: {
-            close: action('close'),
-            submit: action('submit'),
-            leave: action('leave'),
-            enter: action('enter'),
-            finish: action('finish'),
-        },
-        template: `
+  }), {
+    notes: { markdown },
+  })
+  .add('Multi-step Form', () => ({
+    data() {
+      return {
+        activeStep: null,
+        steps: [{ name: 'Step 1' }, { name: 'Step 2' }, { name: 'Step 3' }],
+      };
+    },
+    props: {
+      cancelLabel: {
+        default: text('Cancel button label', 'Close'),
+      },
+      size: {
+        default: select('Size', {
+          Large: 'large',
+          'Extra Large': 'extra-large',
+          Fluid: 'fluid',
+        }, 'large'),
+      },
+      scroll: boolean('Scroll', true),
+      scrollContent: boolean('Scroll content', false),
+    },
+    methods: {
+      close: action('close'),
+      submit: action('submit'),
+      leave: action('leave'),
+      enter: action('enter'),
+      finish: action('finish'),
+    },
+    template: `
             <div class="storybook-center">
                 <r-button @click="activeStep = 0;">Open</r-button>
                 <template v-for="(step, index) in steps">
@@ -137,6 +137,6 @@ storiesOf('Components.Modal', module)
                 </template>
             </div>
         `,
-    }), {
-        notes: {markdown},
-    });
+  }), {
+    notes: { markdown },
+  });

@@ -14,7 +14,7 @@
 </template>
 
 <script>
-    /**
+/**
      * renderOptions:
      *      backgroundColor: a color value for the background-color of the badge
      *      color: a color value for the color of the badge text
@@ -23,24 +23,24 @@
      * If column value is an array, place each item of that array inside a badge,
      * otherwise add the column value in the badge.
      */
-    export default {
-        name: 'badge',
-        props: {
-            value: {
-                required: true,
-            },
-            row: {
-                required: true,
-            },
-            column: {
-                required: true,
-            },
-        },
-        computed: {
-            badgeType() {
-                const {type} = this.column.renderOptions || {};
-                return type;
-            },
-        },
-    };
+export default {
+  name: 'badge',
+  props: {
+    value: {
+      required: true,
+    },
+    row: {
+      required: true,
+    },
+    column: {
+      required: true,
+    },
+  },
+  computed: {
+    badgeType() {
+      const { type } = this.column.renderOptions || {};
+      return type;
+    },
+  },
+};
 </script>

@@ -1,11 +1,11 @@
-import {storiesOf} from '@storybook/vue';
+import { storiesOf } from '@storybook/vue';
 import markdown from './r-repeater.md';
 import RRepeater from './r-repeater.vue';
 
 storiesOf('Components.Grid', module)
-    .addParameters({component: RRepeater})
-    .add('Repeater', () => ({
-        template: `
+  .addParameters({ component: RRepeater })
+  .add('Repeater', () => ({
+    template: `
         <div>
             <r-repeater :provider="provider">
                 <template #headers>
@@ -21,14 +21,14 @@ storiesOf('Components.Grid', module)
             </r-repeater>
         </div>
         `,
-        methods: {
-            async provider() {
-                return [
-                    {id: 1, name: 'One'},
-                    {id: 2, name: 'Two'},
-                ];
-            },
-        },
-    }), {
-        notes: {markdown},
-    });
+    methods: {
+      async provider() {
+        return [
+          { id: 1, name: 'One' },
+          { id: 2, name: 'Two' },
+        ];
+      },
+    },
+  }), {
+    notes: { markdown },
+  });

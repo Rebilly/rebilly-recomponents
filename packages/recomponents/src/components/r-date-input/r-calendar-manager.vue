@@ -64,185 +64,185 @@
 </template>
 
 <script>
-    import rInput from '../r-input/r-input.vue';
-    import rDateRangeButtonGroup from './r-date-range-button-group.vue';
+import rInput from '../r-input/r-input.vue';
+import rDateRangeButtonGroup from './r-date-range-button-group.vue';
 
-    // TODO disabled state + active value (no-editable date value)
-    export default {
-        name: 'RCalendarManager',
-        components: {
-            rInput,
-            rDateRangeButtonGroup,
+// TODO disabled state + active value (no-editable date value)
+export default {
+  name: 'RCalendarManager',
+  components: {
+    rInput,
+    rDateRangeButtonGroup,
+  },
+  props: {
+    availableDates: {
+      type: Object,
+      default: null,
+    },
+    columns: {
+      type: Number,
+      default: 1,
+    },
+    disabled: {
+      type: Boolean,
+      default: false,
+    },
+    dragSelectAttributes: {
+      type: Object,
+      default: () => ({
+        popover: {
+          visibility: 'hidden',
         },
-        props: {
-            availableDates: {
-                type: Object,
-                default: null,
-            },
-            columns: {
-                type: Number,
-                default: 1,
-            },
-            disabled: {
-                type: Boolean,
-                default: false,
-            },
-            dragSelectAttributes: {
-                type: Object,
-                default: () => ({
-                    popover: {
-                        visibility: 'hidden',
-                    },
-                }),
-            },
-            datePicker: {
-                type: Boolean,
-                default: true,
-            },
-            timePicker: {
-                type: Boolean,
-                default: false,
-            },
-            minDate: {
-                type: Date,
-            },
-            maxDate: {
-                type: Date,
-                default: () => new Date(),
-            },
-            type: {
-                type: String,
-                default: 'calendar',
-                validator: type => ['calendar', 'range'].includes(type),
-            },
-            value: {
-                type: [Object, String, Date],
-            },
-            placeholder: {
-                type: String,
-            },
-            timezone: {
-                type: String,
-                default: 'UTC',
-            },
-        },
-        computed: {
-            mode() {
-                let mode = this.datePicker ? 'date' : '';
-                mode += this.timePicker && 'Time';
-                return mode;
-            },
-            modelConfig() {
-                if (!this.isDateRange) {
-                    return this.timePicker ? {timeAdjust: '00:00:00'} : {
-                        type: 'string', mask: 'YYYY-MM-DD',
-                    };
-                }
+      }),
+    },
+    datePicker: {
+      type: Boolean,
+      default: true,
+    },
+    timePicker: {
+      type: Boolean,
+      default: false,
+    },
+    minDate: {
+      type: Date,
+    },
+    maxDate: {
+      type: Date,
+      default: () => new Date(),
+    },
+    type: {
+      type: String,
+      default: 'calendar',
+      validator: (type) => ['calendar', 'range'].includes(type),
+    },
+    value: {
+      type: [Object, String, Date],
+    },
+    placeholder: {
+      type: String,
+    },
+    timezone: {
+      type: String,
+      default: 'UTC',
+    },
+  },
+  computed: {
+    mode() {
+      let mode = this.datePicker ? 'date' : '';
+      mode += this.timePicker && 'Time';
+      return mode;
+    },
+    modelConfig() {
+      if (!this.isDateRange) {
+        return this.timePicker ? { timeAdjust: '00:00:00' } : {
+          type: 'string', mask: 'YYYY-MM-DD',
+        };
+      }
 
-                return {
-                    start: {timeAdjust: '00:00:00'},
-                    end: {timeAdjust: '23:59:59'},
-                };
-            },
-            isDateRange() {
-                return this.type === 'range';
-            },
-            prepValue() {
-                if (!this.value) {
-                    return null;
-                }
+      return {
+        start: { timeAdjust: '00:00:00' },
+        end: { timeAdjust: '23:59:59' },
+      };
+    },
+    isDateRange() {
+      return this.type === 'range';
+    },
+    prepValue() {
+      if (!this.value) {
+        return null;
+      }
 
-                const {start, end} = this.value;
-                return {
-                    ...this.value,
-                    start: start.format ? start.format() : start,
-                    end: end.format ? end.format() : end,
-                };
+      const { start, end } = this.value;
+      return {
+        ...this.value,
+        start: start.format ? start.format() : start,
+        end: end.format ? end.format() : end,
+      };
+    },
+  },
+  data() {
+    return {
+      initialDate: this.value,
+      masks: {
+        input: 'YYYY-MM-DD h:mm A',
+      },
+      popoverConfigs: {
+        placement: 'bottom',
+        modifiers: [
+          {
+            name: 'flip',
+            options: {
+              allowedAutoPlacements: ['bottom'],
+              fallbackPlacements: ['bottom'],
             },
+          },
+        ],
+      },
+      themeStyles: {
+        wrapper: {
+          background: '#FFFFFF',
+          borderRadius: '4px',
+          boxShadow: 'none',
+          border: 'none',
+          fontFamily: '"Roboto", sans-serif',
         },
-        data() {
-            return {
-                initialDate: this.value,
-                masks: {
-                    input: 'YYYY-MM-DD h:mm A',
-                },
-                popoverConfigs: {
-                    placement: 'bottom',
-                    modifiers: [
-                        {
-                            name: 'flip',
-                            options: {
-                                allowedAutoPlacements: ['bottom'],
-                                fallbackPlacements: ['bottom'],
-                            },
-                        },
-                    ],
-                },
-                themeStyles: {
-                    wrapper: {
-                        background: '#FFFFFF',
-                        borderRadius: '4px',
-                        boxShadow: 'none',
-                        border: 'none',
-                        fontFamily: '"Roboto", sans-serif',
-                    },
-                    header: {
-                        padding: '16px 20px',
-                    },
-                    headerTitle: {
-                        fontSize: '16px',
-                        lineHeight: '20px',
-                        fontFamily: '"Montserrat", sans-serif',
-                        fontWeight: '500',
-                        color: '#0D2B3E',
-                    },
-                    weekdays: {
-                        fontSize: '14px',
-                        lineHeight: '20px',
-                        color: '#6B7384',
-                        fontWeight: 'normal',
-                    },
-                    dayCell: {
-                        backgroundColor: '',
-                    },
-                    dayContent: {
-                        fontSize: '14px',
-                        lineHeight: '20px',
-                        color: '#0D2B3E',
-                        width: '32px',
-                        height: '32px',
-                    },
-                    dayContentHover: {
-                        backgroundColor: '#E1E7EA',
-                    },
-                    verticalDivider: {
-                        borderLeft: '1px solid #E1E7EA',
-                    },
-                    bars: {
-                        backgroundColor: 'red',
-                    },
-                    tintColor: '#DCE7FE',
-                },
-                disabledAttribute: {
-                    contentStyle: {
-                        color: '#C4CED8',
-                        fontWeight: 'normal',
-                    },
-                },
-            };
+        header: {
+          padding: '16px 20px',
         },
-        methods: {
-            periodInput(period) {
-                this.$emit('input', period);
-            },
-            dateInput(date) {
-                if (!date) {
-                    return;
-                }
-                this.$emit('input', date);
-            },
+        headerTitle: {
+          fontSize: '16px',
+          lineHeight: '20px',
+          fontFamily: '"Montserrat", sans-serif',
+          fontWeight: '500',
+          color: '#0D2B3E',
         },
+        weekdays: {
+          fontSize: '14px',
+          lineHeight: '20px',
+          color: '#6B7384',
+          fontWeight: 'normal',
+        },
+        dayCell: {
+          backgroundColor: '',
+        },
+        dayContent: {
+          fontSize: '14px',
+          lineHeight: '20px',
+          color: '#0D2B3E',
+          width: '32px',
+          height: '32px',
+        },
+        dayContentHover: {
+          backgroundColor: '#E1E7EA',
+        },
+        verticalDivider: {
+          borderLeft: '1px solid #E1E7EA',
+        },
+        bars: {
+          backgroundColor: 'red',
+        },
+        tintColor: '#DCE7FE',
+      },
+      disabledAttribute: {
+        contentStyle: {
+          color: '#C4CED8',
+          fontWeight: 'normal',
+        },
+      },
     };
+  },
+  methods: {
+    periodInput(period) {
+      this.$emit('input', period);
+    },
+    dateInput(date) {
+      if (!date) {
+        return;
+      }
+      this.$emit('input', date);
+    },
+  },
+};
 </script>
 <style lang="scss">
 @import './v-calendar.min.css';

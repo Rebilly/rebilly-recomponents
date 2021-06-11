@@ -5,9 +5,9 @@ import kebabCase from './kebab-case';
 import isObject from './is-object';
 
 export default {
-    debounce,
-    deepClone,
-    formatDate,
-    kebabCase,
-    isObject,
+  debounce,
+  deepClone,
+  formatDate,
+  kebabCase,
+  isObject,
 };

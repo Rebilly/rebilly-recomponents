@@ -1,39 +1,39 @@
-import {storiesOf} from '@storybook/vue';
-import {boolean} from '@storybook/addon-knobs';
+import { storiesOf } from '@storybook/vue';
+import { boolean } from '@storybook/addon-knobs';
 import markdown from './r-loader.md';
 import RLoader from './r-loader.vue';
 
 storiesOf('Components.Loader', module)
-    .addParameters({component: RLoader})
-    .add('Component', () => ({
-        props: {
-            show: {
-                default: boolean('Show', true),
-            },
-            loading: {
-                default: boolean('Loading', true),
-            },
-            fullscreen: {
-                default: boolean('Fullscreen', true),
-            },
-        },
-        template: `<r-loader :show="show" :loading="loading" :fullscreen="fullscreen"/>`,
-    }), {
-        notes: {markdown},
-    })
-    .add('Example', () => ({
-        props: {
-            show: {
-                default: boolean('Show', true),
-            },
-            loading: {
-                default: boolean('Loading', true),
-            },
-            fullscreen: {
-                default: boolean('Fullscreen', false),
-            },
-        },
-        template: `
+  .addParameters({ component: RLoader })
+  .add('Component', () => ({
+    props: {
+      show: {
+        default: boolean('Show', true),
+      },
+      loading: {
+        default: boolean('Loading', true),
+      },
+      fullscreen: {
+        default: boolean('Fullscreen', true),
+      },
+    },
+    template: '<r-loader :show="show" :loading="loading" :fullscreen="fullscreen"/>',
+  }), {
+    notes: { markdown },
+  })
+  .add('Example', () => ({
+    props: {
+      show: {
+        default: boolean('Show', true),
+      },
+      loading: {
+        default: boolean('Loading', true),
+      },
+      fullscreen: {
+        default: boolean('Fullscreen', false),
+      },
+    },
+    template: `
             <div class="storybook-center">
                 <div style="width: 250px; position: relative">
                     <r-loader :show="show" :loading="loading" :fullscreen="fullscreen"/>
@@ -76,6 +76,6 @@ storiesOf('Components.Loader', module)
                 </div>
             </div>
         `,
-    }), {
-        notes: {markdown},
-    });
+  }), {
+    notes: { markdown },
+  });

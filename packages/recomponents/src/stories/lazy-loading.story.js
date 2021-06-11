@@ -1,10 +1,10 @@
-import {storiesOf} from '@storybook/vue';
+import { storiesOf } from '@storybook/vue';
 
 storiesOf('Demo', module)
-    .add('Lazy Loading', () => ({
-        props: {},
-        methods: {},
-        template: `<div class="storybook-center">
+  .add('Lazy Loading', () => ({
+    props: {},
+    methods: {},
+    template: `<div class="storybook-center">
             <r-tile :style="{width: '25%'}">
                 <template v-slot:title>
                     <h2>Lazy Loading</h2>
@@ -23,6 +23,6 @@ storiesOf('Demo', module)
                 </template>
             </r-tile>
         </div>`,
-    }), {
-        notes: 'Example of lazy loading directive usage',
-    });
+  }), {
+    notes: 'Example of lazy loading directive usage',
+  });

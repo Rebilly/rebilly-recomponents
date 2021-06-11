@@ -13,74 +13,74 @@ import moment from 'moment';
  * @param props {Object} contains value, column, and row.
  * @returns {VNode}
  */
-export default ({createElement, props}) => {
-    const {
-        value,
-        column: {
-            renderOptions: {
-                approximate,
-                currency,
-                currencyDigits,
-                percentage,
-                digits,
-                internationalFormat,
-                duration,
-            } = {},
-        },
-    } = props;
-    let displayValue;
-    let hasDigits = false;
+export default ({ createElement, props }) => {
+  const {
+    value,
+    column: {
+      renderOptions: {
+        approximate,
+        currency,
+        currencyDigits,
+        percentage,
+        digits,
+        internationalFormat,
+        duration,
+      } = {},
+    },
+  } = props;
+  let displayValue;
+  let hasDigits = false;
 
-    if (value || !isNaN(value)) {
-        if (digits !== undefined && !isNaN(digits)) {
-            hasDigits = true;
-        }
-
-        if (approximate) {
-            displayValue = approximateNumber(value);
-        } else if (internationalFormat) {
-            displayValue = typeof Intl !== 'undefined' ? new Intl.NumberFormat().format(value) : value;
-        } else if (currency) {
-            const options = {style: 'currency', currency};
-
-            if ((currencyDigits || currencyDigits === 0) && !isNaN(currencyDigits)) {
-                options.minimumFractionDigits = currencyDigits;
-                options.maximumFractionDigits = currencyDigits;
-            }
-
-            displayValue = typeof Intl !== 'undefined'
-                ? new Intl.NumberFormat(undefined, options).format(value)
-                : `${currencyDigits ? (+value).toFixed(currencyDigits) : value} ${currency}`;
-        } else if (percentage) {
-            if (percentage === true) {
-                if (hasDigits) {
-                    displayValue = `${value.toFixed(digits)}%`;
-                } else {
-                    displayValue = `${value}%`;
-                }
-            } else {
-                const calculatedPercentage = (value / percentage) * 100;
-                displayValue = `${calculatedPercentage.toFixed(hasDigits ? digits : 2)}%`;
-            }
-        } else if (duration) {
-            const unit = duration === true ? 'seconds' : duration;
-            displayValue = moment.duration(value, unit).humanize();
-        } else if (value < 0) {
-            if (hasDigits) {
-                displayValue = `-${Math.abs(value).toFixed(digits)}`;
-            } else {
-                displayValue = `-${Math.abs(value)}`;
-            }
-        } else if (hasDigits) {
-            displayValue = Math.abs(value).toFixed(digits);
-        } else {
-            displayValue = Math.abs(value);
-        }
+  if (value || !isNaN(value)) {
+    if (digits !== undefined && !isNaN(digits)) {
+      hasDigits = true;
     }
 
-    return createElement(
-        'span',
-        {},
-        displayValue || value,
-    );
+    if (approximate) {
+      displayValue = approximateNumber(value);
+    } else if (internationalFormat) {
+      displayValue = typeof Intl !== 'undefined' ? new Intl.NumberFormat().format(value) : value;
+    } else if (currency) {
+      const options = { style: 'currency', currency };
+
+      if ((currencyDigits || currencyDigits === 0) && !isNaN(currencyDigits)) {
+        options.minimumFractionDigits = currencyDigits;
+        options.maximumFractionDigits = currencyDigits;
+      }
+
+      displayValue = typeof Intl !== 'undefined'
+        ? new Intl.NumberFormat(undefined, options).format(value)
+        : `${currencyDigits ? (+value).toFixed(currencyDigits) : value} ${currency}`;
+    } else if (percentage) {
+      if (percentage === true) {
+        if (hasDigits) {
+          displayValue = `${value.toFixed(digits)}%`;
+        } else {
+          displayValue = `${value}%`;
+        }
+      } else {
+        const calculatedPercentage = (value / percentage) * 100;
+        displayValue = `${calculatedPercentage.toFixed(hasDigits ? digits : 2)}%`;
+      }
+    } else if (duration) {
+      const unit = duration === true ? 'seconds' : duration;
+      displayValue = moment.duration(value, unit).humanize();
+    } else if (value < 0) {
+      if (hasDigits) {
+        displayValue = `-${Math.abs(value).toFixed(digits)}`;
+      } else {
+        displayValue = `-${Math.abs(value)}`;
+      }
+    } else if (hasDigits) {
+      displayValue = Math.abs(value).toFixed(digits);
+    } else {
+      displayValue = Math.abs(value);
+    }
+  }
+
+  return createElement(
+    'span',
+    {},
+    displayValue || value,
+  );
 };

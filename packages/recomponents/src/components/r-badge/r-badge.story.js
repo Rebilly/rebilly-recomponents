@@ -1,13 +1,13 @@
-import {storiesOf} from '@storybook/vue';
-import {text, select, boolean} from '@storybook/addon-knobs';
-import {action} from '@storybook/addon-actions';
+import { storiesOf } from '@storybook/vue';
+import { text, select, boolean } from '@storybook/addon-knobs';
+import { action } from '@storybook/addon-actions';
 import markdown from './r-badge.md';
 import RBadge from './r-badge.vue';
 
 storiesOf('Components.Badge', module)
-    .addParameters({component: RBadge})
-    .add('Component', () => ({
-        template: `
+  .addParameters({ component: RBadge })
+  .add('Component', () => ({
+    template: `
             <div class="storybook-center">
                 <r-badge
                     :close="close"
@@ -17,33 +17,33 @@ storiesOf('Components.Badge', module)
                 </r-badge>
             </div>
         `,
-        props: {
-            type: {
-                default: select('Type', [
-                    'default',
-                    'positive',
-                    'negative',
-                    'warning',
-                    'info',
-                    'tag',
-                    'tag-secondary',
-                ]),
-            },
-            text: {
-                default: text('Text', 'Badge'),
-            },
-            close: {
-                default: boolean('Close', false),
-            },
-        },
-        methods: {
-            closeBadge: action('close'),
-        },
-    }), {
-        notes: {markdown},
-    })
-    .add('All types', () => ({
-        template: `
+    props: {
+      type: {
+        default: select('Type', [
+          'default',
+          'positive',
+          'negative',
+          'warning',
+          'info',
+          'tag',
+          'tag-secondary',
+        ]),
+      },
+      text: {
+        default: text('Text', 'Badge'),
+      },
+      close: {
+        default: boolean('Close', false),
+      },
+    },
+    methods: {
+      closeBadge: action('close'),
+    },
+  }), {
+    notes: { markdown },
+  })
+  .add('All types', () => ({
+    template: `
             <div class="storybook-center">
                 <div class="storybook-item" v-for="type in types">
                     <r-badge
@@ -60,19 +60,19 @@ storiesOf('Components.Badge', module)
                 </div>
             </div>
         `,
-        props: {
-            types: {
-                default: [
-                    'default',
-                    'positive',
-                    'negative',
-                    'warning',
-                    'info',
-                    'tag',
-                    'tag-secondary',
-                ],
-            },
-        },
-    }), {
-        notes: {markdown},
-    });
+    props: {
+      types: {
+        default: [
+          'default',
+          'positive',
+          'negative',
+          'warning',
+          'info',
+          'tag',
+          'tag-secondary',
+        ],
+      },
+    },
+  }), {
+    notes: { markdown },
+  });

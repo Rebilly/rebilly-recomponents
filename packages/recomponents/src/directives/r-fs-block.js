@@ -4,7 +4,7 @@
  * @see https://help.fullstory.com/technical-questions/exclude-elements
  */
 export default {
-    bind(el) {
-        el.classList.add('fs-block');
-    },
+  beforeMount(el) {
+    el.classList.add('fs-block');
+  },
 };

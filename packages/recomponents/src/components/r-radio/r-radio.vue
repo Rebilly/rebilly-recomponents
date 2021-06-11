@@ -21,99 +21,99 @@
 </template>
 
 <script>
-    import shortid from 'shortid';
-    import rIcon from '../r-icon/r-icon.vue';
+import shortid from 'shortid';
+import rIcon from '../r-icon/r-icon.vue';
 
-    export default {
-        name: 'RRadio',
-        components: {rIcon},
-        model: {
-            prop: 'checked',
-            event: 'change',
-        },
-        props: {
-            /**
+export default {
+  name: 'RRadio',
+  components: { rIcon },
+  model: {
+    prop: 'checked',
+    event: 'change',
+  },
+  props: {
+    /**
              * TBD
              */
-            checked: {
-                type: [String, Number, Boolean, Array],
-                default: null,
-            },
-            /**
+    checked: {
+      type: [String, Number, Boolean, Array],
+      default: null,
+    },
+    /**
              * TBD
              */
-            label: {
-                type: String,
-            },
-            /**
+    label: {
+      type: String,
+    },
+    /**
              * TBD
              */
-            id: {
-                type: String,
-                default: () => shortid.generate(),
-            },
-            /**
+    id: {
+      type: String,
+      default: () => shortid.generate(),
+    },
+    /**
              * TBD
              */
-            name: {
-                type: String,
-                default: () => shortid.generate(),
-            },
-            /**
+    name: {
+      type: String,
+      default: () => shortid.generate(),
+    },
+    /**
              * TBD
              */
-            caption: {
-                type: String,
-                default: null,
-            },
-            /**
+    caption: {
+      type: String,
+      default: null,
+    },
+    /**
              * TBD
              */
-            value: {
-                type: [String, Number, Boolean, Array],
-                required: true,
-            },
-            /**
+    value: {
+      type: [String, Number, Boolean, Array],
+      required: true,
+    },
+    /**
              * TBD
              */
-            disabled: {
-                type: Boolean,
-                default: false,
-            },
-            /**
+    disabled: {
+      type: Boolean,
+      default: false,
+    },
+    /**
              * TBD
              */
-            validate: {
-                type: Object,
-                default: null,
-            },
-        },
-        computed: {
-            classes() {
-                return {
-                    'r-is-error': this.isInvalid,
-                };
-            },
-            labelClasses() {
-                return {
-                    'r-is-disabled': this.disabled,
-                    'r-is-checked': this.isChecked,
-                };
-            },
-            isInvalid() {
-                if (this.validate) {
-                    return this.validate.$invalid && this.validate.$dirty;
-                }
-                return false;
-            },
-            isChecked() {
-                if (this.value === null) {
-                    return false;
-                }
-                return this.checked === this.value;
-            },
-        },
-    };
+    validate: {
+      type: Object,
+      default: null,
+    },
+  },
+  computed: {
+    classes() {
+      return {
+        'r-is-error': this.isInvalid,
+      };
+    },
+    labelClasses() {
+      return {
+        'r-is-disabled': this.disabled,
+        'r-is-checked': this.isChecked,
+      };
+    },
+    isInvalid() {
+      if (this.validate) {
+        return this.validate.$invalid && this.validate.$dirty;
+      }
+      return false;
+    },
+    isChecked() {
+      if (this.value === null) {
+        return false;
+      }
+      return this.checked === this.value;
+    },
+  },
+};
 </script>
 
 <style lang="scss">

@@ -5,22 +5,22 @@
 </template>
 
 <script>
-    export default {
-        name: 'RButtonGroup',
-        props: {
-            fluid: {
-                type: Boolean,
-                default: false,
-            },
-        },
-        computed: {
-            classes() {
-                return {
-                    'r-button-group-fluid': !!this.fluid,
-                };
-            },
-        },
-    };
+export default {
+  name: 'RButtonGroup',
+  props: {
+    fluid: {
+      type: Boolean,
+      default: false,
+    },
+  },
+  computed: {
+    classes() {
+      return {
+        'r-button-group-fluid': !!this.fluid,
+      };
+    },
+  },
+};
 </script>
 
 <style lang="scss">

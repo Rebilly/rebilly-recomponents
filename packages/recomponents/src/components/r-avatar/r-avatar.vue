@@ -24,60 +24,60 @@
 </template>
 
 <script>
-    const colors = ['gray', 'yellow', 'green', 'accent', 'dark-background'];
+const colors = ['gray', 'yellow', 'green', 'accent', 'dark-background'];
 
-    export default {
-        name: 'RAvatar',
-        props: {
-            /**
+export default {
+  name: 'RAvatar',
+  props: {
+    /**
              * TBD
              */
-            initials: {
-                type: String,
-                validator(value) {
-                    if (value.length > 2) {
-                        console.warn('RAvatar: should provide only 2 symbols for initials');
-                    }
-                    return true;
-                },
-            },
-            /**
+    initials: {
+      type: String,
+      validator(value) {
+        if (value.length > 2) {
+          console.warn('RAvatar: should provide only 2 symbols for initials');
+        }
+        return true;
+      },
+    },
+    /**
              * TBD
              */
-            description: {
-                type: String,
-            },
-            /**
+    description: {
+      type: String,
+    },
+    /**
              * TBD
              */
-            image: {
-                type: String,
-            },
-            /**
+    image: {
+      type: String,
+    },
+    /**
              * TBD
              */
-            color: {
-                type: String,
-            },
-            /**
+    color: {
+      type: String,
+    },
+    /**
              * TBD
              */
-            icon: {
-                type: String,
-            },
-        },
-        computed: {
-            initialsColor() {
-                if (this.color) {
-                    return this.color;
-                }
-                const totalCharValue = this.initials
-                    .split('')
-                    .reduce((sum, char) => sum + char.charCodeAt(0), 0);
-                return colors[totalCharValue % colors.length];
-            },
-        },
-    };
+    icon: {
+      type: String,
+    },
+  },
+  computed: {
+    initialsColor() {
+      if (this.color) {
+        return this.color;
+      }
+      const totalCharValue = this.initials
+        .split('')
+        .reduce((sum, char) => sum + char.charCodeAt(0), 0);
+      return colors[totalCharValue % colors.length];
+    },
+  },
+};
 </script>
 
 <style lang="scss">

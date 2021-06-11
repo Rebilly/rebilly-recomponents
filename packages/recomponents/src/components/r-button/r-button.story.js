@@ -1,54 +1,54 @@
-import {storiesOf} from '@storybook/vue';
-import {action} from '@storybook/addon-actions';
-import {boolean, select, text} from '@storybook/addon-knobs';
+import { storiesOf } from '@storybook/vue';
+import { action } from '@storybook/addon-actions';
+import { boolean, select, text } from '@storybook/addon-knobs';
 import markdown from './r-button.md';
 import RButton from './r-button.vue';
 
 storiesOf('Components.Button', module)
-    .addParameters({component: RButton})
-    .add('Component', () => ({
-        props: {
-            size: {
-                default: select('Size', {
-                    Small: 'small',
-                    Regular: 'regular',
-                    Large: 'large',
-                }, 'regular'),
-            },
-            type: {
-                default: select('Type', {
-                    Default: 'default',
-                    Primary: 'primary',
-                    Positive: 'positive',
-                    Danger: 'danger',
-                    Link: 'link',
-                }, 'primary'),
-            },
-            text: {
-                default: text('Text', 'click me'),
-            },
-            disabled: {
-                default: boolean('Disabled', false),
-            },
-            loading: {
-                default: boolean('Loading', false),
-            },
-            fluid: {
-                default: boolean('Fluid', false),
-            },
-            capitalizeFirstLetter: {
-                default: boolean('CapitalizeFirstLetter', true),
-            },
-            href: {
-                default: text('href', 'https://google.com/'),
-            },
-        },
-        methods: {
-            click: action('click'),
-            focus: action('focus'),
-            blur: action('blur'),
-        },
-        template: `
+  .addParameters({ component: RButton })
+  .add('Component', () => ({
+    props: {
+      size: {
+        default: select('Size', {
+          Small: 'small',
+          Regular: 'regular',
+          Large: 'large',
+        }, 'regular'),
+      },
+      type: {
+        default: select('Type', {
+          Default: 'default',
+          Primary: 'primary',
+          Positive: 'positive',
+          Danger: 'danger',
+          Link: 'link',
+        }, 'primary'),
+      },
+      text: {
+        default: text('Text', 'click me'),
+      },
+      disabled: {
+        default: boolean('Disabled', false),
+      },
+      loading: {
+        default: boolean('Loading', false),
+      },
+      fluid: {
+        default: boolean('Fluid', false),
+      },
+      capitalizeFirstLetter: {
+        default: boolean('CapitalizeFirstLetter', true),
+      },
+      href: {
+        default: text('href', 'https://google.com/'),
+      },
+    },
+    methods: {
+      click: action('click'),
+      focus: action('focus'),
+      blur: action('blur'),
+    },
+    template: `
             <div class="storybook-center">
                 <r-button
                     :size="size"
@@ -66,11 +66,11 @@ storiesOf('Components.Button', module)
                 </r-button>
             </div>
         `,
-    }), {
-        notes: {markdown},
-    })
-    .add('Type', () => ({
-        template: `
+  }), {
+    notes: { markdown },
+  })
+  .add('Type', () => ({
+    template: `
             <div class="storybook-center">
                 <div class="r-grid">
                     <div class="r-grid-item">
@@ -83,11 +83,11 @@ storiesOf('Components.Button', module)
                 </div>
             </div>
         `,
-    }), {
-        notes: {markdown},
-    })
-    .add('Size', () => ({
-        template: `
+  }), {
+    notes: { markdown },
+  })
+  .add('Size', () => ({
+    template: `
             <div class="storybook-center">
                 <div class="r-grid">
                     <div class="r-grid-item">
@@ -103,11 +103,11 @@ storiesOf('Components.Button', module)
                 </div>
             </div>
         `,
-    }), {
-        notes: {markdown},
-    })
-    .add('State', () => ({
-        template: `
+  }), {
+    notes: { markdown },
+  })
+  .add('State', () => ({
+    template: `
             <div class="storybook-center">
                 <div class="r-grid">
                     <div class="r-grid-item">
@@ -118,6 +118,6 @@ storiesOf('Components.Button', module)
                 </div>
             </div>
         `,
-    }), {
-        notes: {markdown},
-    });
+  }), {
+    notes: { markdown },
+  });

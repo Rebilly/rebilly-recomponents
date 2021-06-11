@@ -1,29 +1,29 @@
-import {storiesOf} from '@storybook/vue';
-import {action} from '@storybook/addon-actions';
-import {boolean} from '@storybook/addon-knobs';
+import { storiesOf } from '@storybook/vue';
+import { action } from '@storybook/addon-actions';
+import { boolean } from '@storybook/addon-knobs';
 import markdown from './r-tile.md';
 import RTile from './r-tile.vue';
 
 storiesOf('Components.Tile', module)
-    .addParameters({component: RTile})
-    .add('Component', () => ({
-        props: {
-            title: {
-                default: boolean('Show title', true),
-            },
-            titleActions: {
-                default: boolean('Show title actions', true),
-            },
-            actions: {
-                default: boolean('Show actions', true),
-            },
-        },
-        methods: {
-            cancel: action('cancel'),
-            confirm: action('confirm'),
-            titleAction: action('titleAction'),
-        },
-        template: `
+  .addParameters({ component: RTile })
+  .add('Component', () => ({
+    props: {
+      title: {
+        default: boolean('Show title', true),
+      },
+      titleActions: {
+        default: boolean('Show title actions', true),
+      },
+      actions: {
+        default: boolean('Show actions', true),
+      },
+    },
+    methods: {
+      cancel: action('cancel'),
+      confirm: action('confirm'),
+      titleAction: action('titleAction'),
+    },
+    template: `
             <r-tile>
                 <template v-slot:title v-if="title">
                     <h2>Title title</h2>
@@ -48,6 +48,6 @@ storiesOf('Components.Tile', module)
                 </template>
             </r-tile>
         `,
-    }), {
-        notes: {markdown},
-    });
+  }), {
+    notes: { markdown },
+  });

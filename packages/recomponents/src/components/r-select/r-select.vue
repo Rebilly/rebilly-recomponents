@@ -212,860 +212,859 @@
 </template>
 
 <script>
-    import shortid from 'shortid';
-    import AsyncInputMixin from '../../mixins/async-input-mixin';
-    import RIcon from '../r-icon/r-icon.vue';
-    import RBadge from '../r-badge/r-badge.vue';
-    import RIconButton from '../r-icon-button/r-icon-button.vue';
-    import '../../directives/r-fs-block';
+import shortid from 'shortid';
+import AsyncInputMixin from '../../mixins/async-input-mixin';
+import RIcon from '../r-icon/r-icon.vue';
+import RBadge from '../r-badge/r-badge.vue';
+import RIconButton from '../r-icon-button/r-icon-button.vue';
+import '../../directives/r-fs-block';
 
-    function isEmpty(opt) {
-        if (opt === 0) {
-            return false;
-        }
-        if (Array.isArray(opt) && opt.length === 0) {
-            return true;
-        }
-        return !opt;
+function isEmpty(opt) {
+  if (opt === 0) {
+    return false;
+  }
+  if (Array.isArray(opt) && opt.length === 0) {
+    return true;
+  }
+  return !opt;
+}
+
+function not(fun) {
+  return (...params) => !fun(...params);
+}
+
+function includes(str, query) {
+  if (str === undefined) {
+    str = 'undefined';
+  }
+  if (str === null) {
+    str = 'null';
+  }
+  if (str === false) {
+    str = 'false';
+  }
+  const text = str.toString().toLowerCase();
+  return text.indexOf(query.trim()) !== -1;
+}
+
+function filterOptions(options, search, label, customLabel) {
+  return options.filter((option) => includes(customLabel(option, label), search));
+}
+
+const getAllCachedAsyncValues = (asyncCacheItems) => asyncCacheItems
+  .reduce((memo, item) => ([...memo, ...item.options]), []);
+
+export default {
+  name: 'r-select',
+  data() {
+    return {
+      isOpen: false,
+      optimizedHeight: this.maxHeight,
+      pointer: 0,
+      pointerDirty: false,
+      preferredOpenDirection: 'below',
+      search: '',
+      messages: {
+        loading: 'Looking for matching results...',
+        more: (count) => `and ${count} more`,
+        max: (max) => `Maximum of ${max} options selected. First remove a selected option to select another.`,
+        noOptions: 'List is empty.',
+        noResult: 'No elements found. Consider changing the search query.',
+      },
+    };
+  },
+  mounted() {
+    if (!this.multiple && this.max) {
+      console.warn('[Recomponents warn]: Max prop should not be used when prop Multiple equals false.');
     }
-
-    function not(fun) {
-        return (...params) => !fun(...params);
-    }
-
-    function includes(str, query) {
-        if (str === undefined) {
-            str = 'undefined';
-        }
-        if (str === null) {
-            str = 'null';
-        }
-        if (str === false) {
-            str = 'false';
-        }
-        const text = str.toString().toLowerCase();
-        return text.indexOf(query.trim()) !== -1;
-    }
-
-    function filterOptions(options, search, label, customLabel) {
-        return options.filter(option => includes(customLabel(option, label), search));
-    }
-
-    const getAllCachedAsyncValues = asyncCacheItems => asyncCacheItems
-        .reduce((memo, item) => ([...memo, ...item.options]), []);
-
-    export default {
-        name: 'r-select',
-        data() {
-            return {
-                isOpen: false,
-                optimizedHeight: this.maxHeight,
-                pointer: 0,
-                pointerDirty: false,
-                preferredOpenDirection: 'below',
-                search: '',
-                messages: {
-                    loading: 'Looking for matching results...',
-                    more: count => `and ${count} more`,
-                    max: max => `Maximum of ${max} options selected. First remove a selected option to select another.`,
-                    noOptions: 'List is empty.',
-                    noResult: 'No elements found. Consider changing the search query.',
-                },
-            };
-        },
-        mounted() {
-            if (!this.multiple && this.max) {
-                console.warn('[Recomponents warn]: Max prop should not be used when prop Multiple equals false.');
-            }
-            this.preselect();
-        },
-        mixins: [new AsyncInputMixin().getMixin()],
-        components: {RIcon, RIconButton, RBadge},
-        props: {
-            /**
+    this.preselect();
+  },
+  mixins: [new AsyncInputMixin().getMixin()],
+  components: { RIcon, RIconButton, RBadge },
+  props: {
+    /**
              * Specify if no option can be selected
              */
-            allowEmpty: {
-                type: Boolean,
-                default: true,
-            },
-            /**
+    allowEmpty: {
+      type: Boolean,
+      default: true,
+    },
+    /**
              * Specify autocomplete value
              */
-            autocomplete: {
-                type: String,
-                default: 'off',
-            },
-            /**
+    autocomplete: {
+      type: String,
+      default: 'off',
+    },
+    /**
              * List of keys where default behaviour will be ignored
              */
-            blockKeys: {
-                type: Array,
-                default() {
-                    return [];
-                },
-            },
-            /**
+    blockKeys: {
+      type: Array,
+      default() {
+        return [];
+      },
+    },
+    /**
              * Specify if on select the search input should be cleaned up
              */
-            clearOnSelect: {
-                type: Boolean,
-                default: true,
-            },
-            /**
+    clearOnSelect: {
+      type: Boolean,
+      default: true,
+    },
+    /**
              * Specify if the popper should be closed after selection
              */
-            closeOnSelect: {
-                type: Boolean,
-                default: true,
-            },
-            /**
+    closeOnSelect: {
+      type: Boolean,
+      default: true,
+    },
+    /**
              * If the option is an object specify what property should be used as a label, by default 'label'
              */
-            customLabel: {
-                type: Function,
-                default(option, label) {
-                    if (isEmpty(option)) {
-                        return '';
-                    }
+    customLabel: {
+      type: Function,
+      default(option, label) {
+        if (isEmpty(option)) {
+          return '';
+        }
 
-                    return (option && option[label]) || option;
-                },
-            },
-            /**
+        return (option && option[label]) || option;
+      },
+    },
+    /**
              * Specify how to validate the select field
              */
-            validate: {
-                type: Object,
-                default: null,
-            },
-            /**
+    validate: {
+      type: Object,
+      default: null,
+    },
+    /**
              * Disable the select field
              */
-            disabled: {
-                type: Boolean,
-                default: false,
-            },
-            /**
+    disabled: {
+      type: Boolean,
+      default: false,
+    },
+    /**
              * Change the help text
              */
-            helpText: {
-                type: String,
-            },
-            /**
+    helpText: {
+      type: String,
+    },
+    /**
              * Specify if selected options should be hidden
              */
-            hideSelected: {
-                type: Boolean,
-                default: false,
-            },
-            /**
+    hideSelected: {
+      type: Boolean,
+      default: false,
+    },
+    /**
              * ID of select field
              */
-            id: {
-                type: String,
-                default: () => shortid.generate(),
-            },
-            /**
+    id: {
+      type: String,
+      default: () => shortid.generate(),
+    },
+    /**
              * Specify is the internal search enabled
              */
-            internalSearch: {
-                type: Boolean,
-                default: true,
-            },
-            /**
+    internalSearch: {
+      type: Boolean,
+      default: true,
+    },
+    /**
              * Change the label of the select field
              */
-            label: {
-                type: String,
-            },
-            /**
+    label: {
+      type: String,
+    },
+    /**
              * Specify the limit quantity of shown selected options
              */
-            limit: {
-                type: Number,
-                default: 99999,
-            },
-            /**
+    limit: {
+      type: Number,
+      default: 99999,
+    },
+    /**
              * Set the text which is shown when there are not shown options by limit
              */
-            limitText: {
-                type: Function,
-                default(count) {
-                    return this.messages.more(count);
-                },
-            },
-            /**
+    limitText: {
+      type: Function,
+      default(count) {
+        return this.messages.more(count);
+      },
+    },
+    /**
              * Set the loading state
              */
-            loading: {
-                type: Boolean,
-                default: false,
-            },
-            /**
+    loading: {
+      type: Boolean,
+      default: false,
+    },
+    /**
              * Specify maximum for selected options
              */
-            max: {
-                type: [Number, Boolean],
-                default: false,
-            },
-            /**
+    max: {
+      type: [Number, Boolean],
+      default: false,
+    },
+    /**
              * Specify max height of the popper
              */
-            maxHeight: {
-                type: Number,
-                default: 300,
-            },
-            /**
+    maxHeight: {
+      type: Number,
+      default: 300,
+    },
+    /**
              * Specify is multiple mode is enabled
              */
-            multiple: {
-                type: Boolean,
-                default: false,
-            },
-            /**
+    multiple: {
+      type: Boolean,
+      default: false,
+    },
+    /**
              * Change the name of select
              */
-            name: {
-                type: String,
-                default: '',
-            },
-            /**
+    name: {
+      type: String,
+      default: '',
+    },
+    /**
              * Specify direction of shown popper
              */
-            openDirection: {
-                type: String,
-                default: '',
-            },
-            /**
+    openDirection: {
+      type: String,
+      default: '',
+    },
+    /**
              * Set the options of select field
              */
-            options: {
-                type: Array,
-                default: () => [],
-            },
-            /**
+    options: {
+      type: Array,
+      default: () => [],
+    },
+    /**
              * Specify height of options in the popper
              */
-            optionHeight: {
-                type: Number,
-                default: 40,
-            },
-            /**
+    optionHeight: {
+      type: Number,
+      default: 40,
+    },
+    /**
              * If the option is an object specify what property should be used as a value, by default 'value'
              */
-            optionKey: {
-                type: String,
-            },
-            /**
+    optionKey: {
+      type: String,
+    },
+    /**
              * If the option is an object specify what property should be used as a label, by default 'label'
              */
-            optionLabel: {
-                type: String,
-            },
-            /**
+    optionLabel: {
+      type: String,
+    },
+    /**
              * Set the limit of available shown options
              */
-            optionsLimit: {
-                type: Number,
-                default: 1000,
-            },
-            /**
+    optionsLimit: {
+      type: Number,
+      default: 1000,
+    },
+    /**
              * Specify if the first option should be preselected
              */
-            preselectFirst: {
-                type: Boolean,
-                default: false,
-            },
-            /**
+    preselectFirst: {
+      type: Boolean,
+      default: false,
+    },
+    /**
              * Specify if the search should be preserved
              */
-            preserveSearch: {
-                type: Boolean,
-                default: false,
-            },
-            /**
+    preserveSearch: {
+      type: Boolean,
+      default: false,
+    },
+    /**
              * Change the placeholder
              */
-            placeholder: {
-                type: String,
-                default: 'Select option',
-            },
-            /**
+    placeholder: {
+      type: String,
+      default: 'Select option',
+    },
+    /**
              * Specify if the selection should be reset
              */
-            resetAfter: {
-                type: Boolean,
-                default: false,
-            },
-            /**
+    resetAfter: {
+      type: Boolean,
+      default: false,
+    },
+    /**
              * Specify if the field searchable
              */
-            searchable: {
-                type: Boolean,
-                default: true,
-            },
-            /**
+    searchable: {
+      type: Boolean,
+      default: true,
+    },
+    /**
              * Specify if the no option label should be shown
              */
-            showNoOptions: {
-                type: Boolean,
-                default: true,
-            },
-            /**
+    showNoOptions: {
+      type: Boolean,
+      default: true,
+    },
+    /**
              * Specify if the no results label should be shown
              */
-            showNoResults: {
-                type: Boolean,
-                default: true,
-            },
-            /**
+    showNoResults: {
+      type: Boolean,
+      default: true,
+    },
+    /**
              * Specify should the pointer be shown
              */
-            showPointer: {
-                type: Boolean,
-                default: true,
-            },
-            /**
+    showPointer: {
+      type: Boolean,
+      default: true,
+    },
+    /**
              * Specify tab index
              */
-            tabindex: {
-                type: Number,
-                default: 0,
-            },
-            /**
+    tabindex: {
+      type: Number,
+      default: 0,
+    },
+    /**
              * Specify should the user create his own options - tags
              */
-            taggable: {
-                type: Boolean,
-                default: false,
-            },
-            /**
+    taggable: {
+      type: Boolean,
+      default: false,
+    },
+    /**
              * Specify tag position
              */
-            tagPosition: {
-                type: String,
-                default: 'top',
-            },
-            /**
+    tagPosition: {
+      type: String,
+      default: 'top',
+    },
+    /**
              * Specify how the tag is validating
              */
-            tagValidator: {
-                type: Function,
-                default: () => true,
-            },
-            /**
+    tagValidator: {
+      type: Function,
+      default: () => true,
+    },
+    /**
              * The array of selected options
              */
-            value: {
-                type: null,
-                default() {
-                    return [];
-                },
-            },
-        },
-        watch: {
-            filteredOptions() {
-                this.pointerAdjust();
-            },
-            internalValue() {
-                if (this.resetAfter && this.internalValue.length) {
-                    this.search = '';
-                    this.$emit('input', this.multiple ? [] : null);
-                }
-            },
-            isOpen() {
-                this.pointerDirty = false;
-            },
-            pointer() {
-                if (this.$refs.search) {
-                    this.$refs.search.setAttribute('aria-activedescendant', `${this.id}-${this.pointer.toString()}`);
-                }
-            },
-            async search() {
-                /**
+    value: {
+      type: null,
+      default() {
+        return [];
+      },
+    },
+  },
+  watch: {
+    filteredOptions() {
+      this.pointerAdjust();
+    },
+    internalValue() {
+      if (this.resetAfter && this.internalValue.length) {
+        this.search = '';
+        this.$emit('input', this.multiple ? [] : null);
+      }
+    },
+    isOpen() {
+      this.pointerDirty = false;
+    },
+    pointer() {
+      if (this.$refs.search) {
+        this.$refs.search.setAttribute('aria-activedescendant', `${this.id}-${this.pointer.toString()}`);
+      }
+    },
+    async search() {
+      /**
                  * Search text change
                  * @type {Event}
                  */
-                this.$emit('search-change', this.search, this.id);
+      this.$emit('search-change', this.search, this.id);
 
-                if (this.computedIsAsync) {
-                    await this.handleAsyncFind(this.search);
-                }
-            },
-            loading() {
-                this.preselect();
-            },
-        },
-        computed: {
-            computedLabel() {
-                return this.optionLabel || 'label';
-            },
-            computedOptions() {
-                if (!this.computedIsAsync) {
-                    return this.options;
-                }
-                return this.computedAsyncLastOptions || [];
-            },
-            computedTrackBy() {
-                return this.optionKey || 'value';
-            },
-            computedValue() {
-                const options = this.computedIsAsync
-                    ? getAllCachedAsyncValues(this.async.getAllCacheItems())
-                    : this.computedOptions;
+      if (this.computedIsAsync) {
+        await this.handleAsyncFind(this.search);
+      }
+    },
+    loading() {
+      this.preselect();
+    },
+  },
+  computed: {
+    computedLabel() {
+      return this.optionLabel || 'label';
+    },
+    computedOptions() {
+      if (!this.computedIsAsync) {
+        return this.options;
+      }
+      return this.computedAsyncLastOptions || [];
+    },
+    computedTrackBy() {
+      return this.optionKey || 'value';
+    },
+    computedValue() {
+      const options = this.computedIsAsync
+        ? getAllCachedAsyncValues(this.async.getAllCacheItems())
+        : this.computedOptions;
 
-                const value = this.primitiveValue;
+      const value = this.primitiveValue;
 
-                if (this.isComplexOptions && value !== null) {
-                    if (!this.multiple) {
-                        const option = options
-                            .find(opt => this.getOptionValue(opt) === value);
-                        if (option) {
-                            return option;
-                        }
-                    } else if (value) {
-                        return value.map((val) => {
-                            const option = options
-                                .find(opt => this.getOptionValue(opt) === val);
-                            return option || {[this.computedTrackBy]: val, [this.computedLabel]: val};
-                        });
-                    }
-                }
-                return this.primitiveValue;
-            },
-            contentStyle() {
-                return {
-                    display: this.computedOptions && this.computedOptions.length ? 'inline-block' : 'block',
-                    minWidth: '100%',
-                };
-            },
-            currentOptionLabel() {
-                const placeholder = this.searchable ? '' : this.placeholder;
-                const activeOption = this.computedOptions
-                    .find(option => this.getOptionValue(option) === this.internalValue[0]);
+      if (this.isComplexOptions && value !== null) {
+        if (!this.multiple) {
+          const option = options
+            .find((opt) => this.getOptionValue(opt) === value);
+          if (option) {
+            return option;
+          }
+        } else if (value) {
+          return value.map((val) => {
+            const option = options
+              .find((opt) => this.getOptionValue(opt) === val);
+            return option || { [this.computedTrackBy]: val, [this.computedLabel]: val };
+          });
+        }
+      }
+      return this.primitiveValue;
+    },
+    contentStyle() {
+      return {
+        display: this.computedOptions && this.computedOptions.length ? 'inline-block' : 'block',
+        minWidth: '100%',
+      };
+    },
+    currentOptionLabel() {
+      const placeholder = this.searchable ? '' : this.placeholder;
+      const activeOption = this.computedOptions
+        .find((option) => this.getOptionValue(option) === this.internalValue[0]);
 
-                const value = this.internalValue && this.internalValue.length
-                    ? this.getOptionLabel(activeOption)
-                    : placeholder;
-                return this.multiple ? placeholder : value;
-            },
-            filteredOptions() {
-                const search = this.search || '';
-                const normalizedSearch = search.toLowerCase().trim();
+      const value = this.internalValue && this.internalValue.length
+        ? this.getOptionLabel(activeOption)
+        : placeholder;
+      return this.multiple ? placeholder : value;
+    },
+    filteredOptions() {
+      const search = this.search || '';
+      const normalizedSearch = search.toLowerCase().trim();
 
-                let options = this.computedOptions && this.computedOptions.concat();
+      let options = this.computedOptions && this.computedOptions.concat();
 
-                if (this.computedOptions && this.internalSearch) {
-                    options = filterOptions(this.computedOptions, normalizedSearch, this.computedLabel, this.customLabel);
-                }
+      if (this.computedOptions && this.internalSearch) {
+        options = filterOptions(this.computedOptions, normalizedSearch, this.computedLabel, this.customLabel);
+      }
 
-                options = this.hideSelected
-                    ? options.filter(not(this.isSelected))
-                    : options;
+      options = this.hideSelected
+        ? options.filter(not(this.isSelected))
+        : options;
 
-                if (this.taggable && normalizedSearch.length && !this.isExistingOption(normalizedSearch)) {
-                    if (this.tagPosition === 'bottom') {
-                        options.push({isTag: true, label: search});
-                    } else {
-                        options.unshift({isTag: true, label: search});
-                    }
-                }
-                return options.slice(0, this.optionsLimit);
-            },
-            hasContent() {
-                return (this.options.length !== 0 || this.showNoOptions)
+      if (this.taggable && normalizedSearch.length && !this.isExistingOption(normalizedSearch)) {
+        if (this.tagPosition === 'bottom') {
+          options.push({ isTag: true, label: search });
+        } else {
+          options.unshift({ isTag: true, label: search });
+        }
+      }
+      return options.slice(0, this.optionsLimit);
+    },
+    hasContent() {
+      return (this.options.length !== 0 || this.showNoOptions)
                     && (this.showNoResults || this.filteredOptions.length !== 0 || !this.search);
-            },
-            hasLabel() {
-                return (this.label || '').trim() !== '';
-            },
-            classes() {
-                return {
-                    'r-is-error': this.isInvalid,
-                };
-            },
-            isInvalid() {
-                if (this.validate) {
-                    return this.validate.$error;
-                }
-                return false;
-            },
-            inputStyle() {
-                if (this.searchable
+    },
+    hasLabel() {
+      return (this.label || '').trim() !== '';
+    },
+    classes() {
+      return {
+        'r-is-error': this.isInvalid,
+      };
+    },
+    isInvalid() {
+      if (this.validate) {
+        return this.validate.$error;
+      }
+      return false;
+    },
+    inputStyle() {
+      if (this.searchable
                     || (this.multiple && this.value && this.value.length)) {
-                    // Hide input by setting the width to 0 allowing it to receive focus
-                    return this.isOpen
-                        ? {width: '100%'}
-                        : {width: '0', position: 'absolute', padding: '0'};
-                }
+        // Hide input by setting the width to 0 allowing it to receive focus
+        return this.isOpen
+          ? { width: '100%' }
+          : { width: '0', position: 'absolute', padding: '0' };
+      }
 
-                return {};
-            },
-            internalValue() {
-                const hasOptions = !!this.value
+      return {};
+    },
+    internalValue() {
+      const hasOptions = !!this.value
                     && (this.computedOptions
-                        .find(opt => opt === this.value || opt[this.computedTrackBy] === this.value)
+                      .find((opt) => opt === this.value || opt[this.computedTrackBy] === this.value)
                     || this.taggable);
-                const value = Array.isArray(this.value)
-                    ? this.value
-                    : ((hasOptions && [this.value]) || []);
+      const value = Array.isArray(this.value)
+        ? this.value
+        : ((hasOptions && [this.value]) || []);
 
-                return this.value !== undefined ? value : [];
-            },
-            isAbove() {
-                if (this.openDirection === 'above' || this.openDirection === 'top') {
-                    return true;
-                }
-                if (
-                    this.openDirection === 'below'
+      return this.value !== undefined ? value : [];
+    },
+    isAbove() {
+      if (this.openDirection === 'above' || this.openDirection === 'top') {
+        return true;
+      }
+      if (
+        this.openDirection === 'below'
                     || this.openDirection === 'bottom'
-                ) {
-                    return false;
-                }
-                return this.preferredOpenDirection === 'above';
-            },
-            isComplexOptions() {
-                if (this.computedOptions) {
-                    const [firstOption] = this.computedOptions;
-                    return typeof firstOption !== 'string';
-                }
-                return false;
-            },
-            isPlaceholderVisible() {
-                return !this.internalValue.length && (!this.searchable || !this.isOpen);
-            },
-            isSingleLabelVisible() {
-                return (
-                    (this.singleValue || this.singleValue !== undefined)
+      ) {
+        return false;
+      }
+      return this.preferredOpenDirection === 'above';
+    },
+    isComplexOptions() {
+      if (this.computedOptions) {
+        const [firstOption] = this.computedOptions;
+        return typeof firstOption !== 'string';
+      }
+      return false;
+    },
+    isPlaceholderVisible() {
+      return !this.internalValue.length && (!this.searchable || !this.isOpen);
+    },
+    isSingleLabelVisible() {
+      return (
+        (this.singleValue || this.singleValue !== undefined)
                     && (!this.isOpen || !this.searchable)
                     && !this.visibleValues.length
-                );
-            },
-            optionKeys() {
-                const {options} = this;
-                return options
-                    .map(element => this.customLabel(element, this.computedLabel)
-                        .toString()
-                        .toLowerCase());
-            },
-            pointerPosition() {
-                return this.pointer * this.optionHeight;
-            },
-            primitiveValue() {
-                return this.getPrimitiveValueFromValue({
-                    value: this.multiple ? this.internalValue : this.value,
-                    multiple: this.multiple,
-                    trackBy: this.computedTrackBy,
-                });
-            },
-            singleValue() {
-                return this.internalValue[0];
-            },
-            valueKeys() {
-                return this.internalValue.map(option => this.getOptionValue(option));
-            },
-            visibleElements() {
-                return this.optimizedHeight / this.optionHeight;
-            },
-            visibleValues() {
-                return this.multiple ? this.internalValue.slice(0, this.limit) : [];
-            },
-        },
-        methods: {
-            activate() {
-                if (this.isOpen || this.disabled) {
-                    return;
-                }
+      );
+    },
+    optionKeys() {
+      const { options } = this;
+      return options
+        .map((element) => this.customLabel(element, this.computedLabel)
+          .toString()
+          .toLowerCase());
+    },
+    pointerPosition() {
+      return this.pointer * this.optionHeight;
+    },
+    primitiveValue() {
+      return this.getPrimitiveValueFromValue({
+        value: this.multiple ? this.internalValue : this.value,
+        multiple: this.multiple,
+        trackBy: this.computedTrackBy,
+      });
+    },
+    singleValue() {
+      return this.internalValue[0];
+    },
+    valueKeys() {
+      return this.internalValue.map((option) => this.getOptionValue(option));
+    },
+    visibleElements() {
+      return this.optimizedHeight / this.optionHeight;
+    },
+    visibleValues() {
+      return this.multiple ? this.internalValue.slice(0, this.limit) : [];
+    },
+  },
+  methods: {
+    activate() {
+      if (this.isOpen || this.disabled) {
+        return;
+      }
 
-                this.adjustPosition();
+      this.adjustPosition();
 
-                this.isOpen = true;
-                if (this.searchable) {
-                    if (!this.preserveSearch) {
-                        this.search = '';
-                    }
-                    this.$nextTick(() => this.$refs.search && this.$refs.search.focus());
-                } else {
-                    this.$el.focus();
-                }
-                /**
+      this.isOpen = true;
+      if (this.searchable) {
+        if (!this.preserveSearch) {
+          this.search = '';
+        }
+        this.$nextTick(() => this.$refs.search && this.$refs.search.focus());
+      } else {
+        this.$el.focus();
+      }
+      /**
                  * The select popper open
                  * @type {Event}
                  */
-                this.$emit('open', this.id);
-            },
-            addPointerElement({key} = 'Enter') {
-                if (this.filteredOptions.length > 0) {
-                    this.select(this.filteredOptions[this.pointer], key);
-                }
-                this.pointerReset();
-            },
-            adjustPosition() {
-                if (typeof window === 'undefined') {
-                    return;
-                }
+      this.$emit('open', this.id);
+    },
+    addPointerElement({ key } = 'Enter') {
+      if (this.filteredOptions.length > 0) {
+        this.select(this.filteredOptions[this.pointer], key);
+      }
+      this.pointerReset();
+    },
+    adjustPosition() {
+      if (typeof window === 'undefined') {
+        return;
+      }
 
-                const spaceAbove = this.$el.getBoundingClientRect().top;
-                const spaceBelow = window.innerHeight - this.$el.getBoundingClientRect().bottom;
-                const hasEnoughSpaceBelow = spaceBelow > this.maxHeight;
+      const spaceAbove = this.$el.getBoundingClientRect().top;
+      const spaceBelow = window.innerHeight - this.$el.getBoundingClientRect().bottom;
+      const hasEnoughSpaceBelow = spaceBelow > this.maxHeight;
 
-                if (hasEnoughSpaceBelow || spaceBelow > spaceAbove || this.openDirection === 'below' || this.openDirection === 'bottom') {
-                    this.preferredOpenDirection = 'below';
-                    this.optimizedHeight = Math.min(spaceBelow - 40, this.maxHeight);
-                } else {
-                    this.preferredOpenDirection = 'above';
-                    this.optimizedHeight = Math.min(spaceAbove - 40, this.maxHeight);
-                }
-            },
-            deactivate() {
-                if (!this.isOpen) {
-                    return;
-                }
+      if (hasEnoughSpaceBelow || spaceBelow > spaceAbove || this.openDirection === 'below' || this.openDirection === 'bottom') {
+        this.preferredOpenDirection = 'below';
+        this.optimizedHeight = Math.min(spaceBelow - 40, this.maxHeight);
+      } else {
+        this.preferredOpenDirection = 'above';
+        this.optimizedHeight = Math.min(spaceAbove - 40, this.maxHeight);
+      }
+    },
+    deactivate() {
+      if (!this.isOpen) {
+        return;
+      }
 
-                this.isOpen = false;
-                if (this.searchable && this.$refs.search) {
-                    this.$refs.search.blur();
-                } else {
-                    this.$el.blur();
-                }
-                if (!this.preserveSearch) {
-                    this.search = '';
-                }
-                /**
+      this.isOpen = false;
+      if (this.searchable && this.$refs.search) {
+        this.$refs.search.blur();
+      } else {
+        this.$el.blur();
+      }
+      if (!this.preserveSearch) {
+        this.search = '';
+      }
+      /**
                  * The select popper close
                  * @type {Event}
                  */
-                this.$emit('close', this.getValue(), this.id);
-            },
-            getOptionLabel(option) {
-                if (isEmpty(option)) {
-                    return '';
-                }
+      this.$emit('close', this.getValue(), this.id);
+    },
+    getOptionLabel(option) {
+      if (isEmpty(option)) {
+        return '';
+      }
 
-                if (option.isTag) {
-                    return option.label;
-                }
+      if (option.isTag) {
+        return option.label;
+      }
 
-                const label = this.customLabel(option, this.computedLabel);
+      const label = this.customLabel(option, this.computedLabel);
 
-                if (isEmpty(label)) {
-                    return '';
-                }
-                return label;
-            },
-            getOptionValue(option) {
-                const trackBy = this.computedTrackBy;
-                return option && option[trackBy] !== undefined ? option[trackBy] : option;
-            },
-            getPrimitiveValueFromValue({value, trackBy, multiple}) {
-                if (value === undefined || value === null) {
-                    return value;
-                }
-                if (multiple) {
-                    if (value) {
-                        return value.map(item => this.getOptionValue(item));
-                    }
-                    return value;
-                }
-                return (typeof value === 'object' && value[trackBy]) || value;
-            },
-            getValue() {
-                const value = this.internalValue.length === 0 ? null : this.internalValue[0];
-                return this.multiple ? this.internalValue : value;
-            },
-            isExistingOption(query) {
-                return !this.computedOptions
-                    ? false
-                    : this.optionKeys.indexOf(query) > -1;
-            },
-            isOptionDisabled(option) {
-                return option && !!option.$isDisabled;
-            },
-            isSelected(option) {
-                const opt = this.getOptionValue(option);
-                return this.valueKeys.indexOf(opt) > -1;
-            },
-            optionHighlight(index, option) {
-                return {
-                    'r-select-option-is-highlight': index === this.pointer && this.showPointer,
-                    'r-select-option-is-selected': this.isSelected(option),
-                };
-            },
-            pointerAdjust() {
-                if (this.pointer >= this.filteredOptions.length - 1) {
-                    this.pointer = this.filteredOptions.length
-                        ? this.filteredOptions.length - 1
-                        : 0;
-                }
-            },
-            pointerBackward() {
-                if (this.pointer > 0) {
-                    this.pointer = this.pointer - 1;
-                    if (this.$refs.list.scrollTop >= this.pointerPosition) {
-                        this.$refs.list.scrollTop = this.pointerPosition;
-                    }
-                }
-                this.pointerDirty = true;
-            },
-            pointerForward() {
-                if (this.pointer < this.filteredOptions.length - 1) {
-                    this.pointer = this.pointer + 1;
-                    if (this.$refs.list.scrollTop <= this.pointerPosition - (this.visibleElements - 1) * this.optionHeight) {
-                        this.$refs.list.scrollTop = this.pointerPosition - (this.visibleElements - 1) * this.optionHeight;
-                    }
-                }
-                this.pointerDirty = true;
-            },
-            pointerReset() {
-                if (!this.closeOnSelect) {
-                    return;
-                }
-                this.pointer = 0;
-                if (this.$refs.list) {
-                    this.$refs.list.scrollTop = 0;
-                }
-            },
-            pointerSet(index) {
-                this.pointer = index;
-                this.pointerDirty = true;
-            },
-            prepareCacheValuePrefix(value) {
-                if (typeof value === 'string') {
-                    return value;
-                }
-                return String(this.getPrimitiveValueFromValue({
-                    value,
-                    multiple: this.multiple,
-                    trackBy: this.computedTrackBy,
-                }));
-            },
-            removeElement(option, shouldClose = true) {
-                if (this.disabled) {
-                    return;
-                }
-                if (option.$isDisabled) {
-                    return;
-                }
-                if (!this.allowEmpty && this.internalValue.length <= 1) {
-                    this.deactivate();
-                    return;
-                }
+      if (isEmpty(label)) {
+        return '';
+      }
+      return label;
+    },
+    getOptionValue(option) {
+      const trackBy = this.computedTrackBy;
+      return option && option[trackBy] !== undefined ? option[trackBy] : option;
+    },
+    getPrimitiveValueFromValue({ value, trackBy, multiple }) {
+      if (value === undefined || value === null) {
+        return value;
+      }
+      if (multiple) {
+        if (value) {
+          return value.map((item) => this.getOptionValue(item));
+        }
+        return value;
+      }
+      return (typeof value === 'object' && value[trackBy]) || value;
+    },
+    getValue() {
+      const value = this.internalValue.length === 0 ? null : this.internalValue[0];
+      return this.multiple ? this.internalValue : value;
+    },
+    isExistingOption(query) {
+      return !this.computedOptions
+        ? false
+        : this.optionKeys.indexOf(query) > -1;
+    },
+    isOptionDisabled(option) {
+      return option && !!option.$isDisabled;
+    },
+    isSelected(option) {
+      const opt = this.getOptionValue(option);
+      return this.valueKeys.indexOf(opt) > -1;
+    },
+    optionHighlight(index, option) {
+      return {
+        'r-select-option-is-highlight': index === this.pointer && this.showPointer,
+        'r-select-option-is-selected': this.isSelected(option),
+      };
+    },
+    pointerAdjust() {
+      if (this.pointer >= this.filteredOptions.length - 1) {
+        this.pointer = this.filteredOptions.length
+          ? this.filteredOptions.length - 1
+          : 0;
+      }
+    },
+    pointerBackward() {
+      if (this.pointer > 0) {
+        this.pointer -= 1;
+        if (this.$refs.list.scrollTop >= this.pointerPosition) {
+          this.$refs.list.scrollTop = this.pointerPosition;
+        }
+      }
+      this.pointerDirty = true;
+    },
+    pointerForward() {
+      if (this.pointer < this.filteredOptions.length - 1) {
+        this.pointer += 1;
+        if (this.$refs.list.scrollTop <= this.pointerPosition - (this.visibleElements - 1) * this.optionHeight) {
+          this.$refs.list.scrollTop = this.pointerPosition - (this.visibleElements - 1) * this.optionHeight;
+        }
+      }
+      this.pointerDirty = true;
+    },
+    pointerReset() {
+      if (!this.closeOnSelect) {
+        return;
+      }
+      this.pointer = 0;
+      if (this.$refs.list) {
+        this.$refs.list.scrollTop = 0;
+      }
+    },
+    pointerSet(index) {
+      this.pointer = index;
+      this.pointerDirty = true;
+    },
+    prepareCacheValuePrefix(value) {
+      if (typeof value === 'string') {
+        return value;
+      }
+      return String(this.getPrimitiveValueFromValue({
+        value,
+        multiple: this.multiple,
+        trackBy: this.computedTrackBy,
+      }));
+    },
+    removeElement(option, shouldClose = true) {
+      if (this.disabled) {
+        return;
+      }
+      if (option.$isDisabled) {
+        return;
+      }
+      if (!this.allowEmpty && this.internalValue.length <= 1) {
+        this.deactivate();
+        return;
+      }
 
-                const index = typeof option === 'object' && this.computedTrackBy
-                    ? this.valueKeys.indexOf(option[this.computedTrackBy])
-                    : this.valueKeys.indexOf(option);
+      const index = typeof option === 'object' && this.computedTrackBy
+        ? this.valueKeys.indexOf(option[this.computedTrackBy])
+        : this.valueKeys.indexOf(option);
 
-
-                /**
+      /**
                  * The selected option remove
                  * @type {Event}
                  */
-                this.$emit('remove', option, this.id);
-                if (this.multiple) {
-                    const newValue = this.primitiveValue.slice(0, index).concat(this.primitiveValue.slice(index + 1));
-                    /**
+      this.$emit('remove', option, this.id);
+      if (this.multiple) {
+        const newValue = this.primitiveValue.slice(0, index).concat(this.primitiveValue.slice(index + 1));
+        /**
                      * The option select
                      * @type {Event}
                      */
-                    this.$emit('input', newValue, this.id);
-                } else {
-                    this.$emit('input', null, this.id);
-                }
+        this.$emit('input', newValue, this.id);
+      } else {
+        this.$emit('input', null, this.id);
+      }
 
-                if (this.closeOnSelect && shouldClose) {
-                    this.deactivate();
-                }
-            },
-            preselect() {
-                if (this.preselectFirst
+      if (this.closeOnSelect && shouldClose) {
+        this.deactivate();
+      }
+    },
+    preselect() {
+      if (this.preselectFirst
                     && !this.internalValue.length
                     && this.computedOptions.length) {
-                    this.select(this.filteredOptions[0]);
-                }
-            },
-            removeLastElement() {
-                if (this.blockKeys.indexOf('Delete') !== -1) {
-                    return;
-                }
-                if (this.search.length === 0 && Array.isArray(this.internalValue) && this.internalValue.length) {
-                    this.removeElement(this.internalValue[this.internalValue.length - 1], false);
-                }
-            },
-            select(option, key) {
-                if (this.validate) {
-                    this.validate.$touch();
-                }
+        this.select(this.filteredOptions[0]);
+      }
+    },
+    removeLastElement() {
+      if (this.blockKeys.indexOf('Delete') !== -1) {
+        return;
+      }
+      if (this.search.length === 0 && Array.isArray(this.internalValue) && this.internalValue.length) {
+        this.removeElement(this.internalValue[this.internalValue.length - 1], false);
+      }
+    },
+    select(option, key) {
+      if (this.validate) {
+        this.validate.$touch();
+      }
 
-                if (this.blockKeys.indexOf(key) !== -1
+      if (this.blockKeys.indexOf(key) !== -1
                     || this.disabled
                     || option.$isDisabled) {
-                    return;
-                }
-                if (key === 'Tab' && !this.pointerDirty) {
-                    return;
-                }
-                if (option.isTag) {
-                    const tagIsValid = this.tagValidator(option);
-                    if (tagIsValid) {
-                        /**
+        return;
+      }
+      if (key === 'Tab' && !this.pointerDirty) {
+        return;
+      }
+      if (option.isTag) {
+        const tagIsValid = this.tagValidator(option);
+        if (tagIsValid) {
+          /**
                          * The option tag
                          * @type {Event}
                          */
-                        this.$emit('tag', option.label, this.id);
-                        this.select(option.label);
-                        this.search = '';
-                        if (this.closeOnSelect && !this.multiple) {
-                            this.deactivate();
-                        }
-                    }
-                } else {
-                    const isSelected = this.isSelected(option);
+          this.$emit('tag', option.label, this.id);
+          this.select(option.label);
+          this.search = '';
+          if (this.closeOnSelect && !this.multiple) {
+            this.deactivate();
+          }
+        }
+      } else {
+        const isSelected = this.isSelected(option);
 
-                    if (isSelected && this.multiple) {
-                        if (key !== 'Tab') {
-                            this.removeElement(option);
-                            this.$emit('remove', option);
-                        }
-                        return;
-                    }
+        if (isSelected && this.multiple) {
+          if (key !== 'Tab') {
+            this.removeElement(option);
+            this.$emit('remove', option);
+          }
+          return;
+        }
 
-                    if (this.max && this.multiple && this.internalValue.length === this.max) {
-                        return;
-                    }
-                    /**
+        if (this.max && this.multiple && this.internalValue.length === this.max) {
+          return;
+        }
+        /**
                      * The option select
                      * @type {Event}
                      */
-                    this.$emit('select', option, this.id);
+        this.$emit('select', option, this.id);
 
-                    if (this.multiple) {
-                        this.$emit('input', this.primitiveValue.concat([this.getOptionValue(option)]), this.id);
-                    } else {
-                        this.$emit('input', this.getOptionValue(option), this.id);
-                    }
+        if (this.multiple) {
+          this.$emit('input', this.primitiveValue.concat([this.getOptionValue(option)]), this.id);
+        } else {
+          this.$emit('input', this.getOptionValue(option), this.id);
+        }
 
-                    if (this.clearOnSelect) {
-                        this.search = '';
-                    }
-                }
-                if (this.closeOnSelect) {
-                    this.deactivate();
-                }
-            },
-            toggle() {
-                if (this.isOpen) {
-                    this.deactivate();
-                } else {
-                    this.activate();
-                }
-            },
-            updateSearch(query) {
-                this.search = query;
-            },
-        },
+        if (this.clearOnSelect) {
+          this.search = '';
+        }
+      }
+      if (this.closeOnSelect) {
+        this.deactivate();
+      }
+    },
+    toggle() {
+      if (this.isOpen) {
+        this.deactivate();
+      } else {
+        this.activate();
+      }
+    },
+    updateSearch(query) {
+      this.search = query;
+    },
+  },
 
-    };
+};
 </script>
 <style lang="scss">
     @import './r-select.scss';

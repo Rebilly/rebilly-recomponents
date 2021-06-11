@@ -1,13 +1,13 @@
-import {storiesOf} from '@storybook/vue';
-import {action} from '@storybook/addon-actions';
-import {text, boolean} from '@storybook/addon-knobs';
+import { storiesOf } from '@storybook/vue';
+import { action } from '@storybook/addon-actions';
+import { text, boolean } from '@storybook/addon-knobs';
 import markdown from './r-radio.md';
 import RRadio from './r-radio.vue';
 
 storiesOf('Components.Radio', module)
-    .addParameters({component: RRadio})
-    .add('Component', () => ({
-        template: `
+  .addParameters({ component: RRadio })
+  .add('Component', () => ({
+    template: `
             <div class="storybook-center">
                 <r-radio
                     class="stack-s"
@@ -18,28 +18,28 @@ storiesOf('Components.Radio', module)
                     value="forever"/>
             </div>
         `,
-        methods: {
-            update: action('update'),
-        },
-        props: {
-            label: {
-                default: text('label', 'Label'),
-            },
-            caption: {
-                default: text('caption', 'Caption here to explain something'),
-            },
-            disabled: {
-                default: boolean('disabled', false),
-            },
-        },
-        data: () => ({
-            recurringInterval: '',
-        }),
-    }), {
-        notes: {markdown},
-    })
-    .add('Group', () => ({
-        template: `
+    methods: {
+      update: action('update'),
+    },
+    props: {
+      label: {
+        default: text('label', 'Label'),
+      },
+      caption: {
+        default: text('caption', 'Caption here to explain something'),
+      },
+      disabled: {
+        default: boolean('disabled', false),
+      },
+    },
+    data: () => ({
+      recurringInterval: '',
+    }),
+  }), {
+    notes: { markdown },
+  })
+  .add('Group', () => ({
+    template: `
             <div class="storybook-center">
                 <div role="radiogroup" aria-label="Billing Schedule">
                     <h2>Billing Schedule</h2>
@@ -67,13 +67,13 @@ storiesOf('Components.Radio', module)
                 </div>
             </div>
         `,
-        methods: {
-            update: action('update'),
-        },
-        props: {},
-        data: () => ({
-            recurringInterval: 'forever',
-        }),
-    }), {
-        notes: {markdown},
-    });
+    methods: {
+      update: action('update'),
+    },
+    props: {},
+    data: () => ({
+      recurringInterval: 'forever',
+    }),
+  }), {
+    notes: { markdown },
+  });
