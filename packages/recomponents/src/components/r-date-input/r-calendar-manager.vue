@@ -58,6 +58,7 @@
                                      :time-picker="timePicker"
                                      :timezone="timezone"
                                      :placeholder="placeholder"
+                                     :is24hr="is24hr"
                                      @input="periodInput"/>
         </template>
       </v-date-picker>
