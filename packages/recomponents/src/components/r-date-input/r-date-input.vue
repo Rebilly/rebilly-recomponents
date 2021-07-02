@@ -14,6 +14,7 @@
                           :disabled="disabled"
                           :placeholder="placeholder"
                           :available-dates="availableDates"
+                          :is24hr="is24hr"
                           @input="onInput"/>
       <span class="r-field-caption" v-if="helpText">{{ helpText }}</span>
     </div>
@@ -140,6 +141,13 @@
             timezone: {
                 type: String,
                 default: 'UTC',
+            },
+            /**
+             * Define if the time format is 24H
+             */
+            is24hr: {
+                type: Boolean,
+                default: false,
             },
         },
         data() {
