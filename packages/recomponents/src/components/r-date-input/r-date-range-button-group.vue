@@ -189,11 +189,9 @@
                     return null;
                 }
 
-                console.log(this.timePicker, this.is24hr);
                 const format = this.timePicker
                     ? (this.is24hr ? DateTimeFormats.shortDate24HrTime : DateTimeFormats.shortDateTime)
                     : DateTimeFormats.shortDate;
-                console.log(format);
                 if (!this.isMobile) {
                     if (this.isRelative && this.isRelativePreset) {
                         // props period is relative and one of default preset
