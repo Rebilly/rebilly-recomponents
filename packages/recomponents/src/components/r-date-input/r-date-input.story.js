@@ -92,6 +92,9 @@ storiesOf('Components.Date Input', module)
             noFlex: {
                 default: boolean('noFlex', false),
             },
+            is24hr: {
+                default: boolean('24-hr time mode', false),
+            },
         },
         data: () => ({
             date: null,
@@ -115,6 +118,7 @@ storiesOf('Components.Date Input', module)
                         :noFlex="noFlex"
                         v-model="date"
                         :timezone="timezone"
+                        :is24hr="is24hr"
                         @input="input"/>
             </div>
         `,

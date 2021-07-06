@@ -20,6 +20,7 @@
                      :theme-styles="themeStyles"
                      :timezone="timezone"
                      :model-config="modelConfig"
+                     :is24hr="is24hr"
                      :available-dates="availableDates">
         <template v-slot="{ inputValue, inputEvents }">
           <r-input :value="inputValue"
@@ -47,6 +48,7 @@
                      :timezone="timezone"
                      :available-dates="availableDates"
                      :disabled-attribute="disabledAttribute"
+                     :is24hr="is24hr"
                      :columns="columns"
       >
         <template v-slot="{ togglePopover }">
@@ -56,6 +58,7 @@
                                      :time-picker="timePicker"
                                      :timezone="timezone"
                                      :placeholder="placeholder"
+                                     :is24hr="is24hr"
                                      @input="periodInput"/>
         </template>
       </v-date-picker>
@@ -124,6 +127,13 @@
             timezone: {
                 type: String,
                 default: 'UTC',
+            },
+            /**
+             * Define if the time format is 24H
+             */
+            is24hr: {
+                type: Boolean,
+                default: false,
             },
         },
         computed: {

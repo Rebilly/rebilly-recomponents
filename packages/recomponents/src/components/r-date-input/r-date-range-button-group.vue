@@ -96,6 +96,13 @@
                 type: String,
                 default: 'UTC',
             },
+            /**
+             * Define if the time format is 24H
+             */
+            is24hr: {
+                type: Boolean,
+                default: false,
+            },
         },
         computed: {
             calendarPresets() {
@@ -182,7 +189,9 @@
                     return null;
                 }
 
-                const format = this.timePicker ? DateTimeFormats.shortDateTime : DateTimeFormats.shortDate;
+                const format = this.timePicker
+                    ? (this.is24hr ? DateTimeFormats.shortDate24HrTime : DateTimeFormats.shortDateTime)
+                    : DateTimeFormats.shortDate;
                 if (!this.isMobile) {
                     if (this.isRelative && this.isRelativePreset) {
                         // props period is relative and one of default preset
