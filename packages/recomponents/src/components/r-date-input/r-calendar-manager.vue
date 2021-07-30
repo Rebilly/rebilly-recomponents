@@ -135,8 +135,27 @@
                 type: Boolean,
                 default: false,
             },
+            placement: {
+                type: String,
+                default: 'bottom',
+            },
         },
         computed: {
+            popoverConfigs() {
+                return {
+                    placement: this.placement,
+                    visibility: 'click',
+                    modifiers: [
+                        {
+                            name: 'flip',
+                            options: {
+                                allowedAutoPlacements: ['bottom'],
+                                fallbackPlacements: ['bottom', 'top'],
+                            },
+                        },
+                    ],
+                };
+            },
             mode() {
                 let mode = this.datePicker ? 'date' : '';
                 mode += this.timePicker && 'Time';
@@ -175,18 +194,6 @@
                 initialDate: this.value,
                 masks: {
                     input: 'YYYY-MM-DD h:mm A',
-                },
-                popoverConfigs: {
-                    placement: 'bottom',
-                    modifiers: [
-                        {
-                            name: 'flip',
-                            options: {
-                                allowedAutoPlacements: ['bottom'],
-                                fallbackPlacements: ['bottom'],
-                            },
-                        },
-                    ],
                 },
                 themeStyles: {
                     wrapper: {
