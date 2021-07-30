@@ -176,7 +176,7 @@
                         end: moment(date.end).tz(this.timezone),
                     };
                 } else {
-                    value = moment(date).tz(this.timezone);
+                    value = moment(date).tz(this.timezone, this.type === DateInputType.date);
                 }
                 /**
                  * Date change by element click or from parent component
