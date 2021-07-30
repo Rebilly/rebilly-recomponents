@@ -75,6 +75,13 @@
                 default: null,
             },
             /**
+             * Set the placement of the calendar popover
+             */
+            placement: {
+                type: String,
+                default: 'bottom',
+            },
+            /**
              * Set the help text
              */
             helpText: {
