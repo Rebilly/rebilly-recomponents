@@ -99,7 +99,7 @@
 }
 
 .vc-popover-content-wrapper {
-    z-index: var(--z-index-1000);
+    z-index: var(--z-index-1000) !important;
 }
 
 //Calendar
