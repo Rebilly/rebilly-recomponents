@@ -98,6 +98,10 @@
     border-radius: 50% !important;
 }
 
+.vc-popover-content-wrapper {
+    z-index: var(--z-index-1000) !important;
+}
+
 //Calendar
 .calendar .popover-container {
     display: block;
