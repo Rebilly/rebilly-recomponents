@@ -75,6 +75,13 @@
                 default: null,
             },
             /**
+             * Set the placement of the calendar popover
+             */
+            placement: {
+                type: String,
+                default: 'bottom',
+            },
+            /**
              * Set the help text
              */
             helpText: {
@@ -176,7 +183,7 @@
                         end: moment(date.end).tz(this.timezone),
                     };
                 } else {
-                    value = moment(date).tz(this.timezone);
+                    value = moment(date).tz(this.timezone, this.type === DateInputType.date);
                 }
                 /**
                  * Date change by element click or from parent component
