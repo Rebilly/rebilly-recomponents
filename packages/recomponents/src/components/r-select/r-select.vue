@@ -258,6 +258,7 @@
         name: 'r-select',
         data() {
             return {
+                valueObject: null,
                 isOpen: false,
                 optimizedHeight: this.maxHeight,
                 pointer: 0,
@@ -646,7 +647,7 @@
                     .find(option => this.getOptionValue(option) === this.internalValue[0]);
 
                 const value = this.internalValue && this.internalValue.length
-                    ? this.getOptionLabel(activeOption)
+                    ? this.getOptionLabel(activeOption || this.valueObject)
                     : placeholder;
                 return this.multiple ? placeholder : value;
             },
@@ -706,7 +707,8 @@
                 const hasOptions = !!this.value
                     && (this.computedOptions
                         .find(opt => opt === this.value || opt[this.computedTrackBy] === this.value)
-                    || this.taggable);
+                    || this.taggable
+                    || this.computedIsAsync);
                 const value = Array.isArray(this.value)
                     ? this.value
                     : ((hasOptions && [this.value]) || []);
@@ -1042,6 +1044,7 @@
                     if (this.multiple) {
                         this.$emit('input', this.primitiveValue.concat([this.getOptionValue(option)]), this.id);
                     } else {
+                        this.valueObject = option;
                         this.$emit('input', this.getOptionValue(option), this.id);
                     }
 
