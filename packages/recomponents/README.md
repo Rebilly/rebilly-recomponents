@@ -54,7 +54,7 @@ During installation you can specify some options that could ovverride default be
 <details>
   <summary>List of available options</summary>
 
-  * `ErrorHandler` - [Handler](https://github.com/Rebilly/rebilly-recomponents/blob/master/packages/recomponents/src/common/helpers/default-error-handler.js) to convert any server / client error into user-friendly message that can be displayed via RToast
+  * `ErrorHandler` - [Handler](src/common/helpers/default-error-handler.js) to convert any server / client error into user-friendly message that can be displayed via RToast
   * `allowToastCloseButton` - Add ability to close all RToast messages by default
 </details>
 
