@@ -1,7 +1,7 @@
 `RToast` component is used to show quick messages to user.  Appears temporarily in the top right zone of the screen.
 To manage multiple toasters at the same time using RToasterManager plugin that is installed by default with Recomponents bundle.
 
-Default Recomponents [installation](https://github.com/Rebilly/rebilly-recomponents/tree/main/packages/recomponents#usage) provide `RToastManager` plugin that is available in Vue scope, so you can display any possible toast with $toast
+Default Recomponents [installation](../../../../#usage) provide `RToastManager` plugin that is available in Vue scope, so you can display any possible toast with $toast
 
 ```js
 this.$toast.positive('Something positive in your code');
