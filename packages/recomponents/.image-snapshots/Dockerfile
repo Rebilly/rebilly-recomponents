@@ -1,5 +1,8 @@
 FROM node:12.13.1-slim
 
+RUN apt-get update \
+    && apt-get install -yq libcurl3-gnutls apt-transport-https ca-certificates
+
 # https://github.com/storybookjs/storybook/blob/master/scripts/workaround-puppeteer-issue-290.sh
 # https://github.com/puppeteer/puppeteer/blob/master/docs/troubleshooting.md#running-puppeteer-in-docker
 
