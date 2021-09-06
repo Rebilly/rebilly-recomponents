@@ -646,9 +646,13 @@
                 const activeOption = this.computedOptions
                     .find(option => this.getOptionValue(option) === this.internalValue[0]);
 
-                const value = this.internalValue && this.internalValue.length
+                let value = this.internalValue && this.internalValue.length
                     ? this.getOptionLabel(activeOption || this.valueObject)
                     : placeholder;
+
+                if (this.taggable && !value) {
+                    [value] = this.internalValue;
+                }
                 return this.multiple ? placeholder : value;
             },
             filteredOptions() {
