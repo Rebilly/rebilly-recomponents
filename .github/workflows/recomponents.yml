@@ -15,7 +15,7 @@ jobs:
       NODE_ENV: test
     steps:
     - name: Checkout
-      uses: actions/checkout@master
+      uses: actions/checkout@main
     - name: Use Node.js
       uses: actions/setup-node@v1
       with:
@@ -53,7 +53,7 @@ jobs:
       NODE_ENV: test
     steps:
     - name: Checkout
-      uses: actions/checkout@master
+      uses: actions/checkout@main
     - name: Use Node.js
       uses: actions/setup-node@v1
       with:
@@ -78,7 +78,7 @@ jobs:
       NODE_ENV: test
     steps:
     - name: Checkout
-      uses: actions/checkout@master
+      uses: actions/checkout@main
     - name: Use Node.js
       uses: actions/setup-node@v1
       with:
@@ -87,7 +87,7 @@ jobs:
       run: |
         yarn
     - name: Download Storybook build
-      uses: actions/download-artifact@master
+      uses: actions/download-artifact@main
       with:
         name: Storybook
         path: ./
@@ -107,7 +107,7 @@ jobs:
       NODE_ENV: test
     steps:
     - name: Checkout
-      uses: actions/checkout@master
+      uses: actions/checkout@main
     - name: Use Node.js
       uses: actions/setup-node@v1
       with:
@@ -116,7 +116,7 @@ jobs:
       run: |
         yarn
     - name: Download Recomponents build
-      uses: actions/download-artifact@master
+      uses: actions/download-artifact@main
       with:
         name: Recomponents
         path: ./
@@ -139,7 +139,7 @@ jobs:
       GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
     steps:
     - name: Checkout
-      uses: actions/checkout@master
+      uses: actions/checkout@main
     - name: Use Node.js
       uses: actions/setup-node@v1
       with:
@@ -148,7 +148,7 @@ jobs:
       run: |
         yarn
     - name: Download Recomponents build
-      uses: actions/download-artifact@master
+      uses: actions/download-artifact@main
       with:
         name: Recomponents
         path: ./
