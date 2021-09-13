@@ -23,7 +23,7 @@
 </template>
 
 <script>
-    import shortId from 'shortid';
+    import {nanoid} from 'nanoid';
     import RIcon from '../r-icon/r-icon.vue';
 
     // TODO: prefixes of simple classes `r-is-error, r-is-disabled`
@@ -43,7 +43,7 @@
              */
             id: {
                 type: String,
-                default: () => shortId.generate(),
+                default: () => nanoid(),
             },
             /**
              * TBD

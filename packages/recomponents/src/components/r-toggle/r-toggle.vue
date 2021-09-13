@@ -16,7 +16,7 @@
 </template>
 
 <script>
-    import shortid from 'shortid';
+    import {nanoid} from 'nanoid';
 
     export default {
         name: 'RToggle',
@@ -37,7 +37,7 @@
              */
             name: {
                 type: String,
-                default: () => shortid.generate(),
+                default: () => nanoid(),
             },
             /**
              * Actual the actual model for the component

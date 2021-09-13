@@ -21,7 +21,7 @@
 </template>
 
 <script>
-    import shortid from 'shortid';
+    import {nanoid} from 'nanoid';
     import rIcon from '../r-icon/r-icon.vue';
 
     export default {
@@ -50,14 +50,14 @@
              */
             id: {
                 type: String,
-                default: () => shortid.generate(),
+                default: () => nanoid(),
             },
             /**
              * TBD
              */
             name: {
                 type: String,
-                default: () => shortid.generate(),
+                default: () => nanoid(),
             },
             /**
              * TBD
