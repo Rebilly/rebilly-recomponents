@@ -9,7 +9,7 @@
 </template>
 
 <script>
-    import shortId from 'shortid';
+    import {nanoid} from 'nanoid';
 
     export default {
         name: 'r-tab',
@@ -40,7 +40,7 @@
         },
         computed: {
             accessibilityId() {
-                return this.panelId || shortId.generate();
+                return this.panelId || nanoid();
             },
             tabPanelId() {
                 return `tabpanel-${this.accessibilityId}`;

@@ -212,7 +212,7 @@
 </template>
 
 <script>
-    import shortid from 'shortid';
+    import {nanoid} from 'nanoid';
     import AsyncInputMixin from '../../mixins/async-input-mixin';
     import RIcon from '../r-icon/r-icon.vue';
     import RBadge from '../r-badge/r-badge.vue';
@@ -365,7 +365,7 @@
              */
             id: {
                 type: String,
-                default: () => shortid.generate(),
+                default: () => nanoid(),
             },
             /**
              * Specify is the internal search enabled

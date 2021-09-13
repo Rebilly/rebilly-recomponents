@@ -23,7 +23,7 @@
 
 <script>
     import moment from 'moment';
-    import shortid from 'shortid';
+    import {nanoid} from 'nanoid';
     import rIcon from '../r-icon/r-icon.vue';
     import rSelect from '../r-select/r-select.vue';
     import {DateInputType, CalendarOptions} from './shared';
@@ -100,7 +100,7 @@
              */
             name: {
                 type: String,
-                default: () => shortid.generate(),
+                default: () => nanoid(),
             },
             /**
              * Used to specify what dates are selected

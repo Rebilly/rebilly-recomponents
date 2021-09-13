@@ -218,9 +218,9 @@ describe('r-tabs.vue', () => {
         const tab = wrapper.findAll('.r-tab-item-link').at(0);
         const tabPanel = wrapper.find('.r-tab-content > div');
 
-        const generatedShortId = tab.attributes('id').replace('tab-', '');
-        const tabA11yId = `tab-${generatedShortId}`;
-        const tabPanelA11yId = `tabpanel-${generatedShortId}`;
+        const generatedNanoId = tab.attributes('id').replace('tab-', '');
+        const tabA11yId = `tab-${generatedNanoId}`;
+        const tabPanelA11yId = `tabpanel-${generatedNanoId}`;
 
         expect(tab.attributes('id')).toBe(tabA11yId);
         expect(tab.attributes('aria-controls')).toBe(tabPanelA11yId);

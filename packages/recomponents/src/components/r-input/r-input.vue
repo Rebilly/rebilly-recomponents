@@ -109,7 +109,7 @@
 </template>
 
 <script>
-    import shortid from 'shortid';
+    import {nanoid} from 'nanoid';
     import rIcon from '../r-icon/r-icon.vue';
     import '../../directives/r-fs-block';
     // TODO classes prefix r-is-error, r-no-flex, etc.
@@ -256,7 +256,7 @@
              */
             name: {
                 type: String,
-                default: () => shortid.generate(),
+                default: () => nanoid(),
             },
             /**
              * TBD

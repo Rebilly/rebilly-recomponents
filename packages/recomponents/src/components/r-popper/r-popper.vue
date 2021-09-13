@@ -13,7 +13,7 @@
 </template>
 
 <script>
-    import shortId from 'shortid';
+    import {nanoid} from 'nanoid';
     import '../../directives/r-click-outside/r-click-outside';
 
     const directions = {
@@ -181,7 +181,7 @@
         },
         data() {
             return {
-                id: shortId.generate(),
+                id: nanoid(),
                 hideTimer: null,
                 hideDelayMs: 200,
                 isPopperVisible: false,
