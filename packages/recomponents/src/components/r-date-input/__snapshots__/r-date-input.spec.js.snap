@@ -4,7 +4,7 @@ exports[`r-date-input.vue should render Wrapper and match snapshot 1`] = `
 <div class="">
   <div class="r-field">
     <!---->
-    <r-calendar-manager-stub type="calendar" date-picker="true" value="2019-01-01" timezone="UTC" max-date="2020-01-01" class="r-date-input"></r-calendar-manager-stub>
+    <r-calendar-manager-stub type="calendar" time-picker="true" date-picker="true" value="2019-01-01T20:00:00Z" timezone="UTC" max-date="2020-01-01" is24hr="true" class="r-date-input"></r-calendar-manager-stub>
     <!---->
   </div>
 </div>

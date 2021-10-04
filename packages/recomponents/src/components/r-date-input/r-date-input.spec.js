@@ -2,7 +2,7 @@ import {mount, shallowMount} from '@vue/test-utils';
 import RDateInput from './r-date-input.vue';
 
 describe('r-date-input.vue', () => {
-    const date = '2019-01-01';
+    const date = '2019-01-01T20:00:00-03:00';
     const rCalendarManager = `<r-calendar-manager-stub></r-calendar-manager-stub>`;
 
     it('should render Wrapper and match snapshot', () => {
@@ -10,6 +10,8 @@ describe('r-date-input.vue', () => {
             propsData: {
                 maxDate: '2020-01-01',
                 value: date,
+                timezone: 'ETC/GMT+4',
+                type: 'datetime',
             },
             stubs: {'no-ssr': true, 'r-calendar-manager': rCalendarManager},
         });
