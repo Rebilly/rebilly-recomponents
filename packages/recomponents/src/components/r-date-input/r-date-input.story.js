@@ -98,7 +98,6 @@ storiesOf('Components.Date Input', module)
         },
         watch: {
             type(newType) {
-                console.log(newType);
                 this.date = [DateInputType.dateRange, DateInputType.dateTimeRange].includes(newType)
                     ? '2021-10-08T00:00:00-03:00'
                     : {
