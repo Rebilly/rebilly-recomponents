@@ -190,11 +190,11 @@
                 if (this.isDateRange) {
                     value = {
                         ...date,
-                        start: moment(date.start).utc().tz(this.timezone, true).format(),
-                        end: moment(date.end).utc().tz(this.timezone, true).format(),
+                        start: moment(date.start).utc().tz(this.timezone, true),
+                        end: moment(date.end).utc().tz(this.timezone, true),
                     };
                 } else {
-                    value = moment(date).utc().tz(this.timezone, true).format(); /* this.type === DateInputType.date */
+                    value = moment(date).utc().tz(this.timezone, true); /* this.type === DateInputType.date */
                 }
                 /**
                  * Date change by element click or from parent component
