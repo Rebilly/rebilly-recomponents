@@ -1,111 +1,112 @@
 <template>
-    <div class="r-field" :class="{'r-is-error': isInvalid}">
-        <label v-if="label" :for="name" class="r-field-label">{{label}}</label>
-        <template v-if="!isGroupedInput">
-            <input
-                    ref="input"
-                    :id="name"
-                    v-if="!multiline"
-                    class="r-field-input"
-                    v-fs-block
-                    :value="value"
-                    @input="update"
-                    :placeholder="placeholder"
-                    :disabled="disabled"
-                    :type="type"
-                    @keyup.enter="keySubmit"
-                    @keyup="keyPress"
-                    @keydown="keyDown"
-                    @focus="focus"
-                    @blur="$emit('blur')"
-                    @click="click"
-                    v-on="inputEvents"
-                    :name="name"
-                    :maxlength="maxLength"
-                    :autocomplete="autocompleteFlag"
-                    v-bind="$attrs"
-            />
-            <textarea
-                    ref="textarea"
-                    :id="name"
-                    v-else-if="multiline && submitOnEnter"
-                    class="r-field-input"
-                    v-fs-block
-                    :value="value"
-                    @input="update"
-                    @keydown.enter.exact.prevent="keySubmit"
-                    @keyup="keyPress"
-                    @keydown="keyDown"
-                    v-on="inputEvents"
-                    :maxlength="maxLength"
-                    :placeholder="placeholder"
-                    :disabled="disabled"
-                    :rows="rows"
-                    :name="name"
-                    v-bind="$attrs"
-            >
+  <div class="r-field" :class="{'r-is-error': isInvalid}">
+    <label v-if="label" :for="name" class="r-field-label">{{ label }}</label>
+    <template v-if="!isGroupedInput">
+      <input
+          ref="input"
+          :id="name"
+          v-if="!multiline"
+          class="r-field-input"
+          v-fs-block
+          :value="value"
+          @input="update"
+          :placeholder="placeholder"
+          :disabled="disabled"
+          :type="type"
+          @keyup.enter="keySubmit"
+          @keyup="keyPress"
+          @keydown="keyDown"
+          @focus="focus"
+          @blur="$emit('blur')"
+          @click="click"
+          v-on="inputEvents"
+          :name="name"
+          :maxlength="maxLength"
+          :autocomplete="autocompleteFlag"
+          v-bind="$attrs"
+      />
+      <textarea
+          ref="textarea"
+          :id="name"
+          v-else-if="multiline && submitOnEnter"
+          class="r-field-input"
+          v-fs-block
+          :value="value"
+          @input="update"
+          @keydown.enter.exact.prevent="keySubmit"
+          @keyup="keyPress"
+          @keydown="keyDown"
+          v-on="inputEvents"
+          :maxlength="maxLength"
+          :placeholder="placeholder"
+          :disabled="disabled"
+          :rows="rows"
+          :name="name"
+          v-bind="$attrs"
+      >
             </textarea>
-            <textarea
-                    ref="textarea"
-                    :id="name"
-                    v-else="multiline && !submitOnEnter"
-                    class="r-field-input"
-                    v-fs-block
-                    :value="value"
-                    @input="update"
-                    @keydown.enter="keySubmit"
-                    @keyup="keyPress"
-                    @keydown="keyDown"
-                    :maxlength="maxLength"
-                    :placeholder="placeholder"
-                    :disabled="disabled"
-                    :rows="rows"
-                    :name="name"
-                    v-bind="$attrs"
-            >
+      <textarea
+          ref="textarea"
+          :id="name"
+          v-else="multiline && !submitOnEnter"
+          class="r-field-input"
+          v-fs-block
+          :value="value"
+          @input="update"
+          @keydown.enter="keySubmit"
+          @keyup="keyPress"
+          @keydown="keyDown"
+          :maxlength="maxLength"
+          :placeholder="placeholder"
+          :disabled="disabled"
+          :rows="rows"
+          :name="name"
+          v-bind="$attrs"
+      >
             </textarea>
-        </template>
-        <div class="r-field-group" v-if="isGroupedInput">
-            <div class="r-field-addon r-no-flex r-text-muted" v-if="leftLabel">{{leftLabel}}</div>
-            <div class="r-field-control" :class="fieldStyles">
-                <r-icon
-                        v-if="leftIcon"
-                        :icon="leftIcon"
-                        :class="{'r-cursor-pointer': leftIconClickPointer, 'r-is-spinning': leftIconSpinning}"
-                        @click.stop="$emit('left-icon-click')"></r-icon>
-                <input
-                        ref="input"
-                        :id="name"
-                        class="r-field-input"
-                        v-fs-block
-                        :value="value"
-                        @input="update"
-                        :placeholder="placeholder"
-                        :disabled="disabled"
-                        :type="type"
-                        @keyup.enter="keySubmit"
-                        @keyup="keyPress"
-                        @keydown="keyDown"
-                        @focus="focus"
-                        @blur="$emit('blur')"
-                        @click="click"
-                        v-on="inputEvents"
-                        :name="name"
-                        :maxlength="maxLength"
-                        :autocomplete="autocompleteFlag"
-                        v-bind="$attrs"
-                />
-                <r-icon
-                        v-if="rightIcon"
-                        :icon="rightIcon"
-                        :class="{'r-cursor-pointer': rightIconClickPointer, 'r-is-spinning': rightIconSpinning}"
-                        @click.stop="$emit('right-icon-click')"></r-icon>
-            </div>
-            <slot name="right-button"/>
-            <div class="r-field-addon r-no-flex r-text-muted" v-if="rightLabel">{{rightLabel}}</div>
-        </div>
-        <span class="r-field-caption" v-if="helpText || maxLength">{{helpText}} <span v-if="maxLength">{{charactersLeft}}</span></span>
+    </template>
+    <div class="r-field-group" v-if="isGroupedInput">
+      <div class="r-field-addon r-no-flex r-text-muted" v-if="leftLabel">{{ leftLabel }}</div>
+      <div class="r-field-control" :class="fieldStyles">
+        <r-icon
+            v-if="leftIcon"
+            :icon="leftIcon"
+            :class="{'r-cursor-pointer': leftIconClickPointer, 'r-is-spinning': leftIconSpinning}"
+            @click.stop="$emit('left-icon-click')"></r-icon>
+        <input
+            ref="input"
+            :id="name"
+            class="r-field-input"
+            v-fs-block
+            :value="value"
+            @input="update"
+            :placeholder="placeholder"
+            :disabled="disabled"
+            :type="type"
+            @keyup.enter="keySubmit"
+            @keyup="keyPress"
+            @keydown="keyDown"
+            @focus="focus"
+            @blur="$emit('blur')"
+            @click="click"
+            v-on="inputEvents"
+            :name="name"
+            :maxlength="maxLength"
+            :autocomplete="autocompleteFlag"
+            v-bind="$attrs"
+        />
+        <r-icon
+            v-if="rightIcon"
+            :icon="rightIcon"
+            :class="{'r-cursor-pointer': rightIconClickPointer, 'r-is-spinning': rightIconSpinning}"
+            @click.stop="$emit('right-icon-click')"></r-icon>
+      </div>
+      <slot name="right-button"/>
+      <div class="r-field-addon r-no-flex r-text-muted" v-if="rightLabel">{{ rightLabel }}</div>
     </div>
+    <span class="r-field-caption" v-if="helpText || maxLength">{{ helpText }} <span
+        v-if="maxLength">{{ charactersLeft }}</span></span>
+  </div>
 </template>
 
 <script>
@@ -408,13 +409,13 @@
 </script>
 
 <style lang="scss">
-    @import './r-input.scss';
+@import './r-input.scss';
 
-    .r-field textarea {
-        resize: none;
-        overflow-x: hidden;
-        overflow-y: auto;
-        min-height: 36px;
-        max-height: 150px;
-    }
+.r-field textarea {
+  resize: none;
+  overflow-x: hidden;
+  overflow-y: auto;
+  min-height: 36px;
+  max-height: 150px;
+}
 </style>

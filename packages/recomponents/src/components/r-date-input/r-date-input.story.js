@@ -5,6 +5,9 @@ import {boolean, select, text} from '@storybook/addon-knobs';
 import markdown from './r-date-input.md';
 import DateTimeFormats from '../../common/datetime-formats';
 import RDateInput from './r-date-input.vue';
+import {DateInputType} from './shared';
+
+const timezones = require('./timezones.json');
 
 const minDate = new Date();
 
@@ -68,22 +71,14 @@ storiesOf('Components.Date Input', module)
                         dateRange: 'date-range',
                         dateTimeRange: 'datetime-range',
                     },
-                    'datetime-range',
+                    'datetime',
                 ),
             },
             timezone: {
                 default: select(
                     'timezone',
-                    [
-                        'Australia/Sydney',
-                        'America/Montreal',
-                        'Europe/Prague',
-                        'Asia/Aqtau',
-                        'Asia/Krasnoyarsk',
-                        'Asia/Vladivostok',
-                        'America/Los_Angeles',
-                    ],
-                    'America/Montreal',
+                    timezones,
+                    'Etc/GMT+3',
                 ),
             },
             validate: {
@@ -96,32 +91,44 @@ storiesOf('Components.Date Input', module)
                 default: boolean('24-hr time mode', false),
             },
         },
-        data: () => ({
-            date: null,
-        }),
+        data() {
+            return {
+                date: null,
+            };
+        },
+        watch: {
+            type(newType) {
+                console.log(newType);
+                this.date = [DateInputType.dateRange, DateInputType.dateTimeRange].includes(newType)
+                    ? '2021-10-08T00:00:00-03:00'
+                    : {
+                        start: '2021-10-13T00:00:00-03:00',
+                        end: '2021-10-20T23:59:59-03:00',
+                    };
+            },
+        },
         methods: {
             input: action('input'),
         },
         template: `
-            <div class="storybook-center">
-                <r-date-input
-                        :available-dates="availableDates"
-                        :label="label"
-                        :disabled="disabled"
-                        :placeholder="placeholder"
-                        :helpText="helpText"
-                        :stack="stack"
-                        :type="type"
-                        :min-date="minDate"
-                        :max-date="maxDate"
-                        :validate="validate"
-                        :noFlex="noFlex"
-                        v-model="date"
-                        :timezone="timezone"
-                        :is24hr="is24hr"
-                        @input="input"/>
-            </div>
-        `,
+          <div class="storybook-center">
+          <r-date-input
+              :available-dates="availableDates"
+              :label="label"
+              :disabled="disabled"
+              :placeholder="placeholder"
+              :helpText="helpText"
+              :stack="stack"
+              :type="type"
+              :min-date="minDate"
+              :max-date="maxDate"
+              :validate="validate"
+              :noFlex="noFlex"
+              v-model="date"
+              :timezone="timezone"
+              :is24hr="is24hr"
+              @input="input"/>
+          </div>`,
     }), {
         notes: {markdown},
     });

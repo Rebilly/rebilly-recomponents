@@ -126,7 +126,6 @@
             },
             timezone: {
                 type: String,
-                default: 'UTC',
             },
             /**
              * Define if the time format is 24H
@@ -184,8 +183,8 @@
                 const {start, end} = this.value;
                 return {
                     ...this.value,
-                    start: start.format ? start.format() : start,
-                    end: end.format ? end.format() : end,
+                    start: start && start.format ? start.format() : start,
+                    end: end && end.format ? end.format() : end,
                 };
             },
         },
