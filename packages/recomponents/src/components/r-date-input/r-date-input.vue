@@ -6,8 +6,8 @@
                           :type="CalendarOptions[type].type"
                           :time-picker="CalendarOptions[type].timePicker"
                           :date-picker="CalendarOptions[type].datePicker"
-                          :value="value"
-                          :timezone="timezone"
+                          :value="preparedValue"
+                          :timezone="'UTC'"
                           :min-date="minDate"
                           :max-date="maxDate"
                           :drag-select-attributes="dragSelectAttributes"
@@ -147,14 +147,13 @@
              */
             timezone: {
                 type: String,
-                default: 'UTC',
             },
             /**
              * Define if the time format is 24H
              */
             is24hr: {
                 type: Boolean,
-                default: false,
+                default: true,
             },
         },
         data() {
@@ -172,24 +171,39 @@
             isDateRange() {
                 return [DateInputType.dateRange, DateInputType.dateTimeRange].includes(this.type);
             },
+            preparedValue() {
+                const prepareDate = date => moment(date).utcOffset(this.getTimezoneOffset(date)).utc(true).format();
+                const {value} = this;
+                if (this.isDateRange && value) {
+                    return {
+                        ...value,
+                        start: value.start && prepareDate(value.start),
+                        end: value.end && prepareDate(value.end),
+                    };
+                }
+                return prepareDate(value);
+            },
         },
         methods: {
             onInput(date) {
                 let value;
-                if ([DateInputType.dateTimeRange, DateInputType.dateRange].includes(this.type)) {
+                if (this.isDateRange) {
                     value = {
                         ...date,
-                        start: moment(date.start).tz(this.timezone),
-                        end: moment(date.end).tz(this.timezone),
+                        start: moment(date.start).utc().tz(this.timezone, true),
+                        end: moment(date.end).utc().tz(this.timezone, true),
                     };
                 } else {
-                    value = moment(date).tz(this.timezone, this.type === DateInputType.date);
+                    value = moment(date).utc().tz(this.timezone, true); /* this.type === DateInputType.date */
                 }
                 /**
                  * Date change by element click or from parent component
                  * @type {Event}
                  */
                 this.$emit('input', value);
+            },
+            getTimezoneOffset(value) {
+                return moment.parseZone(value).utcOffset();
             },
         },
     };

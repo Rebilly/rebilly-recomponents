@@ -55,7 +55,7 @@
     "moment": "^2.22.2",
     "moment-timezone": "^0.5.23",
     "nanoid": "^3.1.25",
-    "v-calendar": "^2.0.0"
+    "v-calendar": "^2.3.2"
   },
   "devDependencies": {
     "@babel/core": "^7.10.2",
