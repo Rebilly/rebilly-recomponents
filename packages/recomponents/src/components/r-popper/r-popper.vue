@@ -13,7 +13,7 @@
 </template>
 
 <script>
-    import {nanoid} from 'nanoid/non-secure';
+    import {nanoid} from 'nanoid/non-secure/index.cjs';
     import '../../directives/r-click-outside/r-click-outside';
 
     const directions = {

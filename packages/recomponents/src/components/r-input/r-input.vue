@@ -110,7 +110,7 @@
 </template>
 
 <script>
-    import {nanoid} from 'nanoid/non-secure';
+    import {nanoid} from 'nanoid/non-secure/index.cjs';
     import rIcon from '../r-icon/r-icon.vue';
     import '../../directives/r-fs-block';
     // TODO classes prefix r-is-error, r-no-flex, etc.
