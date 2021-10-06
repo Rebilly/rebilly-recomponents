@@ -21,7 +21,7 @@
 </template>
 
 <script>
-    import {nanoid} from 'nanoid';
+    import {nanoid} from 'nanoid/non-secure';
     import rIcon from '../r-icon/r-icon.vue';
 
     export default {
