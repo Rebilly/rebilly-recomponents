@@ -23,7 +23,7 @@
 
 <script>
     import moment from 'moment';
-    import {nanoid} from 'nanoid';
+    import {nanoid} from 'nanoid/non-secure/index.cjs';
     import rIcon from '../r-icon/r-icon.vue';
     import rSelect from '../r-select/r-select.vue';
     import {DateInputType, CalendarOptions} from './shared';

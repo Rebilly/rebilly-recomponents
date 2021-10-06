@@ -212,7 +212,7 @@
 </template>
 
 <script>
-    import {nanoid} from 'nanoid';
+    import {nanoid} from 'nanoid/non-secure/index.cjs';
     import AsyncInputMixin from '../../mixins/async-input-mixin';
     import RIcon from '../r-icon/r-icon.vue';
     import RBadge from '../r-badge/r-badge.vue';

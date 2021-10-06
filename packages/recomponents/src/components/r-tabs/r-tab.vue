@@ -9,7 +9,7 @@
 </template>
 
 <script>
-    import {nanoid} from 'nanoid';
+    import {nanoid} from 'nanoid/non-secure/index.cjs';
 
     export default {
         name: 'r-tab',

@@ -23,7 +23,7 @@
 </template>
 
 <script>
-    import {nanoid} from 'nanoid';
+    import {nanoid} from 'nanoid/non-secure/index.cjs';
     import RIcon from '../r-icon/r-icon.vue';
 
     // TODO: prefixes of simple classes `r-is-error, r-is-disabled`
