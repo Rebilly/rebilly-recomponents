@@ -733,6 +733,30 @@ const sprites = `
                 </svg>
             </symbol>
         </svg>
+        <!-- KYC -->
+        <svg xmlns="http://www.w3.org/2000/svg">
+            <symbol id="icon-kyc">
+                <svg width="20" height="20" xmlns="http://www.w3.org/2000/svg">
+                    <path d="M9 2a7 7 0 0 1 5.6 11.201.837.837 0 0 1 .107.092l3 3a1 1 0 0 1-1.414 1.414l-3-3a1.009 1.009 0 0 1-.094-.108A7 7 0 1 1 9 2Zm0 10a2 2 0 0 0-1.96 1.601A4.986 4.986 0 0 0 9 14c.695 0 1.357-.142 1.959-.398A1.998 1.998 0 0 0 9 12Zm0-8a5 5 0 0 0-3.666 8.4A4.003 4.003 0 0 1 6.6 10.8a3 3 0 1 1 4.799.002 4 4 0 0 1 1.267 1.597A5 5 0 0 0 9 4Zm0 4a1 1 0 1 0 0 2 1 1 0 0 0 0-2Z" fill-rule="nonzero"/>
+                </svg>
+            </symbol>
+        </svg>
+        <!-- One column -->
+        <svg xmlns="http://www.w3.org/2000/svg">
+            <symbol id="icon-one-column"> <svg width="20" height="20" xmlns="http://www.w3.org/2000/svg">
+                <svg width="20" height="20" xmlns="http://www.w3.org/2000/svg">
+                    <path d="M16 2a2 2 0 0 1 2 2v12a2 2 0 0 1-2 2H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h12Zm0 2H4v12h12V4Z" fill-rule="nonzero"/>
+                </svg>
+            </symbol>
+        </svg>
+        <!-- Two columns -->
+        <svg xmlns="http://www.w3.org/2000/svg">
+            <symbol id="icon-two-columns"> <svg width="20" height="20" xmlns="http://www.w3.org/2000/svg">
+                <svg width="20" height="20" xmlns="http://www.w3.org/2000/svg">
+                    <path d="M16 2a2 2 0 0 1 2 2v12a2 2 0 0 1-2 2H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h12ZM9 4H4v12h5V4Zm7 0h-5v12h5V4Z" fill-rule="nonzero"/>
+                </svg>
+            </symbol>
+        </svg>
 `;
 
 export default sprites;
