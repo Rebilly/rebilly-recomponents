@@ -5,7 +5,8 @@
         right-icon="calendar"
         v-show="disabled"/>
     <no-ssr>
-      <v-date-picker v-if="!isDateRange"
+      <v-date-picker ref="datePicker"
+                     v-if="!isDateRange"
                      v-show="!disabled"
                      :value="value"
                      @input="dateInput"
@@ -256,6 +257,7 @@
                     return;
                 }
                 this.$emit('input', date);
+                this.$refs.datePicker.hidePopover();
             },
         },
     };
