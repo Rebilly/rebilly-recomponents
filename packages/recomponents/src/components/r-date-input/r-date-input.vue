@@ -15,6 +15,7 @@
                           :placeholder="placeholder"
                           :available-dates="availableDates"
                           :is24hr="is24hr"
+                          :hide-on-selection="hideOnSelection"
                           @input="onInput"/>
       <span class="r-field-caption" v-if="helpText">{{ helpText }}</span>
     </div>
@@ -154,6 +155,13 @@
             is24hr: {
                 type: Boolean,
                 default: true,
+            },
+            /**
+             * Hide the popover once the date is selected
+            */
+            hideOnSelection: {
+                type: Boolean,
+                default: false,
             },
         },
         data() {

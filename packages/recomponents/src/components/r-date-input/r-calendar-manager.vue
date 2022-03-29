@@ -128,6 +128,10 @@
             timezone: {
                 type: String,
             },
+            hideOnSelection: {
+                type: Boolean,
+                default: false,
+            },
             /**
              * Define if the time format is 24H
              */
@@ -257,7 +261,10 @@
                     return;
                 }
                 this.$emit('input', date);
-                this.$refs.datePicker.hidePopover();
+
+                if (this.hideOnSelection) {
+                    this.$refs.datePicker.hidePopover();
+                }
             },
         },
     };
