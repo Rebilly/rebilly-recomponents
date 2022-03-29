@@ -193,8 +193,10 @@
                         start: moment(date.start).utc().tz(this.timezone, true),
                         end: moment(date.end).utc().tz(this.timezone, true),
                     };
+                } else if (this.type === DateInputType.date) {
+                    value = date;
                 } else {
-                    value = moment(date).utc().tz(this.timezone, true); /* this.type === DateInputType.date */
+                    value = moment(date).utc().tz(this.timezone, true);
                 }
                 /**
                  * Date change by element click or from parent component
