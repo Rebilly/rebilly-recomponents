@@ -52,7 +52,7 @@
     "lodash.clonedeep": "^4.5.0",
     "lodash.kebabcase": "^4.1.1",
     "lowlight": "^1.13.1",
-    "moment": "^2.22.2",
+    "moment": "^2.29.2",
     "moment-timezone": "^0.5.23",
     "nanoid": "^3.1.25",
     "v-calendar": "^2.3.2"
