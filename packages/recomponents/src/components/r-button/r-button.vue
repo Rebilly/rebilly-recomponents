@@ -22,7 +22,7 @@
             :title="title"
     >
         <r-icon v-if="loading" icon="loading" class="r-is-spinning r-icon-light-gray r-inline-s"/>
-        <div v-if="capitalizeFirstLetter" class="r-capitalize-first-letter" role="button">
+        <div v-if="capitalizeFirstLetter" class="r-capitalize-first-letter">
             <slot>Apply</slot>
         </div>
         <slot v-else>Apply</slot>
@@ -125,5 +125,5 @@
 </script>
 
 <style lang="scss">
-    @import './r-button.scss';
+    @import "./r-button.scss";
 </style>
