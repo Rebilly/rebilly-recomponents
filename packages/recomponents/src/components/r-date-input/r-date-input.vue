@@ -15,6 +15,7 @@
                           :placeholder="placeholder"
                           :available-dates="availableDates"
                           :is24hr="is24hr"
+                          :hide-on-selection="hideOnSelection"
                           @input="onInput"/>
       <span class="r-field-caption" v-if="helpText">{{ helpText }}</span>
     </div>
@@ -155,6 +156,13 @@
                 type: Boolean,
                 default: true,
             },
+            /**
+             * Hide the popover once the date is selected
+            */
+            hideOnSelection: {
+                type: Boolean,
+                default: false,
+            },
         },
         data() {
             return {
@@ -193,8 +201,10 @@
                         start: moment(date.start).utc().tz(this.timezone, true),
                         end: moment(date.end).utc().tz(this.timezone, true),
                     };
+                } else if (this.type === DateInputType.date) {
+                    value = date;
                 } else {
-                    value = moment(date).utc().tz(this.timezone, true); /* this.type === DateInputType.date */
+                    value = moment(date).utc().tz(this.timezone, true);
                 }
                 /**
                  * Date change by element click or from parent component
