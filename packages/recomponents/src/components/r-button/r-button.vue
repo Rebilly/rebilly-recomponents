@@ -14,7 +14,6 @@
         <slot v-else>Apply</slot>
     </a>
     <button v-else
-            role="button"
             class="r-button"
             :class="classes"
             :disabled="disabled || loading"
