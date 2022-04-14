@@ -22,14 +22,14 @@ exports[`r-pagination-control.vue should render via SSR and match snapshot 1`] =
   <div class="r-pagination-control">
     <div class="r-pagination-control-buttons-wrapper"><button disabled="disabled" title="Action is disabled" class="r-button r-pagination-control-button r-button-size-regular r-button-type-default">
         <!---->
-        <div class="r-capitalize-first-letter"><svg class="r-icon r-icon-20">
+        <div role="button" class="r-capitalize-first-letter"><svg class="r-icon r-icon-20">
             <use xlink:href="#icon-arrow-left" xmlns:xlink="http://www.w3.org/1999/xlink"></use>
           </svg>
           Prev
         </div>
       </button> <button disabled="disabled" title="Action is disabled" class="r-button r-pagination-control-button r-button-size-regular r-button-type-default">
         <!---->
-        <div class="r-capitalize-first-letter">
+        <div role="button" class="r-capitalize-first-letter">
           Next
           <svg class="r-icon r-icon-20">
             <use xlink:href="#icon-arrow-right" xmlns:xlink="http://www.w3.org/1999/xlink"></use>

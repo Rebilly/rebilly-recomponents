@@ -3,6 +3,6 @@
 exports[`r-button.vue should render via SSR and match snapshot 1`] = `
 <button title="" msg="Apply" class="r-button r-button-size-regular r-button-type-default">
   <!---->
-  <div class="r-capitalize-first-letter">Apply</div>
+  <div role="" class="r-capitalize-first-letter">Apply</div>
 </button>
 `;
