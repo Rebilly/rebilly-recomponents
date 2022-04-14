@@ -14,7 +14,6 @@
         <slot v-else>Apply</slot>
     </a>
     <button v-else
-            role="button"
             class="r-button"
             :class="classes"
             :disabled="disabled || loading"
@@ -22,7 +21,7 @@
             :title="title"
     >
         <r-icon v-if="loading" icon="loading" class="r-is-spinning r-icon-light-gray r-inline-s"/>
-        <div v-if="capitalizeFirstLetter" class="r-capitalize-first-letter" role="button">
+        <div v-if="capitalizeFirstLetter" class="r-capitalize-first-letter" :role="divRole">
             <slot>Apply</slot>
         </div>
         <slot v-else>Apply</slot>
@@ -111,6 +110,12 @@
                 }
                 return '';
             },
+            divRole() {
+                // Only add role=button when the container <button> has an explicit label
+                // (explicit title or explicit aria-label)
+                // avoiding issues with accessibility and testing library
+                return (this.title || this.$attrs['aria-label']) ? 'button' : '';
+            },
         },
         data() {
             return {
@@ -125,5 +130,5 @@
 </script>
 
 <style lang="scss">
-    @import './r-button.scss';
+    @import "./r-button.scss";
 </style>

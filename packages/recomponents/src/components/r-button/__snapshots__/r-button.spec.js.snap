@@ -1,8 +1,8 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`r-button.vue should render via SSR and match snapshot 1`] = `
-<button role="button" title="" msg="Apply" class="r-button r-button-size-regular r-button-type-default">
+<button title="" msg="Apply" class="r-button r-button-size-regular r-button-type-default">
   <!---->
-  <div role="button" class="r-capitalize-first-letter">Apply</div>
+  <div role="" class="r-capitalize-first-letter">Apply</div>
 </button>
 `;
