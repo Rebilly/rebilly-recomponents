@@ -113,7 +113,7 @@
             divRole() {
                 // Only add role=button when the container <button> has an explicit label
                 // (explicit title or explicit aria-label)
-                // avoiding issues with accessibility and testing library
+                // to avoid issues with accessibility and testing library
                 return (this.title || this.$attrs['aria-label']) ? 'button' : '';
             },
         },
