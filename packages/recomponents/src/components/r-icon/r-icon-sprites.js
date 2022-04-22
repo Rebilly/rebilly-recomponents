@@ -797,6 +797,18 @@ const sprites = `
                 </svg>
             </symbol>
         </svg>
+        <!-- Cake -->
+        <svg xmlns="http://www.w3.org/2000/svg">
+            <symbol id="icon-cake">
+                <svg width="20" height="20" xmlns="http://www.w3.org/2000/svg"><path d="M14 5a1 1 0 0 1 1 1v2h1a2 2 0 0 1 2 2v8H2v-8a2 2 0 0 1 2-2h1V6a1 1 0 1 1 2 0v2h2V6a1 1 0 1 1 2 0v2h2V6a1 1 0 0 1 1-1Zm2 9H4v2h12v-2Zm0-4H4v2h12v-2Zm-6-8a1 1 0 1 1 0 2 1 1 0 0 1 0-2ZM6 2a1 1 0 1 1 0 2 1 1 0 0 1 0-2Zm8 0a1 1 0 1 1 0 2 1 1 0 0 1 0-2Z" fill-rule="nonzero"/></svg>
+            </symbol>
+        </svg>
+        <!-- Briefcase -->
+        <svg xmlns="http://www.w3.org/2000/svg">
+            <symbol id="icon-briefcase">
+                <svg width="20" height="20" xmlns="http://www.w3.org/2000/svg"><path d="M12 3a2 2 0 0 1 2 2v2h4v10H2V7h4V5a2 2 0 0 1 2-2h4Zm-1 8H9V9H4v6h12V9h-5v2Zm1-6H8v2h4V5Z" fill-rule="nonzero"/></svg>
+            </symbol>
+        </svg>
 `;
 
 export default sprites;
