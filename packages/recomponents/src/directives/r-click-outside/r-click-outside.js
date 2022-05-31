@@ -2,16 +2,16 @@
  * Simple directive to add click-outside detection to a component
  */
 export default {
-    bind(element, binding, vNode) {
-        element.vClickOutside = (event) => {
+    bind(element, {value}) {
+        element.clickOutside = (event) => {
             if (!element.contains(event.target)) {
-                vNode.context[binding.expression](event);
+                value(event);
             }
         };
-        window.document.addEventListener('mousedown', element.vClickOutside, true);
+        window.document.addEventListener('mousedown', element.clickOutside, true);
     },
     unbind(element) {
-        window.document.removeEventListener('mousedown', element.vClickOutside);
-        element.vClickOutside = null;
+        window.document.removeEventListener('mousedown', element.clickOutside);
+        element.clickOutside = null;
     },
 };
