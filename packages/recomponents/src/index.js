@@ -28,7 +28,13 @@ function install(Vue, options = {}) {
         ErrorHandler,
         allowClose: allowToastCloseButton,
     });
-    Vue.component('v-date-picker', vDatePicker);
+
+    try {
+        Vue.component('v-date-picker', vDatePicker);
+    } catch (error) {
+        // Ignore errors when using Recomponents from @vue/compat mode
+    }
+
     Vue.component('no-ssr', NoSSR);
 
     /**
