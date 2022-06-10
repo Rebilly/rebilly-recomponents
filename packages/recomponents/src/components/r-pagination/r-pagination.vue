@@ -8,13 +8,11 @@
 </template>
 
 <script>
-    import Vue from 'vue';
     import PaginationControl from '../r-pagination-control/r-pagination-control.vue';
-
-    Vue.component('r-pagination-control', PaginationControl);
 
     export default {
         name: 'r-pagination',
+        components: {'r-pagination-control': PaginationControl},
         props: {
             /**
              * Wrapper for async pagination data provider
