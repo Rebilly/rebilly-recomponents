@@ -70,6 +70,8 @@ npm run build-storybook
 yarn build-storybook
 ```
 
+⚠️ If you encounter errors when building, it might be the node version(like v16) is too high, we recommend using [nvm](https://github.com/nvm-sh/nvm) to downgrade the node version to v14.
+
 ### Serving built storybook (from docs folder)
 
 If you want to serve the built version you can install [http-server](https://www.npmjs.com/package/http-server):
