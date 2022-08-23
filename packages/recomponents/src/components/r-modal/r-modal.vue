@@ -1,6 +1,7 @@
 <template>
     <transition name="r-modal" @appear="appear" @enter="enter" @leave="leave">
-        <div @mousedown="close"
+        <div v-if="show"
+            @mousedown="close"
              tabindex="0"
              ref="container"
              @keyup.esc="close"
@@ -77,6 +78,13 @@
             RIconButton,
         },
         props: {
+            /**
+            * Use this prop to conditionally show the modal from the outside
+            */
+            show: {
+                type: Boolean,
+                default: true,
+            },
             /**
              * TBD
              */

@@ -13,6 +13,9 @@ storiesOf('Components.Modal', module)
             };
         },
         props: {
+            show: {
+                default: boolean('Show modal', true),
+            },
             title: {
                 default: text('Title', 'Modal'),
             },
@@ -47,7 +50,7 @@ storiesOf('Components.Modal', module)
         template: `
             <div class="storybook-center">
                 <r-button @click="isModalOpen = true;">Open</r-button>
-                <r-modal v-if="isModalOpen"
+                <r-modal :show="isModalOpen"
                         :title="title"
                         :cancelLabel="cancelLabel"
                         :size="size"
