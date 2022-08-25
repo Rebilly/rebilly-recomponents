@@ -10,10 +10,6 @@ module.exports = {
         resolve: {
             alias: {
                 '@': path.resolve(__dirname, 'src'),
-                // Deduplicate any moment imports, otherwise we end up with
-                // it included in the bundle twice, even though we only have
-                // 1 version of moment.
-                moment: path.resolve(__dirname, 'node_modules/moment'),
             },
         },
         plugins: [
