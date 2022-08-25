@@ -4,7 +4,7 @@ import './styles/helpers.scss';
 import './styles/theme.scss';
 
 import NoSSR from 'vue-no-ssr';
-import vDatePicker from 'v-calendar/lib/components/date-picker.umd';
+import vDatePicker from 'v-calendar/lib/components/date-picker.umd.min';
 import kebabCase from './common/helpers/kebab-case';
 import RToastPlugin, {RToastManager} from './plugins/r-toast-manager';
 

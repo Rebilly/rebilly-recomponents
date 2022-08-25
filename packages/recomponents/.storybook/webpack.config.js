@@ -12,7 +12,7 @@ module.exports = function({ config }) {
             {
                 loader: 'sass-loader',
                 options: {
-                    prependData: `
+                    additionalData: `
                         @import "src/styles/mixins.scss";
                     `,
                 }
