@@ -1,4 +1,5 @@
 const path = require('path');
+const sass = require('sass');
 const MomentLocalesPlugin = require('moment-locales-webpack-plugin');
 
 module.exports = {
@@ -25,7 +26,8 @@ module.exports = {
         extract: true,
         loaderOptions: {
             sass: {
-                prependData: `
+                implementation: sass,
+                additionalData: `
                     @import "@/styles/mixins.scss";
                 `,
             },
