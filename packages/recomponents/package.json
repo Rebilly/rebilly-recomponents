@@ -2,8 +2,8 @@
   "name": "@rebilly/recomponents",
   "version": "1.0.0",
   "description": "Official Rebilly front-end components library",
-  "main": "dist/recomponents.umd.js",
-  "unpkg": "dist/recomponents.umd.js",
+  "main": "dist/recomponents.umd.min.js",
+  "unpkg": "dist/recomponents.umd.min.js",
   "author": "Rebilly SRL",
   "license": "MIT",
   "scripts": {
