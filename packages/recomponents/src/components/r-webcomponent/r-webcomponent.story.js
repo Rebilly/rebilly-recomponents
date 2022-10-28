@@ -10,6 +10,7 @@ storiesOf('Components.Webcomponent', module)
             vue.src = 'https://unpkg.com/vue';
 
             const recomponents = document.createElement('script');
+            // unpkg.com should not be used for production deployment
             recomponents.src = 'https://unpkg.com/@rebilly/recomponents/dist/recomponents.js';
 
             document.head.appendChild(vue);

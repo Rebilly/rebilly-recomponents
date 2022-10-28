@@ -13,24 +13,6 @@ yarn add @rebilly/recomponents
 
 ## Usage
 
-Recomponents can be imported directly via CDN (check [JSFiddle](https://jsfiddle.net/kjz0h3pb/)):
-
-```html
-<html>
-    <head>
-        <meta charset="utf-8">
-        <script src="https://unpkg.com/vue"></script>
-        <script src="https://unpkg.com/@rebilly/recomponents/dist/recomponents.js"></script>
-        <link rel="stylesheet" href="https://unpkg.com/@rebilly/recomponents/dist/recomponents.css">
-    </head>
-    <body>
-        <recomponents-r-button>Click me</recomponents-r-button>
-    </body>
-</html>
-```
-
-Or bundled with webpack:
-
 ```html
 <template>
     <main>
